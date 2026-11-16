@@ -1,0 +1,388 @@
+meta:
+  row_id: 104
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "6ALP5R4U"
+  titulo: "Eco-xPD: Enhancing deep learning based Parkinson’s disease detection with domain adaptive knowledge distillation from high-cost imaging to low-cost modalities"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 104
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho e rodapé, p. 1 — 'Information Fusion 136 (2026) 104563' e '© 2026 Elsevier B.V.'"
+    auditoria: null
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'This work introduces a clinically informed multimodal deep learning framework that transfers neurodegenerative knowledge from high-fidelity DaTscan imaging to low-cost, non-clinical biomarkers'"
+    auditoria: null
+    observacao: "Propõe o framework Eco-xPD com adaptação de domínio relacional cross-modal (xReDA: RAKD, RDKD e ALDA), codificadores de domínio bruto (RDE) e transformado (TDE/FDE), bloco de fusão atencional (DFAB) e a rede dedicada Smartwatch-Net para o PADS."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 preenchido com 'Novo modelo' (opção Outro não marcada)."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, Tabela 2, p. 4 e Seção 3.5.1, p. 12 — 'Smartwatch PADS ... both the non-clinical and neuroimaging datasets are partitioned into training, validation, and testing subsets'"
+    auditoria: null
+    observacao: "O estudo avalia seis datasets não clínicos em três modalidades (voz, smartwatch e desenho à mão), guiados durante o treino por uma rede professora em DaTscan (NTUA1). O PADS é a única base de treino, validação e teste para a modalidade de smartwatch (Smartwatch-Net)."
+  - id: 6
+    chave: "datasets"
+    valor: ["Outro público", "PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 e Seção 2, Tabela 2, p. 4 — 'Extensive evaluations across six publicly available non-clinical PD datasets' (incluindo PADS e NTUA1)."
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "NTUA1 (DaTscan); YouTubePD; Cross-YouTubePD (YouTubePD + PPSD); VoicePD; MDVR-KCL; HandPD"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, Tabela 2, p. 4 — 'DaTscan: NTUA1; Voice: YouTubePD, Cross-YouTubePD, VoicePD, MDVR-KCL; Smartwatch: PADS; Hand-drawn Image: HandPD'"
+    auditoria: null
+    observacao: "Na Tabela 1 (p. 3) são apenas citados datasets de trabalhos relacionados na literatura (mPower, Chinese PD Audio-visual Dataset, The Parkinson's Drawing Dataset, ECG motor movement dataset, Parkinson's Disease Detection); nos experimentos do artigo são usados os listados na Tabela 2."
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 9 — 'Each experimental trial consists of tri-axial accelerometer and gyroscope recordings, each comprising 1024 temporal samples along the (x, y, z) axes.'"
+    auditoria: null
+    observacao: "A Seção 2.3 menciona que o PADS contém metadados demográficos e clínicos, mas a arquitetura Smartwatch-Net utiliza exclusivamente os sinais temporais de acelerômetro e giroscópio e seus espectrogramas."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 3.3.2, p. 9 — 'Considering all 16 experimental sessions, a total of 96 raw sensor signals are obtained for subsequent processing.'"
+    auditoria: null
+    observacao: "A Seção 2.3 (p. 4) descreve o PADS com '11 neurologist-designed tasks', enquanto a Seção 3.3.2 (p. 9) afirma usar 'all 16 experimental sessions, a total of 96 raw sensor signals' (16 sessões × 6 eixos = 96 sinais)."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11 tarefas citadas na Seção 2.3; todas as 16 sessões experimentais totalizando 96 sinais na Seção 3.3.2)"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 2.3, p. 4 e Seção 3.3.2, p. 9 — 'across 11 neurologist-designed tasks' / 'Considering all 16 experimental sessions, a total of 96 raw sensor signals are obtained'"
+    auditoria: null
+    observacao: "O artigo não lista os nomes individuais das tarefas motoras do PADS."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 9 — 'Each experimental trial consists of tri-axial accelerometer and gyroscope recordings, each comprising 1024 temporal samples along the (x, y, z) axes.'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 sem a opção Outro marcada."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 4 e Seção 3.3.2, p. 9 — menciona 'wrist-worn smartwatches' e 'all 16 experimental sessions, a total of 96 raw sensor signals', sem especificar se os sinais vêm do punho esquerdo, direito ou de ambos."
+    auditoria: null
+    observacao: "Termos buscados no artigo: wrist, left, right, hand; apenas 'wrist-worn smartwatches' aparece na Seção 2.3, sem declarar explicitamente qual(is) punho(s) compõe(m) os 96 sinais."
+  - id: 14
+    chave: "n_participantes"
+    valor: 355
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, Tabela 2, p. 4 — 'Smartwatch | PADS | No. of Subjects: PD 276, HC 79 | No. of Samples: PD 276, HC 79'"
+    auditoria: null
+    observacao: "A Seção 2.3 menciona o total geral de 469 participantes do PADS, porém a Tabela 2 explicita que o experimento utiliza 276 sujeitos PD e 79 HC (soma = 355 participantes), sem incluir o grupo DD."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=0"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, Tabela 2, p. 4 — 'Smartwatch | PADS | No. of Subjects: PD 276, HC 79'"
+    auditoria: null
+    observacao: "O grupo de diagnóstico diferencial (DD) é mencionado apenas na descrição geral da base na Seção 2.3, não sendo incluído nos experimentos (Tabela 2)."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 10 — 'to form a unified discriminative embedding for downstream PD and HC classification.'"
+    auditoria: null
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 sem a opção Outro marcada."
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta", "Tempo-frequência (espectrograma, wavelet)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 9-10 — 'The raw domain representation, denoted by Xr ∈ R96×1024, corresponds to the direct time-domain measurements... The frequency domain representation, Xf ∈ R250×250×3×96, is derived by transforming each signal into a spectrogram using STFT.'"
+    auditoria: null
+    observacao: null
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 sem a opção Outro marcada."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 9-10 e Fig. 8 — 'Architecture of the proposed Smartwatch-Net using raw smartwatch data... processed via convLSTM-based RDE and 3D ResNet50-based FDE'"
+    auditoria: null
+    observacao: null
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 sem a opção Outro marcada."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Eco-xPD / Smartwatch-Net (RDE: 2×[Conv1D+BN+MP] + BiLSTM + LSTM; FDE: 3D-ResNet50 + LSTM; DFAB: CBAM + Conv1D + Adapter; xReDA: RAKD + RDKD + ALDA com professor DenseNet121); Proposed (Without xReDA); Varghese et al. (feed-forward neural network); Hur et al. (hybrid LSTM-GRU); Jovanovic et al. (CNN com otimização metaheurística); He et al.; DANN; RKD; Disc+RDKD; Disc+RAKD"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 9-10, Seção 4, p. 13-16, Tabela 4 e Fig. 14 — 'convLSTM-based RDE and 3D ResNet50-based FDE... DFAB... xReDA' e métodos comparados na Tabela 4 e Fig. 14."
+    auditoria: null
+    observacao: null
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, Tabela 2, p. 4 e Seção 3.4, Eq. (31), p. 11 — Tabela 2 reporta 'No. of Samples: PD 276, HC 79' (sem reamostragem/augmentation) e Eq. (31) define perda BCE padrão."
+    auditoria: null
+    observacao: "Na Seção 4 (p. 15), os autores mencionam que 'class weighting was applied to mitigate this imbalance' especificamente ao discutir o desbalanceamento severo do dataset de voz YouTubePD; para o PADS, a Tabela 2 confirma a contagem original de 276 amostras PD e 79 HC e a análise da matriz de confusão (Fig. 13b) atribui a maior taxa de FP (28.32%) ao viés de sensibilidade em PD."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Hold-out"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.5.1, p. 12 e Seção 4, p. 13 — 'partitioned into training, validation, and testing subsets following a 70 : 15 : 15 split ratio' e 'running the each method on five different random seeds'"
+    auditoria: null
+    observacao: "Divisão hold-out 70:15:15 (treino:validação:teste) repetida em 5 sementes aleatórias (média ± DP reportados na Tabela 4; no texto da Seção 4 os autores por vezes se referem às 5 repetições como 'across different splits' ou 'across folds')."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 sem a opção Outra marcada."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "inferido"
+    confianca: "média"
+    evidencia: "Seção 2, Tabela 2, p. 4 e Seção 3.3.2, p. 9-10 — 'Smartwatch PADS: No. of Subjects: PD 276, HC 79 | No. of Samples: PD 276, HC 79' e 'stacking the spectrograms of the three axes across all trials, a unified spectro-temporal volume is formed'"
+    auditoria: null
+    observacao: "Embora a Seção 3.5.1 (p. 12) declare apenas 'partitioned into training, validation, and testing subsets following a 70 : 15 : 15 split ratio to ensure fair evaluation and avoid data leakage' sem usar o termo 'subject-wise', a Tabela 2 (p. 4) e a Seção 3.3.2 (p. 9-10) demonstram que no PADS todos os 96 sinais das 16 sessões de cada participante são empilhados em um único tensor por pessoa (Xr ∈ R96×1024 e Xf ∈ R250×250×3×96), resultando em exatamente 1 amostra por participante (276 PD e 79 HC, diferente de NTUA1 e HandPD que possuem múltiplas amostras por sujeito na Tabela 2)."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – inferida"
+    status: "inferido"
+    confianca: "média"
+    evidencia: "Seção 2, Tabela 2, p. 4, Seção 3.3.2, p. 9-10 e Seção 3.5.1, p. 12 — 'No. of Subjects: PD 276, HC 79 | No. of Samples: PD 276, HC 79' e '70 : 15 : 15 split ratio to ensure fair evaluation and avoid data leakage'"
+    auditoria: null
+    observacao: "Garantida pelo desenho experimental no PADS: como os 96 sinais de cada indivíduo compõem uma única amostra empilhada (355 sujeitos = 355 amostras na Tabela 2), a divisão 70:15:15 das amostras impede que o mesmo participante apareça simultaneamente no treino e no teste."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = Nenhum."
+    auditoria: null
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = Nenhum."
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.5.2, p. 12 — 'During inference, each non-clinical network is evaluated exclusively on the test set corresponding to its sensing modality.'"
+    auditoria: null
+    observacao: "Para a modalidade de smartwatch, o modelo é treinado e avaliado apenas na divisão interna (70:15:15) do PADS."
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.6, p. 13 e Tabela 4, p. 14 — 'four standard evaluation metrics are employed: accuracy, precision, recall, and the F1-score.'"
+    auditoria: null
+    observacao: "Recall corresponde a Sensitivity (Eq. 42). O F1-score é calculado na classe positiva (PD) conforme Eq. (43), sem ponderação macro. Adicionalmente, a Fig. 13(b) (p. 15) apresenta a matriz de confusão percentual no PADS (TN/Specificity = 71.68%, FP = 28.32%, FN = 1.73%, TP/Sensitivity = 98.27%)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 sem a opção Outra marcada."
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; Proposed (With xReDA); F1-score; 93.60%±1.03% (Accuracy: 89.92%±2.02%; Precision: 92.01%±1.43%; Recall: 95.27%±1.40%)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, Tabela 4, p. 14 — 'Smartwatch PADS | Proposed (With xReDA) | Accuracy 89.92%±2.02% | Precision 92.01%±1.43% | Recall 95.27%±1.40% | F1-score 93.60%±1.03%'"
+    auditoria: null
+    observacao: "Na Tabela 6 (estudo de ablação, p. 21) e Fig. 14(b) (p. 16), a configuração completa (d) c + xReDA atinge Accuracy de 90.64%, Precision de 92.67%, Recall de 93.65% e F1-score de 93.16%."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; Proposed (Without xReDA) [Tabela 4]; F1-score; 92.56%±1.17% (Accuracy: 86.39%±1.70%; Precision: 90.08%±1.56%; Recall: 95.19%±0.89%) | PD×HC; Jovanovic et al. [Tabela 4]; F1-score; 89.96%±0.69% (Accuracy: 77.95%±0.63%; Precision: 79.63%±3.39%; Recall: 96.20%±5.47%) | PD×HC; Hur et al. [Tabela 4]; F1-score; 88.78%±0.74% (Accuracy: 81.59%±0.95%; Precision: 84.01%±3.09%; Recall: 94.41%±4.58%) | PD×HC; He et al. [Tabela 4]; F1-score; 87.55%±0.78% (Accuracy: 79.32%±1.69%; Precision: 82.11%±3.61%; Recall: 94.12%±4.76%) | PD×HC; Varghese et al. [Tabela 4]; F1-score; 87.42%±0.76% (Accuracy: 78.98%±1.47%; Precision: 81.37%±1.60%; Recall: 94.49%±1.41%) | PD×HC; Ablation (a) RDE [Tabela 6]; F1-score; 80.81% (Accuracy: 78.14%; Precision: 79.73%; Recall: 81.91%) | PD×HC; Ablation (b) RDE + FDE [Tabela 6]; F1-score; 84.96% (Accuracy: 81.62%; Precision: 85.34%; Recall: 84.58%) | PD×HC; Ablation (c) RDE + FDE + DFAB [Tabela 6]; F1-score; 92.07% (Accuracy: 85.77%; Precision: 91.55%; Recall: 92.59%) | PD×HC; Ablation (d) RDE + FDE + DFAB + xReDA [Tabela 6]; F1-score; 93.16% (Accuracy: 90.64%; Precision: 92.67%; Recall: 93.65%) | PD×HC; Comparação KD [Fig. 14b]; Accuracy; Base: 85.77%, DANN: 83.92%, RKD: 84.87%, Disc+RDKD: 88.13%, Disc+RAKD: 89.79%, xReDA: 90.64% | PD×HC; Matriz de confusão Smartwatch [Fig. 13b]; Taxas; TN (HC): 71.68%, FP: 28.32%, FN: 1.73%, TP (PD): 98.27%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, Tabela 4 (p. 14), Fig. 13b (p. 15), Fig. 14b (p. 16) e Seção 6.2, Tabela 6 (p. 21)."
+    auditoria: null
+    observacao: null
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Data availability, p. 22 — 'Data will be made available on request.'"
+    auditoria: null
+    observacao: "Não há link para código-fonte ou dados derivados disponibilizados publicamente."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção 4 (p. 13 e p. 15): menor desempenho no estágio avançado de PD (em MDVR-KCL) atribuído ao número reduzido de amostras nessa categoria; elevada taxa de falsos positivos no modelo de smartwatch (FP = 28.32%, priorizando sensibilidade de 98.27% sobre especificidade de 71.68%) e elevada taxa de falsos negativos no dataset de voz YouTubePD (FN = 17.07%) devido ao severo desbalanceamento de classes. Seção 5.2 (p. 17-19): visualizações Grad-CAM são geradas antes da fusão multimodal e projetadas no espaço de entrada, não conseguindo visualizar diretamente a geometria do espaço latente nem as restrições relacionais (distância e ângulo) aprendidas via RKD. Seção 7 (p. 21): a implementação prática atual depende de conexão com a internet para inferência assistida em nuvem (servidor CPU remoto), não estando ainda otimizada para execução totalmente on-device."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 15 — 'at the expense of higher FP rates (28.32% and 7.59%, respectively)' e Seção 7, p. 21 — 'relies on internet connectivity for cloud-assisted inference and is not yet optimized for fully on-device execution'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção 1 (p. 2): estudos prévios em modalidades de baixo custo restringem-se a domínios isolados (apenas sinal bruto no tempo ou apenas frequência), sistemas multimodais exigem múltiplos dispositivos sensores na inferência (aumentando custo e complexidade operacional), e métodos convencionais de destilação de conhecimento exigem amostras pareadas entre modalidades, inexistindo frameworks capazes de transferir conhecimento estrutural clínico de neuroimagem (DaTscan) para sinais não clínicos unimodais sob condições totalmente não pareadas e entre sujeitos distintos. Seção 7 (p. 21): como trabalho futuro, otimizar o modelo para execução embarcada totalmente on-device em hardware móvel."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 — 'no prior work has explored knowledge transfer from clinical neuroimaging modalities to heterogeneous non-clinical signals in such an unpaired setting' e Seção 7, p. 21 — 'Further optimization for embedded and mobile AI hardware remains an important direction for future work.'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 9-10 e Seção 3.4-3.5.1, p. 12 — O ajuste de hiperparâmetros (α, β), agendamento de learning rate e early stopping usam o conjunto de validação (split 70:15:15), mas o artigo não informa se houve normalização estatística global dos sinais antes ou após a divisão."
+    observacao: "A rede utiliza camadas de Batch Normalization (BN) internas e espectrogramas STFT por sinal, sem explicitar pré-processamento estatístico global."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; campo 27 = Sim – inferida; campo 28 = Não se aplica; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenário binário PD×HC explícito e quantidades de sujeitos do PADS por classe claramente definidas na Tabela 2 (276 PD e 79 HC, sem DD)."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Quatro dos cinco itens aplicáveis foram informados (modalidade IMU, todas as tarefas/sessões, sensores acelerômetro/giroscópio e N=355), mas o punho utilizado não foi reportado."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Moderado: o empilhamento dos 96 sinais em uma única amostra por participante (355 sujeitos = 355 amostras na Tabela 2) garante separação por sujeito no split 70:15:15, mas o isolamento de eventual normalização no treino não é reportado."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta F1-score binário (sem indicar macro/ponderado) e Sensitivity (Recall), além das taxas de acerto por classe na matriz de confusão da Fig. 13(b)."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Arquiteturas, dimensões de entrada, funções de perda e hiperparâmetros estão detalhados no texto e na Fig. 8, porém o código-fonte não está disponível (campo 35 = Nenhum)."
+  nota_qa: 3.0
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica; Quais tarefas null; Representação null"
+    resultado: "OK (modalidade é Série temporal IMU)"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (cenário é apenas PD×HC)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (276 + 79 + 0 = 355)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (Participante → Sim – inferida)"
+  - regra: "Campo 24 contém Leave-one-subject-out → campo 26 = Participante e campo 27 = Sim"
+    resultado: "OK (campo 24 = Hold-out)"
+  - regra: "Campo 26 = Não se aplica → campos 27 e 28 = Não se aplica, risco = Não se aplica, campo 24 = Não reportado"
+    resultado: "OK (campo 26 = Participante)"
+  - regra: "Campo 23 = Nenhum ou Não se aplica → campo 28 = Não se aplica e campo 29 null"
+    resultado: "OK"
+  - regra: "Campo 30 = true e campo 5 = Principal → explique na observação"
+    resultado: "OK (campo 30 = false)"
+  - regra: "Campo 9 = Não se aplica → campo 10 null; caso contrário, campo 10 preenchido"
+    resultado: "OK (campo 9 = Todas e campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (3→4, 6→7, 11→12, 16→17, 18→19, 20→21, 24→25, 31→32)"
+    resultado: "OK (apenas 6→7 preenchido para Outro público)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (Moderado → Partially / 0.5)"
+pontos_para_revisao_humana:
+  - "Campos 26 e 27 (status inferido, confiança média): a Seção 3.5.1 declara split 70:15:15 'to ensure fair evaluation and avoid data leakage' sem usar o termo 'subject-wise', mas a Tabela 2 (p. 4) e a Seção 3.3.2 (p. 9-10) confirmam que no PADS os 96 sinais das 16 sessões de cada pessoa formam uma única amostra empilhada (276 sujeitos PD = 276 amostras PD; 79 sujeitos HC = 79 amostras HC), garantindo 1 registro por participante."
+  - "Campos 9 e 10 (confiança média): a Seção 2.3 menciona '11 neurologist-designed tasks' no PADS, enquanto a Seção 3.3.2 menciona 'all 16 experimental sessions, a total of 96 raw sensor signals' (16 × 6 canais = 96 sinais)."
+  - "Campo 13: punho(s) não reportado explicitamente no texto, embora os 96 sinais correspondam a 16 sessões × 6 canais (acelerômetro e giroscópio triaxiais)."
+  - "Campo 24: o método realiza split 70:15:15 (treino:validação:teste) repetido com 5 sementes aleatórias (Tabela 4), embora o texto da Seção 4 use ocasionalmente o termo 'folds' ao se referir às 5 repetições."
+  - "Campo 33 e 34: na Tabela 4 (5 sementes), Proposed (With xReDA) obtém F1 = 93.60%±1.03% e Accuracy = 89.92%±2.02%, enquanto no estudo de ablação (Tabela 6 e Fig. 14b) reporta F1 = 93.16% e Accuracy = 90.64%."
+  - "QA3 e aux_preproc_apenas_treino: ajuste de hiperparâmetros (α, β) e early stopping foram feitos no conjunto de validação (split 70:15:15), mas não há menção explícita sobre normalização estatística prévia dos sinais IMU."
+  - "QA4 e Campo 31: além de Accuracy, Precision, Recall (Sensitivity) e F1 binário na Tabela 4, a Fig. 13(b) apresenta a matriz de confusão com TN (Specificity) = 71.68% e TP (Sensitivity) = 98.27%."
+  - "QA5: arquitetura e hiperparâmetros estão bem documentados, mas não há repositório de código disponível ('Data will be made available on request')."

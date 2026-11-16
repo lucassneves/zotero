@@ -1,0 +1,380 @@
+meta:
+  row_id: 2
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito, mas com Ressalvas"
+  zotero_key: "PGJ2WL8P"
+  titulo: "Quantifying Data Leakage in Multimodal Clinical Augmentation: A Decomposition Framework and a Leakage-Free Evaluation Protocol for Parkinson's Disease Classification"
+  ressalva_triagem: "Preprint (Research Square, CE2=Sim) incluído com ressalvas (Tier A); confirmar experimento primário no PADS e protocolo de validação/data leakage."
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (High)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 2
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Capa (PDF p. 1) — 'Posted Date: September 25th, 2026 / DOI: https://doi.org/10.21203/rs.3.rs-10534776/v1'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: preprint depositado no Research Square em 2026 com experimento primário completo no PADS e análise dedicada a data leakage."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Estudo comparativo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 (PDF p. 3) — 'In this work, we systematically compare these two pipeline orderings on heterogeneous multimodal clinical data'"
+    auditoria: null
+    observacao: "Além de comparar sistematicamente a ordem das operações (ETB vs. BTE), técnicas de balanceamento (NoAug, SMOTE, GAN) e 6 classificadores, o artigo propõe um framework metodológico de decomposição de ganhos aparentes e protocolo livre de vazamento."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 (PDF p. 3) — 'opção Outro não marcada em tipo_contribuicao'"
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 7 (PDF p. 8) — 'We use the PD Smartwatch Dataset (PADS) v1.0.0 [31] to evaluate the framework.'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: o PADS é o único dataset usado nos experimentos primários de treino e avaliação do artigo."
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 7 (PDF p. 8) — 'We use the PD Smartwatch Dataset (PADS) v1.0.0 [31] to evaluate the framework.'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 6.4, p. 21 (PDF p. 22) — 'All results are obtained on a single dataset collected with one wearable platform.'"
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Metadados demográficos-clínicos", "Questionário (PDNMS)", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 7 (PDF p. 8) — 'three modalities: wearable sensor movement time-series, structured clinical scales, and a non-motor symptom questionnaire.'"
+    auditoria: null
+    observacao: "As variáveis clínicas/demográficas utilizadas totalizam 12 atributos (Tabela 3, p. 8); variáveis com alta taxa de valores ausentes (ex.: efeito do álcool no tremor) foram excluídas (Seção 4.2, p. 8)."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 7 (PDF p. 8) — 'each subject completed 11 standardized motor tasks (e.g., finger taps, hand flips)'"
+    auditoria: null
+    observacao: "O artigo contabiliza 11 tarefas motoras padronizadas no PADS (469 participantes × 11 tarefas = 5.159 medições) e utiliza todas as 11 tarefas (Tabela 1: '11 movement tasks'; Tabela 3: '66D (11×6)')."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11 tarefas motoras padronizadas; exemplificadas no texto como finger taps; hand flips)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 7 (PDF p. 8) e Tabela 1, p. 6 (PDF p. 7) — 'each subject completed 11 standardized motor tasks (e.g., finger taps, hand flips)'"
+    auditoria: null
+    observacao: "Na Seção 5.6 (p. 20) também são mencionadas características associadas a 'finger tapping', 'rest tremor' e 'hand rotation'."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 7 (PDF p. 8) — 'two wrist-mounted Apple Watch Series 4 devices recording accelerometer (g) and gyroscope (rad/s) data at 100 Hz'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 7 (PDF p. 8) — 'apenas acelerômetro e giroscópio utilizados; opção Outro não marcada'"
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 7 (PDF p. 8) — 'using two wrist-mounted Apple Watch Series 4 devices recording accelerometer (g) and gyroscope (rad/s) data at 100 Hz across three axes.'"
+    auditoria: null
+    observacao: "Os 12 canais por tarefa na Tabela 3 ((1024, 12)/task) correspondem aos 2 punhos × 2 sensores × 3 eixos concatenados."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 7 (PDF p. 8) — 'The dataset contains 5,159 measurement steps from 469 participants'"
+    auditoria: null
+    observacao: "Todos os 469 participantes são utilizados tanto no cenário binário (PD vs. non-PD) quanto no cenário multiclasse de 3 classes (HC / PD / DD)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=295; HC=71; DD=103"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 7 (PDF p. 8) — 'PD 295 (3,245 samples, 62.9%) | DD 103 (1,133 samples, 22.0%) | HC 71 (781 samples, 15.1%)'"
+    auditoria: null
+    observacao: "A Tabela 2 do artigo reporta N por classe como PD=295, DD=103 e HC=71 (soma = 469 participantes; 5.159 amostras = 469 × 11), valores que divergem da distribuição oficial do PADS v1.0.0 (PD=276, HC=79, DD=114), mas foram mantidos literalmente conforme reportado pelos autores."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["3 classes (Mult-Class)", "Outro"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5.1.1 e 5.1.2, p. 11 e 13 (PDF p. 12 e 14) — 'Binary classification (PD vs. non-PD) ... Multiclass classification (HC / PD / DD)'"
+    auditoria: null
+    observacao: "O estudo avalia a classificação binária PD vs. non-PD (unindo HC e DD na classe negativa) e a classificação multiclasse em 3 classes (HC / PD / DD)."
+  - id: 17
+    chave: "outro_cenario"
+    valor: "PD vs. non-PD (PD vs. HC+DD agrupados na classe negativa)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5.1.1, p. 11 (PDF p. 12) — 'labels patients with confirmed Parkinson's disease as the positive class and pools healthy controls (HC) and differential diagnoses (DD) into a single non-PD negative class'"
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Outro", "Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 3, p. 8 (PDF p. 9) e Seção 5.2, p. 16 (PDF p. 17) — 'Movement Conv1D AE Input dims (1024,12)/task ... raw multivariate time-series of shape (n_samples, 1024, 12)'"
+    auditoria: null
+    observacao: "As séries temporais brutas normalizadas por z-score (janelas de 10,24 s = 1024 amostras × 12 canais por tarefa) alimentam os autoencoders Conv1D (e os geradores/SMOTE no pipeline BTE), enquanto os 6 classificadores recebem o vetor multimodal fundido de 90 dimensões no espaço latente (66-D movimento + 8-D clínico + 16-D PDNMS)."
+  - id: 19
+    chave: "outra_representacao"
+    valor: "Embeddings latentes multimodais de 90 dimensões (Early Fusion de 66-D de Conv1D AE das séries temporais, 8-D de Dense AE clínico e 16-D de Dense AE do questionário PDNMS)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1, p. 6 (PDF p. 7) e Tabela 3, p. 8 (PDF p. 9) — 'Encode each modality (Conv1D AE 66-D; Dense AE 8-D; Dense AE 16-D) -> Early fusion -> 90-D patient vector'"
+    auditoria: null
+    observacao: "Na Seção 4.1 (p. 7) há menção textual a '1024 samples per subject for FFT-based spectral analysis', porém toda a modelagem descrita nas Tabelas 1 e 3 e na Seção 5.2 opera diretamente sobre a série temporal de formato (1024, 12) por tarefa e seus embeddings de autoencoder."
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning", "Generativo-augmentation", "Hybrid-Ensemble"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1, p. 6 (PDF p. 7) e Seção 5, p. 10 (PDF p. 11) — 'Conv1D AE ... Single GAN ... six classifiers (SVM-RBF, Random Forest, Gradient Boosting, XGBoost, MLP, and Logistic Regression)'"
+    auditoria: null
+    observacao: "Combina Deep Learning para extração de representações (Conv1D AE, Dense AE) e classificação (MLP), Generativo-augmentation (Vanilla GAN) e Classical ML (SVM-RBF, Random Forest, Gradient Boosting, XGBoost, Logistic Regression), configurando também pipeline híbrido (AE neural + classificadores de ML clássico)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 5, p. 10 (PDF p. 11) — 'opção Outro não marcada em familia_algoritmo'"
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Conv1D AE; Dense AE; Vanilla GAN (MLP); SVM-RBF; Random Forest; Gradient Boosting; XGBoost; MLP; Logistic Regression"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 3, p. 8 (PDF p. 9), Seção 3.4, p. 7 (PDF p. 8) e Seção 5, p. 10 (PDF p. 11) — 'We compare six classifiers (SVM-RBF, Random Forest, Gradient Boosting, XGBoost, MLP, and Logistic Regression)'"
+    auditoria: null
+    observacao: null
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Dados sintéticos (GAN)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.3.2, p. 8 (PDF p. 9) — 'we compare two categories of balancing strategies: SMOTE (interpolation-based)... GAN-based augmentation (distribution-based)'"
+    auditoria: null
+    observacao: "O artigo avalia três condições: Dados sintéticos (GAN) — foco central do trabalho —, SMOTE-oversampling e Nenhum (NoAug). Como o campo é Select One, marcou-se a estratégia principal (Dados sintéticos (GAN)) conforme o Guia de Preenchimento."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 10 (PDF p. 11) — 'Both pipelines are evaluated with stratified 5-fold cross-validation repeated across five random seeds (42, 123, 456, 789, 2024)'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: protocolo principal usa 5-fold CV estratificado repetido em 5 sementes (25 execuções). Na Seção 6.3, emprega-se adicionalmente um único split treino/teste para decompor analiticamente o termo de vazamento (split-after-augmentation leakage)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 10 (PDF p. 11) — 'opção Outra não marcada em estrategia_validacao'"
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 6 (PDF p. 7) e Seção 4.1, p. 8 (PDF p. 9) — 'Let D = {(Xi, yi)}, i = 1..N, be a dataset of N patients ... merged by unique subject ID to construct aligned multimodal samples.'"
+    auditoria: null
+    observacao: "Embora a Seção 4.5 diga apenas 'stratified 5-fold cross-validation', o desenho experimental funde todas as 11 tarefas motoras (66-D = 11×6-D), dados clínicos (8-D) e questionário PDNMS (16-D) pelo ID único do sujeito em um único vetor multimodal de 90-D por paciente (N = 469 pacientes; Seção 5.3 confirma '67 patients (~13 per test fold)' em 5 folds)."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – inferida"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 8 (PDF p. 9) e Seção 5.3, p. 18 (PDF p. 19) — 'merged by unique subject ID to construct aligned multimodal samples ... 67 patients (~13 per test fold)'"
+    auditoria: null
+    observacao: "Garantida pelo desenho de registro único por participante (cada participante corresponde a exatamente um vetor multimodal fundido de 90-D antes da classificação, evitando que o mesmo sujeito tenha múltiplos registros divididos entre treino e teste)."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 10 (PDF p. 11) — 'Within each fold, the entire processing chain (feature scaling, class rebalancing, and classifier training) is fitted on the training partition only'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: todos os resultados principais (Tabelas 4 e 5) aplicam o balanceamento (SMOTE e GAN) estritamente dentro de cada fold de treino ('Só no treino'). Na Seção 6.3, os autores também executam o protocolo com vazamento ('Antes do split') exclusivamente para quantificar o viés de split-after-augmentation (+0.04 AUC no binário e +0.15 a +0.17 AUC no multiclasse)."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "GAN-based augmentation (modo upsample-only): Vanilla GAN com camadas densas (MLP), 128 unidades ocultas, dimensão latente de ruído z=32, ativação Leaky ReLU e batch normalization (1 GAN no espaço latente 90-D para ETB; 13 GANs independentes no espaço bruto para BTE). SMOTE: interpolação linear entre vizinhos minoritários (no espaço latente 90-D em ETB e em vetores achatados de 12.288-D por tarefa em BTE)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.3.2, p. 8-9 (PDF p. 9-10) e Seção 5.2, p. 16 (PDF p. 17) — 'all GANs use a unified dense architecture (MLP) with 128 hidden units and a latent dimension (z) of 32.'"
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6.4, p. 21 (PDF p. 22) — 'All results are obtained on a single dataset collected with one wearable platform... generalization to other cohorts... remains untested'"
+    auditoria: null
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "F1", "Outra", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.4.1-4.4.3, p. 9 (PDF p. 10) e Tabelas 4, 5, 7 e 8 — 'AUC-ROC as the primary metric... F1-score to balance precision and recall, and sensitivity (recall)'"
+    auditoria: null
+    observacao: "Na tarefa multiclasse (Tabela 5, p. 13), o artigo declara 'Recall is not shown, as it equals Accuracy under weighted averaging in this setting', indicando que F1/Precision/Recall multiclasse usam média ponderada (weighted). Balanced accuracy é citada apenas na Tabela 6 para o estudo externo de Varghese et al. [32]."
+  - id: 32
+    chave: "outras_metricas"
+    valor: "Brier score; Expected Calibration Error (ECE); Standardized Net Benefit (Decision Curve Analysis); Classifier Two-Sample Test (C2ST AUC e Discriminator accuracy); Wasserstein distance; Distance to Closest Record (DCR)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.4.2 e 4.4.3, p. 9-10 (PDF p. 10-11) e Tabelas 7 e 8 — 'C2ST AUC, Wasserstein dist., Discriminator acc., Min distance / DCR ... Brier score, ECE'"
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD vs. non-PD (binário); BTE + SMOTE + Random Forest; AUC; 0.842±0.043"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5.1.1, p. 11 (PDF p. 12) e Tabela 4, p. 12 (PDF p. 13) — 'the best BTE configuration (SMOTE with Random Forest) attains AUC = 0.842 ± 0.043.'"
+    auditoria: null
+    observacao: "Estatisticamente indistinguível do baseline sem augmentation BTE + NoAug + Random Forest (AUC = 0.841±0.041) e de ETB + NoAug + Random Forest (AUC = 0.838±0.037, que obteve o maior F1 = 0.850±0.024 e maior Recall = 0.937±0.032 na Tabela 4)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD vs. non-PD (binário); BTE + NoAug + Random Forest; AUC; 0.841±0.041 | PD vs. non-PD (binário); ETB + NoAug + Random Forest; AUC; 0.838±0.037 | PD vs. non-PD (binário); ETB + NoAug + Random Forest; F1; 0.850±0.024 | PD vs. non-PD (binário); ETB + NoAug + Random Forest; Accuracy; 0.794±0.034 | PD vs. non-PD (binário); ETB + NoAug + Random Forest; Precision; 0.778±0.033 | PD vs. non-PD (binário); ETB + NoAug + Random Forest; Recall; 0.937±0.032 | PD vs. non-PD (binário); ETB + SMOTE + Random Forest; AUC; 0.835±0.041 | PD vs. non-PD (binário); ETB + GAN + Random Forest; AUC; 0.833±0.036 | PD vs. non-PD (binário); BTE + GAN + Random Forest; AUC; 0.836±0.033 | PD vs. non-PD (binário); BTE + SMOTE + SVM; Accuracy; 0.789±0.039 | 3 classes (HC / PD / DD); ETB + NoAug + Random Forest; AUC; 0.836±0.029 | 3 classes (HC / PD / DD); ETB + SMOTE + Random Forest; AUC; 0.836±0.031 | 3 classes (HC / PD / DD); ETB + SMOTE + Random Forest; F1; 0.718±0.037 | 3 classes (HC / PD / DD); ETB + SMOTE + Random Forest; Accuracy; 0.741±0.036 | 3 classes (HC / PD / DD); ETB + GAN + Random Forest; AUC; 0.827±0.031 | 3 classes (HC / PD / DD); BTE + NoAug + Random Forest; AUC; 0.829±0.038 | 3 classes (HC / PD / DD); BTE + SMOTE + Random Forest; AUC; 0.825±0.030 | 3 classes (HC / PD / DD); BTE + GAN + Random Forest; AUC; 0.816±0.041 | Qualidade generativa; ETB-GAN; C2ST AUC; 0.458±0.039 | Qualidade generativa; ETB-SMOTE; C2ST AUC; 0.768±0.043 | Qualidade generativa; BTE-GAN; C2ST AUC; 1.000±0.000"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabelas 4, 5 e 7, p. 11-17 (PDF p. 12-18) — 'ETB NoAug RF AUC 0.838±0.037 ... Multiclass ETB SMOTE RF AUC 0.836±0.031 ... ETB-GAN C2ST AUC 0.458±0.039'"
+    auditoria: null
+    observacao: "Na análise de decomposição de vazamento (Seção 6.3, p. 21), o protocolo com split-after-augmentation infla artificialmente a AUC em +0.04 no cenário binário e em +0.15 a +0.17 no multiclasse, enquanto o ganho real residual do augmentation é < 0.005 AUC."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção Data and Code Availability, p. 24 (PDF p. 25) — 'The PADS dataset used in this study is publicly available from PhysioNet... (https://physionet.org/content/parkinsons-disease-smartwatch/1.0.0/).'"
+    auditoria: null
+    observacao: "Embora o texto afirme na Seção 6.3 (p. 21) 'and the corresponding software is released alongside this manuscript', a seção 'Data and Code Availability' (p. 24) fornece exclusivamente o link do dataset PADS original no PhysioNet, sem informar repositório GitHub, Zenodo ou link de código/dados derivados."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção 6.4 (p. 21): (1) A qualidade da geração no espaço latente é limitada pelos autoencoders, pois informações descartadas na compressão (ex.: componentes sutis de frequência dos sensores) não são recuperadas pelo gerador; (2) geradores densos simples foram usados para dados tabulares e sensores comprimidos, exigindo arquiteturas 3D/convolucionais ou modelos de difusão para neuroimagem (MRI/DaTscan); (3) avaliação restrita a um único dataset (PADS) e uma única plataforma de smartwatch, sem teste de generalização externa; (4) estudo retrospectivo e puramente computacional, sem adjudicação clínica ou validação prospectiva human-in-the-loop."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6.4, p. 21 (PDF p. 22) — 'The quality of latent-space generation is bounded by the autoencoders... All results are obtained on a single dataset... retrospective, fully computational analysis'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seções 1 (p. 2) e 7 (p. 23): Falta de investigação sistemática sobre a ordem entre embedding e balanceamento em pipelines clínicos multimodais heterogêneos e ausência de auditoria de data leakage (split-after-augmentation) em estudos de augmentation generativo. Como trabalhos futuros (Seção 7, p. 23), apontam otimização conjunta do par encoder-gerador, uso de modelos generativos mais expressivos (como modelos de difusão), modelagem orientada à aquisição (acquisition-aware modeling) e validação prospectiva com colaboradores clínicos."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 7, p. 23 (PDF p. 24) — 'Future work will focus on jointly optimizing the encoder-generator pairing, on stronger generative families such as diffusion models... and on a prospective evaluation'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano conforme instruções do protocolo."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 1, p. 3 (PDF p. 4) e Seção 4.5, p. 10 (PDF p. 11) — 'Within each fold, the entire processing chain (feature scaling, class rebalancing, and classifier training) is fitted on the training partition only'"
+    observacao: "Os autores declaram explicitamente que toda a cadeia de pré-processamento e balanceamento é ajustada apenas na partição de treino de cada fold (e no pipeline BTE tanto os 13 geradores quanto os 13 autoencoders são retreinados em cada fold de treino). Contudo, na Seção 4.5 e Seção 5.1.3 (p. 15), menciona-se que o ETB treina apenas 1 GAN por fold no espaço latente unificado (30 min vs. 5 h do BTE), deixando dúvida se os autoencoders do ETB e o grid search das dimensões de bottleneck (Seção 4.3.1) foram ajustados fora do loop de CV."
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; 27 = Sim – inferida; 28 = Só no treino; aux = Sim"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenários de classificação (binário PD vs. non-PD agrupando HC+DD, e multiclasse 3 classes HC/PD/DD) e tamanhos dos grupos estão claramente definidos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Modalidades (IMU, PDNMS e metadados clínicos), tarefas (todas as 11), sensores (acelerômetro e giroscópio), punhos (ambos) e N de participantes (469) estão descritos."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Baixo: cada participante é consolidado em um único vetor multimodal (90-D) e o protocolo principal ajusta escalonamento e balanceamento apenas no treino."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta apenas uma métrica estritamente robusta da lista do protocolo (AUC), além de F1 (com média ponderada no multiclasse) e Sensitivity sem Specificity."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Descreve detalhadamente a arquitetura dos autoencoders, GANs, pré-processamento e sementes do protocolo 5x5 CV, mas a seção Data and Code Availability não fornece link para o código e faltam hiperparâmetros dos 6 classificadores."
+  nota_qa: 4.0
+  nota_qa_max: 5
+  faixa_qa: "Alta"
+verificacao_de_coerencia:
+  - regra: "Modalidade inclui Série temporal (IMU) → Sensores, Tarefas, Quais tarefas, Punho e Representação preenchidos"
+    resultado: "OK"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0 (PD=295; HC=71; DD=103)"
+    resultado: "OK"
+  - regra: "Soma de PD+HC+DD (295+71+103 = 469) = campo 14 (469)"
+    resultado: "OK"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – inferida"
+    resultado: "OK"
+  - regra: "Campo 23 = Dados sintéticos (GAN) → campo 28 ≠ Não se aplica (Só no treino) e campo 29 preenchido"
+    resultado: "OK"
+  - regra: "Campo 9 ≠ Não se aplica (Todas) → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (16→17, 18→19, 31→32; 3→4, 6→7, 11→12, 20→21, 24→25 null)"
+    resultado: "OK"
+  - regra: "Nota de QA3 (Yes = 1.0) coerente com risco_vazamento calculado (Baixo)"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campo 15 (n_por_classe): a Tabela 2 do artigo (p. 7) reporta PD=295, DD=103 e HC=71 (soma = 469 sujeitos; 5.159 amostras = 469 × 11), números que divergem da distribuição canônica do PADS v1.0.0 (PD=276, HC=79, DD=114)."
+  - "Campos 26 e 27 (unidade_particionamento e separacao_participante): marcados com status 'inferido' ('Participante' e 'Sim – inferida') porque a Seção 3.2 e a Seção 4.1 demonstram que os arquivos JSON são fundidos pelo ID único do sujeito formando 1 vetor multimodal de 90-D por participante (N = 469; ~13 pacientes de early-onset por fold de teste na Seção 5.3)."
+  - "Campo aux_preproc_apenas_treino e QA3: embora as Seções 1 e 4.5 declarem ajuste de todo pré-processamento apenas no treino (e o BTE retreine autoencoders e GANs em cada fold), a Seção 5.1.3 sugere que no pipeline ETB os autoencoders não foram retreinados por fold; confirmar se isso deve alterar aux_preproc_apenas_treino para 'Não' ou 'Parcial'."
+  - "Campo 28 (momento_balanceamento): o estudo avalia os modelos sob protocolo livre de vazamento ('Só no treino', Tabelas 4 e 5) e também simula o protocolo com vazamento ('Antes do split', Seção 6.3) para decompor o viés (+0.04 a +0.17 AUC)."
+  - "Campo 35 (codigo_dados) e QA5: o texto afirma na Seção 6.3 que o software é liberado junto ao manuscrito, mas a seção 'Data and Code Availability' (p. 24) traz apenas o link do PhysioNet do PADS, sem URL de repositório de código."
+  - "Campo 33 (melhor_resultado): extraído o maior valor da métrica primária (AUC = 0.842±0.043 para BTE + SMOTE + Random Forest no cenário binário PD vs. non-PD); para o baseline sem augmentation, BTE + NoAug + RF atingiu AUC = 0.841±0.041 e ETB + NoAug + RF atingiu AUC = 0.838±0.037 (F1 = 0.850±0.024)."

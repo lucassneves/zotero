@@ -1,0 +1,65 @@
+Skip to main content
+Computer Science > Artificial Intelligence
+[Submitted on 15 Sep 2026]
+Coverage-Aware Virtual IMU Augmentation for Low-Resource Human Activity Recognition
+Jiayuan Gao, Yingwei Zhang, Ziyao Tang, Yuejia Ma, Yuanzhe Chen, Shuchao Song, Boshi Tang
+IMU-based human activity recognition (HAR) enables continuous, privacy-friendly monitoring of daily activities using wearable sensors. However, building reliable HAR models that generalize across diverse users and real-world conditions requires large amounts of labeled IMU data, which are expensive and difficult to collect. Existing approaches mainly rely on augmentation or synthesis to expand available data, but indiscriminately adding virtual samples may provide little new coverage and introduce unreliable supervision. To overcome these challenges, we propose a novel coverage-aware virtual IMU augmentation framework that decides where to supplement real data, how to generate and select virtual candidates, and how strongly to weight them during training. Specifically, we select diversity and scarcity anchors in a learned sensor embedding space, convert anchor dynamics into prompts, and generate virtual IMU candidates for each anchor. We then rank candidates by a selection cost combining anchor proximity and label consistency, and incorporate the selected candidates into HAR training with reliability-based weights. Experiments on public HAR benchmarks show that our method consistently improves recognition performance over competitive baselines, and ablation studies confirm the effectiveness of the proposed framework design.
+Subjects:	Artificial Intelligence (cs.AI)
+Cite as:	arXiv:2609.16768 [cs.AI]
+ 	(or arXiv:2609.16768v1 [cs.AI] for this version)
+ 	
+https://doi.org/10.48550/arXiv.2609.16768
+Focus to learn more
+Submission history
+From: Boshi Tang [view email]
+[v1] Tue, 15 Sep 2026 07:39:40 UTC (1,383 KB)
+
+Access Paper:
+View PDFHTML (experimental)TeX Source
+view license
+Additional Features
+Audio Summary
+Current browse context: cs.AI
+< prev next >
+
+newrecent2026-09
+Change to browse by: cs
+References & Citations
+NASA ADS
+Google Scholar
+Semantic Scholar
+Export BibTeX Citation
+Bookmark
+Bibliographic Tools
+Bibliographic and Citation Tools
+Bibliographic Explorer Toggle
+Bibliographic Explorer (What is the Explorer?)
+Connected Papers Toggle
+Connected Papers (What is Connected Papers?)
+Litmaps Toggle
+Litmaps (What is Litmaps?)
+scite.ai Toggle
+scite Smart Citations (What are Smart Citations?)
+Code, Data, Media
+Demos
+Related Papers
+About arXivLabs
+Which authors of this paper are endorsers? | Disable MathJax (What is MathJax?)
+We gratefully acknowledge support from our major funders, member institutions, and all contributors.
+About
+·
+Help
+·
+Contact
+·
+Subscribe
+·
+Copyright
+·
+Privacy
+·
+Accessibility
+·
+Operational Status
+(opens in new tab)
+Major funding support from

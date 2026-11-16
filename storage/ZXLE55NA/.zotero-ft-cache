@@ -1,0 +1,425 @@
+Skip to main content
+Skip to article
+MethodsX
+Date: December 2025
+Micro article
+Open access
+Under a Creative Commons license
+Get rights and content
+Vocal features based Parkinson’s detection: An ensemble learning approach
+Megha Chakole a
+, 
+Sanjay Dorle b
+, 
+Rahul Agrawal c
+, 
+Priya Dasarwar d
+, 
+Uma Yadav e
+, 
+Rashmi Sharma d
+Show more
+View PDF
+Download full issue
+Abstract
+Parkinson’s disease (PD) primarily affects the central nervous system. In 2019, over 8.5 million cases were reported, with numbers continuing to rise. This growing prevalence emphasizes the urgent need for early detection and preventive strategies. To resolve this, numerous methods have been introduced, one of them being machine learning technique. By employing deep learning methods on the large-scale datasets, the early prediction and detection of PD is possible. These methods should be precisely evaluated on the basis of vocal features and the best method to predict this neurodegenerative ailment is disclosed. The core objective of this research is to facilitate the medical centers by providing an optimal machine learning technique to early detect PD. In order to decide an ideal method, the renowned machine learning algorithms like Random Forest, K Nearest Neighbor, Naïve Bayes, Gradient Boosting and XGBoost are evaluated according to their performance. Gradient Boosting outperforms earlier results with high recall, low log loss, and overfitting resistance.
+Vocal features proved to be valuable indicators for early-stage Parkinson’s detection.
+The Gradient Boosting model has scored the highest in terms of all the mentioned parameters, showing a promising result for predicting the occurrence of PD.
+Machine learning can play a significant role in supporting clinical diagnosis and decision-making.
+Graphical abstract
+Download: Download high-res image (144KB)
+Download: Download full-size image
+Keywords
+AUC-ROC curve; Machine learning classifier algorithm; Metric analysis; Parkinson disease; Vocal features
+Previous article
+Next article
+Specifications table
+Subject area	Computer Science
+More specific subject area	Disease Prediction using Machine Learning
+Name of your method	Random Forest, K-Nearest Neighbor, Naïve Bayes, Gradient Boosting and XGBoost
+Name and reference of original method	Random Forest [5,11]
+K-Nearest Neighbors [5]
+Boosted Logistic Regression [6]
+Resource availability	https://www.kaggle.com/datasets/dipayanbiswas/parkinsons-disease-speech-signal-features
+Background
+The precarious disorder of PD is a deteriorating condition, the root cause for which is unidentified till date. Honoring James Parkinson, this disease reflects a unique name and symptoms as well. This condition affects human progressively slow, which if left unattended, can cause the body to lose the motor control, lose sensory functions, affect the sleep and inter subjective behavior. Parkinson’s disease can be a result of weakened production of dopamine in the body and any tiniest injuries or deaths of the brain cells. Two of the human neurotransmitter enzymes namely dopamine and norepinephrine are the most vital chemicals in regulating the functions in human body [1]. To assess and early detect the Parkinson’s disease, one is expected to work with enormous and complex dataset. Various machine learning algorithms can be utilized to generalize the dataset. These algorithms are optimized in order to provide better solutions for advanced queries [2].
+Parkinson's disease originates from a composition of genetic and environmental factors making it a threatening and a neurodegenerative disorder. Due to such factors, there can be anomalous collection of protein cells near the neurons which can further eliminate the brain cells. Parkinsonism is clinically simple to diagnose but to comprehend the other cause for this disease, one is expected to acknowledge a higher suspicion index. Parkinson’s disease can be addressed, and treated at an early stage with the help of adequate medical facilities at present. Future expects extensive medical advancements and the development in pharmaceuticals that offer neuroprotection for Parkinson’s disease [3,4].
+The phonetic feature of the speech signal acquired from the data is a useful tool to determine the presence of PD in an individual. The investigators deployed various techniques namely SVM, RF, Multilayer Perceptron (MLP) and KNN. The highest accuracy in the context of prediction was acquired by MLP with the percentage value of 98.31 %. Being second in rank, SVM achieved an accuracy value of 95 % [5]. The authors in [6] highlighted the importance of boosting of machine learning algorithms for training the classifiers. The latest Boosted Logistic Regression method can be utilized in prediction tasks. The boosting technique enhances the performance of these ML algorithms. PPMI (Parkinson’s Progression Markers Initiative) is source for dataset. The dataset included the information about cerebrospinal fluid (CSF) tests and dopamine transporter imaging, etc. [7].
+The researchers highlighted the symptoms such as speech problems, hand or leg tremors, facial rigidity, and postural changes [8]. The study shows the deployment of different feature extraction techniques, employing various classifiers. Using such methods, binary classification was accomplished. To gain a higher accuracy, the data from various motor functions was merged and the important features from both the sides were unified [9]. The authors adapted a deep learning technique for the screening of PD at an initiation phase. This research involved the evaluation of twelve various algorithms for the prediction purpose. They also figured out that introduction of Boosting method in machine learning models enhances the performance [10].
+An enormous speech dataset was refined and was utilized by separating the two groups. The two groups were Parkinson’s disease group (PD) and Non-Parkinson’s disease (NPD) groups. This research utilized ML algorithms like RF, KNN and Support Vector Machine. These methods were assessed against Principal Component Analysis (PCA). PCA helped in transfiguring the 26 primary phonetic features into two principal components. This facilitated a clear differentiation between individuals with PD and without PD. The ML method prominently enhanced the F1 score and AUC, and the curve values for ROC (Receiver Operating Characteristic) reached upto 1. Among the tested models, the ML method with highest accuracy is Random Forest [11]. The core objective of the research is to evaluate the various ML as well as deep learning models and to assess their performance according to the accuracy and effectiveness of the model to early detect PD [12]. A computerized solution for the early detection of PD is implemented by using the vocal functions isolated from recorded voice data [13,14]. This research highlights the assessment of the importance of Machine Learning in the processing of auditory diagnostics and feature engineering. Previous studies were also refined in the process by introducing an ML approach [15]. Various ML models were trained, compared and evaluated extensively for detecting Parkinson’s disease [16]. The basic objective of the research in [17] was to expose the ML model which is highly precise for PD detection, which will further facilitate the medical experts to prescribe timely solutions beforehand. This research highlights the key factors causing this disorder and the use of various ML models to accurately detect the presence of this disease with an in-depth assessment. This manuscript addresses three critical research gaps in Parkinson's disease (PD) detection using vocal biomarkers: (1) Previous works have focused primarily on single-model approaches (e.g., SVM, RF) without comprehensive comparison of modern ensemble methods, particularly gradient boosting variants. This research paper demonstrates GB's superiority (94.07 % accuracy, 0.419 log loss) through rigorous benchmarking against five algorithms; (2) Existing studies often prioritize technical metrics over clinical utility. Authors bridge this by optimizing for both sensitivity (89 %) and specificity while incorporating clinician-validated feature interpretations; (3) Most of the prior models lack methodological transparency – this research provides complete preprocessing documentation, prevent data leakage through strict train-test isolation. The author’s work uniquely advances the field by developing not just a more accurate model, but one with demonstrated clinical adoption potential through real-time capability. The detailed description of the type and features of the given dataset is discussed in the next section.
+Method details
+The methodology of the proposed solution is given in the section. The capability of the five different ML methods can be observed and the utilization of a standardized approach to identify PD is demonstrated in the illustration below. The Fig. 1 visualizes the process involved in the assessment.
+Download: Download high-res image (267KB)
+Download: Download full-size image
+
+Fig. 1. Proposed architecture.
+
+Data set and vocal features
+Analysis of data set
+The data is dissected based on various features. By analysing these features along with other relevant characteristics, researchers can assess risk factors and relationships associated with Parkinson’s disease. This comprehensive understanding shows a key role in facilitating early detection of PD and enhancing prevention strategies. The data presents a comparative analysis between individuals with Parkinson’s Disease (PD) and healthy controls, categorized by gender and age. In the PD group, there are 107 males and 81 females, totaling 188 individuals, while the healthy control group consists of 23 males and 41 females, summing to 64 individuals. This indicates a higher representation of males in the PD group, whereas females outnumber males in the healthy cohort. When considering the overall dataset, combining both groups yields 252 individuals (188 PD + 64 healthy). However, if the study involves three repeated samples, the grand total expands to 564 individuals (3 × 188 PD + 3 × 64 healthy = 564). The age distribution reveals that PD patients span a wider range (33–87 years) compared to healthy individuals (41–82 years), suggesting that PD may affect younger populations as well. The healthy group, meanwhile, has a narrower and slightly older age range, possibly reflecting selection criteria for controls.
+The data set is sourced from Kaggle, similar to the data set used in [18]. Fig. 2 illustrates the number of individual count.
+Download: Download high-res image (63KB)
+Download: Download full-size image
+
+Fig. 2. Individual count.
+
+Table 1 summarizes the Parkinson’s disease dataset, comprising audio recordings of various speech tasks captured via microphone. The study indicates that women are less likely to develop Parkinson’s disease compared to men. In this research, eight features are being utilised for diagnosing Parkinson’s disease. Only gender is a categorical feature having two categories male and female out of the above eight. Speech impairment is one of the early indicators of PD. This anomaly can be initially analysed for confirmation of this disorder. The effect of voice signals in the early analysis of PD is prominently studied here for both men and women.
+
+Table 1. Dissecting the dataset.
+
+Empty Cell
+	Male	Female	Grand total	
+Empty Cell
+	Grand Total of the overall data	Age limit
+Individuals with PD	107	81	188	Three sets of Each sample are collected.	564	with ages ranging from 33 to 87
+Healthy Individual	23	41	64	192	with ages varying between 41 and 82
+Vocal features description and analysis
+The Table 2 presents a statistical summary of seven vocal features extracted from voice recordings, likely used to differentiate between healthy individuals and those with Parkinson’s Disease (PD). Each feature exhibits distinct ranges and central tendencies, reflecting variations in voice quality and stability.
+
+Table 2. Numerical values of Vocal features with their minimum, maximum and mean values.
+
+SN	Vocal features	Minimum Value	Maximum Value	Mean Value
+1	PPE	0.041551	0.907660	0.746284
+2	DFA	0.543500	0.852640	0.700414
+3	RPDE	0.154300	0.871230	0.489058
+4	Number of pulses and periods	2.000000	907.000000	323.972222
+5	Mean periodic pulses	0.002107	0.012966	0.006360
+6	Standard deviation of periodic pulses	0.000011	0.003483	0.000383
+7	Jitter	0.000210	0.027750	0.002324
+The PPE (Pitch Period Entropy) ranges from 0.041551 to 0.907660, with a mean of 0.746284, suggesting moderate to high variability in pitch periodicity among subjects. The DFA (Detrended Fluctuation Analysis) values (0.543500 to 0.852640, mean 0.700414) indicate the presence of long-range correlations in vocal signals, which may relate to speech rhythm disruptions in PD. RPDE (Recurrence Period Density Entropy), ranging from 0.154300 to 0.871230 (mean 0.489058), measures signal complexity, where higher values could signify irregular vocal fold vibrations.
+The number of pulses and periods varies widely (2 to 907, mean 323.972222), reflecting differences in speech sample lengths or vocal breaks. The mean periodic pulses (0.002107 to 0.012966, mean 0.006360) and their standard deviation (0.000011 to 0.003483, mean 0.000383) quantify vocal stability, with higher deviations possibly indicating PD-related voice tremors. Lastly, jitter (0.000210 to 0.027750, mean 0.002324), a measure of pitch variability, shows relatively low average values but notable extremes, which could distinguish pathological voices. These features collectively help characterize vocal impairments, with higher variability and entropy often associated with PD.
+Pitch period entropy (PPE)
+PPE short for Pitch Period Entropy is a fundamental feature of speech signal which utilized for detection of dysphonia. It plays a vital role in differentiating the patients from two categories: Individuals with PD and non-PD. To detect the level of degradation of fundamental frequency control, PPE deploys a log-based scale. When deployed against the disorienting factors like natural fluctuations in speech signal frequency and background sounds, PPE proves robust and strong in analysis of PD individuals.
+Detrended fluctuation analysis (DFA)
+It is a crucial feature for the study of speech signals. It prominently investigates broad-range temporal correlations in data dependent on time-series dynamics. DFA is extensively used in electrophysiological recordings. The function of DFA converts the given data into an equally detrended data. It is then dismantled into small fragments of length L. The deviations in the detrended data are then assessed relative to L [19].
+Recurrence period density entropy (RPDE)
+It is a potent fundamental characteristic utilized to differentiate signal periodicity. For individuals with dysphonia, the given restraints are predicted to be more flexible and permissive because of the generation turbulent airflow in voice channel. RPDE has been in use for detection of fluctuations in voice signals, giving a solid proof to the valuable contribution in identifying various speed disorders in human [20]. In Fig. 3, the probability density curve for PD individuals is depicted with orange line while the blue line depicts PDC for healthy individuals. These lines highlight the high contrast in between both of the groups under observation. As is clear from Fig. 3(a), for the individuals with Parkinson’s disease, the curve for Pitch Period Entropy (PPE) raises to 4.0 density value. For the non-PD patients, the peak value hardly reaches to 1.5. Similarly, the probability density curve of Detrended Fluctuation Analysis (DFA) is greater than 3.5 when evaluated for PD individuals as observed in Fig. 3(b). The value in the case of healthy individuals rises to approximately 1.5. As showed by the PDC for the mean RPDE in Fig. 3(c), it is clear that RPDE value is higher for patients with Parkinson’s disease.
+Download: Download high-res image (411KB)
+Download: Download full-size image
+
+Fig. 3. (a) Probability density curve for PPE (b) Probability density curve for DFA (c) Probability density curve for RPDE of individual with class 0 (NPD) and class 1(PD).
+
+The determination PD significantly depends on analyzing voice sample features. In this research, four distinct types of dysphonia features were utilized. These features were selected based on the observation that acoustic vibrations remain steady in healthy individuals conversely become unsteady in PD patients. PD patients exhibit a considerable increase in fundamental frequency variability. Parameters such as jitter, standard deviation, mean and number of pulses are employed to assess the frequency of the voice signal [[21], [22], [23]]. To capture the deviations in the patterns of vibration for the Jitter variants are prominently utilized. This is done by measuring fundamental frequency alterations from iteration to iteration. The analysis of the dataset revealed a significant alteration in these characteristics among PD patients compared to healthy individuals. Fig. 4(a) illustrates the probability density curve (PDC). This curve was found for the standard deviation of periodic pulses for which the value is greater than 1000 in Parkinson’s disease individuals. The curve remains lower than 400 for healthy individuals. Similarly, the probability density curve for jitter is illustrated in Fig. 4(b) showing the higher value than 200. This peak is identified for the individuals with Parkinson’s disease. The curve has a value <150 for the healthy individuals. These features possess greater variability for the individuals with Parkinson’s disease, emphasizing their significance in distinguishing PD from healthy cases.
+Download: Download high-res image (284KB)
+Download: Download full-size image
+
+Fig. 4. (a) Probability density curve for periodic pulses (b) Probability density curve for Jitter.
+
+Fig. 5(a) illustrates that in Parkinson’s disease individuals, the curve for probability density in the number of pulses graph shows a value rising to 0.0034. For the healthy individuals, the value remains below 0.0010. Similarly, the PDC for the mean periodic pulses is illustrated in the graph in Fig. 5(b). The respective value is higher in PD patients, the value being 175. It falls <75 for healthy individuals. The evaluation of graphs reveals that the examined features exhibit significantly higher fluctuations for the individuals having PD, further reinforcing their relevance in distinguishing PD from healthy cases.
+Download: Download high-res image (316KB)
+Download: Download full-size image
+
+Fig. 5. (a) PDC for Number of pulses (b) Probability density curve for Mean Periodic pulses.
+
+Feature preprocessing
+This research implemented a rigorously documented preprocessing pipeline to ensure transparency and reproducibility in Parkinson's disease detection from vocal features. The pipeline began with comprehensive data quality checks, including missing value analysis and signal-to-noise ratio verification, followed by feature-specific normalization - using Robust Scaler for entropy-based features (PPE, DFA, RPDE) to mitigate outlier effects while preserving clinical relevance, and Min Max scaling for pulse-related features to maintain proportional relationships. Crucially, all transformations were applied after dataset splitting to prevent data leakage, with separate scaler objects maintained for training (n = 452) and test (n = 112) sets. The collected data was extensive, encompassing medical and personal information of the individuals with the PD and NPD. The training of the ML models was carried out on this gathered data. The models were assessed based on their performances. In order to organize the given set of data for model training, data-preprocessing is carried out. The data was suitably structured throughout the preparation process and the ML algorithms were trained. In preprocessing process, the data is initially fragmented, while further the feature scaling was done. A partition of the present dataset was done and two sets were created, one being evaluation set and another being training set. This facilitates the accurate assessment of performance of the models. This split ensured that the model could recognize patterns from smaller portions of data so that a general conclusion could be reached and a new, unseen data can be unfolded. Additionally, the introduction of feature scaling of dataset was carried out to customize the numerical features of the dataset. This proved to be an important step for comparing all of the features, while any of the feature was not allowed to take over the control due to magnitude differences. To enhance explainability, authors generated summary plots at each processing stage and consulted neurologists to validate clinically meaningful value ranges for all vocal metrics.
+Standardization and Normalization, these two are essential tools used for feature scaling. The selection of method of scaling depends upon the feature’s characteristics. The specific requirements of the ML algorithm were taken into account when these methods are studied.
+Model training
+This research investigated the different ML algorithms namely KNN, NB, RF, GB, and XGBoost. Each one of the algorithms was trained using the processed dataset. For the training phase, only a small and decided portion of data is used.
+K-nearest neighbors (KNN)
+KNN is a unique method as it utilizes the previous examples for making general predictions. It includes a voting mechanism to decide the nearest data point whenever a new data point is introduced to it. Through voting, it decides the category. A specific and reserved dataset is required for the training of this method. KNN shows the best results when the preprocessed data is clear and has appropriate parameters [5].
+Naive Bayes (NB)
+It is used to construct various class labels or feature vectors using some finite data. The features in the dataset are assumed as independent, which makes classification of text as one of its applications. The probability of features is estimated by naive bayes by knowing the characteristics of each class beforehand. Conditional probability can also be estimated for a specific class. Naïve Bayes possesses a straightforward nature, but despite of that, NB generates comparable results and can contribute to ML advancements [33].
+Gradient boosting (GB)
+GB is prominently used for regression tasks and is renowned for its superior predictive analysis. It relies on the principle which aims at decision trees (typically weak learners) to turn them into strong learners. The strong learners in this case are the predictive models. This ML model is highly skilled in training the weak models, focusing primarily on the mistakes done by previous models. To achieve this, GB optimizes the models by training them repeatedly with the help of datasets. The performance of the model is enhanced by the correction in the previously misclassified data points and generating a better efficiency Loss function is reduced in the case of GB, which further leads to the enhancement with training. As an illustration, the numerical values of a regression task are predicted by the mean squared error. The data points are classified into different classes with the help of log loss which is predominantly utilized in classification tasks. GB utilizes boosting method to gain higher accuracy of prediction [25].
+XG boost
+eXtreme Gradient Boosting is a highly potent ML algorithm designed for regression as well as classification tasks. It works on traditional gradient boosted decision trees for improving the speed and accuracy aspects with the help of advanced techniques. XGBoost prominently trains the weak algorithms to change them into stronger ones by implementing a training method to correct the errors from previous models. It’s core working principle is similar to gradient boosting. The difference between the GB and XGBoost techniques is that XGBoost introduces an additional regularization feature to ease with the overfitting. Also, a parallelization technique is present to enhance speed, and a loss function to increase accuracy [25].
+Random forest
+Random Forest collects the weak decision trees and brings them together to work on the prediction tasks. Random subset of features is selected and training is done for each tree for the given data. The important role of this random selection process is it facilitates the prevention of overfitting. This makes the model to generalize unseen data. Random Forest algorithm allows each decision tree to independently learn the patterns. The prediction is then made by the models accordingly. Majority voting among the decision tress takes place when the task is regarding classification tasks, and the final prediction is made. While in the case of regression tasks, RF decides the final predictions by averaging. To find out the disorder in the dataset, a new metric is used which is known as The Gini Index. Handling significantly bigger data has become easier with Random Forest. It also gives importance to feature selection [11,24].
+Method validation
+Experimental results
+The highlight of this section is the investigational results of the approaches used Parkinson's detection by using collected dataset and distinct ML algorithms. The following set of quantitative metrics employed to assess the effectiveness of the methods:
+The accuracy of the classifier is measured based on its capacity to identify all relevant cases while rejecting those that should be excluded. A classifier with 100 % accuracy indicates FN = FP =0. Accuracy serves as an overall measure of classifier performance [26,32].
+(1)
+𝐴⁢𝑐⁢𝑐⁢𝑢⁢𝑟⁢𝑎⁢𝑐⁢𝑦=
+𝑇⁢𝑟⁢𝑢⁢𝑒𝑃⁢𝑜⁢𝑠⁢𝑖⁢𝑡⁢𝑖⁢𝑣⁢𝑒+𝑇⁢𝑟⁢𝑢⁢𝑒𝑁⁢𝑒⁢𝑔⁡𝑎⁢𝑡⁢𝑖⁢𝑣⁢𝑒
+𝑁
+Precision is a term which addresses to the ratio of actual positive Parkinson cases found among the total predicted Parkinson positive cases [27].
+(2)
+𝑃⁢𝑟⁢𝑒⁢𝑐⁢𝑖⁢𝑠⁢𝑖⁢𝑜⁢𝑛=
+𝑇⁢𝑟⁢𝑢⁢𝑒𝑃⁢𝑜⁢𝑠⁢𝑖⁢𝑡⁢𝑖⁢𝑣⁢𝑒
+𝑇⁢𝑟⁢𝑢⁢𝑒𝑃⁢𝑜⁢𝑠⁢𝑖⁢𝑡⁢𝑖⁢𝑣⁢𝑒+𝐹⁡𝑎⁢𝑙⁢𝑠⁢𝑒𝑃⁢𝑜⁢𝑠⁢𝑖⁢𝑡⁢𝑖⁢𝑣⁢𝑒
+Recall measures accurately to detect actual Parkinson’s instances [28].
+(3)
+𝑅⁢𝑒⁢𝑐⁢𝑎⁢𝑙⁢𝑙=
+𝑇⁢𝑟⁢𝑢⁢𝑒𝑃⁢𝑜⁢𝑠⁢𝑖⁢𝑡⁢𝑖⁢𝑣⁢𝑒
+𝑇⁢𝑟⁢𝑢⁢𝑒𝑃⁢𝑜⁢𝑠⁢𝑖⁢𝑡⁢𝑖⁢𝑣⁢𝑒+𝐹⁡𝑎⁢𝑙⁢𝑠⁢𝑒𝑁⁢𝑒⁢𝑔⁡𝑎⁢𝑡⁢𝑖⁢𝑣⁢𝑒
+F1 score balances Precision and Recall [29].
+(4)
+𝐹1𝑠⁢𝑐⁢𝑜⁢𝑟⁢𝑒=2*
+𝑃⁢𝑟⁢𝑒⁢𝑐⁢𝑖⁢𝑠⁢𝑖⁢𝑜⁢𝑛*𝑅⁢𝑒⁢𝑐⁢𝑎⁢𝑙⁢𝑙
+𝑃⁢𝑟⁢𝑒⁢𝑐⁢𝑖⁢𝑠⁢𝑖⁢𝑜⁢𝑛+𝑅⁢𝑒⁢𝑐⁢𝑎⁢𝑙⁢𝑙
+Jaccard Similarity assesses the similarity between two sets by comparing their common and dissimilar elements.
+(5)
+𝐽⁢𝑆=
+∣𝑥𝑖∩
+̂
+𝑥
+𝑖∣
+∣𝑥𝑖∪
+̂
+𝑥
+𝑖∣
+Log Loss/Binary Cross Entropy a crucial metric for assessing the performance of any classification model based on probabilities. It is computed as the negative mean of the logarithm of the probabilities which are predicted for each instance [30].
+For binary classification with true labels 𝑥∈{0,1}
+and predicted probabilities 𝑝∈[0,1]:
+(6)
+𝐿⁢𝑜⁢𝑔⁡𝐿⁢𝑜⁢𝑠⁢𝑠=−
+1
+𝑁
+⁢
+𝑁
+∑
+𝑖=1
+[𝑥⁢𝑖⁢𝑙⁢𝑜⁢𝑔⁡(𝑝⁢𝑖)+(1−𝑥⁢𝑖)⁢log⁡(1−𝑝⁢𝑖)]
+The prominent tool for examining the effectiveness of a Machine Learning algorithm is the AUC ROC curve. The Receiver Operating Characteristic is a chart-based illustration of the efficacy of a classifier model across different threshold values. The location of the TP rate lies on the vertical axis, while the FP rate is located on the horizontal axis. AUC (Area Under the Curve) offers a summary of the ROC [31].
+Table 3 indicates the results of performance of all five ML algorithms, evaluated using all the quantitative metrics.
+
+Table 3. Classifier metrics analysis for evaluation of various ML algorithms.
+
+Empty Cell
+	Results obtained in Percentage %
+Classifier Metrics	KNN	RF	NB	XGB	GB
+Jaccard Similarity	80.74	82.35	75.59	82.44	86.77
+Precision	83	85	81	85	89
+Recall	83	85	80	95	89
+F1 Score	82	85	80	84	88
+Accuracy	82.83	90.78	79.53	84.81	94.07
+As demonstrated in Table 3, GB has achieved the maximum accuracy of 94.07 %. Random Forest stands second with an accuracy of 90.78 %. As for the remaining ML models, the accuracies are XGBoost (84.81 %), KNN (82.83 %), and Naive Byes (79.53 %). The Jaccard Similarity Index values recorded were 86.44 % for Gradient Boosting, 82.44 % for XGBoost, 82.35 % for Random Forest, 80.74 % for KNN, and 75.59 % for Naïve Bayes. Additionally, GB showed the highest F1-Score of 88 %. The remaining ML models showed F1-Scores as Random Forest (85 %), XGBoost (84 %), KNN (82 %), and Naïve Bayes (81 %). XGBoost recorded highest recall value (95 %).
+GB exhibited the highest precision of 89 %. The percentage of precision acquired by the rest models are Random Forest (85 %), XGBoost (85 %), KNN (83 %), and Naïve Bayes (80 %). The lowest value of 0.4192 for log loss is exhibited by GB algorithm. The values of log loss for the rest of the methods are Random Forest (0.4302), XGBoost (0.4388), KNN (0.4949), and NB (0.5360). Fig. 6 demonstrates the graphical representation for the values of log loss for all the 5 models.
+Download: Download high-res image (123KB)
+Download: Download full-size image
+
+Fig. 6. Comparing classification models based on Log Loss.
+
+The curve for AUC-ROC is demonstrated below for the five machine learning methods.
+Fig. 7 illustrates that Gradient Boosting achieved the highest AUC-ROC value of 93.92 %, which is close to 1, indicating superior performance compared to other ML algorithms. The AUC-ROC values for the other models are 88.48 % for XGBoost, 88.44 % for Random Forest, 85.83 % for KNN, and 76.47 % for Naïve Bayes.
+Download: Download high-res image (153KB)
+Download: Download full-size image
+
+Fig. 7. The graph for AUC-ROC Curve of the Five ML algorithms.
+
+Authors selected Gradient Boosting as optimal because it demonstrated the best balance across these metrics - leading in accuracy and F1-score while maintaining strong recall and the lowest log loss. This multi-metric evaluation approach ensures robust performance where it matters most for clinical deployment, rather than optimizing for any single metric in isolation. Gradient Boosting does this by using several weak learners to repeatedly reduce mistakes. This makes it quite good at finding complex, non-linear correlations in audio features. Its ability to lower bias and variance while still being strong against overfitting made it perform better than other models.
+This research’s Gradient Boosting (GB) model achieved 94.07 % accuracy in detecting Parkinson’s disease (PD) using vocal features, outperforming other ML models (RF: 90.78 %, XGBoost: 84.81 %). Table 4 depicted a comparison with prior works and the key innovations of proposed model:
+
+Table 4. Accuracy comparison with previous studies.
+
+Study (Year)	Best Model	Accuracy	Dataset	Key Limitation
+Rao et al. (2022) [11]	Random Forest (RF)	89.5 %	Vocal features (Kaggle)	No ensemble learning
+Quan et al. (2021) [6]	Deep Learning (MLP)	98.31 %	Speech signals	Small sample size
+Varghese et al. (2019) [8]	SVM	95 %	Voice recordings	No boosting methods
+Proposed Model	Gradient Boosting	94.07 %	Vocal features (Kaggle)	No CV reported
+The proposed Gradient Boosting (GB) model demonstrates superior performance compared to prior studies, achieving 94.07 % accuracy in Parkinson's disease detection using vocal features. This surpasses the 89.5 % accuracy reported by Rao et al. (2022) using Random Forest (RF) and approaches the 95 % accuracy of Varghese et al.'s (2019) SVM model. While Quan et al. (2021) achieved an exceptional 98.31 % accuracy with a Multilayer Perceptron (MLP), their results were obtained on a smaller dataset, and deep learning models like MLPs typically require substantially more data to ensure robust generalization.
+The research highlights the prediction of early detection of PD by using the vocal samples of the affected individual and evaluates the performance of distinct ML algorithms. The study investigates the fundamental frequency features as well as the baseline features of the signal generated by the voice recordings to evaluate the predictive capabilities of various ML algorithms, ultimately identifying the highly accurate and the most efficient method for the prediction of PD. In this research, various algorithms were compared on the basis of a whole collection of assessment standards like precision, F1-score, recall, Jaccard similarity, AUC-ROC, and the model’s accuracy. Predictions of classifier for each algorithm were unified with ensemble stacking as well as voting operations. The outcome of each algorithm confirmed the accuracies in predicting PD in the respective patients. Among all of the algorithm, our study suggests the Gradient boosting algorithm is superior and performs ideal against the other 5 mentioned ML models. Gradient boosting scored the greatest accuracy, precision, Jaccard similarity and F1-score among the algorithms, proving that it accurately classifies instances. For a machine learning model to be able to recognize a positive instance, it’s sensitivity should be higher. This sensitivity is often known as the TPR (True Positive Rate). In context to the sensitivity of the algorithm, the ML method XGBoost has scored high recall value against other ML models. As a result, the model XGBoost has the capability to identify positive cases. The ability of the model to predict the disease is depend on the log loss value. If lesser log loss value the higher ability of model to predict disease. Among the 5 models, Gradient Boosting exhibited least log loss score proving that GB is an optimal predictive model.
+The ability of a machine learning method to tell apart the positive and negative cases is assessed by the curve of AUC-ROC. The highest scores for AUC-ROC were scored by Gradient Boosting method, suggesting it’s notable classification ability. Two of the machine learning XGBoost and RF exhibited reduced AUC-ROC values, denoting reduced capability to effectively distinguish among the classes. In addition to analyzing predictive performance, this paper evaluated the computational efficiency and interpretability of the algorithms. Being easy to interpret, KNN and NB showed somewhat lower computing efficiency proving that they are simple algorithms. In comparison with previous two, XGBoost, GB, and RF are more difficult to interpret, so these approaches need higher computational resources. When choosing an algorithm for the prediction of PD, the term computational efficiency is obligated to be taken into account. Various ML models were utilized for the comprehensive analysis of speech signal of the patient. In our research to detect Parkinson’s disease, the model Gradient boosting has achieved the highest overall accuracy as a prediction model. XGBoost model and RF model has also showed a good performance. The emerging researchers and the medical experts are advised to select the appropriate prediction method by considering the balance between AUC-ROC, Jaccard similarity, precision, sensitivity, and the accuracy of the model.
+The research suggests that for the patients having Parkinson’ Disease, the values of PDC (probability density curve) between the frequency features of the speech signals showed a higher score. The values were found to be lower for healthy person. In conclusion, Gradient boosting and RF are the two algorithms which utilize the speech signal in the best way to provide early predictions of PD. The ML model Gradient Boosting achieves 94.07 % value for the accuracy which is highest as compared to other models. The log loss value for GB was found to be 0.4192. On the other hand, Random Forest model attains an 90.78 % accuracy and the log loss value of 0.4302. GB being an algorithm with a high percentage of accuracy and a lower value of log loss leads it to be the most effective model for early prediction of the disease. The Naive Bayes classifier exhibit a low accuracy and elevated log loss, indicating that it is unsuitable for early prediction of PD. The percentage of accuracy of Naive Bayes model is 79.53 % which is relatively lower and shows that it is not ideal for prediction tasks. The high log loss of 0.5360 suggests the model’s ineptness. This model has an outlook for betterment when provided with the necessary changes. Two of the algorithms out of five were found to be possessing the strongest features for the early prediction of the PD i.e., Gradient Boosting (GB) and Random Forest. With respect to percentage of accuracy and the value of log loss, these ML methods are superior proving them to be the best choice for prediction of this disease. Contrasting these two methods, Random Forest possess lower accuracy percentages and higher log loss values which demonstrates the prime performance of Gradient Boosting. This verifies that the use of boosting method increases the effectiveness of machine learning models for predictive tasks. To sum up, the analysis of predictive capabilities of various machine learning methods provides an insight to the severity of the disease and the technological advancements in medical field. Harnessing the latest trends and the strong potential of ML algorithms, the beforehand prediction of this disease in premature stages and the proposition of correct treatment plans for the patients becomes possible. A key innovation of this research is the comprehensive evaluation of multiple ensemble methods, including GB, XGBoost, and RF, which provides empirical evidence of GB's superiority for this specific diagnostic task. This systematic comparison advances the field by not only identifying GB as the optimal choice among ensemble methods but also establishing a performance benchmark that accounts for both accuracy and model reliability through metrics like log loss (0.4192) and AUC-ROC (93.92 %). The findings suggest that GB-based approaches may offer more consistent real-world performance compared to both traditional machine learning models and deep learning approaches when working with moderate-sized vocal feature datasets.
+Limitations
+While this study demonstrates promising results with Gradient Boosting achieving 94.07 % accuracy in Parkinson's disease detection, we acknowledge two key methodological constraints: First, our evaluation relied on a single train-test split rather than k-fold cross-validation. Although this approach is computationally efficient, it may inflate performance metrics due to data partitioning bias. Second, the generalizability of our findings to diverse clinical populations requires further validation, as the dataset—while substantial—represents a specific demographic distribution. These limitations do not invalidate our conclusions but highlight opportunities to strengthen reliability in future work through repeated cross-validation and multi-center data collection.
+Ethics statements
+Not applicable.
+CRediT authorship contribution statement
+Megha Chakole: Methodology, Validation, Writing – original draft. Sanjay Dorle: Validation, Supervision. Rahul Agrawal: Validation, Writing – review & editing. Priya Dasarwar: Validation, Writing – review & editing. Uma Yadav: Data curation, Writing – review & editing. Rashmi Sharma: Data curation, Writing – review & editing.
+Declaration of competing interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Acknowledgments
+This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+Data availability
+Data will be made available on request.
+References
+[1]
+Filippo Cavallo, et al.
+Upper limb motor pre-clinical assessment in Parkinson's disease using machine learning
+Park. Relat. Disord. (2019), 10.1016/j.parkreldis.2019.02.028
+n. pag
+Google Scholar
+[2]
+Kamala Challa, et al.
+An improved approach for prediction of Parkinson's disease using machine learning techniques
+2016 International Conference on Signal Processing, Communication, Power and Embedded System (SCOPES) (2016), pp. 1446-1451, 10.1109/SCOPES.2016.7955679
+View in ScopusGoogle Scholar
+[3]
+Raya Alshammri, et al.
+Machine learning approaches to identify Parkinson's disease using voice signal features
+Front. Artif. Intell., 6 (2023), 10.3389/frai.2023.1084001
+n. pag
+Google Scholar
+[4]
+Prof.W. Poewe, Department of neurology, medical university of Innsbruck, Anichstrasse: non motor symptoms in Parkinson's disease, 17 march 2008, https://doi.org/10.1111/j.1468-1331.2008.02056.x.
+Google Scholar
+[5]
+Fatemeh Nouri Emamzadeh, Andrei Surguchov
+Parkinson’s disease: biomarkers, treatment, and risk factors
+Front. Neurosci., 12 (2018), 10.3389/fnins.2018.00612
+n. pag
+Google Scholar
+[6]
+Changqin Quan, et al.
+A deep learning based method for Parkinson’s disease detection using dynamic features of speech
+IEEE Access, 9 (2021), pp. 10239-10252, 10.1109/ACCESS.2021.3051432
+View in ScopusGoogle Scholar
+[7]
+Kostas M. Tsiouris, et al.
+Predicting rapid progression of Parkinson's disease at baseline patients evaluation
+2017 39th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC) (2017), pp. 3898-3901, 10.1109/EMBC.2017.8037708
+View in ScopusGoogle Scholar
+[8]
+Basil Varghese, et al.
+Prediction of Parkinson's disease using machine learning techniques on speech dataset
+Res. J. Pharm. Technol. (2019), 10.5958/0974-360X.2019.00114.8
+n. pag
+Google Scholar
+[9]
+Anastasia Moshkova, et al.
+Parkinson’s disease detection by using machine learning algorithms and hand movement signal from LeapMotion sensor
+2020 26th Conference of Open Innovations Association (FRUCT) (2020), pp. 321-327, 10.23919/FRUCT48808.2020.9087433
+View in ScopusGoogle Scholar
+[10]
+Wu Wang, et al.
+Early detection of Parkinson’s disease using deep learning and machine learning
+IEEE Access, 8 (2020), pp. 147635-147646, 10.1109/ACCESS.2020.3016062
+View in ScopusGoogle Scholar
+[11]
+Dhulipalla Venkata Rao, et al.
+Diagnosis of Parkinson's disease using principal component analysis and machine learning algorithms with vocal features
+2022 International Conference on Sustainable Computing and Data Communication Systems (ICSCDS) (2022), pp. 200-206, 10.1109/ICSCDS53736.2022.9760962
+View in ScopusGoogle Scholar
+[12]
+P. Mounika, S.Govinda Rao
+Machine learning and deep learning models for diagnosis of Parkinson’s disease: a performance analysis
+2021 Fifth International Conference on I-SMAC (IoT in Social, Mobile, Analytics and Cloud) (I-SMAC) (2021), pp. 381-388, 10.1109/I-SMAC52330.2021.9640632
+View in ScopusGoogle Scholar
+[13]
+Yolanda Campos-Roca, et al.
+Computational diagnosis of Parkinson's disease from speech based on regularization methods
+2018 26th European Signal Processing Conference (EUSIPCO) (2018), pp. 1127-1131, 10.23919/EUSIPCO.2018.8553505
+View in ScopusGoogle Scholar
+[14]
+Max A. Little, et al.
+Objective dysphonia quantification in vocal fold paralysis: comparing nonlinear with classical measures
+J. Voice, 25 (1) (2011), pp. 21-31, 10.1016/j.jvoice.2009.04.004
+View PDF
+View articleView in ScopusGoogle Scholar
+[15]
+Wang, Maxwell B. et al. “Robust feature engineering for Parkinson disease diagnosis: new machine learning techniques.” (2020). https://doi.org/10.2196/13611.
+Google Scholar
+[16]
+Yunfeng Wu, et al.
+Dysphonic voice pattern analysis of patients in Parkinson's disease using minimum interclass probability risk feature selection and bagging ensemble learning methods
+Comput. Math. Methods Med., 2017 (2017), 10.1155/2017/4201984
+n. pag
+Google Scholar
+[17]
+Juan Rafael Orozco-Arroyave, et al.
+Analysis of speech from people with Parkinson's disease through nonlinear dynamics
+Non-Linear Speech Process. (2013), 10.1007/978-3-642-38847-7_15
+Google Scholar
+[18]
+Cemal Okan Sakar, et al.
+A comparative analysis of speech signal processing algorithms for Parkinson's disease classification and the use of the tunable Q-factor wavelet transform
+Appl. Soft Comput., 74 (2019), pp. 255-263, 10.1016/j.asoc.2018.10.022
+View PDF
+View articleView in ScopusGoogle Scholar
+[19]
+Guido Nolte, et al.
+Robust calculation of slopes in detrended fluctuation analysis and its application to envelopes of human alpha rhythms
+Sci. Rep., 9 (2019), 10.1038/s41598-019-42732-7
+n. pag
+Google Scholar
+[20]
+Max A. Little, et al.
+Objective dysphonia quantification in vocal fold paralysis: comparing nonlinear with classical measures
+Nat. Preced. (2009), 10.1016/j.jvoice.2009.04.004
+1-1
+Google Scholar
+[21]
+Biswajit Karan, Sitanshu Sekhar Sahu
+Factor analysis of speech signal for Parkinson’s disease prediction using support vector machine
+Int. J. Electron. Electical Eng. (2022), 10.47893/ijeee.2022.1181
+n. pag
+Google Scholar
+[22]
+Shankari Seethalakshmi Mohanakrishnan
+Latest advanced artificial intelligence methods for machine learning model-based predictive Parkinson's disease identification
+2025 International Conference on Intelligent Control, Computing and Communications (IC3) (2025), pp. 1103-1108, 10.1109/IC363308.2025.10956528
+View in ScopusGoogle Scholar
+[23]
+C.R. Dhivyaa, et al.
+Enhancing Parkinson’s disease detection and diagnosis: a survey of integrative approaches across diverse modalities
+IEEE Access, 12 (2024), pp. 158999-159024, 10.1109/ACCESS.2024.3487001
+View in ScopusGoogle Scholar
+[24]
+Rushikesh Burle, et al.
+A comprehensive study on Parkinson's disease detection through machine learning techniques
+2024 International Conference on Intelligent Systems for Cybersecurity (ISCS) (2024), pp. 1-6, 10.1109/ISCS61804.2024.10581230
+Google Scholar
+[25]
+Utkarsh Tiwari, et al.
+Parkinson's disease severity assessment: a comparative study & interpretability analysis
+2024 5th International Conference for Emerging Technology (INCET) (2024), pp. 1-5, 10.1109/INCET61516.2024.10593180
+Google Scholar
+[26]
+Shoujiang Xu, Zhigeng Pan
+Early Parkinson’S disease detection using multi-modal features and machine learning algorithms
+Biomed. Eng. (2025), 10.4015/s1016237225500140
+n. pag
+Google Scholar
+[27]
+Ajay Kumar, et al.
+Advanced comparative analysis of machine learning algorithms for early Parkinson's disease detection using vocal biomarkers
+Digit. Health, 11 (2025), 10.1177/20552076251342878
+n. pag
+Google Scholar
+[28]
+Liaqat Ali, et al.
+Parkinson’s disease detection based on features refinement through L1 regularized SVM and deep neural network
+Sci. Rep., 14 (2024), 10.1038/s41598-024-51600-y
+n. pag
+Google Scholar
+[29]
+CH.Lalitha Haripriya, et al.
+Parkinson’s disease detection using machine learning
+Int. J. Sci. Res. Comput. Sci. Eng. Inf. Technol. (2025), 10.32628/cseit2511142
+n. pag
+Google Scholar
+[30]
+Neti Shruthi, et al.
+Parkinson's disease detection employing machine learning
+2024 4th International Conference on Artificial Intelligence and Signal Processing (AISP) (2024), pp. 1-5, 10.1109/AISP61711.2024.10870856
+Google Scholar
+[31]
+Ms.Priti.V. Sonawane, et al.
+Parkinson’s disease detection
+Int. J. Res. Appl. Sci. Eng. Technol. (2024), 10.22214/ijraset.2024.59073
+n. pag.
+Google Scholar
+[32]
+Kristína Kulcsárová, et al.
+Defining Parkinson’s disease: past and f
+J. Parkinson's Dis., 14 (2024), pp. S257-S271, 10.3233/JPD-230411
+View in ScopusGoogle Scholar
+[33]
+Julian Varghese, et al.
+Machine learning in the Parkinson’s disease smartwatch (PADS) dataset
+NPJ Parkinson's Dis., 10 (2024), 10.1038/s41531-023-00625-7
+n. pag
+Google Scholar
+Related research article None
+Recommended articles
+No articles found.
+Metrics
+Captures
+Mendeley Readers
+14
+Mentions
+News Mentions
+1
+View details
+© 2025 The Authors. Published by Elsevier B.V.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.

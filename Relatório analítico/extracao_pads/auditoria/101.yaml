@@ -1,0 +1,380 @@
+meta:
+  row_id: 101
+  modo: "AUDITORIA"
+  status_triagem: "Aceito, mas com Ressalvas"
+  zotero_key: "DUU5E6Q5"
+  titulo: "SGC-RML: A reliable and interpretable longitudinal assessment for PD in real-world DNS"
+  ressalva_triagem: "Preprint (arXiv, CE2=Sim) incluído com ressalvas (Tier A); confirmar experimento no PADS e protocolo de validação."
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Seção 3.2, p. 4 — 'PADS contains two-wrist six-channel IMU recordings from 469 subjects performing 11 motor tasks [14]. We use a patch-based time-series Transformer [25]'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 101
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Primeira página, p. 1 — 'Preprint. arXiv:2605.08302v1 [cs.LG] 8 May 2026'"
+    auditoria: "CONCORDA"
+    observacao: "Ressalva da triagem confirmada: preprint do arXiv (maio de 2026) com experimento completo no PADS e protocolo de validação explícito."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 — 'we propose the Symptom-Graph-Conditioned Reliable Multimodal Learning (SGC-RML) framework'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 = Novo modelo (opção Outro não marcada)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 — 'We evaluate SGC-RML on five public PD datasets spanning wearable motor sensing...'"
+    auditoria: "CONCORDA"
+    observacao: "O PADS é uma das cinco bases principais de treino e avaliação do framework SGC-RML, com encoder próprio, estudo de ablação (V1 a V7) e validação do roteador de confiabilidade."
+  - id: 6
+    chave: "datasets"
+    valor: ["Outro público", "PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, Tabela 1, p. 3 — 'PADS ... mPower ... PPMI ... Daphnet FoG ... UCI Telemonitoring'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "mPower; PPMI; Daphnet FoG; UCI Telemonitoring"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 — 'five PD datasets (mPower, PADS, PPMI, Daphnet FoG, UCI Telemonitoring)'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 4 — 'PADS contains two-wrist six-channel IMU recordings from 469 subjects performing 11 motor tasks'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 4 — '469 subjects performing 11 motor tasks [14]. We use a patch-based time-series Transformer [25] with task and wrist embeddings'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo informa 11 tarefas motoras no PADS e agrega as predições por sujeito através das tarefas e dos punhos."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11 tarefas motoras; inclui tarefas relacionadas a tremor, tapping, marcha, equilíbrio e coordenação)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 4 e Apêndice B, Tabela 6, p. 13 — 'performing 11 motor tasks' / 'tremor-, tapping-, gait-, balance-, and coordination-related tasks'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Outro"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 4 — 'PADS contains two-wrist six-channel IMU recordings from 469 subjects'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo descreve os sensores do PADS literalmente como 'two-wrist six-channel IMU recordings' e 'wrist IMUs', sem nomear explicitamente acelerômetro e giroscópio para o PADS."
+  - id: 12
+    chave: "outros_sensores"
+    valor: "IMU de 6 canais (six-channel IMU)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 4 — 'two-wrist six-channel IMU recordings'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 4 — 'two-wrist six-channel IMU recordings... subject-level aggregation across tasks and wrists'"
+    auditoria: "CONCORDA"
+    observacao: "Os sinais dos dois punhos recebem wrist embeddings e são agregados em nível de sujeito."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, Tabela 2, p. 6 — 'PADS | 419+50 | 3-class (HC/PD/DD); 50-subj hidden blind'"
+    auditoria: "CONCORDA"
+    observacao: "Os 469 participantes foram divididos em 419 para validação cruzada de 5 folds (Visible_5fold_CV) e 50 para o conjunto de teste cego retido (Hidden_50_subject_blind_test)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados: 276, 79, 114, class distribution; o artigo reporta o total de 469 sujeitos (419+50) e as 3 classes (HC/PD/DD), mas não informa o N de cada classe."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["3 classes (Mult-Class)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, Tabela 2, p. 6 — '3-class (HC/PD/DD); 50-subj hidden blind'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 = 3 classes (Mult-Class) (opção Outro não marcada)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 4 — 'PADS contains two-wrist six-channel IMU recordings... We use a patch-based time-series Transformer [25]'"
+    auditoria: "CONCORDA"
+    observacao: "As séries temporais de IMU são codificadas por um Transformer baseado em patches (PatchTST) e projetadas no espaço compartilhado de 8 nós de sintomas."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 = Série bruta (opção Outro não marcada)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Auto-supervisionado", "Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Apêndice F.2, Tabela 7, p. 17 e Apêndice G, Tabela 12, p. 19 — 'V7 Ensemble (with PatchTST encoder)... LSTM... CNN' / 'V6 + SSL pretraining (MSM + contrastive)'"
+    auditoria: "CONCORDA"
+    observacao: "No PADS, o modelo proposto (V7 Ensemble) combina Deep Learning (PatchTST + GAT symptom graph + Quality head em ensemble de 3 seeds) e pré-treinamento auto-supervisionado (SSL: MSM + contrastive na etapa V6)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 sem opção Outro marcada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "SGC-RML V7 Ensemble (PatchTST + GAT symptom graph + SSL pretraining + Quality head); LSTM; BiLSTM; GRU; CNN-LSTM; CNN"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Apêndice F.2, Tabela 7, p. 17 e Apêndice G, Tabela 12, p. 19 — 'LSTM | BiLSTM | GRU | CNN-LSTM | CNN | V7 Ensemble (Ours)'"
+    auditoria: "CONCORDA"
+    observacao: "Em outros datasets (PPMI, mPower, Daphnet, UCI), foram utilizados Node Attention Temporal Transformer, GraphTemporalTransformer, FT-Transformer, TimeSeries Transformer, LightGBM e RandomForest."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados: SMOTE, oversampl, undersampl, augmentation, class weight; nenhuma técnica de balanceamento de classes ou data augmentation é mencionada para o PADS."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Hold-out", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, Tabela 2, p. 6 — 'PADS reports two operating points: visible 5-fold CV (n=419, AUC 0.805) and held-out 50-subject blind cohort (AUC 0.825)'"
+    auditoria: "CONCORDA"
+    observacao: "Ressalva da triagem confirmada: utiliza 5-fold CV independente de sujeito (n=419) mais um conjunto de teste cego retido (hold-out) de 50 sujeitos."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 sem opção Outra marcada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 6 e Apêndice F.2, p. 16 — 'PADS used a 50-subject fully independent blinded test set' / '5-fold subject-independent protocol to mitigate in-subject data leakage'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, p. 8 e Apêndice F.2, p. 16 — 'blind test cohort of 50 subjects with completely hidden participants' / '5-fold subject-independent protocol to mitigate in-subject data leakage'"
+    auditoria: "CONCORDA"
+    observacao: "A ablação na Tabela 12 (p. 19) também explicita a etapa V5c ('+ clean retrain (no leak)')."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Nenhum balanceamento utilizado/reportado (campo 23 = Não reportado)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Nenhum balanceamento utilizado/reportado (campo 23 = Não reportado)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 e Seção 4.1, p. 6 — 'The encoder and prediction head are modality-specific' / 'PADS used a 50-subject fully independent blinded test set'"
+    auditoria: "CONCORDA"
+    observacao: "Cada dataset tem seu próprio encoder e cabeçote de predição treinado e avaliado internamente; o coorte cego de 50 participantes faz parte do próprio PADS (419+50=469)."
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "F1", "Outra"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, Tabela 5, p. 8 — 'Setting | n | ACC | F1 | AUC | ECE | Brier | ICC | Cov.0.80'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não especifica se o F1 multiclasse no PADS é macro ou ponderado."
+  - id: 32
+    chave: "outras_metricas"
+    valor: "ECE (Expected Calibration Error); Brier score; ICC(2,1) (Intraclass Correlation); Split-conformal coverage (Cov.0.80); Selective risk / Risk-coverage curve"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, Figura 4 e Tabela 5, p. 8 — 'ECE: 15-bin post temperature-scaling; Brier... ICC(2,1) [23]; Cov.: split-conformal coverage at target 0.80'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "3 classes (Mult-Class); V7 Ensemble (PatchTST + Quality); AUC; 0.825 [.708,.942] (Hidden_50_subject_blind_test) / 0.805 [.764,.840] (Visible_5fold_CV)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, Tabela 2, p. 6 e Seção 4.6, Tabela 5, p. 8 — 'Visible_5fold_CV 419 ... AUC 0.805 [.764,.840] | Hidden_50_subject_blind_test 50 ... AUC 0.825 [.708,.942]'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 34
+    chave: "demais_valores"
+    valor: "3 classes (Mult-Class); V7 Ensemble (Visible_5fold_CV, n=419); Accuracy; 0.704 [.659,.746] | 3 classes (Mult-Class); V7 Ensemble (Visible_5fold_CV, n=419); F1; 0.588 [.541,.633] | 3 classes (Mult-Class); V7 Ensemble (Visible_5fold_CV, n=419); ECE; 0.100 | 3 classes (Mult-Class); V7 Ensemble (Visible_5fold_CV, n=419); Brier; 0.473 | 3 classes (Mult-Class); V7 Ensemble (Visible_5fold_CV, n=419); ICC; 0.902 | 3 classes (Mult-Class); V7 Ensemble (Visible_5fold_CV, n=419); Cov.0.80; 0.824 | 3 classes (Mult-Class); V7 Ensemble (Hidden_50_subject_blind_test, n=50); Accuracy; 0.640 [.501,.759] | 3 classes (Mult-Class); V7 Ensemble (Hidden_50_subject_blind_test, n=50); F1; 0.500 [.366,.634] | 3 classes (Mult-Class); V7 Ensemble (Hidden_50_subject_blind_test, n=50); ECE; 0.161 | 3 classes (Mult-Class); V7 Ensemble (Hidden_50_subject_blind_test, n=50); Brier; 0.500 | 3 classes (Mult-Class); V7 Ensemble (Hidden_50_subject_blind_test, n=50); ICC; 0.600 | 3 classes (Mult-Class); V7 Ensemble (Hidden_50_subject_blind_test, n=50); Cov.0.80; 0.804 ± 0.053 | 3 classes (Mult-Class); V7 Ensemble (PREDICT subset, 61.8%); Accuracy; 0.772 | 3 classes (Mult-Class); CNN (5-fold CV); Accuracy; 0.647 | 3 classes (Mult-Class); CNN (5-fold CV); F1; 0.416 | 3 classes (Mult-Class); CNN (5-fold CV); AUC; 0.784 | 3 classes (Mult-Class); CNN-LSTM (5-fold CV); Accuracy; 0.654 | 3 classes (Mult-Class); CNN-LSTM (5-fold CV); F1; 0.477 | 3 classes (Mult-Class); CNN-LSTM (5-fold CV); AUC; 0.782 | 3 classes (Mult-Class); GRU (5-fold CV); Accuracy; 0.609 | 3 classes (Mult-Class); GRU (5-fold CV); F1; 0.324 | 3 classes (Mult-Class); GRU (5-fold CV); AUC; 0.747 | 3 classes (Mult-Class); BiLSTM (5-fold CV); Accuracy; 0.597 | 3 classes (Mult-Class); BiLSTM (5-fold CV); F1; 0.349 | 3 classes (Mult-Class); BiLSTM (5-fold CV); AUC; 0.742 | 3 classes (Mult-Class); LSTM (5-fold CV); Accuracy; 0.599 | 3 classes (Mult-Class); LSTM (5-fold CV); F1; 0.273 | 3 classes (Mult-Class); LSTM (5-fold CV); AUC; 0.680"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, Figura 4 e Tabela 5, p. 8; Apêndice F.2, Tabela 7, p. 17 — 'Visible_5fold_CV 419 0.704 ... Hidden_50_subject_blind_test 50 0.640'"
+    auditoria: "CONCORDA"
+    observacao: "Ablação V1-V7 no PADS (Tabela 12, p. 19): V1 (F1=0.409, AUC=0.623), V2 (F1=0.435, AUC=0.771), V3 (F1=0.407, AUC=0.704), V4 (F1=0.528, AUC=0.738), V5c (F1=0.414, AUC=0.798), V6 (F1=0.527, AUC=0.796), V7 (F1=0.588, AUC=0.805). Resultados de PPMI, mPower, Daphnet e UCI foram omitidos deste campo por pertencerem a outros datasets."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Código"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Apêndice I, p. 22 — 'A self-contained code release accompanies this submission, structured as core/, pads/, uci/, mpower/, ppmi/, daphnet/.'"
+    auditoria: "CONCORDA"
+    observacao: "Código fornecido como material suplementar anonimizado na submissão (Checklist item 5, p. 24), sem URL pública no texto do preprint."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção 4.9 (p. 9) e Apêndice H.1 (p. 20): (1) diferenças entre datasets em sistemas de rotulagem, protocolos de amostragem e definições de tarefas (dataset shift impede comparação numérica direta); (2) ausência de validação clínica prospectiva em fluxos de trabalho reais; (3) análise insuficiente de justiça (fairness) e subgrupos (idade, sexo, estágio da doença, dispositivo, medicação, ambiente, capacidade física); (4) métricas de calibração como ECE não foram medidas uniformemente em todos os cinco datasets."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.9, p. 9 — 'First, different datasets differ significantly... Second, lacks prospective clinical validation... Third, fairness and subgroup analysis are still inadequate'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção 4.9 (p. 9), Seção 5 (p. 9) e Apêndice H.1 (p. 20): conduzir estudos de coorte prospectivos, multicêntricos e em larga escala para validar a generalização em fluxos clínicos reais; incorporar sistematicamente auditoria de justiça (fairness) e análise de subgrupos; implementar monitoramento em tempo de implantação (deployment-time monitoring); e avaliar métricas de calibração (como ECE) de forma uniforme em todos os cinco datasets."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.9, p. 9 — 'Future work will conduct larger-scale, multicenter, prospective cohort studies to assess generalization in real-world workflows and systematically incorporate fairness and subgroup analysis'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano."
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 3.3, p. 5 e Seção 4.6, p. 8 — 'All thresholds are selected on the validation split... and frozen before held-out test evaluation' / 'hidden cohort did not participate in any training, hyperparameter tuning, or model selection'"
+    observacao: "O artigo explicita isolamento estrito do conjunto de teste cego (n=50), congelamento de quantis na validação e retreinamento limpo sem vazamento ('V5c + clean retrain (no leak)', Tabela 12), embora detalhes matemáticos de normalização dos sinais brutos de IMU estejam apenas nos scripts suplementares."
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; campo 27 = Sim – explícita; campo 28 = Não se aplica; aux_preproc_apenas_treino = Sim"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "O cenário de 3 classes (HC/PD/DD) e o uso dos 469 participantes do PADS (419+50) estão explicitamente definidos, sem ambiguidade sobre os grupos incluídos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os cinco itens aplicáveis do recorte do PADS (modalidade IMU, 11 tarefas, sensores IMU de 6 canais, ambos os punhos e N=469 participantes) são informados."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Baixo: particionamento explícito por participante (5-fold subject-independent CV + 50-subject blind test) e seleção de hiperparâmetros/limiares isolada do teste."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta apenas uma métrica comprovadamente robusta ao desbalanceamento (AUC), além de F1 sem especificar se é macro ou ponderado."
+    QA5:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [35, 22, 29]
+      justificativa: "Declara disponibilização do código em repositório suplementar anonimizado e descreve modelos, função de perda, quantis de roteamento e hiperparâmetros de treinamento na Tabela 15."
+  nota_qa: 4.5
+  nota_qa_max: 5
+  faixa_qa: "Alta"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica"
+    resultado: "OK (modalidade é Série temporal (IMU))"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (campo 15 = null pois o N por classe não foi reportado no artigo)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (campo 15 = null)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (campo 26 = Participante e campo 27 = Sim – explícita)"
+  - regra: "Campo 23 = Nenhum ou Não se aplica → campo 28 = Não se aplica e campo 29 null"
+    resultado: "OK (campo 23 = Não reportado, campo 28 = Não se aplica e campo 29 = null)"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK (campo 9 = Todas e campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado <-> campo de texto preenchido"
+    resultado: "OK (6->7, 11->12 e 31->32 preenchidos; demais null)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Baixo -> QA3 = Yes / 1.0)"
+pontos_para_revisao_humana:
+  - "Ressalva da triagem verificada: preprint no arXiv (arXiv:2605.08302v1) que realiza experimento completo no PADS (n=469: 419 em 5-fold subject-independent CV + 50 em blind test hold-out)."
+  - "Campo 11/12 (sensores): o artigo descreve apenas 'two-wrist six-channel IMU recordings' sem citar nominalmente acelerômetro e giroscópio para o PADS; marcado como Outro ('IMU de 6 canais')."
+  - "Campo 15 (n_por_classe): o artigo informa o total de 469 sujeitos (419+50) e o cenário de 3 classes (HC/PD/DD), mas não explicita o número de participantes em cada classe."
+  - "Campo 24/26/27 e QA3: o estudo reporta dois pontos de operação no PADS (Visible_5fold_CV com n=419 e Hidden_50_subject_blind_test com n=50) e menciona 'V5c + clean retrain (no leak)' na ablação (Tabela 12), mas detalhes do pré-processamento de janelas/normalização do sinal IMU bruto remetem ao código suplementar (confiança média em aux_preproc_apenas_treino)."
+  - "Campo 31 e QA4: o F1 reportado para o PADS (0.588 no 5-fold CV e 0.500 no blind test) não especifica se a agregação multiclasse foi macro ou ponderada."
+  - "Campo 35 e QA5: o código é declarado como material suplementar anonimizado ('accompanies this submission'), sem link público direto no PDF do arXiv."

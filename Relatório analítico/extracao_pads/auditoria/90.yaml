@@ -1,0 +1,384 @@
+meta:
+  row_id: 90
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "DN9TWI94"
+  titulo: "A Simple and Reproducible Machine Learning Pipeline for Parkinson’s Disease Detection Using Smartwatch-Based Inertial Signals"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Abstract, p. 350 — 'This study proposes a simple and reproducible classical machine learning pipeline for PD detection using smartwatch-based inertial signals from the PADS dataset.'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 90
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho/Journal Info, p. 350 — 'Published: March 31, 2026' e 'Volume 14, Issue 1, 2026 (January-March)'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 350 — 'This study proposes a simple and reproducible classical machine learning pipeline for PD detection'"
+    auditoria: "CONCORDA"
+    observacao: "Propõe um pipeline de aprendizado de máquina com extração de atributos espectrais/estatísticos, seleção LASSO e avaliação aninhada; também inclui avaliação comparativa de classificadores."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 diferente de Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 351 — 'The paper provides a PD detection machine learning pipeline, which is easy to recreate and builds on the inertial signals recorded through a smartwatch on the PADS dataset'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.4, p. 354 — 'The distribution of participants across diagnostic groups used in this study is summarized in Table 1' (Table 1: PADS dataset)"
+    auditoria: "CONCORDA"
+    observacao: "WATCH-PD e BioStamp RC2.1 são apenas citados na literatura, não utilizados nos experimentos."
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas PADS marcado no campo 6"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 353 — 'the method proposed in the current research is limited to smartwatch inertial signals, which do not need any questionnaire or clinical inputs.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "média"
+    evidencia: "Seção 3.3, p. 354 — 'multi-task recordings' e Figura 6, p. 360 (mostra TouchNose, StretchHold, HoldWeight, DrinkGlas, RelaxedTask1); texto não especifica se usou todas as tarefas ou um subconjunto"
+    auditoria: "CONCORDA"
+    observacao: "O artigo menciona 'multi-task recordings' (p. 354) e 'structured motor tasks' (p. 363), e a Figura 6 exibe atributos de 5 tarefas (TouchNose, StretchHold, HoldWeight, DrinkGlas, RelaxedTask1), mas a seção de métodos não informa o número total de tarefas incluídas nem se são todas as do PADS."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Não especificado no método (Figura 6 cita: TouchNose; StretchHold; HoldWeight; DrinkGlas; RelaxedTask1)"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Figura 6, p. 360 — 'TouchNose_LeftWrist...; StretchHold_LeftWrist...; HoldWeight_RightWrist...; DrinkGlas_RightWrist...; RelaxedTask1_LeftWrist...'"
+    auditoria: "CONCORDA"
+    observacao: "Nomes extraídos dos prefixos das 10 principais variáveis decodificadas na Figura 6; a lista completa de tarefas processadas não é declarada no texto."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 354 — 'The pipeline begins with raw tri-axial accelerometer and gyroscope signals sampled at 100 Hz.'"
+    auditoria: "CONCORDA"
+    observacao: "Inclui também estudo de ablação comparando acelerômetro isolado, giroscópio isolado e fusão de ambos (Seção 5.2, Figura 4)."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 não contém Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.4, p. 356 — 'where L and R denote feature values from left and right wrist sensors, respectively'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 352 e Tabela 1, p. 354 — 'with 469 participants of Parkinson’s disease, healthy controls, and differential diagnoses' / 'PD 276, HC 114, DD 79'"
+    auditoria: "CONCORDA"
+    observacao: "Soma de Tabela 1 = 276 + 114 + 79 = 469. Na tarefa A (PD vs. HC) e tarefa B (PD vs. DD) são usados os respectivos subgrupos."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=114; DD=79"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1, p. 354 — 'Group / Number of Subjects: PD 276, HC 114, DD 79'"
+    auditoria: "CONCORDA"
+    observacao: "Atenção: Na Tabela 1 (p. 354), os autores inverteram os números clássicos de HC (reportado 114) e DD (reportado 79) do PADS. Porém, nas matrizes de confusão da Figura 5 (p. 359), a soma das linhas mostra que o experimento real usou HC = 51+28 = 79, DD = 234+42 = 276? Não: na Fig 5(b) DD tem 234+42=276 e PD tem 61+53=114 (rótulos das linhas também trocados na Fig 5b, pois 276 é o N de PD e 114 é o N real de DD). Copiado literalmente conforme Tabela 1."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5.1, p. 356-357 — 'Task A – PD vs. HC' e 'Task B – PD vs. DD'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 não contém Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 350 e Seção 4.1-4.4, p. 354-356 — 'Spectral and statistical features were extracted from accelerometer and gyroscope signals'"
+    auditoria: "CONCORDA"
+    observacao: "Atributos espectrais via PSD de Welch (potência em bandas, centroide, spread, entropia, APF) e temporais (API, média, desvio padrão, mediana, energia, amplitude máxima, índice de assimetria) agregados no nível do sujeito."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 não contém Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, p. 356 — 'Logistic Regression (LR), Support Vector Machine with radial basis kernel (SVM), Random Forest (RF), Multi-Layer Perceptron (MLP), and CatBoost (CB) were considered'"
+    auditoria: "CONCORDA"
+    observacao: "LR, SVM, RF e CatBoost pertencem a Classical ML; MLP é uma rede neural (Deep Learning / rede neural artificial, tratada pelos próprios autores no grupo avaliado)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 não contém Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Logistic Regression (LR); Support Vector Machine (SVM); Random Forest (RF); Multi-Layer Perceptron (MLP); CatBoost (CB)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, p. 356 — 'Logistic Regression (LR), Support Vector Machine with radial basis kernel (SVM), Random Forest (RF), Multi-Layer Perceptron (MLP), and CatBoost (CB) were considered'"
+    auditoria: "CONCORDA"
+    observacao: "Embora CatBoost (CB) seja citado no Abstract e na Seção 4.6, a Tabela 2 (p. 358) reporta resultados apenas para LR, SVM, MLP e RF."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "SMOTE-oversampling"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, p. 356 — 'In order to deal with the imbalance in the classes, SMOTE oversampling was performed only on training data in each outer fold.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["CV aninhada", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.7, p. 356 — 'a nested cross-validation structure was implemented. The outer loop used 5-fold subject-level partitioning... Within each outer fold, a 3-fold inner cross-validation loop was used'"
+    auditoria: "CONCORDA"
+    observacao: "Nested 5x3 subject-level cross-validation."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 não contém Outra"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 354 e Seção 4.7, p. 356 — 'Window-level features were aggregated at the subject level prior to classification.' / 'The outer loop used 5-fold subject-level partitioning'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.7, p. 356 — 'The outer loop used 5-fold subject-level partitioning, which guaranteed that no data of the same subject was used in both the training and testing sets.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, p. 356 — 'SMOTE oversampling was performed only on training data in each outer fold. Test data and validation were not interfered.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "SMOTE oversampling aplicado apenas nos dados de treino dentro da validação cruzada aninhada (ajustado no loop interno de 3-fold CV conforme Figura 1 e Figura 3)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, p. 356 e Figura 1, p. 355 — 'SMOTE oversampling was performed only on training data in each outer fold.' / 'GridSearchCV(With Inner 3-Fold CV) Step: SMOTE Tune: Param_grid'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6, p. 363 — 'Third, although nested cross-validation provides strong internal validation, external validation on independent datasets is still required to confirm generalizability.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "Balanced accuracy", "F1", "MCC", "Sensitivity", "Specificity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabelas 2 e 3, p. 358 — 'Acc (%) BAcc (%) F1-score AUROC MCC' e 'Sensitivity Specificity'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não especifica se o F1-score é macro, ponderado ou binário (na Tabela 2, F1-score é reportado em porcentagem, ex.: 92.01±1.16, enquanto no Abstract aparece como 0.92). Sensitivity e Specificity são reportadas na Tabela 3 apenas para Logistic Regression."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 não contém Outra"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; LR; Balanced accuracy; 79.26 ± 5.50%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 358 — 'PD vs. HC | LR | Acc (%): 87.32 ± 1.99 | BAcc (%): 79.26 ± 5.50 | F1-score: 92.01 ± 1.16 | AUROC: 89.77 ± 4.29 | MCC: 61.91 ± 7.14'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; LR; Accuracy; 87.32 ± 1.99% | PD×HC; LR; F1-score; 92.01 ± 1.16 | PD×HC; LR; AUROC; 89.77 ± 4.29 | PD×HC; LR; MCC; 61.91 ± 7.14 | PD×HC; LR; Sensitivity; 0.9384 ± 0.0243 | PD×HC; LR; Specificity; 0.6467 ± 0.1266 | PD×HC; SVM; Accuracy; 84.50 ± 1.72% | PD×HC; SVM; Balanced accuracy; 73.85 ± 3.85% | PD×HC; SVM; F1-score; 90.31 ± 1.23 | PD×HC; SVM; AUROC; 88.65 ± 4.73 | PD×HC; SVM; MCC; 52.86 ± 4.51 | PD×HC; MLP; Accuracy; 85.63 ± 4.27% | PD×HC; MLP; Balanced accuracy; 75.46 ± 8.43% | PD×HC; MLP; F1-score; 91.05 ± 2.59 | PD×HC; MLP; AUROC; 88.40 ± 3.71 | PD×HC; MLP; MCC; 55.52 ± 14.30 | PD×HC; RF; Accuracy; 83.66 ± 3.09% | PD×HC; RF; Balanced accuracy; 67.85 ± 4.26% | PD×HC; RF; F1-score; 90.15 ± 1.99 | PD×HC; RF; AUROC; 86.81 ± 5.79 | PD×HC; RF; MCC; 47.35 ± 9.30 | PD×DD; MLP; Balanced accuracy; 67.15 ± 2.76% | PD×DD; MLP; Accuracy; 73.58 ± 2.66% | PD×DD; MLP; F1-score; 53.32 ± 4.32 | PD×DD; MLP; AUROC; 72.47 ± 1.93 | PD×DD; MLP; MCC; 35.17 ± 6.06 | PD×DD; RF; Accuracy; 77.43 ± 3.22% | PD×DD; RF; Balanced accuracy; 66.26 ± 4.32% | PD×DD; RF; F1-score; 50.25 ± 8.04 | PD×DD; RF; AUROC; 73.67 ± 5.27 | PD×DD; RF; MCC; 40.16 ± 9.53 | PD×DD; SVM; Accuracy; 73.33 ± 3.06% | PD×DD; SVM; Balanced accuracy; 66.18 ± 3.41% | PD×DD; SVM; F1-score; 51.67 ± 5.25 | PD×DD; SVM; AUROC; 72.95 ± 3.19 | PD×DD; SVM; MCC; 33.75 ± 6.83 | PD×DD; LR; Accuracy; 73.58 ± 2.50% | PD×DD; LR; Balanced accuracy; 65.58 ± 3.28% | PD×DD; LR; F1-score; 50.38 ± 5.45 | PD×DD; LR; AUROC; 72.67 ± 2.34 | PD×DD; LR; MCC; 33.37 ± 6.16 | PD×DD; LR; Sensitivity; 0.4640 ± 0.0907 | PD×DD; LR; Specificity; 0.8477 ± 0.0496"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabelas 2 e 3, p. 358 — resultados completos para Task A (PD vs. HC) e Task B (PD vs. DD)"
+    auditoria: "CONCORDA"
+    observacao: "Na Figura 4 (p. 358, Sensor Ablation Study), são reportadas BAcc para Accelerometer (0.723 em Task A; 0.618 em Task B), Gyroscope (0.751 em Task A; 0.641 em Task B) e Combined (0.793 em Task A; 0.656 em Task B)."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Compliance with Ethical Standards / Data Availability, p. 364 — 'The Parkinson’s Disease Smartwatch (PADS) dataset used in this study is publicly available on PhysioNet...'"
+    auditoria: "CONCORDA"
+    observacao: "A seção Data Availability aponta apenas para o PADS público no PhysioNet; não há link para repositório de código nem para dados derivados."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção 6 (p. 363): (1) análise baseada em tarefas motoras estruturadas em vez de monitoramento contínuo no mundo real; (2) uso exclusivo de sinais inerciais de punho, sem incorporar outras modalidades informativas como fala ou escores clínicos; (3) ausência de validação externa em datasets independentes para confirmar a generalização."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6, p. 363 — 'One can say a couple of limitations. First, the analysis is based on structured motor tasks... Second, only wrist-based inertial signals were used... Third... external validation on independent datasets is still required'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção 2.4 (p. 353) e Seção 6 (p. 363): aumentar a discriminabilidade dos atributos para melhorar o desempenho no diagnóstico diferencial (PD vs. DD); incorporar fontes de dados multimodais (dados clínicos complementares, fala); explorar métodos híbridos combinando engenharia de atributos interpretáveis com modelos leves de representação; validar em coortes independentes e cenários de monitoramento contínuo no mundo real."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6, p. 363 — 'The future work is going to be devoted to three directions: Increasing the discriminativity of features... Incorporating multimodal data sources... The use of hybrid methods...'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano"
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 4.5 e 4.6, p. 356 e Figura 3, p. 357 — 'where mu and sigma were computed exclusively on training data within each outer fold.' / 'feature selection was performed exclusively within training folds during the inner cross-validation loop' / 'All preprocessing steps performed on training'"
+    observacao: null
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; campo 27 = Sim – explícita; campo 28 = Só no treino; aux_preproc_apenas_treino = Sim"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenários binários (PD×HC e PD×DD) explícitos e distribuição dos grupos do PADS reportada na Tabela 1."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Modalidade, sensores, punhos e N de participantes estão informados (4 de 5 itens), mas o conjunto exato de tarefas (campo 9) não foi reportado."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Baixo: validação cruzada aninhada por participante com padronização, LASSO, SMOTE e grid search restritos aos folds de treino."
+    QA4:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [31]
+      justificativa: "Reporta mais de duas métricas robustas ao desbalanceamento (Balanced accuracy, MCC, AUC e o par Sensitivity + Specificity)."
+    QA5:
+      resposta: "No"
+      nota: 0.0
+      campos: [35, 22, 29]
+      justificativa: "Código não disponível (campo 35 = Nenhum) e a grade de hiperparâmetros dos classificadores e de lambda do LASSO não foi especificada."
+  nota_qa: 3.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica; Quais tarefas null; Representação null"
+    resultado: "N/A (modalidade é Série temporal (IMU))"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (cenários binários PD×HC e PD×DD, e todas as 3 classes têm N > 0 reportado)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (276 + 114 + 79 = 469)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (26 = Participante e 27 = Sim – explícita)"
+  - regra: "Campo 24 contém Leave-one-subject-out → campo 26 = Participante e campo 27 = Sim"
+    resultado: "N/A (usa CV aninhada 5x3)"
+  - regra: "Campo 26 = Não se aplica → campos 27 e 28 = Não se aplica, risco = Não se aplica, campo 24 = Não reportado"
+    resultado: "N/A"
+  - regra: "Campo 23 = SMOTE-oversampling → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK (28 = Só no treino e 29 preenchido)"
+  - regra: "Campo 30 = true e campo 5 = Principal → explique na observação"
+    resultado: "N/A (campo 30 = false)"
+  - regra: "Campo 9 = Não se aplica → campo 10 null; caso contrário, campo 10 preenchido"
+    resultado: "OK (campo 9 = Não reportado e campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK (nenhum Outro/Outra marcado e campos 4, 7, 12, 17, 19, 21, 25, 32 todos null)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Baixo → QA3 = Yes / 1.0)"
+pontos_para_revisao_humana:
+  - "Campo 15 (n_por_classe): Na Tabela 1 (p. 354), os autores inverteram os tamanhos conhecidos das classes HC (reportado 114) e DD (reportado 79) do PADS. Além disso, na Figura 5b (p. 359), os rótulos das linhas da matriz de confusão PD vs. DD estão trocados (linha DD soma 276 e linha PD soma 114)."
+  - "Campos 9 e 10 (tarefas_pads / quais_tarefas_pads): O artigo menciona 'multi-task recordings' mas não lista quais ou quantas tarefas do PADS foram incluídas no pipeline (apenas 5 nomes de tarefas aparecem nos nomes de atributos da Figura 6)."
+  - "Campo 22 (especificacao_algoritmo): CatBoost (CB) é citado no Abstract e na Seção 4.6 como avaliado, mas não aparece na Tabela 2 de resultados."
+  - "QA5 (replicabilidade): Apesar de descrever bem o pré-processamento e a validação aninhada (Seções 4.1 a 4.7), o estudo não disponibiliza código e não informa os hiperparâmetros avaliados no grid search."

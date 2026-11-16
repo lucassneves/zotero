@@ -1,0 +1,147 @@
+Parkinson’s Disease Classification from Smartwatch
+Non-Motor Symptom Questionnaires in the PADS
+Dataset
+1st Asma Ouabd E2SN Research Team, ENSAM-R Mohammed V University in Rabat Rabat, Morocco asma_ouabd@um5.ac.ma
+4th Abdelilhah Jilbab E2SN Research Team, ENSAM-R Mohammed V University in Rabat Rabat, Morocco abdelilah.jilbab@ensam.um5.ac.ma
+2nd Mohamed Sraitih Marie and Louis Pasteur University, Belfort Montbéliard University of Technology, SINERGIES UR Lab 90010 Belfort, France mohamed.sraitih@utbm.fr
+5th Amir Hajjam El hassani Marie and Louis Pasteur University, Belfort Montbéliard University of Technology, SINERGIES UR Lab 90010 Belfort, France amir.hajjam-el-hassani@utbm.fr
+3rd Achraf Benba E2SN Research Team, ENSAM-R Mohammed V University in Rabat Rabat, Morocco achraf.benba@ensam.um5.ac.ma
+6th Ahmed Hammouch E2SN Research Team, ENSAM-R Mohammed V University in Rabat Rabat, Morocco a.hammouch@um5r.ac.ma
+Abstract— Parkinson's disease (PD) manifests through both motor and non-motor symptoms (NMS), the latter playing an increasingly recognized role in early and differential diagnosis. Although recent works using the Parkinson's Disease Smartwatch (PADS) dataset have focused primarily on multimodal fusion strategies combining wearable sensor data with clinical questionnaire responses, the standalone diagnostic capability of NMS questionnaires has not been thoroughly investigated. This paper presents a systematic evaluation of PD classification relying exclusively on the 30-item PDNMS questionnaire from the PADS dataset, without any smartwatch sensor data. We employ three supervised learning classifiers: CatBoost, Random Forest, and XGBoost combined with SelectKBest feature selection (ANOVA F-test, k=17), SMOTE based class balancing on training data only, and 5-fold stratified cross-validation with hyperparameter grid search. The questionnaire only approach achieves balanced accuracies of 93.24% for PD vs. Healthy Controls (HC) and 78.22% for PD vs. Differential Diagnosis (DD), equaling or surpassing prior questionnaire only baselines and rivaling sensor-based multimodal approaches. These results establish NMS questionnaires as a powerful, cost-effective, and hardware-free alternative for large scale PD screening.
+Keywords— Parkinson’s disease, non-motor symptoms, clinical questionnaires, machine learning, digital health, disease classification
+I. INTRODUCTION
+Parkinson’s disease (PD) is a progressive neurodegenerative disorder characterized by cardinal motor symptoms tremor, bradykinesia, rigidity, and postural instability alongside a rich spectrum of non-motor symptoms (NMS) including hyposmia, sleep disturbances, constipation, depression, and cognitive decline [1]. Notably, many NMS precede motor manifestations by several years and may constitute valuable biomarkers for earlier diagnosis. Despite this clinical relevance, their utility as standalone classification features in data-driven pipelines remains underexplored in the literature.
+Clinical diagnosis of PD relies primarily on expert neurological assessment using standardized rating scales such as the Unified Parkinson's Disease Rating Scale (UPDRS). This approach is inherently subjective and vulnerable to interrater variability, particularly in early disease stages where symptom overlap with other movement disorders complicates differential diagnosis [2]. Machine learning (ML) and deep learning (DL) have emerged as powerful tools for more objective, reproducible, and scalable PD screening across diverse data modalities, including clinical questionnaires [3], [4], wearable sensors [5], [6], and handwriting or speech signals.
+Smartwatch-derived inertial data have attracted considerable research attention for continuous and unobtrusive motor activity monitoring [5], [6]. The Parkinson's Disease Smartwatch (PADS) dataset [7] was specifically designed for multimodal PD analysis combining sensor signals with clinical questionnaires. However, existing PADS studies predominantly focus on multimodal fusion, potentially undervaluing the standalone diagnostic power of NMS questionnaire responses. This gap motivates the present study.
+This paper investigates PD classification relying solely on the 30-question PDNMS questionnaire from the PADS dataset. Through systematic SelectKBest feature selection, SMOTE balancing, 5-fold stratified cross-validation, and three ensemble classifiers, we demonstrate that NMS questionnaires alone achieve performance competitive with or exceeding sensor-based multimodal baselines. The paper is organized as follows: Section II reviews related work; Section III describes the dataset and methodology; Section IV presents results and discussion; Section V concludes with future directions.
+2026 6th International Conference on Innovative Research in Applied Science, Engineering and Technology (IRASET) | 979-8-3315-4517-8/26/$31.00 ©2026 IEEE | DOI: 10.1109/IRASET68627.2026.11538895
+979-8-3315-4517-8/26/$31.00 ©2026 IEEE
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:53:24 UTC from IEEE Xplore. Restrictions apply.
+
+
+II. RELATED WORK
+A. Deep Learning Approaches for Wearable Sensor-Based PD Diagnosis
+The integration of deep learning with wearable sensor data has produced significant advances in objective PD motor assessment. Wang et al. [8] proposed a multiscale frequencysharing channel attention network applied to smartwatch movement recordings, specifically designed to exploit tremorrelated frequency bands. The model achieves 92.39% classification accuracy for PD vs. healthy controls, demonstrating that attention mechanisms can selectively focus on clinically meaningful frequency patterns in inertial signals. Similarly, Yu et al. [9] combined convolutional and recurrent neural networks with channel attention and data augmentation to improve both binary and multiclass PD classification from wearable sensor data, achieving competitive performance across classification tasks. These results underscore the capacity of deep architectures to automatically extract discriminative motor features without manual engineering.
+Benyoucef et al. [10] investigated CNN-LSTM hybrid networks for distinguishing pathological from normal movements in controlled clinical environments, highlighting the complementarity of convolutional feature extraction with recurrent temporal modeling. While these deep learning approaches yield impressive results, they typically require large annotated datasets, specialized hardware, and considerable computational resources factors that may limit their deployment in resource-constrained or community healthcare settings. This motivates the exploration of lightweight, questionnaire-based alternatives as first-line screening tools.
+B. Machine Learning Approaches for Wearable-Based PD Screening
+Conventional machine learning methods have also demonstrated strong performance on wearable PD data. Khalil et al. [16] applied machine learning algorithms to wearable sensor data for differentiating PD from other parkinsonian syndromes, demonstrating diagnostic accuracy equivalent to expert clinicians on specific mobility tasks, with balanced accuracy reaching 78.20% for the differential diagnosis task a benchmark our questionnaire-only pipeline matches (78.22%). Lai et al. [17] conducted a systematic comparison of ML algorithms across multiple PD datasets, emphasizing that feature selection quality and algorithm choice are as critical as model complexity for achieving robust generalization.
+Abola and Jabishvili [15] examined smartwatch-derived motor variability metrics combined with NMS profiles, finding that multimodal fusion provides modest but consistent gains over single-modality approaches in differential diagnosis. Their study reinforces the finding that NMS information carries independent diagnostic signal beyond what motor features alone can capture. Shokrpour et al. [2] provided a comprehensive review of ML-based PD detection, identifying class imbalance, small cohort sizes, and lack of standardized evaluation as persistent methodological challenges all of which our pipeline explicitly addresses through SMOTE, stratified splits, and balanced accuracy reporting.
+C. Handwriting Analysis and Clinical Feature-Based Approaches
+Beyond sensor-based methods, handwriting and drawing tasks have been widely studied as non-invasive early PD markers. Ouabd et al. [11] demonstrated that kinematic and pressure-based features extracted from drawing exercises enable ML-based early PD classification with competitive accuracy. A complementary study by the same group [12] proposed hybrid models combining deep learning feature extraction with conventional classifiers for handwriting-based PD diagnosis on a distinct dataset, demonstrating consistent performance gains over single-modality approaches. The NeuroDiag software [13] operationalizes handwriting-based PD screening into a real-time tool exploiting pen kinematics and pressure features, demonstrating strong translational potential. Islam et al. [14] provided a broad survey of ML and DL algorithms applied to handwriting and voice for PD diagnosis, highlighting that ensemble methods consistently outperform single classifiers across modalities and datasets.
+From the multimodal PADS perspective, Varghese et al. [7] established the original benchmark combining smartwatch inertial signals with clinical questionnaire responses through ensemble stacking, achieving 91.16% accuracy for PD vs. HC in a multimodal configuration. Their questionnaire-only CatBoost baseline 93.64% for PD vs. HC and 74.68% for PD vs. DD serves as the primary reference point for this study. Beriich et al. [18] reviewed recent deep learning advances for PD detection, noting that models exploiting non-motor clinical data consistently provide gains in differential diagnosis scenarios. Overall, the literature indicates that while sensor-based fusion achieves the highest monitoring accuracy, NMS questionnaire features have been underutilized and warrant dedicated investigation the gap this paper addresses.
+III. DATASET DESCRIPTION AND METHODOLOGY
+A. Dataset Description
+The This study uses the Parkinson's Disease Smartwatch (PADS) dataset [7], [23], [24], comprising three participant groups: individuals diagnosed with PD, individuals with other movement or neurological disorders forming the Differential Diagnosis (DD) group, and Healthy Controls (HC). All participants underwent a standardized motor assessment protocol in a supervised clinical environment with neurologist oversight.
+While the PADS dataset was designed for multimodal analysis combining smartwatch inertial signals with questionnaire responses, this study deliberately excludes all sensor data. Only the Parkinson's Disease Non-Motor Symptoms (PDNMS) questionnaire is used a 30-item binary (yes/no) instrument covering autonomic dysfunction, sleep disturbances, neuropsychiatric symptoms, pain, sensory impairments, and other NMS domains. Following the standard PADS protocol, demographic, medication, and personal attributes are excluded to eliminate confounding bias. Each participant is represented as a 30-dimensional binary feature vector encoding the presence or absence of each NMS.
+B. Methodology
+As Fig. 1 presents the complete proposed pipeline. The workflow comprises the following stages:
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:53:24 UTC from IEEE Xplore. Restrictions apply.
+
+
+1- Feature Encoding: Boolean questionnaire responses are mapped to binary integers (True→1, False→0).
+2- Feature Selection: SelectKBest with the ANOVA F-test ranks all 30 NMS features by their discriminative power. The optimal k=17 features are retained, determined by grid search over k ∈ {10,15,17,20,25,30} maximizing 5-fold CV balanced accuracy on the training set. 3- Stratified Split: The dataset is partitioned into training (80%) and test (20%) sets with stratification to preserve class proportions across splits. 4- SMOTE Balancing: The Synthetic Minority Oversampling Technique [20] is applied exclusively to the training partition, generating synthetic minority-class samples. Crucially, the test set remains untouched to ensure unbiased evaluation. 5- Model Training & CV: 5-fold stratified cross-validation with grid-search hyperparameter tuning is performed on the balanced training set. Final models are retrained on the full balanced training set using optimal hyperparameters. 6- Evaluation: Models are evaluated on the held-out test set using balanced accuracy (primary metric), precision, recall, and F1-score. Separate evaluations are performed for PD vs. HC and PD vs. DD.
+Fig. 1. Methodology pipeline for Parkinson’s disease
+classification using NMS questionnaires.
+Three complementary ensemble classifiers are evaluated. Random Forest (RF) [17] builds multiple decision trees on bootstrapped feature subsets and combines their predictions by majority vote, effectively capturing non-linear NMS interaction patterns while remaining robust to overfitting in small clinical datasets. XGBoost [21] employs a sequential gradient-boosting strategy where each tree corrects the residual errors of the ensemble, offering strong regularization through L1/L2 penalties. CatBoost [22] uses ordered boosting
+with native categorical feature handling to minimize target leakage bias particularly advantageous for binary questionnaire responses. Table I summarizes classifier hyperparameters and cross-validation configurations.
+Table I. Classifier Configurations and 5-Fold Cross-Validation Protocol
+Classifier k
+Features Key Hyperparameters CV
+Strategy
+Random
+Forest 17
+n_estimators=200, max_depth=None, min_samples_split=2
+5-Fold Stratified
+XGBoost 17
+n_estimators=100, learning_rate=0.1, max_depth=6, subsample=0.8
+5-Fold Stratified
+CatBoost 17
+iterations=500, learning_rate=0.05, depth=6, l2_leaf_reg=3
+5-Fold Stratified
+IV. RESULTS AND DISCUSSION
+This All results are reported on the held-out test set (20% stratified split) using models trained on SMOTE-balanced training data with hyperparameters optimized via 5-fold CV. Results are compared against the questionnaire-only CatBoost baseline established by Varghese et al. [7].
+A. PD vs Healthy Controls
+Table II presents performance for the PD vs. HC binary task. The reference baseline [7] achieves 93.64% balanced accuracy with CatBoost. Our pipeline using only 17 SelectKBest features yields: CatBoost at 91.42%, XGBoost at 83.86%, and Random Forest at 93.24% balanced accuracy with an F1-score of 95.33%, surpassing the reference F1 of 93.20%. Fig. 2 provides a direct visual comparison of balanced accuracy across all classifiers and tasks, while Fig. 3 presents radar charts showing the multi-metric profile of the best model (RF) versus the baseline.
+The superiority of Random Forest over gradient boosting methods in this setting is likely attributable to its ensemble averaging mechanism, which suppresses variance in smallto-medium clinical datasets. The 17-feature subset captures the most discriminative NMS co-occurrence patterns while eliminating 13 low-relevance items that would otherwise introduce noise. These findings confirm that non-motor symptoms alone are sufficient for highly accurate PD vs. HC discrimination, even without any sensor data.
+Table II. Questionnaire-only classification performance for PD vs Healthy controls
+Ref
+PD vs HC
+Classifier Balanced accuracy%
+Precision% Recall% F1%
+[4] CatBoost 93.64 100.0 93.64 93.20 Ours CatBoost 91.42 98.00 89.09 93.33 Ours Random Forest 93.24 98.08 92.73 95.33 Ours XGBoost 83.86 92.73 92.73 92.73
+B. PD vs Differential Diagnosis
+Table III presents results for the clinically more challenging PD vs. DD task. The reference CatBoost baseline
+[7] achieves 74.68% balanced accuracy. All three of our models consistently outperform this: CatBoost reaches 75.49%, XGBoost 76.40%, and Random Forest achieves
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:53:24 UTC from IEEE Xplore. Restrictions apply.
+
+
+78.22% balanced accuracy with F1=83.50% a gain of +3.54 percentage points over the reference. The recall of 78.18% for
+the RF model is particularly meaningful clinically, as it minimizes false negatives (missed PD diagnoses).
+Table III. Questionnaire-only classification performance for PD vs Differential Diagnoses
+Ref
+PD vs DD
+Classifier Balanced accuracy%
+Precision% Recall% F1%
+[4] CatBoost 74.68 63.64 74.68 63.64 Our work CatBoost 75.49 88.89 72.73 80.00 Our work Random Forest 78.22 89.58 78.18 83.50 Our work XGBoost 76.40 89.13 74.55 81.19
+Fig.2. Balanced Accuracy Comparison: All Classifiers vs. Baseline [7] for Both Classification Tasks
+Fig. 3. Radar Charts: Multi-Metric Comparison Random Forest (Ours) vs. CatBoost Baseline [7]
+C. Feature Importance Analysis
+Fig. 4 illustrates the relative importance of the 17 selected NMS features as ranked by the ANOVA F-test within the SelectKBest procedure. Hyposmia (loss of smell), constipation, and sleep disorders emerge as the most discriminative features consistent with established clinical evidence that these prodromal NMS frequently precede motor PD onset by years. Depression, drooling, and urinary urgency occupy the moderate-importance tier. This interpretable ranking not only validates the clinical relevance of our
+approach, but also suggests a path toward designing shorter, focused NMS screening instruments targeting the most informative items.
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:53:24 UTC from IEEE Xplore. Restrictions apply.
+
+
+D. Comparison with the Literature
+Table IV contextualizes our results within the broader literature. While deep learning CNN attention on smartwatch
+IMU [8] achieves 92.39% accuracy for PD vs. HC and CNN+RNN [9] achieves F1=93.80%, our questionnaire-only RF approach attains 93.24% balanced accuracy and 95.33% F1 for PD vs. HC without any wearable hardware. For PD vs. DD, our 78.22% balanced accuracy equals the wearable ML result of Khalil et al. [16] (78.20%), further demonstrating that NMS questionnaire features carry discriminative diagnostic power on par with sensor-derived motor biomarkers.
+Fig. 4. Top-17 NMS Feature Importances (Random Forest, ANOVA F-test Ranking, PD vs. HC Task)
+Table IV. Extended Comparison with Recent Literature (Bal. Acc = Balanced Accuracy; — = Not Reported)
+Ref Method / Modality Task Bal. Acc (%) F1 (%) Year
+[7] CatBoost + NMS Questionnaire Only PD vs HC 93.64 93.20 2024
+[7] CatBoost + NMS Questionnaire Only PD vs DD 74.68 63.64 2024
+[8] CNN Attention + Smartwatch IMU PD vs HC 92.39 — 2025
+[9] CNN+RNN + Wearable Sensors PD vs HC/DD — 93.80 2024
+[16] ML + Wearable IMU (differential) PD vs DD 78.20 — 2025
+Ours RF + NMS Questionnaire Only PD vs HC 93.24 95.33 2026
+Ours RF + NMS Questionnaire Only PD vs DD 78.22 83.50 2026
+E. Discussion and Clinical Implications
+Three methodological insights emerge from this study. First, feature selection is essential: reducing 30 questionnaire items to 17 via ANOVA F-test not only eliminates noisy features but also reduces overfitting risk in the relatively small PADS cohort, as confirmed by consistent performance gains over the all-features baseline. Second, SMOTE applied strictly to the training partition is critical for handling class imbalance without inflating test-set metrics through data leakage. Third, Random Forest despite being simpler than gradient boosting outperforms XGBoost and CatBoost here, likely because bootstrap aggregation effectively manages variance in small binary clinical datasets with correlated features.
+From a clinical perspective, the questionnaire-based approach offers compelling advantages: zero hardware cost, suitability for remote or primary care administration, full scalability for population-level screening, and inherent interpretability through feature importance rankings. While multimodal sensor fusion provides richer continuous monitoring capabilities, the strong performance established here particularly the consistent improvement in PD vs. DD balanced accuracy demonstrates that NMS questionnaires have been systematically underutilized as a standalone diagnostic modality in the PADS literature.
+V. CONCLUSION AND FUTURE WORK
+This This paper presented a systematic evaluation of Parkinson's disease classification using non-motor symptom
+questionnaires alone from the PADS dataset. Through SelectKBest feature selection (k=17), SMOTE over-sampling on training data, 5-fold stratified cross-validation with hyperparameter grid search, and three ensemble classifiers, we achieved balanced accuracies of 93.24% (PD vs. HC) and 78.22% (PD vs. DD) matching or exceeding all prior questionnaire-only baselines and rivaling sensor-based multimodal methods. These results establish NMS questionnaires as a powerful, clinically accessible, and hardware-free first-line PD screening modality.
+Future work will pursue three directions: (1) multimodal late fusion integrating questionnaire features with smartwatch inertial signals using attention-based architectures to combine motor and non-motor biomarkers; (2) SHAP value interpretability analysis to identify the most diagnostically decisive NMS items and support clinical decision-making; and (3) longitudinal analysis to evaluate whether changes in NMS questionnaire profiles over time can track disease progression and predict the onset of disabling motor symptoms.
+ACKNOWLEDGMENT
+The authors would like to thank the National Center for Scientific and Technical Research (CNRST) of Morocco for support through the program "PhD-ASsociate ScholarshipPASS".
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:53:24 UTC from IEEE Xplore. Restrictions apply.
+
+
+DATA AVAILABILITY STATEMENT
+The data used in this study are publicly available and can be accessed at [7], [23], [24].
+REFERENCES
+[1] Sigcha, L., Borzì, L., Amato, F., Rechichi, I., Ramos-Romero, C., Cárdenas, A., Gascó, L., & Olmo, G. (2023). Deep learning and wearable sensors for the diagnosis and monitoring of Parkinson’s disease: A systematic review. In Expert Systems with Applications (Vol. 229). Elsevier Ltd. https://doi.org/10.1016/j.eswa.2023.120541
+[2] Shokrpour, S., MoghadamFarid, A. M., Bazzaz Abkenar, S., Haghi Kashani, M., Akbari, M., & Sarvizadeh, M. (2025). Machine learning for Parkinson’s disease: a comprehensive review of datasets, algorithms, and challenges. In npj Parkinson’s Disease (Vol. 11, Issue 1). Nature Research. https://doi.org/10.1038/s41531-025-01025-9
+[3] Dixit, S., Bohre, K., Singh, Y., Himeur, Y., Mansoor, W., Atalla, S., & Srinivasan, K. (2023). A Comprehensive Review on AI-Enabled Models for Parkinson’s Disease Diagnosis. In Electronics (Switzerland) (Vol. 12, Issue 4). MDPI. https://doi.org/10.3390/electronics12040783
+[4] Arnab, S. B., Palash, M. I. A., Islam, R., Ovi, H. H., Yousuf, M. A., & Uddin, M. Z. (2025). Analysis of Different Modality of Data to Diagnose Parkinson’s Disease Using Machine Learning and Deep Learning Approaches: A Review. Expert Systems, 42(2). https://doi.org/10.1111/exsy.13790
+[5] Li, H., Zecca, M., & Huang, J. (2025). Evaluating the Utility of Wearable Sensors for the Early Diagnosis of Parkinson Disease: Systematic Review. In Journal of Medical Internet Research (Vol. 27). JMIR Publications Inc. https://doi.org/10.2196/69422
+[6] Moreau, C., Rouaud, T., Grabli, D., Benatru, I., Remy, P., Marques, A. R., Drapier, S., Mariani, L. L., Roze, E., Devos, D., Dupont, G., Bereau, M., & Fabbri, M. (2023). Overview on wearable sensors for the management of Parkinson’s disease. In npj Parkinson’s Disease (Vol. 9, Issue 1). Nature Research. https://doi.org/10.1038/s41531-02300585-y
+[7] Varghese, J., Brenner, A., Fujarski, M., van Alen, C. M., Plagwitz, L., & Warnecke, T. (2024). Machine Learning in the Parkinson’s disease smartwatch (PADS) dataset. Npj Parkinson’s Disease, 10(1). https://doi.org/10.1038/s41531-023-00625-7
+[8] Wang, M., Chen, J., Du, J., Wu, Y., Mou, J., & Camacho, D. (2025). Parkinson’s Disease Detection Using Multiscale Frequency-Sharing Channel Attention Network With Smartwatch Movement Recordings. IEEE Internet of Things Journal, 12(22), 46138–46149. https://doi.org/10.1109/JIOT.2025.3598614
+[9] Yu, J., Meng, K., Liang, T., Liu, H., & Wang, X. (2024). Improved Deep Learning for Parkinson’s Diagnosis Based on Wearable Sensors. Electronics (Switzerland), 13(23). https://doi.org/10.3390/electronics13234638
+[10] Benyoucef, Y., Melliti, I., Harmouch, J., Asadi, B., del Mastro, A., Lapuente-Hernández, D., & Herrero, P. (2025). Wearable Sensors and Artificial Intelligence for the Diagnosis of Parkinson’s Disease. Journal of Clinical Medicine, 14(12). https://doi.org/10.3390/jcm14124207
+[11] Ouabd, A., Jilbab, A., Benba, A., & Hammouch, A. (2025). ENHANCING EARLY PARKINSON’S DISEASE DIAGNOSIS THROUGH HANDWRITING ANALYSIS. Informatyka, Automatyka, Pomiary w Gospodarce i Ochronie Srodowiska, 15(3), 45–49. https://doi.org/10.35784/iapgos.7002
+[12] Ouabd, A., Benba, A., Jilbab, A., & Hammouch, A. (2025). HYBRID MODELS FOR HANDWRITING-BASED DIAGNOSIS OF
+PARKINSON’S DISEASE. Informatyka, Automatyka, Pomiary w Gospodarce i Ochronie Srodowiska, 15(4), 46–50. https://doi.org/10.35784/iapgos.7008
+[13] Ngo, Q. C., McConnell, N., Motin, M. A., Polus, B., Bhattacharya, A., Raghav, S., & Kumar, D. K. (2024). NeuroDiag: Software for Automated Diagnosis of Parkinson’s Disease Using Handwriting. IEEE Journal of Translational Engineering in Health and Medicine, 12, 291–297. https://doi.org/10.1109/JTEHM.2024.3355432
+[14] Islam, M. A., Hasan Majumder, M. Z., Hussein, M. A., Hossain, K. M., & Miah, M. S. (2024). A review of machine learning and deep learning algorithms for Parkinson’s disease detection using handwriting and voice datasets. Heliyon, 10(3). https://doi.org/10.1016/j.heliyon.2024.e25469
+[15] Abola, P., & Jabishvili, G. (2025). Differentiating Movement Disorders Using Smartwatch-Derived Motor Variability and Non-Motor Symptom Profiles. Brain Science Advances, 11(3). https://doi.org/10.26599/bsa.2025.905003
+[16] Khalil, R. M., Shulman, L. M., Gruber-Baldini, A. L., Reich, S. G., Savitt, J. M., Hausdorff, J. M., Coelln, R. von, & Cummings, M. P. (2025). Applying Wearable Sensors and Machine Learning to the Diagnostic Challenge of Distinguishing Parkinson’s Disease from Other Forms of Parkinsonism. Biomedicines, 13(3). https://doi.org/10.3390/biomedicines13030572
+[17] Lai, H., Li, X. Y., Xu, F., Zhu, J., Li, X., Song, Y., Wang, X., Wang, Z., & Wang, C. (2023). Applications of Machine Learning to Diagnosis of Parkinson’s Disease. Brain Sciences, 13(11). https://doi.org/10.3390/brainsci13111546
+[18] Beriich, M., Ouhmida, A., Alouani, Z., Saleh, S., Cherradi, B., & Raihani, A. (2025). Advancing Parkinson’s Disease Detection: A Review of AI and Deep Learning Innovations. 2025 5th International Conference on Innovative Research in Applied Science, Engineering and Technology, IRASET 2025. https://doi.org/10.1109/IRASET64571.2025.11007996
+[19] Zhao, W., Wang, X., Qi, J., Yang, Y., & Yang, P. (2025). Multi-scale Frequency-Aware Adversarial Network for Parkinson’s Disease Assessment Using Wearable Sensors. http://arxiv.org/abs/2510.10558
+[20] Chawla, N. V., Bowyer, K. W., Hall, L. O., & Kegelmeyer, W. P. (2002). SMOTE: synthetic minority over-sampling technique. Journal of artificial intelligence research, 16, 321-357.
+[21] Chen, T., & Guestrin, C. (2016). XGBoost: A scalable tree boosting system. Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 13-17 August-2016, 785– 794. https://doi.org/10.1145/2939672.2939785
+[22] Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., & Gulin, A. (2018). CatBoost: unbiased boosting with categorical features. Advances in neural information processing systems, 31.
+[23] Varghese, J., Brenner, A., Plagwitz, L., van Alen, C., Fujarski, M., & Warnecke, T. (2024). PADS - Parkinsons Disease Smartwatch dataset (version1.0.0). PhysioNet.RRID:SCR_007345. https://doi.org/10.130 26/m0w9-zx22.
+[24] Goldberger, A., Amaral, L., Glass, L., Hausdorff, J., Ivanov, P. C., Mark, R., ... & Stanley, H. E. (2000). PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation [Online]. 101 (23), pp. e215–e220. RRID:SCR_007345.
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:53:24 UTC from IEEE Xplore. Restrictions apply.

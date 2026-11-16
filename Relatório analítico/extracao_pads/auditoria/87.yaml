@@ -1,0 +1,372 @@
+meta:
+  row_id: 87
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "RDFTW55M"
+  titulo: "Parkinson’s Disease Detection Using Multiscale Frequency-Sharing Channel Attention Network With Smartwatch Movement Recordings"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Seção IV-A, p. 5 (46142) — 'In this study, we utilized the PD Smartwatch (PADS) dataset [36]'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 87
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho e rodapé, p. 1 (46138) — '15 NOVEMBER 2025' e '2327-4662 © 2025 IEEE'"
+    auditoria: "CONCORDA"
+    observacao: "Publicado no IEEE Internet of Things Journal, Vol. 12, No. 22, 15 November 2025 (DOI: 10.1109/JIOT.2025.3598614)."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 (46138) — 'this study proposes the multiscale frequency-sharing attention network (MSF-CANet), an end-to-end framework'"
+    auditoria: "CONCORDA"
+    observacao: "Propõe a arquitetura MSF-CANet combinando os módulos MSP (Multiscale Perception), FA (Frequency-Aware, 3–7 Hz) e SCA (Shared Channel Attention)."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 marcado como 'Novo modelo' (diferente de 'Outro')."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 (46138) — 'The model was trained and evaluated on the PADS dataset using nested 5-fold cross-validation.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 (46142) — 'In this study, we utilized the PD Smartwatch (PADS) dataset [36]'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas o PADS foi utilizado nos experimentos (Seção IV-A, p. 5)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 3 (46140) — 'classify PD and HC using accelerometer and gyroscope data collected from smartwatches.'"
+    auditoria: "CONCORDA"
+    observacao: "Embora mencione 'performing age matching' na descrição da amostra (Seção IV-A, p. 5), a entrada dos modelos utiliza exclusivamente séries temporais de acelerômetro e giroscópio."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Subconjunto"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 (46142) — 'three tasks were removed due to data collection issues, resulting in a final selection of eight motor tasks'"
+    auditoria: "CONCORDA"
+    observacao: "Das 11 tarefas mencionadas pelos autores, 3 foram removidas ('LiftHold', 'PointFinger' e 'TouchIndex', Seção IV-B, p. 6) e 8 foram mantidas (Tabela I). As tarefas 'Relaxed', 'RelaxedTask' e 'Entrainment' (20,48 s) foram divididas em 2 segmentos cada, totalizando 11 segmentos (Fig. 6). Na Seção V-F os movimentos também são avaliados individualmente (modelo por tarefa)."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Relaxed; RelaxedTask; CrossArms; HoldWeight; DrinkGlas; StretchHold; TouchNose; Entrainment"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 5 (46142) — '1 Relaxed; 2 RelaxedTask; 3 CrossArms; 4 HoldWeight; 5 DrinkGlas; 6 StretchHold; 7 TouchNose; 8 Entrainment'"
+    auditoria: "CONCORDA"
+    observacao: "Na Fig. 6 (p. 10), com a divisão das 3 tarefas de 20,48 s em dois segmentos, aparecem como: Relaxed1, Relaxed2, RelaxedTask1, RelaxedTask2, StretchHold, HoldWeight, DrinkGlas, CrossArms, TouchNose, Entrainment1, Entrainment2."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-B, p. 5 (46142) — 'sensor type (\"Accelerometer,\" \"Gyroscope\"), with specific attention to the axes (\"X,\" \"Y,\" \"Z\")'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 não inclui 'Outro'."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-B, p. 5 (46142) e Tabela IV, p. 9 (46146) — 'categorized by wrist (\"LeftWrist,\" \"RightWrist\")' e 'Hand: Left, Right, Both'"
+    auditoria: "CONCORDA"
+    observacao: "O modelo principal utiliza ambos os punhos combinados ('Both', acurácia 92.39%), e a Seção V-E (Tabela IV, p. 9) compara também modelos treinados apenas com o punho esquerdo ('Left', 92.03%) e apenas com o direito ('Right', 91.12%)."
+  - id: 14
+    chave: "n_participantes"
+    valor: 355
+    status: "inferido"
+    confianca: "média"
+    evidencia: "Seção IV-A, p. 5 (46142) — 'the dataset comprised 469 cases, including 276 participants with PD and 79 HC. Data with differential diagnoses were excluded'"
+    auditoria: "CONCORDA"
+    observacao: "O texto menciona '469 cases' (total do PADS completo incluindo os 114 DD), mas especifica que foram incluídos 276 participantes com PD e 79 HC e que os casos de diagnóstico diferencial (DD) foram excluídos da análise (276 + 79 = 355 participantes). Na Seção V-A (p. 7), informa que cada inner fold possui 352 amostras de treino e 89 de validação (soma = 441 amostras em 4/5 dos dados, o que corresponde a ~551–552 amostras totais após o data augmentation da classe HC)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=0"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 (46142) — 'including 276 participants with PD and 79 HC. Data with differential diagnoses were excluded from the present analysis.'"
+    auditoria: "CONCORDA"
+    observacao: "A classe HC (79 participantes) sofreu data augmentation (Seção IV-C) para balancear o conjunto em relação aos 276 PD."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 3 (46140) — 'The model is designed to classify PD and HC using accelerometer and gyroscope data'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 não inclui 'Outro'."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-B/C, p. 3-4 (46140-46141) e Fig. 2 — 'convolves the input signal with three different-sized kernels' e 'where x ∈ R^(B×C×T) is the input signal'"
+    auditoria: "CONCORDA"
+    observacao: "O modelo MSF-CANet é end-to-end e recebe a série temporal pré-processada (dimensão 132×976 na Fig. 2); internamente, possui o módulo FA que aplica FFT, máscara de 3–7 Hz e iFFT de volta ao domínio do tempo. Para o baseline SVM da Tabela II, o texto menciona 'reliance on manually designed features' (Seção V-B, p. 8), sem detalhá-los."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 não inclui 'Outro'."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V-B, p. 7 (46144) — 'traditional machine learning models, such as SVM [43] and random forest (RF) [44], as well as deep learning models like CNN [45], long short term memory (LSTM) [46], and temporal convolutional network (TCN) [47]'"
+    auditoria: "CONCORDA"
+    observacao: "O modelo principal proposto (MSF-CANet) é de Deep Learning; modelos de Classical ML (SVM, RF) e Deep Learning (CNN, LSTM, TCN, Inception, Transformer) foram avaliados como comparativos na Tabela II."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 não inclui 'Outro'."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "MSF-CANet; CNN; SVM; LSTM; RF; TCN; Inception; Transformer"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 8 (46145) — 'Method: CNN, SVM, LSTM, RF, TCN, Inception, Transformer, MSF-CANet'"
+    auditoria: "CONCORDA"
+    observacao: "MSF-CANet combina MSP (Conv1D com kernels k=3, 7 e 15), FA (FFT + máscara 3–7 Hz + iFFT + Conv1D), SCA (AvgPool e MaxPool com MLP compartilhado e Sigmoid) e fusão seguida de shallow CNN (total de 312.014 parâmetros na Fig. 1)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-C, p. 6 (46143) — 'To address the class imbalance in the PADS dataset... targeted data augmentation techniques were employed. These techniques, including random scaling [38], random rotation, and noise addition, were specifically applied to HC data'"
+    auditoria: "CONCORDA"
+    observacao: "Aumento de dados no domínio do sinal (random scaling, random rotation e Gaussian noise) aplicado seletivamente apenas às amostras da classe minoritária (HC) para balancear o dataset."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["CV aninhada", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V-A, p. 7 (46144) — 'A nested 5-fold cross-validation strategy [42] was employed to evaluate the model. In this approach, the data is divided into five outer folds, and for each outer fold, there are five inner folds.'"
+    auditoria: "CONCORDA"
+    observacao: "Validação cruzada aninhada 5×5 (5 outer folds para teste final e 5 inner folds para ajuste de hiperparâmetros)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 não inclui 'Outra'."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção V-A, p. 7 (46144) — 'Each inner fold contains 352 samples for training and 89 samples for validation'; termos buscados: subject-wise, patient-wise, group, participant split; nenhum trecho encontrado."
+    auditoria: "CONCORDA"
+    observacao: "Embora na arquitetura principal os 11 segmentos × 2 punhos × 6 eixos componham um tensor 132×976 por amostra (Fig. 2), o artigo aplica data augmentation na classe HC antes de salvar o arquivo binário (Seção IV-C) e particiona o conjunto resultante em folds de '352 samples for training and 89 samples for validation' (441 amostras no loop interno = 4/5 de ~551 amostras pós-augmentation), sem agrupamento por participante, de modo que amostras originais e aumentadas do mesmo participante HC são sorteadas como amostras independentes. Além disso, na Seção V-F avalia movimentos individuais sem detalhar o particionamento."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Pouco claro"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção V-A, p. 7 (46144) — 'the data is divided into five outer folds, and for each outer fold, there are five inner folds. Each inner fold contains 352 samples for training and 89 samples for validation'"
+    auditoria: "CONCORDA"
+    observacao: "O texto não declara divisão por participante (subject-wise/patient-wise). Além disso, como o número de amostras no loop interno (352 + 89 = 441, correspondendo a 4/5 de ~551 amostras) excede os 355 participantes originais (276 PD + 79 HC), infere-se que cópias aumentadas dos mesmos indivíduos HC compuseram o pool dividido na validação cruzada, inviabilizando a independência entre treino e teste para os participantes HC."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Antes do split"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção IV-C, p. 6 (46143) e Seção V-A, p. 7 (46144) — 'The augmented data, along with the original samples, were stored in the same binary format to maintain consistency.' e 'Each inner fold contains 352 samples for training and 89 samples for validation'"
+    auditoria: "CONCORDA"
+    observacao: "Na Seção IV-C os autores descrevem que os dados aumentados da classe HC foram gerados e armazenados junto às amostras originais no arquivo binário. Na Seção V-A, cada inner fold (4/5 do conjunto completo) contém 352 + 89 = 441 amostras, o que implica um total de ~551–552 amostras antes da divisão em 5 outer folds (276 PD + ~275–276 HC após augmentation, em vez dos 355 participantes originais), comprovando que o balanceamento por augmentation ocorreu antes do split."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Data augmentation aplicado seletivamente apenas às amostras da classe HC: random scaling (fator aleatório entre 0.8 e 1.2), random rotation (rotação com ângulos de Euler aleatórios nos eixos X, Y e Z) e adição de ruído gaussiano (escalado pelo desvio-padrão de cada canal)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-C, p. 6 (46143) — 'random scaling modifies the magnitude... range of 0.8 to 1.2... Random rotation... Euler angles along the \"X,\" \"Y,\" and \"Z\" axes... Gaussian noise [40] is added... selectively applied only to the HC samples'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 (46142) e Seção V-A, p. 7 (46144) — avaliação realizada apenas no PADS via 5-fold CV aninhada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "F1", "Outra", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-E, p. 7 (46144) e Tabela II, p. 8 (46145) — 'The metrics used include Accuracy, Precision, Recall, F1-score (F1), AUC, and the inverse time per sample [41], with units in milliseconds (ms).'"
+    auditoria: "CONCORDA"
+    observacao: "Recall (Eq. 15, TP/(TP+FN)) equivale a Sensitivity. O artigo define F1-score na Eq. 16 como média harmônica entre Precision e Recall da classe positiva (PD), sem especificar agregação macro ou ponderada. Reporta também o tempo por amostra (IT, em ms)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: "IT (inference time / inverse time per sample, em ms)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-E, p. 7 (46144) e Tabela II, p. 8 (46145) — 'inverse time per sample [41], with units in milliseconds (ms)' e coluna 'IT' na Tabela II"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; MSF-CANet; Accuracy; 92.39%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 8 (46145) — 'MSF-CANet: Accuracy 92.39%, Precision 92.62%, Recall 92.40%, F1 92.36%, AUC 0.9797, IT 3.92'"
+    auditoria: "CONCORDA"
+    observacao: "Resultado médio nos 5 outer folds da validação cruzada aninhada usando ambos os punhos e acelerômetro + giroscópio. No texto da Seção V-A (p. 7), o AUC aparece arredondado como 0.98, enquanto no Abstract, Introdução, Conclusão e Tabelas II, III e IV consta 0.9797."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; MSF-CANet; Precision; 92.62% | PD×HC; MSF-CANet; Recall; 92.40% | PD×HC; MSF-CANet; F1; 92.36% | PD×HC; MSF-CANet; AUC; 0.9797 | PD×HC; MSF-CANet; IT; 3.92 ms | PD×HC; SVM; Accuracy; 89.30% | PD×HC; SVM; Precision; 89.83% | PD×HC; SVM; Recall; 89.28% | PD×HC; SVM; F1; 89.25% | PD×HC; SVM; AUC; 0.9457 | PD×HC; SVM; IT; 37.90 ms | PD×HC; CNN; Accuracy; 88.41% | PD×HC; CNN; Precision; 88.78% | PD×HC; CNN; Recall; 88.45% | PD×HC; CNN; F1; 88.38% | PD×HC; CNN; AUC; 0.9426 | PD×HC; CNN; IT; 1.05 ms | PD×HC; LSTM; Accuracy; 87.33% | PD×HC; LSTM; F1; 87.29% | PD×HC; LSTM; AUC; 0.9387 | PD×HC; TCN; Accuracy; 86.44% | PD×HC; TCN; F1; 85.80% | PD×HC; TCN; AUC; 0.9616 | PD×HC; Inception; Accuracy; 79.54% | PD×HC; Inception; F1; 79.38% | PD×HC; Inception; AUC; 0.8904 | PD×HC; RF; Accuracy; 78.38% | PD×HC; RF; F1; 60.56% | PD×HC; RF; AUC; 0.8763 | PD×HC; Transformer; Accuracy; 51.08% | PD×HC; Transformer; F1; 38.48% | PD×HC; Transformer; AUC; 0.5463 | PD×HC (Left hand); MSF-CANet; Accuracy; 92.03% | PD×HC (Left hand); MSF-CANet; Precision; 92.25% | PD×HC (Left hand); MSF-CANet; Recall; 92.02% | PD×HC (Left hand); MSF-CANet; F1; 92.02% | PD×HC (Left hand); MSF-CANet; AUC; 0.9649 | PD×HC (Right hand); MSF-CANet; Accuracy; 91.12% | PD×HC (Right hand); MSF-CANet; Precision; 91.33% | PD×HC (Right hand); MSF-CANet; Recall; 91.22% | PD×HC (Right hand); MSF-CANet; F1; 91.11% | PD×HC (Right hand); MSF-CANet; AUC; 0.9589 | PD×HC (Ablation MSP); MSF-CANet; Accuracy; 92.21% | PD×HC (Ablation FA); MSF-CANet; Accuracy; 90.38% | PD×HC (Ablation SCA); MSF-CANet; Accuracy; 91.75% | PD×HC (StretchHold); MSF-CANet; Accuracy; 84.79% | PD×HC (Relaxed2); MSF-CANet; Accuracy; 73.35% | PD×HC (Relaxed); MSF-CANet; Accuracy; 66.13%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabelas II, III e IV, p. 8-9 (46145-46146) e Seção V-F, p. 10 (46147)"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados: code, GitHub, availability, repository, open source; nenhuma menção a disponibilização de código ou dados derivados encontrada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Ausência de graduação de severidade no PADS, o que impede a detecção estratificada entre estágios iniciais e avançados (Seção V-A, p. 7); variabilidade demográfica e clínica relativamente estreita do dataset, podendo afetar a generalização; desafios de implantação no mundo real devido a diferenças no posicionamento do sensor; menor sensibilidade das tarefas estáticas para detectar características sutis de tremor (Seção VI, p. 11)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V-A, p. 7 (46144) — 'PADS dataset does not currently provide severity grading for PD' e Seção VI, p. 11 (46148) — 'limitations, including a relatively narrow demographic and clinical variability... sensor placement differences... static tasks... reduced sensitivity'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Ampliar a generalização do modelo em populações diversas e explorar integração multimodal nos smartwatches (incluindo frequência cardíaca, variabilidade da frequência cardíaca, temperatura da pele e atividade eletrodérmica) para capturar sintomas motores e não motores e permitir detecção mais precoce e tratamento personalizado (Seção VI, p. 11)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção VI, p. 11 (46148) — 'Future research should aim to enhance the generalizability of the model across diverse populations and explore multimodal integration to further increase diagnostic accuracy.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano."
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção IV-C, p. 6 (46143) e Seção V-A, p. 7 (46144) — 'The noise is scaled relative to the standard deviation of each channel’s data... The augmented data, along with the original samples, were stored in the same binary format' e 'Each inner fold contains 352 samples for training and 89 samples for validation'"
+    observacao: "Embora o ajuste de hiperparâmetros tenha sido isolado no loop interno da validação cruzada aninhada (Seção V-A), o pré-processamento e o data augmentation da classe HC (que utiliza o desvio-padrão de cada canal e gera amostras extras) foram executados e salvos em formato binário único antes da divisão dos folds."
+  risco_vazamento:
+    valor: "Alto"
+    regra: "campo 28 = Antes do split; aux_preproc_apenas_treino = Não"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenário binário PD×HC claramente definido, com N por classe explícito (276 PD, 79 HC) e exclusão explícita de DD."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os itens aplicáveis do recorte do PADS foram informados (modalidade IMU, 8 tarefas, acelerômetro/giroscópio, ambos os punhos e N=355 participantes)."
+    QA3:
+      resposta: "No"
+      nota: 0.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Alto devido à aplicação de data augmentation na classe HC antes da divisão em folds (gerando ~551 amostras partilhadas entre treino e teste) e falta de separação explícita por participante."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta apenas uma métrica incondicionalmente robusta ao desbalanceamento (AUC), além de F1 sem especificar macro/ponderado e Sensitivity (Recall) sem Specificity."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Descreve a arquitetura MSF-CANet, pré-processamento (filtro L1 lambda=50), augmentation e hiperparâmetros de treino (PyTorch 2.5.0, Adam, lr=0.0005, 50 épocas), mas não disponibiliza o código."
+  nota_qa: 3.0
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade inclui Série temporal (IMU) → Sensores, Tarefas, Quais tarefas, Punho e Representação preenchidos"
+    resultado: "OK"
+  - regra: "Soma de PD+HC+DD (campo 15: 276+79+0=355) = campo 14 (355)"
+    resultado: "OK"
+  - regra: "Campo 23 = Outro → campo 28 diferente de Não se aplica (Antes do split) e campo 29 preenchido"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (23→29, 31→32)"
+    resultado: "OK"
+  - regra: "Nota de QA3 (0.0, No) coerente com risco_vazamento calculado (Alto)"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campo 14 (n_participantes): status inferido (355). O texto na Seção IV-A (p. 5) diz 'comprised 469 cases, including 276 participants with PD and 79 HC. Data with differential diagnoses were excluded', citando o total bruto do PADS (469) na mesma frase em que exclui os 114 DD e mantém 276 PD + 79 HC = 355 participantes."
+  - "Campos 26, 27, 28 e QA3: Na Seção IV-C (p. 6), o data augmentation (random scaling, rotation e Gaussian noise) é aplicado às 79 amostras HC e salvo no arquivo binário junto às originais antes da divisão. Na Seção V-A (p. 7), cada inner fold (4/5 dos dados) tem 352 amostras de treino e 89 de validação (441 amostras, ~80% de 551 amostras balanceadas), confirmando augmentation antes do split e vazamento entre cópias originais e aumentadas dos mesmos indivíduos HC."
+  - "Campo 31 e QA4: O artigo reporta Accuracy, Precision, Recall (Sensitivity), F1 e AUC (além de IT em ms), sem Specificity, Balanced accuracy ou MCC, resultando em nota 0.5 (Partially) em QA4."
+  - "Campo 35 e QA5: Não há seção de disponibilidade de código ou link de repositório no artigo."

@@ -1,0 +1,378 @@
+meta:
+  row_id: 13
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito, mas com Ressalvas"
+  zotero_key: "LX7ZLG92"
+  titulo: "Deep Representation Learning of Wrist-Worn Sensor Signals for Latent Motor Abnormality Scoring in Parkinson’s Disease"
+  ressalva_triagem: "Preprint (medRxiv, CE2=Sim) incluído com ressalvas (Tier A); confirmar experimento primário no PADS e protocolo de validação."
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (High)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 13
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho, p. 1 — 'medRxiv preprint doi: https://doi.org/10.64898/2026.09.03.26362173; this version posted September 7, 2026.'"
+    auditoria: null
+    observacao: "Ressalva da triagem confirmada: preprint depositado no medRxiv em 7 de setembro de 2026."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'In this paper, a multi-stream deep representation network is introduced to derive a latent motor abnormality score'"
+    auditoria: null
+    observacao: "Propõe arquitetura multi-stream (1D-CNN + Transformer) treinada com perda contrastiva supervisionada (SupCL) e center loss baseada em protótipos para gerar um escore contínuo de anormalidade motora (MAS) e classificar PD vs. HC."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 preenchido com 'Novo modelo'; não se aplica."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 — 'This study used the Parkinson’s Disease Smartwatch (PADS) dataset [19], which contains wrist-worn inertial sensor recordings'"
+    auditoria: null
+    observacao: "Ressalva da triagem confirmada: o PADS é a única base utilizada nos experimentos primários de treinamento, validação cruzada e análises exploratórias."
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 — 'This study used the Parkinson’s Disease Smartwatch (PADS) dataset [19]'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas o dataset PADS foi utilizado nos experimentos (Seção 3.1, p. 3)."
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Metadados demográficos-clínicos", "Questionário (PDNMS)", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3; Seção 4.5, p. 13; Seção 4.6, p. 14 — 'six kinematic channels... Non-Motor Symptoms (NMS) questionnaire... disease duration is grouped'"
+    auditoria: null
+    observacao: "A rede neural recebe como entrada exclusivamente a Série temporal (IMU). O Questionário (PDNMS, citado com 25 questões binárias na Seção 4.5, p. 13) e os Metadados clínicos (duração da doença na Seção 4.6, p. 14 e subtipo de PD derivado de disease_comment na Seção 4.7, p. 15) são usados nas análises exploratórias de validação clínica do escore MAS."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 3 — 'where all the 11 input tasks are categorized into 3 different groups such as rest, posture, and kinematic.'"
+    auditoria: null
+    observacao: "Arquitetura multi-stream em que cada uma das 11 tarefas é processada em uma stream independente e combinada na etapa de escore/classificação pela média das distâncias aos centroides."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11 tarefas): Relaxed; RelaxedTask; StretchHold; LiftHold; HoldWeight; PointFinger; DrinkGlas; CrossArms; TouchIndex; TouchNose; Entertainment"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 — 'such as Relaxed, RelaxedTask, StretchHold, LiftHold, HoldWeight, PointFinger, DrinkGlas, CrossArms, TouchIndex, TouchNose, and Entertainment.'"
+    auditoria: null
+    observacao: "Na Figura 7 (p. 12), a tarefa 'Entertainment' aparece grafada como 'Entrainment' no eixo horizontal, mas no texto (Seções 3.1, 3.2 e 4.3) e na Figura 2 (p. 5) consta 'Entertainment'."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 — 'Each wrist recording included six kinematic channels: three-axis accelerometer signals and three-axis gyroscope signals.'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 preenchido apenas com 'Acelerômetro' e 'Giroscópio'; não se aplica."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 3 — 'For each selected task, signals from both the left and right wrists are used, including three-axis accelerometer and three-axis gyroscope channels.'"
+    auditoria: null
+    observacao: "Os 6 canais do punho esquerdo e os 6 canais do punho direito são combinados formando 12 canais de entrada por stream de tarefa."
+  - id: 14
+    chave: "n_participantes"
+    valor: 355
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 — 'After selecting these two groups, the study cohort consisted of 355 subjects, including 79 HC and 276 PD participants.'"
+    auditoria: null
+    observacao: null
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=0"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 — 'the study cohort consisted of 355 subjects, including 79 HC and 276 PD participants.'"
+    auditoria: null
+    observacao: "O grupo DD (diagnóstico diferencial) foi excluído da análise, que focou na discriminação binária entre PD e HC."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 — 'the present analysis focused on the binary discrimination between Healthy Controls (HC) and individuals with Parkinson’s Disease (PD).'"
+    auditoria: null
+    observacao: "Além da classificação binária PD×HC, o estudo deriva o escore contínuo Latent Motor Abnormality Score (MAS) e analisa sua separação entre PD e HC via ANOVA e suas relações com NMS, duração da doença e subtipos de PD."
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 preenchido apenas com 'PD×HC'; não se aplica."
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 3 — 'This results in a total of 12 input channels for each stream. The length of each channel is equal to 1024 points'"
+    auditoria: null
+    observacao: "Tarefas mais longas de 2048 pontos (Relaxed, RelaxedTask e Entertainment) foram divididas em 2 partes iguais de 1024 pontos; todos os sinais foram redimensionados para comprimento fixo de 1024 amostras."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 preenchido com 'Série bruta'; não se aplica."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'The proposed network includes a local feature extractor based on one-dimensional convolutional layers, a global feature extractor based on Transformer layers'"
+    auditoria: null
+    observacao: "Rede neural profunda multi-stream treinada de forma supervisionada com Supervised Contrastive Learning (SupCL) e center loss baseada em protótipos; classificação final pela menor distância média aos centroides de treino."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 preenchido com 'Deep Learning'; não se aplica."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Multi-stream deep representation learning network (1D-CNN + Transformer + Supervised Contrastive Learning + Prototype-based Center Loss)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'multi-stream deep representation network... one-dimensional convolutional layers... Transformer layers... supervised contrastive learning and center loss'"
+    auditoria: null
+    observacao: "Cada uma das 11 streams possui 3 camadas Conv1D (kernels 9, 7, 5; canais 8, 16, 16; BatchNorm1D, ReLU, MaxPool/Dropout), bloco Transformer (positional encoding senoidal, 2 attention heads, dim 16, dk=8, MLP ratio 2.0), average pooling (2 bins), embedding head (FC 32->8->64 + L2 norm) e projection head (FC 64->64->16 + L2 norm); classificador por distância euclidiana média aos centroides de treino e teste estatístico ANOVA."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 9 — 'In the training subjects of each fold, there are 63 HC and 221 PD subjects. Also, in the test subjects of each fold, there are 16 HC and 55 PD subjects.'"
+    auditoria: null
+    observacao: "Não há aplicação de SMOTE, GAN ou augmentation de sinais na base (mantendo 63 HC e 221 PD no treino). Nota: durante a fase de treinamento da perda contrastiva, a composição de cada mini-batch foi fixada em 8 sujeitos HC e 8 sujeitos PD ('Number of samples per batch in the training phase is selected 8 HC and 8 PD subjects', Seção 4.1, p. 9)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 9 — 'a classification process for the HC and PD subjects is performed based on 5-fold cross validation test and subject data split.'"
+    auditoria: null
+    observacao: "Ressalva da triagem confirmada: validação cruzada de 5 folds estratificada no nível do sujeito (284 sujeitos no treino [63 HC, 221 PD] e 71 no teste [16 HC, 55 PD] em cada fold, com random seed fixa igual a 81)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 preenchido com 'k-fold CV'; não se aplica."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 9 — 'all the 355 subjects’ data (including 79 HC and 276 PD subjects) are split into 284 subjects in training and 71 subjects in test for each fold.'"
+    auditoria: null
+    observacao: "Divisão realizada estritamente por participante (subject-level cross-validation)."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'Across five-fold subject-level cross-validation, the proposed method was assessed for PD/HC classification'"
+    auditoria: null
+    observacao: "O texto declara explicitamente 'five-fold subject-level cross-validation' e 'subject data split', garantindo que nenhum participante apareça simultaneamente no treino e no teste em um mesmo fold."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = 'Nenhum'; cada fold de treino mantém a proporção original de 63 HC e 221 PD (Seção 4.1, p. 9)."
+    auditoria: null
+    observacao: "A seleção de 8 HC e 8 PD por mini-batch ocorre exclusivamente na fase de treino após o split por participante ('in the training phase', Seção 4.1, p. 9)."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = 'Nenhum'; não se aplica."
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 9 — 'Model evaluation is performed only on the held-out test fold in each cross-validation iteration.'"
+    auditoria: null
+    observacao: "Avaliação realizada apenas nos folds de teste internos do próprio PADS."
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "Balanced accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 9; Figura 6, p. 11 — 'Accuracy, Balanced Accuracy, Precision, Recall, and F1-score... Area Under Curve (AUC) of ROC'"
+    auditoria: null
+    observacao: "Recall (Sensitivity) e F1-score foram calculados para a classe positiva (PD) conforme Equações 17 e 18 (p. 10), não sendo F1 macro nem ponderado. A matriz de confusão normalizada (Fig. 5, p. 10) também exibe a taxa de verdadeiros negativos (0.91, 72/79 HC). Na Seção 4.8 (Tabela 3, p. 15), o escore contínuo MAS foi avaliado via ANOVA (F-statistic, p-value e tamanho de efeito η²)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 não contém 'Outra'; não se aplica."
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; Multi-stream deep representation learning network; Balanced accuracy; 85.89% ± 3.93%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1, p. 11 — 'Average | Accuracy 83.10% ± 3.15% | Balanced Accuracy 85.89% ± 3.93%'"
+    auditoria: null
+    observacao: "Média ± desvio-padrão nos 5 folds de teste (held-out test folds)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; Multi-stream deep representation learning network; Accuracy; 83.10% ± 3.15% | PD×HC; Multi-stream deep representation learning network; Precision; 97.02% ± 2.33% | PD×HC; Multi-stream deep representation learning network; Recall (Sensitivity); 80.79% ± 3.83% | PD×HC; Multi-stream deep representation learning network; F1-score; 88.11% ± 2.40% | PD×HC; Multi-stream deep representation learning network; AUC; 0.917 | PD×HC (Motor Abnormality Score); ANOVA; F-statistic; 222.99 (p < 0.001, η² = 0.3871)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1 e Figura 6, p. 11; Tabela 3, p. 15 — 'Average: 83.10% ± 3.15%, 85.89% ± 3.93%, 97.02% ± 2.33%, 80.79% ± 3.83%, 88.11% ± 2.40%; All folds AUC=0.917; F=222.99'"
+    auditoria: null
+    observacao: "Resultados por fold na Tabela 1 (p. 11): Fold #1 (Acc 87.32%, BalAcc 89.60%, Prec 97.92%, Rec 85.45%, F1 91.29%); Fold #2 (Acc 81.69%, BalAcc 85.97%, Prec 97.73%, Rec 78.18%, F1 86.87%); Fold #3 (Acc 78.87%, BalAcc 81.93%, Prec 95.45%, Rec 76.36%, F1 84.85%); Fold #4 (Acc 84.51%, BalAcc 90.00%, Prec 100%, Rec 80.00%, F1 88.89%); Fold #5 (Acc 83.10%, BalAcc 81.96%, Prec 94.00%, Rec 83.93%, F1 88.68%). Matriz de confusão agregada nos 5 folds de teste (Fig. 5, p. 10): TN=72, FP=7 (HC=79); FN=53, TP=223 (PD=276)."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Código"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 10, p. 17 — 'The source code developed for this study is publicly available at the following GitHub repository: https://github.com/MehdiMohtavipour/Latent-Motor-Abnormality-Scoring-of-Parkinson-s-Disease'"
+    auditoria: null
+    observacao: "Repositório público no GitHub disponibilizado pelo autor."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Ausência de escalas clínicas de severidade motora (como MDS-UPDRS Part III) no PADS, restringindo a análise ao uso do questionário NMS como proxy indireto (Seções 4.5 e 5, p. 13 e 16); menor número de amostras e alta variabilidade nas faixas superiores de NMS e de duração da doença (Seções 4.5 e 4.6, p. 13-14); modelo mais conservador na detecção de PD, com menor recall (80.79%, 53 falsos negativos) atribuído à heterogeneidade da doença e casos leves semelhantes a controles saudáveis (Seções 4.1 e 5, p. 10 e 16); substancial sobreposição do escore entre subtipos de PD por ausência de supervisão específica de subtipo no treino (Seções 4.7 e 5, p. 15-16)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5, p. 16 — 'these analyses should be considered exploratory... highlighting the need for future validation against established motor severity scales such as MDS-UPDRS Part III.'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Validação do escore latente de anormalidade motora frente a escalas clínicas padrão de severidade motora como a MDS-UPDRS Part III (Seção 5, p. 16); desenvolvimento de abordagens de aprendizado multi-tarefa ou sensíveis a subtipos para capturar fenótipos motores específicos como tremor-dominante ou acinético-rígido (Seção 5, p. 16); estudos longitudinais para rastrear a progressão da doença ao longo do tempo a partir das mudanças no escore proposto (Seção 6, p. 16)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6, p. 16 — 'Longitudinal study and tracking the disease progression according to changes of proposed abnormality scoring over time would be the future work of this study.'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano conforme instruções do guia."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 3.2.3, p. 8; Seção 4, p. 9 — 'm is equal to 1.2245... considered as 0.2877 and 0.4700... learning rate of 1.52×10-3 and a weight decay of 3.75×10-3. Dropout with a rate of 0.384'"
+    observacao: "Os centroides de classe (μHC,s e μPD,s) são explicitamente estimados apenas nos dados de treino de cada fold (Seção 3.3, p. 8 e Seção 4.1, p. 9). Contudo, o artigo reporta hiperparâmetros com alta precisão decimal (m=1.2245, λ1=0.2877, λ2=0.4700, lr=1.52e-3, weight decay=3.75e-3, dropout=0.384) sem descrever conjunto de validação separado ou CV aninhada (os 355 sujeitos são divididos diretamente em 284 treino e 71 teste por fold), não informando se o ajuste de hiperparâmetros utilizou os folds de teste."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; 27 = Sim – explícita; 28 = Não se aplica; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenário de classificação binária PD×HC explicitamente definido, com exclusão clara dos demais grupos e N por classe informado (276 PD e 79 HC)."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os cinco itens aplicáveis do recorte PADS (modalidade, todas as 11 tarefas nomeadas, sensores, ambos os punhos e N=355) estão descritos."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "Particionamento explícito por participante (5-fold CV) e centroides calculados apenas no treino, mas sem relato de separação para o ajuste de hiperparâmetros (risco Moderado)."
+    QA4:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [31]
+      justificativa: "Reporta pelo menos duas métricas robustas ao desbalanceamento de classes (Balanced accuracy e ROC-AUC), além de Precision, Recall e F1-score."
+    QA5:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [35, 22, 29]
+      justificativa: "Código-fonte disponível em repositório público no GitHub e arquitetura, função de perda, hiperparâmetros e segmentação dos sinais detalhadamente descritos."
+  nota_qa: 4.5
+  nota_qa_max: 5
+  faixa_qa: "Alta"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica; Quais tarefas null; Representação null"
+    resultado: "OK (inclui Série temporal IMU)"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (cenário binário PD×HC)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (276 + 79 + 0 = 355)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (Participante → Sim – explícita)"
+  - regra: "Campo 23 = Nenhum ou Não se aplica → campo 28 = Não se aplica e campo 29 null"
+    resultado: "OK"
+  - regra: "Campo 9 ≠ Não se aplica → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK (nenhum Outro/Outra marcado)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (Moderado → Partially / 0.5)"
+pontos_para_revisao_humana:
+  - "Ressalva da triagem confirmada: trata-se de preprint no medRxiv (setembro de 2026) cujo experimento primário é no PADS (N=355, PD×HC) com validação cruzada 5-fold explícita por participante."
+  - "Campo aux_preproc_apenas_treino e QA3: embora os centroides sejam calculados estritamente nos sujeitos de treino de cada fold, os hiperparâmetros (m=1.2245, λ1=0.2877, λ2=0.4700, lr=1.52e-3, weight decay=3.75e-3, dropout=0.384) sugerem otimização prévia sem relato de conjunto de validação separado; verificar no repositório GitHub se houve tuning usando os folds de teste."
+  - "Campos 23 e 28: não houve resampling da base de treino (63 HC e 221 PD por fold), mas cada mini-batch na fase de treino foi balanceado com 8 HC e 8 PD (Seção 4.1, p. 9); confirmar se prefere manter 'Nenhum' ou classificar a amostragem por batch como 'Outro' ('Só no treino')."
+  - "Campo 8 (modalidade_pads): além de 'Série temporal (IMU)' (única entrada do modelo), foram marcados 'Questionário (PDNMS)' e 'Metadados demográficos-clínicos' por serem usados nas análises exploratórias das Seções 4.5 a 4.7; confirmar se o critério do protocolo restringe o campo 8 às entradas do classificador."

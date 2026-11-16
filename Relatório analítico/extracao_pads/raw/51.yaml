@@ -1,0 +1,373 @@
+meta:
+  row_id: 51
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "JB6XBHBW"
+  titulo: "Adaptive Domain-Adversarial Multi-Instance Learning for Wearable-Sensor-Based Parkinson’s Disease Severity Assessment"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 51
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2024"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Rodapé, p. 1 (6028) — '2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM) | 979-8-3503-8622-6/24/$31.00 ©2024 IEEE | DOI: 10.1109/BIBM62325.2024.10821840'"
+    auditoria: null
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 (6028) — 'we propose Adaptive Domain-Adversarial Multi-Instance Learning (ADAMIL), which combines and refines Multiple-Instance Learning (MIL) with domain-adversarial techniques.'"
+    auditoria: null
+    observacao: null
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 preenchido com opção padronizada ('Novo modelo')."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 6 (6033) — 'This study uses two datasets to assess Parkinson’s Disease (PD) severity: a private dataset collected by our team and the publicly available Parkinson’s Disease Smartwatch (PADS) dataset [32].'"
+    auditoria: null
+    observacao: "O artigo utiliza duas bases principais em paralelo (treinadas e avaliadas independentemente por 4-fold CV): um dataset privado para gravidade da DP (4 classes) e o PADS para diagnóstico diferencial (PD vs. DD)."
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS", "Privado-próprio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 6 (6033) — 'This study uses two datasets to assess Parkinson’s Disease (PD) severity: a private dataset collected by our team and the publicly available Parkinson’s Disease Smartwatch (PADS) dataset [32].'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "Private Dataset (Shimmer devices no punho direito a 200 Hz; 135 participantes: 35 HC, 63 mild PD, 21 moderate PD e 16 severe PD; 16 atividades)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 6 (6033) — 'Private Dataset: The private dataset was collected using Shimmer devices (200 Hz) worn on the right wrist... It includes 35 healthy controls (HC), 63 mild, 21 moderate, and 16 severe PD cases.'"
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 6 (6033) — 'The PADS dataset was collected using Apple Watch Series 4 (100 Hz) worn on the right wrist, capturing similar sensor data [three-axis acceleration and angular velocity].'"
+    auditoria: null
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 6 (6033) — 'It includes 276 PD and 114 differential diagnosis (DD) cases, involving 14 activities, as detailed in Table II.'"
+    auditoria: null
+    observacao: "Modelo por tarefa: os modelos são treinados e avaliados individualmente para cada uma das 14 atividades listadas nas Tabelas II e IV."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (14 tarefas): Relaxed1; Relaxed2; RelaxedTask1; RelaxedTask2; StretchHold; LiftHold; HoldWeight; PointFinger; DrinkGlas; CrossArms; TouchIndex; TouchNose; Entrainment1; Entrainment2"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 6 (6033) — '1 Relaxed1... 2 Relaxed2... 3 RelaxedTask1... 4 RelaxedTask2... 5 StretchHold... 6 LiftHold... 7 HoldWeight... 8 PointFinger... 9 DrinkGlas... 10 CrossArms... 11 TouchIndex... 12 TouchNose... 13 Entrainment1... 14 Entrainment2'"
+    auditoria: null
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-A, p. 3 (6030) — 'Each x_i^t in R^{6xd} represents tri-axial acceleration and angular velocity over d time points.'"
+    auditoria: null
+    observacao: "Confirmado também na Seção III-A, p. 6 (6033): 'capturing three-axis acceleration and angular velocity... capturing similar sensor data.'"
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 preenchido apenas com opções padronizadas ('Acelerômetro', 'Giroscópio')."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Direito"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 6 (6033) — 'The PADS dataset was collected using Apple Watch Series 4 (100 Hz) worn on the right wrist, capturing similar sensor data.'"
+    auditoria: null
+    observacao: "No resumo e conclusão os autores também destacam o uso de sensor em um único punho ('achieved using only a single wrist-worn sensor')."
+  - id: 14
+    chave: "n_participantes"
+    valor: 390
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 6 (6033) — 'It includes 276 PD and 114 differential diagnosis (DD) cases, involving 14 activities, as detailed in Table II.'"
+    auditoria: null
+    observacao: "Soma direta dos dois grupos reportados para o experimento no PADS: 276 PD + 114 DD = 390 participantes."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=0; DD=114"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 6 (6033) — 'It includes 276 PD and 114 differential diagnosis (DD) cases, involving 14 activities, as detailed in Table II.'"
+    auditoria: null
+    observacao: "O grupo HC do PADS não foi incluído nos experimentos."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×DD"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela IV, p. 7 (6034) — 'TABLE IV: Model Performance Comparison for PD vs. DD Classification / PD vs. DD in PADS [32]'"
+    auditoria: null
+    observacao: "O cenário de 4 classes de gravidade (HC vs. Mild vs. Moderate vs. Severe) foi realizado exclusivamente no dataset privado (Tabela III)."
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "No PADS foi avaliado exclusivamente o cenário padronizado 'PD×DD'."
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)", "Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-C, p. 4 (6031) — 'begins by segmenting sensor data into T sliding windows. Each window is linearly projected into a 1 x L patch embedding' e Seção III-C, p. 6 (6033) — 'including the handcrafted feature-based LGBM [11]'"
+    auditoria: null
+    observacao: "O modelo proposto (ADAMIL) e os baselines de DL (CNN-LSTM, LSTM-CNN) recebem janelas da série temporal (6 canais), enquanto o baseline LGBM utiliza atributos manuais (handcrafted)."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 preenchido com opções padronizadas."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-C, p. 6 (6033) — 'compare the performance of our proposed ADAMIL method with state-of-the-art models, including the handcrafted feature-based LGBM [11] and deep learning models such as CNN-LSTM [12] and LSTM-CNN [13].'"
+    auditoria: null
+    observacao: "O método proposto ADAMIL é uma arquitetura de Deep Learning baseada em Multi-Instance Learning com self-attention (inspirado em ViT), treinamento adversarial de domínio (GRL/DANN) e agrupamento iterativo pseudo-rotulado (self-supervised pseudo-labeling) de domínios latentes."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 preenchido com opções padronizadas."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "ADAMIL (Adaptive Domain-Adversarial Multi-Instance Learning); LGBM; CNN-LSTM (CNNLSTM); LSTM-CNN (LSTMCNN)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-C e Tabela IV, p. 6-7 (6033-6034) — 'LGBM[11] CNNLSTM[12] LSTMCNN[13] Ours [ADAMIL]'"
+    auditoria: null
+    observacao: null
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção II-B, p. 4 (6031) — 'We apply a band-pass filter (0.3 to 20 Hz) and Z-score standardization to reduce noise in sensor data. The time-series data is segmented using a sliding window (1-second length, 50% overlap)'"
+    auditoria: null
+    observacao: "O pipeline de pré-processamento descrito na Seção II-B e no Algoritmo 1 inclui apenas janelamento deslizante, filtragem passa-banda e padronização Z-score, sem técnicas de balanceamento de classes ou data augmentation."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-B, p. 6 (6033) — 'Experiments are conducted using a 4-fold cross-validation strategy, where participants from each class are evenly divided, with three groups used for training and one for testing.'"
+    auditoria: null
+    observacao: "4-fold cross-validation estratificado por classe no nível de participante."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 preenchido com opção padronizada ('k-fold CV')."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-B, p. 6 (6033) — 'where participants from each class are evenly divided, with three groups used for training and one for testing.'"
+    auditoria: null
+    observacao: "Além da divisão explícita dos participantes em 4 grupos por classe, na formulação MIL cada pacote (bag X_i) corresponde à sequência completa de um paciente (Seção II-G, Eq. 8)."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-B, p. 6 (6033) — 'where participants from each class are evenly divided, with three groups used for training and one for testing.'"
+    auditoria: null
+    observacao: "Confirmado também na Figura 1(b), p. 2 (6029): 'Train on users D^1 and D^2 / Test on users D^{te} / 2. D^{te} is unseen in training.'"
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = 'Nenhum'; nenhuma técnica de balanceamento ou oversampling foi utilizada."
+    auditoria: null
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = 'Nenhum'; não há balanceamento aplicado."
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-B e III-C, p. 6 (6033) — 'Experiments are conducted using a 4-fold cross-validation strategy... across four classification tasks: (i) HC/PD/Mild/Moderate/Severe [in Private Dataset] and (ii) PD vs. differential diagnosis (DD) [in PADS]'"
+    auditoria: null
+    observacao: "Cada dataset foi avaliado internamente por 4-fold CV em tarefas distintas (gravidade em 4 classes no dataset privado e PD vs. DD no PADS); não houve avaliação cruzada entre datasets."
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-C, p. 6 (6033) — 'The evaluation metrics—accuracy, macro-precision, macro-recall, and macro-F1—are applied across four classification tasks' e Tabela IV ('Acc Pre Rec F1')"
+    auditoria: null
+    observacao: "Precision, Recall (Sensitivity) e F1 são todos calculados na forma macro (macro-precision, macro-recall e macro-F1)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Todas as métricas reportadas correspondem às opções padronizadas do formulário (Accuracy, Precision, Sensitivity/Recall, F1)."
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×DD (tarefa StretchHold); ADAMIL (Ours); Accuracy; 81.44% (Macro-F1: 75.75%; Macro-Precision: 78.36%; Macro-Recall: 74.22%)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-C, p. 6 (6033) — 'an accuracy of 81.44% with an F1 score of 75.75% in PD vs. DD classification' e Tabela IV, p. 7 (6034), linha 5 (StretchHold) — '81.44 78.36 74.22 75.75'"
+    auditoria: null
+    observacao: "Na tarefa TouchNose (linha 12 da Tabela IV), o modelo ADAMIL também atingiu Accuracy de 81.44% (com Macro-Precision: 79.06%, Macro-Recall: 73.16% e Macro-F1: 75.09%). O resultado de 85.29% Accuracy e 80.57% F1 destacado no Abstract refere-se ao dataset privado (tarefa DrinkWater, Tabela III)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×DD (TouchNose); ADAMIL; Accuracy; 81.44% (Pre: 79.06%; Rec: 73.16%; F1: 75.09%) | PD×DD (DrinkGlas); ADAMIL; Accuracy; 80.61% (Pre: 77.81%; Rec: 73.24%; F1: 74.82%) | PD×DD (CrossArms); ADAMIL; Accuracy; 80.61% (Pre: 79.51%; Rec: 71.24%; F1: 73.41%) | PD×DD (Relaxed1); ADAMIL; Accuracy; 80.61% (Pre: 82.74%; Rec: 69.24%; F1: 71.70%) | PD×DD (LiftHold); ADAMIL; Accuracy; 80.41% (Pre: 77.16%; Rec: 72.44%; F1: 74.06%) | PD×DD (Entrainment1); ADAMIL; Accuracy; 80.41% (Pre: 82.19%; Rec: 68.19%; F1: 70.62%) | PD×DD (HoldWeight); ADAMIL; Accuracy; 78.57% (Pre: 74.43%; Rec: 75.79%; F1: 75.01%) | PD×DD (Relaxed2); ADAMIL; Accuracy; 78.57% (Pre: 74.29%; Rec: 73.79%; F1: 74.02%) | PD×DD (PointFinger); ADAMIL; Accuracy; 78.57% (Pre: 76.11%; Rec: 68.79%; F1: 70.61%) | PD×DD (RelaxedTask2); ADAMIL; Accuracy; 77.55% (Pre: 73.59%; Rec: 69.07%; F1: 70.47%) | PD×DD (Entrainment2); ADAMIL; Accuracy; 77.32% (Pre: 72.35%; Rec: 70.26%; F1: 71.10%) | PD×DD (TouchIndex); ADAMIL; Accuracy; 77.32% (Pre: 73.21%; Rec: 67.08%; F1: 68.65%) | PD×DD (RelaxedTask1); ADAMIL; Accuracy; 76.53% (Pre: 71.79%; Rec: 69.34%; F1: 70.26%) | PD×DD (StretchHold); LGBM; Accuracy; 71.13% (Pre: 61.02%; Rec: 52.12%; F1: 47.61%) | PD×DD (StretchHold); CNNLSTM; Accuracy; 77.32% (Pre: 87.91%; Rec: 60.71%; F1: 60.77%) | PD×DD (StretchHold); LSTMCNN; Accuracy; 74.23% (Pre: 86.70%; Rec: 55.36%; F1: 52.01%)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela IV, p. 7 (6034) — 'TABLE IV: Model Performance Comparison for PD vs. DD Classification / PD vs. DD in PADS [32]'"
+    auditoria: null
+    observacao: "A Tabela IV reporta Accuracy, Macro-Precision, Macro-Recall e Macro-F1 para as 14 tarefas nos 4 modelos (LGBM, CNNLSTM, LSTMCNN e ADAMIL)."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Código"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 (6028) — 'The code is available at https://github.com/xzxzy12345XZY/ADAMIL.'"
+    auditoria: null
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Necessidade de ajuste manual do número predefinido de distribuições latentes (K) e ausência de conhecimento prévio específico do domínio no componente MIL (Seção IV, p. 7 / 6034)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 7 (6034) — 'Future work will enhance the MIL component by incorporating domain-specific prior knowledge and automate the selection of latent distributions (K), improving adaptability and minimizing manual tuning'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Incorporar conhecimento prévio específico do domínio ao componente de Multiple-Instance Learning (MIL) e automatizar a seleção do número de distribuições latentes (K) para reduzir o ajuste manual e ampliar a aplicabilidade clínica (Seção IV, p. 7 / 6034)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 7 (6034) — 'Future work will enhance the MIL component by incorporating domain-specific prior knowledge and automate the selection of latent distributions (K), improving adaptability and minimizing manual tuning for broader real-world applications.'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção II-B, p. 4 (6031) e Seção III-B, p. 6 (6033) — 'We apply a band-pass filter (0.3 to 20 Hz) and Z-score standardization... learning rate selected from 5 x 10^{-3} or 5 x 10^{-4}, and the predefined number of domain distributions K is chosen from the range (2, 23).'"
+    observacao: "Embora o Algoritmo 1 indique o pré-processamento no estágio de treinamento sobre D^{tr}, o texto não explicita se a média/desvio-padrão do Z-score foram ajustados apenas nos folds de treino ou por gravação, nem se a escolha dos hiperparâmetros (learning rate e número de domínios K entre 2 e 23) usou um subconjunto de validação separado do fold de teste."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; 27 = Sim – explícita; 28 = Não se aplica; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "O cenário de classificação no PADS (PD×DD) e os tamanhos dos grupos (276 PD e 114 DD) estão claramente definidos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os cinco itens do recorte do PADS (modalidade IMU, todas as 14 tarefas, acelerômetro e giroscópio, punho direito e N=390 participantes) estão informados."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "Há separação explícita por participante no 4-fold CV, mas não há confirmação de isolamento do conjunto de teste durante a padronização Z-score e a seleção do hiperparâmetro K (risco de vazamento Moderado)."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta Macro-F1 (uma métrica robusta explícita na lista do protocolo), além de Accuracy, Macro-Precision e Macro-Recall, mas não reporta segunda métrica robusta isolada da lista (como Balanced accuracy, MCC, AUC ou o par Sensitivity + Specificity)."
+    QA5:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [35, 22, 29]
+      justificativa: "Disponibiliza o código em repositório público no GitHub e descreve a arquitetura, o pré-processamento e os hiperparâmetros principais."
+  nota_qa: 4.0
+  nota_qa_max: 5
+  faixa_qa: "Alta"
+verificacao_de_coerencia:
+  - regra: "Soma de PD+HC+DD (campo 15: 276+0+114=390) = campo 14 (390)"
+    resultado: "OK"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita"
+    resultado: "OK"
+  - regra: "Campo 23 = Nenhum → campo 28 = Não se aplica e campo 29 = null"
+    resultado: "OK"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK"
+  - regra: "Nota de QA3 (0.5 / Partially) coerente com risco_vazamento calculado (Moderado)"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campo 14 (n_participantes = 390): status inferido a partir da soma explícita de 276 PD e 114 DD descrita na Seção III-A (p. 6)."
+  - "Campo 31 e QA4: os autores reportam Macro-Recall ('macro-recall', coluna 'Rec' na Tabela IV) em um problema binário (PD vs. DD), o que equivale matematicamente à média entre Sensitivity e Specificity (Balanced accuracy), mas como não usam esse rótulo nem reportam Specificity separadamente, foi pontuado como 0.5 (Partially) em QA4."
+  - "Campo aux_preproc_apenas_treino e QA3: verificar no código do GitHub se a busca de K no intervalo (2, 23) e a normalização Z-score foram restritas aos folds de treino."

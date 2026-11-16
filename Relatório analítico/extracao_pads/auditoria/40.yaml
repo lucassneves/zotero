@@ -1,0 +1,386 @@
+meta:
+  row_id: 40
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "CNUX42CD"
+  titulo: "A Generative Adversarial Network-Based Method for Synthesizing Tremor Data in Parkinson’s Disease"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 40
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "p. 1 — 'https://doi.org/10.1007/s12559-025-10533-y ... part of Springer Nature 2025; Published online: 20 December 2025'"
+    auditoria: "CONCORDA"
+    observacao: "O cabeçalho do fascículo indica 'Cognitive Computation (2026) 18:3', mas o DOI (10.1007/s12559-025-10533-y), o copyright (2025) e a data de publicação online (20 December 2025) indicam 2025; adotado 2025 conforme a regra."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'We propose the Conditional TremorGANs model, a GAN-based method for generating synthetic tremor data'"
+    auditoria: "CONCORDA"
+    observacao: "Propõe a arquitetura generativa condicional Conditional TremorGANs e um protocolo de avaliação da qualidade e utilidade dos dados sintéticos na classificação de DP."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Não foi marcada a opção 'Outro' no campo 3."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Preliminaries (Dataset Description), p. 3 — 'The dataset used in this study is the Parkinson’s Disease Smartwatch (PADS) dataset'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Preliminaries (Dataset Description), p. 3 — 'The dataset used in this study is the Parkinson’s Disease Smartwatch (PADS) dataset'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas o PADS foi utilizado nos experimentos; não foi marcada opção 'Outro público' ou 'Privado-próprio' no campo 6."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Metadados demográficos-clínicos", "Questionário (PDNMS)", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "p. 4-5, Algoritmo 1 e p. 14 — 'Input: (1) random noises z; (2) conditional information from questionnaire q; (3) Real sensor data from smartwatches s'"
+    auditoria: "CONCORDA"
+    observacao: "Atributos demográficos/clínicos (idade, sexo, histórico da doença, rótulos de categoria/tarefa) e dados não motores do questionário são citados como entradas condicionais do gerador (p. 4, p. 5 Algoritmo 1, p. 14), enquanto a classificação de participantes usa apenas dados motores de série temporal IMU (p. 14). Na discussão (p. 18), os autores mencionam explorar a integração de metadados clínicos com sinais de sensores em trabalhos futuros."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Experimental Settings, p. 8-9 — 'performing two 20.48-second resting tasks and nine 10.24-second active tasks... resulting in 13 tasks per participant'"
+    auditoria: "CONCORDA"
+    observacao: "As 11 tarefas do protocolo são divididas em 13 segmentos de 10,24 s (as 2 tarefas de repouso de 20,48 s são subdivididas em duas de 10,24 s cada) e agrupadas em 3 categorias (rest, posture, kinetic/action-execution) codificadas como 0, 1 e 2."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11 tarefas divididas em 13 segmentos de 10,24 s nas categorias rest, posture holding e movement execution/kinetic; exemplos nominalmente citados: resting while calculating serial sevens; holding a one-kilogram weight in each hand for 5 seconds; drinking from a glass)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Data Preprocessing e Experimental Settings, p. 7-10 — 'Among the 11 tasks collected... two 20.48-second resting tasks and nine 10.24-second active tasks'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Quantitative Metrics Assessment, p. 11 e 13 — 'We calculated the DTW distances for each axis of the accelerometer and gyroscope signals'"
+    auditoria: "CONCORDA"
+    observacao: "Sinais de 3 eixos do acelerômetro e 3 eixos do giroscópio são sintetizados e avaliados (Figuras 4 a 8). Na descrição da extração manual de atributos para classificação (p. 14), o texto menciona especificamente 'smartwatch accelerometer data'."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Não foi marcada a opção 'Outro' no campo 11."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Experimental Settings, p. 9 — 'As two smartwatches were worn simultaneously on the left and right wrists, each participant contributed 26 task samples.'"
+    auditoria: "CONCORDA"
+    observacao: "13 segmentos de tarefa por punho (esquerdo e direito), totalizando 26 amostras de 10,24 s (1.024 pontos) por participante e 12.194 amostras no total (469 × 26)."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Experimental Settings, p. 8-9 — 'The dataset consisted of 469 participants... In total, 12,194 samples were collected'"
+    auditoria: "CONCORDA"
+    observacao: "Todos os 469 participantes (12.194 amostras de 10,24 s) compõem a base experimental; na Tabela 2 (p. 14), os experimentos binários avaliam HC vs. PD (276 PD e 79 HC = 355 participantes) e PD vs. DD (276 PD e 114 DD = 390 participantes)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=114"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Preliminaries (Dataset Description), p. 3 — '469 valid samples, including 276 PD patients, 114 DD patients, and 79 HC participants.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Availability of Synthetic Sensor Data e Tabela 2, p. 14 — 'The classification performance for distinguishing HC vs. PD and PD vs. DD across the three evaluation approaches is presented in Table 2.'"
+    auditoria: "CONCORDA"
+    observacao: "Na Tabela 2 (p. 14) e no Resumo (p. 1), os cenários avaliados são HC vs. PD e PD vs. DD. Na Seção 'Synthetic Data Generation and Conditional Evaluation' (p. 15), menciona-se ainda 'downstream PD classification' (com acurácia de 87,4% a 90,6% e macro-F1 de 0,842 a 0,876) sem explicitar qual recorte de classes foi utilizado nesse experimento específico."
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Não foi marcada a opção 'Outro' no campo 16."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)", "Outro", "Série bruta", "Tempo-frequência (espectrograma, wavelet)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção The Discriminator, p. 7 e 9 e Seção Availability of Synthetic Sensor Data, p. 14 — 'Short-Time Fourier Transform... (1) Manual Feature Extraction... (2) Deep Feature Extraction: The XceptionTime model extracted high-level features from the raw time-series data... (3) Symbolic Feature Extraction: The Bag-of-SFA-Symbols (BOSS)'"
+    auditoria: "CONCORDA"
+    observacao: "O Conditional TremorGANs processa a série temporal bruta (1.024 pontos) e representações tempo-frequência via STFT (janela=128, overlap=50%) no discriminador. Na classificação (p. 14), avaliam-se três extrações de atributos: (1) atributos manuais no domínio do tempo e frequência (PSD, desvio padrão, amplitude de pico, energia; 8 atributos por canal); (2) atributos profundos extraídos da série bruta pelo XceptionTime; e (3) atributos simbólicos extraídos pelo algoritmo BOSS."
+  - id: 19
+    chave: "outra_representacao"
+    valor: "Atributos profundos extraídos por XceptionTime (Deep Feature Extraction) e atributos simbólicos extraídos por Bag-of-SFA-Symbols (BOSS, janela deslizante de 20 pontos)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Availability of Synthetic Sensor Data, p. 14 — '(2) Deep Feature Extraction: The XceptionTime model... (3) Symbolic Feature Extraction: The Bag-of-SFA-Symbols (BOSS) algorithm'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning", "Generativo-augmentation"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1, p. 9 e Tabela 2, p. 14 — 'Conditional TremorGANs... SVM, Feedforward Neural Network (NN), and CatBoost... XceptionTime... Decision Trees, K-nearest neighbors (KNN), and Random Forest'"
+    auditoria: "CONCORDA"
+    observacao: "Generativo-augmentation: Conditional TremorGANs e baselines (TimeGAN, CWGAN-GP, RCGAN, Diffusion Model). Deep Learning: Feedforward Neural Network (NN), XceptionTime e blocos 1D CNN/LSTM/BiLSTM/Self-Attention da GAN. Classical ML: SVM, CatBoost, Decision Tree, Random Forest e KNN."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Não foi marcada a opção 'Outro' no campo 20."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Conditional TremorGANs; Support Vector Machine (SVM); Feedforward Neural Network (NN); CatBoost; XceptionTime; Decision Tree; Random Forest; K-nearest neighbors (KNN); Bag-of-SFA-Symbols (BOSS); TimeGAN; CWGAN-GP; RCGAN; Diffusion Model (DM)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções Availability of Synthetic Sensor Data e Comparison Experiments, p. 14-16 — 'SVM, Feedforward Neural Network (NN), and CatBoost... XceptionTime... Decision Trees, K-nearest neighbors (KNN), and Random Forest... BOSS... TimeGAN, CWGAN-GP, RCGAN and Diffusion Model (DM)'"
+    auditoria: "CONCORDA"
+    observacao: "O gerador do Conditional TremorGANs combina 3 ramos específicos por categoria de tarefa (1D CNN de 3 camadas para repouso, LSTM de 2 camadas para postura e BiLSTM de 2 camadas para tarefas cinéticas) com self-attention temporal (4 cabeças) e Deconv1D; o discriminador usa STFT + Conv1D multiescala (kernels 3, 5, 7)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Dados sintéticos (GAN)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 e Seção Synthetic Data Generation and Conditional Evaluation, p. 15 — 'augmenting the training set with synthetic data... enlarged by a factor of three'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 14 — 'Results are reported as mean ± 95% confidence interval across 10-fold cross-validation, with CIs estimated using 1,000 bootstrap resamples.'"
+    auditoria: "CONCORDA"
+    observacao: "10-fold cross-validation reportado na Tabela 2 (p. 14). Na p. 15 menciona-se também 'validation or test participants' ao descrever a preservação do subject-wise split."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Não foi marcada a opção 'Outra' no campo 24."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Synthetic Data Generation and Conditional Evaluation, p. 15 — 'Synthetic sequences were created exclusively for training subjects and were never produced for validation or test participants, thereby preserving the subject-wise split and preventing any leakage.'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo declara explicitamente 'subject-wise split' na p. 15, distinguindo 'training subjects' de 'validation or test participants'."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Synthetic Data Generation and Conditional Evaluation, p. 15 — 'thereby preserving the subject-wise split and preventing any leakage.'"
+    auditoria: "CONCORDA"
+    observacao: "Declaração explícita de divisão por sujeito ('subject-wise split') e geração de dados sintéticos exclusivamente para os sujeitos de treino."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Synthetic Data Generation and Conditional Evaluation, p. 15 — 'the training set was enlarged by a factor of three... Synthetic sequences were created exclusively for training subjects and were never produced for validation or test participants'"
+    auditoria: "CONCORDA"
+    observacao: "Tanto no Resumo (p. 1) quanto nas p. 14 e 15, o artigo afirma que apenas o conjunto de treino foi aumentado com dados sintéticos."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Aumento do conjunto de treino na proporção sintético:real de 3:1 (ampliando o treino em 3x) com Conditional TremorGANs (vetor condicional dim=128 + ruído gaussiano dim=100, 500 épocas, batch size=64, lr=0,001, Adam β1=0,5, β2=0,999), avaliando duas estratégias: (1) per-sample augmentation (3 sequências sintéticas por instância real de treino com o vetor condicional c observado) e (2) new-individual synthesis (amostragem de vetores condicionais a partir de GMM ajustado ao conjunto de treino, gerando o mesmo volume de 3x o treino)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Synthetic Data Generation and Conditional Evaluation, p. 15 — 'the training set was enlarged by a factor of three... This resulted in a synthetic-to-real ratio of 3:1.'"
+    auditoria: "CONCORDA"
+    observacao: "Embora mencione 'addressing the data imbalance issue' (p. 15), o protocolo descrito gera 3 amostras sintéticas para cada instância real de treino (3:1), sem detalhar sobreamostragem diferenciada para igualar o número de sujeitos entre PD, HC e DD."
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Discussion and Future Works, p. 18 — 'publicly available sensor datasets remain extremely limited, and to date, no second dataset has been identified.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "F1", "Outra"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 14 e Seção Synthetic Data Generation and Conditional Evaluation, p. 15 — 'classification accuracy... accuracy of 87.4% and a macro-F1 of 0.842... JS divergence and KL divergence... DTW... Discriminant accuracy'"
+    auditoria: "CONCORDA"
+    observacao: "Na Tabela 2 (p. 14), reporta-se apenas Accuracy para HC vs. PD e PD vs. DD. Na avaliação adicional de estratégias de geração (p. 15), reportam-se Accuracy e F1 explicitamente especificado como 'macro-F1'. Para avaliar a qualidade/fidelidade dos dados sintéticos (p. 11-16), usam-se JS divergence, KL divergence, DTW, Discriminant accuracy (real vs. sintético) e real–synthetic separability AUC (0,52)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: "Jensen-Shannon Divergence (JS); Kullback-Leibler Divergence (KL); Dynamic Time Warping (DTW); Discriminant accuracy (real vs. sintético); real–synthetic separability AUC"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções Quantitative Metrics Assessment e Comparison Experiments, p. 11-16 — 'Three quantitative evaluation methods—Jensen-Shannon Divergence (JS), Kullback-Leibler Divergence (KL), and Dynamic Time Warping (DTW)... Discriminant accuracy... real–synthetic separability AUC'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; BOSS + SVM (Hybrid Data com Conditional TremorGANs); Accuracy; 0.876±0.014"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 14 — 'BOSS algorithm extracts features | SVM | HCvsPD Real Data: 0.762±0.020 | Hybrid Data: 0.876±0.014**'"
+    auditoria: "CONCORDA"
+    observacao: "Na Tabela 2 (p. 14), o melhor classificador individual em HC vs. PD com dados híbridos é BOSS + SVM (0.876±0.014), enquanto o Resumo (p. 1) e o texto (p. 14) destacam a média dos 9 modelos da Tabela 2: aumento de 74.4% (0.744±0.019) para 80.1% (0.801±0.016) em HC vs. PD e de 67.2% (0.672±0.023) para 68.6% (0.686±0.019) em PD vs. DD. Na Seção 'Synthetic Data Generation and Conditional Evaluation' (p. 15, sem especificar o classificador ou o par de classes), a estratégia new-individual synthesis alcança Accuracy de 90.6% e macro-F1 de 0.876."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; Average (média dos 9 modelos, Hybrid Data); Accuracy; 0.801±0.016** (80.1%) | PD×HC; Average (média dos 9 modelos, Real Data); Accuracy; 0.744±0.019 (74.4%) | PD×DD; BOSS + SVM (Hybrid Data); Accuracy; 0.758±0.019 | PD×DD; BOSS + SVM (Real Data); Accuracy; 0.713±0.026 | PD×DD; Average (média dos 9 modelos, Hybrid Data); Accuracy; 0.686±0.019 (68.6%) | PD×DD; Average (média dos 9 modelos, Real Data); Accuracy; 0.672±0.023 (67.2%) | PD×HC; Statistical characteristics + CatBoost (Hybrid Data); Accuracy; 0.843±0.016* | PD×HC; Statistical characteristics + CatBoost (Real Data); Accuracy; 0.755±0.020 | PD×HC; BOSS + NN (Hybrid Data); Accuracy; 0.835±0.015* | PD×HC; BOSS + NN (Real Data); Accuracy; 0.785±0.017 | PD×HC; Statistical characteristics + NN (Hybrid Data); Accuracy; 0.807±0.015** | PD×HC; Statistical characteristics + NN (Real Data); Accuracy; 0.762±0.018 | PD×HC; Statistical characteristics + SVM (Hybrid Data); Accuracy; 0.737±0.018* | PD×HC; Statistical characteristics + SVM (Real Data); Accuracy; 0.714±0.021 | PD×HC; XceptionTime + Decision Tree (Hybrid Data); Accuracy; 0.734±0.019 | PD×HC; XceptionTime + Decision Tree (Real Data); Accuracy; 0.680±0.024 | PD×HC; XceptionTime + Random Forest (Hybrid Data); Accuracy; 0.733±0.017 | PD×HC; XceptionTime + Random Forest (Real Data); Accuracy; 0.702±0.019 | PD×HC; XceptionTime + KNN (Hybrid Data); Accuracy; 0.711±0.020 | PD×HC; XceptionTime + KNN (Real Data); Accuracy; 0.673±0.022 | PD×HC; BOSS + CatBoost (Hybrid Data); Accuracy; 0.722±0.020 | PD×HC; BOSS + CatBoost (Real Data); Accuracy; 0.747±0.021 | PD×DD; BOSS + NN (Hybrid Data); Accuracy; 0.697±0.018 | PD×DD; BOSS + NN (Real Data); Accuracy; 0.689±0.022 | PD×DD; Statistical characteristics + CatBoost (Hybrid Data); Accuracy; 0.692±0.019 | PD×DD; Statistical characteristics + CatBoost (Real Data); Accuracy; 0.644±0.027 | PD×DD; Statistical characteristics + SVM (Hybrid Data); Accuracy; 0.688±0.020 | PD×DD; Statistical characteristics + SVM (Real Data); Accuracy; 0.681±0.025 | PD×DD; Statistical characteristics + NN (Hybrid Data); Accuracy; 0.685±0.017 | PD×DD; Statistical characteristics + NN (Real Data); Accuracy; 0.696±0.022 | PD×DD; BOSS + CatBoost (Hybrid Data); Accuracy; 0.650±0.020 | PD×DD; BOSS + CatBoost (Real Data); Accuracy; 0.666±0.025 | PD×DD; XceptionTime + KNN (Hybrid Data); Accuracy; 0.647±0.021 | PD×DD; XceptionTime + KNN (Real Data); Accuracy; 0.628±0.024 | PD×DD; XceptionTime + Decision Tree (Hybrid Data); Accuracy; 0.635±0.021 | PD×DD; XceptionTime + Decision Tree (Real Data); Accuracy; 0.612±0.028 | PD×DD; XceptionTime + Random Forest (Hybrid Data); Accuracy; 0.620±0.018 | PD×DD; XceptionTime + Random Forest (Real Data); Accuracy; 0.611±0.023 | Downstream PD classification (p. 15); New-individual synthesis; Accuracy; 90.6% | Downstream PD classification (p. 15); New-individual synthesis; macro-F1; 0.876 | Downstream PD classification (p. 15); Per-sample augmentation; Accuracy; 89.2% | Downstream PD classification (p. 15); Per-sample augmentation; macro-F1; 0.861 | Downstream PD classification (p. 15); Real data baseline; Accuracy; 87.4% | Downstream PD classification (p. 15); Real data baseline; macro-F1; 0.842"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 14 e Seção Synthetic Data Generation and Conditional Evaluation, p. 15 — 'Table 2. Categorization results for HC, PD and DD participants... The new-individual synthesis strategy produced the best results, with accuracy reaching 90.6% and macro-F1 improving to 0.876.'"
+    auditoria: "CONCORDA"
+    observacao: "Na Tabela 3 (p. 16), para qualidade dos dados sintéticos do TremorGANs: JS divergence = 0.308±0.015**, KL divergence = 0.453±0.020**, DTW = 7.322±0.40**, Discriminant accuracy = 0.534±0.019*."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Data Availability, p. 18 — 'The datasets analysed during the current study are available in the Parkinsons Disease Smartwatch dataset(PADS)[https://physionet.org/content/parkinsons-disease-smartwatch/1.0.0/].'"
+    auditoria: "CONCORDA"
+    observacao: "A seção Data Availability indica apenas o link público original do PADS no PhysioNet; não há disponibilização de código-fonte nem dos dados sintéticos gerados."
+  - id: 36
+    chave: "limitacoes"
+    valor: "(1) Seção Availability of Synthetic Sensor Data (p. 15): ganho limitado na classificação PD vs. DD (+1,4%), pois DP e outros distúrbios de tremor (ex.: tremor essencial, tremor induzido por fármacos) compartilham padrões de movimento altamente similares e as diferenças sutis capturadas por smartwatches podem não refletir totalmente as distinções patológicas subjacentes; (2) Seção Quantitative Metrics Assessment (p. 11-13): discrepâncias moderadas na divergência KL do giroscópio e lacunas residuais nas distribuições e morfologia das séries temporais; (3) Seção Discussion and Future Works (p. 18): ausência de um segundo dataset público de tremor em DP devido a restrições de privacidade (impedindo validação externa) e restrição do modelo atual à geração de dados de tremor de mão coletados sob cenários de tarefas predefinidas."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Discussion and Future Works, p. 18 — 'publicly available sensor datasets remain extremely limited, and to date, no second dataset has been identified. The current Conditional TremorGANs model is restricted to generating hand tremor data collected under predefined task scenarios.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Explorar representações alternativas das principais características do tremor e integrar metadados clínicos com sinais de sensores em modelagem multimodal, mantendo desempenho generativo consistente em categorias mais amplas de tarefas e fortalecendo a separabilidade entre PD e DD (Seção Discussion and Future Works, p. 18)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Discussion and Future Works, p. 18 — 'In future work, we will explore alternative representations of key tremor characteristics and integrate clinical metadata with sensor signals, enabling multimodal modeling that maintains consistent generative performance across broader task categories and strengthens PD–DD separability.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano conforme instruções do protocolo."
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção Quantitative Metrics Assessment, p. 11 e Seção Synthetic Data Generation and Conditional Evaluation, p. 15 — 'Each channel is z-normalized using training-set statistics... empirical distribution of conditional vectors in the training set was estimated... preserving the subject-wise split and preventing any leakage'"
+    observacao: "O artigo declara explicitamente que a normalização z por canal usa estatísticas do conjunto de treino (p. 11) e que a estimação da distribuição condicional (GMM) e a síntese de dados usam exclusivamente os sujeitos de treino, preservando o subject-wise split (p. 15). Confiança marcada como média porque o texto não detalha separadamente se o extrator XceptionTime e o dicionário BOSS na Tabela 2 foram ajustados estritamente dentro de cada dobra de treino do 10-fold CV."
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; campo 27 = Sim – explícita; campo 28 = Só no treino; aux_preproc_apenas_treino = Sim"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Os cenários binários (HC vs. PD e PD vs. DD na Tabela 2) e os três grupos do PADS (PD=276, HC=79, DD=114) estão claramente definidos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os itens aplicáveis do recorte do PADS estão descritos (modalidades, todas as 11 tarefas/13 segmentos, acelerômetro e giroscópio, ambos os punhos e N=469 participantes)."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Baixo: divisão por participante explícita ('subject-wise split', p. 15), aumento sintético restrito aos sujeitos de treino e normalização/GMM ajustados apenas no treino (p. 11, 15)."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "A Tabela 2 principal reporta apenas Accuracy; a análise secundária na p. 15 reporta apenas uma métrica robusta ao desbalanceamento (macro-F1)."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "A arquitetura e os hiperparâmetros do Conditional TremorGANs (Tabela 1, p. 9-10) e o protocolo de aumento estão descritos, mas não há código disponível (campo 35 = Nenhum) nem hiperparâmetros dos classificadores."
+  nota_qa: 4.0
+  nota_qa_max: 5
+  faixa_qa: "Alta"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica; Quais tarefas null; Representação null"
+    resultado: "OK (estudo utiliza Série temporal IMU)"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (cenários binários PD×HC e PD×DD; N total por classe informado como PD=276; HC=79; DD=114)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (276 + 79 + 114 = 469)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (campo 26 = Participante e campo 27 = Sim – explícita)"
+  - regra: "Campo 24 contém Leave-one-subject-out → campo 26 = Participante e campo 27 = Sim"
+    resultado: "OK (campo 24 = k-fold CV)"
+  - regra: "Campo 26 = Não se aplica → campos 27 e 28 = Não se aplica, risco = Não se aplica, campo 24 = Não reportado"
+    resultado: "OK (não se aplica a este estudo)"
+  - regra: "Campo 23 = Dados sintéticos (GAN) → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK (campo 28 = Só no treino e campo 29 preenchido)"
+  - regra: "Campo 30 = true e campo 5 = Principal → explique na observação"
+    resultado: "OK (campo 30 = false)"
+  - regra: "Campo 9 = Não se aplica → campo 10 null; caso contrário, campo 10 preenchido"
+    resultado: "OK (campo 9 = Todas e campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (3→4, 6→7, 11→12, 16→17, 18→19, 20→21, 24→25, 31→32)"
+    resultado: "OK (18→19 e 31→32 preenchidos; demais null)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Baixo → QA3 = 1.0 / Yes)"
+pontos_para_revisao_humana:
+  - "Campo 2 (ano_publicacao): o cabeçalho indica 'Cognitive Computation (2026) 18:3', porém DOI (s12559-025-10533-y), copyright (2025) e publicação online (20 December 2025) são de 2025."
+  - "Campo 8 (modalidade_pads): o texto afirma nas p. 4, 5 (Algoritmo 1) e 14 que dados não motores do questionário e atributos demográficos/histórico clínico alimentam o módulo condicional da GAN, mas na p. 7/15 enfatiza categorias de tarefa (0, 1, 2) e na p. 18 cita a integração de metadados clínicos como trabalho futuro."
+  - "Campos 24, 26, 27 e 28 (validação e vazamento): a Tabela 2 (p. 14) reporta 10-fold CV e a p. 15 explicita 'preserving the subject-wise split and preventing any leakage' com geração sintética exclusiva para sujeitos de treino; confirmar se o treinamento da própria GAN também foi reexecutado por dobra do 10-fold CV."
+  - "Campo aux_preproc_apenas_treino e QA3: normalização z (p. 11) e ajuste de GMM (p. 15) são explicitamente restritos ao conjunto de treino (confiança média por não detalhar o ajuste do XceptionTime/BOSS por dobra na Tabela 2)."
+  - "Campo 33 (melhor_resultado): na Tabela 2 (p. 14), o melhor modelo individual em HC vs. PD é BOSS + SVM (0.876±0.014), enquanto o Resumo destaca a média dos 9 modelos (80.1% em HC vs. PD e 68.6% em PD vs. DD), e a p. 15 reporta 90.6% de Accuracy (macro-F1 = 0.876) com new-individual synthesis sem especificar o classificador ou par de classes."
+  - "QA5 (replicabilidade): arquiteturas e hiperparâmetros da GAN estão detalhados na Tabela 1 (p. 9-10), mas não há código disponível nem hiperparâmetros dos classificadores da Tabela 2."

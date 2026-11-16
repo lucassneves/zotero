@@ -1,0 +1,118 @@
+ASA-DSNet: A Dual-Stage Framework with
+Ambiguous Sample Augmentation for Robust
+Parkinson’s Disease Identification
+Xinyue Xing, Ranxuan Tang, Yanmiao Kong, Aite Zhao* College of Computer Science and Technology, Qingdao University, Qingdao, China {xingxinyue, 2025021110, kongyanmiao, zhaoaite}@qdu.edu.cn
+Abstract—Parkinson’s disease (PD) is a neurodegenerative disorder with rising prevalence, and early diagnosis is critical to slowing disease progression. Traditional diagnostic methods rely on clinical rating scales, which are inherently subjective and prone to misdiagnosis. This paper proposes ASA-DSNet, a dualstage learning framework for PD detection using smartwatch motion data. The first stage (M1) fuses multi-scale time-frequency features and identifies ambiguous samples (i.e., boundary and misclassified samples), which are augmented using the Ambiguous Sample Augmenter (ASA). The second stage (M2) employs hierarchical attention mechanisms to refine decision boundaries. Experimental results demonstrate that ASA-DSNet achieves accuracies of 80.85% and 95.17% on the PADS and Monipar datasets, outperforming representative baselines. This model provides a viable solution for early PD screening and tremor grading. Index Terms—Parkinson’s disease, smartwatch inertial data, dual-stage learning, ambiguous sample augmentation.
+I. INTRODUCTION
+As the global population ages, the prevalence of neurodegenerative disorders, particularly PD, continues to increase [1]. The hallmark motor symptoms of PD, including resting tremor, rigidity, and bradykinesia, significantly hinder patients’ ability to carry out daily activities [2], [3]. In the absence of a definitive cure for PD, early and reliable diagnosis is pivotal to delaying disease progression [4]. However, traditional diagnosis relies heavily on clinical scales (e.g., UPDRS) and physician experience, which poses significant limitations [5]. A recent comprehensive meta-analysis reported that up to 26% of patients were initially misdiagnosed according to the clinical diagnostic criteria for PD [6]. This high misdiagnosis rate stems from two main factors: the heterogeneity and overlap of clinical symptoms–PD often shares features with diseases like essential tremor and multiple system atrophy [3]; and the inherent bias of subjective assessment: human vision struggles to quantify subtle motor characteristics. Given the limitations of conventional diagnostic methods, there is an urgent need for an objective and accurate tool to detect motor features of PD. Wearable devices, especially smartwatches, have emerged as a promising solution due to
+This work was supported in part by the National Natural Science Foundation of China (62106117), the Shandong Provincial Natural Science Foundation (ZR2021QF084), and the National College Student Innovation and Entrepreneurship Training Program (202411065036). *Corresponding author: Aite Zhao (zhaoaite@qdu.edu.cn).
+their convenience, high-precision data acquisition, and unobtrusiveness in daily life [7], [8]. At present, many approaches for PD detection using smartwatch data integrate traditional techniques with deep learning algorithms [6], [9]. However, most of these methods overlook a class of ambiguous samples: those located near the decision boundary with highly overlapping features, or those misclassified by the current model. Additionally, existing PD diagnostics exhibit significant shortcomings at the data level, primarily relying on binary classification between healthy controls (HC) and PD patients [10], [11]. In real-world clinical tasks, however, it is necessary to distinguish PD from its differential diagnoses (DD) that share overlapping symptoms, such as essential tremor and multiple system atrophy, which makes accurate classification more challenging. To address the inherent algorithmic and data limitations in existing PD detection methods, we propose a dual-stage framework that refines model decision boundaries and optimizes training data. Specifically, we introduce a Dual-Stage Optimization Framework and an Ambiguous Sample Augmenter. These techniques work in tandem to enhance classification accuracy and improve model robustness when dealing with complex, overlapping categories.
+II. METHODS
+A. Framework Overview
+As illustrated in Fig. 1, the proposed framework operates in two stages. Stage 1 (M1) serves as the primary classifier, extracting coupled temporal–frequency representations from raw upper-limb motion and producing initial predictions. An Ambiguous Sample Augmenter (ASA) subsequently identifies both misclassified and boundary cases, adaptively assigning higher training weights based on their proximity to the decision surface. Stage 2 (M2) acts as a corrective refiner with hierarchical attention, focusing capacity on these hard samples to sharpen decision boundaries and improve overall discrimination.
+B. Stage 1 (M1): Primary Classifier
+a) Temporal Dynamics Encoder: Given the forward sequence X⃗ , we first obtain the initial feature map F⃗0 =
+Conv(X⃗ ). The subsequent operations are formulated as:
+H⃗ (l)
+s = ReLU BN DC Conv(l)H⃗ (l−1)
+s , l = 1, 2 (1)
+2025 IEEE International Conference on Bioinformatics and Biomedicine (BIBM)
+979-8-3315-1557-7/25/$31.00 ©2025 IEEE 4291
+2025 IEEE International Conference on Bioinformatics and Biomedicine (BIBM) | 979-8-3315-1557-7/25/$31.00 ©2025 IEEE | DOI: 10.1109/BIBM66473.2025.11356270
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:48:16 UTC from IEEE Xplore. Restrictions apply.
+
+
+Fig. 1. The overall architecture of the proposed dual-stage training framework. M1 first extracts temporal–frequency features and outputs an initial prediction; ASA selects misclassified and boundary samples for re-weighting; M2 refines these samples with an MLSTM-FCN and CBAM to sharpen decision boundaries.
+DC Conv(l) H⃗ (l−1)
+s=
+K −1
+X
+k=0
+Wk H⃗ (l−1)
+s−d k (2)
+where H⃗ (0)
+s = F⃗s−1. The resulting feature map is then modulated through a Sigmoid gate:
+F⃗s = σ H⃗ (2)
+s ⊙ F⃗s−1 (3)
+To capture contextual information from both past and future directions, the input sequence is reversed along the temporal axis using
+⃗
+F = reverse F⃗ , axis = 1 . Combined forward and backward features are refined by an Efficient Channel Attention (ECA) module and condensed into a compact representation:
+gs = GAP ECA F⃗s +
+⃗
+F s (4)
+This is done across various dilation scales, forming a multiscale temporal feature representation:
+Ftime = [ g1 ∥ g2 ∥ · · · ∥ gS ] ∈ RS×C (5)
+This strategy captures dynamic patterns, aiding subsequent feature fusion.
+b) Multi-Scale Frequency Encoder: To model multigranularity spectra, we reshape X to X′ ∈ RB×T ×D×1, making it suitable for 2D convolution operations. We then run parallel branches (e.g., 11×1, 1×9, 3×3), each followed by batch normalization, ReLU activation, and pooling. The outputs of the branches are concatenated as follows:
+Ffreq = Concat(F1, F2, F3) (6)
+These concatenated features are subsequently refined by stacked 2D convolutions (with temporal downsampling) and global average pooling (GAP) to yield a fixed-length frequency vector, Ffreq ∈ RC (or an S × C strip if aligned to scales). c) Feature Fusion Layer: The frequency vector is broadcast to F ̃freq ∈ RS×C and concatenated with the time-domain feature Ftime ∈ RS×C :
+Ffusion = Concat Ftime, F ̃freq ∈ RS×2C . (7)
+A lightweight WeightLayer is employed to generate scalewise and channel-wise weights. Pooling over different scales then produces the final feature vector ffinal, which is used for classification.
+C. Ambiguous Sample Augmenter (ASA)
+To strengthen learning on ambiguous samples, ASA identifies and upweights these challenging instances after each inner-loop training of M1. Firstly, we collect misclassified instances by comparing M1’s predictions with ground truth:
+M = xi ∈ Dinner-train yi ̸= yˆ(1)
+i . (8)
+Secondly, to mine boundary samples, we utilize the final feature representations produced by Stage 1 for all samples in the inner training set Dinner-train. These representations are clustered using K-Means, and samples with small distances to the nearest centroid (e.g., within the 20th percentile) are regarded as boundary samples:
+B = xi ∈ Dinner-train cm∈iCn∥f (1)
+final(xi) − c∥2 ≤ θ . (9)
+4292
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:48:16 UTC from IEEE Xplore. Restrictions apply.
+
+
+We then construct the augmented set as
+Daug = Dinner-train ∪ M ∪ B, (10)
+and assign adaptive sample weights:
+wi =
+
+     
+     
+β, xi ∈ M,
+γ, xi ∈ B,
+max(β, γ), xi ∈ M ∩ B,
+1, otherwise.
+(11)
+ASA thus prioritizes hard and uncertain regions in subsequent training, providing M2 with targeted supervision to sharpen decision boundaries and enhance overall robustness.
+D. Stage 2 (M2): Corrective Refiner
+The Stage 2 model M2 is based on the MLSTM-FCN backbone and integrates Convolutional Block Attention Modules (CBAM) to refine misclassified and boundary samples mined by ASA. Unlike traditional classifiers, M2 focuses on hard decision regions and sharpens decision boundaries using lightweight attention. Given the feature map F ∈ RT ×C , channel attention calculates a channel mask M c via global pooling, enhancing informative channels and suppressing irrelevant ones:
+M c = σ MLP AvgPool(F ) + MaxPool(F ) (12)
+Temporal attention highlights salient time steps:
+M t = σ Conv1D [AvgPool(F ); MaxPool(F )] (13)
+At each stage, M c and M t are applied multiplicatively to recalibrate the feature map. Trained on the ASA-weighted set, M2 focuses on regions where M1 errs or shows low confidence, refining decision boundaries and improving overall robustness.
+III. EXPERIMENTS AND RESULTS
+A. Datasets
+This study is primarily based on the publicly available PADS dataset [12], which supports a multiclass classification task involving PD, DD and HC. To further evaluate the performance and generalizability of the proposed framework across different PD classification scenarios, we additionally conducted experiments on the Monipar dataset [13]. Unlike PADS, the Monipar dataset focuses on a different yet clinically relevant task-classifying tremor severity levels in PD patientsthus providing an opportunity to verify the adaptability and robustness of our method in diverse application settings.
+B. Experimental Setup
+To obtain unbiased estimates and avoid data leakage, we adopt a nested cross-validation protocol with Kouter=5 outer folds for evaluation and Kinner=5 inner folds for model selection. We report macro-averaged Accuracy, Precision, Recall, and F1, computed per outer test fold and then averaged. 1
+1All experiments were conducted on a workstation with an NVIDIA GeForce RTX 3080 GPU.
+TABLE I COMPARISON OF METHODS ON PADS AND MONIPAR DATASETS ACROSS DIFFERENT TASKS.
+Tasks Methods Accuracy Precision Recall F1-score
+PDvs.HC (PADS)
+InceptionTime (DMKD2020) [14] 85.23 85.14 84.05 84.95 Rocket (DMKD2020) [15] 85.00 84.09 84.82 84.49 MiniRocket (KDD2021) [16] 86.43 87.70 86.15 86.75 TIMNET (ICASSP2023) [17] 87.75 87.75 87.79 87.35 TF-FusNET (NLPCC2024) [18] 91.35 92.04 90.17 90.96 LightCNN (arXiv 2024) [19] 85.92 83.47 83.82 84.93 MLSTM-FCN(NeuralNetworks2019) [20] 84.51 84.68 83.10 80.26 CA-LSTM-FCN (Electronics2024) [21] 92.15 95.08 89.73 91.24 TapNET (AAAI2020) [22] 87.46 86.34 84.85 87.35 ASA-DSNet (Ours) 94.37 94.33 94.36 94.24
+PDvs.DD (PADS)
+InceptionTime (DMKD2020) [14] 64.23 66.34 64.85 60.35 Rocket (DMKD2020) [15] 65.00 64.19 67.82 60.49 MiniRocket (KDD2021) [16] 66.48 68.70 63.46 60.95 TIMNET (ICASSP2023) [17] 77.69 75.00 76.98 77.12 TF-FusNET (NLPCC2024) [18] 78.97 81.35 74.98 76.35 LightCNN (arXiv2024) [19] 67.95 61.29 67.95 65.69 MLSTM-FCN(NeuralNetworks2019) [20] 71.80 67.35 66.57 66.90 CA-LSTM-FCN (Electronics2024) [21] 85.38 83.75 83.42 85.51 TapNET (AAAI 2020) [22] 83.23 84.34 84.85 83.35 ASA-DSNet (Ours) 86.90 86.83 86.82 86.74
+PDvs.HC vs.DD (PADS)
+InceptionTime (DMKD2020) [14] 52.13 48.16 52.13 48.65 Rocket (DMKD2020) [15] 54.26 53.46 54.26 42.95 MiniRocket (KDD2021) [16] 55.32 50.91 55.32 47.85 TIMNET (ICASSP2023) [17] 63.11 61.39 61.47 60.42 TF-FusNET (NLPCC2024) [18] 63.54 61.35 62.45 60.41 LightCNN (arXiv2024) [19] 60.22 59.48 60.22 59.79 MLSTM-FCN(NeuralNetworks2019) [20] 59.57 58.23 55.01 55.37 CA-LSTM-FCN (Electronics2024) [21] 78.23 82.13 75.71 76.02 TapNET (AAAI2020) [22] 76.11 76.14 74.69 73.15 ASA-DSNet (Ours) 80.85 81.29 80.85 80.09
+Level 0vs.1vs.2 (Monipar)
+InceptionTime (DMKD2020) [14] 90.12 91.21 90.48 90.84 Rocket (DMKD2020) [15] 91.87 92.93 91.15 90.54 MiniRocket (KDD2021) [16] 91.33 91.42 91.71 91.06 TIMNET (ICASSP2023) [17] 92.07 93.14 92.31 93.72 TF-FusNET (NLPCC2024) [18] 92.55 93.63 92.92 91.27 LightCNN (arXiv2024) [19] 89.95 90.03 90.23 90.63 MLSTM-FCN(NeuralNetworks2019) [20] 90.27 93.35 94.62 93.98 TapNET (AAAI2020) [22] 93.61 93.74 94.95 94.34 ASA-DSNet (Ours) 95.17 95.53 96.21 96.87
+C. Baselines
+We compare against representative time-series classifiers spanning convolutional, random-kernel and attention/hybrid families: InceptionTime [14], ROCKET/MiniRocket [15], [16], TIMNET [17], TF-FusNet [18], LightCNN [19], MLSTM-FCN and its channel-attention variant CA-MLSTMFCN [20], [21], and TapNet [22]. Results are summarized in Table I.
+D. Overall Results
+As shown in Table I, ASA-DSNet achieves the best performance across all tasks. On PADS, it reaches 94.37% (PD vs. HC), 86.90% (PD vs. DD), and 80.85% (PD vs. HC vs. DD). On Monipar, it attains 95.17% Accuracy and 96.87% F1. Compared with the strongest baseline (CA-MLSTM-FCN), our method improves by approximately 2 to 4 percentage points on PADS. We attribute the gains to two factors. Firstly, Stage 1 improves class separability via complementary temporal–
+4293
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:48:16 UTC from IEEE Xplore. Restrictions apply.
+
+
+Fig. 2. Ablation results of ASA-DSNet variants on the PADS dataset.
+frequency modeling and learnable fusion. Secondly, the ASA targets misclassified and boundary cases, reweighting them before Stage 2 performs corrective refinement. This recognition– reweighting–refinement loop focuses learning capacity on the most uncertain regions and enhances generalization.
+E. Ablation Study
+To evaluate the contribution of each module, we conduct an ablation study on three variants: (i) Stage 1 only (no Stage 2 or ASA); (ii) Stage 2 only (no Stage 1 or ASA); (iii) the full model. The results (Fig. 2) show that both the dual-stage architecture and the Ambiguous Sample Augmenter (ASA) significantly enhance performance. The full model, incorporating both components, outperforms the variants with only Stage 1 or Stage 2, demonstrating the effectiveness of the combined approach in improving classification accuracy and robustness.
+IV. CONCLUSION
+This paper presents ASA-DSNet, a novel dual-stage learning framework for precise Parkinson’s disease diagnosis based on inertial data from smartwatches. By jointly addressing the challenge of misclassified and boundary samples through ambiguous sample augmentation and corrective refinement, ASA-DSNet demonstrates robust and generalizable performance across two multiclass datasets. By moving beyond binary PD/HC discrimination, these tasks enable finer-grained separation of disease entities and clearer quantification of symptom severity. Future work will explore the integration of multi-modal sensing data and real-world deployment in clinical environments.
+REFERENCES
+[1]A. S. Mai, X. Deng, and E.-K. Tan, “Epidemiology of early-onset parkinson disease (eopd) worldwide: East versus west,” Parkinsonism & Related Disorders, p. 107126, 2024.
+[2]A. Zhao, Y. Liu, X. Yu, X. Xing, and H. Zhou, “Artificial intelligenceenabled detection and assessment of parkinson’s disease using multimodal data: A survey,” Information Fusion, p. 103175, 2025. [3]E. Tolosa, A. Garrido, S. W. Scholz, and W. Poewe, “Challenges in the diagnosis of parkinson’s disease,” The Lancet Neurology, vol. 20, no. 5, pp. 385–397, 2021. [4]Y. Zhou, M. Pang, W. Huang, and B. Wang, “Early diagnosing parkinson’s disease via a deep learning model based on augmented facial expression data,” in ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP). IEEE, 2024, pp. 1621–1625.
+[5]C. G. Goetz, B. C. Tilley, S. R. Shaftman, G. T. Stebbins, S. Fahn, P. Martinez-Martin, W. Poewe, C. Sampaio, M. B. Stern, R. Dodel et al., “Movement disorder society-sponsored revision of the unified parkinson’s disease rating scale (mds-updrs): scale presentation and clinimetric testing results,” Movement disorders: official journal of the Movement Disorder Society, vol. 23, no. 15, pp. 2129–2170, 2008. [6]R. M. Khalil, L. M. Shulman, A. L. Gruber-Baldini, S. G. Reich, J. M. Savitt, J. M. Hausdorff, R. v. Coelln, and M. P. Cummings, “Applying wearable sensors and machine learning to the diagnostic challenge of distinguishing parkinson’s disease from other forms of parkinsonism,” Biomedicines, vol. 13, no. 3, p. 572, 2025. [7]N. L. Kazanskiy, S. N. Khonina, and M. A. Butt, “A review on flexible wearables–recent developments in non-invasive continuous health monitoring,” Sensors and Actuators A: Physical, vol. 366, p. 114993, 2024. [8]A.-K. Schalkamp, K. J. Peall, N. A. Harrison, and C. Sandor, “Wearable movement-tracking data identify parkinson’s disease years before clinical diagnosis,” Nature Medicine, vol. 29, no. 8, pp. 2048–2056, 2023. [9]R. San-Segundo, A. Zhang, A. Cebulla, S. Panev, G. Tabor, K. Stebbins, R. E. Massa, A. Whitford, F. De la Torre, and J. Hodgins, “Parkinson’s disease tremor detection in the wild using wearable accelerometers,” Sensors, vol. 20, no. 20, p. 5817, 2020. [10]S. Johnson, M. Kantartjis, J. Severson, R. Dorsey, J. L. Adams, T. Kangarloo, M. A. Kostrzebski, A. Best, M. Merickel, D. Amato et al., “Wearable sensor-based assessments for remotely screening early-stage parkinson’s disease,” Sensors, vol. 24, no. 17, p. 5637, 2024. [11]J. L. Adams, T. Kangarloo, B. Tracey, P. O’Donnell, D. Volfson, R. D. Latzman, N. Zach, R. Alexander, P. Bergethon, J. Cosman et al., “Using a smartwatch and smartphone to assess early parkinson’s disease in the watch-pd study,” npj Parkinson’s Disease, vol. 9, no. 1, p. 64, 2023. [12]J. Varghese, A. Brenner, M. Fujarski, C. M. van Alen, L. Plagwitz, and T. Warnecke, “Machine learning in the parkinson’s disease smartwatch (pads) dataset,” npj Parkinson’s Disease, vol. 10, no. 1, p. 9, 2024. [13]L. Sigcha, C. Polvorinos-Fern  ́andez, N. Costa, S. Costa, P. Arezes, M. Gago, C. Lee, J. M. L ́opez, G. de Arcas, and I. Pavo ́n, “Monipar: Movement data collection tool to monitor motor symptoms in parkinson’s disease using smartwatches and smartphones,” frontiers in Neurology, vol. 14, p. 1326640, 2023. [14]H. Ismail Fawaz, B. Lucas, G. Forestier, C. Pelletier, D. F. Schmidt, J. Weber, G. I. Webb, L. Idoumghar, P.-A. Muller, and F. Petitjean, “Inceptiontime: Finding alexnet for time series classification,” Data Mining and Knowledge Discovery, vol. 34, no. 6, pp. 1936–1962, 2020. [15]A. Dempster, F. Petitjean, and G. I. Webb, “Rocket: exceptionally fast and accurate time series classification using random convolutional kernels,” Data Mining and Knowledge Discovery, vol. 34, no. 5, pp. 1454–1495, 2020. [16]A. Dempster, D. F. Schmidt, and G. I. Webb, “Minirocket: A very fast (almost) deterministic transform for time series classification,” in Proceedings of the 27th ACM SIGKDD conference on knowledge discovery & data mining, 2021, pp. 248–257.
+[17]J. Ye, X.-C. Wen, Y. Wei, Y. Xu, K. Liu, and H. Shan, “Temporal modeling matters: A novel temporal emotional modeling approach for speech emotion recognition,” in ICASSP 2023-2023 IEEE international conference on acoustics, speech and signal processing (ICASSP). IEEE, 2023, pp. 1–5. [18]T. Ren, W. Yu, M. Chen, A. Zhao, and H. Zhou, “Tf-fusnet: A novel framework for parkinson’s disease detection via time-frequency domain fusion,” in CCF International Conference on Natural Language Processing and Chinese Computing. Springer, 2024, pp. 82–95.
+[19]M. F. Anjum, “Parkinson’s disease classification via eeg: All you need is a single convolutional layer,” arXiv preprint arXiv:2408.10457, 2024. [20]F. Karim, S. Majumdar, H. Darabi, and S. Harford, “Multivariate lstmfcns for time series classification,” Neural networks, vol. 116, pp. 237– 245, 2019. [21]J. Yu, K. Meng, T. Liang, H. Liu, and X. Wang, “Improved deep learning for parkinson’s diagnosis based on wearable sensors,” Electronics, vol. 13, no. 23, p. 4638, 2024. [22]X. Zhang, Y. Gao, J. Lin, and C.-T. Lu, “Tapnet: Multivariate time series classification with attentional prototypical network,” in Proceedings of the AAAI conference on artificial intelligence, vol. 34, no. 04, 2020, pp. 6845–6852.
+4294
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 16:48:16 UTC from IEEE Xplore. Restrictions apply.

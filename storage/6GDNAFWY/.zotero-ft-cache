@@ -1,0 +1,270 @@
+LABEL-EFFICIENTBILATERALATTENTION FORPARKINSON’S
+DISEASESCREENING FROMWRIST-WORNIMU SIGNALS
+A PREPRINT
+Meheru Zannat
+Dept. of Computer Science and Engineering Khulna University of Engineering & Technology (KUET) Khulna, Bangladesh
+zannat2007039@stud.kuet.ac.bd
+ABSTRACT
+Parkinson’s disease (PD) is a chronic neurodegenerative disorder. It shows multiple motor symptoms such as tremor, bradykinesia, postural instability, and freezing of gait (FoG). PD is currently diagnosed clinically through physical examination by health-care professionals, which can be timeconsuming and highly subjective. Wearable IMU sensors have become a promising gateway for PD detection. We propose a time-interleaving encoder that processes bilateral wrist-worn IMU signals from the public PADS dataset, which consists of three groups, PD (Parkinson’s Disease), HC (Healthy Control), and DD (Differential Diagnosis), across a total of 469 subjects. The encoder reaches93.2%/90.9%accuracy (0.963/0.960AUROC) on HC-vs-PD and PD-vs-DD; the lower sensitivity on the differential (0.812vs.0.994) confirms that separating PD from look-alike disorders is the harder clinical problem. Self-supervised representation learning with a contrastive InfoNCE objective attains91.6%/89.5%accuracy using only20%of the labels, within1.5points of the fulllabel ceiling, so near-saturation accuracy is reachable with minimal annotation. Beyond the headline numbers we report a systematic ablation of the design space. The bilateral fusion mechanism turns out not to be load-bearing: interleaved self-attention, explicit cross-attention, late concatenation and even single-wrist encoders agree to within0.001AUROC, and a bilateral-pairing control shows the models nonetheless use both streams. What does separate model families is cross-task generalization, where attention encoders hold0.94–0.96AUROC on unseen motor tasks while a 1D-CNN collapses to0.63. Signal conditioning dominates preprocessing, a direct three-class head is far from ceiling (89.0%overall, with the other-disorders class hardest at80.8%), and the model runs in 124.5ms per window on a Raspberry Pi 4.
+KeywordsParkinson’s disease, differential diagnosis, IMU, wearable sensing, self-attention, bilateral fusion, self-supervised learning, cross-task generalization, edge deployment
+1 Introduction
+Parkinson’s disease (PD) is among the most common progressive neurodegenerative disorders, affecting more than 10 million people worldwide [1]. It is incurable, driven by progressive degeneration of the dopaminergic system of the brain [2]. It shows several motor symptoms such as tremor, bradykinesia, rigidity, and postural instability. These continuous, episodic symptoms can be captured passively by wrist-worn smartwatches with embedded inertial measurement unit (IMU) sensors. A particular clinical difficulty is that these signs are shared with other conditions grouped as differential diagnoses (DD), such as essential tremor, atypical Parkinsonism, and multiple sclerosis, and can lead to misdiagnosis and delayed treatment at an early stage. Yet most wearable studies stop at PD-versus-healthy detection; the clinically decisive PD-versus-DD boundary is rarely addressed.
+We target both decisions on the public PADS dataset [3], which provides synchronized left- and right-wrist IMU recordings. Motor asymmetry, where signs onset and progress more severely on one side, is a hallmark of PD, and it motivates encoding both wrists jointly rather than in isolation. Instead of hard-wiring the bilateral interaction, we
+arXiv:2604.18372v2 [cs.LG] 9 Aug 2026
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+embed the two wrists into a single sequence and let self-attention discover it: attention over the concatenated stream computes within-wrist and between-wrist interactions in one operation with a single tied set of weights. We evaluate this design against an explicit dual-stream cross-attention encoder, late feature concatenation, single-wrist ablations, and 1D-CNN and BiLSTM baselines under a patient-disjoint protocol, reporting threshold-free AUROC throughout. Our contributions are:
+•A compact interleaved self-attention encoder with a hierarchical two-head formulation (HC-vs-PD screening and PD-vs-DD differential diagnosis) that outperforms a direct three-class classifier and targets the clinically challenging PD-vs-DD boundary.
+•A systematic ablation of the design space (bilateral fusion mechanism, encoder family, and band-pass filtering) that identifies which components actually drive in-distribution accuracy and cross-task generalization.
+•A contrastive self-supervised pre-training scheme that outperforms supervised training at low label budgets and matches it beyond∼20%of labels, cutting the annotation cost.
+•An inference rate of124.5ms per window on a Raspberry Pi 4 CPU with minimal preprocessing, establishing the feasibility of on-device edge deployment.
+2 Related Work
+Objective of PD detection with wearable IMU sensor modality is being extensively investigated recently.
+Most of the earlier works relied on handcrafted features derived from accelerometer signals, to determine tremor and bradykinesia [4]; CNNs were used for IMU time series analysis of gait and tremor [12]. While LSTMs have been applied to capture sequential motor signals dependencies [5], and CNN-Transformer hybrids for single waist-worn accelerometer data for FoG detection have been employed [6]. A limitation common across this work is the heavy reliance on unilateral sensing, despite the well-known motor asymmetry in PD symptoms. Transformer architecture [7] is suitable for modelling the irregular, periodic nature of motor symptoms, as self-attention lets the model make associations between distant timestamps simultaneously.
+For Human Activity Recognition (HAR) tasks, dual-stream architectures have been designed using parallel encoders for preprocessing various sensor modalities. The PD has also been explored in multi-scale frequency-aware architectures for severity assessment [19]. Yet existing dual-stream designs fuse the streams using concatenation or addition, without any explicit modelling of the contralateral relation between left and right motor signals.
+Self-supervised contrastive representation learning [8] has become a powerful learning paradigm for unlabelled clinical data. TS-TCC [10] combines temporal and contextual dissimilarity. LIFT-PD [11] gaining competitive performance with40%fewer labelled samples. These approaches successfully transfer to downstream clinical task but have not been validated on bilateral IMU data for PD classification, where augmentation strategies need to ensure clinically meaningful asymmetric bands between the two wrist streams.
+Finally, an continuing challenge in clinical ML is to avoid optimistic bias by conflating model selection with performance estimation [18]. The vast majority of studies reporting PD detection evaluate results from a single split or flat k-fold; they yield models that are difficult to compare, and potentially too optimistic.
+All these challenges have been addressed in our studies, which addressed the challenges in detecting the asymmetry in PD symptoms, scarcity of labelled data, generalization and real-life feasibility. Table 1 positions this work against the closest prior studies.
+Table 1: Comparison of related work.✓=addressed;×=not addressed;∼=partial.
+Work Method Label
+Efficiency
+PD vs. DD
+Edge Deploy
+Patel et al. [4] Handcrafted features× × × Sigcha et al. [6] CNN-Transformer× × × Guo et al. [5] LSTM× × × Zhao et al. [19] Multi-scale freq. network× × × Soumma et al. [11] SSL (LIFT-PD)∼ × × Farahmand et al. [13] Hybrid attention (GlucoNet)× × ×
+Ours Interleaved self-attention + SSL✓ ✓ ✓
+2
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+Figure 1: Representative Acc-magnitude signals for theRelaxedtask from Control, PD, and DD participants at the (a) left and (b) right wrist. (c) Class balance of training windows under standard non-overlapping windowing versus the class-dependent DHWT scheme, which equalizes the three groups.
+3 Dataset
+PADS [3] contains bilateral wrist-worn smartwatch recordings from 469 participants performing ten standardized motor tasks designed by neurologists: 291 with PD, 79 healthy controls (HC), and 99 with differential diagnoses (DD). Each participant wears two Apple Watch Series 4 devices, one per wrist, giving six-axis IMU measurements per wrist (three accelerometer axesa x, ay, az and three gyroscope axesω x, ωy, ωz) sampled at100Hz. The tasks (CrossArms, DrinkGlas,Entrainment,HoldWeight,LiftHold,PointFinger,Relaxed,StretchHold,TouchIndex,TouchNose) are each
+10–20seconds long. PADS lacks uniform severity and time-since-diagnosis labels, so we make no claim about severity staging, only categorical detection and differentiation. Figure 1 shows representative signals for each group and the effect of our class-balancing on the training-window distribution.
+4 Proposed Method
+This section describes only the method we propose. Every design alternative we considered, and every ablation that justifies a choice made here, is deferred to Section 5. Figure 2 shows the complete pipeline: signal conditioning, hierarchical labelling, class-dependent windowing, the interleaved encoder, the contrastive pre-training branch, and the on-device inference loop.
+4.1 Problem Formulation
+Each sample is a pair of synchronous left (L) and right (R) wrist signalsX= (X L,X R)∈R T×2C , withC=6 channels per wrist. We decompose the three-way problem into two binary heads: HC-vs-PD (screening) and PDvs-DD (differential diagnosis). A hierarchical masking scheme supplies each head only the relevant samples: for an HC subject the PD-vs-DD label is masked (−1); for a DD subject the HC-vs-PD label is masked; PD subjects are positive for the first head and negative for the second. Masked labels are excluded from the corresponding head’s loss. Section 5.6 shows that this decomposition outperforms a single three-class head.
+4.2 Data Preprocessing
+The six IMU channels per wrist are retained and the first0.5s (50samples) of each task removed to discard initialization transients. Signals are down-sampled from100Hz to64Hz by polyphase resampling, then filtered with a fifth-order Butterworth band-pass ([0.1,20]Hz) using zero-phase forward–backward filtering (filtfilt). Clinically relevant activity (resting tremor4–6Hz and voluntary movement≤5Hz) lies inside this passband, while DC offsets and high-frequency sensor artifacts are removed; the effect is quantified in Section 5.4. Signals are segmented into windows ofT=256timestamps (4s at64Hz). Because the group counts are imbalanced (HC:79, PD:291, DD:99), uniform windowing collapses to the majority class; we therefore apply a class-dependent overlap (Differential Hopping Windowing [11],70%for HC,0%for PD,65%for DD), yielding∼8,500windows per class. We use patient-disjoint stratified5-fold cross-validation, so no subject appears in both training and validation.
+3
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+Bilateral Wrist-Worn IMU Signals
+100 Hz, 6 channels, 10 tasks
+concatenate along time channel
+Band-Pass Filtering
+Butter Worth filter 0.1 HZ - 20 HZ
+DD
+HC
+Participant Condition
+HC vs PD Label
+PD vs DD Label
+HC (0) 0 -1 (Masked)
+PD (1) 1 0
+DD (2) -1 (Masked) 1
+HC(0)
+PD(1)
+DD(2)
+0
+1
+-1 (masked)
+condition HC vs PD PD VS DD
+Hierarchical Labeling
+↓Down Sampling
+100Hz to 64Hz
+Overlapping
+-1 (masked)
+0
+1
+PD
+Global Average Pool
+Self Attention Encoder
+Linear Projection
+Temporal Encoding
+Update
+Update
+Augmentation
+Time Warping
+Gaussian Noise
+Feed forward
+InfoNCE Loss
+Fine tuning
+Inference
+Raspberry Pi
+Circular Buffer
+Right Wrist Window Samples
+Left Wrist Window Samples
+50% overlapping windows
+Masked Cross Entropy Loss
+HC VS PD
+HC VS PD
+Figure 2: Interleaved self-attention encoder: the two wrist streams are projected, tagged with a learned modality embedding, and concatenated along time into a single2Tsequence, over which standard self-attention computes within-wrist (diagonal) and between-wrist (off-diagonal) interactions in one operation. The same encoder is used for supervised training, contrastive self-supervised pre-training, and inference.
+4.3 Bilateral Fusion Strategy
+PD signs typically begin on one side and remain more severe there, so the relationship between the two wrists carries diagnostic information that a single-wrist model discards. Rather than committing to a hand-designed interaction, we fuse the wrists bytime interleaving: both streams are projected into a shared embedding space, tagged with a learned modality embedding that identifies the wrist, and concatenated along the time axis into one2Tsequence. Ordinary self-attention over that sequence then computes within-wrist and between-wrist relationships in a single operation under one tied set of weights, rather than through separate query/key pathways per direction. Section 5.2 compares this against explicit dual-stream cross-attention, late concatenation, and single-wrist inputs.
+4.4 Interleaved Self-Attention Encoder
+EachC=6-channel input is linearly projected toddimensions with added sinusoidal positional encodings [7] and a learned modality embeddingm L,m R ∈R d identifying the wrist, then concatenated along the time axis (∥):
+H(0) =  ̃HL ∥  ̃HR ∈R 2T×d ,(1)
+where  ̃Hw = PE(WwXw) +m w forw∈ {L, R}. The full2Tsequence then passes throughNstandard transformer blocks. Each block applies multi-head self-attention (MHA) with a residual connection and layer normalization, followed by a position-wise feed-forward network:
+H(n) = FFN LayerNorm H(n−1) + MHA(H(n−1)) .(2)
+Because attention is taken over the concatenated stream, each2T×2Tattention map decomposes into fourT×T quadrants: the two diagonal blocks are within-wrist self-attention and the two off-diagonal blocks are left–right crossattention. The interleaved encoder therefore realizes the same set of bilateral interactions as an explicit dual-stream cross-attention design, but with one tied set of projection weights instead of four separate ones (159,556against 418,180parameters atd=64) and one attention operation per block instead of four. The two share a single softmax normalization across the2Tpositions, so left and right timesteps compete for attention mass, the one substantive functional difference.
+Global average pooling over the2Toutput positions yieldsz∈R d, passed to two linear + softmax heads, one per binary decision.
+4
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+Table 2: Interleaved self-attention encoder (window-level, with band-pass,5patient-disjoint folds). PD-vs-DD is as stable as HC-vs-PD but shows lower AUROC/F1/sensitivity—the harder clinical boundary.
+TaskAcc AUROC F1 Sens Spec
+HC vs. PD 0.932 0.963 0.938 0.994 0.865 PD vs. DD 0.909 0.960 0.894 0.812 0.996
+4.5 Self-Supervised Pre-training
+To reduce the annotation burden, we pre-train the encoder with a contrastive objective [9] and then fine-tune. For
+each anchorz i, a positivez +
+i is formed by augmentation and the other in-batch samples are negatives;no class labels are used at any point during pre-training. Two augmentations alternate with equal probability: cubic-spline temporal warping [14] and additive Gaussian noise (σ=0.05). The InfoNCE loss [8] per batch of sizeBis
+LNCE =− 1
+B
+B
+X
+i=1
+log exp(sim(zi, z+
+i )/τ)
+PB
+j=1 exp(sim(zi, zj)/τ)
+.(3)
+The pre-trained encoder is then either fine-tuned end-to-end or frozen with a linear probe on top.
+4.6 Optimization
+Cross-entropy is computed per head over non-masked samples and averaged. We train with AdamW [15] (weight decay0.01), unit-norm gradient clipping, ReduceLROnPlateau, up to100epochs, batch size32, learning rate5×10 −4, and dropout0.2; the base model usesd=64,N=3blocks,h=8heads, and a256-dimensional feed-forward layer. These settings follow an Optuna (TPE) search over model width, depth, learning rate, weight decay and dropout, which consistently favouredsmallarchitectures (d=32–64,N=2–3blocks), indicating that a compact, well-regularized model generalizes best on this dataset.
+4.7 Inference and Edge Deployment
+For deployment the offline zero-phase filter is replaced by a causal second-order-section band-pass, sincefiltfilt is not realizable in a streaming setting. Samples arrive at100Hz, are down-sampled to64Hz and filtered sample-bysample with persistent filter state. A256-sample circular buffer holds the current window and inference is triggered every128samples (2s step,50%overlap). The deployed configuration is thed=64,N=3interleaved encoder running on a Raspberry Pi 4 (ARM Cortex-A72, 4 GB RAM); measured latency is reported in Section 5.8.
+5 Experiments and Results
+All models were implemented in PyTorch on an NVIDIA GPU with SciPy for signal processing; hyper-parameters were searched with Optuna (TPE). We report window-level metrics as mean over the patient-disjoint5-fold crossvalidation. Because both tasks are close to balanced (HC-vs-PD prevalence0.52; PD-vs-DD0.47), we emphasize threshold-independent AUROC alongside accuracy and F1. We note that patient-level AUROC saturates at1.000for every encoder on both tasks, so all comparisons below are made at the window level, which is the only level that discriminates between models.
+5.1 Detection and Differential Diagnosis
+Table 2 reports the interleaved self-attention encoder on both decisions. HC-vs-PD reaches0.963AUROC with nearperfect sensitivity (0.994), whereas PD-vs-DD, at comparable accuracy and equal stability (between-fold std≤0.002 AUROC), attains lower F1 (0.894) and much lower sensitivity (0.812). This asymmetry is the central clinical finding: distinguishing PD from look-alike disorders that share tremor and bradykinesia is genuinely harder than distinguishing PD from healthy controls, and a system tuned for screening will under-detect atypical cases unless the differential is modelled explicitly. The learned embeddings make this geometry explicit (Fig. 3): HC and PD separate cleanly, whereas PD and DD share a large overlapping region.
+5
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+(a) HC vs. PD (b) PD vs. DD (c) Three-c
+Figure 3: t-SNE of the learned embeddings. (a) HC and PD separate cleanly, whereas (b) PD and DD share a large overlapping region—the geometric signature of the harder differential-diagnosis boundary.
+Table 3: Bilateral fusion mechanisms and single-wrist ablations (window-level,5patient-disjoint folds; parameters at d=64). All mechanisms agree to within0.001AUROC; we adopt the interleaved encoder for its lower parameter and compute cost, not its accuracy.
+HC vs. PD PD vs. DD
+EncoderParams Acc AUROC Acc AUROC
+Interleaved self-attn (ours)159.6 K0.932 0.963 0.909 0.960 Cross-attention 418.2 K 0.926 0.964 0.909 0.960 Late concatenation 317.6 K 0.928 0.964 0.909 0.960 Left wrist only 159.4 K 0.928 0.964 0.909 0.960 Right wrist only 159.4 K 0.929 0.965 0.909 0.961
+5.2 Bilateral Fusion: Does the Mechanism Matter?
+Because the encoder is motivated by bilateral sensing, we first ask whether thefusion mechanismis load-bearing. Table 3 compares three ways of combining the wrists under an identical pipeline—interleaved self-attention over the 2Tstream, explicit dual-stream cross-attention, and late concatenation of the two pooled representations—together with single-wrist ablations.
+No mechanism separates from any other.Window-level AUROC spans0.963–0.965on HC-vs-PD and0.960–0.961 on PD-vs-DD; the largest gap between any two fusion variants is0.001AUROC, an order of magnitude smaller than the between-fold variation, and paired bootstrap tests over patients place every pairwise difference inside its95% confidence interval. Single-wrist encoders match the bilateral ones to the same tolerance. We therefore make no accuracy claim for bilateral fusion, and adopt the interleaved variant on efficiency grounds alone.
+That the mechanism does not change accuracy does not mean the models ignore the second wrist. Abilateral-pairing control—re-pairing each left-wrist window with a right-wrist window drawn from a different sample, leaving both signals otherwise intact—collapses the interleaved encoder from0.962/0.960AUROC to0.622/0.586, and crossattention from0.963/0.960to0.561/0.556. Late concatenation, which mixes the streams only after pooling, is the least disrupted (−0.15AUROC), and a left-wrist-only encoder is by construction unaffected (∆ = 0.000), serving as a positive control on the procedure. The bilateral models thus genuinely integrate the two streams and break when the correspondence is destroyed—the information is redundant for this classification, but it is being used.
+6
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+0.00 0.25 0.50 0.75 1.00 False positive rate
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+True positive rate
+(a) HC vs. PD
+AUROC Cross-attention (0.963) 1D-CNN (0.971) BiLSTM (0.965)
+0.00 0.25 0.50 0.75 1.00 False positive rate
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+True positive rate
+(b) PD vs. DD
+AUROC Cross-attention (0.960) 1D-CNN (0.948) BiLSTM (0.957)
+Figure 4: Comparative ROC curves (window-level, pooled over the five patient-disjoint folds). In distribution the encoders are nearly identical; the 1D-CNN even edges the attention encoder on HC-vs-PD (a) yet is weakest on PDvs-DD (b).
+5.3 Encoder Comparison and Cross-Task Generalization
+We next compare the interleaved encoder against 1D-CNN and BiLSTM baselines under an identical pipeline.In distribution the three are near-indistinguishable: Fig. 4 shows heavily overlapping ROC curves, and the 1D-CNN is in fact marginally the strongest on HC-vs-PD (0.971AUROC) while being the weakest on PD-vs-DD (0.948). In-distribution accuracy therefore cannot tell these models apart or justify a choice between them.
+The difference appears only when we ask a harder, clinically realistic question: does a model trained on one set of motor tasks generalize totasks it has never seen? Under leave-one-task-out (LOTO)—holding out each of the ten tasks in turn, training on the other nine, and averaging AUROC over the ten held-out tasks (Table 4)—the interleaved encoder stays at0.959/0.943AUROC (HC/PD, PD/DD) with a worst held-out task no lower than0.930. The 1D-CNN collapsesto0.802/0.789on average and to0.631/0.540on its worst task (near chance), and the BiLSTM—competitive on average (0.954)—is three-to-five times more variable and drops to0.900. The same ranking holds when we instead train on seven tasks and test on three unseen ones (attention0.964/0.969; CNN0.769/0.745; BiLSTM0.918/0.893). Attention encoders thus learn task-invariant motor structure and generalize robustly; the 1D-CNN instead latches onto task-specific patterns that do not transfer, while the BiLSTM generalizes on average but far less reliably across tasks. Notably, this separation is driven entirely by the encoderfamily. Table 4 lists all five attention variants: interleaved, cross-attention, late concatenation, and both single-wrist ablations transfer within0.003AUROC of one another (0.958–0.960on HC-vs-PD,0.943–0.946on PD-vs-DD), while the CNN loses more than0.15. The fusion mechanism is therefore irrelevant to transfer just as it is to in-distribution accuracy; what matters is attention and compactness, not how—or even whether—the two wrists are combined.
+5.4 Effect of Band-Pass Filtering
+Removing the band-pass filter is the largest single effect we observe. As a preprocessing ablation it is measured with the encoder held fixed; we report it on the cross-attention variant, which Table 3 shows is interchangeable with the interleaved encoder for this purpose. Without the filter, validation loss diverges from training loss (Fig. 5), indicating that out-of-band noise leads the model to memorize high-frequency artifacts. Accuracy drops to87.6%(HC-vs-PD) and84.2%(PD-vs-DD) and AUROC falls from0.964to0.936and from0.960to0.920; adding the filter improves accuracy by+5.0and+6.7points and reduces between-fold standard deviation by roughly an order of magnitude (0.0148→0.0010on HC-vs-PD). In distribution this is a far larger and more consistent effect than either the encoder family or the fusion mechanism, confirming that the motor-relevant signal lies in the0.1–20Hz band.
+7
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+Table 4: Leave-one-task-out generalization (train on nine tasks, test on the held-out one; AUROC averaged over the ten held-out tasks, worst single task in parentheses).Everyattention encoder transfers within0.003AUROC of every other, including the single-wrist ablations; only the encoder family separates, with the 1D-CNN collapsing and the BiLSTM far more variable.
+Model HC vs. PD PD vs. DD mean (worst) mean (worst)
+Attention encoders
+Interleaved self-attn (ours) 0.959 (0.952) 0.943 (0.930) Cross-attention 0.958 (0.944) 0.944 (0.929) Late concatenation 0.960 (0.950) 0.943 (0.930) Left wrist only 0.960 (0.954) 0.946 (0.930) Right wrist only 0.960 (0.951) 0.945 (0.929)
+Non-attention baselines
+1D-CNN 0.802 (0.631) 0.789 (0.540) BiLSTM 0.954 (0.900) 0.933 (0.896)
+(a) With band-pass (b) Without band-pass
+Figure 5: Training/validation loss (a) with and (b) without the band-pass filter. Without the filter, validation loss diverges from training loss, the signature of overfitting to out-of-band noise.
+5.5 Label Efficiency
+Table 5 and Figure 6 compare SSL fine-tuning against supervised training from scratch at increasing labelled fractions. The task is highly label-efficient: both regimes reach within∼1point of their full-label accuracy using only∼20% of labels.Pre-training pays off precisely where labels are scarce: at a5%budget SSL fine-tuning leads supervised training by9.8points on HC-vs-PD (0.849vs.0.751) and10.5points on PD-vs-DD (0.832vs.0.728), and still leads at10%; from20%onward the two are indistinguishable. Much of this gap is stability rather than ceiling—at5% the supervised runs vary enormously across folds (std0.108) whereas the pre-trained ones do not (std0.025), so contrastive pre-training mainly supplies an initialization from which low-label training reliably converges. This is the regime that matters clinically, where expert-labelled recordings are the binding constraint.
+5.6 Hierarchical Heads versus a Direct Three-Class Model
+The two-head decomposition of Section 4 is a design choice, so we test it against the obvious alternative: a single softmax over the three classes, trained on the same windows with the same encoder. Table 6 reports the result. Overall three-class accuracy is89.0%, but the per-class breakdown is what matters. PD is recovered almost perfectly (100.0%) because it is the majority class, HC follows at85.2%, and the differential-diagnosis class is by far the hardest at80.8%. The hierarchical heads reach93.2%and90.9%on their respective binaries, so routing each subject to the head that is meaningful for them is worth several accuracy points over asking one classifier to separate all three groups at once. The three-class view is nevertheless the more honest description of the clinical problem: it shows that the difficulty lives in the other-disorders class, exactly the group that the pooled binary metrics flatter.
+8
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+Table 5: Label efficiency (window-level accuracy,5-fold mean, interleaved encoder). SSL fine-tuning leads clearly at 5–10%of labels and matches supervised training from20%onward; both plateau near∼20%.
+HC vs. PD PD vs. DD
+LabelsSSL FT Superv. SSL FT Superv.
+5%0.8490.7510.8320.728 10%0.8960.8780.8730.832
+20%0.916 0.921 0.895 0.901 50%0.925 0.926 0.907 0.909 100%0.926 0.927 0.910 0.909
+5 10 20 50 70 100 Labelled fraction (%)
+0.70
+0.75
+0.80
+0.85
+0.90
+0.95
+Window accuracy
+(a) HC vs. PD
+SSL fine-tune Supervised SSL linear probe
+5 10 20 50 70 100 Labelled fraction (%)
+(b) PD vs. DD
+SSL fine-tune Supervised SSL linear probe
+Figure 6: SSL label-efficiency curves: window accuracy versus labelled fraction for (a) HC-vs-PD and (b) PD-vs-DD. Contrastive pre-training leads clearly in the low-label regime and both curves plateau near∼20%of labels (dashed line), after which they are indistinguishable.
+5.7 Comparison with a Time-Series Foundation Model
+We benchmarked TimesFM [16], a decoder-only foundation model pre-trained on a large time-series corpus, in two regimes (Table 7). Parameter-efficient fine-tuning with a LoRA adapter [17] (r=6, α=12) on its hidden state gives the best window-level scores in the study (0.977/0.969AUROC). Usedzero-shot, however—a frozen feature extractor with a logistic-regression probe—it reaches only87.6%/84.4%accuracy and0.940/0.910AUROC, below even the compact interleaved encoder trained from scratch. General time-series pre-training therefore does not by itself capture PD-specific structure; clinically specific adaptation is required to discriminate look-alike movement disorders.
+5.8 On-Device Latency
+With minimal preprocessing overhead the deployed model sustains124.5ms per window—only6.2%of the2s realtime budget—leaving ample headroom for continuous on-device monitoring. This efficiency follows directly from the fusion choice. The interleaved encoder issues a single self-attention operation per block over the concatenated2T sequence—three multi-head attention calls in total, against the twelve of explicit cross-attention—and uses159,556 parameters versus cross-attention’s418,180(2.6×fewer), at no cost in accuracy (Table 3). Measured over the same eleven streamed recordings, explicit cross-attention costs260.1ms per window, roughly2.1×slower, while late concatenation costs119.6ms and a single-wrist encoder75.2ms, quantifying the price of bilateral sensing. On-device power consumption was not measured and is left to future work.
+5.9 Limitations
+Our study uses a single dataset (PADS); validation on an independent, multi-site cohort is necessary before deployment, and the patient-disjoint partition must be preserved throughout to avoid leakage. Self-supervised pre-training is performed on the same data used for fine-tuning, which likely understates the benefit of contrastive learning; a fairer test would pre-train on a large external corpus of unlabelled IMU signals. PADS lacks uniform severity and time
+9
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+Table 6: Direct three-class HC/PD/DD head (window level, mean over folds). Overall accuracy is high, but the other-disorders class is recovered far less reliably than PD, which the pooled binary metrics conceal.
+Overall HC PD DD
+Three-class accuracy 0.890 0.852 1.0000.808
+Table 7: Foundation-model comparison (window-level,5-fold mean). A fine-tuned foundation model is strongest, but its zero-shot form lags a compact encoder trained from scratch.
+HC vs. PD PD vs. DD
+ApproachAcc AUROC Acc AUROC
+Interleaved self-attn (ours) 0.932 0.963 0.909 0.960 TimesFM + LoRA 0.9260.9770.9130.969 TimesFM zero-shot 0.876 0.940 0.844 0.910
+since-diagnosis labels, so we make no claim about disease staging—only categorical detection and differentiation. Patient-level metrics saturate at1.000on this cohort, so window-level results carry all of the discriminative signal reported here and patient-level numbers should not be read as evidence of clinical readiness. Finally, predictions have not been clinically verified against expert ground truth beyond the dataset labels.
+6 Conclusion
+We presented a compact interleaved self-attention encoder for Parkinson’s disease detection and, more importantly, PD-versus-DD differential diagnosis from bilateral wrist-worn IMU signals, under a strict patient-disjoint protocol with threshold-free metrics. It reaches0.963/0.960AUROC, but the low PD-vs-DD sensitivity (0.812) marks the differential as the genuinely hard, clinically decisive boundary for future work. Our controlled comparison shows that the bilateralfusion mechanismis not what drives performance: interleaved self-attention, explicit cross-attention, late concatenation, and even single-wrist encoders agree to within0.001AUROC, so we adopt the interleaved design for costing2.6×fewer parameters and running2.1×faster on device rather than for any accuracy advantage. What does separate models is the encoderfamily, and only under cross-task generalization—attention holds0.94–0.96AUROC while the CNN collapses and the BiLSTM becomes far more variable. Signal conditioning (the0.1–20Hz band-pass) is the dominant preprocessing factor, self-supervised pre-training outperforms supervised training by∼10points at a 5%label budget, a foundation model needs fine-tuning to be competitive, a direct three-class head exposes the otherdisorders class as the hardest to recover (80.8%), and the model runs in real time on a Raspberry Pi 4. Taken together, the levers that matter here are signal conditioning, encoder family, and label budget—not architectural wiring. Future work should target the PD-vs-DD boundary with severity-annotated cohorts and validate on independent, multi-site data.
+References
+[1]E. R. Dorsey, T. Sherer, M. S. Okun, and B. R. Bloem, “The Parkinson pandemic—a call to action,”JAMA Neurology, vol. 75, no. 1, pp. 9–10, 2018.
+[2]B. R. Bloem, M. S. Okun, and C. Klein, “Parkinson’s disease,”The Lancet, vol. 397, no. 10291, pp. 2284–2303, 2021.
+[3]J. Varghese, T. Acker, M. Gemmeke, and M. Fujarski, “PADS: Parkinson’s disease smartwatch dataset,” PhysioNet, 2024.
+[4]S. Patelet al., “Monitoring motor fluctuations in patients with Parkinson’s disease using wearable sensors,”IEEE Trans. Inf. Technol. Biomed., vol. 13, no. 6, pp. 864–873, 2009.
+[5]Y. Guoet al., “High accuracy wearable detection of freezing of gait in Parkinson’s disease based on pseudomultimodal features,”Comput. Biol. Med., vol. 146, p. 105629, 2022.
+[6]L. Sigchaet al., “Improvement of performance in freezing of gait detection using transformer networks and a single waist-worn triaxial accelerometer,”Eng. Appl. Artif. Intell., vol. 116, p. 105482, 2022.
+[7]A. Vaswaniet al., “Attention is all you need,” inAdv. Neural Inf. Process. Syst. (NeurIPS), vol. 30, 2017.
+10
+
+
+Label-Efficient Bilateral Attention for PD ScreeningA PREPRINT
+[8]A. van den Oord, Y. Li, and O. Vinyals, “Representation learning with contrastive predictive coding,” arXiv:1807.03748, 2018.
+[9]T. Chen, S. Kornblith, M. Norouzi, and G. Hinton, “A simple framework for contrastive learning of visual representations,” inProc. ICML, 2020.
+[10]E. Eldeleet al., “Time-series representation learning via temporal and contextual contrasting,” inProc. IJCAI, 2021, pp. 2352–2359.
+[11]S. B. Soummaet al., “Self-supervised learning and opportunistic inference for continuous monitoring of freezing of gait in Parkinson’s disease,”ACM Trans. Comput. Healthcare, 2025.
+[12]S. B. Soumma, S. M. R. Alam, R. Rahman, U. N. Mahi, A. Mamun, S. M. Mostafavi, and H. Ghasemzadeh, “Freezing of gait detection using Gramian angular fields and federated learning from wearable sensors,”arXiv preprint, 2025.
+[13]E. Farahmand, S. B. Soumma, N. Taheri Chatrudi, and H. Ghasemzadeh, “Hybrid attention model using feature decomposition and knowledge distillation for glucose forecasting,”arXiv preprint, 2024.
+[14]T. T. Umet al., “Data augmentation of wearable sensor data for Parkinson’s disease monitoring using convolutional neural networks,” inProc. ACM ICMI, 2017, pp. 216–220.
+[15]I. Loshchilov and F. Hutter, “Decoupled weight decay regularization,” inProc. ICLR, 2019.
+[16]A. Das, W. Kong, A. Leber, R. Mathews, and R. Sen, “A decoder-only foundation model for time-series forecasting,” inProc. ICML, 2024.
+[17]E. J. Huet al., “LoRA: Low-rank adaptation of large language models,” inProc. ICLR, 2022.
+[18]S. Varma and R. Simon, “Bias in error estimation when using cross-validation for model selection,”BMC Bioinformatics, vol. 7, no. 1, p. 91, 2006.
+[19]W. Zhao, X. Wang, J. Qi, Y. Yang, and P. Yang, “Multi-scale frequency-aware adversarial network for Parkinson’s disease assessment using wearable sensors,”arXiv:2510.10558, 2025.
+11

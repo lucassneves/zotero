@@ -1,0 +1,370 @@
+meta:
+  row_id: 54
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "MTN6Z5IL"
+  titulo: "Baseline mood and non-motor symptom burden are associated with cognitive progression in Parkinson’s disease: an interpretable follow-up cohort analysis with separate neuroimaging, molecular, and digital analyses in independent samples"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Seção 2.9, p. 6 — 'Parkinson’s Disease Smartwatch (PADS) data were used to evaluate wearable movement associations with non-motor symptom summaries'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 54
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho/Copyright, p. 1 — 'PUBLISHED 07 September 2026 DOI 10.3389/frai.2026.1924525' / '© 2026 Ren, Ren, Yu, Gao, Wang and Xu.'"
+    auditoria: null
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Análise estatística"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 — 'In this study, we tested whether baseline mood/non-motor burden was associated with 0–5 year cognitive progression in PPMI.'"
+    auditoria: null
+    observacao: "O estudo realiza análise de associação longitudinal no PPMI (com benchmark interno via regressão logística e validação cruzada) e análises exploratórias independentes em fMRI (OpenNeuro), transcriptômica (GEO) e fenótipos digitais (PADS e UCI voice). No PADS, realiza exclusivamente análise de correlação estatística (Spearman r) entre sintomas não motores e amplitude de movimento vestível."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 preenchido como 'Análise estatística' (opção 'Outro' não marcada)."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Análise suplementar"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2 — 'digital phenotype datasets were analyzed separately within their own samples and outcomes to address... measurement feasibility'"
+    auditoria: null
+    observacao: "A análise principal é feita na coorte longitudinal PPMI; o PADS entra no estágio 2 como análise separada de viabilidade de mensuração digital."
+  - id: 6
+    chave: "datasets"
+    valor: ["Outro público", "PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, 2.5, 2.8 e 2.9, p. 3–6 — 'Parkinson’s Disease Smartwatch (PADS) data were used to evaluate wearable movement associations'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "PPMI (Parkinson’s Progression Markers Initiative); OpenNeuro ds005892; GEO (GSE6613, GSE7621, GSE80599, GSE8397, GSE99039); UCI voice and telemonitoring datasets; Global Burden of Disease (GBD) 2023"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1–2.9, p. 2–6 e Seção 3.4, p. 9 — 'PPMI... OpenNeuro ds005892... Public Gene Expression Omnibus (GEO)... University of California, Irvine (UCI) voice and telemonitoring resources'"
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Questionário (PDNMS)", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 — 'Parkinson’s Disease Smartwatch (PADS) data were used to evaluate wearable movement associations with non-motor symptom summaries'"
+    auditoria: null
+    observacao: "Na Figura 6A–B (p. 10), são analisados itens do questionário não motor (Anxiety, Apathy, Concentration, Memory, Sad/low, Sleepiness, NMS total) e atributos de sensores vestíveis (Acc RMS, Acc SD, Tremor-band acc, Gyro RMS, Gyro SD)."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9–10 — termos buscados: task, tasks, movement, PADS; texto principal não especifica quais tarefas motoras foram usadas."
+    auditoria: null
+    observacao: "O artigo menciona apenas que saídas detalhadas de contexto digital estão nas Tabelas Suplementares 40–67 e Figuras Suplementares S12–S18."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9–10 — termos buscados: task, relax, stretch, hold, nose; nenhuma tarefa específica do PADS é nomeada no texto."
+    auditoria: null
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.5, p. 9 e Figura 6A–B, p. 10 — 'most clearly for accelerometer RMS... Gyro SD, Gyro RMS, Acc RMS, Tremor-band acc, Acc SD'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não marcada no campo 11."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9–10 — termos buscados: wrist, left, right, hand; punho utilizado no PADS não é especificado no texto principal."
+    auditoria: null
+    observacao: null
+  - id: 14
+    chave: "n_participantes"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9–10 — termos buscados: PADS, participants, subjects, sample; o N do PADS não é informado no texto principal."
+    auditoria: null
+    observacao: "O texto principal informa apenas o N de outros datasets: PPMI (1.612 participantes na linha de base, 1.439 com seguimento cognitivo avaliável e 5.909 registros; 1.298 casos completos nos modelos ajustados) e OpenNeuro ds005892 (55 participantes: 22 controles, 18 PD-NC e 15 PD-MCI). Os detalhes da análise do PADS são remetidos às Tabelas Suplementares 40–67."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9–10 — termos buscados: PADS, PD, HC, DD, control; a distribuição por classe no PADS não é informada no texto."
+    auditoria: null
+    observacao: "Nas demais bases: PPMI avaliou 1.439 participantes com DP (720 com progressão cognitiva e 719 sem progressão); OpenNeuro ds005892 incluiu 22 controles, 18 PD-NC e 15 PD-MCI."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 3.5, p. 9 — 'In PADS, greater non-motor symptom burden was associated with lower wearable movement amplitude, most clearly for accelerometer RMS (Spearman r = −0.171)'"
+    auditoria: null
+    observacao: "Não há tarefa de classificação no PADS (apenas análise de correlação entre sintomas não motores e atributos de movimento). Em outras bases, houve predição de progressão cognitiva em pacientes com DP (PPMI) e classificação PD vs. controle em registros de voz (UCI voice)."
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Sem tarefa de classificação no PADS (campo 16 = null)."
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.5, p. 9 e Figura 6A–B, p. 10 — 'wearable movement amplitude, most clearly for accelerometer RMS... Gyro SD, Gyro RMS, Acc RMS, Tremor-band acc, Acc SD'"
+    auditoria: null
+    observacao: "Foram extraídas medidas-resumo de amplitude/variabilidade do acelerômetro e giroscópio (Acc RMS, Acc SD, Tremor-band acc, Gyro RMS, Gyro SD) e escores do questionário não motor."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não marcada no campo 18."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Outro"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.5, p. 9 — 'greater non-motor symptom burden was associated with lower wearable movement amplitude, most clearly for accelerometer RMS (Spearman r = −0.171; FDR-adjusted p = 0.0071)'"
+    auditoria: null
+    observacao: "No PADS foi aplicada apenas análise estatística de correlação de Spearman com correção FDR. Em outros datasets do artigo (PPMI e UCI voice), foram utilizados algoritmos de Classical ML (regressão logística regularizada, Random Forest, k-means e PCA)."
+  - id: 21
+    chave: "outra_familia"
+    valor: "Análise estatística de correlação (correlação de postos de Spearman com correção FDR de Benjamini–Hochberg)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.5, p. 9 — 'most clearly for accelerometer RMS (Spearman r = −0.171; FDR-adjusted p = 0.0071; Figures 6A,B)'"
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Correlação de Spearman com correção FDR (Benjamini–Hochberg)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 4 e Seção 3.5, p. 9 — 'False-discovery-rate (FDR) correction used the Benjamini–Hochberg procedure' / '(Spearman r = −0.171; FDR-adjusted p = 0.0071)'"
+    auditoria: null
+    observacao: "Nos demais datasets: regressão logística ajustada/regularizada, modelos lineares com efeitos agrupados por participante, PCA e k-means (PPMI); regressão logística regularizada e Random Forest (UCI voice); testes de Kruskal–Wallis e Permutation NBS (OpenNeuro)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9 — análise no PADS restrita à correlação estatística sem treinamento de classificador."
+    auditoria: null
+    observacao: null
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Não reportado"]
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9 — não há modelagem preditiva ou particionamento treino/teste no PADS."
+    auditoria: null
+    observacao: "Conforme regra de coerência para estudos sem avaliação preditiva no PADS (campo 26 = Não se aplica), marca-se 'Não reportado' por ausência da opção 'Não se aplica' no campo 24. No dataset PPMI, foi utilizada validação cruzada 5-fold estratificada repetida 10 vezes (10× 5-fold CV) e bootstrap não paramétrico por participante (1.000 reamostragens)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outra' não marcada no campo 24."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9 — análise no PADS é puramente correlacional, sem divisão em conjuntos de treino e teste."
+    auditoria: null
+    observacao: null
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9 — sem avaliação preditiva no PADS (campo 26 = Não se aplica)."
+    auditoria: null
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9 — sem balanceamento e sem avaliação preditiva no PADS (campo 23 = Não se aplica; campo 26 = Não se aplica)."
+    auditoria: null
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = 'Não se aplica'."
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 e Seção 3.5, p. 9 — 'no analysis in another sample validated the PPMI association' / 'these analyses demonstrate source-task feasibility only'"
+    auditoria: null
+    observacao: "Os autores declaram explicitamente que cada base (PPMI, OpenNeuro, GEO, PADS e UCI voice) foi analisada separadamente em sua própria tarefa de origem, sem validação cruzada entre bases."
+  - id: 31
+    chave: "metricas"
+    valor: ["Outra"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.5, p. 9 — 'most clearly for accelerometer RMS (Spearman r = −0.171; FDR-adjusted p = 0.0071; Figures 6A,B)'"
+    auditoria: null
+    observacao: "No PADS foram reportados o coeficiente de correlação de Spearman (r) e o p-valor ajustado por FDR. Em outros experimentos do artigo foram reportados AUC, Brier score e Odds Ratio (PPMI) e AUC (UCI voice)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: "Coeficiente de correlação de Spearman (r); p-valor ajustado por FDR (Benjamini–Hochberg)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.5, p. 9 — '(Spearman r = −0.171; FDR-adjusted p = 0.0071; Figures 6A,B)'"
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "Associação sintomas não motores vs. amplitude de movimento (PADS); Correlação de Spearman; Spearman r (FDR-adjusted p); r = −0.171 (p = 0.0071) para carga de sintomas não motores vs. accelerometer RMS"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.5, p. 9 — 'In PADS, greater non-motor symptom burden was associated with lower wearable movement amplitude, most clearly for accelerometer RMS (Spearman r = −0.171; FDR-adjusted p = 0.0071)'"
+    auditoria: null
+    observacao: "Nos demais datasets: PPMI obteve OR ajustado = 1.37 (95% CI 1.20–1.55; FDR-adjusted p = 3.63 × 10^-5) e AUC médio em 10× 5-fold CV = 0.682 (SD 0.030) para covariáveis clínicas + carga composta; UCI voice obteve AUC médio = 0.934 (Random Forest) e 0.882 (regressão logística regularizada)."
+  - id: 34
+    chave: "demais_valores"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 3.5, p. 9 e Figura 6A–B, p. 10 — demais correlações do PADS são exibidas apenas graficamente no mapa de calor da Figura 6B."
+    auditoria: null
+    observacao: "A Figura 6B apresenta visualmente o mapa de calor de Spearman r entre Anxiety, Apathy, Concentration, Memory, Sad/low, Sleepiness e NMS total contra Acc RMS, Acc SD, Tremor-band acc, Gyro RMS e Gyro SD, remetendo os valores tabulares às Tabelas Suplementares 40–67."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Data availability statement, p. 12 — 'The raw data supporting the conclusions of this article will be made available by the authors, without undue reservation.'"
+    auditoria: null
+    observacao: "Na Seção 2.10 (p. 6), os autores mencionam que análises do PPMI são reproduzidas por 'scripts/make_reviewer2_ppmi_revision.py in the submission package', mas não há link de repositório público para código ou dados derivados do PADS."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção 4 (Discussion, p. 10–11): desfecho clínico baseado em janela pragmática em vez de tempo até o evento; possível perda informativa de seguimento, viés de seleção, erro de mensuração e confundimento residual; pequeno incremento de AUC (+0.017) e ausência de validação clínica externa; coorte fMRI pequena, sem medidas de humor alinhadas e maioria das comparações sem significância após FDR; recursos moleculares e digitais (incluindo PADS) oriundos de amostras, desfechos e tecidos distintos, sem integração no nível do participante."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 11 — 'Bootstrap and repeated cross-validation assess internal stability only; the small AUC increment and absence of external clinical validation are important limitations... Molecular and digital resources used different tissues, outcomes, and sampling frames'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção 4 (Discussion, p. 11): necessidade de estudos prospectivos pareados no mesmo participante (same-participant study) que coletem avaliações clínicas repetidas, neuroimagem harmonizada, medidas digitais (smartwatch e voz) e amostras biológicas alinhadas temporalmente para replicar a associação e avaliar calibração, equidade, valor preditivo incremental e utilidade clínica."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 11 — 'A future participant-matched design should collect repeated clinical assessments, harmonized imaging, digital measures, and biospecimens in the same individuals'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.9, p. 6 e Seção 3.5, p. 9 — estudo sem avaliação preditiva no PADS (apenas análise correlacional)."
+    observacao: "Na análise preditiva interna realizada no dataset PPMI (Seção 2.4, p. 4), toda a imputação e padronização foram restritas a cada dobra de treino ('with all imputation and scaling confined to each training fold')."
+  risco_vazamento:
+    valor: "Não se aplica"
+    regra: "campo 26 = Não se aplica"
+  qa:
+    QA1:
+      resposta: "N/A"
+      nota: null
+      campos: [16, 15]
+      justificativa: "Não há tarefa de classificação no recorte do PADS (campo 16 = null), apenas análise de associação estatística."
+    QA2:
+      resposta: "No"
+      nota: 0.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Apenas 2 dos 5 itens aplicáveis foram informados no texto principal (modalidade e sensores informados; tarefas, punhos e N de participantes do PADS não reportados)."
+    QA3:
+      resposta: "N/A"
+      nota: null
+      campos: [26, 27, 28]
+      justificativa: "Sem avaliação preditiva no PADS (risco_vazamento = Não se aplica)."
+    QA4:
+      resposta: "N/A"
+      nota: null
+      campos: [31]
+      justificativa: "Sem avaliação preditiva ou classificação no recorte do PADS."
+    QA5:
+      resposta: "No"
+      nota: 0.0
+      campos: [35, 22, 29]
+      justificativa: "Código público não disponibilizado para a análise do PADS (campo 35 = Nenhum) e pré-processamento dos sinais vestíveis do PADS (tarefas, punhos, janelamento) não descrito no texto principal."
+  nota_qa: 0.0
+  nota_qa_max: 2
+  faixa_qa: "Baixa"
+verificacao_de_coerencia:
+  - regra: "Modalidade inclui Série temporal (IMU) → Sensores preenchido e Tarefas/Punhos aplicáveis"
+    resultado: "OK"
+  - regra: "Campo 26 = Não se aplica → campos 27 e 28 = Não se aplica, risco = Não se aplica, campo 24 = Não reportado (explique)"
+    resultado: "OK"
+  - regra: "Campo 23 = Não se aplica → campo 28 = Não se aplica e campo 29 null"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (6→7, 20→21, 31→32)"
+    resultado: "OK"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Artigo focado primariamente na coorte longitudinal PPMI; o PADS é usado apenas na Seção 2.9/3.5 (Figura 6A–B) como análise suplementar de correlação entre sintomas não motores e amplitude de movimento (Spearman r = -0.171), sem classificação."
+  - "Campos 9, 10, 13, 14 e 15 (QA2) e pré-processamento do PADS (QA5): o texto principal não informa o N de participantes, classes, punhos ou tarefas do PADS, remetendo os detalhes às Tabelas Suplementares 40–67 e Figuras Suplementares S12–S18."

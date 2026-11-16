@@ -1,0 +1,380 @@
+meta:
+  row_id: 32
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "E7ZRIVPY"
+  titulo: "Self-Supervised Anomaly Detection for Parkinson’s Disease in Free-Living Environment"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 32
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Rodapé, p. 1 — '2025 IEEE 23rd International Conference on Industrial Informatics (INDIN) | ... ©2025 IEEE | DOI: 10.1109/INDIN64977.2025.11279622'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'propose a novel self-supervised learning framework that redefines PD diagnosis as an anomaly detection problem.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 = Novo modelo; opção Outro não marcada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção IV.A.2 e IV.B, p. 3-4 — 'In this study, we set up the following three classification tasks... allocating 80% of subjects for training and 20% for testing.'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo também coleta uma base própria (102 sujeitos) e chama PADS e mPower no resumo de 'external cohorts to verify their validity', mas treina e avalia o modelo independentemente no PADS (split 80/20 por sujeito) nos três cenários centrais do estudo (HC vs. PD, PL vs. PD, HC+PL vs. PD) e no estudo de ablação (Tabela II)."
+  - id: 6
+    chave: "datasets"
+    valor: ["Outro público", "PADS", "Privado-próprio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.A, p. 3-4 — '1) Collected Datasets: Our team collected activity data from 51 healthy volunteers and 51 PD patients... 2) Public Datasets: ... PADS [17] ... mPower [2]'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "Collected Datasets (base hospitalar própria com 51 HC e 51 PD); mPower"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.A.1-2, p. 3-4 — 'collected activity data from 51 healthy volunteers and 51 PD patients at a hospital ... mPower [2]: This dataset is based on a mobile application study'"
+    auditoria: "CONCORDA"
+    observacao: "No mPower foram selecionados 500 participantes saudáveis (>=45 anos) e 600 pacientes com PD (3 registros por sujeito, atividade de caminhada)."
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.A.2, p. 3-4 — 'The watches were worn on the participants’ wrists, and sensors synchronized to record accelerometer and gyroscope signals during 11 interactive motor tasks.'"
+    auditoria: "CONCORDA"
+    observacao: "O questionário não motor é citado apenas na revisão de literatura (Seção II, p. 2) ao descrever o estudo original de Varghese et al. [17]."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção IV.A.2, p. 4 — 'sensors synchronized to record accelerometer and gyroscope signals during 11 interactive motor tasks.'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo menciona os sinais gravados durante as 11 tarefas motoras interativas do PADS sem indicar filtragem para uma tarefa específica (diferentemente da base própria e do mPower, nos quais especifica o recorte de tarefa única)."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11 tarefas motoras interativas)"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção IV.A.2, p. 4 — 'record accelerometer and gyroscope signals during 11 interactive motor tasks.'"
+    auditoria: "CONCORDA"
+    observacao: "Os nomes individuais das 11 tarefas do PADS não são listados no texto."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.A.2, p. 4 — 'sensors synchronized to record accelerometer and gyroscope signals during 11 interactive motor tasks.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 sem a opção Outro marcada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção IV.A.2, p. 3-4 — 'The PADS dataset collects activity data from participants using two smartwatches... The watches were worn on the participants’ wrists'"
+    auditoria: "CONCORDA"
+    observacao: "O texto menciona o uso dos dois smartwatches nos punhos (e na base própria também usa punho esquerdo e direito), sem detalhar como os canais dos dois punhos são concatenados no PADS."
+  - id: 14
+    chave: "n_participantes"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV.A.2, p. 3-4 — termos buscados: participants, subjects, patients, 469, 276, 79, 114; o artigo não informa o número de participantes do PADS."
+    auditoria: "CONCORDA"
+    observacao: "O artigo informa o N da base própria (102 participantes: 51 HC e 51 PD) e do mPower (1100 participantes: 500 HC e 600 PD), mas omite os números de sujeitos do PADS."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV.A.2, p. 4 — 'The dataset contains three participant groups: PD patients, PL patients, and HC.' (sem quantitativo por grupo no PADS)."
+    auditoria: "CONCORDA"
+    observacao: "O artigo denomina o grupo DD (diagnóstico diferencial / distúrbios similares) como PL ('patients with PD-like symptoms'), mas não reporta o número de participantes por grupo no PADS."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["Outro", "PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.A.2, p. 4 — 'three classification tasks and their corresponding subdatasets: • HC vs. PD... • PL vs. PD... • HC+PL vs. PD'"
+    auditoria: "CONCORDA"
+    observacao: "PL refere-se a pacientes com sintomas semelhantes a PD (diagnóstico diferencial / DD no PADS, ex.: tremor essencial ou atrofia de múltiplos sistemas). Todos os cenários são formulados como detecção binária de anomalias (Normal vs. Abnormal/PD)."
+  - id: 17
+    chave: "outro_cenario"
+    valor: "HC+PL vs. PD (classificação binária de detecção de anomalias agrupando controles saudáveis HC e pacientes PL/DD como classe normal contra PD como classe anormal)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.A.2, p. 4 — 'HC+PL vs. PD: Both HC and PL subjects are labeled as normal, while PD patients are labeled as abnormal.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 2 e IV.B, p. 4 — 'Raw sensor signals undergo six predefined transformations... normalization of the raw data, sliding window partitioning, and transformation.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 sem a opção Outro marcada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Auto-supervisionado", "Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B-C, p. 2-3 — 'propose a self-supervised learning framework... We employ a 1D convolutional neural network (CNN)... followed by a Transformer encoder'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 sem a opção Outro marcada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Ours (Masked Contrastive Self-Supervised Learning com 1D CNN + Transformer Encoder + MLP/Linear Decoder); FC STGNN; CRT; ts2vec; TimesURL; Channel Masking; TimeMAE"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.C, p. 3 e Seção IV.B, p. 4 — '1D convolutional neural network (CNN)... Transformer encoder... FC STGNN [21], CRT[27], ts2vec[25], TimesURL[11], Channel Masking[19], and TimeMAE[3].'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.C.1, p. 3 — 'normal and anomalous data remain distinguishable under consistent augmentation strategies. We apply six transformations inspired by [16]'"
+    auditoria: "CONCORDA"
+    observacao: "Não há balanceamento de classes diagnósticas (o treinamento auto-supervisionado de detecção de anomalias usa apenas amostras da classe normal); há data augmentation de sinal por 6 transformações temporais para a tarefa pretextual contrastiva."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Hold-out"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.B, p. 4 — 'For each dataset, we performed subject-level dataset splitting, allocating 80% of subjects for training and 20% for testing.'"
+    auditoria: "CONCORDA"
+    observacao: "O texto também menciona o uso do erro de reconstrução em um conjunto de validação como critério de seleção de modelo ('reconstruction error on the validation set as the model selection criterion'), sem especificar a proporção da divisão de validação."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 sem a opção Outra marcada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.B, p. 4 — 'For each dataset, we performed subject-level dataset splitting, allocating 80% of subjects for training and 20% for testing.'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo declara explicitamente 'subject-level dataset splitting' (80% treino / 20% teste), sendo que a fase de treinamento utiliza apenas amostras de sujeitos normais/saudáveis."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.B, p. 4 — 'For each dataset, we performed subject-level dataset splitting, allocating 80% of subjects for training and 20% for testing.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "média"
+    evidencia: "Seção IV.B, p. 4 — 'In our implementation, we first conducted data preprocessing, which included normalization of the raw data, sliding window partitioning, and transformation.'"
+    auditoria: "CONCORDA"
+    observacao: "No Algoritmo 1 (p. 4), as 6 transformações são aplicadas sobre o conjunto normal de entrada do treinamento, mas na Seção IV.B são listadas junto ao pré-processamento geral sem explicitar se ocorrem estritamente após o split."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Augmentation com 6 transformações temporais (noise addition, reverse, permutation, scaling, negation, smoothing; R=7 classes contando o sinal original) combinadas com mascaramento aleatório por zeros (masking ratio ótimo = 90%); sem técnicas de oversampling/undersampling entre classes clínicas (treino unicamente com sujeitos da classe normal)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.C.1, p. 3 e Seção IV.C, p. 5 — 'We apply six transformations inspired by [16], including noise addition, reverse, permutation, scaling, negation, and smoothing... most effective ratio was found to be 90%.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção IV.B, p. 4 — 'For each dataset, we performed subject-level dataset splitting, allocating 80% of subjects for training and 20% for testing.'"
+    auditoria: "CONCORDA"
+    observacao: "Embora o resumo mencione PADS e mPower como 'external cohorts to verify their validity' além da coorte hospitalar própria, a Seção IV.B explicita que cada dataset foi particionado independentemente em 80% treino e 20% teste (e a adaptação de domínio entre datasets distintos é deixada como trabalho futuro na Seção V)."
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "F1"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.B, p. 4 e Tabela I, p. 4 — 'the primary evaluation metrics were accuracy, F1-score, and AUC.'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não especifica se o F1-score reportado é macro, ponderado (weighted) ou binário na classe positiva."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 sem a opção Outra marcada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PL vs. PD; Ours; Accuracy / F1-score / AUC; 81% / 0.81 / 0.81 (HC vs. PD: Accuracy 81%, F1-score 0.80, AUC 0.81; HC+PL vs. PD: Accuracy 81%, F1-score 0.77, AUC 0.81)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 4 — 'Ours | HC vs. PD: 81% 0.80 0.81 | PL vs. PD: 81% 0.81 0.81 | HC+PL vs. PD: 81% 0.77 0.81'"
+    auditoria: "CONCORDA"
+    observacao: "Nota: Na Tabela I (p. 4) e na Figura 2 (p. 5), o modelo completo em HC vs. PD atinge Acc 81%, F1 0.80 e AUC 0.81; porém, na Tabela II (estudo de ablação em HC vs. PD, p. 5), a linha 'W' (Full Model) reporta ACC 70%, F1-score 0.75 e AUC 0.70."
+  - id: 34
+    chave: "demais_valores"
+    valor: "HC vs. PD; FC_STGNN; Acc / F1 / AUC; 78% / 0.73 / 0.78 | HC vs. PD; CRT; Acc / F1 / AUC; 75% / 0.75 / 0.80 | HC vs. PD; Channel Masking; Acc / F1 / AUC; 75% / 0.75 / 0.76 | HC vs. PD; ts2vec; Acc / F1 / AUC; 72% / 0.67 / 0.75 | HC vs. PD; TimesURL; Acc / F1 / AUC; 66% / 0.69 / 0.61 | HC vs. PD; TimeMAE; Acc / F1 / AUC; 66% / 0.70 / 0.63 | PL vs. PD; ts2vec; Acc / F1 / AUC; 75% / 0.74 / 0.73 | PL vs. PD; Channel Masking; Acc / F1 / AUC; 69% / 0.65 / 0.66 | PL vs. PD; FC_STGNN; Acc / F1 / AUC; 65% / 0.72 / 0.56 | PL vs. PD; CRT; Acc / F1 / AUC; 59% / 0.63 / 0.57 | PL vs. PD; TimeMAE; Acc / F1 / AUC; 59% / 0.67 / 0.52 | PL vs. PD; TimesURL; Acc / F1 / AUC; 53% / 0.59 / 0.65 | HC+PL vs. PD; ts2vec; Acc / F1 / AUC; 69% / 0.71 / 0.72 | HC+PL vs. PD; TimesURL; Acc / F1 / AUC; 63% / 0.68 / 0.63 | HC+PL vs. PD; Channel Masking; Acc / F1 / AUC; 63% / 0.62 / 0.65 | HC+PL vs. PD; FC_STGNN; Acc / F1 / AUC; 63% / 0.60 / 0.63 | HC+PL vs. PD; TimeMAE; Acc / F1 / AUC; 56% / 0.53 / 0.52 | HC+PL vs. PD; CRT; Acc / F1 / AUC; 56% / 0.50 / 0.54 | HC vs. PD (Ablation); W (Full Model); ACC / F1 / AUC; 70% / 0.75 / 0.70 | HC vs. PD (Ablation); W/O Contrastive; ACC / F1 / AUC; 60% / 0.68 / 0.60 | HC vs. PD (Ablation); W/O Masked; ACC / F1 / AUC; 55% / 0.53 / 0.55 | HC vs. PD (Ablation); W/O Contrastive & Masked; ACC / F1 / AUC; 54% / 0.61 / 0.52"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 4 e Tabela II, p. 5 — 'TABLE I: Performance of proposed method in comparison to the competitors... TABLE II: Ablation Results on HC vs. PD dataset'"
+    auditoria: "CONCORDA"
+    observacao: "Resultados fora do PADS (Tabela I, p. 4): na base hospitalar própria ('collected datasets'), Ours obteve Acc 90%, F1 0.90, AUC 0.90; no mPower, Ours obteve Acc 68%, F1 0.72, AUC 0.70."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Artigo completo, p. 1-6 — termos buscados: code, github, repository, availability, available; nenhuma menção à disponibilidade de código ou dos dados próprios/derivados."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Queda de desempenho de todos os métodos com o aumento da dificuldade da tarefa (especialmente em HC+PL vs. PD, devido à sobreposição de sintomas entre PD e distúrbios similares como tremor essencial); métodos supervisionados comparados não utilizaram extração ótima de atributos (Seção IV.B, p. 4-5); escopo restrito à classificação binária sem avaliação de severidade da PD nem adaptação de domínio entre diferentes datasets e configurações de sensores (Seção V, p. 5)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.B, p. 4 e Seção V, p. 5 — 'The supervised learning methods used in our experiments did not apply the most optimal feature extraction... While our current study focuses on binary classification for PD detection...'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Escassez de dados rotulados em ambientes de vida livre (free-living) e alto risco de erro diagnóstico ao não diferenciar PD de distúrbios do movimento similares (PL/DD) (Seção I, p. 1). Como trabalhos futuros, os autores apontam: estender o framework para classificação de severidade da PD, incorporar modelos auto-supervisionados pré-treinados de outros domínios e investigar técnicas de adaptação de domínio entre diferentes datasets e configurações de sensores (Seção V, p. 5)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V, p. 5 — 'future research will extend the proposed masked-contrastive self-supervised learning framework to PD severity classification tasks... domain adaptation techniques'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano."
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV.B, p. 4 — 'In our implementation, we first conducted data preprocessing, which included normalization of the raw data, sliding window partitioning, and transformation... For each dataset, we performed subject-level dataset splitting, allocating 80% of subjects for training and 20% for testing.'"
+    observacao: "O artigo descreve normalização dos dados brutos, janelamento deslizante, transformações e seleção de modelo via erro de reconstrução no conjunto de validação (além do cálculo do limiar mu nas amostras de treino no Algoritmo 1), mas não explicita se as estatísticas de normalização foram estimadas somente nos sujeitos de treino após o split nem como o conjunto de validação foi particionado."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; campo 27 = Sim – explícita; campo 28 = Não reportado; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Três cenários binários explícitos (HC vs. PD, PL vs. PD e HC+PL vs. PD) definindo claramente o papel dos três grupos do PADS (PD, PL/DD e HC)."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Modalidade (8), tarefas (9), sensores (11) e punhos (13) são descritos, mas o número de participantes utilizados no PADS (14) não é reportado."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Moderado: há separação explícita por participante (80/20), mas não é reportado se a normalização e as transformações ocorreram estritamente após o split."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta AUC (uma métrica robusta) e F1-score sem especificar se é macro ou ponderado, além de Accuracy."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Descreve a arquitetura (CNN 1D + Transformer), hiperparâmetros (Adam, lr=0.001, 200 épocas, masking ratio=90%, dropout=0.1) e pré-processamento, mas não disponibiliza o código."
+  nota_qa: 3.0
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica"
+    resultado: "OK (modalidade é Série temporal (IMU))"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (cenários binários)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (ambos não reportados no artigo para o PADS)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (26 = Participante; 27 = Sim – explícita)"
+  - regra: "Campo 23 = Outro → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK (23 = Outro; 28 = Não reportado; 29 preenchido)"
+  - regra: "Campo 9 diferente de Não se aplica → campo 10 preenchido"
+    resultado: "OK (9 = Todas; 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (3→4, 6→7, 11→12, 16→17, 18→19, 20→21, 24→25, 31→32)"
+    resultado: "OK (6→7 e 16→17 preenchidos; demais null)"
+  - regra: "Nota de QA3 coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Moderado → QA3 = Partially / 0.5)"
+pontos_para_revisao_humana:
+  - "Campos 5 e 30: O resumo refere-se a PADS e mPower como 'external cohorts to verify their validity' além da base própria (102 sujeitos), mas a Seção IV.B declara treino e teste independentes (split 80/20 por sujeito) em cada dataset e os três cenários do PADS são centrais no artigo."
+  - "Campos 14 e 15: O artigo descreve os três grupos do PADS (PD, PL/DD e HC), mas não informa a quantidade de participantes utilizados em cada grupo no PADS."
+  - "Campos 24, 26, 28 e QA3: O artigo declara split 80/20 por sujeito (com treino apenas em sujeitos normais), mas não explicita como o conjunto de validação foi separado nem se a normalização foi ajustada apenas no treino."
+  - "Campo 31 e QA4: O artigo reporta Accuracy, F1-score e AUC, sem especificar se o F1-score é macro, ponderado ou binário."
+  - "Campos 33 e 34: Divergência interna para o modelo completo ('Ours' / 'W') em HC vs. PD entre a Tabela I / Figura 2 (Acc 81%, F1 0.80, AUC 0.81) e a Tabela II de ablação (ACC 70%, F1 0.75, AUC 0.70)."
+  - "Campo 35 e QA5: Código não disponibilizado; hiperparâmetros principais descritos no texto, mas tamanho da janela deslizante não especificado."

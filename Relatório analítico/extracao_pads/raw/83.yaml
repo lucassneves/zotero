@@ -1,0 +1,381 @@
+meta:
+  row_id: 83
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "LEAQMNA6"
+  titulo: "Blockchain-enabled hybrid CNN–Transformer framework with Integrated Gradients for Parkinson’s disease detection"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 83
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Página 1, rodapé — 'Egyptian Informatics Journal 35 (2026) 101034 ... © 2026 The Authors.'"
+    auditoria: null
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'This study proposes a novel Blockchain-Enabled Hybrid CNN–Transformer framework with Integrated Gradients for PD detection'"
+    auditoria: null
+    observacao: "Propõe uma arquitetura híbrida CNN–Transformer com fusão de atributos espectrais, explicabilidade via Integrated Gradients e camada leve simulada de blockchain (SHA-256) para verificação de integridade das predições."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 marcado como 'Novo modelo'; não se aplica preenchimento de 'Outro'."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 7 — 'The experiments were conducted using the PADS — Parkinson’s Disease Smartwatch Dataset [6]'"
+    auditoria: null
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 7 — 'The experiments were conducted using the PADS — Parkinson’s Disease Smartwatch Dataset [6]'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas o PADS foi utilizado nos experimentos (Seção 3.2, p. 7)."
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Metadados demográficos-clínicos", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 7 — 'contains multimodal wearable sensor recordings alongside structured clinical metadata.'"
+    auditoria: null
+    observacao: "O modelo preditivo CNN–Transformer processa as séries temporais inerciais (e atributos espectrais/wavelet derivados), enquanto os metadados demográficos/clínicos (idade, sexo, condição clínica) são explorados descritivamente na Seção 3.2.2 e Fig. 2."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 3.2.3, p. 7 — 'captured under structured motor tasks (e.g., relaxed wrist posture, finger-to-nose test).'"
+    auditoria: null
+    observacao: "O artigo cita tarefas apenas como exemplos ('e.g., relaxed wrist posture, finger-to-nose test') e exibe 3 arquivos representativos na Fig. 3 ('Relaxed', 'TouchNose', 'TouchIndex'), sem explicitar se todas as tarefas do PADS ou um subconjunto compõem os N = 10.318 sinais."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Não reportado (cita apenas como exemplos: relaxed wrist posture; finger-to-nose test; TouchIndex)"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 3.2.3, p. 7 e Fig. 3, p. 8 — 'structured motor tasks (e.g., relaxed wrist posture, finger-to-nose test)'"
+    auditoria: null
+    observacao: "Na legenda da Fig. 3 (p. 8) aparecem os arquivos '188_Relaxed_RightWrist.txt', '159_TouchNose_LeftWrist.txt' e '291_TouchIndex_LeftWrist.txt'."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2.3, p. 7 — 'acc_* represents tri-axial accelerometer signals; gyro_* represents tri-axial gyroscope signals'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas acelerômetro e giroscópio triaxiais foram utilizados (Seção 3.2.3, p. 7)."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados: left wrist, right wrist, both wrists; texto não especifica seleção de punhos."
+    auditoria: null
+    observacao: "O texto não declara se usou um ou ambos os punhos na modelagem, embora a legenda da Fig. 3 (p. 8) exiba exemplos tanto do punho direito ('188_Relaxed_RightWrist.txt') quanto do esquerdo ('159_TouchNose_LeftWrist.txt', '291_TouchIndex_LeftWrist.txt')."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 3.2, p. 7 — 'The experiments were conducted using the PADS ... The dataset comprises 469 subjects'"
+    auditoria: null
+    observacao: "A Seção 3.2 informa 469 sujeitos no PADS; na Seção 3.3 (p. 8) define o dataset experimental em nível de sinais como N = 10.318 sequências de comprimento T = 512, e na Eq. 32 / Fig. 6 (p. 12) avalia N = 2.064 amostras (1861 + 49 + 28 + 126), sem explicitar se todos os 469 participantes entraram nas 10.318 sequências."
+  - id: 15
+    chave: "n_por_classe"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 3.2.2 e Fig. 2, p. 7 — '0=Healthy, 1=PD, 2=Other' (gráfico de barras sem valores numéricos exatos)."
+    auditoria: null
+    observacao: "O artigo não informa numericamente o N de participantes por classe no texto nem nas tabelas; exibe apenas um gráfico de barras na Fig. 2 ('0=Healthy, 1=PD, 2=Other') e, na matriz de confusão (Fig. 6, p. 12), reporta contagens de amostras/segmentos (classe 0 = 1.910; classe 1 = 154; total = 2.064)."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["Outro"]
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 3.1, p. 7 e Seção 4, p. 11 — 'categorized as PD or No PD ... binary classification problem'"
+    auditoria: null
+    observacao: "O artigo formula o problema como classificação binária 'PD' vs. 'No PD' ('non-PD', y_i in {0, 1}), mas não esclarece se o grupo 'Other Movement Disorder' (DD, classe 2 na Fig. 2) foi agrupado com 'Healthy' (HC) em 'No PD' ou excluído, além de descrever na Seção 3.4 a geração de pseudo-rótulos via K-means alinhados às categorias clínicas. Na Fig. 6, a classe 1 tem apenas 154 de 2.064 amostras (~7,5%)."
+  - id: 17
+    chave: "outro_cenario"
+    valor: "Classificação binária PD vs. No PD (não especifica se DD foi combinado com HC em No PD ou excluído; inclui etapa de pseudo-rotulagem por K-means na Seção 3.4)"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Algoritmo 1, p. 11 e Seção 3.4, p. 8 — 'Y_pred : Prediction label (PD / No PD)'"
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)", "Série bruta", "Tempo-frequência (espectrograma, wavelet)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 3.6–3.7.4, p. 9–10 — 'hierarchical feature extraction from raw inertial sensor signals ... Frequency and temporal features are fused'"
+    auditoria: null
+    observacao: "O pipeline extrai representações temporais de janelas da série temporal inercial (T = 512) via CNN + Transformer (Z) e as funde (Z_final = [Z (+) F], Eq. 25) com atributos no domínio da frequência via FFT (pico de frequência, energia espectral, PSD, centróide espectral, entropia espectral, potência em banda) e transformada Wavelet (decomposição tempo-frequência W(a,b) e energia wavelet, Seção 3.6.2)."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Não foi marcada a opção 'Outro' no campo 18."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.7, p. 9 — 'integrates convolutional neural networks, a Transformer encoder, an attention pooling mechanism, and fully connected classification layers'"
+    auditoria: null
+    observacao: "Além da arquitetura supervisionada de Deep Learning (CNN, CNN–Transformer e modelo completo com fusão espectral), a Seção 3.4 descreve o uso de K-Means como mecanismo não supervisionado de pré-rotulagem ('unsupervised pre-labeling mechanism'), a Seção 3.8 emprega Integrated Gradients (XAI) e a Seção 3.9 adiciona verificação de integridade em blockchain (SHA-256)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Não foi marcada a opção 'Outro' no campo 20."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Blockchain-Integrated CNN–Transformer (1D CNN + Transformer Encoder + Attention Pooling + Frequency Feature Fusion); Hybrid CNN–Transformer; Standalone CNN"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.7, p. 13 — '(i) CNN Only, (ii) CNN augmented with a Transformer module, and (iii) the Full Model'"
+    auditoria: null
+    observacao: "Usa também K-Means para geração não supervisionada de pseudo-rótulos (Seção 3.4) e Integrated Gradients para explicabilidade (Seção 3.8)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 11 — 'evaluated on a binary classification problem under a moderately imbalanced setting. Given this skewed distribution, weighted-average metrics were selected'"
+    auditoria: null
+    observacao: "Nenhuma técnica de reamostragem (SMOTE/oversampling) ou data augmentation é utilizada; os autores mantêm a distribuição desbalanceada e adotam métricas ponderadas (weighted-average)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 11 — 'A 5-fold cross-validation strategy was employed to assess the robustness and generalization performance'"
+    auditoria: null
+    observacao: "Reporta 5-fold cross-validation (Seções 3.2.1 e 4.1; Figs. 9 e 10) e também menciona 5 execuções independentes ('five independent runs') no estudo de ablação (Seção 4.7, p. 13). Na Eq. 32 e Fig. 6 (p. 12), o N avaliado na matriz de confusão e no IC 95% é 2.064 (exatamente 1/5 de N = 10.318 sinais)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Não foi marcada a opção 'Outra' no campo 24."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2.1, p. 7 — 'all segments originating from a single participant were assigned exclusively to one fold'"
+    auditoria: null
+    observacao: "As Seções 3.2.1 (p. 7) e 4.1 (p. 11) declaram explicitamente que todas as janelas/segmentos de um mesmo participante foram agrupadas e alocadas a um único fold."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 11 — 'To eliminate potential data leakage, a subject-independent cross-validation protocol was implemented.'"
+    auditoria: null
+    observacao: "O texto declara explicitamente separação por sujeito ('subject-independent data partitioning strategy', 'subject-wise partitioning protocol', Seção 3.2.1, p. 7; Seção 4.1, p. 11)."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = 'Nenhum' (nenhum balanceamento de classes foi aplicado)."
+    auditoria: null
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = 'Nenhum' (nenhum balanceamento de classes foi aplicado)."
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 7 e Seção 6, p. 17 — 'The study was conducted using the PADS smartwatch dataset'"
+    auditoria: null
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "Balanced accuracy", "F1", "Precision", "Sensitivity", "Specificity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.6, p. 12 e Tabelas 2–4, p. 11–13 — 'accuracy, precision, recall, F1-score, specificity, and Area Under the Receiver Operating Characteristic Curve (AUC)'"
+    auditoria: null
+    observacao: "Na Seção 4 (p. 11), os autores informam que as métricas do modelo final (Tabela 2) são médias ponderadas ('weighted-average metrics'), o que explica Accuracy (0.972868) ser idêntica ao Recall (0.972868). Já nas Tabelas 3 e 4 (ablação), reportam Balanced Accuracy (0.8344 e 0.9144) e métricas da classe minoritária. Specificity é discutida na Seção 4.6, exibida no gráfico radar (Fig. 14, p. 16) e implícita na matriz de confusão (Fig. 6, p. 12: TN=1861, FP=49), mas sem valor numérico tabelado."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Não foi marcada a opção 'Outra' no campo 31."
+    auditoria: null
+    observacao: "Além das métricas de classificação, o artigo reporta intervalo de confiança de 95% da acurácia (± 0.00701), desvio-padrão e coeficiente de variação em 5 execuções (CV = 0.00475) e latência média de validação na blockchain (1.33 x 10^-6 s)."
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD vs. No PD; Blockchain-Integrated CNN–Transformer; Accuracy; 0.972868 (97.29%, 95% CI ± 0.00701)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 11 e Resumo, p. 1 — 'Accuracy 0.972868 ... 95% CI (Accuracy) ± 0.00701'"
+    auditoria: null
+    observacao: "A Tabela 2 reporta valores com 6 casas decimais (Accuracy 0.972868, Precision 0.971445, Recall 0.972868, F1-score 0.971186) e o texto/resumo apresenta os mesmos valores arredondados em porcentagem (97.29%, 97.14%, 97.29%, 97.12%) e AUC de 0.9869. Da matriz de confusão da Fig. 6 (TN=1861, FP=49, FN=28, TP=126; N=2064), observa-se que Precision/Recall/F1 da Tabela 2 são weighted-average."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD vs. No PD; Blockchain-Integrated CNN–Transformer; Precision; 0.971445 (97.14%) | PD vs. No PD; Blockchain-Integrated CNN–Transformer; Recall; 0.972868 (97.29%) | PD vs. No PD; Blockchain-Integrated CNN–Transformer; F1-score; 0.971186 (97.12%) | PD vs. No PD; Blockchain-Integrated CNN–Transformer; AUC; 0.9869 | PD vs. No PD; Hybrid CNN–Transformer (Tabela 4); Accuracy; 0.9538 | PD vs. No PD; Hybrid CNN–Transformer (Tabela 4); Precision; 0.6070 | PD vs. No PD; Hybrid CNN–Transformer (Tabela 4); Recall; 0.8690 | PD vs. No PD; Hybrid CNN–Transformer (Tabela 4); F1; 0.7147 | PD vs. No PD; Hybrid CNN–Transformer (Tabela 4); Balanced Accuracy; 0.9144 | PD vs. No PD; Standalone CNN (Tabela 3); Accuracy; 0.9471 | PD vs. No PD; Standalone CNN (Tabela 3); Precision; 0.5884 | PD vs. No PD; Standalone CNN (Tabela 3); Recall; 0.7044 | PD vs. No PD; Standalone CNN (Tabela 3); F1; 0.6390 | PD vs. No PD; Standalone CNN (Tabela 3); Balanced Accuracy; 0.8344"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabelas 2, 3, 4 e 5, p. 11, 13 e 15 — 'Accuracy 0.9538 ... Balanced Accuracy 0.9144'"
+    auditoria: null
+    observacao: "Na Seção 4.7.1 (p. 13), reporta também o desvio-padrão da acurácia em 5 execuções: Full model std = 0.00461 (CV = 0.00475); CNN std = 0.00443; CNN–Transformer std = 0.00330."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Data availability, p. 18 — 'openly available in the PADS — Parkinson’s Disease Smartwatch Dataset at https://physionet.org/content/parkinsons-disease-smartwatch/1.0.0/'"
+    auditoria: null
+    observacao: "A declaração de disponibilidade aponta exclusivamente para o repositório público original do PADS no PhysioNet; não há disponibilização de código-fonte nem de dados derivados."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seções 5 e 6 (p. 17): (1) uso de um único dataset (PADS), que pode não representar toda a diversidade populacional, de estágios e condições clínicas da DP, além de metadados incompletos sobre estado medicamentoso e gravidade dos sintomas; (2) avaliação apenas computacional dos mapas de atribuição do Integrated Gradients, sem validação clínica formal por neurologistas; (3) avaliação do módulo blockchain apenas em ambiente leve simulado, sem rede descentralizada real e diante de restrições de bateria/memória dos smartwatches; (4) ausência de simulações de escalabilidade em larga escala (centenas/milhares de dispositivos); (5) maior complexidade computacional e consumo de memória do componente Transformer para dispositivos de borda."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6, p. 17 — 'several limitations should be acknowledged. First, the study was conducted using the PADS smartwatch dataset...'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção 1.1 (p. 3) e Seção 6 (p. 17): Os autores apontam que estudos prévios focam isoladamente em acurácia preditiva com atributos manuais ou CNNs locais (incapazes de capturar dependências temporais de longo alcance), operam como caixas-pretas sem explicabilidade (XAI) e usam arquiteturas centralizadas vulneráveis a adulteração de dados. Como trabalhos futuros (Seção 6), indicam validação em coortes multicêntricas maiores, modelagem sensível à medicação e ao estágio da doença, validação clínica por especialistas das explicações XAI, implantação real de blockchain assistida por borda/nuvem com consenso leve e compressão/quantização de modelos Transformer."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1.1, p. 3 — 'Developing unified frameworks that simultaneously address predictive accuracy, interpretability, and data integrity therefore remains an open research challenge.'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano (regra 38)."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "média"
+    evidencia: "Seção 3.4–3.5, p. 8–9 e Algoritmo 1, p. 11 — 'After preprocessing and feature extraction, the high-dimensional feature vectors were standardized ... Normalize sensor signals'"
+    observacao: "O texto não declara que os parâmetros de normalização (média e desvio-padrão na Eq. 7, Seção 3.5) ou a padronização e agrupamento K-Means para geração de pseudo-rótulos (Seção 3.4) tenham sido ajustados exclusivamente nos folds de treino; no Algoritmo 1 (linhas 11–16) e na Seção 3.4, o pré-processamento e o K-Means são descritos sobre o dataset D antes do treinamento supervisionado."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; campo 27 = Sim – explícita; campo 28 = Não se aplica; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [16, 15]
+      justificativa: "O cenário binário (PD vs. No PD) é citado, mas não há N por classe nem clareza sobre se o grupo DD foi unido a HC ou excluído (além do uso de pseudo-rótulos via K-means na Seção 3.4)."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Informa modalidade (8), sensores (11) e N total de participantes (14 = 469), mas não reporta quais tarefas (9) nem quais punhos (13) compõem os 10.318 sinais (3 de 5 itens informados)."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Moderado: declara divisão por participante (5-fold subject-independent), mas não confirma que normalização/padronização e pré-rotulagem K-means foram restritas ao conjunto de treino."
+    QA4:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [31]
+      justificativa: "Reporta pelo menos duas métricas robustas ao desbalanceamento: AUC (0.9869 na Tabela 5) e Balanced Accuracy (0.8344 e 0.9144 nas Tabelas 3 e 4)."
+    QA5:
+      resposta: "No"
+      nota: 0.0
+      campos: [35, 22, 29]
+      justificativa: "Código não disponível (campo 35 = Nenhum) e hiperparâmetros essenciais da arquitetura (filtros/kernels da CNN, camadas/cabeças/dimensão do Transformer, learning rate, batch size, K do K-means, wavelet-mãe) não são descritos."
+  nota_qa: 2.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica"
+    resultado: "OK (usa Série temporal IMU e Metadados)"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD > 0"
+    resultado: "OK (cenário binário marcado em Outro)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (campo 15 é null)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (campo 26 = Participante e campo 27 = Sim – explícita)"
+  - regra: "Campo 24 contém Leave-one-subject-out → campo 26 = Participante e campo 27 = Sim"
+    resultado: "OK (campo 24 = k-fold CV)"
+  - regra: "Campo 23 = Nenhum ou Não se aplica → campo 28 = Não se aplica e campo 29 null"
+    resultado: "OK (campo 23 = Nenhum, campo 28 = Não se aplica, campo 29 = null)"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK (campo 9 = Não reportado e campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK (campo 16 = Outro e campo 17 preenchido; demais Outro/Outra não marcados e nulos)"
+  - regra: "Nota de QA3 coerente com risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Moderado → QA3 = Partially / 0.5)"
+pontos_para_revisao_humana:
+  - "Campos 15, 16 e 17 (Amostra e cenário PD vs. No PD): O artigo menciona 469 sujeitos e 3 grupos na Fig. 2 ('0=Healthy, 1=PD, 2=Other'), mas formula uma tarefa binária 'PD vs. No PD' em N = 10.318 sinais e descreve na Seção 3.4 geração não supervisionada de pseudo-rótulos via K-Means; além disso, na matriz de confusão (Fig. 6, p. 12, N = 2.064), a classe 1 tem apenas 154 amostras (~7,5%) contra 1.910 da classe 0."
+  - "Campos 26, 27, aux_preproc_apenas_treino e QA3: O artigo declara explicitamente 'subject-independent 5-fold cross-validation' (Seções 3.2.1 e 4.1), mas no Algoritmo 1 (p. 11) e nas Seções 3.4–3.5 a normalização, padronização e clusterização K-Means aparecem aplicadas sobre o dataset D antes do treinamento; se o revisor considerar que o K-Means/normalização ocorreu antes do split entre sujeitos, alterar aux_preproc_apenas_treino para 'Não' (o que muda risco_vazamento para 'Alto' e QA3 para 0.0)."
+  - "Campo 24 (Estratégia de validação): O texto reporta 5-fold CV (Figs. 9–10), porém a matriz de confusão (Fig. 6) e o cálculo do IC 95% (Eq. 32) somam N = 2.064 amostras, o que corresponde a apenas 1/5 do total de N = 10.318 sinais (um único fold de teste), enquanto a Seção 4.7 menciona 'five independent runs'."
+  - "Campos 31, 33 e 34 (Métricas na Tabela 2 vs. Fig. 6 e Tabelas 3–4): Na Tabela 2 (modelo proposto), Accuracy (0.972868) e Recall (0.972868) são idênticos porque os autores usaram média ponderada ('weighted-average', Seção 4, p. 11); calculando diretamente da matriz de confusão da Fig. 6 (TN=1861, FP=49, FN=28, TP=126), o recall da classe 1 é 126/154 = 81,82%, a precisão da classe 1 é 126/175 = 72,00% e a acurácia balanceada é 89,62% (inferior aos 91,44% reportados na Tabela 4 para a ablação sem blockchain)."
+  - "Campo 35 e QA5 (Reprodutibilidade): Não há código disponível e faltam hiperparâmetros essenciais da rede (número de camadas/filtros/kernels da CNN, cabeças/dimensões do Transformer, learning rate, batch size, número K de clusters e família da wavelet)."

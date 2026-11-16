@@ -1,0 +1,379 @@
+meta:
+  row_id: 23
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito, mas com Ressalvas, não confiável"
+  zotero_key: "ZIQZ4D8P"
+  titulo: "Label-Efficient Bilateral Attention for Parkinson’s Disease Screening from Wrist-Worn IMU Signals"
+  ressalva_triagem: "Preprint (arXiv, CE2=Sim) incluído com ressalvas / não confiável (Tier B); verificar no artigo se o janelamento (class-dependent DHWT) depende do rótulo da classe e gera vazamento."
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (High)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 23
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Página 1, margem lateral — 'arXiv:2604.18372v2 [cs.LG] 9 Aug 2026'"
+    auditoria: null
+    observacao: "Preprint depositado no arXiv (v2, 9 de agosto de 2026)."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'We propose a time-interleaving encoder that processes bilateral wrist-worn IMU signals from the public PADS dataset'"
+    auditoria: null
+    observacao: "Propõe um encoder de self-attention com intercalação temporal bilateral e formulação hierárquica de duas cabeças, aliado a pré-treinamento auto-supervisionado contrastivo (InfoNCE), ablação sistemática do espaço de projeto e avaliação de latência em Raspberry Pi 4."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 preenchido como 'Novo modelo'; não se aplica descrição adicional."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 1 — 'We target both decisions on the public PADS dataset [3], which provides synchronized left- and right-wrist IMU recordings.'"
+    auditoria: null
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5.9, p. 9 — 'Our study uses a single dataset (PADS); validation on an independent, multi-site cohort is necessary before deployment'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 5.9, p. 9 — 'Our study uses a single dataset (PADS)'"
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3, p. 3 — 'Each participant wears two Apple Watch Series 4 devices, one per wrist, giving six-axis IMU measurements per wrist'"
+    auditoria: null
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3, p. 3 — 'from 469 participants performing ten standardized motor tasks designed by neurologists'"
+    auditoria: null
+    observacao: "O artigo descreve o PADS como composto por 10 tarefas motoras padronizadas e utiliza todas as 10 nos experimentos principais; na Seção 5.3 também avalia generalização entre tarefas via leave-one-task-out (treino em 9 e teste em 1) e divisão 7 tarefas de treino / 3 tarefas não vistas de teste."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (10): CrossArms; DrinkGlas; Entrainment; HoldWeight; LiftHold; PointFinger; Relaxed; StretchHold; TouchIndex; TouchNose"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3, p. 3 — 'The tasks (CrossArms, DrinkGlas, Entrainment, HoldWeight, LiftHold, PointFinger, Relaxed, StretchHold, TouchIndex, TouchNose) are each 10–20 seconds long.'"
+    auditoria: null
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3, p. 3 — 'giving six-axis IMU measurements per wrist (three accelerometer axes ax, ay, az and three gyroscope axes ωx, ωy, ωz) sampled at 100 Hz.'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 não inclui 'Outro'; apenas acelerômetro e giroscópio foram utilizados."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 3 — 'Each sample is a pair of synchronous left (L) and right (R) wrist signals X = (XL, XR)'"
+    auditoria: null
+    observacao: "O modelo proposto funde os dois punhos por intercalação temporal (concatenação ao longo do tempo após projeção e modality embedding); na Seção 5.2 (Tabela 3) também são reportadas ablações de punho único ('Left wrist only' e 'Right wrist only')."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3, p. 3 — 'PADS [3] contains bilateral wrist-worn smartwatch recordings from 469 participants performing ten standardized motor tasks'"
+    auditoria: null
+    observacao: "Os 469 participantes produzem ~8.500 janelas por classe após o janelamento com sobreposição dependente da classe (DHWT, Seção 4.2)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=291; HC=79; DD=99"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3, p. 3 — 'from 469 participants performing ten standardized motor tasks designed by neurologists: 291 with PD, 79 healthy controls (HC), and 99 with differential diagnoses (DD).'"
+    auditoria: null
+    observacao: "Nota: o artigo reporta explicitamente 291 PD, 79 HC e 99 DD (soma = 469) na Seção 3 e na Seção 4.2 ('HC:79, PD:291, DD:99'), divergindo da distribuição oficial do PADS (276 PD, 79 HC, 114 DD); copiado literalmente conforme regra do protocolo."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["3 classes (Mult-Class)", "PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.1, p. 3 e Seção 5.6, p. 8 — 'two binary heads: HC-vs-PD (screening) and PD-vs-DD (differential diagnosis)... a single softmax over the three classes'"
+    auditoria: null
+    observacao: "A arquitetura principal treina conjuntamente duas cabeças binárias com mascaramento hierárquico (HC vs. PD e PD vs. DD); a Seção 5.6 (Tabela 6) compara essa formulação contra uma cabeça direta de 3 classes (HC/PD/DD)."
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 não inclui 'Outro'."
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2 e 4.4, p. 3–4 — 'Signals are segmented into windows of T=256 timestamps (4 s at 64 Hz)... Each C=6-channel input is linearly projected to d dimensions'"
+    auditoria: null
+    observacao: "Sinais de 6 canais por punho (após descarte dos primeiros 0,5 s, reamostragem polifásica de 100 Hz para 64 Hz e filtro passa-faixa Butterworth de 5ª ordem em 0,1–20 Hz via filtfilt) segmentados em janelas de T=256 amostras (4 s)."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 não inclui 'Outro'."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Auto-supervisionado", "Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.4–4.5, p. 4–5 e Seção 5.3, p. 7 — 'passes through N standard transformer blocks... pre-train the encoder with a contrastive objective... 1D-CNN and BiLSTM baselines'"
+    auditoria: null
+    observacao: "Inclui encoders baseados em Transformer/atenção (Interleaved self-attention, Cross-attention, Late concatenation, Single-wrist), baselines 1D-CNN e BiLSTM, pré-treinamento contrastivo auto-supervisionado com perda InfoNCE (seguido de fine-tuning ou linear probe) e avaliação do foundation model TimesFM (com adaptador LoRA e zero-shot com probe de regressão logística)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 não inclui 'Outro'."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Interleaved self-attention encoder; Cross-attention; Late concatenation; Left wrist only; Right wrist only; 1D-CNN; BiLSTM; Contrastive SSL (InfoNCE) + fine-tuning / linear probe; TimesFM + LoRA; TimesFM zero-shot (logistic-regression probe)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabelas 2, 3, 4, 5 e 7, p. 5–10 — 'Interleaved self-attn (ours); Cross-attention; Late concatenation; 1D-CNN; BiLSTM; SSL FT; TimesFM + LoRA; TimesFM zero-shot'"
+    auditoria: null
+    observacao: "O encoder proposto utiliza d=64, N=3 blocos Transformer, h=8 cabeças, FFN de 256 dimensões, dropout 0,2, AdamW (lr=5e-4, weight decay=0,01, batch size=32, até 100 épocas), totalizando 159.556 parâmetros."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, p. 3 e Seção 4.5, p. 5 — 'apply a class-dependent overlap (Differential Hopping Windowing [11], 70% for HC, 0% for PD, 65% for DD)... cubic-spline temporal warping [14] and additive Gaussian noise'"
+    auditoria: null
+    observacao: "Utiliza sobreposição de janelas dependente da classe (Differential Hopping Windowing - DHWT) para equalizar o número de janelas entre os três grupos (~8.500 janelas por classe), além de data augmentation (cubic-spline temporal warping e ruído gaussiano aditivo com sigma=0,05) na etapa de pré-treinamento auto-supervisionado contrastivo."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Outra", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, p. 3 e Seção 5.3, p. 7 — 'We use patient-disjoint stratified 5-fold cross-validation... Under leave-one-task-out (LOTO)—holding out each of the ten tasks in turn'"
+    auditoria: null
+    observacao: "Experimento principal em 5-fold CV estratificado disjunto por paciente; experimentos adicionais de generalização entre tarefas em Leave-One-Task-Out (LOTO) e divisão 7 tarefas de treino / 3 tarefas de teste."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: "Leave-one-task-out (LOTO: treino em 9 tarefas motoras e teste na tarefa retida, repetido para as 10 tarefas) e divisão de 7 tarefas para treino / 3 tarefas não vistas para teste na avaliação de generalização entre tarefas (Seção 5.3)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5.3, p. 7 — 'Under leave-one-task-out (LOTO)—holding out each of the ten tasks in turn, training on the other nine... train on seven tasks and test on three unseen ones'"
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, p. 3 — 'We use patient-disjoint stratified 5-fold cross-validation, so no subject appears in both training and validation.'"
+    auditoria: null
+    observacao: "O sorteio entre treino e validação/teste na validação cruzada de 5 dobras é feito por participante (patient-disjoint), embora a avaliação das métricas seja reportada no nível de janela (window-level)."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, p. 3 — 'We use patient-disjoint stratified 5-fold cross-validation, so no subject appears in both training and validation.'"
+    auditoria: null
+    observacao: "Verificação da ressalva da triagem: embora a partição das 5 dobras seja explicitamente disjunta por participante, o janelamento DHWT dependente do rótulo da classe (70% HC, 0% PD, 65% DD) foi aplicado a todo o conjunto de dados (~8.500 janelas por classe), resultando em prevalência equalizada nas dobras avaliadas (0,52 em HC vs. PD e 0,47 em PD vs. DD na Seção 5; n=1248 HC, n=1320 PD e n=1196 DD na Figura 3), o que condiciona a segmentação de teste ao rótulo verdadeiro da classe."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Antes do split"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, p. 3 e Seção 5, p. 5 — 'apply a class-dependent overlap (Differential Hopping Windowing [11], 70% for HC, 0% for PD, 65% for DD), yielding ~8,500 windows per class... Because both tasks are close to balanced (HC-vs-PD prevalence 0.52; PD-vs-DD 0.47)'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: apesar de a legenda da Figura 1(c) mencionar 'training windows', a Seção 4.2 descreve a geração de ~8.500 janelas por classe antes da divisão em 5 dobras e a Seção 5 confirma que as tarefas avaliadas nas dobras de validação/teste possuem prevalência quase balanceada (0,52 para HC vs. PD e 0,47 para PD vs. DD; ver também Figura 3 com n=1248 HC, n=1320 PD e n=1196 DD, cujas razões são exatamente 0,514 e 0,475). Logo, o DHWT dependente do rótulo da classe foi aplicado a todo o dataset (incluindo teste/validação), usando o rótulo verdadeiro da classe para definir o passo de janelamento e alterando a distribuição de teste."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Differential Hopping Windowing (DHWT) com sobreposição dependente da classe em janelas de T=256 amostras (4 s a 64 Hz): 70% de sobreposição para HC, 0% para PD e 65% para DD (~8.500 janelas por classe); no pré-treino auto-supervisionado (SSL), augmentations com probabilidade igual (50%/50%) de cubic-spline temporal warping e ruído gaussiano aditivo (sigma=0,05)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, p. 3 e Seção 4.5, p. 5 — 'Differential Hopping Windowing [11], 70% for HC, 0% for PD, 65% for DD), yielding ~8,500 windows per class... cubic-spline temporal warping [14] and additive Gaussian noise (σ=0.05)'"
+    auditoria: null
+    observacao: "Na inferência em borda no Raspberry Pi 4 (Seção 4.7), onde o rótulo da classe é desconhecido, o artigo substitui o DHWT por janelas com sobreposição fixa de 50% (passo de 128 amostras / 2 s)."
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5.9, p. 9 — 'Our study uses a single dataset (PADS); validation on an independent, multi-site cohort is necessary before deployment'"
+    auditoria: null
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "F1", "Sensitivity", "Specificity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 5 — 'Task | Acc | AUROC | F1 | Sens | Spec'"
+    auditoria: null
+    observacao: "O artigo não especifica se o F1 na Tabela 2 é binário na classe positiva, macro ou ponderado. Reporta adicionalmente número de parâmetros (K) e latência de inferência por janela (124,5 ms no Raspberry Pi 4)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 não inclui 'Outra'."
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; Interleaved self-attn (ours); AUROC; 0.963"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 5 — 'HC vs. PD | Acc 0.932 | AUROC 0.963 | F1 0.938 | Sens 0.994 | Spec 0.865'"
+    auditoria: null
+    observacao: "Resultado principal do encoder proposto no nível de janela (média de 5 dobras). Na comparação com foundation model (Tabela 7, p. 10), o TimesFM + LoRA obteve o maior AUROC geral no nível de janela (0,977 em HC vs. PD e 0,969 em PD vs. DD). Os autores informam na Seção 5 (p. 5) que o AUROC no nível de paciente satura em 1,000 para todos os encoders em ambas as tarefas."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; Interleaved self-attn (ours); Accuracy; 0.932 | PD×HC; Interleaved self-attn (ours); F1; 0.938 | PD×HC; Interleaved self-attn (ours); Sensitivity; 0.994 | PD×HC; Interleaved self-attn (ours); Specificity; 0.865 | PD×DD; Interleaved self-attn (ours); Accuracy; 0.909 | PD×DD; Interleaved self-attn (ours); AUROC; 0.960 | PD×DD; Interleaved self-attn (ours); F1; 0.894 | PD×DD; Interleaved self-attn (ours); Sensitivity; 0.812 | PD×DD; Interleaved self-attn (ours); Specificity; 0.996 | PD×HC; Cross-attention; Accuracy; 0.926 | PD×HC; Cross-attention; AUROC; 0.964 | PD×DD; Cross-attention; Accuracy; 0.909 | PD×DD; Cross-attention; AUROC; 0.960 | PD×HC; Late concatenation; Accuracy; 0.928 | PD×HC; Late concatenation; AUROC; 0.964 | PD×DD; Late concatenation; Accuracy; 0.909 | PD×DD; Late concatenation; AUROC; 0.960 | PD×HC; Left wrist only; Accuracy; 0.928 | PD×HC; Left wrist only; AUROC; 0.964 | PD×DD; Left wrist only; Accuracy; 0.909 | PD×DD; Left wrist only; AUROC; 0.960 | PD×HC; Right wrist only; Accuracy; 0.929 | PD×HC; Right wrist only; AUROC; 0.965 | PD×DD; Right wrist only; Accuracy; 0.909 | PD×DD; Right wrist only; AUROC; 0.961 | PD×HC; 1D-CNN; AUROC; 0.971 | PD×DD; 1D-CNN; AUROC; 0.948 | PD×HC; BiLSTM; AUROC; 0.965 | PD×DD; BiLSTM; AUROC; 0.957 | PD×HC (LOTO); Interleaved self-attn (ours); AUROC; 0.959 (worst: 0.952) | PD×DD (LOTO); Interleaved self-attn (ours); AUROC; 0.943 (worst: 0.930) | PD×HC (LOTO); 1D-CNN; AUROC; 0.802 (worst: 0.631) | PD×DD (LOTO); 1D-CNN; AUROC; 0.789 (worst: 0.540) | PD×HC (LOTO); BiLSTM; AUROC; 0.954 (worst: 0.900) | PD×DD (LOTO); BiLSTM; AUROC; 0.933 (worst: 0.896) | PD×HC (5% labels); SSL FT; Accuracy; 0.849 | PD×DD (5% labels); SSL FT; Accuracy; 0.832 | PD×HC (20% labels); SSL FT; Accuracy; 0.916 | PD×DD (20% labels); SSL FT; Accuracy; 0.895 | 3 classes (Mult-Class); Interleaved self-attn (3-class head); Accuracy; 0.890 (HC: 0.852; PD: 1.000; DD: 0.808) | PD×HC; TimesFM + LoRA; Accuracy; 0.926 | PD×HC; TimesFM + LoRA; AUROC; 0.977 | PD×DD; TimesFM + LoRA; Accuracy; 0.913 | PD×DD; TimesFM + LoRA; AUROC; 0.969 | PD×HC; TimesFM zero-shot; Accuracy; 0.876 | PD×HC; TimesFM zero-shot; AUROC; 0.940 | PD×DD; TimesFM zero-shot; Accuracy; 0.844 | PD×DD; TimesFM zero-shot; AUROC; 0.910"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabelas 2–7 e Figura 4, p. 5–10 — resultados no nível de janela nas 5 dobras disjuntas por paciente"
+    auditoria: null
+    observacao: "Sem filtro passa-faixa (Seção 5.4, p. 7), a acurácia cai para 87,6% (HC vs. PD) e 84,2% (PD vs. DD) e o AUROC cai para 0,936 e 0,920."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados no texto completo (p. 1–11): 'github', 'code', 'availability', 'repository', 'available'; nenhuma declaração de disponibilidade de código ou dados derivados foi encontrada."
+    auditoria: null
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção 5.8 e 5.9 (p. 9–10): (1) uso de um único dataset (PADS), exigindo validação em coorte independente e multicêntrica antes de uso clínico; (2) pré-treinamento auto-supervisionado (SSL) realizado nos mesmos dados usados para fine-tuning, o que pode subestimar o ganho frente a um grande corpus externo não rotulado; (3) ausência de rótulos uniformes de gravidade e tempo desde o diagnóstico no PADS, impedindo estadiamento de severidade; (4) saturação das métricas no nível de paciente em 1,000 nesta coorte; (5) ausência de verificação clínica das predições além dos rótulos do dataset; (6) consumo energético no dispositivo de borda não foi mensurado."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5.9, p. 9–10 — 'Our study uses a single dataset (PADS)... Self-supervised pre-training is performed on the same data used for fine-tuning... PADS lacks uniform severity and time-since-diagnosis labels... Patient-level metrics saturate at 1.000'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção 5.8–5.9 e Seção 6 (p. 9–10): (1) aprimorar a discriminação na fronteira clínica mais difícil (PD vs. DD, sensibilidade de 0,812) utilizando coortes anotadas com gravidade da doença; (2) validar em dados independentes e multicêntricos; (3) realizar pré-treinamento contrastivo em um grande corpus externo de sinais IMU não rotulados; (4) medir o consumo de energia em tempo real no dispositivo de borda."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6, p. 10 — 'Future work should target the PD-vs-DD boundary with severity-annotated cohorts and validate on independent, multi-site data.'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano conforme diretrizes do protocolo."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.2, 4.6, 5 e 5.9, p. 3, 5 e 9 — 'Differential Hopping Windowing [11], 70% for HC, 0% for PD, 65% for DD), yielding ~8,500 windows per class... HC-vs-PD prevalence 0.52; PD-vs-DD 0.47... hyper-parameters were searched with Optuna (TPE)... Self-supervised pre-training is performed on the same data used for fine-tuning'"
+    observacao: "O janelamento dependente da classe (DHWT) foi aplicado a todo o conjunto de dados (incluindo dobras de validação/teste, alterando a prevalência avaliada para 0,52 e 0,47), a busca de hiperparâmetros com Optuna (TPE) foi conduzida sobre a validação cruzada sem CV aninhada descrita e o pré-treinamento SSL foi executado no mesmo conjunto de dados sem restrição explícita às dobras de treino."
+  risco_vazamento:
+    valor: "Alto"
+    regra: "campo 28 = Antes do split e aux_preproc_apenas_treino = Não (janelamento DHWT dependente do rótulo da classe aplicado a todo o dataset gerando prevalência 0,52/0,47 no teste, busca de hiperparâmetros Optuna sem CV aninhada e pré-treino SSL no mesmo conjunto)"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Os cenários de classificação (PD×HC, PD×DD e 3 classes) e a composição por grupo (PD=291, HC=79, DD=99) estão explicitamente definidos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os cinco itens aplicáveis do recorte do PADS (modalidade IMU, 10 tarefas nomeadas, acelerômetro e giroscópio, ambos os punhos e N=469 participantes) foram informados."
+    QA3:
+      resposta: "No"
+      nota: 0.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Alto: embora a validação cruzada de 5 dobras seja disjunta por paciente, o janelamento DHWT dependente do rótulo da classe foi aplicado a todo o dataset (equalizando também as dobras avaliadas) e a busca de hiperparâmetros (Optuna) / pré-treino SSL não foram restritos apenas ao treino."
+    QA4:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [31]
+      justificativa: "Reporta pelo menos duas métricas robustas ao desbalanceamento (AUROC e o par Sensitivity + Specificity na Tabela 2, além de F1)."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Descreve detalhadamente a arquitetura, pré-processamento e hiperparâmetros, mas não disponibiliza código-fonte."
+  nota_qa: 3.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica"
+    resultado: "OK (modalidade é Série temporal (IMU))"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (PD=291; HC=79; DD=99)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (291 + 79 + 99 = 469)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (campo 26 = Participante e campo 27 = Sim – explícita)"
+  - regra: "Campo 23 = SMOTE-oversampling, Dados sintéticos (GAN) ou Outro → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK (campo 23 = Outro, campo 28 = Antes do split e campo 29 preenchido)"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK (campo 9 = Todas e campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado <-> campo de texto preenchido"
+    resultado: "OK (campo 24 inclui Outra e campo 25 preenchido; demais sem Outro/Outra)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Alto → QA3 = No / 0.0)"
+pontos_para_revisao_humana:
+  - "Ressalva da triagem confirmada (Campos 23, 27, 28 e QA3): o janelamento DHWT usa o rótulo da classe (70% de sobreposição para HC, 0% para PD e 65% para DD) e foi aplicado a todo o dataset (~8.500 janelas por classe), gerando prevalência equalizada de 0,52 (HC vs. PD) e 0,47 (PD vs. DD) nas dobras avaliadas (Seção 5 e Figura 3), o que caracteriza vazamento do rótulo na segmentação de teste."
+  - "Campo 15 (n_por_classe): o artigo reporta explicitamente 291 PD, 79 HC e 99 DD (total = 469) nas Seções 3 e 4.2, divergindo da contagem padrão do PADS original (276 PD, 79 HC, 114 DD)."
+  - "Derivado aux_preproc_apenas_treino e QA3: além do DHWT global, a busca de hiperparâmetros com Optuna (TPE) e o pré-treinamento auto-supervisionado (Seção 5.9: 'Self-supervised pre-training is performed on the same data used for fine-tuning') não declararam isolamento estrito dentro das dobras de treino."
+  - "Campo 33 e Seção 5: os autores reportam que o AUROC no nível de paciente satura em 1,000 para todos os encoders em ambas as tarefas, razão pela qual todas as tabelas reportam métricas no nível de janela."
+  - "QA5 e Campo 35: preprint do arXiv sem link de repositório ou declaração de disponibilidade de código."

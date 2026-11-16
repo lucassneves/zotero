@@ -1,0 +1,254 @@
+NeuroLens: A Multimodal Mobile Platform for
+Early Parkinson's Disease Screening Using TinyML
+and Cross-Modal Feature Fusion
+Niwanka Pathirathna
+Department of Computer Science Sri Lanka Institute of Information Technology
+Malabe, Sri Lanka it22093332@my.sliit.lk
+Chanuthi Savithma
+Department of Computer Science Sri Lanka Institute of Information Technology
+Malabe, Sri Lanka it22551498@my.sliit.lk
+Yasasvi Vilochana
+Department of Computer Science Sri Lanka Institute of Information Technology
+Malabe, Sri Lanka it22079336@my.sliit.lk
+Sriharan Saravanan
+Department of Computer Science Sri Lanka Institute of Information Technology
+Malabe, Sri Lanka it22884060@my.sliit.lk
+Mahima Weerasinghe
+Department of Computer Science Sri Lanka Institute of Information Technology
+Malabe, Sri Lanka mahima.w@sliit.lk
+Samantha Thelijjagoda
+Department of Computer Systems Engineering Sri Lanka Institute of Information Technology
+Malabe, Sri Lanka samantha.t@sliit.lk
+Abstract—Early Parkinson's Disease (PD) screening remains constrained by specialist dependency and subjective assessments. This paper presents NeuroLens, a cross-platform mobile application integrating four digital biomarker streams handwriting kinematics, voice acoustics, wearable tremor quantification, and cognitive assessment fused into a unified risk score. The system couples a React Native client with a Python FastAPI backend, Google Firestore, and a Bluetooth Low Energy (BLE) wearable running a quantized 1D Convolutional Neural Network (CNN) via TinyML. Kinematic features are extracted from digitized spiral and wave drawing tasks (60 Hz, Gaussian-smoothed); voice analysis employs a dual-path acoustic-linguistic pipeline; and cognitive function is assessed via digitized Trail Making Test Part A (TMT-A) and Symbol Digit Modalities Test (SDMT). Individual modules were validated on separate datasets drawing (n=58), cognitive (n=4,267 PPMI), wearable (PhysioNet PADS), and voice (UCI PD speech corpus) and the fused score is presented as a proofof-concept requiring prospective unified validation. The platform additionally supports multilingual localization and longitudinal history tracking.
+Keywords—Parkinson's Disease, TinyML, Multimodal Fusion, Digital Biomarkers, BLE Wearable, Kinematic Features, Voice Dysphonia, Cognitive Assessment, Mobile Health.
+I. INTRODUCTION
+Parkinson's Disease (PD) is the second most prevalent neurodegenerative disorder worldwide, affecting over 10 million people globally [1]. Clinical diagnosis is typically confirmed only after substantial dopaminergic neuron loss, making early detection critical. Conventional methods rely on subjective rating scales (e.g., UPDRS) and neuroimaging, which are resource-intensive and inaccessible in primary care or low-resource settings.
+NeuroLens bridges this gap by capturing a comprehensive suite of motor and cognitive digital biomarkers within a single mobile application. Key contributions include: a multitask assessment protocol covering drawing, voice, wearable sensing, and cognitive tests; an on-device TinyML tremor classifier deployed to a BLE wearable enabling real-time offline inference; rigorous kinematic feature engineering with 60 Hz resampling and Gaussian smoothing; an AUCweighted late fusion mechanism producing a clinically interpretable global risk score; and a digitized cognitive battery (TMT-A and SDMT) validated against established neuropsychological instruments.
+II. LITERATURE REVIEW
+Digital PD screening has been pursued across four biomarker domains. Drotar et al. [2] established that kinematic parameters from digitized handwriting velocity, acceleration, and pen-pressure correlate strongly with UPDRS motor impairment, while Nomm et al. [9] validated spiral drawing as a sensitive and reproducible assessment. controls.
+In the voice domain, Tsanas et al. [3] demonstrated that nonlinear acoustic dysphonia markers (RPDE, DFA, PPE) could discriminate PD from healthy controls with high accuracy; subsequent research further showed PD affects fluency, lexical access, and discourse structure [10].
+For wearable sensing, Carignan et al. [4] showed IMUbased accelerometers could quantify tremors with clinicalgrade accuracy, and deep learning architectures on raw IMU signals have since outperformed hand-crafted pipelines [11]; however, deploying quantized neural networks directly onto microcontrollers the TinyML paradigm remains largely unexplored for PD-specific applications.
+2026 IEEE International Conference on Automatic Control and Intelligent Systems (I2CACIS), 26 - 27 June 2026, Kuala Lumpur, Malaysia
+979-8-3315-6170-3/26/$31.00 ©2026 IEEE 143
+2026 IEEE International Conference on Automatic Control and Intelligent Systems (I2CACIS) | 979-8-3315-6170-3/26/$31.00 ©2026 IEEE | DOI: 10.1109/I2CACIS69435.2026.11600138
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 18:35:14 UTC from IEEE Xplore. Restrictions apply.
+
+
+In the cognitive domain, TMT-A and SDMT are validated as sensitive measures of psychomotor speed and early cognitive decline in PD [5], with digital implementations confirming that completion time and error rates reliably replicate paper-based equivalents [12].
+Multimodal fusion approaches have consistently reported improved discriminative performance over any single modality [13], yet most existing platforms remain confined to offline research pipelines. NeuroLens addresses these gaps by unifying all four modalities through an AUC-weighted late fusion mechanism deployed across a mobile client, cloud backend, and BLE wearable edge device.
+III. SYSTEM ARCHITECTURE
+A. High-Level Overview
+The NeuroLens architecture follows a client-cloud-edge pattern with three distinct tiers.
+1) Mobile Client (Edge): A React Native application (ios and Android via Expo) handling user interactions, data capture, and BLE communication, with multilingual localization.
+2) Cloud Backend (FastAPI): A Python microservice on Google Cloud responsible for ML inference orchestration, Firestore data persistence, and multimodal fusion. 3) BLE Wearable (Edge): A custom wrist-worn sensor a custom wrist-worn sensor running an on-device 1D CNN for real-time tremor classification over BLE GATT.
+Figure 1 High Level Architecture Diagram
+B. Session Management and Authentication
+A unique session_id links results from all four modalities per assessment. Firebase Authentication (email/password and Google OAuth 2.0) secures access; all client-backend traffic is encrypted via TLS 1.3 and Firestore security rules enforce session-level access control.
+IV. METHODOLOGY
+A. Wearable-Based Tremor analysis (TinyML)
+1) Hardware Design: The NeuroLens wearable is a custom wrist-worn device hosting an MPU-6050 IMU (100 Hz, ±2g accelerometer, ±250°/s gyroscope) and an ESP32 microcontroller. The 1D CNN is quantized to 8-bit integer precision using TensorFlow Lite for Microcontrollers, reducing model size to 3.7 KB with inference latency of 2.1 ms per window. The device exposes a GATT-based BLE service with two characteristics: command reception (UUID: 4fafc201-1fb5-459e-8fcc-c5c9c331914b) and result streaming(UUID:beb5483e-36e1-4688-b7f5ea07361b26a8).
+2) Assessment Protocol: Three tremor categories are assessed sequentially Resting (CAT:0, arm fully supported), Postural (CAT:1, arm extended), and Kinetic (CAT:2, fingerto-nose task). Prior to capture, the mobile client transmits patient metadata: GEN:<0|1>, AGE:<int>, HAN:<0|1>, and CAT:<0|1|2>. Upon completion, the wearable returns DONE:<PD|HP>:<ratio>, where ratio denotes the proportion of high-risk windows.
+3) Feature Extraction: Raw signals are segmented into non-overlapping 256-sample windows (2.56 s at 100 Hz). Gravity is removed via per-axis mean subtraction. Eight statistical and spectral features are extracted from each of the accelerometer and gyroscope, yielding 16 sensor features. Three demographic features (age, sex, handedness) and three one-hot task-category flags are appended, producing a final 22-feature input vector (Table I). All numeric features are standard-scaled on-device using pre-computed constants embedded in the model header.
+TABLE 1. Feature Vector for On-Device 1D-CNN Inference.
+Group Index Feature Domain Accelerometer 1–4 RMS, Std Dev, Max, Min Time
+Accelerometer 5–8
+Dominant Frequency, Tremor Band Power (3–7 Hz), Tremor Ratio, Spectral Entropy
+Frequency
+Gyroscope 9–12 RMS, Std Dev, Max, Min Time
+Gyroscope 13–
+16
+Dominant Frequency, Tremor Band Power (3–7 Hz), Tremor Ratio, Spectral Entropy
+Frequency
+Demographics 17–
+19
+Age, Biological Sex, Handedness
+Task Context 20–
+22
+Category OHE (Resting, Postural, Kinetic)
+4) On-Device Inference: Dataset and Validation Protocol: The model was trained on a subset of the PADS dataset [14] (University Hospital Münster), retaining 355 of 469 participants after excluding differential diagnosis groups (essential tremor, atypical Parkinsonism, multiple sclerosis, secondary Parkinsonism), yielding 276 PD patients and 79 age-matched healthy controls (mean age 64.8 ± 10.4 years; 224/131 M/F). IMU data was recorded via Apple Watch Series 4 at 100 Hz. PADS tasks were mapped to NeuroLens categories as: Relaxed (1a, 1b) → Resting; Steps 2, 3, 4, 10 → Postural; Steps 5, 6, 7, 8, 9 → Kinetic. A 5-fold Group K
+2026 IEEE International Conference on Automatic Control and Intelligent Systems (I2CACIS), 26 - 27 June 2026, Kuala Lumpur, Malaysia
+144
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 18:35:14 UTC from IEEE Xplore. Restrictions apply.
+
+
+Fold cross-validation with 80/20 patient-level stratified split ensured no subject appeared in both training and held-out partitions.
+The continuous output of the CNN is a sequence of probabilities for a standardized assessment session comprising 12 consecutive windows (approximately 30 seconds). To eliminate bias, the optimal classification thresholds were mathematically derived during 5-fold Group K-Fold cross-validation.
+a) Window-Level Classification: The optimal threshold t_w = 0.560 is derived by maximizing Youden's J statistic from the ROC curve:
+t_w = argmax(TPR - FPR)
+Each window is assigned to a binary high-risk flag (w_i = 1 if probability ≥ t_w, else 0).
+b) Session-Level Aggregation: The proportion of highrisk windows R = Σw_i / N is compared against t_s = 0.44, derived via exhaustive grid search maximizing patient-level balanced accuracy:
+t_s = argmax [ (Sensitivity_s + Specificity_s) / 2 ]
+This two-tier temporal aggregation mitigates transient sensor noise, boosting balanced accuracy from 66.0% (window-level) to 70.2% (session-level), with held-out sensitivity of 74.3% and specificity of 65.8%. Bootstrap resampling (n = 10,000) yields 95% CI of [63.8%–75.4%] for balanced accuracy and [0.694–0.816] for AUC of 0.732. Session-level aggregation was specifically designed to preserve sensitivity, as a missed PD case carries greater clinical cost than a false referral.
+B. Drawing-Based Motor Analysis
+1) Task Protocol and Data Acquisition Interface: Subjects perform two sequential tasks on a custom touchscreen interface. In the Spiral Task, participants trace a two-cycle Archimedean spiral, evaluating continuous motor coordination, spatial memory, and sustained curvature under mild cognitive load. In the Wave Task, subjects draw a continuous sinusoidal waveform left to right, isolating rhythmic fluid motion and frequency-dependent motor limitations. Raw touch events are logged as spatiotemporal tuples (x, y, t) at millisecond precision.
+2) Signal Pre-processing:Raw touch sequences are resampled to a uniform 60 Hz grid via cubic spline interpolation to compensate for OS scheduling jitter. Gaussian smoothing (σ = 2 samples, ≈33 ms) attenuates digitizer quantization noise while preserving kinematic features below 15 Hz. Velocity and acceleration trajectories are derived via central finite differences.
+3) Feature Engineering and Multimodal Fusion: Conditioned trajectories are quantified across two complementary feature domains, capturing both spatial accuracy and temporal motor dynamics.
+a) Geometric (Spatial) Features: Extracted directly from the coordinate matrix, these features quantify the geometrical accuracy. Key metrics include the standard deviation of curvature, standard deviation of radial deviation from the ideal spiral, and the root mean square error (RMSE) between the traced y-trajectory and a smoothed ideal baseline.
+b) Kinematic (Temporal) Features: Derived from firstand second-order temporal derivatives, these features quantify micro-hesitations, rigidity, and bradykinesia. Core metrics are: (i) the Coefficient of Variation (CV) of velocity magnitude (σv/μv); (ii) the Pause Ratio, defined as the fraction of elapsed time below the 10th percentile of nominal velocity; and (iii) the CV of multidimensional jerk magnitude, characterizing acceleration smoothness.
+Spatial and kinematic feature arrays are horizontally concatenated into task-specific data matrices. Subject age (continuous) and biological sex (categorical) are fused into the kinematic feature space to control for non-pathological age-related motor stiffness. Recursive Feature Elimination (RFE) subsequently isolates the most discriminative markers, yielding a final 7-dimensional feature vector comprising the six highest-ranked kinematic/spatial features and subject age
+TABLE II. Drawing Task Feature List
+Feature Description Subhead
+spiral_vel_cv Spiral CV of drawing velocity
+(σv/μv)
+spiral_jerk_cv Spiral CV of jerk magnitude;
+captures micro-tremors
+wavy_vel_cv Wave CV of velocity across
+sinusoidal pattern
+wavy_wave_rmse Wave RMSE of y-trajectory vs.
+smoothed baseline
+wavy_radius_resid_std Wave Std. dev. of radial distance
+deviations
+wavy_jerk_cv Wave CV of jerk magnitude
+across waveform
+age Demographic Subject age; suppresses
+age-related false positives
+4) Classification Architecture and Validation: The classification backend employs an optimized Logistic Regression model trained on the 7-dimensional feature vectors. The training corpus encompasses 58 subjects: 28 clinically diagnosed PD patients and 30 healthy controls. Hyperparameter optimization focuses on regularization strength and convergence tolerances to prevent coefficient instability across the low-dimensional feature space.
+Given the inherent risk of overfitting and sample-selection bias associated with a 58-subject corpus, generalization
+2026 IEEE International Conference on Automatic Control and Intelligent Systems (I2CACIS), 26 - 27 June 2026, Kuala Lumpur, Malaysia
+145
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 18:35:14 UTC from IEEE Xplore. Restrictions apply.
+
+
+performance was estimated via Leave-One-Out CrossValidation (LOOCV). In this exhaustive scheme, the model was iteratively trained on 57 subjects and evaluated on the single remaining hold-out, repeating this process across all 58 permutations such that every subject served exactly once as an isolated test case. LOOCV is widely regarded as the gold standard validation strategy for small medical datasets, as it maximizes available training data at each fold while providing a near-unbiased estimate of true generalization error. To strictly prevent data leakage, a StandardScaler was fitted exclusively on the 57 training vectors within each fold and subsequently applied to normalize the single unseen test vector prior to classification evaluation.
+C. Speech & Vocal Biomarker Analysis
+1) Mobile Application and Data Collection: The voice component non-invasively assesses neurological and motor functions through guided prompts designed to elicit voice tremors, micro-hesitations, and cognitive-linguistic variations. Audio is recorded and preprocessed to a standardized 16-bit, 22.05 kHz mono WAV format via FFmpeg. The module is trained and validated on the UCI PD speech dataset (195 voice recordings), split 80/20 at the subject level using stratified sampling by diagnosis to prevent data leakage.
+2) Acoustic Feature Analysis: The acoustic pipeline captures involuntary tremors and amplitude variations associated with PD. a) Feature Extraction: Acoustic features are extracted using Praat/Parselmouth. A total of 18 parameters are derived, including fundamental frequencies ( !! , !"# , !$! ), frequency perturbations (Jitter: %, Abs, RAP, PPQ5, DDP), amplitude perturbations (Shimmer: %, APQ3, APQ5, APQ11, DDA), noise measures (HNR, NHR), and nonlinear dynamic features (DFA, RPDE, D2). Engineered features such as instability ratio (Jitter × Shimmer) and signal quality index are also computed. b) Preprocessing: Outliers are handled using the Interquartile Range (IQR) method. Multicollinear and lowvariance features are removed to improve model stability. Class imbalance is addressed using SMOTE applied to the training data, followed by normalization using StandardScaler. c) Model Training: Machine learning models including Support Vector Machines (SVM), Random Forest, XGBoost, and Multilayer Perceptrons (MLP) are trained. Hyperparameter tuning is performed using GridSearchCV with 10-fold StratifiedKFold cross-validation. Feature selection prioritizes the most informative attributes.
+3) Linguistic Feature Analysis :Parkinson’s Disease (PD) affects cognitive and language functions, resulting in reduced lexical diversity and syntactic complexity.
+a) Transcription and Extraction : Speech recordings are transcribed using an Automatic Speech Recognition (ASR) model. Linguistic features are extracted, including fluency metrics (words per sentence, sentence length variability), lexical diversity (TTR, MTLD, HDD), syntactic complexity
+(POS ratios, parse tree depth), disfluency patterns (repetitions, filler words, pause frequency), and readability measures (Flesch–Kincaid index).
+b) Preprocessing and Training: Similar preprocessing steps, including IQR-based outlier handling, normalization using StandardScaler, and stratified data splitting, are applied. Models such as SVM, Random Forest, XGBoost, and Logistic Regression are optimized using GridSearchCV with cross-validation.
+TABLE III. Extracted Speech Biomarkers
+Modality Category Key Features Clinical Relevance Acoustic Fundamental Frequency
+(F_o), (F_{hi}), (F_{lo})
+Vocal fold rigidity Acoustic Perturbations Jitter, Shimmer Micro-tremors Acoustic Noise & Dynamics
+HNR, NHR, DFA, RPDE, D2
+Signal irregularities Linguistic Fluency Pause frequency, Words/sentence
+Cognitive latency Linguistic Lexical Diversity
+TTR, MTLD, HDD Vocabulary reduction Linguistic Syntactic Complexity
+POS ratios, Parse depth
+Structural simplification
+4) Multimodal Late Fusion and Risk Scoring : Acoustic and linguistic model predictions are combined via AUCweighted late fusion:
+"%&'() # $%* & "*' ( $%$ & "$'
+where weights are proportional to respective AUC values:
+%* # )*+*
+)*+* ( )*+$
+, %$ # )*+$
+)*+* ( )*+$
+The fused probability is mapped to a normalized risk score (0–100%) with threshold-based categorization: Low (<45%), Moderate (45–70%), and High (>70%). Trained models, preprocessing components, and fusion parameters persisted via joblib for real-time inference.
+D. Cognitive Analysis Module
+1) Clinical Rationale and Task Design: NeuroLens digitizes two clinically validated instruments targeting processing speed, attention, and working memory — established prodromal markers of PD driven by early basal ganglia and dopaminergic degeneration. In TMT-A, users sequentially connect 25 numbered touchscreen dots; total completion time (seconds) is recorded. In SDMT, users perform symbol-to-digit matching within 60 seconds; scores are scaled ×1.5 (sdmtotal = correct_matches × 1.5) to align with PPMI's 90-second standard administration.
+2) Dataset and Target Encoding: The module is trained on the PPMI Curated Data Cut comprising 4,267 unique baseline patients: 336 Healthy Controls (target: 0) and 3,931 PD Spectrum patients (COHORT = 1 confirmed PD and COHORT = 4 prodromal; target: 1). SWEDD participants are excluded to avoid label ambiguity. Analysis is restricted to a
+2026 IEEE International Conference on Automatic Control and Intelligent Systems (I2CACIS), 26 - 27 June 2026, Kuala Lumpur, Malaysia
+146
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 18:35:14 UTC from IEEE Xplore. Restrictions apply.
+
+
+single baseline visit (EVENT_ID = "BL") to replicate singlescreening deployment and eliminate longitudinal leakage. Class imbalance (11.7:1) is addressed via sample-weight compensation (w_healthy = 11.7, w_spectrum = 1.0) rather than synthetic oversampling.
+3) Feature Selection and Engineering: Nine features are selected based on mobile feasibility and SHAP-guided discriminative potential (Table IV), including three digitized task scores, two demographics, two signup questionnaire items, and two engineered features derived leak-free from training-fold statistics. The age-adjusted TMT score normalizes psychomotor speed for age-related slowing:
+tmt_age_adjusted = −TMT_A / (age / 60) (1)
+The cognitive dispersion index captures cross-domain unevenness characteristic of early PD:
+cognitive_dispersion = σ(zSDMT, zLNS, zTMT-A) (2)
+All engineering statistics are derived solely from the training fold within each cross-validation iteration to prevent data leakage and persisted in the deployment artefact for consistent inference-time application. Feature inputs and their clinical justifications are summarized in Table IV.
+TABLE IV. Cognitive Module Feature Set
+Feature Type Clinical Rationale
+SDMTOTAL Original Symbol-digit matching speed; SHAP rank 1 (0.18) DVS_LNS Original Letter-number sequencing; working memory proxy TMT_A Original Trail-making completion time; attention and psychomotor speed age_at_visit Original Strongest single predictor (SHAP 0.32); controls agerelated decline SEX Original Demographic control: PD prevalence and cognitive patterns differ by sex fampd Original Family history of PD; free risk factor (single signup question) rem Original REM sleep behaviour disorder; validated prodromal PD biomarker tmt_age_adjusted Engineered Age-normalised TMT speed; separates PD-specific slowing from ageing cognitive_dispersion Engineered Std. dev. of z-scored cognitive tasks; asymmetric decline signature of PD
+SHAP — SHapley Additive exPlanations importance score from Step-1 analysis.
+4) Model Training and Validation Pipeline: Data is partitioned into an 80% train-validation pool and 20% stratified held-out test set. A 5-fold StratifiedGroupKFold (grouped by PATNO) ensures complete patient isolation. Logistic Regression, Random Forest, XGBoost, Gradient Boosting, and a Stacking ensemble were benchmarked via AUC-ROC with Youden's J thresholding. XGBoost was selected based on superior holdout generalization (AUC
+0.8011) over GBM (0.7897), despite GBM marginally leading in cross-validation (0.8310 vs. 0.8268).
+5) Calibration, Threshold Selection, and Output: The XGBoost model is post-hoc probability-calibrated via Platt scaling (CalibratedClassifierCV, sigmoid, cv=5) to ensure well-calibrated posterior probabilities suitable for late fusion. The optimal classification threshold (0.4364) is derived via Youden's J statistic from aggregated out-of-fold crossvalidation predictions rather than the held-out set to prevent threshold overfitting:
+J = maxθ (Sensitivityθ + Specificityθ − 1) (3)
+Risk is further contextualized through a five-block visual percentile indicator (p10, p25, p50, p75, p90) derived from holdout-set probability distributions. Per-patient SHAP values computed on the uncalibrated model expose top contributing features at inference time. The module emits a standardized JSON payload {risk_probability, percentile_rank, contributing_factors} consumed by the late fusion layer described in Section IV.
+V. MULTIMODAL RISK FUSION
+A. AUC-Weighted Late Fusion:
+To combine predictions across modalities with different discriminative power, NeuroLens uses an AUC-weighted late fusion strategy. Each modality's normalized risk score -# . /0,12is weighted by its holdout AUC value %#:
+R_final = ( Σ_{i . M} w_i · s_i ) / ( Σ_{i . M} w_i )
+where 3 is the set of available modalities for the session.
+AUC-weighted fusion was preferred over equal weighting (which ignores validated performance differences across modules), single-modality (which discards complementary information), and learned fusion (which requires a unified multi-modality training cohort unavailable at this stage). The scheme is transparent, deterministic, updatable per module, and degrades gracefully when modalities are missing by renormalizing over available channels.
+B. Modality Weights
+TABLE V. Modality AUC Weights
+Modality Model AUC Weight Drawing Kinematics Logistic Regression 0.86
+Cognitive Battery XGBoost + SHAP 0.801
+Wearable Tremor TinyML 1D CNN 0.732
+Voice Analysis Dual-Path Fusion 0.704
+Total 3.097
+The final risk score persisted to the assessment history Firestore collection, enabling longitudinal tracking.
+2026 IEEE International Conference on Automatic Control and Intelligent Systems (I2CACIS), 26 - 27 June 2026, Kuala Lumpur, Malaysia
+147
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 18:35:14 UTC from IEEE Xplore. Restrictions apply.
+
+
+VI. RESULT AND DISCUSSION
+Table VI summarizes the performance of each modality under its respective validation protocol.
+Table VI. Per-module performance summary
+Modal ity
+Mode l
+Data
+set N Validatio
+n AUC
+Se ns .
+Sp ec.
+Drawin g
+kinema tics
+Logisti c Reg.
+Intern al touch scree n
+58 LOOCV 0.867
+95% CI [0.731 –
+0.942]
+78. 57 %
+76. 67 %
+Cogniti ve battery
+XGBo ost + SHAP
+PPMI baseli ne
+4,2 67
+5-fold StratGrou pKFold
+0.801
+95% CI: [0.771 –
+0.831]
+76. 5 %
+61. 2%
+Weara ble tremor
+1D CNN (8-bit)
+PHY SIO NET
+PAD S
+35 5
+5-fold StratGrou pKFold
+0.732
+95% CI [0.694 –
+0.816]
+74. 3 %
+65. 8%
+Voice analysi s
+Dualpath fusion
+UCI PD Speec h
+19 5
+80/20 subjectlevel
+0.704
+95% CI [0.55– 0.84]
+70. 37 %
+66. 7%
+The final multimodal risk score is computed as a weighted arithmetic mean of normalized output probabilities from each subsystem, strictly weighted by per-module AUC. The drawing module carries the highest weight, reflecting strong kinematic biomarkers in Parkinsonian micrographia; the cognitive module captures bradyphrenia; the wearable reflects 30-second patient-level TinyML generalization; and the voice module contributes its acoustic-linguistic benchmark.
+$$R_{final} = \frac{\sum (P_i \times AUC_i)}{\sum AUC_i}$$
+This late-fusion architecture provides three critical advantages for edge-to-cloud telehealth: (1) Modularity, allowing individual machine learning models to be updated or swapped without retraining the entire pipeline; (2) Robustness to missing data, as the denominator dynamically adjusts if a patient only completes a subset of the assessments. (3) Clinical Interpretability, as the contribution of each modality to the final risk score remains deterministic and proportional to its established predictive power.
+Several practical limitations should be acknowledged before clinical deployment. Training data domain shift may
+reduce performance across different populations and devices; touch and IMU hardware variability across smartphones and wearables affects consistency; and the AUC fusion weights are derived from datasets of vastly different sizes, making direct comparison imperfect. The platform is intended as a screening support tool for specialist referral only, not a standalone diagnostic instrument.
+VII. CONCLUSION AND FUTURE WORK
+NeuroLens presents a comprehensive platform for early PD screening, combining four biomarker domains within a single accessible mobile application. Key technical innovations include the TinyML on-device tremor classifier, the 60 Hz kinematic resampling pipeline, the dual-path voice analysis engine, and the SHAP-enhanced cognitive module, all unified by AUC-weighted late fusion. Prospective clinical validation is required before deployment.
+Future work will focus on: (1) prospective unified validation with ≥500 subjects completing all four modalities; (2) calibration of fusion thresholds using multi-center data; (3) real-world usability studies across diverse demographic groups; (4) integration of PPG-based heart rate variability for autonomic dysfunction assessment; and (5) federated learning to enable model updates without compromising patient data privacy.
+REFERENCES
+[1] Parkinson's Disease Foundation, "Statistics," pdf.org, 2023.
+[2] P. Drotar et al., "Evaluation of handwriting kinematics and pressure for differential diagnosis of Parkinson's disease," Artificial Intelligence in Medicine, vol. 67, pp. 39–46, 2016.
+[3] A. Tsanas et al., "Novel speech signal processing algorithms for highaccuracy classification of Parkinson's disease," IEEE Transactions on Biomedical Engineering, vol. 59, no. 5, pp. 1264–1271, 2012.
+[4] B. Carignan et al., "Measuring tremor with a smartphone," IEEE Transactions on Neural Systems and Rehabilitation Engineering, vol. 21, no. 1, pp. 149–158, 2013.
+[5] R. A. Bowie and P. D. Harvey, "Administration and interpretation of the Trail Making Test," Nature Protocols, vol. 1, pp. 2277–2281, 2006.
+[6] A. Ward et al., "TinyML: A systematic review," IEEE Access, vol. 10, 2022.
+[7] S. M. Lundberg and S.-I. Lee, "A unified approach to interpreting model predictions," Advances in Neural Information Processing Systems (NeurIPS), 2017.
+[8] T. Chen and C. Guestrin, "XGBoost: A scalable tree boosting system," Proc. ACM KDD, 2016.
+[9] S. Nomm et al., "Recognizing Parkinson's disease via drawings: HAND PD challenge results," Proc. ICPR Workshops, 2018.
+[10] C. Martínez-Sánchez et al., "Linguistic analysis of spontaneous speech in Parkinson's disease," Neuropsychologia, vol. 119, pp. 27–35, 2018.
+[11] F. Cheng et al., "Deep learning for Parkinson's disease tremor classification using wrist-worn IMU signals," IEEE Journal of Biomedical and Health Informatics, vol. 25, no. 3, pp. 812–821, 2021.
+[12] J. Memedi et al., "Automatic spiral analysis for objective assessment of motor symptoms in Parkinson's disease," Sensors, vol. 15, no. 9, pp. 23727–23744, 2015.
+[13] S. Arora et al., "Predicting the progression of Parkinson's disease using latent information extracted from deep neural networks," Scientific Reports, vol. 11, no. 1, p. 14771, 2021.
+[14] J. Varghese et al., "Parkinson's Disease Smartwatch (PADS) dataset," PhysioNet, vol. 1.0.0, 2024. [Online]. Available: https://doi.org/10.13026/m0w9-zx2.
+2026 IEEE International Conference on Automatic Control and Intelligent Systems (I2CACIS), 26 - 27 June 2026, Kuala Lumpur, Malaysia
+148
+Authorized licensed use limited to: UNIVERSIDADE FEDERAL DE GOIAS. Downloaded on November 13,2026 at 18:35:14 UTC from IEEE Xplore. Restrictions apply.

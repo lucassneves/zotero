@@ -1,0 +1,375 @@
+meta:
+  row_id: 99
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito, mas com Ressalvas"
+  zotero_key: "WBUNUL6I"
+  titulo: "CheckPD App Smartphone Motor Time-Series Modelling for Parkinson Disease Case-Control Discrimination: Internal Validation Study"
+  ressalva_triagem: "Preprint (JMIR Preprints, CE2=Sim) incluído com ressalvas (Tier A); confirmar uso do PADS e protocolo de validação."
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 99
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Capa e p. 4 — 'Submitted to: JMIR Neurotechnology on: August 12, 2026' / '(JMIR Preprints 12/08/2026:109459) DOI: https://doi.org/10.2196/preprints.109459'"
+    auditoria: null
+    observacao: "Preprint submetido ao JMIR Neurotechnology (JMIR Preprints, 12/08/2026, DOI: 10.2196/preprints.109459), confirmando a ressalva da triagem."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Estudo comparativo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Architecture Scope and Rationale, p. 18 — 'The novelty of the present study does not lie in proposing a new neural-network architecture, but in applying and comparing these models across five complementary CheckPD motor tasks'"
+    auditoria: null
+    observacao: "Compara arquiteturas BiLSTM e Conv1D-BiLSTM individuais e em ensembles empilhados (stacked ensembles) aplicados a séries temporais motoras do app CheckPD, além de benchmarking nos datasets públicos PADS e WearGait-PD."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 = 'Estudo comparativo'; opção 'Outro' não marcada."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Análise suplementar"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26-27 — 'Public-dataset analyses were conducted to provide task-domain benchmarks for the Conv1D-BiLSTM modelling workflow using PADS [14] and WearGait-PD [33]... Conv1D-BiLSTM models were retrained separately within each public dataset'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: o estudo usa a coorte própria do CheckPD App (n=679) como dataset principal e emprega o PADS (n=355) em uma análise suplementar de benchmarking por domínio de tarefa, retreinando o modelo Conv1D-BiLSTM separadamente dentro do PADS (não é validação externa de modelo congelado)."
+  - id: 6
+    chave: "datasets"
+    valor: ["Outro público", "PADS", "Privado-próprio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods, p. 11-12 e p. 26 — 'curated, labeled subset of smartphone-derived motor assessment data collected through the CheckPD App... 679 labeled participants' / 'using PADS [14] and WearGait-PD [33]'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "CheckPD App (privado-próprio, n=679: 344 PD e 335 HC); WearGait-PD (público, n=185: 100 PD e 85 HC)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods, p. 12 e p. 26 — '679 labeled participants... 344 participants with neurologist-confirmed PD and 335 neurologist-confirmed healthy controls' / 'The WearGait-PD analytic sample comprised 185 participants, including 100 participants with PD and 85 healthy controls.'"
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - BiLSTM Architecture / Public-dataset Task-Domain Benchmarking, p. 18 e p. 26 — 'input consisted of 2.5-second windows sampled on the 40-Hz analysis grid with six channels: ax, ay, az, gx, gy, and gz' / 'Conv1D-BiLSTM models were retrained separately within each public dataset using the same overall task-specific modelling workflow.'"
+    auditoria: null
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Subconjunto"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26 — 'The Relaxed and Stretch tasks were mapped to the CheckPD Rest Tremor and Postural Tremor domains, respectively.'"
+    auditoria: null
+    observacao: "Modelo por tarefa: o workflow Conv1D-BiLSTM foi retreinado separadamente para cada uma das duas tarefas mapeadas do PADS (Relaxed e Stretch)."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Relaxed; Stretch"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26 — 'The Relaxed and Stretch tasks were mapped to the CheckPD Rest Tremor and Postural Tremor domains, respectively.'"
+    auditoria: null
+    observacao: "Mapeadas para os domínios Rest Tremor e Postural Tremor do CheckPD, respectivamente."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Mobile Data-Collection Libraries and IMU Data Schema / BiLSTM Architecture, p. 15 e p. 18 — 'six-channel schema consisting of tri-axial accelerometer and tri-axial gyroscope signals' / 'six channels: ax, ay, az, gx, gy, and gz'"
+    auditoria: null
+    observacao: "Na coorte principal CheckPD, além de acelerômetro e giroscópio nas 4 tarefas de IMU, utilizou-se também tela sensível ao toque (touchscreen) na tarefa PinchToSize. No PADS, apenas tarefas de IMU foram avaliadas."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não marcada no campo 11 para o recorte do PADS."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26-27 — termos buscados: wrist, left, right, hand, arm; o texto principal não informa qual punho do PADS foi utilizado (remete à Supplementary Table S9 no Multimedia Appendix 1 externo)."
+    auditoria: null
+    observacao: "Os detalhes do mapeamento de tarefas do PADS são referenciados na Supplementary Table S9 (Multimedia Appendix 1, arquivo DOCX externo não incorporado ao PDF do preprint)."
+  - id: 14
+    chave: "n_participantes"
+    valor: 355
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26 — 'The PADS analytic sample comprised 355 participants, including 276 participants with PD and 79 healthy controls.'"
+    auditoria: null
+    observacao: "N=355 refere-se ao recorte analisado do PADS. O dataset principal CheckPD teve N=679 participantes (344 PD e 335 HC; coorte de teste interna held-out com N=90: 45 PD e 45 HC) e o dataset público WearGait-PD teve N=185 (100 PD e 85 HC)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=0"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26 — 'Only participants with PD and healthy controls were included. The PADS analytic sample comprised 355 participants, including 276 participants with PD and 79 healthy controls.'"
+    auditoria: null
+    observacao: null
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26 — 'Only participants with PD and healthy controls were included.'"
+    auditoria: null
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não marcada no campo 16."
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - BiLSTM Architecture / Conv1D-BiLSTM Architecture / Public-dataset Task-Domain Benchmarking, p. 18-19 e p. 26 — 'For IMU tasks, the input consisted of 2.5-second windows sampled on the 40-Hz analysis grid with six channels: ax, ay, az, gx, gy, and gz.'"
+    auditoria: null
+    observacao: "As séries temporais de IMU passam por interpolação para 40 Hz, filtros Butterworth passa-baixa (20 Hz) e passa-alta (0,5 Hz no acelerômetro), normalização z-score por canal e janelamento de 2,5 s antes de alimentar diretamente as camadas Conv1D-BiLSTM."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não marcada no campo 18."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26 — 'Conv1D-BiLSTM models were retrained separately within each public dataset using the same overall task-specific modelling workflow.'"
+    auditoria: null
+    observacao: "No PADS avaliou-se a arquitetura Conv1D-BiLSTM. No dataset principal CheckPD avaliaram-se BiLSTM, Conv1D-BiLSTM e ensembles empilhados com meta-learner de rede neural feed-forward (todos pertencentes a Deep Learning), além de regressão logística exploratória apenas com idade e sexo para análise de sensibilidade demográfica."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não marcada no campo 20."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Conv1D-BiLSTM; BiLSTM"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods, p. 18-21 e p. 26 — 'BiLSTM was used as the recurrent sequence-classification model... Conv1D-BiLSTM denotes a one-dimensional convolutional temporal feature-extraction front end followed by bidirectional LSTM' / 'Conv1D-BiLSTM models were retrained separately within each public dataset'"
+    auditoria: null
+    observacao: "No PADS apenas o modelo Conv1D-BiLSTM por tarefa foi retreinado e avaliado; no CheckPD foram avaliados BiLSTM, Conv1D-BiLSTM e um meta-learner feed-forward neural network (2 camadas ocultas de 128 e 64 neurônios) para fusão multimodal."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26-27 — 'No CheckPD-derived normalisation, public-dataset augmentation, probability recalibration, or post hoc decision-rule optimisation was applied.'"
+    auditoria: null
+    observacao: "No experimento com o PADS, nenhuma técnica de augmentation ou balanceamento foi aplicada ('No ... public-dataset augmentation ... was applied'). Já na coorte principal CheckPD, aplicou-se class-balancing augmentation (Gaussian noise, amplitude scaling, small 3D rotation, temporal segment permutation e time warping) exclusivamente na partição de treino após o split por participante (p. 22)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Hold-out", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods, p. 21-23 e p. 26 — 'Model development used stratified 5-fold cross-validation at the participant level... evaluated separately on the same internal held-out cohort' / 'Conv1D-BiLSTM models were retrained separately within each public dataset using the same overall task-specific modelling workflow. Participant-level splitting was performed before windowing.'"
+    auditoria: null
+    observacao: "O workflow tarefa-específico combina divisão held-out de teste por participante e validação cruzada estratificada de 5 folds (5-fold CV) por participante no conjunto de desenvolvimento (com split de validação interno ao fold de treino para early stopping e random search de 25 iterações)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outra' não marcada no campo 24."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26 — 'Participant-level splitting was performed before windowing.'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: o artigo declara explicitamente que toda a divisão em treino, validação e teste foi realizada no nível do participante antes do janelamento temporal."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Training, Validation, and Statistical Analysis / Public-dataset Task-Domain Benchmarking, p. 21 e p. 26 — 'This participant-level partitioning was used to prevent within-participant leakage, ensuring that windows, touchscreen sessions, or repeated recordings from the same participant did not appear in more than one data partition.' / 'Participant-level splitting was performed before windowing.'"
+    auditoria: null
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26-27 — 'No CheckPD-derived normalisation, public-dataset augmentation, probability recalibration, or post hoc decision-rule optimisation was applied.'"
+    auditoria: null
+    observacao: "Como nenhum balanceamento/augmentation foi aplicado no PADS (campo 23 = 'Nenhum'), o momento é 'Não se aplica'. Na coorte principal CheckPD, a augmentation balanceadora de classes foi aplicada exclusivamente no conjunto de treino após o split por participante ('Class-balancing augmentation was applied only within the development-training partition after participant-level splitting', p. 22)."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = 'Nenhum' para o PADS (p. 26-27: 'No ... public-dataset augmentation ... was applied')."
+    auditoria: null
+    observacao: "Na coorte CheckPD (fora do PADS), o balanceamento no treino usou Gaussian noise, amplitude scaling, small 3D rotation, temporal segment permutation e time warping para tarefas de IMU."
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods, p. 27 e Results, p. 33 — 'these analyses assessed the modelling workflow within each public dataset rather than externally validating a frozen CheckPD-trained model.' / 'they do not constitute external validation of the CheckPD model.'"
+    auditoria: null
+    observacao: "Os modelos foram retreinados e avaliados separadamente dentro de cada dataset (CheckPD, PADS e WearGait-PD); os próprios autores enfatizam que não houve validação externa de um modelo congelado entre bases distintas."
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "F1", "Outra"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 27 — 'Benchmark performance was summarised using the available aggregate ROC AUC, Macro F1 score, accuracy, and Brier score. PR-AUC, sensitivity, specificity, and balanced accuracy were not inferred in the absence of participant-level prediction exports.'"
+    auditoria: null
+    observacao: "O F1 reportado é Macro F1 ('Macro F1 score', média não ponderada entre as classes PD e HC). Na coorte principal CheckPD (Tabelas 2 e 3), reportaram-se adicionalmente Sensitivity, Specificity e PR-AUC."
+  - id: 32
+    chave: "outras_metricas"
+    valor: "Brier score"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 27 — 'Benchmark performance was summarised using the available aggregate ROC AUC, Macro F1 score, accuracy, and Brier score.'"
+    auditoria: null
+    observacao: "Na coorte CheckPD também foi reportado PR-AUC (Precision-Recall Area Under the Curve)."
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC (tarefa Relaxed / Rest Tremor); Conv1D-BiLSTM; ROC AUC; 0.8417"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Results - Public-Dataset Task-Domain Benchmarking, p. 33 — 'PADS tremor-domain results were close to the corresponding CheckPD internal reference results, with ROC AUC 0.8417 versus 0.8854 for Rest Tremor and 0.8384 versus 0.8750 for Postural Tremor.'"
+    auditoria: null
+    observacao: "ROC AUC foi definida pelos autores como a métrica primária de avaliação (p. 24). Na coorte principal CheckPD, o melhor resultado geral foi do ensemble Conv1D-BiLSTM Main Symptoms (Rest Tremor, GaitWalk e PinchToSize) com ROC AUC = 0.9131 (95% CI 0.8439–0.9695) e PR-AUC = 0.9354 (Tabela 3, p. 31)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC (tarefa Stretch / Postural Tremor); Conv1D-BiLSTM; ROC AUC; 0.8384 | PD×HC (tarefa Relaxed / Rest Tremor); Conv1D-BiLSTM; Accuracy; 81.52% | PD×HC (tarefa Stretch / Postural Tremor); Conv1D-BiLSTM; Accuracy; 77.47%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Results - Public-Dataset Task-Domain Benchmarking, p. 33 — 'ROC AUC 0.8417 versus 0.8854 for Rest Tremor and 0.8384 versus 0.8750 for Postural Tremor... In PADS, the majority-class accuracy baseline was 77.75%, compared with observed accuracies of 81.52% for Rest Tremor and 77.47% for Postural Tremor.'"
+    auditoria: null
+    observacao: "Os valores numéricos exatos de Macro F1 e Brier score para o PADS estão na Supplementary Table S10 (Multimedia Appendix 1 externo). Outros resultados fora do PADS: no WearGait-PD (PD×HC, Conv1D-BiLSTM), GaitWalk ROC AUC = 0.9000 e Balance ROC AUC = 0.7333 (p. 33); no CheckPD (Tabela 2 e Tabela 3), Conv1D-BiLSTM Easy ensemble obteve Macro F1 = 0.8534, Accuracy = 77/90 (86% / 85.56%), Specificity = 44/45 (98%), Sensitivity = 33/45 (73%), ROC AUC = 0.8968 e Brier score = 0.1346."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Data Availability e Code Availability, p. 39 — 'The participant-level CheckPD data generated or analysed during this study are not publicly available' / 'The full study-specific preprocessing, modelling, evaluation code, trained model weights, and derived prediction files are not publicly available'"
+    auditoria: null
+    observacao: "Tanto os dados próprios/derivados quanto o código de pré-processamento e modelagem não estão disponíveis publicamente (apenas mediante solicitação razoável e aprovação institucional)."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção Discussion - Limitations (p. 36-37) e Methods (p. 12-17): (1) estudo retrospectivo de caso-controle restrito a controles saudáveis, sem grupo de controle sintomático para diagnóstico diferencial (tremor essencial, parkinsonismo atípico/vascular/induzido por fármacos etc.); (2) coorte de teste interna, pequena (n=90), balanceada e apenas com casos completos (complete-case), não refletindo a prevalência real de triagem e sujeita a viés de completude de tarefas; (3) heterogeneidade de recrutamento e efeitos de dispositivos não auditados por modelo de smartphone ou sistema operacional; (4) ausência de calibração de probabilidades; (5) benchmarking em bases públicas (PADS e WearGait-PD) via retreinamento do workflow, e não validação externa com modelo congelado; (6) ausência de registro consistente do estado medicamentoso dopaminérgico (ON/OFF) e do estágio de Hoehn e Yahr, além de MDS-UPDRS III disponível para apenas 21,8% do grupo PD."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Discussion - Limitations, p. 36 — 'This was a retrospective case–control model-development study, not a diagnostic validation study. The control group consisted of neurologist-confirmed healthy controls rather than symptomatic differential-diagnosis controls...'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção Discussion - Future Work (p. 37): realizar validação externa prospectiva multicêntrica em populações representativas de triagem e múltiplos smartphones/sistemas operacionais; incluir controles sintomáticos não-PD (diagnóstico diferencial); registrar sistematicamente estado de medicação (ON/OFF), estágio da doença, modelo de dispositivo e motivos de falha/ausência de tarefas; calibrar probabilidades sob prevalência real e avaliar utilidade clínica com análise de curva de decisão (decision-curve analysis); e investigar a relação da tarefa PinchToSize com subescores clínicos de destreza (MDS-UPDRS III) e qualidade de vida (PDQ-8)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Discussion - Future Work, p. 37 — 'Future work should prioritise prospective multisite external validation across diverse smartphones, operating systems, clinical settings, and representative screening populations. Such studies should include symptomatic non-PD controls...'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Methods - Public-dataset Task-Domain Benchmarking, p. 26 — 'Participant-level splitting was performed before windowing. Preprocessing and channel-wise z-score normalisation parameters were estimated using training participants only and applied unchanged to validation or test participants.'"
+    observacao: "Também na coorte principal CheckPD (p. 17, 21 e 23), todos os parâmetros de pré-processamento, estatísticas de normalização z-score, augmentation e busca de hiperparâmetros (random search em split interno ao fold de treino) foram estimados exclusivamente nos participantes de treino."
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; 27 = Sim – explícita; 28 = Não se aplica; aux_preproc_apenas_treino = Sim"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenário binário PD×HC explicitamente definido para o PADS (276 PD e 79 HC, excluindo DD)."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Quatro dos cinco itens do recorte do PADS estão descritos no artigo (modalidade IMU, subconjunto de tarefas Relaxed e Stretch, sensores acelerômetro/giroscópio e N=355), mas o punho utilizado não é informado no texto principal (campo 13 = Não reportado)."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Baixo: particionamento explícito por participante antes do janelamento e normalização estimada exclusivamente no conjunto de treino."
+    QA4:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [31]
+      justificativa: "Avalia duas métricas robustas ao desbalanceamento de classes no PADS: ROC AUC e Macro F1 score."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Arquitetura dos modelos, pré-processamento e procedimento de otimização de hiperparâmetros estão descritos, mas o código não está publicamente disponível (campo 35 = Nenhum)."
+  nota_qa: 4.0
+  nota_qa_max: 5
+  faixa_qa: "Alta"
+verificacao_de_coerencia:
+  - regra: "Modalidade inclui Série temporal (IMU) → Sensores, Tarefas, Quais tarefas e Representação preenchidos"
+    resultado: "OK"
+  - regra: "Soma de PD+HC+DD (campo 15: 276+79+0=355) = N° de participantes (campo 14: 355)"
+    resultado: "OK"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita"
+    resultado: "OK"
+  - regra: "Campo 23 = Nenhum → campo 28 = Não se aplica e campo 29 = null"
+    resultado: "OK"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido ('Relaxed; Stretch')"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto correspondente preenchido (6→7, 31→32)"
+    resultado: "OK"
+  - regra: "Nota de QA3 (1.0 / Yes) coerente com risco_vazamento calculado ('Baixo')"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Ressalva da triagem verificada: trata-se de preprint no JMIR Preprints (2026) que utiliza o PADS (n=355: 276 PD, 79 HC; tarefas Relaxed e Stretch) em uma análise suplementar de benchmarking por domínio de tarefa (retreinando o modelo Conv1D-BiLSTM separadamente no PADS, sem validação externa de modelo congelado)."
+  - "Campos 24 a 28 e QA3: o estudo descreve rigoroso controle de vazamento no nível do participante (split por participante antes do janelamento e normalização z-score ajustada apenas nos participantes de treino, resultando em risco de vazamento Baixo)."
+  - "Campos 13, 33, 34 e QA5: as tabelas suplementares (Supplementary Tables S1–S11, incluindo detalhes do mapeamento de punhos do PADS na Table S9 e valores exatos de Macro F1 e Brier score no PADS na Table S10, além dos hiperparâmetros selecionados na Table S4) estão no Multimedia Appendix 1 externo (URL do JMIR Preprints) e não embutidas no PDF."

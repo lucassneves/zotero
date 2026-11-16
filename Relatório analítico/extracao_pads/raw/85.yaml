@@ -1,0 +1,374 @@
+meta:
+  row_id: 85
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "PA53H2JA"
+  titulo: "Smartwatch-Based IMU Analysis of Motor Tasks for Parkinson’s Disease Screening"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 85
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Rodapé, p. 1 — '2025 18th International Convention on Rehabilitation Engineering and Assistive Technology (i-CREATe) ... ©2025 IEEE | DOI: 10.1109/I-CREATE67590.2025.11478101'"
+    auditoria: null
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Estudo comparativo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção I, p. 2 — 'We compare the performance of several machine learning architectures, including both traditional models and deep learning networks'"
+    auditoria: null
+    observacao: "Compara quatro arquiteturas (SVM, XGBoost, 1D CNN e CNN-LSTM) aplicadas individualmente a cada uma das 11 tarefas motoras do PADS."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção I, p. 2 — campo 3 preenchido como 'Estudo comparativo', sem marcação de 'Outro'."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-A, p. 2 — 'This study utilizes the Parkinson’s Disease Smartwatch (PADS) dataset, a publicly available dataset of smartwatch sensor data'"
+    auditoria: null
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-A, p. 2 — 'This study utilizes the Parkinson’s Disease Smartwatch (PADS) dataset'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção II-A, p. 2 — apenas o dataset PADS foi utilizado nos experimentos."
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'We utilized the Parkinson’s Disease Smartwatch (PADS) dataset, which contains IMU data'; Seção II-B, p. 3 — 'raw time-series data from the IMU sensor'"
+    auditoria: null
+    observacao: "A Tabela I apresenta a distribuição de sexo e subgrupos clínicos para caracterizar a base, mas os modelos utilizam exclusivamente dados de sensores IMU."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'performing 11 motor tasks. The data for each task was analyzed separately'; Seção II-A, p. 2 — 'Each participant performed 11 motor tasks'"
+    auditoria: null
+    observacao: "Modelo por tarefa: as 11 tarefas motoras são analisadas e avaliadas separadamente (Tabela II)."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11): Resting; Relaxed Task; Arm Extension; Arm Hold; Weighted Hold; Finger-to-Target; Drinking Simulation; Cross and Extend Arms; Finger-to-Finger; Finger-to-Nose; Entrainment"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-A, p. 2–3 — 'The tasks included: 1) Resting ... 2) Relaxed Task ... 3) Arm Extension ... 4) Arm Hold ... 5) Weighted Hold ... 11) Entrainment'"
+    auditoria: null
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-A, p. 2 — 'which recorded 3-axis accelerometer and gyroscope data at a sampling frequency of 100 Hz'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção II-A, p. 2 — apenas acelerômetro e giroscópio foram utilizados."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-C, p. 4 — 'The 12 channels represent the 3 accelerometer and 3 gyroscope axes from both wrists'"
+    auditoria: null
+    observacao: "Para os modelos de deep learning, os 6 eixos de cada punho são empilhados formando 12 canais (N, 12)."
+  - id: 14
+    chave: "n_participantes"
+    valor: 355
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 2 — 'PD (n=276) HC (n=79) DD (n=114) Total (n=469)'; Seção II-B, p. 3 — 'individuals with Differential Diagnoses (DD) were excluded from the analysis'"
+    auditoria: null
+    observacao: "O texto reporta o total do PADS (469) e os tamanhos dos grupos na Tabela I (PD=276, HC=79, DD=114), declarando na Seção II-B a exclusão do grupo DD, resultando em 276 + 79 = 355 participantes."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=0"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 2 — 'PD (n=276) HC (n=79)'; Seção II-B, p. 3 — 'individuals with Differential Diagnoses (DD) were excluded from the analysis'"
+    auditoria: null
+    observacao: null
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-B, p. 3 — 'As the study focuses solely on classifying Parkinson’s Disease (PD) versus Healthy Controls (HC), individuals with Differential Diagnoses (DD) were excluded'"
+    auditoria: null
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção II-B, p. 3 — apenas o cenário binário PD×HC foi avaliado."
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)", "Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-B, p. 3 — 'Statistical features were computed for conventional machine learning models, whereas raw multivariate time-series inputs were preserved for deep learning architectures'"
+    auditoria: null
+    observacao: "Atributos estatísticos no domínio do tempo (média, desvio-padrão, variância, mínimo, máximo e mediana) para SVM e XGBoost; série temporal bruta de 12 canais (N, 12) para 1D CNN e CNN-LSTM."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção II-B, p. 3 — sem marcação de 'Outro' no campo 18."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-C, p. 3 — 'Support Vector Machine (SVM) and Extreme Gradient Boosting (XGBoost) are traditional models, while deep learning models included Convolutional Neural Network (CNN) and hybrid CNN-LSTM model'"
+    auditoria: null
+    observacao: null
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção II-C, p. 3 — sem marcação de 'Outro' no campo 20."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "SVM; XGBoost; 1D CNN; CNN-LSTM"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'traditional machine learning models (SVM and XGBoost) ... and deep learning models (1D CNN and CNN-LSTM) on raw time-series data were evaluated'"
+    auditoria: null
+    observacao: null
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "SMOTE-oversampling"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-B, p. 3 — 'an up-sampling was implemented to make the dataset balanced for training. Samples from the minority classes were randomly duplicated'; Seção III, p. 4 — 'Multiple upsampling methods such as SMOTE ... and ADASYN ... have been explored'"
+    auditoria: null
+    observacao: "O método principal adotado foi up-sampling aleatório (duplicação de amostras da classe minoritária HC), tendo os autores também explorado SMOTE e ADASYN."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Não reportado"]
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção II e III, p. 2–5 — termos buscados: split, fold, cross-validation, hold-out, test, validation; nenhum trecho descrevendo a estratégia de divisão treino/teste foi encontrado."
+    auditoria: null
+    observacao: "O artigo menciona apenas que hiperparâmetros de SVM e XGBoost foram otimizados via grid search (Seção II-C, p. 3), sem informar como o conjunto de dados foi dividido para treino e avaliação."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção II e III, p. 2–5 — sem marcação de 'Outra' no campo 24."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção II e III, p. 2–5 — termos buscados: split, fold, subject, participant, partition; não há descrição do particionamento treino/teste."
+    auditoria: null
+    observacao: "Como cada modelo é treinado para uma única tarefa motora e cada amostra representa os sinais daquela tarefa, cada participante corresponderia a uma amostra antes do up-sampling; contudo, o artigo não descreve a divisão treino/teste nem se a duplicação aleatória ocorreu antes ou depois do split."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Pouco claro"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção II-B, p. 3 — 'Samples from the minority classes were randomly duplicated to make sure that each class had an equal number of individuals'"
+    auditoria: null
+    observacao: "A divisão entre treino e teste não é descrita no artigo, impossibilitando confirmar se réplicas de participantes geradas pelo up-sampling ou dados do mesmo participante ficaram restritos ao conjunto de treino."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção II-B, p. 3 — 'Given the class imbalance between the PD and HC cohorts, an up-sampling was implemented to make the dataset balanced for training.'"
+    auditoria: null
+    observacao: "O up-sampling é descrito na subseção 'II-B. Data Processing' com a expressão 'to make the dataset balanced for training', mas como o artigo não menciona em que momento ocorre a divisão treino/teste, não é possível confirmar se foi aplicado apenas ao conjunto de treino após o split ou ao dataset inteiro antes do split."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Up-sampling por duplicação aleatória da classe minoritária (HC) até igualar o número de indivíduos entre as classes; SMOTE e ADASYN também foram explorados experimentalmente, apresentando desempenho ligeiramente inferior."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-B, p. 3 — 'Samples from the minority classes were randomly duplicated to make sure that each class had an equal number of individuals'; Seção III, p. 4 — 'Multiple upsampling methods such as SMOTE ... and ADASYN ... have been explored'"
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II-A, p. 2 — 'This study utilizes the Parkinson’s Disease Smartwatch (PADS) dataset'; Seção IV, p. 5 — 'Future work should focus on implementing these machine learning models on larger and more diverse datasets'"
+    auditoria: null
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "F1"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III, p. 4 — 'The performance was measured using accuracy and F1-Score, a metric representing harmonic mean of precision and recall'"
+    auditoria: null
+    observacao: "O artigo apresenta a fórmula padrão do F1-Score (Equação 1) sem especificar se o cálculo é macro, ponderado (weighted) ou binário."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 4 — apenas Accuracy e F1-Score foram reportados."
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; 1D CNN (Finger-to-Finger); Accuracy; 87.32%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 e Tabela II, p. 4 — 'The CNN model yielded the highest accuracy of 87.32% on the \"Finger-to-Finger\" task.'"
+    auditoria: null
+    observacao: "Na mesma tarefa (Finger-to-Finger), a 1D CNN obteve F1-Score de 86.43% (Tabela II, p. 4)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; 1D CNN (Finger-to-Finger); F1; 86.43% | PD×HC; 1D CNN (Cross and Extend Arms); Accuracy; 84.51% | PD×HC; 1D CNN (Cross and Extend Arms); F1; 83.41% | PD×HC; XGBoost (Finger-to-Nose); Accuracy; 84.51% | PD×HC; XGBoost (Finger-to-Nose); F1; 82.80% | PD×HC; XGBoost (Cross and Extend Arms); Accuracy; 81.69% | PD×HC; XGBoost (Cross and Extend Arms); F1; 80.39% | PD×HC; XGBoost (Finger-to-Target); Accuracy; 81.69% | PD×HC; XGBoost (Finger-to-Target); F1; 79.67% | PD×HC; XGBoost (Entrainment); Accuracy; 80.28% | PD×HC; XGBoost (Entrainment); F1; 75.33% | PD×HC; SVM (Arm Hold); Accuracy; 81.69% | PD×HC; SVM (Arm Hold); F1; 76.39% | PD×HC; SVM (Relaxed Task); Accuracy; 80.28% | PD×HC; SVM (Relaxed Task); F1; 77.66% | PD×HC; SVM (Drinking Simulation); Accuracy; 78.87% | PD×HC; SVM (Drinking Simulation); F1; 70.82% | PD×HC; CNN-LSTM (Cross and Extend Arms); Accuracy; 74.65% | PD×HC; CNN-LSTM (Cross and Extend Arms); F1; 74.03% | PD×HC; CNN-LSTM (Finger-to-Finger); Accuracy; 74.65% | PD×HC; CNN-LSTM (Finger-to-Finger); F1; 73.28%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 4 — 'TABLE II: PERFORMANCE COMPARISON OF MACHINE LEARNING MODELS ACROSS 11 ASSESSMENT TASKS'"
+    auditoria: null
+    observacao: "A Tabela II reporta Accuracy e F1-Score completos para os 4 modelos (SVM, XGBoost, CNN e CNN-LSTM) nas 11 tarefas avaliadas individualmente."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Artigo completo, p. 1–6 — termos buscados: code, GitHub, repository, availability, available; nenhuma menção a disponibilização de código ou dados derivados."
+    auditoria: null
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Exclusão do grupo de diagnósticos diferenciais (DD) para evitar a complexidade de classificação multiclasse (Seção II-B, p. 3); técnicas de geração sintética (SMOTE e ADASYN) tiveram desempenho inferior ao up-sampling simples por possivelmente não capturarem padrões reais de PD (Seção III, p. 4); modelos de deep learning não superaram consistentemente os modelos tradicionais em todas as tarefas (Seção III, p. 5); tarefas complexas como 'Entrainment' exigem maior coordenação física e podem ser inadequadas para idosos ou pessoas com mobilidade reduzida, enquanto tarefas simples como 'Resting' têm menor desempenho preditivo (Seção III, p. 5); necessidade de validação em datasets maiores, demograficamente diversos e com diferentes modelos de smartwatches (Seção IV, p. 5)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III, p. 5 — 'more complex tasks such as \"Entrainment,\" although accurate (80.28%), demand greater physical coordination and may not be suitable for elderly individuals'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Avaliar os modelos em bases de dados maiores e mais diversas em termos demográficos e em diferentes dispositivos de smartwatch (diferentes configurações de hardware e parâmetros de amostragem); explorar novos atributos para os modelos de ML tradicional; e investigar outras arquiteturas de redes neurais, como modelos baseados em atenção (attention-based models), para aprimorar a acurácia de triagem (Seção IV, p. 5)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 5 — 'Future work should focus on implementing these machine learning models on larger and more diverse datasets ... investigating other types of model architecture, such as attention-based models'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano conforme instruções."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção II-B e II-C, p. 3 — 'an up-sampling was implemented to make the dataset balanced for training ... Hyperparameters for both models were optimized using grid search'"
+    observacao: "O artigo não descreve o protocolo de divisão treino/teste nem esclarece se o grid search e o pré-processamento foram restritos exclusivamente ao conjunto de treino."
+  risco_vazamento:
+    valor: "Indeterminado"
+    regra: "campo 26 = Não reportado; campo 27 = Pouco claro; campo 28 = Não reportado; aux_preproc_apenas_treino = Não reportado (demais casos -> Indeterminado)"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "O cenário binário PD×HC é explicitamente definido e a exclusão do grupo DD (n=114) está claramente documentada."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Modalidade (IMU), tarefas (todas as 11 analisadas individualmente), sensores (acelerômetro e giroscópio), punhos (ambos) e amostra (276 PD e 79 HC) estão informados."
+    QA3:
+      resposta: "No"
+      nota: 0.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Indeterminado, pois o artigo não descreve a estratégia de validação nem o momento do up-sampling em relação à divisão treino/teste."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta apenas Accuracy e F1-Score, sem especificar se o F1 é macro ou ponderado."
+    QA5:
+      resposta: "No"
+      nota: 0.0
+      campos: [35, 22, 29]
+      justificativa: "Código não disponibilizado e ausência de detalhes essenciais para replicação (estratégia de split treino/teste e valores de hiperparâmetros de SVM, XGBoost, CNN e CNN-LSTM não informados)."
+  nota_qa: 2.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade inclui Série temporal (IMU) → Sensores, Tarefas, Punho e Representação preenchidos"
+    resultado: "OK"
+  - regra: "Soma de PD+HC+DD (campo 15: 276+79+0=355) = campo 14 (355)"
+    resultado: "OK"
+  - regra: "Campo 23 = SMOTE-oversampling → campo 28 diferente de Não se aplica (Não reportado) e campo 29 preenchido"
+    resultado: "OK"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Nenhum Outro/Outra marcado ↔ todos os campos de texto Outro/Outra com valor null"
+    resultado: "OK"
+  - regra: "Nota de QA3 (0.0 / No) coerente com risco_vazamento calculado (Indeterminado)"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campo 14 (n_participantes = 355): status inferido a partir da Tabela I (PD=276, HC=79, DD=114) combinada com a exclusão explícita do grupo DD na Seção II-B (p. 3)."
+  - "Campos 24, 26, 27, 28 e QA3: o artigo não descreve a estratégia de validação (split treino/teste ou validação cruzada) nem deixa explícito se o up-sampling por duplicação aleatória foi feito antes ou depois da divisão."
+  - "Campo 31 e QA4: o artigo reporta Accuracy e F1-Score sem especificar se o F1 é macro, ponderado ou binário."
+  - "QA5: não há disponibilização de código nem relato dos hiperparâmetros selecionados via grid search ou da configuração numérica das camadas de CNN e CNN-LSTM."

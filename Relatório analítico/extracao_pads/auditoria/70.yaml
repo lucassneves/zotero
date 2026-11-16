@@ -1,0 +1,377 @@
+meta:
+  row_id: 70
+  modo: "AUDITORIA"
+  status_triagem: "Incerto - texto completo"
+  zotero_key: "8G7SPD8K"
+  titulo: "Machine Learning in the Parkinson’s disease smartwatch (PADS) dataset"
+  ressalva_triagem: "Artigo-semente (Regra 9): estudo original criador do dataset PADS e de seu baseline; incluído na extração como referência (status de triagem fora das 3 opções do prompt)."
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 70
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2024"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho, p. 1 e p. 10 — 'npj Parkinson’s Disease (2024)10:9 ; Published online: 05 January 2024'"
+    auditoria: "CONCORDA"
+    observacao: "O sufixo do DOI contém 2023 (10.1038/s41531-023-00625-7, ano de aceite em 18 December 2023), porém a publicação online (05 January 2024), o volume/ano da revista (2024) e o copyright na p. 11 ('© The Author(s) 2024') são de 2024."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Introduction, p. 2 — 'With this work, we publish the unique study data in a comprehensive collection, referred to as the Parkinson’s Disease Smartwatch (PADS) dataset.'"
+    auditoria: "CONCORDA"
+    observacao: "Confirmada a ressalva da triagem: artigo-semente que apresenta e disponibiliza publicamente o dataset PADS, o sistema de coleta Smart Device System (SDS) e uma avaliação comparativa/multimodal de ML como baseline."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: "Criação e publicação do dataset PADS, acompanhada do sistema de aquisição (SDS) e de avaliação baseline multimodal de aprendizado de máquina (smartwatch + questionário)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Introduction, p. 2 — 'we publish the unique study data... referred to as the Parkinson’s Disease Smartwatch (PADS) dataset... performed an extensive evaluation'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Results - Classification via machine learning, p. 2 — 'The study data was used for training and evaluation of Machine Learning models with nested cross-validation (CV).'"
+    auditoria: "CONCORDA"
+    observacao: "Estudo original criador do PADS; toda a avaliação de ML é treinada e validada no próprio PADS."
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Introduction, p. 2 — 'referred to as the Parkinson’s Disease Smartwatch (PADS) dataset. The data involves 469 individual cases'"
+    auditoria: "CONCORDA"
+    observacao: "Os dados foram coletados prospectivamente pelos próprios autores no University Hospital Münster (504 participantes gravados; 469 após controle de qualidade e pareamento etário) e batizados de PADS neste artigo."
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Termos buscados: dataset, database, cohort nas seções Results e Methods; apenas o PADS é utilizado nos experimentos."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Questionário (PDNMS)", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Discussion, p. 6 — 'the two data modalities—the smartwatch recordings and the PDNMS questions—were relevant for classification'"
+    auditoria: "CONCORDA"
+    observacao: "Metadados demográficos e clínicos compõem o PADS (Tabela 3) e foram usados para pareamento etário (469 sujeitos), ponderação de perda por gênero/classe no treino e criação de subconjunto de teste pareado por gênero (n=234), mas foram explicitamente excluídos como variáveis de entrada dos classificadores ('we used the 30 PDNMS answers in this work and excluded other personal data', p. 7)."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Subconjunto"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Methods - Study data, p. 8 — 'Based on previous data analysis, we removed three assessment steps that gave no additional value to the classification: step three (“lift and hold”), step five (“point finger”), and step eight (“touch index”)41.'"
+    auditoria: "CONCORDA"
+    observacao: "O protocolo completo do dataset PADS contém todas as 11 tarefas (Tabela 4, divididas em 14 séries de 10 s), mas nos experimentos de classificação de ML deste artigo 3 tarefas foram removidas (steps 3, 5 e 8), restando 8 tarefas (11 segmentos de 10 s)."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Usadas no ML (8 de 11 steps): 1a Resting with closed eyes while sitting; 1b Resting while patient is calculating serial sevens; 2 Lift and extend arms; 4 Hold one-kilogram weight in each hand for 5 s; 6 Drink from glass; 7 Cross and extend both arms; 9 Tap own nose with index finger; 10 Entrainment (Excluídas no ML do total de 11 steps do PADS: 3 Remain arms lifted / lift and hold; 5 Point index finger / point finger; 8 Bring both index fingers to each other / touch index)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 4 e Seção Methods - Study data, p. 8 — 'In total, 11 interactive assessment steps were performed... we removed three assessment steps... step three (“lift and hold”), step five (“point finger”), and step eight (“touch index”)'"
+    auditoria: "CONCORDA"
+    observacao: "Na Figura 2 (exploração visual), a tarefa 1a é referida como 'Relaxed'."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Methods - Study data, p. 7–8 — 'the smartwatches synchronously recorded acceleration and rotation data on three spatial axes (x, y, z) with a sampling frequency of 100 Hertz.'"
+    auditoria: "CONCORDA"
+    observacao: "A escolha entre usar apenas aceleração, apenas rotação (giroscópio) ou ambos os sensores foi tratada como hiperparâmetro na validação cruzada interna."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção Methods - Study data, p. 7–8 — apenas acelerômetro e giroscópio (acceleration and rotation) foram utilizados."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Methods - Study data, p. 7 — 'each participant wore two smartwatches (Apple Watch Series 4), one on each wrist'"
+    auditoria: "CONCORDA"
+    observacao: "Sinais de ambos os punhos foram concatenados como canais de entrada (14 tasks × 2 arms × 2 sensors × 3 axes = 168 canais antes da remoção de 3 tarefas)."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Introduction, p. 2 e Tabela 3, p. 7 — 'The data involves 469 individual cases after exclusion of erroneous samples and age matching.'"
+    auditoria: "CONCORDA"
+    observacao: "Foram gravados inicialmente 504 participantes (5544 etapas); 2 foram excluídos por dados ausentes e 33 controles jovens foram removidos aleatoriamente para pareamento etário, restando 469 (PD×HC = 355; PD×DD = 390). Adicionalmente, nas dobras de teste foi avaliado um subconjunto pareado por gênero de 234 participantes (50% da amostra)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=114"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Figura 1, p. 2 e Tabela 3, p. 7 — 'Total of 469 samples: HC: 79, DD: 114, PD: 276'"
+    auditoria: "CONCORDA"
+    observacao: "Subgrupos de DD (Tabela 3, p. 7): Atypical Parkinsonism = 15, Essential Tremor = 28, Multiple Sclerosis = 11, Other = 60. Nos experimentos binários: PD×HC soma 355 (276 PD, 79 HC) e PD×DD soma 390 (276 PD, 114 DD)."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Results - Classification via machine learning, p. 3 — 'Two classification tasks were analysed: (1) PD vs. HC and (2) PD vs. DD.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção Results, p. 3 — apenas os dois cenários binários PD vs. HC e PD vs. DD foram analisados."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)", "Outro", "Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Results, p. 3 e Methods, p. 8–9 — 'Option A involved manually defined features... Option B used automatic feature extraction based on the Bag-of-Symbolic-Fourier-Approximation-Symbols (BOSS)... Option C applied automatic feature extraction via DL with XceptionTime... Option D was applied to the questionnaire data'"
+    auditoria: "CONCORDA"
+    observacao: "Opção A extrai 31 atributos manuais por canal (19 de PSD via método de Welch em passos de 1 Hz + desvio padrão, amplitude máxima absoluta e soma de energia absoluta em 4 segmentos); Opção B aplica BOSS (Symbolic Fourier Approximation em janelas de 20, 40 e 80 pontos); Opção C recebe as séries temporais pré-processadas concatenadas por tarefa; Opção D usa o vetor tabular binário das 30 questões do PDNMS."
+  - id: 19
+    chave: "outra_representacao"
+    valor: "Representação simbólica de séries temporais via BOSS (Bag-of-SFA-Symbols, Opção B) e dados tabulares binários das 30 respostas do questionário PDNMS (Opção D)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Methods - Machine learning, p. 8–9 — 'Using the Symbolic Fourier Approximation (SFA) method, the Bag-of-SFA-Symbols (BOSS) algorithm extracts substructures... questionnaire data is far simpler due to its tabular structure'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning", "Hybrid-Ensemble"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Results, p. 3 e Methods, p. 8–9 — 'Support-Vector Machines (SVMs) and feed-forward neural networks (NNs)... XceptionTime... CatBoost... classifier stacking, combining both questionnaire and movement information'"
+    auditoria: "CONCORDA"
+    observacao: "Classical ML (SVM, CatBoost, Logistic Regression), Deep Learning (feed-forward NN, XceptionTime) e Hybrid-Ensemble (Classifier Stacking com meta-classificador Logistic Regression combinando os melhores modelos de smartwatch e de questionário)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção Methods - Machine learning, p. 8–9 — todos os modelos pertencem a Classical ML, Deep Learning e Hybrid-Ensemble."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "SVM; CatBoost; Feed-forward Neural Network (NN); BOSS (Bag-of-SFA-Symbols); XceptionTime; Logistic Regression (meta-classificador no Classifier Stacking)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Methods - Machine learning, p. 8–9 — 'we have chosen to test three different options, the SVM, CatBoost, and a fully connected feed-forward NN... BOSS... XceptionTime... logistic regression model was applied as final meta-classifier'"
+    auditoria: "CONCORDA"
+    observacao: "XceptionTime (Opção C) foi avaliado na validação cruzada interna, mas não aparece na Tabela 1 por ter desempenho inferior às Opções A e B nas dobras internas."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Methods - Machine learning, p. 9 — 'data augmentation was applied during training. Similar to Um et. al, we performed randomised time warping and axes rotations52... we use sample weighting in all loss computations.'"
+    auditoria: "CONCORDA"
+    observacao: "Os autores evitaram técnicas de oversampling no treino para não duplicar amostras e, em vez disso, aplicaram ponderação de amostras (sample weighting) por gênero e classe na função de perda de todos os modelos, além de data augmentation (time warping e rotação de eixos) e balanced cross-entropy loss no treino da Opção C (DL). Para avaliação de sensibilidade ao gênero nas dobras de teste, extraíram também um subconjunto por random under-sampling (n=234)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["CV aninhada", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Figura 5, p. 9 — 'Nested cross-validation (CV): A 5-fold CV separates the original dataset into a train set and a test set, referred to as the outer loop. Per fold, the selected train set is further separated... using an internal 5-fold CV'"
+    auditoria: "CONCORDA"
+    observacao: "Validação cruzada aninhada 5×5 (5 dobras externas de teste e 5 dobras internas de validação por iteração de treino)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção Methods - Machine learning, p. 8–9 — utilizou exclusivamente validação cruzada aninhada 5×5."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Methods - Machine learning, p. 8 — 'assessment steps of the same individual are bound to one data sample. As a result, no sub-time-series of one individual are mixed in training and testing'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Methods - Machine learning, p. 8 — 'no sub-time-series of one individual are mixed in training and testing, which could cause identity confounding44.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Methods - Machine learning, p. 9 — 'data augmentation was applied during training... balance their influence during training... we use sample weighting in all loss computations.'"
+    auditoria: "CONCORDA"
+    observacao: "Tanto a ponderação de amostras por classe/gênero na função de perda quanto o data augmentation (Opção C) ocorrem exclusivamente durante o treinamento. O subconjunto pareado por gênero via random under-sampling (n=234, p. 5) foi usado apenas como filtro adicional de avaliação nos conjuntos de teste externos."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Ponderação de amostras (sample weighting) em todas as funções de perda inversamente proporcional às frequências dos grupos de mesmo gênero e classe durante o treino; na Opção C (XceptionTime), uso de balanced cross-entropy loss e data augmentation no treino com randomised time warping e axes rotations; adicionalmente, subconjunto pareado por gênero via random under-sampling (n=234, 50% da amostra) nas dobras de teste para análise de sensibilidade"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Results, p. 5 e Methods, p. 9 — 'matched by gender using a random under-sampling approach... 234 samples... randomised time warping and axes rotations... adjusts weights inversely proportional to class frequencies... groups of similar gender and class'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Discussion, p. 6 — 'Another limitation of our study is that it was conducted at a single site.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Balanced accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Results, p. 3 e Tabelas 1 e 2, p. 4 — 'Using balanced accuracy as reference metric, we report the scores per test fold... Additionally, we report precision, recall, and the F1 measure.'"
+    auditoria: "CONCORDA"
+    observacao: "Recall corresponde a Sensitivity. O artigo não especifica se o F1 é macro ou ponderado; pelos valores da Tabela 1 (ex.: Fold #1 PD vs. HC com Precision=85.96%, Recall=89.09%, F1=87.5%), trata-se do F1 binário padrão da classe alvo."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Tabelas 1 e 2, p. 4 — apenas Balanced accuracy, F1, Precision e Recall (Sensitivity) são reportadas."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; Classifier Stacking (Smartwatch + Questionnaire, complete); Balanced accuracy; 91.16% (4.92%)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 4 — 'PD vs. HC | Smartwatch + Questionnaire | complete | Balanced accuracy: 91.16% (4.92%)'"
+    auditoria: "CONCORDA"
+    observacao: "Média (DP) nas 5 dobras externas de teste. No cenário clinicamente mais desafiador (PD×DD), o melhor resultado também foi do Classifier Stacking (Smartwatch + Questionnaire, complete) com Balanced accuracy de 72.42% (12.33%)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; Classifier Stacking (Smartwatch + Questionnaire, complete); F1; 94.62% (2.21%) | PD×HC; Classifier Stacking (Smartwatch + Questionnaire, complete); Precision; 96.98% (2.49%) | PD×HC; Classifier Stacking (Smartwatch + Questionnaire, complete); Recall; 92.4% (2.64%) | PD×HC; Classifier Stacking (Smartwatch + Questionnaire, matched); Balanced accuracy; 89.25% (5.65%) | PD×HC; Classifier Stacking (Smartwatch + Questionnaire, matched); F1; 89.77% (5.24%) | PD×HC; Classifier Stacking (Smartwatch + Questionnaire, matched); Precision; 89.79% (8.99%) | PD×HC; Classifier Stacking (Smartwatch + Questionnaire, matched); Recall; 90.11% (3.13%) | PD×HC; Smartwatch data (complete); Balanced accuracy; 78.99% (7.66%) | PD×HC; Smartwatch data (complete); F1; 92.22% (3.18%) | PD×HC; Smartwatch data (matched); Balanced accuracy; 76.39% (13.16%) | PD×HC; Questionnaire CatBoost (complete); Balanced accuracy; 89.79% (3.03%) | PD×HC; Questionnaire CatBoost (complete); F1; 92.57% (2.18%) | PD×HC; Questionnaire CatBoost (matched); Balanced accuracy; 87.67% (4.87%) | PD×DD; Classifier Stacking (Smartwatch + Questionnaire, complete); Balanced accuracy; 72.42% (12.33%) | PD×DD; Classifier Stacking (Smartwatch + Questionnaire, complete); F1; 60.45% (16.7%) | PD×DD; Classifier Stacking (Smartwatch + Questionnaire, complete); Precision; 54.92% (15.05%) | PD×DD; Classifier Stacking (Smartwatch + Questionnaire, complete); Recall; 67.71% (19.45%) | PD×DD; Classifier Stacking (Smartwatch + Questionnaire, matched); Balanced accuracy; 69.56% (17.34%) | PD×DD; Classifier Stacking (Smartwatch + Questionnaire, matched); F1; 67.93% (19.84%) | PD×DD; Classifier Stacking (Smartwatch + Questionnaire, matched); Precision; 70.36% (19.85%) | PD×DD; Classifier Stacking (Smartwatch + Questionnaire, matched); Recall; 65.71% (19.93%) | PD×DD; Smartwatch data (complete); Balanced accuracy; 69.18% (7.45%) | PD×DD; Smartwatch data (complete); F1; 56.79% (10.13%) | PD×DD; Smartwatch data (matched); Balanced accuracy; 67.94% (12.68%) | PD×DD; Questionnaire CatBoost (complete); Balanced accuracy; 67.77% (5.06%) | PD×DD; Questionnaire CatBoost (complete); F1; 54.28% (7.48%) | PD×DD; Questionnaire CatBoost (matched); Balanced accuracy; 67.12% (7.11%)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 4 — 'Average classification performance using cross-validation and classifier stacking (smartwatch + questionnaire).'"
+    auditoria: "CONCORDA"
+    observacao: "A Tabela 1 (p. 4) também reporta os valores individuais de cada uma das 5 dobras de teste externas para Smartwatch data only e Questionnaire only."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções Data Availability, p. 9 e Code Availability, p. 10 — 'Dataset link: https://uni-muenster.sciebo.de/s/q69vUfRc9vgBoWX... Code link: https://imigitlab.uni-muenster.de/published/pads-project.'"
+    auditoria: "CONCORDA"
+    observacao: "Como este é o artigo original criador do PADS, disponibiliza tanto os dados próprios coletados (o próprio dataset PADS completo) quanto os scripts Python de ML, hiperparâmetros e seeds da validação cruzada."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Desvio padrão relativamente alto entre dobras de teste (até 12.33% em PD vs. DD) devido ao tamanho limitado dos conjuntos de teste e possível overfitting em espaços de atributos grandes (Discussion, p. 6); estudo conduzido em centro único (single site), com potencial viés populacional ou de protocolo (Discussion, p. 6); ausência de escalas de estadiamento clínico como Hoehn & Yahr no dataset público (Discussion, p. 6); sub-representação do sexo masculino nos grupos controle em comparação ao grupo PD (Discussion, p. 6); avaliação transversal baseada em visita clínica única, sem capturar flutuações diárias dos sintomas (Discussion, p. 6; Methods, p. 7); qualidade dos dados dependente da supervisão presencial de enfermeira de estudo, o que pode diminuir em uso domiciliar não supervisionado (Discussion, p. 6); e impossibilidade de garantir 100% de acurácia nos rótulos clínicos sem confirmação histopatológica (Methods, p. 6–7)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Discussion, p. 6 — 'standard deviation in our evaluation was relatively high... conducted at a single site... Hoehn and Yahr scales33, are not available... male gender in our data set is still underrepresented... one-time in-clinic assessment'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Ausência prévia de um dataset público abrangente com avaliações interativas em smartwatches e anotações clínicas incluindo DP e diagnósticos diferenciais (DD) com n > 100 (Introduction, p. 1–2). Como trabalhos futuros: aumentar a amostra e regularizar espaços de atributos para melhorar a acurácia em PD vs. DD (Results, p. 5; Discussion, p. 6); realizar análise causal sistemática de variáveis de confusão e estudos comparativos com clínicos (Discussion, p. 6); implementar controle de qualidade automatizado para avaliações domiciliares (home-based) e testar configurações simplificadas com apenas um smartwatch (Discussion, p. 6); explorar transfer learning, predição de severidade/progressão longitudinal (trend biomarkers) e integrar novas modalidades como voz, desenho de espiral e finger-tapping (Discussion, p. 6)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção Discussion, p. 6 — 'systematic causal analysis should be conducted in future studies... provide for automatic quality control methods... disease progress and symptom severity prediction... include new data modalities, such as voice captures, spiral drawings, and finger-tapping tasks'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano conforme instruções do prompt."
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Figura 5, p. 9 — 'Per fold, the selected train set is further separated into an internal train set and a validation set using an internal 5-fold CV... Using this inner CV, we perform a hyperparameter optimisation, including the selection of input features, model architecture and training parameters'"
+    observacao: "Toda a seleção de sinais/atributos de entrada, arquitetura, hiperparâmetros e o ajuste do meta-classificador de stacking ocorrem estritamente dentro do laço interno (inner 5-fold CV) sobre o conjunto de treino de cada dobra externa. Ressalva menor: a exclusão prévia de 3 tarefas motoras (steps 3, 5 e 8) e de variáveis demográficas baseou-se em análises anteriores do próprio grupo de pesquisa (refs. 40 e 41)."
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; 27 = Sim – explícita; 28 = Só no treino; aux_preproc_apenas_treino = Sim"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenários de classificação (PD×HC e PD×DD) e tamanhos de cada grupo (PD=276, HC=79, DD=114) explicitamente definidos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os itens do recorte estão detalhados: modalidades (IMU e PDNMS), tarefas (11 coletadas, 8 usadas no ML), sensores (acelerômetro e giroscópio), punhos (ambos) e N=469."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Baixo: divisão explícita por participante, ponderação/augmentation restritas ao treino e otimização/stacking isolados em CV aninhada 5×5."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta uma métrica comprovadamente robusta ao desbalanceamento (Balanced accuracy), além de F1, Precision e Recall (Sensitivity) sem indicar F1 macro nem Specificity isolada."
+    QA5:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [35, 22, 29]
+      justificativa: "Código-fonte, hiperparâmetros, seeds e dataset estão publicamente disponíveis, com pipeline de pré-processamento e modelos bem descritos."
+  nota_qa: 4.5
+  nota_qa_max: 5
+  faixa_qa: "Alta"
+verificacao_de_coerencia:
+  - regra: "Modalidade inclui Série temporal (IMU) → Sensores, Tarefas, Punho e Representação preenchidos"
+    resultado: "OK"
+  - regra: "Soma de PD+HC+DD (campo 15: 276+79+114=469) = campo 14 (469)"
+    resultado: "OK"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita"
+    resultado: "OK"
+  - regra: "Campo 23 = Outro → campo 28 ≠ Não se aplica (Só no treino) e campo 29 preenchido"
+    resultado: "OK"
+  - regra: "Campo 9 ≠ Não se aplica (Subconjunto) → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (3→4, 18→19)"
+    resultado: "OK"
+  - regra: "Nota de QA3 (1.0 / Yes) coerente com risco_vazamento calculado (Baixo)"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Artigo-semente (Regra 9): estudo criador do dataset PADS e do sistema de coleta SDS; status_triagem registrado como 'Incerto - texto completo' conforme entrada."
+  - "Campo 9 (tarefas_pads): o dataset PADS publicado contém 11 tarefas (14 segmentos de 10 s), mas o artigo declara na p. 8 que removeu 3 etapas (steps 3, 5 e 8) na análise de ML com base em estudo prévio (ref. 41), utilizando 8 tarefas (11 segmentos). Marcado como 'Subconjunto'."
+  - "Campo 23 e 28 (balanceamento_augmentation): o estudo utiliza sample weighting por gênero/classe na função de perda durante o treino e data augmentation (time warping e rotação de eixos) no treino de DL, além de avaliar um subconjunto de teste pareado por gênero via random under-sampling (n=234)."
+  - "Campo aux_preproc_apenas_treino: marcado como 'Sim' pela validação cruzada aninhada 5×5 rigorosa (Figura 5), cabendo notar que a decisão de descartar as tarefas 3, 5 e 8 e metadados pessoais baseou-se em análises prévias do grupo (refs. 40 e 41)."
+  - "QA4 (nota 0.5): o estudo utiliza Balanced accuracy como métrica principal e reporta F1, Precision e Recall (Sensitivity), mas o F1 reportado na Tabela 1 é binário sobre a classe positiva (sem indicação de macro-F1) e Specificity não é reportada isoladamente."

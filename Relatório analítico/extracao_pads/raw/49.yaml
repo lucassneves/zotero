@@ -1,0 +1,381 @@
+meta:
+  row_id: 49
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "325RXTR4"
+  titulo: "Differentiating Movement Disorders Using Smartwatch-Derived Motor Variability and Non-Motor Symptom Profiles"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Seção 2, p. 3 — 'This study utilized data from the PADS dataset [9], a publicly available repository of wearable sensor data and clinical assessments.'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 49
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Página 1, Article Info e DOI — 'https://doi.org/10.26599/BSA.2025.905003 ... Accepted: 09 September 2025 © The authors 2025.'"
+    auditoria: null
+    observacao: "O DOI (10.26599/BSA.2025.905003), as datas de histórico editorial (recebido em julho de 2025 e aceito em setembro de 2025) e o copyright ('© The authors 2025') confirmam 2025, embora a camada de texto oculta do cabeçalho mencione 'Brain Science Advances 2024, 9(2): 78–94'."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Análise estatística"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 4 — 'The analyses were designed to: (1) determine whether wearable sensor-derived motor features and demographic characteristics can differentiate between diagnostic groups...'"
+    auditoria: null
+    observacao: "O estudo realiza testes bivariados (Kruskal-Wallis, qui-quadrado, regressão linear simples) e modelos de regressão inferencial (regressão logística multinomial e regressão linear múltipla) no Stata 18, declarando explicitamente que não avaliou métricas preditivas de classificação nem modelos de aprendizado de máquina."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "A opção 'Outro' não foi marcada no campo 3."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'We analyzed data from the Parkinson’s Disease Smartwatch (PADS) dataset (N = 469)...'"
+    auditoria: null
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 3 — 'This study utilized data from the PADS dataset [9], a publicly available repository of wearable sensor data and clinical assessments.'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas o PADS foi utilizado nos experimentos (Seção 2, p. 3)."
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Metadados demográficos-clínicos", "Questionário (PDNMS)", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 2–2.3, p. 3 — 'completed motor tasks while wearing a smartwatch, and their demographic data, such as age, sex, and handedness... completed a structured 30-item questionnaire'"
+    auditoria: null
+    observacao: "Variável adicional sobre efeito do álcool nos sintomas estava disponível nos metadados, mas foi excluída pelos autores por baixa relevância ao objetivo do estudo (Seção 2, p. 3)."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 — 'All participants performed a standardized protocol consisting of 20 motor tasks designed to capture a range of voluntary and involuntary movements.'"
+    auditoria: null
+    observacao: null
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (20 tarefas motoras padronizadas informadas pelos autores; nomes individuais das tarefas não especificados no artigo)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 — 'All participants performed a standardized protocol consisting of 20 motor tasks designed to capture a range of voluntary and involuntary movements.'"
+    auditoria: null
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 — 'The smartwatch contained two primary motion sensors: a tri-axial accelerometer and a tri-axial gyroscope.'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "A opção 'Outro' não foi marcada no campo 11."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Esquerdo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 — 'These tasks were conducted while the participants wore a smartwatch on their left wrist.'"
+    auditoria: null
+    observacao: "Na Introdução (Seção 1, p. 3) menciona-se 'bilateral smartwatch-derived motor features', porém na Seção 2.1 (p. 3) declara-se explicitamente 'wore a smartwatch on their left wrist' e na Seção 2.2 (p. 3) são extraídas apenas as 6 colunas seguintes ao tempo (3 eixos de acelerômetro e 3 de giroscópio, gerando 12 atributos de um único punho). Pela regra de prevalência da seção de Métodos, registrou-se 'Esquerdo'."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1 e Tabela 1, pp. 5–6 — 'The final dataset included a total of 469 unique participants, each performing 20 motor tasks.'"
+    auditoria: null
+    observacao: "Embora o estudo inclua 469 participantes únicos, a Seção 3.1 e a Tabela 2 (p. 6) reportam N = 6.072 observações de tarefas ('6072 task observations'), e os graus de liberdade das regressões (Seção 3.3: LR χ²(75) = 1740.33; Seção 3.4/3.5: F(9, 6062) = 6.48) indicam que os modelos estatísticos foram ajustados sobre as 6.072 observações de tarefas."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=114"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1 e Tabela 1, pp. 5–6 — 'healthy controls (n = 79), other movement disorders (n = 60), idiopathic Parkinson’s Disease (PD; n = 276), atypical Parkinsonism (n = 15), multiple sclerosis (MS; n = 11), and essential tremor (ET; n = 28)'"
+    auditoria: null
+    observacao: "Na Tabela 1 e na Seção 3.1 (pp. 5–6), bem como no Resumo (PD n=276), os 469 participantes dividem-se em PD=276, HC=79 e 4 subgrupos de outros distúrbios do movimento que compõem DD=114 (Other Movement Disorders=60 + Essential Tremor=28 + Atypical Parkinsonism=15 + Multiple Sclerosis=11 = 114). Há divergência interna com o texto da Seção 2 (p. 3) e Seção 2.6 (p. 5), que citam HC=89, PD=223, Other=46, Atypical=12, MS=45 e ET=54 (também somando 469); prevaleceu a Tabela 1/Resultados."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["Outro"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.5, p. 4 — 'diagnostic classification (healthy controls, other movement disorders, idiopathic PD, atypical Parkinsonism, MS, and ET). The dependent variable was the diagnostic group, with healthy controls (coded as 0) set as the reference category.'"
+    auditoria: null
+    observacao: "O estudo analisa a diferenciação entre 6 categorias diagnósticas simultaneamente via regressão logística multinomial (tendo Healthy Controls como categoria de referência) e avalia a associação com o escore contínuo de sintomas não motores (PDNMS) no subgrupo PD via regressão linear múltipla."
+  - id: 17
+    chave: "outro_cenario"
+    valor: "Diferenciação multiclasse entre 6 categorias diagnósticas (Healthy Controls como referência vs. Idiopathic PD, Other Movement Disorders, Atypical Parkinsonism, Multiple Sclerosis e Essential Tremor) via regressão logística multinomial; e regressão linear múltipla do escore total de sintomas não motores (PDNMS) em PD"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 2.5 e 2.6, pp. 4–5 — 'diagnostic classification (healthy controls, other movement disorders, idiopathic PD, atypical Parkinsonism, MS, and ET)... Multiple linear regression analysis was conducted within the subgroup of participants diagnosed with idiopathic PD'"
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 3 — 'calculate the mean and standard deviation for each of the six signal axes. These values were then averaged across tasks, yielding 12 features per participant'"
+    auditoria: null
+    observacao: "12 atributos estatísticos extraídos das séries temporais (média e desvio-padrão dos eixos X, Y e Z do acelerômetro e do giroscópio), combinados a 3 variáveis demográficas (idade, sexo e lateralidade)."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "A opção 'Outro' não foi marcada no campo 18."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Outro"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 2.5 e 2.6, pp. 4–5 — 'Kruskal-Wallis test was used... chi-square tests. A multinomial logistic regression model was utilized... Multiple linear regression analysis was conducted'"
+    auditoria: null
+    observacao: "Marcou-se 'Classical ML' pela regressão logística multinomial e 'Outro' pela regressão linear múltipla/simples e testes estatísticos bivariados (Kruskal-Wallis e qui-quadrado) executados no Stata 18 com finalidade inferencial."
+  - id: 21
+    chave: "outra_familia"
+    valor: "Modelos de regressão linear estatística (simples e múltipla) e testes de hipóteses bivariados (Kruskal-Wallis e qui-quadrado)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 2.5 e 2.6, pp. 4–5 — 'Kruskal-Wallis test was used due to non-normal distributions. Categorical predictors (gender and handedness) were analyzed using chi-square tests... Multiple linear regression analysis was conducted'"
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Multinomial Logistic Regression; Multiple Linear Regression; Simple Linear Regression; Kruskal-Wallis test; Chi-square test"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 2.5 e 2.6, pp. 4–5 — 'Kruskal-Wallis test... chi-square tests. A multinomial logistic regression model was utilized... simple linear regressions were used... Multiple linear regression analysis'"
+    auditoria: null
+    observacao: "Também foi utilizada regressão OLS auxiliar para cálculo de Variance Inflation Factors (VIFs)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seções 2.4–2.6 e 4.5, pp. 4–5 e 11 — modelos estatísticos inferenciais ajustados diretamente na amostra sem divisão treino/teste ou técnicas de balanceamento."
+    auditoria: null
+    observacao: "O estudo realiza análise estatística inferencial sobre a amostra completa, sem treinamento preditivo ou balanceamento de classes (o desbalanceamento demográfico e entre grupos é citado na Seção 4.5, p. 11)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Não reportado"]
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 11 — 'Future studies should assess diagnostic performance more explicitly using cross-validation, ROC curves, or confusion matrices.'"
+    auditoria: null
+    observacao: "Estudo de análise estatística inferencial sem avaliação preditiva (sem divisão treino/teste ou validação cruzada). Conforme regra de coerência para campo 26 = 'Não se aplica', marcou-se 'Não reportado' por ausência da opção 'Não se aplica' no campo 24."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "A opção 'Outra' não foi marcada no campo 24."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 11 — 'The lack of validation metrics such as sensitivity, specificity, or classification accuracy... Future studies should assess diagnostic performance more explicitly using cross-validation'"
+    auditoria: null
+    observacao: "Não há particionamento em conjuntos de treino e teste (análise estatística na amostra completa). Ressalta-se que, embora a Seção 2.2 (p. 3) descreva a média das 20 tarefas por participante (gerando 12 atributos por participante), a Tabela 2 (p. 6) e os graus de liberdade das regressões (F(9, 6062) = 6.48 na Seção 3.4/3.5, pp. 8–9) mostram que as análises foram rodadas sobre N = 6.072 observações de tarefas."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 11 — 'Future studies should assess diagnostic performance more explicitly using cross-validation, ROC curves, or confusion matrices.'"
+    auditoria: null
+    observacao: "Estudo sem avaliação preditiva (coerente com campo 26 = 'Não se aplica')."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seções 2.4–2.6, pp. 4–5 — nenhum balanceamento foi aplicado."
+    auditoria: null
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Nenhum balanceamento foi aplicado (campo 23 = 'Não se aplica')."
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 3 — 'This study utilized data from the PADS dataset [9]... The sample included 469 participants'"
+    auditoria: null
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Outra"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 1, 2.5 e 2.6, pp. 2, 4 e 5 — 'performance metrics such as accuracy, sensitivity, and specificity are often lacking [11, 12]. Although our study did not include such metrics... Model fit was assessed via likelihood ratio chi-square tests and pseudo R2... F-statistic, R2, and adjusted R2.'"
+    auditoria: null
+    observacao: "Os autores declaram explicitamente que não calcularam acurácia, sensibilidade, especificidade ou AUC, reportando apenas métricas de ajuste e associação estatística."
+  - id: 32
+    chave: "outras_metricas"
+    valor: "Pseudo R²; R²; Adjusted R²; Likelihood Ratio χ² (LR χ²); Estatística F; Coeficientes de regressão (β); p-valor; Intervalos de confiança de 95% (95% CI); Variance Inflation Factor (VIF)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 2.4–2.6, pp. 4–5 — '95% confidence intervals were reported alongside regression coefficients... Model fit was assessed via likelihood ratio chi-square tests and pseudo R2... evaluated using the F-statistic, R2, and adjusted R2... variance inflation factors (VIFs)'"
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "Diferenciação diagnóstica (6 grupos); Multinomial Logistic Regression; Pseudo R²; 0.068 (LR χ²(75) = 1740.33, p < 0.001)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3, p. 7 — 'The multinomial logistic regression model examining whether motor features and demographics differentiated participants by diagnostic group was statistically significant overall (LR χ2(75) = 1740.33, p < 0.001), with a pseudo R2 of 0.068'"
+    auditoria: null
+    observacao: "Valor obtido no ajuste sobre a amostra completa (sem conjunto de teste separado)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "Sintomas não motores em PD (PDNMS total); Multiple Linear Regression; R² / Adjusted R²; R² = 0.0095; adjusted R² = 0.0081 (F(9, 6062) = 6.48, p < 0.001) | Idiopathic PD vs. Healthy Controls; Multinomial Logistic Regression; β (Std Accel Y / Std Gyro X / Mean Gyro X / Mean Accel Y); β = 2.99 (p < 0.001) / β = 0.30 (p = 0.001) / β = 1.29 (p = 0.03) / β = -2.34 (p = 0.011) | Other Movement Disorders vs. Healthy Controls; Multinomial Logistic Regression; β (Std Accel Y / Mean Gyro X / Std Accel Z / Std Gyro X / Std Gyro Z); β = 4.35 (p < 0.001) / β = 4.30 (p < 0.001) / β = -4.08 (p < 0.001) / β = 0.38 (p < 0.001) / β = -0.37 (p = 0.002) | Atypical Parkinsonism vs. Healthy Controls; Multinomial Logistic Regression; β (Std Accel X); β = -12.47 (p < 0.001) | Multiple Sclerosis vs. Healthy Controls; Multinomial Logistic Regression; β (Std Accel X / Std Accel Z / Mean Accel Y / Mean Gyro X); β = 6.69 (p = 0.003) / β = -6.05 (p = 0.002) / β = -5.17 (p = 0.027) / β = 3.96 (p = 0.004) | Essential Tremor vs. Healthy Controls; Multinomial Logistic Regression; β (Std Accel Y / Mean Accel Y / Std Accel Z / Mean Gyro Z / Std Gyro X); β = 7.69 (p < 0.001) / β = -4.28 (p = 0.001) / β = -3.15 (p = 0.003) / β = -1.26 (p < 0.001) / β = 0.67 (p < 0.001) | Sintomas não motores em PD (PDNMS total); Multiple Linear Regression; β (Std Accel X / Std Accel Y / Std Gyro X / Std Accel Z); β = 8.10 (p < 0.001) / β = -4.05 (p = 0.007) / β = 0.40 (p = 0.025) / β = -2.98 (p = 0.061)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 3.3–3.5 e Tabela 3, pp. 7–9 — 'F (9, 6062) = 6.48, p < 0.001... (R2 = 0.0095; adjusted R2 = 0.0081)... Table 3 Multinomial Logistic Regression Summary Table'"
+    auditoria: null
+    observacao: "Nota: na Seção 2.4 (p. 4) os autores afirmam que intervalos de confiança de 95% foram reportados junto aos coeficientes, porém a Tabela 3 e o texto das Seções 3.3–3.5 apresentam apenas β e p-valor."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5, p. 12 — 'In alignment with open science principles, the PADS dataset used in this study is publicly available and can be accessed via PhysioNet [9]. Additional code or processed data will be made available upon reasonable request.'"
+    auditoria: null
+    observacao: "O link citado na Data Availability Statement (p. 12) refere-se apenas ao repositório público original do PADS no PhysioNet; o código e os dados processados dos autores estão disponíveis apenas mediante solicitação ('upon reasonable request')."
+  - id: 36
+    chave: "limitacoes"
+    valor: "1) Variações de conformidade ou fatores ambientais podem introduzir ruído nos sinais, que foram analisados sem filtragem explícita (Seção 2.1, p. 3; Seção 4.5, p. 11); 2) Menor validade ecológica das tarefas padronizadas em laboratório frente a flutuações motoras no mundo real (Seção 4.5, p. 11); 3) Baixo poder explicativo dos modelos (pseudo R² = 0,068 e R² ajustado = 0,0081), indicando que atributos de sensores isoladamente são insuficientes sem dados clínicos (Seção 4.5, p. 11); 4) Desbalanceamento demográfico (70,7% homens e 94,6% destros), limitando a generalização (Seção 4.5, p. 11); 5) Ausência de validação cruzada e de métricas de desempenho de classificação preditiva como acurácia, sensibilidade, especificidade, curvas ROC, AUC ou matrizes de confusão (Seções 1, 4.3 e 4.5, pp. 2, 10 e 11); 6) Desenho transversal, impedindo conclusões sobre progressão longitudinal (Seção 4.5, p. 11)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 11 — 'variation in compliance or environmental factors may introduce noise... reduce ecological validity... modest amount of variance... demographic imbalance... lack of validation metrics... cross-sectional design'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Avaliar o desempenho diagnóstico preditivo e limiares clínicos usando validação cruzada, curvas ROC, AUC, matrizes de confusão, sensibilidade, especificidade e acurácia (Seções 1 e 4.5, pp. 2 e 11); aplicar classificadores de aprendizado de máquina (como Random Forests e Support Vector Machines) e termos de interação para modelar relações não lineares e obter importância de atributos (Seções 4.3 e 4.5, pp. 10–11); aplicar técnicas de filtragem de ruído como filtros wavelet nos sinais brutos (Seção 2.1, p. 3); e realizar estudos longitudinais combinando sensores vestíveis, avaliações clínicas, biomarcadores e desfechos reportados por pacientes em fluxos de telemedicina (Seções 4.3–4.5 e 5, pp. 10–12)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 11 — 'Future studies should assess diagnostic performance more explicitly using cross-validation, ROC curves, or confusion matrices. Moreover, expanding the analysis to include machine learning models (e.g., random forests, support vector machines)... Longitudinal tracking'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano; preenchido com null conforme instruções."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seções 2.4–2.6 e 4.5, pp. 4–5 e 11 — estudo de análise estatística inferencial sem divisão em conjuntos de treino e teste."
+    observacao: "Não houve avaliação preditiva treino/teste; a seleção bivariada de variáveis (p < 0,10) e o ajuste das regressões foram feitos na amostra completa."
+  risco_vazamento:
+    valor: "Não se aplica"
+    regra: "campo 26 = Não se aplica"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Os grupos diagnósticos do PADS analisados na regressão multinomial (6 categorias perfazendo N=469) e na regressão linear estão claramente definidos, apesar de divergência numérica entre texto da Seção 2 e Tabela 1."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os itens aplicáveis do recorte do PADS (modalidade, tarefas, sensores, punho e N de participantes) foram informados."
+    QA3:
+      resposta: "N/A"
+      nota: null
+      campos: [26, 27, 28]
+      justificativa: "Estudo de análise estatística inferencial sem validação preditiva treino/teste (risco_vazamento = Não se aplica)."
+    QA4:
+      resposta: "N/A"
+      nota: null
+      campos: [31]
+      justificativa: "Estudo sem avaliação preditiva de classificação (reporta apenas métricas de ajuste de regressão e associação estatística)."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Os métodos/testes estatísticos e a extração de atributos estão descritos, mas o código não está disponível publicamente (apenas mediante solicitação)."
+  nota_qa: 2.5
+  nota_qa_max: 3
+  faixa_qa: "Alta"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica; Quais tarefas null; Representação null"
+    resultado: "OK (não se aplica: estudo utiliza Série temporal (IMU), Questionário e Metadados)"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (PD=276, HC=79, DD=114)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (276 + 79 + 114 = 469)"
+  - regra: "Campo 26 = Não se aplica → campos 27 e 28 = Não se aplica, risco = Não se aplica, campo 24 = Não reportado (explique)"
+    resultado: "OK"
+  - regra: "Campo 23 = Nenhum ou Não se aplica → campo 28 = Não se aplica e campo 29 null"
+    resultado: "OK"
+  - regra: "Campo 30 = true e campo 5 = Principal → explique na observação"
+    resultado: "OK (campo 30 = false)"
+  - regra: "Campo 9 = Não se aplica → campo 10 null; caso contrário, campo 10 preenchido"
+    resultado: "OK (campo 9 = Todas e campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (3→4, 6→7, 11→12, 16→17, 18→19, 20→21, 24→25, 31→32)"
+    resultado: "OK (16→17, 20→21 e 31→32 preenchidos; demais null)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Não se aplica → QA3 = N/A)"
+pontos_para_revisao_humana:
+  - "Inconsistência interna de N por subgrupo: a Seção 2 (p. 3) e a Seção 2.6 (p. 5) informam HC=89, PD=223, Other=46, Atypical=12, MS=45 e ET=54 (soma=469), enquanto o Resumo (p. 1), a Seção 3.1 (p. 5) e a Tabela 1 (p. 6) reportam HC=79, PD=276, Other=60, Atypical=15, MS=11 e ET=28 (soma=469, com DD=114)."
+  - "Inconsistência na unidade de análise das regressões: a Seção 2.2 (p. 3) afirma que as médias e desvios-padrão foram mediados entre as 20 tarefas gerando 12 atributos por participante (N=469), e a Seção 2.6 diz que a regressão linear foi restrita ao subgrupo PD, porém a Tabela 2 (p. 6) e os graus de liberdade na Seção 3.4/3.5 (F(9, 6062) = 6.48, pp. 8–9) revelam que os modelos foram ajustados sobre N = 6.072 observações de tarefas sem correção para medidas repetidas do mesmo participante."
+  - "Campo 13 (punhos): a Introdução (Seção 1, p. 3) menciona 'bilateral smartwatch-derived motor features', mas a Seção 2.1 (p. 3) especifica apenas 'left wrist' e a Seção 2.2 extrai apenas 6 eixos (um único punho)."
+  - "Campos 24 a 28, QA3 e QA4: estudo realiza apenas regressão logística multinomial e regressão linear múltipla inferenciais (reportando β, p-valor, pseudo R² e R² ajustado), reconhecendo na Seção 4.5 (p. 11) a ausência de validação cruzada e de métricas preditivas (acurácia, sensibilidade, especificidade, ROC/AUC)."
+  - "QA5 (nota 0.5): código e dados processados não estão em repositório aberto ('available upon reasonable request' na Seção 5, p. 12), embora os testes estatísticos e atributos estejam descritos."

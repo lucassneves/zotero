@@ -1,0 +1,374 @@
+meta:
+  row_id: 105
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "RD5LYQ4W"
+  titulo: "Identificação da Doença de Parkinson através da Análise de Dados Coletados por Smartwatch"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Seção 2.1, p. 2 — 'A base de dados utilizada neste estudo é o PADS - Parkinson’s Disease Smartwatch dataset [Varghese et al. 2024]'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 105
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 e Referências, p. 9 — cita 'Hasan, M. (2025)... arXiv:2506.12561'; metadado do arquivo PDF indica 2025"
+    auditoria: "CONCORDA"
+    observacao: "O PDF não traz cabeçalho/rodapé editorial com ano ou DOI impressos, mas cita referência de junho de 2025 (Hasan 2025) e está catalogado como 2025."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Estudo comparativo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'Este trabalho reporta os principais resultados obtidos investigando o uso de características harmônicas extraídas de sinais de movimento e de algorítimos clássicos'"
+    auditoria: "CONCORDA"
+    observacao: "Avalia características harmônicas da literatura (Pietrosanti et al., 2023) combinadas a quatro classificadores clássicos (SVM, Extra Trees, LightGBM e XGBoost) em três cenários binários no PADS."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 — campo 3 preenchido como Estudo comparativo, sem marcação de Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2 — 'A base de dados utilizada neste estudo é o PADS - Parkinson’s Disease Smartwatch dataset [Varghese et al. 2024]'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2 — 'A base de dados utilizada neste estudo é o PADS - Parkinson’s Disease Smartwatch dataset'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2 — apenas o dataset PADS foi utilizado nos experimentos"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — 'Essas combinações envolvem um sensor giroscópio, dois punhos (esquerdo e direito) e três eixos analisados (X, Y, Z), resultando em 66 séries temporais'"
+    auditoria: "CONCORDA"
+    observacao: "A Seção 2.1 descreve o questionário demográfico e o PDNMS como parte do PADS, mas os experimentos usam apenas as 495 características harmônicas do giroscópio; a Seção 4 propõe o uso de questionários apenas para trabalhos futuros."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Subconjunto"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 — 'as tarefas de levantar e segurar os braços, apontar com o dedo e tocar os indicadores foram excluídas'"
+    auditoria: "CONCORDA"
+    observacao: "Das 11 tarefas originais, 3 foram excluídas, restando 8 tarefas (divididas em 11 segmentos de séries temporais de 10 ou 20 segundos)."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Repouso com olhos fechados; Repouso enquanto o paciente está calculando séries de sete; Levantar e estender os braços; Segurar peso de um quilograma em cada mão por 5 segundos; Beber de um copo; Cruzar e estender ambos os braços; Tocar o próprio nariz com o dedo indicador; Sincronia"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1, p. 3 — lista as 8 tarefas (1 a 8) mantidas após a exclusão de 3 tarefas"
+    auditoria: "CONCORDA"
+    observacao: "Na Seção 2.1 (p. 3) também são citados os nomes em inglês de duas tarefas: StretchHold e CrossArms."
+  - id: 11
+    chave: "sensores"
+    valor: ["Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — 'Essas combinações envolvem um sensor giroscópio, dois punhos (esquerdo e direito) e três eixos analisados (X, Y, Z), resultando em 66 séries temporais'"
+    auditoria: "CONCORDA"
+    observacao: "Embora as Seções 2.1 e 2.2 mencionem aceleração ao descrever a coleta e o script original do PADS, a Seção 2.3 (p. 5) e a Conclusão (p. 9) deixam explícito que apenas o sensor giroscópio (1 sensor) foi usado na extração das características para classificação."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — apenas giroscópio utilizado, sem opção Outro marcada"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — 'Essas combinações envolvem um sensor giroscópio, dois punhos (esquerdo e direito) e três eixos analisados (X, Y, Z)'"
+    auditoria: "CONCORDA"
+    observacao: "Sinais de ambos os punhos foram usados tanto para extrair as 7 características por série quanto para calcular a métrica bilateral de assimetria (Asym)."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2-3 — 'O conjunto de dados é composto por 469 participantes categorizados em três grupos principais: 276 pacientes com doença de Parkinson (DP), 79 controles saudáveis (HC) e 114 indivíduos com diagnósticos diferenciais (DD)'"
+    auditoria: "CONCORDA"
+    observacao: "Todos os três grupos (totalizando 469 participantes) participam dos três cenários binários avaliados: DP vs. CO (355), DP vs. DD (390) e DD vs. CO (193)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=114"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2-3 — '276 pacientes com doença de Parkinson (DP), 79 controles saudáveis (HC) e 114 indivíduos com diagnósticos diferenciais (DD)'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["DD×HC", "PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 e Seção 2.4, p. 6-7 — 'foram empregadas três tarefas de classificação binárias (DP vs CO, DP vs DD e DD vs CO)'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 6-7 — apenas os três cenários binários padrão foram avaliados"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — 'Um total de oito características harmônicas foram extraídas de cada sinal temporal. Essas características foram calculadas utilizando a Transformada Rápida de Fourier'"
+    auditoria: "CONCORDA"
+    observacao: "A FFT é usada apenas para calcular 8 atributos harmônicos tabulares (Hamp1, Hamp2, Hamp3, Freq, HD2, HD3, THD e Asym), totalizando 495 atributos por sujeito."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — não foi marcada a opção Outro no campo 18"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 5-6 — 'foram empregados quatro classificadores: Support Vector Machine (SVM) com núcleo linear e três modelos baseados em ensembles de árvores – Extra Trees, LightGBM e XGBoost'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 5-6 — não foi marcada a opção Outro no campo 20"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "SVM; Extra Trees; LightGBM; XGBoost"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 6 — 'SVM... Extra Trees... LightGBM... XGBoost'"
+    auditoria: "CONCORDA"
+    observacao: "Na Tabela 3 o modelo Extra Trees é grafado como 'ExtraTrees'."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 6 — 'No processo de validação cruzada estratificada a distribuição original de classes é mantida a cada dobra'"
+    auditoria: "CONCORDA"
+    observacao: "Não houve aplicação de técnicas de reamostragem/augmentation nem ajuste de pesos de classe (Tabela 2 lista parâmetros padrão); o desbalanceamento foi tratado apenas via estratificação das dobras e avaliação por acurácia balanceada e F1-score."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 6 — 'O processo de avaliação foi realizado por meio de uma abordagem de validação cruzada estratificada com 5 dobras (5-fold cross-validation).'"
+    auditoria: "CONCORDA"
+    observacao: "A validação cruzada estratificada de 5 dobras foi repetida 30 vezes com diferentes sementes aleatórias (Seção 2.4, p. 7)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 6 — não foi marcada a opção Outra no campo 24"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — 'Consequentemente, o número total de características extraídas por sujeito é proporcional ao número de séries temporais disponíveis, resultando em cada sujeito sendo representado por 495 características.'"
+    auditoria: "CONCORDA"
+    observacao: "Como todas as 66 séries temporais (11 segmentos × 2 punhos × 3 eixos) e as 33 métricas de assimetria são concatenadas em um único vetor de 495 atributos por sujeito, cada participante corresponde a um único registro na matriz de dados submetida ao 5-fold CV."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – inferida"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — 'resultando em cada sujeito sendo representado por 495 características.'"
+    auditoria: "CONCORDA"
+    observacao: "O texto não usa termos como 'subject-wise', mas o desenho experimental garante separação por participante porque há apenas um registro (vetor de 495 características) por sujeito."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 6 — nenhum método de balanceamento de dados foi utilizado (campo 23 = Nenhum)"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 6 — nenhum método de balanceamento de dados foi utilizado (campo 23 = Nenhum)"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2 e Seção 2.4, p. 6 — avaliação realizada exclusivamente por validação cruzada 5-fold dentro da base PADS"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "Balanced accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 6 e Tabela 3, p. 7 — 'Acurácia... Acurácia balanceada... Precisão... Recall... F1-score'"
+    auditoria: "CONCORDA"
+    observacao: "Recall corresponde a Sensitivity. O texto não explicita se Precisão, Recall e F1-score foram calculados com média macro, ponderada ou binária, embora na Tabela 3 os valores de Recall sejam idênticos aos de Acurácia Balanceada em todas as linhas (indicando média macro entre as duas classes)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 6 — não foi marcada a opção Outra no campo 31"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "DP vs CO; LightGBM; Acurácia; 84,05 ± 3,16% (Acurácia Balanceada: 68,33 ± 6,08%; F1-score: 71,14 ± 6,98%; Precisão: 81,60 ± 7,27%; Recall: 68,33 ± 6,08%)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 3, p. 7 — 'DP vs CO / LightGBM / 84,05 ± 3,16 / 68,33 ± 6,08 / 71,14 ± 6,98 / 81,60 ± 7,27 / 68,33 ± 6,08'"
+    auditoria: "CONCORDA"
+    observacao: "Maior acurácia global destacada na Conclusão (84,05% em DP vs CO com LightGBM). Em Acurácia Balanceada e F1-score, o maior valor entre todos os cenários ocorreu em DD vs CO com ExtraTrees (Acurácia Balanceada: 73,43 ± 6,16%; F1-score: 73,39 ± 6,25%)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "DP vs CO; SVM; Acurácia; 78,42 ± 1,11% | DP vs CO; SVM; Acurácia Balanceada; 51,54 ± 2,04% | DP vs CO; SVM; F1-score; 46,76 ± 3,94% | DP vs CO; SVM; Precisão; 59,64 ± 24,86% | DP vs CO; SVM; Recall; 51,54 ± 2,04% | DP vs CO; ExtraTrees; Acurácia; 80,30 ± 2,07% | DP vs CO; ExtraTrees; Acurácia Balanceada; 56,78 ± 4,11% | DP vs CO; ExtraTrees; F1-score; 56,20 ± 6,45% | DP vs CO; ExtraTrees; Precisão; 80,74 ± 14,26% | DP vs CO; ExtraTrees; Recall; 56,78 ± 4,11% | DP vs CO; XGBoost; Acurácia; 81,94 ± 3,21% | DP vs CO; XGBoost; Acurácia Balanceada; 64,56 ± 5,81% | DP vs CO; XGBoost; F1-score; 66,71 ± 6,96% | DP vs CO; XGBoost; Precisão; 76,99 ± 8,38% | DP vs CO; XGBoost; Recall; 64,56 ± 5,81% | DP vs DD; SVM; Acurácia; 73,45 ± 1,58% | DP vs DD; SVM; Acurácia Balanceada; 55,01 ± 2,30% | DP vs DD; SVM; F1-score; 51,38 ± 4,02% | DP vs DD; SVM; Precisão; 80,80 ± 10,41% | DP vs DD; SVM; Recall; 55,01 ± 2,30% | DP vs DD; ExtraTrees; Acurácia; 73,77 ± 2,94% | DP vs DD; ExtraTrees; Acurácia Balanceada; 57,65 ± 3,82% | DP vs DD; ExtraTrees; F1-score; 56,51 ± 5,44% | DP vs DD; ExtraTrees; Precisão; 72,90 ± 10,61% | DP vs DD; ExtraTrees; Recall; 57,65 ± 3,82% | DP vs DD; LightGBM; Acurácia; 73,52 ± 3,70% | DP vs DD; LightGBM; Acurácia Balanceada; 60,26 ± 4,88% | DP vs DD; LightGBM; F1-score; 60,57 ± 6,01% | DP vs DD; LightGBM; Precisão; 68,17 ± 7,96% | DP vs DD; LightGBM; Recall; 60,26 ± 4,88% | DP vs DD; XGBoost; Acurácia; 73,03 ± 3,49% | DP vs DD; XGBoost; Acurácia Balanceada; 60,05 ± 4,47% | DP vs DD; XGBoost; F1-score; 60,34 ± 5,46% | DP vs DD; XGBoost; Precisão; 67,34 ± 7,45% | DP vs DD; XGBoost; Recall; 60,05 ± 4,47% | DD vs CO; SVM; Acurácia; 73,21 ± 5,94% | DD vs CO; SVM; Acurácia Balanceada; 71,01 ± 6,44% | DD vs CO; SVM; F1-score; 71,17 ± 6,63% | DD vs CO; SVM; Precisão; 73,21 ± 6,75% | DD vs CO; SVM; Recall; 71,01 ± 6,44% | DD vs CO; ExtraTrees; Acurácia; 74,64 ± 5,84% | DD vs CO; ExtraTrees; Acurácia Balanceada; 73,43 ± 6,16% | DD vs CO; ExtraTrees; F1-score; 73,39 ± 6,25% | DD vs CO; ExtraTrees; Precisão; 74,40 ± 6,35% | DD vs CO; ExtraTrees; Recall; 73,43 ± 6,16% | DD vs CO; LightGBM; Acurácia; 72,84 ± 6,62% | DD vs CO; LightGBM; Acurácia Balanceada; 71,65 ± 6,89% | DD vs CO; LightGBM; F1-score; 71,60 ± 6,95% | DD vs CO; LightGBM; Precisão; 72,40 ± 7,09% | DD vs CO; LightGBM; Recall; 71,65 ± 6,89% | DD vs CO; XGBoost; Acurácia; 73,17 ± 6,71% | DD vs CO; XGBoost; Acurácia Balanceada; 72,01 ± 6,77% | DD vs CO; XGBoost; F1-score; 71,95 ± 6,88% | DD vs CO; XGBoost; Precisão; 72,89 ± 7,06% | DD vs CO; XGBoost; Recall; 72,01 ± 6,77%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 3, p. 7 — 'Tabela 3. Resultados médios de classificação para as tarefas analisadas.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Artigo completo, p. 1-10 — termos buscados: GitHub, código, code, disponível, repositório; apenas menciona o uso do script Python original de Varghese et al. (2024)"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção 3, p. 8 — Desempenho inferior ao estudo original de Varghese et al. (2024) no cenário DP vs. CO (acurácia balanceada e F1-score em torno de 60% contra 70-80% e 80-90% no estudo anterior) e ligeiramente inferior em DP vs. DD, por utilizar apenas características harmônicas isoladas de giroscópio e algoritmos clássicos em configurações padrão, sem combinar outras modalidades ou empilhamento."
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 3, p. 8 — 'os resultados do cenário de classificação DP vs. CO do presente estudo, embora expressivos, ficaram abaixo dos valores previamente relatados'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não possui seção dedicada de limitações, mas discute as restrições do pipeline simplificado na Seção 3 (Resultados e Discussão)."
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção 3, p. 8 e Seção 4, p. 9 — Combinar as características harmônicas com outras fontes de dados, como medidas estatísticas e informações de questionários relatados pelos pacientes (PDNMS), e integrá-las em modelos mais abrangentes para alcançar classificações mais robustas e consistentes."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 9 — 'Para estudos futuros, prevê-se que a combinação das características harmônicas com outras fontes de dados, como medidas estatísticas e informações de questionários'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano conforme instruções do guia"
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 4 — 'Na fase subsequente de pré-processamento de dados, foi aplicada a normalização Z-score das características à saída do script de pré-processamento'"
+    observacao: "Não há seleção de atributos nem ajuste de hiperparâmetros (foram usados os hiperparâmetros padrão da Tabela 2), porém a normalização Z-score das características é descrita na Seção 2.2 como etapa de pré-processamento sem especificar se média e desvio padrão foram calculados apenas nos conjuntos de treino de cada dobra do 5-fold CV."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; 27 = Sim – inferida; 28 = Não se aplica; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Três cenários binários (DP vs CO, DP vs DD e DD vs CO) e tamanhos dos grupos do PADS (PD=276, HC=79, DD=114) claramente definidos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os cinco itens aplicáveis do recorte do PADS (modalidade IMU, 8 tarefas/11 segmentos, giroscópio, ambos os punhos e N=469) estão descritos."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Moderado: cada sujeito é representado por um único vetor de 495 atributos (garantindo separação por participante), mas não é reportado se a normalização Z-score foi ajustada apenas nas dobras de treino."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta Balanced accuracy (uma métrica robusta confirmada) e F1-score sem especificar explicitamente no texto se é macro ou ponderado (além de Accuracy, Precision e Recall, sem Specificity)."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Não disponibiliza código próprio, mas descreve detalhadamente o pré-processamento, as 495 características harmônicas e todos os hiperparâmetros dos quatro modelos na Tabela 2."
+  nota_qa: 3.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Soma de PD+HC+DD (campo 15: 276+79+114=469) = campo 14 (469)"
+    resultado: "OK"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – inferida"
+    resultado: "OK"
+  - regra: "Campo 23 = Nenhum → campo 28 = Não se aplica e campo 29 = null"
+    resultado: "OK"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Nenhum Outro/Outra marcado → campos 4, 7, 12, 17, 19, 21, 25 e 32 = null"
+    resultado: "OK"
+  - regra: "Nota de QA3 (0.5 / Partially) coerente com risco_vazamento = Moderado"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campo 2 (ano_publicacao): status inferido ('2025') a partir da citação 'Hasan (2025)' (arXiv:2506.12561) e do metadado do PDF, pois o documento não possui cabeçalho/rodapé com ano de publicação."
+  - "Campos 26 e 27 (unidade_particionamento e separacao_participante): status inferido; cada participante é representado por um único vetor de 495 características (Seção 2.3, p. 5), o que garante separação por participante no 5-fold CV."
+  - "Derivado aux_preproc_apenas_treino e QA3: a normalização Z-score é descrita na Seção 2.2 (p. 4) como etapa subsequente ao script de pré-processamento; confirmar se deve ser considerada 'Não reportado' (risco Moderado) ou 'Não' (aplicada antes do split, risco Alto)."
+  - "Campo 31 e QA4: na Tabela 3 (p. 7), os valores de Recall são idênticos aos de Acurácia Balanceada em todos os experimentos, sugerindo cálculo macro-averaged, embora o texto não declare explicitamente a variante macro para F1/Recall."

@@ -1,0 +1,879 @@
+Skip to main content
+Skip to article
+Skip to minimise reading assistant
+Skip to summarize article
+Skip to summarize experiments
+Skip to ask about this article
+Reading Assistant
+powered by
+LeapSpace
+Opens in a new window
+Reading assistant options menu
+Actions you could take:
+Summarize this article
+Summarize experiments
+Ask about this article
+Submit query
+Reading assistant is powered by LeapSpace. AI responses may vary in quality.
+Egyptian Informatics Journal
+Date: September 2026
+Show more
+Research article
+Open access
+Under a Creative Commons license
+Get rights and content
+Full length article
+Blockchain-enabled hybrid CNN–Transformer framework with Integrated Gradients for Parkinson’s disease detection
+Ramesh Babu Kalathoti
+, 
+Sachi Nandan Mohanty
+Show more
+View PDF
+Download full issue
+Abstract
+Parkinson’s disease (PD) is a progressive neurodegenerative disorder characterized by motor impairments such as tremor, rigidity, bradykinesia, and gait instability. Accurate and early detection remains challenging due to the complex temporal nature of wearable sensor signals, limited interpretability of deep learning models, and concerns regarding medical data integrity. This study proposes a novel Blockchain-Enabled Hybrid CNN–Transformer framework with Integrated Gradients for PD detection using smartwatch-based inertial sensor data. The CNN module extracts local motion features, while the Transformer captures long-range temporal dependencies within movement signals. To enhance transparency, Integrated Gradients is employed to identify the most influential signal regions contributing to model predictions. In addition, a lightweight blockchain layer is incorporated to provide tamper-resistant storage and traceability of diagnostic outcomes. Experimental evaluation on the PADS dataset achieved 97.29% accuracy, 97.14% precision, 97.29% recall, 97.12% F1-score, and an AUC of 0.9869. The results demonstrate a reliable, interpretable, and secure framework for wearable-based Parkinson’s disease detection.
+Keywords
+Parkinson’s disease monitoring; Wearable sensor analytics; CNN; Transformer-based temporal modeling; Explainable artificial intelligence (XAI); Blockchain-enabled healthcare systems
+Previous article
+Next article
+1. Introduction
+Parkinson’s disease (PD) is a progressive neurodegenerative disorder that primarily affects motor control and coordination of movement. The disease imposes a substantial burden not only on patients but also on healthcare systems and society at large. The pathological hallmark of PD is the progressive degeneration of dopaminergic neurons in the substantia nigra, which disrupts the functional dynamics of the basal ganglia circuits responsible for regulating voluntary movement. As neuronal loss advances, patients develop the cardinal motor symptoms of Parkinson’s disease, including resting tremor, bradykinesia, muscular rigidity, and postural instability. These impairments significantly affect gait stability, balance, and voluntary motor execution, ultimately leading to deterioration in daily functioning and quality of life. In addition to motor symptoms, PD is frequently associated with a range of non-motor manifestations such as sleep disturbances, cognitive decline, mood disorders, and autonomic dysfunction, which further complicate clinical management and disease progression [1]. Recent epidemiological evidence highlights the growing global burden of Parkinson’s disease. Over the past two decades, the prevalence of PD has increased considerably, largely driven by population ageing and improved diagnostic awareness. Projections from the Global Burden of Disease study indicate that the number of individuals living with PD is expected to rise dramatically in the coming years, making it one of the fastest-growing neurological disorders worldwide [2]. These projections underscore the urgent need for scalable diagnostic tools and effective monitoring strategies that can facilitate early detection and long-term disease management. Continuous monitoring systems capable of capturing subtle changes in motor behavior are therefore essential for improving clinical outcomes and supporting personalized treatment strategies.
+Traditionally, Parkinson’s disease assessment relies heavily on clinical evaluation and standardized rating scales such as the Unified Parkinson’s Disease Rating Scale (UPDRS) and the Hoehn and Yahr staging system. These instruments provide valuable insights into disease progression by quantifying motor symptoms and functional impairment. However, such assessments typically depend on periodic clinical visits and subjective clinician judgment. Consequently, they offer only brief snapshots of a patient’s condition rather than a comprehensive view of real-world disease dynamics. Parkinsonian symptoms are known to fluctuate significantly due to medication cycles, fatigue, emotional state, and environmental conditions. As a result, intermittent clinical evaluations often fail to capture transient motor fluctuations and subtle early-stage manifestations occurring outside clinical environments. This limitation can delay diagnosis and hinder the development of personalized therapeutic interventions [3]. One of the central challenges in PD management is the lack of continuous and objective monitoring of real-world motor behavior. Recent advancements in wearable sensing technologies offer promising opportunities to address this limitation. Wearable devices equipped with accelerometers and gyroscopes can capture fine-grained motion signals, enabling continuous monitoring of motor activity in daily life. These systems have demonstrated the ability to detect characteristic PD motor signatures and provide valuable insights into disease severity and progression [4], [5]. In particular, smartwatch-based platforms have enabled the collection of large-scale real-world datasets, making continuous and ecologically valid assessment of Parkinson’s disease increasingly feasible [6].
+Despite these advancements, translating wearable sensor data into clinically meaningful insights remains a complex challenge. Motion signals generated by wearable devices are typically high-dimensional, temporally variable, and often contaminated by noise arising from natural human movements. Accurate interpretation therefore requires advanced analytical approaches capable of identifying subtle patterns within complex time-series data. Artificial intelligence (AI) and machine learning (ML) methods have emerged as promising tools in this context, offering the ability to analyze large volumes of sensor data and identify disease-specific motor patterns with high accuracy [7], [8]. These computational frameworks are gradually transforming PD diagnosis from sporadic clinical evaluations to continuous data-driven monitoring systems.
+Automated detection of Parkinson’s disease has thus become an increasingly active area of research. Continuous motion signals captured by wrist-worn or body-mounted sensors generate extensive time-series datasets that contain subtle neuromotor signatures associated with the disease. Advanced analytical frameworks can extract discriminative features such as tremor frequency, gait variability, step symmetry, and acceleration dynamics from these signals. Machine learning models can then utilize these features to distinguish individuals with Parkinson’s disease from healthy controls by identifying characteristic movement patterns [9]. Studies conducted in real-world environments have demonstrated the reliability of wearable monitoring systems in detecting gait disturbances and motor fluctuations during everyday activities, thereby offering improved ecological validity compared to laboratory-based assessments. The increasing availability of wearable sensor data has further stimulated the development of machine learning approaches for PD detection. These algorithms are capable of uncovering hidden patterns in high-dimensional biomedical datasets and constructing predictive diagnostic models. Parkinsonian motion signals exhibit complex temporal characteristics such as tremor oscillations, gait irregularities, and bradykinesia, which are difficult to capture using traditional statistical techniques. Machine learning methods, however, can learn discriminative representations directly from the data, enabling automated classification of motor symptoms. Early studies employed classical supervised learning algorithms such as Support Vector Machines (SVM), Random Forests (RF), and k-Nearest Neighbors (k-NN), successfully demonstrating the feasibility of objective PD detection based on gait features, tremor patterns, and accelerometer measurements.
+Subsequent research expanded these approaches to large-scale datasets collected in real-world environments. Wearable monitoring frameworks were developed to detect early symptoms of Parkinson’s disease by analyzing movement irregularities and balance disturbances using classical machine learning models. Ensemble learning strategies were also explored, combining multiple models to improve classification robustness and reduce prediction variance by leveraging complementary decision boundaries. These approaches demonstrated improved predictive performance, particularly when integrating multimodal datasets that combine wearable sensor measurements with clinical indicators, enabling the identification of subtle abnormalities and prediction of disease progression [10], [11].
+More recently, deep learning techniques have gained significant attention for analyzing biomedical time-series signals. Unlike conventional machine learning models, deep learning architectures are capable of automatically learning hierarchical feature representations directly from raw data. This capability is particularly beneficial for wearable PD datasets, which contain nonlinear temporal dynamics and subtle variations that are difficult to model manually. Convolutional Neural Networks (CNNs) have demonstrated strong performance in this domain by learning localized temporal patterns within sensor signals. Convolutional filters can effectively capture tremor oscillations, acceleration patterns, and gait irregularities, enabling efficient feature extraction for classification tasks [12]. Their success in pattern recognition tasks has further reinforced their potential in medical signal analysis and intelligent healthcare applications.
+Recent frameworks have increasingly explored deep learning models for Parkinson’s disease detection using wearable sensor data. CNN-based architectures applied to smartwatch accelerometer and gyroscope signals have shown improved classification accuracy compared to traditional machine learning methods. These models can extract relevant features directly from raw signals while capturing both time-domain and frequency-domain characteristics of motor abnormalities such as tremor and bradykinesia [13]. In addition, hybrid architectures combining CNNs with recurrent models such as Long Short-Term Memory (LSTM) networks have been proposed to capture temporal dependencies and sequential dynamics present in PD progression [14], [15]. Although CNNs are effective in extracting localized features from time-series data, modeling long-range temporal dependencies remains challenging for conventional architectures. Wearable sensor signals often exhibit complex temporal dynamics over extended periods, including tremor cycles, bradykinesia episodes, and variations in gait patterns. Transformer architectures have recently emerged as powerful alternatives for sequence modeling due to their attention-based mechanisms. The self-attention mechanism enables the model to capture relationships between all elements in a sequence, allowing it to learn complex dependencies without relying on strict sequential processing.
+Transformer models have therefore attracted increasing interest in healthcare applications involving biomedical signal analysis. These architectures can effectively capture both short-range and long-range patterns within high-dimensional data, making them well suited for Parkinson’s disease detection. By assigning adaptive attention weights, Transformer-based models can emphasize relevant motion patterns while suppressing noise in wearable sensor signals. Hybrid CNN–Transformer architectures combine the strengths of both approaches by integrating localized feature extraction with global contextual modeling, thereby providing more comprehensive representations of complex motor patterns in wearable monitoring frameworks. In addition to predictive accuracy, interpretability is a critical requirement for clinical AI systems. Gradient-based attribution methods have emerged as promising techniques for explaining deep learning predictions. Integrated Gradients (IG) is an axiomatic interpretability approach that computes feature importance by integrating gradients along a path between a baseline input and the actual data instance. This method satisfies important theoretical properties such as sensitivity and implementation invariance, making it suitable for explaining deep neural network predictions. In the context of Parkinson’s disease analysis, IG can help identify clinically meaningful biomarkers such as tremor frequency and abnormal motion dynamics extracted from sensor or voice data. By highlighting influential signal segments, interpretability techniques improve transparency and foster trust in intelligent healthcare systems [16]. Alongside accuracy and interpretability, security and data integrity are essential considerations for modern digital healthcare systems. AI-driven diagnostic frameworks often rely on large volumes of sensitive patient data collected from wearable devices, electronic health records, and remote monitoring platforms. Protecting this information from unauthorized access, manipulation, or loss is crucial for ensuring reliable clinical decision support. However, centralized data storage architectures are inherently vulnerable to security breaches, single-point failures, and unauthorized data modifications. Such vulnerabilities may compromise diagnostic reliability and undermine trust in automated healthcare systems.
+Blockchain technology offers a promising solution to these challenges by providing decentralized, transparent, and immutable data management mechanisms. Through cryptographic hashing and distributed consensus protocols, blockchain ensures that stored transactions cannot be altered once validated. This capability enables secure sharing of healthcare data across stakeholders while maintaining integrity and auditability. Each transaction is cryptographically linked and timestamped, creating a tamper-resistant ledger that guarantees data authenticity. Integrating blockchain with AI-based diagnostic systems can therefore enhance reliability by enabling decentralized verification of predictive outcomes and preventing unauthorized modification of diagnostic records [17].
+Several recent studies have explored blockchain-enabled healthcare frameworks that integrate secure data storage with advanced machine learning models for disease diagnosis and monitoring. These systems demonstrate that blockchain can effectively support secure management of medical datasets while maintaining high predictive performance through deep learning models. Distributed ledgers can be used to verify diagnostic results and maintain immutable records of model predictions [18]. Nevertheless, many existing AI-based healthcare solutions remain centralized and therefore vulnerable to data tampering and security breaches. Furthermore, limited research has investigated the integration of blockchain-based data integrity mechanisms with deep learning architectures for wearable Parkinson’s disease detection. Consequently, there is a growing need for unified frameworks that combine accurate predictive modeling with secure and transparent data management. Integrating blockchain technology with intelligent diagnostic models represents a crucial step toward developing trustworthy and reliable AI-driven healthcare architectures suitable for real-world clinical deployment [19].
+1.1. Research gap
+Recent progress in wearable monitoring technologies and artificial intelligence-based analysis has significantly advanced Parkinson’s disease (PD) detection. However, several critical limitations persist in the current literature. Many existing studies primarily prioritize classification accuracy by applying machine learning (ML) or deep learning (DL) models to sensor-based signals, demonstrating promising performance in identifying motor patterns associated with PD. Despite these improvements, the research focus remains largely predictive, while essential requirements for real-world deployment are often overlooked. In addition, handcrafted feature engineering is still widely used, which restricts the ability of models to generalize effectively across diverse populations and varying monitoring conditions [7], [9]. Convolutional neural networks (CNNs) are particularly effective in capturing localized temporal and spatial characteristics of motion signals; however, they often struggle to model long-range temporal dependencies in extended time-series sequences [8]. Consequently, more advanced architectures are required that can integrate robust local feature extraction with global contextual modeling in order to fully capture the complex temporal dynamics associated with Parkinson’s disease.
+Another important limitation in many PD detection systems is the lack of interpretability. Deep learning models are frequently treated as “black-box” systems, making it difficult for clinicians to understand how predictions are generated. This lack of transparency raises concerns regarding reliability and trust, ultimately limiting the clinical acceptability of such systems in sensitive healthcare environments where decision accountability is crucial. As a result, explainable artificial intelligence (XAI) methods have been increasingly emphasized to provide interpretable insights and enable validation of diagnostic outcomes [16]. However, the integration of XAI techniques within wearable-based PD detection models remains limited. Most existing frameworks generate predictive outputs without offering clear explanations regarding the specific signal segments or motion patterns that drive the model’s decisions. In addition to interpretability challenges, data security and integrity issues have received comparatively less attention in wearable health monitoring systems. Wearable devices continuously generate large volumes of sensitive physiological and behavioral data that must be securely stored, processed, and transmitted. Many existing implementations rely on centralized architectures, which are vulnerable to unauthorized modification, data breaches, and limited auditability. Such vulnerabilities can compromise diagnostic reliability and raise concerns regarding patient privacy and system trustworthiness. Blockchain technology has recently been proposed as a potential solution for ensuring secure and tamper-proof data storage through decentralized ledger mechanisms. Nevertheless, the integration of blockchain with deep learning frameworks for Parkinson’s disease detection remains relatively limited [18], [19]. Developing unified frameworks that simultaneously address predictive accuracy, interpretability, and data integrity therefore remains an open research challenge. This motivates the need for integrated systems that combine advanced deep learning architectures, explainable AI techniques, and blockchain-based mechanisms to enable secure, interpretable, and reliable diagnostic solutions.
+Despite significant advances in wearable sensing, deep learning, and digital healthcare technologies, several critical challenges continue to limit the effectiveness of intelligent Parkinson’s disease detection systems. First, conventional machine learning and CNN-based approaches primarily focus on local feature extraction and often struggle to capture long-range temporal dependencies inherent in wearable inertial sensor signals, leading to incomplete modeling of Parkinsonian movement dynamics. Second, many deep learning models operate as black-box systems, providing limited insight into the underlying decision-making process, which restricts clinical trust and adoption. The lack of transparent explanations makes it difficult for clinicians to validate whether model predictions are based on clinically meaningful movement patterns. Third, existing wearable healthcare frameworks typically rely on centralized data storage architectures that remain vulnerable to unauthorized modification, data tampering, and single-point failures, raising concerns regarding the integrity, traceability, and security of diagnostic records. Furthermore, most existing studies address predictive performance, interpretability, and data security independently rather than within a unified framework. These limitations highlight the need for an integrated solution capable of simultaneously modeling complex temporal dependencies, providing clinically interpretable predictions, and ensuring secure management of diagnostic outcomes.
+To address these challenges, this study proposes a Blockchain-Enabled Hybrid CNN–Transformer framework with Integrated Gradients for Parkinson’s disease detection using smartwatch-based inertial sensor data. The CNN module is employed to learn discriminative local motion features, while the Transformer module captures long-range temporal relationships within movement signals through self-attention mechanisms. Integrated Gradients is incorporated to improve interpretability by identifying the signal regions that contribute most significantly to classification decisions. In addition, a lightweight blockchain-based integrity verification layer is introduced to provide immutable storage, traceability, and tamper-resistant management of diagnostic predictions. By jointly integrating predictive modeling, explainability, and security, the proposed framework aims to establish a reliable, interpretable, and trustworthy Parkinson’s disease detection system suitable for real-world healthcare applications.
+1.2. Proposed framework overview
+To tackle the limitations highlighted earlier, this study proposes a secure, interpretable deep learning framework for Parkinson’s disease detection using wearable inertial sensor data. The architecture integrates convolutional neural networks, transformer-based temporal modeling, explainable AI, and blockchain-enabled integrity mechanisms into one cohesive pipeline. Smartwatch motion signals enter first. Convolutional layers extract local discriminative features tied to Parkinsonian motor patterns tremor oscillations, gait irregularities, acceleration anomalies. These representations feed into a transformer module. Self-attention mechanisms activate here. Long-range temporal dependencies modeled effectively. The hybrid CNN–Transformer captures both localized characteristics and global sequence relationships in complex movement signals. For interpretability, Integrated Gradients is incorporated as the gradient-based attribution method. It highlights signal segments driving predictions [17]. Clinicians receive clear insights into model reasoning, enabling reliable interpretation [20]. A blockchain integrity layer records predictions on a decentralized ledger. Diagnostic outputs remain secure, traceable, and tamper-resistant [21]. Deep learning, explainable AI, and blockchain combine to form a robust intelligent monitoring system for PD.
+The primary objective of this study is to develop a reliable, interpretable, and secure framework for Parkinson’s disease detection using smartwatch-based inertial sensor data. To achieve this objective, the study pursues the following specific goals:
+•
+To develop a hybrid CNN–Transformer architecture capable of accurately distinguishing Parkinson’s disease patients from non-Parkinson’s subjects using wearable sensor signals.
+•
+To exploit convolutional feature extraction and Transformer-based self-attention mechanisms for effective learning of both local motion characteristics and long-range temporal dependencies inherent in Parkinsonian movement patterns.
+•
+To enhance the interpretability of deep learning predictions through the integration of Integrated Gradients, enabling the identification of influential signal regions contributing to diagnostic decisions.
+•
+To incorporate a blockchain-based integrity verification mechanism that ensures secure, traceable, and tamper-resistant storage of diagnostic outcomes.
+•
+To evaluate the effectiveness, robustness, and reliability of the proposed framework through comprehensive experimental analysis, ablation studies, and comparison with existing state-of-the-art Parkinson’s disease detection approaches.
+2. Related works
+2.1. Wearable sensor-based Parkinson’s monitoring
+Wearable sensing technologies have become an important component of modern Parkinson’s disease (PD) monitoring, enabling continuous, objective, and real-world measurement of motor activity. Parkinson’s disease is characterized by several motor impairments, including tremor, bradykinesia, gait abnormalities, and postural instability, which often fluctuate throughout the day. Conventional clinical assessment methods typically rely on standardized rating scales and intermittent observations during hospital visits, which may fail to capture subtle variations in symptom severity. Wearable devices address these limitations by providing continuous monitoring through sensors such as inertial measurement units (IMUs), accelerometers, and gyroscopes. These sensors capture high-resolution time-series data during patients’ daily activities, enabling the recording of limb movements, gait dynamics, and tremor oscillations. As a result, objective digital biomarkers can be derived, supporting earlier diagnosis, improved long-term tracking of disease progression, and the detection of subtle irregularities in natural environments outside clinical settings [22], [23].
+Several wearable platforms have been investigated in the literature, including wrist-worn smartwatches, body-mounted IMUs, and instrumented insoles. These systems facilitate the extraction of clinically relevant metrics such as tremor frequency, stride length, gait speed, and step symmetry. Inertial sensors are particularly valuable for quantitative gait analysis, providing detailed information about turning duration, stride variability, and step timing. Such parameters serve as reliable biomarkers for assessing disease severity and evaluating treatment effectiveness [22]. Moreover, wearable systems enable the detection of complex motor events such as freezing of gait, dyskinesia, and tremor episodes through the analysis of accelerometer and gyroscope signals during real-world activities. This approach improves ecological validity by capturing patient behavior outside controlled laboratory environments, thereby supporting more accurate disease assessment.
+Recent studies have further extended the application of wearable sensing technologies toward early detection and continuous monitoring of Parkinson’s disease through advanced data analytics and machine learning techniques. Smartwatch-based systems, for example, have been used to analyze upper-limb tremor patterns and differentiate Parkinson’s disease from other movement disorders. Inertial measurements also provide valuable indicators of early motor impairment, including variations in gait speed, stance duration, and postural stability. Artificial intelligence techniques enhance the identification of complex motion signatures and enable predictive modeling of symptom progression. Magneto-inertial devices have demonstrated strong performance in detecting symptoms such as akinesia, tremor, and dyskinesia through continuous signal analysis [24]. Despite these promising developments, several challenges remain. Real-world motion signals obtained from wearable sensors are often affected by noise, variations in sensor placement, and differences in patient behavior, which complicate signal interpretation. Additionally, the data generated by wearable devices are typically high-dimensional and temporally complex, requiring advanced computational frameworks for effective analysis. Processing long time-series sequences and extracting meaningful representations from such data necessitate robust machine learning and deep learning models. Consequently, recent research has increasingly focused on integrating wearable sensing technologies with advanced computational approaches to improve detection accuracy and enable scalable remote monitoring solutions [25].
+2.2. Machine learning approaches for Parkinson’s disease detection
+Machine learning techniques have been widely explored for automated Parkinson’s disease (PD) detection and monitoring. In many early studies, sensor-based motion data were analyzed to identify hidden patterns within high-dimensional datasets derived from wearable devices. Wearable signals are particularly suitable for machine learning applications because they capture complex motor behaviors associated with PD. Initial research efforts focused on building classification models capable of differentiating between PD patients and healthy controls by analyzing gait dynamics, tremor characteristics, and acceleration patterns. Various supervised learning algorithms, including Support Vector Machines (SVM), Random Forests, Decision Trees, and k-Nearest Neighbors (KNN), were applied to model nonlinear relationships in the data. These models typically relied on statistical descriptors and frequency-domain features extracted from motion signals to identify motor impairments associated with Parkinson’s disease [4], [9]. Subsequent investigations expanded these frameworks by utilizing wearable sensor data such as accelerometer and gyroscope measurements to detect early-stage symptoms of the disease. Researchers analyzed gait variability, step timing irregularities, and tremor oscillations to quantify disease severity and identify specific manifestations such as bradykinesia and freezing of gait. These symptoms often produce characteristic signatures within sensor signals that can be detected through supervised learning models when well-engineered features are extracted from the recordings [7], [11]. In addition, ensemble learning techniques were introduced in several studies, where multiple models were combined to improve classification reliability. These ensemble strategies helped reduce prediction variance and enhanced the generalization capability of the models when applied to heterogeneous datasets [10].
+2.3. Deep learning-based Parkinson’s disease detection
+Deep learning has advanced rapidly in recent years, significantly enhancing biomedical data analysis by enabling the extraction of hierarchical representations from high-dimensional datasets. These models are capable of identifying intricate patterns that are often difficult to detect using traditional machine learning approaches. As a result, deep learning has become highly beneficial for Parkinson’s disease (PD) detection across multiple data modalities, including wearable sensor signals, speech recordings, handwriting analysis, and gait dynamics. By learning multi-level features directly from raw data, deep learning models can effectively capture nonlinear relationships while reducing dependence on handcrafted feature engineering. In particular, Convolutional Neural Networks (CNNs) have demonstrated strong performance in this domain due to their ability to detect local temporal and spatial patterns through convolutional filtering operations [12].
+Several CNN-based frameworks have been explored for processing wearable sensor data, particularly signals obtained from accelerometers and gyroscopes. These models are capable of extracting discriminative features that correspond to clinically relevant motion patterns such as tremor oscillations, gait irregularities, and abnormal motor dynamics. Data obtained from smartwatch measurements have been widely used to train such models, often achieving higher classification accuracy compared to conventional machine learning techniques. The ability of CNN architectures to capture localized signal characteristics enables effective identification of subtle motor abnormalities associated with PD [8]. Furthermore, multi-scale network designs have been introduced to simultaneously analyze both frequency-domain and time-domain representations of sensor signals, allowing the detection of subtle physiological abnormalities with improved robustness [13].
+To further enhance modeling capability, hybrid deep learning architectures have been investigated by integrating convolutional networks with recurrent structures such as Long Short-Term Memory (LSTM) networks. In these hybrid frameworks, CNN layers perform local feature extraction, while LSTM layers capture sequential dependencies and temporal relationships across signal sequences. This combination enables the modeling of complex motion patterns associated with disease progression and motor fluctuations in PD patients [14]. Although these hybrid architectures improve temporal modeling capability, certain challenges remain, particularly in capturing long-range dependencies within extended time-series data and ensuring interpretability in clinical decision-making environments.
+2.4. Explainable artificial intelligence in Parkinson’s disease diagnosis
+The adoption of deep learning in medical diagnostic systems has increased significantly in recent years. However, as these models become more widely deployed, interpretability has emerged as a critical requirement for clinical acceptance. Although deep learning approaches often achieve remarkable predictive performance, their internal decision-making processes remain largely opaque. This lack of transparency presents a major challenge in healthcare environments, where diagnostic decisions must be reliable, interpretable, and clinically justifiable. Parkinson’s disease (PD) detection systems commonly analyze various forms of physiological data, including wearable sensor recordings, speech signals, and gait patterns, to identify disease-related abnormalities. Despite their effectiveness, clinicians require clear explanations of how these models arrive at specific predictions in order to trust and integrate them into medical workflows. Consequently, Explainable Artificial Intelligence (XAI) has emerged as an important research direction aimed at improving model transparency and enhancing the trustworthiness of AI-driven diagnostic systems [20]. XAI techniques enable the interpretation of model predictions by identifying the contributions of individual input features. Several widely used approaches, including SHAP, LIME, and gradient-based explanation methods, have been applied to understand deep learning models. Among these, Integrated Gradients (IG) has gained particular attention due to its strong theoretical foundation and practical effectiveness. IG works by integrating gradients along a path from a baseline input to the actual input, thereby quantifying the importance of each feature in influencing the model’s prediction. This approach satisfies key interpretability properties, including sensitivity and implementation invariance, making it particularly suitable for explaining deep neural networks in biomedical applications [17]. Recent studies have explored the use of interpretable frameworks for Parkinson’s disease detection, enabling the identification of clinically meaningful biomarkers within complex physiological signals. These approaches highlight important signal components and provide both visual and numerical explanations for model predictions. As a result, physiologically relevant patterns can be verified, while potential noise or spurious correlations are minimized during the interpretation process [16]. In particular, voice-based PD diagnosis has benefited from explainability methods, as they reveal informative speech characteristics associated with disease progression. Such insights not only enhance the reliability of the diagnostic system but also support clinical understanding of the underlying physiological mechanisms.
+
+Table 1. Comparison of existing Parkinson’s disease detection approaches using wearable sensors.
+
+Study	Data source	Method/Model	Explainability	Blockchain security	Key contribution
+Castelli Gattinara Di Zubiena et al. [9]	Wearable motion sensors	Machine Learning	No	No	Proposed a sensor-based system for early
+detection of balance impairments associated
+with Parkinson’s disease.
+Brand et al. [4]	Wrist-worn wearable
+sensor	Machine Learning	No	No	Developed an approach for gait detection and
+activity analysis using wrist-mounted sensors
+in daily environments.
+Sigcha et al. [5]	Smartwatch IMU
+signals	Deep Learning	No	No	Introduced a deep learning framework for
+detecting bradykinesia from smartwatch
+inertial measurements.
+Carvajal-Castaño et al. [14]	Biomedical signal
+datasets	Deep Learning
+(CNN)	No	No	Proposed a convolutional neural network
+architecture for automated Parkinson’s
+disease classification.
+Shcherbak et al. [7]	Wearable motion
+sensors	Machine Learning	No	No	Developed early-stage Parkinson’s disease
+classification models based on sensor-derived
+movement features.
+Liu et al. [15]	Wearable sensors and
+vision data	Deep Learning	No	No	Presented a multimodal deep learning
+framework integrating visual and sensor
+signals for gait-based PD detection.
+Igene et al. [11]	Wearable sensor
+signals	Machine Learning	No	No	Proposed predictive models for early
+Parkinson’s disease detection using wearable
+sensor measurements.
+Varghese et al. [6]	Smartwatch motion
+dataset	Machine Learning	No	No	Introduced the Parkinson’s Activity Dataset
+(PADS) to support smartwatch-based PD
+analysis.
+Yu et al. [8]	Wearable sensor
+signals	Deep Learning	No	No	Developed an improved deep learning model
+for Parkinson’s disease diagnosis using
+wearable sensor data.
+Wang et al. [13]	Smartwatch inertial
+signals	Deep CNN	No	No	Proposed a multi-scale frequency-sharing
+attention network for accurate PD detection
+from smartwatch signals.
+Shen et al. [16]	Voice signal dataset	Explainable AI	Yes	No	Presented an interpretable framework for
+Parkinson’s disease diagnosis using
+explainable machine learning techniques.
+Mohamed et al. [18]	Healthcare datasets	Deep Learning +
+Blockchain	No	Yes	Introduced a blockchain-enabled healthcare
+framework for secure disease detection and
+data integrity.
+Proposed Framework	Smartwatch inertial
+sensors	CNN + Transformer
+Hybrid Model	Yes
+(Integrated
+Gradients)	Yes	Proposes a secure and explainable
+Parkinson’s disease detection system
+combining deep feature learning with
+blockchain-based healthcare data protection.
+2.5. Blockchain-based security in healthcare data management
+Digital healthcare systems are expanding rapidly, accompanied by a significant growth in wearable monitoring technologies. As a result, large volumes of sensitive health data are continuously generated, stored, transmitted, and analyzed. Parkinson’s disease (PD) monitoring systems, in particular, collect tremor signals, gait patterns, and other neurological indicators derived from wearable sensors. These data are highly sensitive, making privacy protection and secure handling essential. Preventing unauthorized manipulation is therefore critical. However, traditional centralized storage infrastructures remain vulnerable to several security challenges, including single-point failures, unauthorized access, and potential data tampering. Such vulnerabilities raise serious concerns regarding system reliability and the integrity of stored information. Since AI-driven diagnostic and predictive systems depend heavily on accurate and trustworthy data, the need for secure and tamper-resistant data management frameworks has become increasingly urgent.
+Blockchain technology has emerged as a promising solution to address these challenges. As a decentralized and transparent technology, blockchain provides immutable data storage through a distributed ledger maintained across multiple network nodes. In this architecture, transactions are organized into blocks that are cryptographically linked to one another, ensuring that any attempt to alter stored information would require consensus across the network. This mechanism eliminates reliance on a single central authority while significantly enhancing data integrity and traceability. In the healthcare domain, blockchain can facilitate secure data sharing among hospitals, clinicians, and researchers while maintaining strict access control policies. Consequently, the authenticity of medical data can be preserved and verified throughout its lifecycle [19]. The blockchain validation process ensures that all verified transactions become tamper-proof and permanently auditable, thereby strengthening trust in digital healthcare systems.
+Recent studies have explored the integration of blockchain with artificial intelligence to improve the reliability and transparency of medical data processing pipelines. In such frameworks, electronic health records (EHRs), remote monitoring data, and AI-generated diagnostic outputs can be securely stored and validated through blockchain-based mechanisms. Blockchain-enabled systems have therefore been proposed to ensure the integrity of datasets used for training and deploying AI models for disease prediction. Additionally, traceable verification of diagnostic outcomes can be achieved through cryptographic hashing, which securely records prediction results on the distributed ledger. This approach enables the creation of immutable clinical decision records, ensuring that diagnostic outputs remain verifiable and resistant to tampering [18].
+Despite these promising developments, the integration of blockchain within wearable-based Parkinson’s disease detection systems remains relatively limited. Many existing AI-driven PD detection models primarily focus on improving classification accuracy while often overlooking critical aspects such as data governance, integrity verification, and auditability. With the increasing volume of wearable sensor data being generated in remote health monitoring scenarios, robust security mechanisms are becoming essential. Integrating blockchain mechanisms into such systems can enable the development of trustworthy and scalable diagnostic frameworks. In these systems, diagnostic outputs can be securely recorded on the blockchain ledger, while transparent audit trails ensure accountability and traceability. Consequently, blockchain-enhanced AI frameworks have the potential to support reliable and secure wearable-based monitoring platforms for Parkinson’s disease detection.
+Table 1 presents a comparative overview of recent Parkinson’s disease detection studies based on wearable sensor data and intelligent computational methods. The comparison highlights the limitations of existing approaches in terms of explainability and data security. Most existing systems focus primarily on classification accuracy using machine learning or deep learning models, while very few incorporate interpretability mechanisms or secure data management frameworks. The proposed framework addresses these limitations by integrating hybrid deep learning, explainable AI, and blockchain-based data integrity mechanisms within a unified architecture.
+3. Proposed methodology
+This study proposes a secure, explainable, and scalable deep learning framework for Parkinson’s Disease movement signal classification using smartwatch inertial sensor data integrated with blockchain-based integrity verification.
+3.1. System overview
+The proposed architecture combines temporal convolutional feature extraction, Transformer-based sequential modeling, frequency-domain feature fusion, explainable artificial intelligence (XAI), and decentralized blockchain storage.
+Wearable inertial sensors provide continuous and objective measurement of motor impairments in Parkinson’s disease, overcoming limitations of subjective clinical scales such as the Unified Parkinson’s Disease Rating Scale (UPDRS) [22]. Deep learning architectures, particularly Convolutional Neural Networks (CNNs), have demonstrated strong performance in learning hierarchical representations from biomedical time-series signals [12]. However, CNNs have limited capability in modeling long-range temporal dependencies. Transformer architectures address this limitation using self-attention mechanisms capable of capturing global temporal relationships [26].
+Furthermore, explainability is essential in medical AI systems for clinical trust and interpretability. Integrated Gradients (IG), a gradient-based attribution method, provides reliable explanations by computing feature importance relative to a baseline [17]. To ensure data integrity and tamper-resistance, blockchain technology provides decentralized storage with cryptographic verification [21].
+The complete architecture integrates five layers:
+•
+Signal Acquisition Layer (IoT smartwatch)
+•
+Signal Processing Layer
+•
+Deep Learning Prediction Layer
+•
+Explainability Layer
+•
+Blockchain Integrity Layer
+Fig. 1 illustrates the overall architecture of the proposed CNN–Transformer framework for Parkinson’s disease (PD) detection integrated with blockchain-based result validation. The pipeline begins with wearable sensor data acquisition, where raw multi-dimensional time-series signals are collected and formatted for analysis. These signals undergo segmentation and preprocessing, including normalization and noise mitigation, to ensure consistent input representation. The processed data are then forwarded to a convolutional neural network (CNN) module, which performs hierarchical feature extraction to capture local temporal patterns and motion-specific characteristics. The extracted feature maps are subsequently passed to the Transformer encoder, where self-attention mechanisms model long-range temporal dependencies and global contextual relationships within the signal. The fused representations are then propagated to a fully connected classification layer that produces the final prediction output, categorized as PD or No PD. Finally, the prediction results are securely recorded on a blockchain ledger to ensure immutability, traceability, and integrity verification. This architecture enables robust feature learning, improved classification performance, and secure clinical decision support through decentralized validation.
+Download: Download high-res image (333KB)
+Download: Download full-size image
+
+Fig. 1. Architecture of the proposed CNN–Transformer model.
+
+3.2. Dataset description
+The experiments were conducted using the PADS — Parkinson’s Disease Smartwatch Dataset [6], which contains multimodal wearable sensor recordings alongside structured clinical metadata. The dataset comprises 469 subjects with associated demographic and diagnostic information.
+3.2.1. Dataset preparation
+To ensure robust model evaluation and prevent information leakage, a subject-independent data partitioning strategy was adopted throughout the study. The raw inertial sensor recordings were first segmented into fixed-length temporal windows and subsequently associated with their corresponding participant identifiers. During the 5-fold cross-validation process, all segments originating from a single participant were assigned exclusively to one fold, ensuring that no participant contributed samples simultaneously to both training and testing sets. This subject-wise partitioning protocol prevents the model from learning participant-specific characteristics that could artificially inflate classification performance. By maintaining complete separation of subjects across folds, the evaluation more accurately reflects real-world deployment scenarios where the system encounters previously unseen individuals. Consequently, the reported accuracy, precision, recall, F1-score, and AUC values provide a reliable estimate of the framework’s true generalization capability.
+3.2.2. Clinical and demographic metadata
+Each subject entry includes:
+•
+Unique patient identifier (ID)
+•
+Study identifier (PADS)
+•
+Clinical condition
+•
+Age and age at diagnosis
+•
+Height and weight
+•
+Gender and handedness
+•
+Family history indicators
+•
+Alcohol effect on tremors
+•
+Diagnostic class label
+Exploratory analysis showed a heterogeneous age distribution across participants, with a broader spread in the PD and Other Movement Disorder groups. Gender distribution was relatively balanced, although mild inter-class variation was observed. Fig. 2. Class and age distribution in the PADS dataset
+Download: Download high-res image (131KB)
+Download: Download full-size image
+
+Fig. 2. Class and age distribution in the PADS dataset.
+
+3.2.3. Sensor time-series data
+Each subject is associated with multiple smartwatch recordings stored as individual time-series files. The dataset contains movement recordings captured under structured motor tasks (e.g., relaxed wrist posture, finger-to-nose test). Each file consists of synchronized inertial measurements:
+(1)
+𝑋⁡(𝑡)={𝑎⁢𝑐⁢𝑐𝑥,𝑎⁢𝑐⁢𝑐𝑦,𝑎⁢𝑐⁢𝑐𝑧,𝑔⁡𝑦⁢𝑟⁢𝑜𝑥,𝑔⁡𝑦⁢𝑟⁢𝑜𝑦,𝑔⁡𝑦⁢𝑟⁢𝑜𝑧}
+where
+•
+𝑎⁢𝑐⁢𝑐∗
+ represents tri-axial accelerometer signals
+•
+𝑔⁡𝑦⁢𝑟⁢𝑜∗
+ represents tri-axial gyroscope signals
+𝑡
+ denotes the timestamp.
+Thus, each time-series sample is a 7-dimensional sequence:
+(2)
+𝑠𝑡∈ℝ7
+The number of recordings per patient varies, as evidenced by the distribution of sensor files across subjects. This variation reflects repeated task acquisitions, which contribute to a more robust characterization of motor behavior.
+Fig. 3 presents representative Time-domain analysis of accelerometer and gyroscope signals across representative motor tasks. The upper panel illustrates the accelerometer signal (𝑎⁢𝑐⁢𝑐𝑥
+), while the lower panel shows the gyroscope signal (𝑔⁡𝑦⁢𝑟⁢𝑜𝑦
+). Distinct amplitude variations and oscillatory patterns are observed across different tasks, highlighting task-specific motor dynamics. Resting conditions exhibit relatively stable, low-amplitude fluctuations, whereas active movement tasks demonstrate increased variability and pronounced oscillations. These temporal variations indicate the discriminative capability of inertial sensor features for modeling motor abnormalities in Parkinson’s disease detection.
+Download: Download high-res image (316KB)
+Download: Download full-size image
+
+Fig. 3. Time-Domain Analysis of Accelerometer and Gyroscope Signals Across Representative Motor Tasks.
+
+3.2.4. Signal characteristics
+Time-domain visualization demonstrated distinct oscillatory and tremor-like patterns in Parkinson’s disease (PD) samples compared to healthy controls. Summary statistics extracted from 100 randomly sampled recordings revealed noticeable dispersion in both accelerometer and gyroscope signal means, indicating discriminative motor variability.
+To further analyze tremor frequency components, the Fast Fourier Transform (FFT) was applied as follows:
+(3)
+𝐹⁡(𝜔)=
+𝑁−1
+∑
+𝑡=0
+𝑥𝑡⁢𝑒−𝑗⁢2⁢𝜋⁢𝜔⁢𝑡/𝑁
+Frequency spectrum analysis of accelerometer signals revealed dominant peaks within characteristic motor frequency bands, which are clinically associated with Parkinsonian tremor activity, as illustrated in Fig. 3. Fig. 4 illustrates the frequency-domain representation of a representative accelerometer signal obtained using the FFT. Distinct spectral peaks are observed within specific frequency bands, corresponding to dominant oscillatory components of the motion signal. These frequency characteristics are clinically relevant, as Parkinsonian tremor typically manifests within characteristic low-frequency ranges. The spectrum confirms the presence of discriminative periodic patterns, thereby justifying the incorporation of deep learning models capable of capturing both temporal and spectral dynamics.
+Download: Download high-res image (169KB)
+Download: Download full-size image
+
+Fig. 4. Frequency Spectrum Analysis of accelerometer signals.
+
+3.2.5. Dataset suitability
+The dataset provides the following characteristics:
+•
+Multimodal inertial sensor signals
+•
+Structured demographic and clinical attributes
+•
+Multi-class diagnostic labels
+•
+Repeated movement task recordings
+The integration of longitudinal motion signals with clinical metadata makes this dataset well-suited for deep learning architectures that capture both local temporal dynamics (via convolutional layers) and long-range dependencies (via attention mechanisms).
+3.3. Smartwatch sensor dataset and signal modeling
+Wearable inertial sensors measure acceleration and angular velocity, which are represented as discrete time-series signals.
+Let the raw signal be represented as:
+(4)
+𝑋={𝑥1,𝑥2,𝑥3,…,𝑥𝑇},𝑥𝑡∈ℝ
+where 𝑇=512
+ denotes the signal length, and 𝑥𝑡
+ represents the measurement at time index 𝑡
+.
+The dataset is defined as:
+(5)
+𝐷={(𝑋𝑖,𝑦𝑖)}𝑁
+𝑖=1
+where 𝑁=10,318
+ denotes the total number of signals, 𝑋𝑖∈ℝ512
+ represents the 𝑖
+th time-series sample, and 𝑦𝑖∈{0,1}
+ denotes the corresponding class label.
+Since explicit severity labels are unavailable, unsupervised clustering is employed for label generation.
+3.4. Unsupervised label generation using K-means
+K-Means clustering was employed as an unsupervised pre-labeling mechanism to partition extracted signal embeddings into structurally coherent groups prior to supervised model training. This strategy reduces reliance on manual annotations while uncovering latent patterns in wearable inertial sensor data associated with Parkinsonian motor characteristics. After preprocessing and feature extraction, the high-dimensional feature vectors were standardized to ensure balanced contribution across dimensions. The K-Means algorithm iteratively assigns each sample to the nearest centroid using a distance-based similarity measure and updates cluster centroids to minimize intra-cluster variance. The optimal number of clusters was determined using internal validation techniques such as the elbow method and silhouette coefficient analysis to ensure compact and well-separated group formations.
+The resulting cluster assignments were used as pseudo-labels and aligned with clinical categories through minimal supervision, enabling their integration into the CNN–Transformer training pipeline. This semi-supervised approach enhances scalability and robustness, particularly in medical datasets where labeled samples are limited. Although K-Means assumes convex cluster structures and equal variance distribution, conditions that may not fully capture nonlinear biomedical signal patterns, it provided efficient and stable structural grouping in this study. Incorporating unsupervised clustering strengthened feature organization, improved downstream classification readiness, and contributed to the model’s overall generalization performance in Parkinson’s disease detection.
+K-means clustering partitions signals into 𝐾
+ clusters by minimizing intra-cluster variance [27]:
+(6)
+min
+𝐶⁡
+𝐾
+∑
+𝑘=1
+∑
+𝑥𝑖∈𝐶𝑘‖𝑥𝑖−𝜇𝑘‖2
+where 𝐶𝑘
+ denotes the 𝑘
+th cluster and 𝜇𝑘
+ represents the centroid of cluster 𝐶𝑘
+. The resulting cluster assignments are utilized as pseudo-labels.
+3.5. Signal preprocessing and normalization
+Signal preprocessing and normalization constitute a critical step in ensuring numerical stability, efficient convergence, and improved generalization during neural network training. Raw inertial sensor signals typically contain noise, baseline drift, motion artifacts, and inter-subject variability that can adversely affect feature extraction and gradient-based optimization. To mitigate these effects, the acquired time-series data were first subjected to noise reduction and signal smoothing to suppress high-frequency disturbances while preserving clinically relevant tremor components. Following denoising, normalization was applied to scale the input features into a consistent numerical range, thereby preventing dominance of high-amplitude channels and reducing internal covariate shift during backpropagation. This scaling process stabilizes gradient updates, accelerates convergence of the optimization algorithm, and enhances the robustness of the CNN–Transformer architecture. Furthermore, normalization facilitates balanced learning across multiple sensor axes and subjects, improving the model’s ability to generalize across varying acquisition conditions and patient-specific signal amplitudes. Signal normalization ensures numerical stability and convergence during neural network training:
+(7)
+ˆ
+𝑥
+𝑡=
+𝑥𝑡−𝜇
+𝜎
+3.6. Frequency-domain feature extraction
+Frequency-domain feature extraction was performed to capture oscillatory characteristics of motor signals that are strongly associated with Parkinsonian tremor dynamics. The pre-processed time-series signals were transformed into the spectral domain using Fast Fourier Transform (FFT), enabling analysis of dominant frequency components and their corresponding power distributions. Key spectral features such as peak frequency, spectral energy, power spectral density (PSD), spectral entropy, and band-limited power within clinically relevant tremor ranges were computed. These features effectively quantify rhythmic motor abnormalities, particularly tremor frequencies typically observed in Parkinson’s disease. By incorporating frequency-domain descriptors alongside time-domain representations, the model benefits from enhanced discriminative information, improving its ability to distinguish pathological motor patterns from normal movement variability.
+3.6.1. Fast fourier transform
+The Fast Fourier Transform is a computationally efficient algorithm used to convert a time-domain signal into its frequency-domain representation. In the context of wearable inertial sensor data analysis, FFT decomposes complex motion signals into their constituent frequency components, enabling the identification of dominant oscillatory patterns associated with Parkinsonian tremors. By transforming acceleration or gyroscopic signals from the temporal domain to the spectral domain, FFT facilitates the extraction of frequency-based features such as peak frequency, spectral energy distribution, and power density within clinically relevant bands. This spectral analysis enhances the model’s ability to distinguish pathological motor patterns from normal movement, thereby improving the robustness and discriminative performance of the classification framework. FFT transforms time domain signal to frequency domain [28]:
+(8)
+𝑋⁡(𝑓)=
+𝑇−1
+∑
+𝑡=0
+𝑥𝑡𝑒−𝑗⁢
+2⁢𝜋⁢𝑓⁡𝑡
+𝑇
+Spectral Centroid:
+(9)
+𝐶=
+∑𝑓𝑓⁡|𝑋⁡(𝑓)|
+∑𝑓|𝑋⁡(𝑓)|
+Spectral Entropy:
+(10)
+𝐻=−∑
+𝑓𝑝⁡(𝑓)⁢log⁡𝑝⁡(𝑓)
+where
+(11)
+𝑝⁡(𝑓)=
+|𝑋⁡(𝑓)|
+∑𝑓|𝑋⁡(𝑓)|
+3.6.2. Wavelet transform
+Wavelet Transform (WT) is a powerful time–frequency analysis technique that enables multi-resolution decomposition of non-stationary signals, making it particularly suitable for biomedical time-series such as Parkinsonian tremor signals. Unlike the Fourier Transform, which provides only global frequency information, wavelet transform preserves both temporal and spectral characteristics by decomposing the signal into scaled and shifted versions of a mother wavelet. This property allows precise localization of transient events, abrupt motor fluctuations, and tremor-dominant frequency components within wearable sensor data. By analyzing high-frequency components with fine temporal resolution and low-frequency components with broader temporal windows, WT effectively captures multi-scale motion dynamics. In this study, wavelet-based feature extraction enhances discriminative representation by isolating clinically relevant oscillatory patterns while suppressing noise, thereby improving downstream classification performance within the proposed deep learning framework. Wavelet transform provides time–frequency localization [29]:
+(12)
+𝑊⁡(𝑎,𝑏)=∫𝑥⁡(𝑡)⁢𝜓𝑎,𝑏⁡(𝑡)𝑑𝑡
+Energy:
+(13)
+𝐸=∑|𝑊⁡(𝑎,𝑏)|2
+3.7. Deep learning architecture
+The proposed deep learning architecture integrates convolutional neural networks, a Transformer encoder, an attention pooling mechanism, and fully connected classification layers to achieve robust Parkinson’s disease detection. Initially, the CNN component performs hierarchical feature extraction from raw inertial sensor signals, capturing localized spatial–temporal patterns such as tremor oscillations and motion irregularities. The extracted feature maps are then fed into a Transformer encoder, which models long-range temporal dependencies through self-attention mechanisms, enabling the network to assign adaptive importance to different time segments of the signal. To further enhance discriminative representation, an attention pooling layer aggregates the most informative features into a compact embedding while suppressing redundant or low-importance activations. Finally, fully connected layers perform nonlinear feature transformation and output probabilistic predictions through a SoftMax activation function. This hybrid architecture effectively combines local pattern recognition with global context modeling, resulting in improved classification accuracy and generalization performance.
+3.7.1. Convolutional neural network feature extraction
+The Convolutional Neural Network (CNN) component is employed as the primary feature extractor to capture local temporal patterns from wearable inertial sensor signals. By applying one-dimensional convolutional filters across sliding windows of the time-series input, the CNN learns discriminative representations associated with short-term motor fluctuations, tremor oscillations, and micro-movement irregularities characteristic of Parkinson’s disease. The convolutional layers perform localized receptive field operations, enabling automatic extraction of low-level features such as signal amplitude variations and frequency-specific oscillations, which are subsequently transformed into higher-level abstract representations through hierarchical stacking. Activation functions introduce non-linearity, while pooling operations reduce dimensionality and enhance translational invariance, improving robustness against minor signal shifts and noise. This localized temporal encoding forms a compact yet informative feature map that serves as input to the subsequent Transformer module for global dependency modeling. CNN extracts local temporal patterns:
+(14)
+ℎ(1)=𝜎⁢(𝑊(1)∗𝑋+𝑏(1))
+(15)
+ℎ(2)=𝜎⁢(𝑊(2)∗ℎ(1)+𝑏(2))
+where ∗
+ denotes the convolution operation and 𝜎⁡(⋅)
+ represents the activation function.
+(16)
+𝐻cnn∈ℝ𝑇′×𝑑
+3.7.2. Transformer encoder
+The Transformer encoder is incorporated to model long-range temporal dependencies within the wearable sensor time-series data using a multi-head self-attention mechanism. Unlike recurrent architectures that process sequences sequentially, the Transformer evaluates relationships between all-time steps simultaneously, enabling efficient global context modeling. This capability is particularly important for Parkinson’s disease detection, where motor abnormalities such as tremor fluctuations and irregular movement patterns may occur at non-adjacent time intervals.
+By assigning adaptive attention weights across the entire sequence, the encoder selectively emphasizes clinically relevant signal segments while suppressing noise. Positional encoding is applied to preserve temporal order information, ensuring that sequence structure is retained during attention computation. The output representations are then passed to subsequent layers for classification, resulting in enhanced feature discrimination and improved predictive performance. Transformer models long-range dependencies using self-attention [26].
+Query, Key, and Value Matrices:
+(17)
+𝑄=𝑋⁢𝑊𝑄
+(18)
+𝐾=𝑋⁢𝑊𝐾
+(19)
+𝑉=𝑋⁢𝑊𝑉
+(20)
+𝑉=𝑋⁢𝑊𝑉
+Self-Attention:
+(21)
+Attention⁡(𝑄,𝐾,𝑉)=softmax⁡(
+𝑄⁢𝐾𝑇
+√𝑑𝑘
+)⁢𝑉
+Transformer Output:
+(22)
+𝐻trans∈ℝ𝑇′×𝑑
+3.7.3. Attention pooling
+Attention Weights:
+(23)
+𝛼𝑡=
+exp⁡(𝑤𝑇⁢ℎ𝑡)
+∑𝑘exp⁡(𝑤𝑇⁢ℎ𝑘)
+Final Temporal Feature Vector:
+(24)
+𝑍=∑
+𝑡𝛼𝑡⁢ℎ𝑡
+3.7.4. Feature fusion
+Frequency and temporal features are fused as follows:
+(25)
+𝑍final=[𝑍⊕𝐹]
+3.7.5. Classification layer
+Prediction:
+(26)
+ˆ
+𝑦
+=softmax⁡(𝑊⁢𝑍final+𝑏)
+3.8. Explainable AI using integrated gradients
+Integrated Gradients computes attribution scores as follows Brand et al. [4]:
+(27)
+𝐼⁢𝐺𝑖⁡(𝑥)=(𝑥𝑖−𝑥′
+𝑖)⁢∫1
+0
+𝜕𝐹⁡(𝑥′+𝛼⁢(𝑥−𝑥′))
+𝜕𝑥𝑖
+𝑑𝛼
+where 𝑥
+ represents the input, 𝑥′
+ denotes the baseline input, and 𝐹⁡(⋅)
+ is the predictive model.
+This formulation identifies the contribution of each input feature to the model prediction, thereby highlighting the signal regions that are most influential in the decision-making process.
+3.9. Blockchain-based integrity verification and fault recovery
+The blockchain-based integrity verification module, illustrated in Fig. 5, was incorporated to provide secure, transparent, and tamper-resistant storage of diagnostic predictions generated by the proposed CNN–Transformer framework. Following smartwatch-based inertial signal acquisition and model inference, each prediction record is converted into a blockchain transaction and processed through a lightweight Ethereum-inspired blockchain layer. Unlike conventional centralized storage systems, blockchain maintains a distributed ledger in which every transaction is cryptographically linked to preceding records, thereby ensuring immutability and traceability of diagnostic outcomes.
+To secure prediction records, the framework employs the Secure Hash Algorithm (SHA-256) to generate a unique fixed-length cryptographic hash for each transaction. The generated hash acts as a digital fingerprint of the prediction and is stored within a blockchain block together with a timestamp and the hash of the previous block. The hashing operation is expressed as:
+(28)
+𝐻=SHA256⁡(Data)
+The integrity verification process is defined as:
+(29)
+Integrity={True,	if𝐻∈Blockchain
+False,	otherwise
+The blockchain implementation follows a lightweight Ethereum-style architecture designed specifically for healthcare data integrity verification. Rather than employing computationally intensive mining procedures, transaction validation is performed through cryptographic verification and chain consistency checks, thereby minimizing computational overhead while maintaining data authenticity. The blockchain interaction workflow begins with smartwatch sensor data acquisition, followed by signal preprocessing, CNN–Transformer classification, prediction generation, SHA-256 hash computation, and secure storage of the resulting transaction within the blockchain ledger.
+Integrity verification is performed by comparing newly computed hashes against the corresponding blockchain records. A transaction is considered valid when the generated hash matches the stored blockchain entry. This process enables rapid detection of unauthorized modifications while preserving complete traceability of diagnostic information.
+The blockchain layer additionally incorporates a fault detection and recovery mechanism to improve operational reliability. During verification, newly generated hashes are continuously compared with existing blockchain records. If a mismatch is detected, indicating possible data corruption, unauthorized modification, or communication errors, the affected transaction is automatically flagged as invalid and excluded from the verification process. Subsequently, the system retrieves the most recent verified blockchain state and restores ledger consistency without disrupting the prediction workflow. This recovery strategy ensures continuous operation while preserving the integrity, auditability, and trustworthiness of healthcare records.
+Download: Download high-res image (272KB)
+Download: Download full-size image
+
+Fig. 5. Blockchain-based Integrity Verification.
+
+Experimental evaluation demonstrated negligible blockchain latency and successful integrity validation across all transactions, confirming that the proposed security layer can provide reliable prediction traceability without significantly affecting real-time Parkinson’s disease monitoring performance.
+3.10. Loss function and optimization
+The proposed CNN–Transformer model was trained using the cross-entropy loss function, which is widely adopted for multi-class and binary classification problems due to its effectiveness in quantifying the divergence between predicted probabilities and true class labels. Cross-entropy penalizes incorrect predictions with higher confidence more severely, thereby encouraging the network to produce well-calibrated probability distributions. This formulation enhances class separability and accelerates convergence during training. For parameter optimization, the Adaptive Moment Estimation (Adam) optimizer was employed. Adam combines the advantages of momentum-based gradient descent and adaptive learning rate scaling by maintaining first- and second-order moment estimates of the gradients. This results in faster convergence, improved stability, and efficient handling of sparse gradients, making it particularly suitable for deep hybrid architectures such as the proposed CNN–Transformer framework.
+Cross Entropy Loss:
+𝐿=−∑𝑦⁢log⁡(
+ˆ
+𝑦
+)
+Adam Optimization [30]:
+𝜃=𝜃−𝜂∇𝐿
+Download: Download high-res image (337KB)
+Download: Download full-size image
+4. Results and analysis
+The proposed deep learning framework was evaluated on a binary classification problem under a moderately imbalanced setting. Given this skewed distribution, weighted-average metrics were selected as the primary performance indicators for the final model to ensure that class frequency was properly incorporated into evaluation.
+4.1. Experimental setup
+A 5-fold cross-validation strategy was employed to assess the robustness and generalization performance of the proposed framework. To eliminate potential data leakage, a subject-independent cross-validation protocol was implemented. Specifically, all signal segments belonging to a particular participant were grouped and assigned exclusively to a single fold. Therefore, participants appearing in the testing fold were completely absent from the corresponding training folds. This approach prevents overlap of subject-specific movement patterns between training and testing data, thereby avoiding overly optimistic performance estimates. Such a protocol is particularly important for wearable healthcare applications, where the objective is to generalize effectively to previously unseen patients rather than memorizing individual-specific signal characteristics.
+
+Table 2. Performance Metrics of the Proposed Model with Confidence Interval.
+
+Metric	Scores
+Accuracy	0.972868
+Precision	0.971445
+Recall	0.972868
+F1-score	0.971186
+95% CI (Accuracy)	±0.00701
+4.2. Final performance of the proposed model
+Table 2 summarizes the overall performance of the proposed model. The framework achieves a high classification accuracy of 97.29%, with balanced precision (97.14%) and recall (97.29%), resulting in an F1-score of 97.12%. The narrow 95% confidence interval (±0.00701
+) indicates strong statistical reliability and low variance, confirming the robustness and generalization capability of the proposed architecture.
+The model achieves:
+(30)
+Accuracy=
+𝑇⁢𝑃+𝑇⁢𝑁
+𝑁
+=0.972868
+The narrow 95% confidence interval is computed as:
+(31)
+𝐶⁢𝐼=
+ˆ
+𝑝
+±𝑧𝛼/2⁢√
+ˆ
+𝑝
+⁢(1−
+ˆ
+𝑝
+)
+𝑁
+(32)
+=0.972868±1.96⁢√
+0.972868⁢(1−0.972868)
+2064
+indicates strong statistical reliability and low variance.
+4.3. Decision threshold and error analysis
+The proposed CNN–Transformer framework performs binary classification using the probability scores generated by the final Softmax layer. A decision threshold of 0.5 was adopted, whereby samples with predicted probabilities greater than or equal to 0.5 were classified as Parkinson’s disease (PD), while those below the threshold were classified as non-PD. This threshold represents a commonly adopted operating point that balances sensitivity and specificity in medical classification tasks. The resulting performance metrics demonstrated strong discriminative capability, achieving an accuracy of 97.29%, precision of 97.14%, recall of 97.29%, and F1-score of 97.12%. The high recall indicates that the model successfully identified the majority of Parkinson’s disease cases, thereby minimizing the occurrence of false negatives.
+A detailed analysis of classification errors revealed that false positives and false negatives were relatively limited compared with the total number of evaluated samples. False positive predictions may arise from movement patterns in healthy individuals that resemble Parkinsonian motor characteristics, whereas false negatives are more clinically significant because they correspond to Parkinson’s disease cases that remain undetected by the system. The low false negative rate observed in the proposed framework suggests that the model effectively captures disease-specific temporal and motion-related features, reducing the likelihood of missed diagnoses. This behavior can be attributed to the complementary strengths of CNN-based local feature extraction and Transformer-based long-range temporal dependency modeling.
+4.4. Visual performance representation
+The performance of the proposed Blockchain-Enabled CNN–Transformer with Integrated Gradients model is illustrated through comprehensive visualizations that capture both predictive accuracy and model interpretability. The Receiver Operating Characteristic and an AUC exceeding 0.98, indicating strong discrimination between Parkinson’s and non-Parkinson’s patterns. Confusion matrices provide a clear depiction of true and false predictions, highlighting the model’s ability to maintain high precision and recall across imbalanced classes. Training and validation loss curves depict stable convergence over 25 epochs, confirming effective learning dynamics without overfitting. Additionally, Integrated Gradients visualizations map the contributions of individual time-series signal components, offering interpretable insights into the temporal regions most indicative of disease severity. These graphical representations collectively validate both the accuracy and explainability of the proposed framework, providing intuitive, publication-quality illustrations of its performance.
+Fig. 6 presents the confusion matrix and Receiver Operating Characteristic (ROC) curve of the proposed model. The confusion matrix illustrates the distribution of true positive, true negative, false positive, and false negative predictions, highlighting the model’s classification effectiveness across classes. The ROC curve demonstrates the trade-off between sensitivity and specificity across varying decision thresholds, indicating strong discriminative capability and robust overall performance.
+Download: Download high-res image (133KB)
+Download: Download full-size image
+
+Fig. 6. Confusion Matrix and ROC Curve of the proposed model.
+
+4.5. Confidence interval visualization
+The ±0.007
+ confidence interval implies:
+(33)
+Lower=0.965855
+(34)
+Upper=0.979881
+Thus, even at worst-case statistical fluctuation, the accuracy remains above 96.5%, demonstrating robustness. Fig. 7 illustrates the progression of training and validation accuracy over successive epochs. The close alignment between both curves indicates stable learning behavior and minimal overfitting. The convergence trend demonstrates effective optimization and strong generalization capability of the proposed model on unseen data.
+Download: Download high-res image (220KB)
+Download: Download full-size image
+
+Fig. 7. Training and Validation Accuracy Convergence Across Epochs.
+
+4.6. Evaluation metrics analysis and clinical significance
+To comprehensively evaluate the effectiveness of the proposed Blockchain-Integrated CNN–Transformer framework, multiple performance metrics were employed, including accuracy, precision, recall, F1-score, specificity, and Area Under the Receiver Operating Characteristic Curve (AUC). Each metric provides distinct insights into the model’s diagnostic capability and practical suitability for real-time Parkinson’s disease monitoring applications.
+Accuracy measures the overall proportion of correctly classified instances among all samples. The proposed model achieved an accuracy of 97.29%, indicating excellent overall classification performance. While accuracy provides a general assessment of model effectiveness, it may not fully capture diagnostic reliability in medical datasets where class distributions are often imbalanced.
+Precision evaluates the proportion of correctly identified Parkinson’s disease cases among all positive predictions. The obtained precision of 97.14% demonstrates that the proposed model produces very few false positive predictions, thereby reducing the likelihood of incorrectly diagnosing healthy individuals as Parkinson’s disease patients. This characteristic is particularly important in clinical environments where unnecessary follow-up examinations may increase healthcare costs and patient anxiety.
+Recall, also known as sensitivity, measures the model’s ability to correctly identify actual Parkinson’s disease cases. The achieved recall of 97.29% indicates that the proposed framework successfully detects the vast majority of affected individuals. High recall is critical in healthcare applications because missed diagnoses (false negatives) may delay treatment initiation and disease management, potentially leading to adverse patient outcomes.
+The F1-score represents the harmonic mean of precision and recall and provides a balanced measure of classification performance. The proposed framework attained an F1-score of 97.12%, demonstrating that both false positive and false negative predictions are effectively minimized. This balanced performance confirms the robustness of the model across different classification scenarios.
+Specificity quantifies the ability of the model to correctly identify non-Parkinson’s disease subjects. High specificity is essential for minimizing false alarms and ensuring reliable screening performance. Together with sensitivity, specificity provides a comprehensive assessment of diagnostic effectiveness in real-world clinical settings.
+The AUC value of 0.9869 further confirms the strong discriminative capability of the proposed framework. AUC evaluates the model’s ability to distinguish between positive and negative classes across different decision thresholds. The near-perfect AUC obtained in this study indicates excellent class separability and robust decision-making performance.
+From a real-time monitoring perspective, these evaluation metrics collectively demonstrate that the proposed framework can provide reliable and consistent predictions while maintaining a low rate of diagnostic errors. The high sensitivity ensures effective detection of Parkinson’s disease cases, whereas the high specificity and precision reduce unnecessary clinical interventions. Consequently, the proposed system is well-suited for continuous smartwatch-based monitoring environments where timely, accurate, and trustworthy diagnostic responses are required.
+4.7. Ablation study
+To rigorously assess the contribution of each architectural component, an ablation study was conducted comparing three distinct model configurations: (i) CNN Only, (ii) CNN augmented with a Transformer module, and (iii) the Full Model incorporating CNN, Transformer, and frequency feature fusion, along with the blockchain-enabled framework and integrated gradients XAI. Each configuration was trained and evaluated over five independent runs to ensure statistical reliability. The results demonstrate progressive improvements in classification performance with the addition of each module, highlighting the critical role of temporal modeling via the Transformer and feature fusion in enhancing predictive accuracy and F1 score. The full architecture consistently outperformed the simpler variants, confirming the effectiveness of the integrated design for robust Parkinson’s disease prediction.
+Table 3 reports the baseline performance of the CNN-only model across five independent runs. While the model achieves a reasonably high overall accuracy (94.71%), precision remains comparatively low (58.84%), indicating a tendency toward false positive predictions. The higher recall (70.44%) suggests sensitivity to the minority class, but at the expense of specificity. The balanced accuracy (83.44%) reflects moderate predictive reliability, confirming that the CNN alone captures local temporal patterns but lacks sufficient discriminative robustness for optimal classification.
+
+Table 3. Baseline Performance of Standalone CNN Model.
+
+Metric	Mean
+Accuracy	0.9471
+Precision	0.5884
+Recall	0.7044
+F1	0.6390
+Balanced Accuracy	0.8344
+Table 4 presents the performance of the hybrid CNN–Transformer architecture. The integration of Transformer layers with the CNN backbone resulted in noticeable performance improvements, particularly in recall (86.90%), indicating enhanced sensitivity toward the minority class. While overall accuracy increased to 95.38%, precision remained moderate (60.70%), suggesting a tendency toward higher positive predictions. The balanced accuracy of 91.44% further confirms improved class-wise discrimination compared to the CNN-only baseline. These results demonstrate that the self-attention mechanism effectively captures long-range temporal dependencies, thereby strengthening the model’s ability to detect Parkinsonian patterns in sequential sensor data.
+
+Table 4. Performance Evaluation of the Hybrid CNN–Transformer Architecture.
+
+Metric	Mean
+Accuracy	0.9538
+Precision	0.6070
+Recall	0.8690
+F1	0.7147
+Balanced Accuracy	0.9144
+Fig. 8 Ablation study showing progressive performance improvement from CNN-only architecture to CNN–Transformer and the final proposed blockchain-integrated CNN–Transformer framework. The results demonstrate that each component contributes to improved classification performance.
+Download: Download high-res image (230KB)
+Download: Download full-size image
+
+Fig. 8. Combined Performance metrics of the Ablation Study.
+
+4.7.1. Stability analysis
+Standard deviation across 5 runs:
+•
+Full model accuracy std = 0.00461
+•
+CNN std = 0.00443
+•
+CNN–Transformer std = 0.00330
+Low variance confirms reproducibility.
+Coefficient of variation:
+(35)
+𝐶⁢𝑉=
+𝜎
+𝜇
+(36)
+𝐶⁢𝑉=
+0.00461
+0.97005
+=0.00475
+Fig. 9 presents the ROC curves obtained from five-fold cross-validation for both the CNN and CNN＋Transformer models. The CNN＋Transformer model consistently demonstrates superior discriminative capability, reflected by a larger AUC across folds.
+Download: Download high-res image (173KB)
+Download: Download full-size image
+
+Fig. 9. 5-Fold Cross-Validation ROC Curves Comparing CNN and CNN+Transformer Models.
+
+Fig. 10 illustrates the ROC curves obtained across five cross-validation folds for the proposed model. The consistently high true positive rates across folds indicate stable discriminative capability. Minimal variation between curves demonstrates robustness and low performance variance, confirming the model’s reliability under different training–testing splits.
+Download: Download high-res image (195KB)
+Download: Download full-size image
+
+Fig. 10. 5-Fold Cross-Validation ROC Curves of the Proposed Model.
+
+4.8. Blockchain integration results
+The blockchain module was implemented as a lightweight Ethereum-inspired integrity verification layer to evaluate the feasibility of secure prediction storage within the proposed Parkinson’s disease detection framework. The measured average latency of 1.33×1⁢0−6
+ s demonstrate that the cryptographic hashing and verification operations introduce negligible computational overhead in the experimental environment. However, it should be noted that the reported latency corresponds to a simulated deployment scenario rather than a fully decentralized blockchain network. In practical healthcare environments, blockchain operations are typically executed on edge servers, cloud platforms, or healthcare gateways rather than directly on wearable devices. Such an edge/cloud-assisted architecture reduces the computational burden on smartwatches while preserving the integrity, traceability, and auditability of diagnostic records. Although consensus mechanisms in large-scale blockchain networks may introduce additional communication and validation delays, the lightweight design adopted in this study suggests that secure healthcare record verification can be achieved without significantly affecting the real-time performance requirements of Parkinson’s disease monitoring systems.
+4.8.1. Latency analysis
+The average transaction validation latency was measured as:
+(37)
+AvgLatency=1.3327598571777343×1⁢0−6seconds
+This corresponds to approximately:
+(38)
+1.33μ⁢𝑠
+Such negligible computational overhead indicates that the blockchain layer does not introduce performance bottlenecks. Formally, if:
+(39)
+𝑇total=𝑇model+𝑇blockchain
+Then:
+(40)
+𝑇blockchain≪𝑇model
+implying near-zero degradation in inference throughput.
+This ultra-low latency confirms suitability for real-time wearable healthcare deployments.
+4.8.2. Integrity verification
+Integrity validation was performed using SHA-based hashing of prediction outputs. Let:
+(41)
+𝐻𝑖=Hash⁡(𝐷⁢𝑎⁢𝑡⁢𝑎𝑖)
+Integrity success is defined as:
+(42)
+Integrity={True,	if𝐻stored=𝐻recomputed
+False,	otherwise
+The system returned:
+(43)
+Integritysuccess=True
+This confirms:
+•
+No block tampering occurred.
+•
+Stored model predictions remained immutable.
+•
+The blockchain chain-of-hash structure preserved transactional consistency.
+Thus, the proposed architecture ensures secure and verifiable AI inference for medical applications.
+4.9. Explainable AI (XAI) results — integrated gradients
+To enhance model transparency and facilitate clinical interpretability, Integrated Gradients (IG) was employed to identify the temporal regions of the inertial sensor signals that contributed most significantly to the model’s predictions. Integrated Gradients computes feature attributions by accumulating gradients along a path from a predefined baseline input to the actual signal. In this study, a zero-reference baseline signal was utilized during the attribution process, representing the absence of motion activity across all accelerometer and gyroscope channels. This baseline was selected because it provides a neutral reference point for evaluating the contribution of movement-related patterns within the sensor data.
+Fig. 11 presents the Integrated Gradients attribution map generated for representative Parkinson’s disease samples. The horizontal axis represents time (seconds), while the vertical axis denotes the normalized sensor signal amplitude. The color intensity corresponds to the magnitude of the attribution score, where warmer regions indicate stronger contributions to the final classification decision. High-attribution regions are concentrated within specific temporal segments characterized by oscillatory movement patterns and abnormal signal fluctuations. These regions received greater attention from the CNN–Transformer model, indicating that they contain discriminative information relevant to Parkinsonian motor abnormalities.
+The attribution analysis demonstrates that the proposed framework bases its predictions on meaningful signal characteristics rather than random noise or spurious correlations. Such interpretability is particularly important in healthcare applications, where understanding the rationale behind model decisions can improve clinician confidence, support diagnostic validation, and facilitate the integration of artificial intelligence systems into clinical decision-support workflows.
+Fig. 11 Integrated Gradients attribution map illustrating the temporal regions of wearable inertial sensor signals that contribute most significantly to Parkinson’s disease classification. The x-axis represents time (seconds), the y-axis represents normalized sensor amplitude, and the color intensity indicates the magnitude of feature attribution. Higher attribution values highlight signal segments receiving greater attention from the CNN–Transformer model during prediction.
+Download: Download high-res image (364KB)
+Download: Download full-size image
+
+Fig. 11. Integrated Gradients XAI Visualization.
+
+4.10. Statistical reliability — confidence interval
+Model reliability was further assessed using confidence interval estimation.
+The obtained confidence interval margin shows that the narrow interval width indicates:
+•
+Low sampling variance
+•
+Stable predictive behavior
+•
+High statistical confidence in reported performance
+Table 5 presents a comparative evaluation of the proposed model against previously reported machine learning and deep learning approaches on the PADS Parkinson’s Disease Smartwatch dataset. Existing methods report accuracy values ranging from 91.16% to 93.67%. In contrast, the proposed framework demonstrates superior performance with an accuracy of 97.29% and an F1-score of 97.12%, indicating a substantial improvement in predictive robustness and generalization capability over established baselines. The comparison is further illustrated in Fig. 12.
+
+Table 5. Comparative performance analysis of the proposed framework against state-of-the-art models on the PADS Parkinson’s smartwatch dataset.
+
+Authors	Models	Performance
+Varghese et al. [6]	Integrative ML approach	Accuracy 91.16%
+Wang et al. [13]	MSF-CANet	Accuracy 92.39%, AUC 0.9797
+Yu et al. [8]	CA_LSTM_FCN	Accuracy 92.15%
+Saba et al. [10]	ANN, ENS model	Accuracy 93.67%, F1 88.46%; Accuracy 92.90%,
+F1 87.2%
+In this study	Blockchain-Integrated CNN–
+Transformer	Accuracy 97.29%, Precision 97.14%, Recall 97.29%, F1 97.12%, AUC 0.9869
+Table 6 presents a comparative analysis of the proposed blockchain-integrated CNN–Transformer framework against several state-of-the-art Parkinson’s disease detection approaches reported in the literature. Traditional machine learning-based methods demonstrated moderate to high performance, with Shcherbak et al. achieving F1-micro scores of 0.78 and 0.88 for different Parkinson’s disease stages, while Castelli et al. reported classification accuracies of 95.6%, 90.9%, and 89.9% using Fine k-Nearest Neighbor and Decision Tree classifiers. Deep learning approaches generally exhibited improved predictive capability, as evidenced by Liu et al.’s CNN-LSTM model with attention mechanisms, which achieved 94.2% accuracy, 93.8% sensitivity, and 94.6% specificity. Similarly, Sigcha et al. combined Convolutional Neural Networks with Random Forest classifiers to obtain an accuracy of 86.0% and an AUC of 0.94, while Igene et al. reported accuracies of 92.6% and 94.4% using machine learning models under holdout and k-fold validation settings, respectively.
+Download: Download high-res image (157KB)
+Download: Download full-size image
+
+Fig. 12. Accuracy and F1 Score Comparison of the Proposed Framework Against State-of-the-Art Models on the PADS Parkinson’s Smartwatch Dataset.
+
+Table 6. Comparative performance analysis of the proposed model against state-of-the-art Parkinson’s disease detection approaches.
+
+Authors	Models	Performance
+Shcherbak et al. [7]	ML approach	F1-micro scores of 0.78 and 0.88
+Castelli Gattinara Di Zubiena et al. [9]	kNNf, DTc	Accuracy 95.6%, 90.9%, 89.9%
+Liu et al. [15]	CNN-LSTM + attention	Accuracy 94.2%, Sensitivity 93.8%, Specificity
+94.6%
+Sigcha et al. [5]	CNN + RF	Accuracy 86.0%, AUC 0.94
+Igene et al. [11]	ML models	Accuracy 92.6% (holdout), 94.4% (k-fold)
+Carvajal-Castaño et al. [14]	CNN + GRU	Accuracy 83.7%, 92.7%
+Brand et al. [4]	DCNN algorithm	AUC 0.94 (older adults), 0.89 (PD)
+Sachidananda Murthy and Prasad [31]	Proposed Blockchain–Deep Learning
+Framework	No quantitative performance reported
+Dipro et al. [32]	Blockchain-based Federated Learning
+with VGG19, VGG16, and
+InceptionV3	Accuracy: 97.0%
+Hathaliya et al. [33]	Blockchain-enabled GRU-LSTM
+Framework	Accuracy 74.1%
+In this study	Blockchain-Integrated CNN–
+Transformer	Accuracy 97.29%, Precision 97.14%, Recall
+97.29%, F1-score 97.12%, AUC 0.9869
+Recent studies have increasingly explored secure and intelligent healthcare frameworks through the integration of blockchain and deep learning technologies. Dipro et al. employed blockchain-based federated learning with VGG19, VGG16, and InceptionV3 models, achieving an accuracy of 97.0%, while Hathaliya et al. proposed a blockchain-enabled GRU-LSTM framework that achieved 74.1% accuracy. Although Sachidananda et al. introduced a blockchain–deep learning framework, no quantitative performance metrics were reported. Compared with these existing methods, the proposed blockchain-integrated CNN–Transformer model achieved the highest overall performance, with an accuracy of 97.29%, precision of 97.14%, recall of 97.29%, F1-score of 97.12%, and an AUC of 0.9869. These results demonstrate the effectiveness of combining CNN-based local feature extraction, Transformer-based temporal dependency modeling, and blockchain-enabled integrity verification, leading to improved robustness, reliability, and predictive performance for Parkinson’s disease detection (see Fig. 13).
+Fig. 14 presents the radar chart comparison of the proposed blockchain-integrated CNN–Transformer model against existing Parkinson’s disease detection models across multiple evaluation metrics, including accuracy, precision, recall, F1-score, AUC, and specificity. The radar plot clearly illustrates that the proposed model achieves consistently higher performance across all evaluation metrics compared to state-of-the-art methods. The improvement is particularly significant in terms of F1-score and AUC, demonstrating the robustness and reliability of the proposed framework. The superior performance is attributed to the hybrid CNN–Transformer architecture for temporal–spatial feature extraction and the blockchain-based integrity verification mechanism that enhances system reliability and trustworthiness.
+Download: Download high-res image (175KB)
+Download: Download full-size image
+
+Fig. 13. Accuracy and AUC Comparison analysis of the Proposed Model with State-of-the-Art Parkinson’s Disease Detection Approaches.
+
+Download: Download high-res image (297KB)
+Download: Download full-size image
+
+Fig. 14. Comparative Performance Analysis of the Proposed Model Against State-of-the-Art Parkinson’s Disease Detection Approaches.
+
+5. Discussion
+The proposed Blockchain-Integrated CNN–Transformer framework demonstrates strong predictive capability for Parkinson’s disease detection using wearable inertial sensor data. The model achieved high accuracy, precision, recall, F1-score, and AUC, indicating robust class discrimination and balanced predictive behavior. The consistency between precision and recall suggests that the classifier is neither biased toward positive nor negative predictions, which is critical in medical diagnostics where both false negatives and false positives carry clinical consequences. Furthermore, the narrow confidence interval reflects low statistical variance and stable generalization across evaluation samples. Collectively, these results confirm that the proposed architecture provides reliable and reproducible performance.
+The performance gains can be attributed to the hybrid architectural design combining convolutional layers with Transformer-based attention mechanisms. The convolutional component effectively extracts localized spatial–temporal patterns from inertial signals, such as tremor oscillations and abrupt motor fluctuations. In contrast, the Transformer module enhances long-range temporal dependency modeling by leveraging self-attention mechanisms that assign adaptive importance weights across the entire signal sequence. This global context modeling overcomes limitations commonly observed in traditional recurrent architectures, such as gradient decay and sequential processing constraints. The synergy between local feature extraction and global dependency learning significantly improves representation quality and classification robustness compared to standalone CNN, LSTM, or conventional machine learning models. Explainability analysis using Integrated Gradients further strengthens the validity of the proposed system. The attribution maps indicate that high-contribution regions correspond to physiologically meaningful oscillatory segments within the sensor signals. These segments align with known Parkinsonian motor characteristics, including tremor-dominant frequency patterns and irregular movement dynamics. The interpretability results suggest that the model’s decisions are driven by clinically relevant signal components rather than noise artifacts or spurious correlations. This level of transparency enhances practitioner trust and supports the integration of the framework into clinical decision-support environments.
+A distinguishing contribution of this work is the integration of a blockchain-based integrity layer. Unlike conventional AI-based diagnostic systems that focus solely on predictive performance, the proposed framework incorporates secure hashing and block validation to ensure immutability of prediction records. The measured average transaction latency was negligible, demonstrating that the security enhancement does not compromise inference efficiency. Successful integrity verification confirms that stored predictions remain tamper-proof and auditable. This feature is particularly significant in healthcare contexts where data integrity, traceability, and regulatory compliance are essential. By embedding blockchain within the AI pipeline, the framework transitions from a predictive model to a secure, trustworthy medical AI system. From a practical standpoint, the framework is suitable for wearable healthcare deployment. The low computational overhead during inference supports real-time monitoring applications. The explainability module provides interpretable outputs for clinician review, while the blockchain layer ensures accountability and medico-legal traceability. The combination of high predictive accuracy, interpretability, and security establishes the proposed system as a comprehensive solution for intelligent Parkinson’s disease monitoring.
+The performance of wearable Parkinson’s disease detection systems may be influenced by medication-induced variations in motor symptoms, particularly among patients recorded under different treatment conditions. Medications can alter tremor intensity, gait characteristics, and movement dynamics, potentially affecting the model’s ability to consistently distinguish pathological patterns. Such variability may contribute to a portion of the observed false negative cases when disease manifestations are temporarily suppressed by medication effects. Although medication-state information was not consistently available for all participants in the current dataset, future research should explore medication-aware modeling strategies that incorporate treatment status as an additional feature to improve classification robustness and clinical applicability.
+Although the primary objective of this study was to evaluate the effectiveness of the proposed Blockchain-Integrated CNN–Transformer framework for Parkinson’s disease detection, scalability remains an important consideration for practical deployment in wearable healthcare environments. The proposed architecture was designed using a lightweight blockchain layer that stores only prediction hashes and metadata rather than raw sensor streams, thereby minimizing storage and communication overhead. As the number of connected smartwatches increases, the computational burden associated with deep learning inference can be efficiently managed through edge or cloud-assisted processing, while blockchain operations remain limited to lightweight integrity verification tasks. Compared with conventional blockchain-enabled healthcare systems that often require extensive transaction validation and storage resources, the proposed framework adopts a simplified verification mechanism that supports efficient operation in distributed monitoring scenarios. These characteristics suggest that the framework can be extended to larger populations of wearable devices while maintaining reliable performance and secure record management.
+5.1. Clinical implications of sensitivity, specificity, and error analysis
+From a clinical perspective, the trade-off between sensitivity and specificity is a critical consideration in Parkinson’s disease screening systems. In medical diagnosis, false negatives are generally more concerning than false positives because an undetected Parkinson’s disease case may delay treatment initiation, disease monitoring, and clinical intervention. Consequently, maintaining high sensitivity is essential to ensure that affected individuals are correctly identified. The proposed framework achieved a high recall value of 97.29%, indicating excellent sensitivity and a reduced probability of overlooking Parkinson’s disease cases.
+Although false positives may lead to additional clinical assessments, they are generally considered less harmful than false negatives in early disease detection scenarios. The balanced performance observed between precision and recall demonstrates that the model does not excessively favor either class and maintains reliable predictive behavior across diverse patient conditions. This balance is particularly important for wearable healthcare systems, where automated predictions may serve as a preliminary decision-support tool rather than a definitive diagnosis. The adopted threshold of 0.5 provided an effective compromise between sensitivity and specificity; however, alternative operating thresholds could be selected depending on clinical requirements. For example, lower thresholds may further reduce false negatives at the expense of increased false positives, while higher thresholds may improve specificity but risk missing true disease cases. Therefore, threshold optimization can be tailored to specific clinical deployment scenarios, screening programs, or healthcare regulations. Overall, the low error rate and balanced classification performance demonstrate the suitability of the proposed blockchain-integrated CNN–Transformer framework for reliable and clinically relevant Parkinson’s disease detection.
+6. Limitations and future directions
+Despite the promising results achieved by the proposed Blockchain-Integrated CNN–Transformer framework, several limitations should be acknowledged. First, the study was conducted using the PADS smartwatch dataset, which, although comprehensive, may not fully represent the diversity of Parkinson’s disease manifestations across different populations, disease stages, age groups, and clinical conditions. Additionally, detailed metadata regarding medication status, symptom severity, and disease progression were not consistently available for all participants, limiting the ability to analyze the influence of medication-induced movement variations on model performance and false negative predictions.
+Second, although the proposed framework incorporates Integrated Gradients to improve model interpretability, the attribution maps were evaluated primarily from a computational perspective. Formal validation of the identified salient regions by neurologists or movement disorder specialists was beyond the scope of the current work. Future studies should incorporate expert clinical assessment to further validate the physiological relevance of the highlighted signal patterns and strengthen the clinical trustworthiness of the explainability component.
+Third, the blockchain module was evaluated within a lightweight simulated environment designed to verify data integrity and secure prediction storage. While the observed latency was negligible, real-world decentralized deployments may introduce additional communication overhead associated with peer-to-peer networking, node synchronization, transaction validation, and consensus execution. These factors could influence system responsiveness when deployed across geographically distributed healthcare infrastructures. Furthermore, wearable devices such as smartwatches possess limited battery capacity, computational resources, and memory, making direct blockchain execution potentially impractical without external computational support.
+Another limitation relates to scalability. The current study focused primarily on validating the effectiveness of the proposed architecture for Parkinson’s disease detection and did not perform extensive large-scale simulations involving hundreds or thousands of connected wearable devices. As the number of participating users increases, blockchain transaction throughput, storage requirements, network traffic, and synchronization overhead may become significant factors affecting system performance. Therefore, future investigations should evaluate the proposed framework under population-scale deployment scenarios and compare its scalability characteristics with existing healthcare blockchain platforms.
+Additionally, the Transformer component introduces increased computational complexity and memory requirements compared with conventional deep learning architectures. Although the hybrid CNN–Transformer design significantly improves classification performance by capturing both local and long-range temporal dependencies, deployment on resource-constrained edge devices may require model compression, pruning, quantization, or knowledge-distillation strategies to reduce computational overhead while preserving diagnostic accuracy.
+Future research will focus on validating the framework using larger multi-center datasets, incorporating medication-aware and disease-stage-aware modeling strategies, conducting expert clinical validation of explainability outputs, and evaluating real-world blockchain deployment scenarios. Furthermore, edge-assisted and cloud-assisted blockchain architectures, lightweight consensus mechanisms, and energy-efficient Transformer variants will be investigated to enhance scalability, sustainability, and practical deployment feasibility for continuous Parkinson’s disease monitoring in real-world healthcare environments.
+7. Conclusion
+This study presented a secure and interpretable deep learning framework for Parkinson’s disease detection using wearable inertial sensor data. The proposed Blockchain-Integrated CNN–Transformer architecture was designed to address three critical requirements in modern healthcare AI systems: high predictive accuracy, model interpretability, and data integrity assurance. By combining convolutional feature extraction with Transformer-based global attention mechanisms, the framework effectively captured both local motion dynamics and long-range temporal dependencies inherent in Parkinsonian motor patterns. The experimental results demonstrated superior classification performance, achieving high accuracy, precision, recall, F1-score, and AUC, thereby confirming strong discriminative capability and generalization stability.
+Beyond predictive performance, the integration of explainable artificial intelligence through Integrated Gradients provided transparent attribution of model decisions to physiologically meaningful signal segments. The alignment between attribution peaks and tremor-dominant oscillatory regions reinforces the clinical plausibility of the model’s reasoning process. This interpretability component enhances trustworthiness and supports the deployment of the system in clinical decision-support environments, where transparency is essential for practitioner acceptance and regulatory compliance. A key innovation of this work lies in the incorporation of a blockchain-based integrity layer within the AI pipeline. The blockchain module ensures immutability, traceability, and tamper-resistant storage of prediction outputs without introducing significant computational overhead. This security
+CRediT authorship contribution statement
+Ramesh Babu Kalathoti: Writing – review & editing, Writing – original draft, Software, Methodology, Formal analysis, Data curation, Conceptualization. Sachi Nandan Mohanty: Writing – review & editing, Validation, Supervision, Resources, Project administration, Investigation, Conceptualization.
+Funding
+The authors received no external funding for this research.
+Declaration of competing interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Data availability
+The data that support the findings of this study are openly available in the PADS — Parkinson’s Disease Smartwatch Dataset at https://physionet.org/content/parkinsons-disease-smartwatch/1.0.0/, [6].
+References
+[1]
+L.V. Kalia, A.E. Lang
+Parkinson’s disease
+Lancet, 386 (9996) (2015), pp. 896-912
+View PDF
+View articleView in ScopusGoogle Scholar
+[2]
+E.R. Dorsey, T. Sherer, M.S. Okun, B.R. Bloem
+The emerging evidence of the Parkinson pandemic
+J Parkinson’s Dis, 8 (s1) (2018), pp. S3-S8
+CrossrefView in ScopusGoogle Scholar
+[3]
+R. Smits Serena, F. Hinterwimmer, R. Burgkart, R. von Eisenhart-Rothe, D. Rueckert
+The use of artificial intelligence and wearable inertial measurement units in medicine: Systematic review
+JMIR MHealth UHealth, 13 (2025), Article e60521
+CrossrefGoogle Scholar
+[4]
+Y.E. Brand, D. Schwartz, E. Gazit, A.S. Buchman, R. Gilad-Bachrach, J.M. Hausdorff
+Gait detection from a wrist-worn sensor using machine learning methods: A daily living study in older adults and people with parkinson’s disease
+Sensors, 22 (18) (2022), p. 7094
+CrossrefView in ScopusGoogle Scholar
+[5]
+L. Sigcha, B. Dominguez, L. Borzi, N. Costa, S. Costa, P. Arezes, J.M. López, G. De Arcas, I. Pavon
+Bradykinesia detection in Parkinson’s disease using smartwatches’ inertial sensors and deep learning methods
+Electronics, 11 (23) (2022), p. 3879
+CrossrefView in ScopusGoogle Scholar
+[6]
+J. Varghese, A. Brenner, M. Fujarski, C.M. van Alen, L. Plagwitz, T. Warnecke
+Machine learning in the Parkinson’s disease smartwatch (PADS) dataset
+Npj Parkinson’s Dis, 10 (1) (2024), p. 9
+View in ScopusGoogle Scholar
+[7]
+A. Shcherbak, E. Kovalenko, A. Somov
+Detection and classification of early stages of Parkinson’s disease through wearable sensors and machine learning
+IEEE Trans Instrum Meas, 72 (2023), pp. 1-9
+CrossrefGoogle Scholar
+[8]
+J. Yu, K. Meng, T. Liang, H. Liu, X. Wang
+Improved deep learning for Parkinson’s diagnosis based on wearable sensors
+Electronics, 13 (23) (2024), p. 4638
+CrossrefView in ScopusGoogle Scholar
+[9]
+F. Castelli Gattinara Di Zubiena, G. Menna, I. Mileti, A. Zampogna, F. Asci, M. Paoloni, A. Suppa, Z. Del Prete, E. Palermo
+Machine learning and wearable sensors for the early detection of balance disorders in Parkinson’s disease
+Sensors, 22 (24) (2022), p. 9903
+CrossrefView in ScopusGoogle Scholar
+[10]
+A. Saba, T. Ara, J. Sudarsan, R. Poornima, M. Bali
+Enhancing early diagnosis of Parkinson’s disease with ensemble machine learning
+2024 second international conference on networks, multimedia and information technology, IEEE (2024), pp. 1-9
+CrossrefGoogle Scholar
+[11]
+L. Igene, A. Alim, M.H. Imtiaz, S. Schuckers
+A machine learning model for early prediction of Parkinson’s disease from wearable sensors
+2023 IEEE 13th annual computing and communication workshop and conference, IEEE (2023), pp. 0734-0737
+CrossrefGoogle Scholar
+[12]
+Y. LeCun, Y. Bengio, G. Hinton
+Deep learning
+Nature, 521 (7553) (2015), pp. 436-444
+CrossrefView in ScopusGoogle Scholar
+[13]
+M. Wang, J. Chen, J. Du, Y. Wu, J. Mou, D. Camacho
+Parkinson’s disease detection using multi-scale frequency-sharing channel attention network with smartwatch movement recordings
+IEEE Internet Things J (2025)
+Google Scholar
+[14]
+H.A. Carvajal-Castaño, P.A. Pérez-Toro, J.R. Orozco-Arroyave
+Classification of Parkinson’s disease patients—a deep learning strategy
+Electronics, 11 (17) (2022), p. 2684
+CrossrefView in ScopusGoogle Scholar
+[15]
+W. Liu, S. Fan, G. Weng
+Multimodal deep learning framework for early Parkinson’s disease detection through gait pattern analysis using wearable sensors and computer vision
+J Comput Innov Appl, 1 (2) (2023), pp. 74-86
+View in ScopusGoogle Scholar
+[16]
+M. Shen, P. Mortezaagha, A. Rahgozar
+Explainable artificial intelligence to diagnose early Parkinson’s disease via voice analysis
+Sci Rep, 15 (1) (2025), p. 11687
+View in ScopusGoogle Scholar
+[17]
+M. Sundararajan, A. Taly, Q. Yan
+Axiomatic attribution for deep networks
+International conference on machine learning, PMLR (2017), pp. 3319-3328
+View in ScopusGoogle Scholar
+[18]
+H.G. Mohamed, F. Alrowais, F.N. Al-Wesabi, M.A. Duhayyim, A.M. Hilal, A. Motwakel
+Blockchain enabled deep learning model with modified coati optimization for sustainable healthcare disease detection and classification
+Sci Rep, 15 (1) (2025), p. 21058
+View in ScopusGoogle Scholar
+[19]
+A. Bathula, S.K. Gupta, S. Merugu, L. Saba, N.N. Khanna, J.R. Laird, S.S. Sanagala, R. Singh, D. Garg, M.M. Fouda, et al.
+Blockchain, Artificial Intelligence, and healthcare: The tripod of future—A narrative review
+Artif Intell Rev, 57 (9) (2024), p. 238
+View in ScopusGoogle Scholar
+[20]
+A.O. Esan, D.B. Olawade, A.A. Soladoye, B.A. Omodunbi, I.A. Adeyanju, N. Aderinto
+Explainable AI for Parkinson’s disease prediction: A machine learning approach with interpretable models
+Curr Res Transl Med (2025), Article 103541
+View PDF
+View articleView in ScopusGoogle Scholar
+[21]
+S. Nakamoto
+Bitcoin: A peer-to-peer electronic cash system
+(2008)
+Google Scholar
+[22]
+S. Patel, K. Lorincz, R. Hughes, N. Huggins, J. Growdon, D. Standaert, M. Akay, J. Dy, M. Welsh, P. Bonato
+Monitoring motor fluctuations in patients with Parkinson’s disease using wearable sensors
+IEEE Trans Inf Technol Biomed, 13 (6) (2009), pp. 864-873
+View in ScopusGoogle Scholar
+[23]
+S. Del Din, A. Godfrey, C. Mazzà, S. Lord, L. Rochester
+Free-living monitoring of parkinson’s disease: Lessons from the field
+Mov Disorders, 31 (9) (2016), pp. 1293-1313
+CrossrefView in ScopusGoogle Scholar
+[24]
+E. Rovini, C. Maremmani, F. Cavallo
+How wearable sensors can support Parkinson’s disease diagnosis and treatment: A systematic review
+Front Neurosci, 11 (2017), p. 555
+View in ScopusGoogle Scholar
+[25]
+E. Pegolo, D. Volpe, A. Cucca, L. Ricciardi, Z. Sawacha
+Quantitative evaluation of hypomimia in Parkinson’s disease: A face tracking approach
+Sensors, 22 (4) (2022), p. 1358
+CrossrefView in ScopusGoogle Scholar
+[26]
+A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A.N. Gomez, Ł. Kaiser, I. Polosukhin
+Attention is all you need
+Adv Neural Inf Process Syst, 30 (2017)
+Google Scholar
+[27]
+S. Lloyd
+Least squares quantization in PCM
+IEEE Trans Inform Theory, 28 (2) (1982), pp. 129-137
+Google Scholar
+[28]
+J.W. Cooley, J.W. Tukey
+An algorithm for the machine calculation of complex Fourier series
+Math Comp, 19 (90) (1965), pp. 297-301
+Google Scholar
+[29]
+I. Daubechies
+Ten lectures on wavelets
+SIAM (1992)
+Google Scholar
+[30]
+D.P. Kingma, J. Ba
+Adam: A method for stochastic optimization
+(2014)
+arXiv preprint arXiv:1412.6980
+Google Scholar
+[31]
+K.B. Sachidananda Murthy, S.N. Prasad
+Blockchain-enabled detection of neurological disorders using a deep learning approach
+Eng Proc, 59 (1) (2024), p. 187
+CrossrefGoogle Scholar
+[32]
+S.H. Dipro, M. Islam, M.A.A. Nahian, M.S. Azad
+A federated learning approach for detecting Parkinson’s disease through privacy preserving by blockchain
+(Ph.D. thesis)
+Brac University (2022)
+Google Scholar
+[33]
+J.J. Hathaliya, H. Modi, R. Gupta, S. Tanwar
+Deep learning and blockchain-based essential and parkinson tremor classification scheme
+IEEE INFOCOM 2022-IEEE conference on computer communications workshops, IEEE (2022), pp. 1-6
+CrossrefGoogle Scholar
+Recommended articles
+No articles found.
+Metrics
+Captures
+Mendeley Readers
+6
+Mentions
+News Mentions
+1
+View details
+© 2026 The Authors. Published by Elsevier B.V. on behalf of Faculty of Computers and Artificial Intelligence, Cairo University.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.

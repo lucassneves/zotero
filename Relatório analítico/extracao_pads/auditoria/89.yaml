@@ -1,0 +1,377 @@
+meta:
+  row_id: 89
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "TIZP8P7E"
+  titulo: "Parkinson’s Disease Classification from Smartwatch Non-Motor Symptom Questionnaires in the PADS Dataset"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 89
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Rodapé, p. 1 — '2026 6th International Conference on Innovative Research in Applied Science, Engineering and Technology (IRASET) | ... ©2026 IEEE'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Estudo comparativo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'This paper presents a systematic evaluation of PD classification relying exclusively on the 30-item PDNMS questionnaire from the PADS dataset'"
+    auditoria: "CONCORDA"
+    observacao: "Avalia e compara três classificadores ensemble (CatBoost, Random Forest e XGBoost) combinados com seleção de atributos SelectKBest (ANOVA F-test, k=17) e SMOTE exclusivamente no questionário PDNMS."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 marcado como Estudo comparativo (diferente de Outro)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — 'This study uses the Parkinson's Disease Smartwatch (PADS) dataset [7], [23], [24]'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — 'This study uses the Parkinson's Disease Smartwatch (PADS) dataset [7], [23], [24]'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 6 contém apenas PADS; nenhum outro dataset foi utilizado nos experimentos."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Questionário (PDNMS)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — 'this study deliberately excludes all sensor data. Only the Parkinson's Disease Non-Motor Symptoms (PDNMS) questionnaire is used'"
+    auditoria: "CONCORDA"
+    observacao: "Atributos demográficos, de medicação e pessoais também foram excluídos ('demographic, medication, and personal attributes are excluded')."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — 'this study deliberately excludes all sensor data. Only the Parkinson's Disease Non-Motor Symptoms (PDNMS) questionnaire is used'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 9 = Não se aplica (estudo utiliza apenas questionário PDNMS)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — 'this study deliberately excludes all sensor data.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 = null (estudo sem sensores)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — 'this study deliberately excludes all sensor data. Only the Parkinson's Disease Non-Motor Symptoms (PDNMS) questionnaire is used'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 14
+    chave: "n_participantes"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — termos buscados: participants, subjects, cohort, sample, 469, 355, 390, 276, 79, 114; número de participantes não informado no artigo."
+    auditoria: "CONCORDA"
+    observacao: "O artigo descreve os três grupos (PD, DD e HC), mas não informa o número total de participantes nem o tamanho de cada grupo."
+  - id: 15
+    chave: "n_por_classe"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — termos buscados: PD, HC, DD, participants, subjects, 276, 79, 114; quantidades por classe não informadas."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 3 — 'Separate evaluations are performed for PD vs. HC and PD vs. DD.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 não contém a opção Outro."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — 'Each participant is represented as a 30-dimensional binary feature vector encoding the presence or absence of each NMS.'"
+    auditoria: "CONCORDA"
+    observacao: "Preenchido como null pela regra de coerência para estudos cuja modalidade é exclusivamente Questionário (PDNMS). Os 30 itens binários passam por seleção SelectKBest (ANOVA F-test, k=17)."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 = null (sem opção Outro marcada)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'We employ three supervised learning classifiers: CatBoost, Random Forest, and XGBoost'"
+    auditoria: "CONCORDA"
+    observacao: "Os autores denominam os três modelos de 'ensemble classifiers' (árvores com bagging/boosting), enquadrados em Classical ML pelas regras do formulário."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 não contém a opção Outro."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "CatBoost; Random Forest; XGBoost"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'We employ three supervised learning classifiers: CatBoost, Random Forest, and XGBoost'"
+    auditoria: "CONCORDA"
+    observacao: "Hiperparâmetros na Tabela I (p. 3): Random Forest (n_estimators=200, max_depth=None, min_samples_split=2); XGBoost (n_estimators=100, learning_rate=0.1, max_depth=6, subsample=0.8); CatBoost (iterations=500, learning_rate=0.05, depth=6, l2_leaf_reg=3)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "SMOTE-oversampling"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 3 — '4- SMOTE Balancing: The Synthetic Minority Oversampling Technique [20] is applied exclusively to the training partition'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Hold-out", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 3 — '3- Stratified Split: The dataset is partitioned into training (80%) and test (20%) sets... 5- Model Training & CV: 5-fold stratified cross-validation'"
+    auditoria: "CONCORDA"
+    observacao: "Divisão hold-out estratificada 80%/20% para avaliação final no conjunto de teste e 5-fold stratified CV dentro do conjunto de treino para busca em grade de hiperparâmetros e escolha de k."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 não contém a opção Outra."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — 'Each participant is represented as a 30-dimensional binary feature vector encoding the presence or absence of each NMS.'"
+    auditoria: "CONCORDA"
+    observacao: "Inferido do desenho experimental: como o estudo utiliza exclusivamente o questionário PDNMS e cada participante é representado por um único vetor binário de 30 itens, a unidade amostral sorteada no split 80%/20% é o próprio participante."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – inferida"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção III.A e III.B, p. 2–3 — 'Each participant is represented as a 30-dimensional binary feature vector... partitioned into training (80%) and test (20%) sets'"
+    auditoria: "CONCORDA"
+    observacao: "Inferida do desenho experimental: por existir apenas um registro tabular (questionário PDNMS) por participante antes do split 80%/20% e o SMOTE ser aplicado somente ao treino, nenhum participante do teste aparece no treino."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 3 — '4- SMOTE Balancing: The Synthetic Minority Oversampling Technique [20] is applied exclusively to the training partition... Crucially, the test set remains untouched'"
+    auditoria: "CONCORDA"
+    observacao: "Em relação ao conjunto de teste (20% hold-out), o SMOTE foi aplicado exclusivamente à partição de treino (80%). Nota-se, porém, que a validação cruzada 5-fold de ajuste de hiperparâmetros (etapa 5) foi executada sobre a partição de treino já balanceada pelo SMOTE."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "SMOTE (Synthetic Minority Oversampling Technique) aplicado exclusivamente à partição de treino (80%) para gerar amostras sintéticas da classe minoritária (hiperparâmetros do SMOTE não informados)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 3 — '4- SMOTE Balancing: The Synthetic Minority Oversampling Technique [20] is applied exclusively to the training partition, generating synthetic minority-class samples.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.A e IV, p. 2–3 — 'This study uses the Parkinson's Disease Smartwatch (PADS) dataset... All results are reported on the held-out test set (20% stratified split)'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Balanced accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 3 — 'Models are evaluated on the held-out test set using balanced accuracy (primary metric), precision, recall, and F1-score.'"
+    auditoria: "CONCORDA"
+    observacao: "Recall foi mapeado para Sensitivity. O artigo não especifica se o F1-score é macro, ponderado ou binário da classe positiva."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 não contém a opção Outra."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; Random Forest; Balanced accuracy; 93.24%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 3 — 'Ours | PD vs HC | Random Forest | Balanced accuracy% 93.24 | Precision% 98.08 | Recall% 92.73 | F1% 95.33'"
+    auditoria: "CONCORDA"
+    observacao: "Balanced accuracy foi definida pelos autores como métrica primária. No cenário PD×DD, o melhor modelo também foi Random Forest com Balanced accuracy de 78.22% (Tabela III, p. 4)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; Random Forest; Precision; 98.08% | PD×HC; Random Forest; Sensitivity; 92.73% | PD×HC; Random Forest; F1; 95.33% | PD×HC; CatBoost; Balanced accuracy; 91.42% | PD×HC; CatBoost; Precision; 98.00% | PD×HC; CatBoost; Sensitivity; 89.09% | PD×HC; CatBoost; F1; 93.33% | PD×HC; XGBoost; Balanced accuracy; 83.86% | PD×HC; XGBoost; Precision; 92.73% | PD×HC; XGBoost; Sensitivity; 92.73% | PD×HC; XGBoost; F1; 92.73% | PD×DD; Random Forest; Balanced accuracy; 78.22% | PD×DD; Random Forest; Precision; 89.58% | PD×DD; Random Forest; Sensitivity; 78.18% | PD×DD; Random Forest; F1; 83.50% | PD×DD; XGBoost; Balanced accuracy; 76.40% | PD×DD; XGBoost; Precision; 89.13% | PD×DD; XGBoost; Sensitivity; 74.55% | PD×DD; XGBoost; F1; 81.19% | PD×DD; CatBoost; Balanced accuracy; 75.49% | PD×DD; CatBoost; Precision; 88.89% | PD×DD; CatBoost; Sensitivity; 72.73% | PD×DD; CatBoost; F1; 80.00%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabelas II e III, p. 3–4 — resultados de CatBoost, Random Forest e XGBoost para PD vs HC e PD vs DD."
+    auditoria: "CONCORDA"
+    observacao: "Nas Tabelas II e III, a linha de referência basal de Varghese et al. está rotulada como '[4]' na tabela e citada como '[7]' no texto."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Data Availability Statement, p. 6 — 'The data used in this study are publicly available and can be accessed at [7], [23], [24].'"
+    auditoria: "CONCORDA"
+    observacao: "A declaração de disponibilidade refere-se apenas ao dataset PADS público original; não há repositório de código nem dados derivados disponibilizados pelos autores."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção IV.E, p. 5: coorte do PADS relativamente pequena ('relatively small PADS cohort') com atributos binários correlacionados e ausência de monitoramento motor contínuo quando se utilizam apenas questionários sem fusão com sensores."
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção IV.E, p. 5 — 'reduces overfitting risk in the relatively small PADS cohort... While multimodal sensor fusion provides richer continuous monitoring capabilities'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não possui subseção exclusiva de limitações; as restrições foram extraídas da subseção IV.E (Discussion and Clinical Implications)."
+  - id: 37
+    chave: "lacuna"
+    valor: "Lacuna investigada (Seção I e II.C, p. 1–2): o poder diagnóstico isolado do questionário de sintomas não motores (PDNMS) no PADS era subexplorado frente a abordagens de fusão multimodal. Trabalhos futuros (Seção V, p. 5): (1) fusão tardia multimodal integrando questionário e sinais inerciais via arquiteturas de atenção; (2) análise de interpretabilidade com valores SHAP; (3) análise longitudinal de perfis NMS para acompanhar progressão da doença."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V, p. 5 — 'Future work will pursue three directions: (1) multimodal late fusion... (2) SHAP value interpretability analysis... (3) longitudinal analysis'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano."
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção III.B, p. 3 — 'The optimal k=17 features are retained, determined by grid search... maximizing 5-fold CV balanced accuracy on the training set.'"
+    observacao: "O texto afirma que a escolha de k=17 (etapa 2), o SMOTE (etapa 4) e o ajuste de hiperparâmetros via 5-fold CV (etapa 5) foram realizados no conjunto de treino, mantendo o teste (20%) intocado. Contudo, na numeração das etapas (etapa 2 antes da etapa 3) e no fluxograma da Fig. 1, a caixa SelectKBest aparece antes do Stratified Train/Test Split (80%/20%), além de o SMOTE anteceder o 5-fold CV dentro do treino."
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; 27 = Sim – inferida; 28 = Só no treino; aux_preproc_apenas_treino = Sim"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Os cenários binários (PD×HC e PD×DD) e os grupos do PADS envolvidos estão claramente definidos, embora o N numérico não seja reportado."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Em estudo só com questionário avaliam-se modalidade (informada) e N de participantes (não reportado), atendendo 1 de 2 itens aplicáveis (50%)."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento calculado como Baixo (um vetor por participante, SMOTE restrito ao treino e seleção/tuning declarados no treino)."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta apenas uma métrica comprovadamente robusta ao desbalanceamento (Balanced accuracy), além de F1 sem especificar se é macro ou ponderado e Sensitivity sem Specificity."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Modelos, hiperparâmetros (Tabela I) e pré-processamento estão descritos, mas o código não está disponível (campo 35 = Nenhum)."
+  nota_qa: 3.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica; Quais tarefas null; Representação null"
+    resultado: "OK"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (ambos null por não serem reportados no artigo)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK"
+  - regra: "Campo 23 = SMOTE-oversampling → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK"
+  - regra: "Campo 9 = Não se aplica → campo 10 null"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campos 14 e 15 (n_participantes e n_por_classe): o artigo descreve os três grupos do PADS (PD, DD, HC), mas não informa nenhum número de participantes em todo o texto."
+  - "Campos 26 e 27 (unidade_particionamento e separacao_participante): marcados com status 'inferido' porque o artigo usa exclusivamente o questionário PDNMS e declara que cada participante é representado por um único vetor binário de 30 dimensões (Seção III.A, p. 2)."
+  - "aux_preproc_apenas_treino e QA3: embora o texto da Seção III.B (etapa 2, p. 3) declare que k=17 foi determinado maximizando a balanced accuracy via 5-fold CV no conjunto de treino ('on the training set'), a ordem numerada (etapa 2 antes da 3) e a Fig. 1 posicionam o SelectKBest antes do Stratified Train/Test Split (80%/20%); além disso, o SMOTE (etapa 4) foi aplicado à partição de treino antes do 5-fold CV de ajuste de hiperparâmetros (etapa 5)."
+  - "Campo 31 e QA4: o artigo reporta F1-score nas Tabelas II e III sem especificar se a agregação é macro, ponderada ou binária na classe positiva."
+  - "Campo 35 e QA5: Data Availability Statement (p. 6) cita apenas as referências originais do PADS [7], [23], [24], sem disponibilizar código."

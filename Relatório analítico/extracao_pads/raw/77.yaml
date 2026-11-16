@@ -1,0 +1,385 @@
+meta:
+  row_id: 77
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "QH3ZXBBE"
+  titulo: "NeuroLens: A Multimodal Mobile Platform for Early Parkinson's Disease Screening Using TinyML and Cross-Modal Feature Fusion"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 77
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho e rodapé, p. 1 (143) — '2026 IEEE International Conference on Automatic Control and Intelligent Systems (I2CACIS)... ©2026 IEEE | DOI: 10.1109/I2CACIS69435.2026.11600138'"
+    auditoria: null
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Plataforma-sistema"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 (143) — 'This paper presents NeuroLens, a cross-platform mobile application integrating four digital biomarker streams... and a Bluetooth Low Energy (BLE) wearable running a quantized 1D Convolutional Neural Network (CNN) via TinyML.'"
+    auditoria: null
+    observacao: "Apresenta uma plataforma móvel multimodal completa (React Native, FastAPI, Firestore e dispositivo vestível BLE com TinyML)."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 = Plataforma-sistema (não marcou Outro)"
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4, p. 2 (144) — 'The model was trained on a subset of the PADS dataset [14] (University Hospital Münster), retaining 355 of 469 participants'"
+    auditoria: null
+    observacao: "O artigo valida quatro módulos biomarcadores em bases independentes; para o módulo vestível de tremor (TinyML 1D CNN), o PADS é a única base utilizada para treino e avaliação."
+  - id: 6
+    chave: "datasets"
+    valor: ["Outro público", "PADS", "Privado-próprio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 (143) e Tabela VI, p. 6 (148) — 'Individual modules were validated on separate datasets drawing (n=58), cognitive (n=4,267 PPMI), wearable (PhysioNet PADS), and voice (UCI PD speech corpus)'"
+    auditoria: null
+    observacao: "Cada módulo da plataforma foi validado separadamente em um dataset distinto."
+  - id: 7
+    chave: "outros_datasets"
+    valor: "PPMI (Parkinson's Progression Markers Initiative, Curated Data Cut baseline, n=4,267); UCI PD Speech corpus (n=195); Internal touchscreen drawing corpus (n=58)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela VI, p. 6 (148) — 'Internal touchscreen (58); PPMI baseline (4,267); PHYSIONET PADS (355); UCI PD Speech (195)'"
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Metadados demográficos-clínicos", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A3 e Tabela 1, p. 2 (144) — 'Eight statistical and spectral features are extracted from each of the accelerometer and gyroscope... Three demographic features (age, sex, handedness) and three one-hot task-category flags are appended'"
+    auditoria: null
+    observacao: "Utiliza séries temporais de acelerômetro e giroscópio (16 atributos) combinadas a metadados demográficos (idade, sexo biológico e lateralidade/handedness) e contexto da tarefa (3 flags one-hot)."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4, p. 2 (144) — 'PADS tasks were mapped to NeuroLens categories as: Relaxed (1a, 1b) → Resting; Steps 2, 3, 4, 10 → Postural; Steps 5, 6, 7, 8, 9 → Kinetic.'"
+    auditoria: null
+    observacao: "Todas as 11 etapas motoras do protocolo (Relaxed 1a, 1b e Steps 2 a 10) são mapeadas nas 3 categorias de tremor (Resting, Postural, Kinetic) e processadas por um único modelo com codificação one-hot da categoria da tarefa."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11 etapas mapeadas em 3 categorias: Relaxed 1a, 1b → Resting; Steps 2, 3, 4, 10 → Postural; Steps 5, 6, 7, 8, 9 → Kinetic)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4, p. 2 (144) — 'PADS tasks were mapped to NeuroLens categories as: Relaxed (1a, 1b) → Resting; Steps 2, 3, 4, 10 → Postural; Steps 5, 6, 7, 8, 9 → Kinetic.'"
+    auditoria: null
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A3 e Tabela 1, p. 2 (144) — 'Eight statistical and spectral features are extracted from each of the accelerometer and gyroscope, yielding 16 sensor features.'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 sem a opção Outro marcada"
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 2–3 (144–145) — termos buscados: wrist, left, right, dominant, both; cita 'Apple Watch Series 4 at 100 Hz' e 'Handedness', sem informar qual punho do PADS foi utilizado."
+    auditoria: null
+    observacao: "O vetor de entrada possui 16 atributos de sensores por janela (8 de acelerômetro e 8 de giroscópio) e inclui 'Handedness' como metadado, mas o texto não esclarece se usou apenas um punho (esquerdo, direito ou dominante) ou ambos."
+  - id: 14
+    chave: "n_participantes"
+    valor: 355
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4, p. 2 (144) e Tabela VI, p. 6 (148) — 'retaining 355 of 469 participants after excluding differential diagnosis groups... yielding 276 PD patients and 79 age-matched healthy controls'"
+    auditoria: null
+    observacao: "N nos demais datasets do artigo: Drawing (n=58: 28 PD, 30 HC), Cognitive PPMI (n=4.267: 3.931 PD Spectrum, 336 HC) e Voice UCI PD Speech (n=195 gravações)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=0"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4, p. 2 (144) — 'retaining 355 of 469 participants after excluding differential diagnosis groups... yielding 276 PD patients and 79 age-matched healthy controls'"
+    auditoria: null
+    observacao: "Os grupos de diagnóstico diferencial (essential tremor, atypical Parkinsonism, multiple sclerosis, secondary Parkinsonism) foram explicitamente excluídos."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A2 e IV-A4, p. 2 (144) — 'DONE:<PD|HP>:<ratio>' e 'yielding 276 PD patients and 79 age-matched healthy controls'"
+    auditoria: null
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 sem a opção Outro marcada"
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A3 e Tabela 1, p. 2 (144) — 'Eight statistical and spectral features are extracted from each of the accelerometer and gyroscope, yielding 16 sensor features... producing a final 22-feature input vector (Table I).'"
+    auditoria: null
+    observacao: "Embora o classificador seja uma 1D CNN, a rede recebe como entrada o vetor tabular de 22 atributos por janela de 256 amostras (RMS, Std Dev, Max, Min, Dominant Frequency, Tremor Band Power 3–7 Hz, Tremor Ratio, Spectral Entropy para acelerômetro e giroscópio, mais 3 atributos demográficos e 3 flags one-hot de tarefa)."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 sem a opção Outro marcada"
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A1, p. 2 (144) e Tabela VI, p. 6 (148) — 'The 1D CNN is quantized to 8-bit integer precision using TensorFlow Lite for Microcontrollers'"
+    auditoria: null
+    observacao: "No PADS foi empregada exclusivamente a 1D CNN quantizada (8-bit). Nos outros datasets do artigo foram usados modelos de Classical ML e MLP (Logistic Regression no desenho; SVM, Random Forest, XGBoost, MLP e Logistic Regression na voz; Logistic Regression, Random Forest, XGBoost, Gradient Boosting e Stacking no PPMI), integrados por fusão tardia ponderada por AUC."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 sem a opção Outro marcada"
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Quantized 1D Convolutional Neural Network (1D CNN, 8-bit integer)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A1, p. 2 (144) e Tabela VI, p. 6 (148) — 'The 1D CNN is quantized to 8-bit integer precision using TensorFlow Lite for Microcontrollers' / '1D CNN (8-bit)'"
+    auditoria: null
+    observacao: "A saída contínua da 1D CNN passa por agregação temporal em dois níveis: classificação por janela (limiar t_w = 0,560 via Youden's J) e agregação por sessão de 12 janelas / ~30 s (limiar de proporção de janelas de alto risco t_s = 0,44 via grid search)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Nenhum"
+    status: "inferido"
+    confianca: "média"
+    evidencia: "Seção IV-A3 e IV-A4, p. 2–3 (144–145) — descreve janelas não sobrepostas de 256 amostras e otimização de limiares (Youden's J e grid search maximizando balanced accuracy), sem técnica de oversampling ou augmentation no PADS."
+    auditoria: null
+    observacao: "Diferentemente do módulo de voz (que declara uso de SMOTE) e do módulo cognitivo (que declara sample-weight compensation 11,7:1), no módulo do PADS não há aplicação de balanceamento de dados ou augmentation; o desbalanceamento (276 PD vs. 79 HC) é mitigado pela calibração dos limiares t_w e t_s visando maximizar a balanced accuracy."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Hold-out", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4, p. 2–3 (144–145) e Tabela VI, p. 6 (148) — 'A 5-fold Group K-Fold cross-validation with 80/20 patient-level stratified split ensured no subject appeared in both training and held-out partitions.'"
+    auditoria: null
+    observacao: "O texto combina '5-fold Group K-Fold cross-validation' (ou '5-fold StratGroupKFold' na Tabela VI) e '80/20 patient-level stratified split' (não fica totalmente claro se 80/20 se refere apenas à proporção 4/5 vs. 1/5 de cada dobra da CV de 5 dobras ou a um hold-out separado da CV). Também utiliza bootstrap (n = 10.000) para intervalos de confiança de 95%."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 sem a opção Outra marcada"
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4, p. 2–3 (144–145) — 'A 5-fold Group K-Fold cross-validation with 80/20 patient-level stratified split ensured no subject appeared in both training and held-out partitions.'"
+    auditoria: null
+    observacao: null
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4, p. 2–3 (144–145) — 'A 5-fold Group K-Fold cross-validation with 80/20 patient-level stratified split ensured no subject appeared in both training and held-out partitions.'"
+    auditoria: null
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = Nenhum"
+    auditoria: null
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = Nenhum"
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 (143) e Seção VII, p. 6 (148) — 'Individual modules were validated on separate datasets... wearable (PhysioNet PADS)... and the fused score is presented as a proof-of-concept requiring prospective unified validation.'"
+    auditoria: null
+    observacao: "Embora o modelo tenha sido embarcado em um protótipo com sensor MPU-6050 e ESP32, a avaliação reportada restringe-se à divisão interna do próprio PADS (Apple Watch Series 4)."
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Balanced accuracy", "Sensitivity", "Specificity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4b, p. 3 (145) e Tabela VI, p. 6 (148) — 'boosting balanced accuracy from 66.0% (window-level) to 70.2% (session-level), with held-out sensitivity of 74.3% and specificity of 65.8%... and [0.694–0.816] for AUC of 0.732.'"
+    auditoria: null
+    observacao: "Intervalos de confiança de 95% via bootstrap (n=10.000) reportados para balanced accuracy e AUC. Métricas de eficiência em hardware também reportadas: tamanho do modelo de 3,7 KB e latência de 2,1 ms por janela."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 sem a opção Outra marcada"
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; 1D CNN (8-bit, session-level); Balanced accuracy; 70.2% (95% CI [63.8%–75.4%])"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4b, p. 3 (145) — 'boosting balanced accuracy from 66.0% (window-level) to 70.2% (session-level)... Bootstrap resampling (n = 10,000) yields 95% CI of [63.8%–75.4%] for balanced accuracy'"
+    auditoria: null
+    observacao: "Na Tabela VI (p. 6/148), o desempenho do módulo no PADS é resumido por AUC = 0.732 (95% CI [0.694–0.816]), Sensitivity = 74.3% e Specificity = 65.8%."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; 1D CNN (8-bit); AUC; 0.732 (95% CI [0.694–0.816]) | PD×HC; 1D CNN (8-bit, session-level); Sensitivity; 74.3% | PD×HC; 1D CNN (8-bit, session-level); Specificity; 65.8% | PD×HC; 1D CNN (8-bit, window-level); Balanced accuracy; 66.0%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A4b, p. 3 (145) e Tabela VI, p. 6 (148) — 'boosting balanced accuracy from 66.0% (window-level) to 70.2% (session-level), with held-out sensitivity of 74.3% and specificity of 65.8%... and [0.694–0.816] for AUC of 0.732.'"
+    auditoria: null
+    observacao: "Resultados dos outros módulos em outros datasets (Tabela VI, p. 6/148): Drawing kinematics (Logistic Regression, Internal touchscreen, n=58): AUC=0.867 (95% CI [0.731–0.942]), Sens.=78.57%, Spec.=76.67%; Cognitive battery (XGBoost + SHAP, PPMI baseline, n=4,267): AUC=0.801 (95% CI [0.771–0.831]), Sens.=76.5%, Spec.=61.2%; Voice analysis (Dual-path fusion, UCI PD Speech, n=195): AUC=0.704 (95% CI [0.55–0.84]), Sens.=70.37%, Spec.=66.7%."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Artigo completo, p. 1–6 (143–148) — termos buscados: GitHub, code, availability, repository, open-source; não há seção ou menção de disponibilidade de código ou de dados derivados/próprios (apenas referência [14] ao PADS público)."
+    auditoria: null
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção VI, p. 6 (148) e Abstract, p. 1 (143): (1) módulos validados isoladamente em bases distintas de tamanhos muito diferentes (n=58 a n=4.267), tornando imperfeita a comparação direta dos pesos de fusão por AUC e sem validação unificada prospectiva; (2) mudança de domínio (domain shift) nos dados de treino pode reduzir o desempenho em diferentes populações e dispositivos (ex.: treino no Apple Watch Series 4 do PADS vs. hardware próprio MPU-6050); (3) variabilidade de hardware de tela sensível ao toque e sensores IMU entre smartphones e vestíveis afeta a consistência; (4) plataforma destinada apenas a suporte de triagem para encaminhamento a especialista, e não a diagnóstico autônomo."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção VI, p. 6 (148) — 'Training data domain shift may reduce performance across different populations and devices; touch and IMU hardware variability... and the AUC fusion weights are derived from datasets of vastly different sizes'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção II, p. 1–2 (143–144) e Seção VII, p. 6 (148): Destacam que a aplicação de redes neurais quantizadas em microcontroladores (TinyML) para DP é pouco explorada e que plataformas multimodais costumam restringir-se a pipelines offline. Como trabalhos futuros, apontam: (1) validação clínica prospectiva unificada com ≥500 sujeitos completando as quatro modalidades; (2) calibração dos limiares de fusão com dados multicêntricos; (3) estudos de usabilidade no mundo real em grupos demográficos diversos; (4) integração de variabilidade da frequência cardíaca baseada em PPG para avaliação de disfunção autonômica; e (5) aprendizado federado (federated learning) para atualização de modelos preservando a privacidade."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção VII, p. 6 (148) — 'Future work will focus on: (1) prospective unified validation with ≥500 subjects completing all four modalities; (2) calibration of fusion thresholds using multi-center data...'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano"
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV-A3 e IV-A4, p. 2–3 (144–145) — 'All numeric features are standard-scaled on-device using pre-computed constants' e 'To eliminate bias, the optimal classification thresholds were mathematically derived during 5-fold Group K-Fold cross-validation.'"
+    observacao: "Embora o artigo explicite nos módulos de desenho (Seção IV-B4) e cognitivo (Seção IV-D3) que a padronização/estatísticas foram ajustadas exclusivamente nas dobras de treino, no módulo do PADS (Seção IV-A) não informa se as constantes de standard-scaling foram calculadas apenas nas partições de treino de cada dobra, além de haver ambiguidade sobre se a otimização dos limiares t_w e t_s na CV de 5 dobras foi avaliada nas mesmas dobras ou em um conjunto held-out independente."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; 27 = Sim – explícita; 28 = Não se aplica; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenário binário PD×HC explícito, informando a exclusão dos 114 sujeitos de diagnóstico diferencial (DD) e o N exato por grupo (276 PD e 79 HC)."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Informa 4 dos 5 itens aplicáveis do recorte do PADS (modalidades, mapeamento das tarefas, sensores e N=355), mas não reporta qual punho foi utilizado (campo 13 = Não reportado)."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Moderado: há separação explícita por participante (Group K-Fold / patient-level split), mas não é reportado se as constantes de normalização no módulo do PADS foram ajustadas apenas no conjunto de treino."
+    QA4:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [31]
+      justificativa: "Reporta três métricas robustas ao desbalanceamento de classes: Balanced accuracy, AUC e o par Sensitivity + Specificity."
+    QA5:
+      resposta: "No"
+      nota: 0.0
+      campos: [35, 22, 29]
+      justificativa: "Código não disponível (Não reportado) e a arquitetura interna/hiperparâmetros de treinamento da 1D CNN (camadas, filtros, tamanho de kernel, otimizador, épocas) não são descritos, embora o pré-processamento e os limiares de decisão sejam detalhados."
+  nota_qa: 3.0
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica"
+    resultado: "Não se aplica (estudo usa Série temporal IMU e Metadados)"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "Não se aplica (cenário PD×HC)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (276 + 79 + 0 = 355)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (Participante → Sim – explícita)"
+  - regra: "Campo 24 contém Leave-one-subject-out → campo 26 = Participante e campo 27 = Sim"
+    resultado: "Não se aplica (LOOCV foi usado apenas no módulo de desenho n=58, não no PADS)"
+  - regra: "Campo 26 = Não se aplica → campos 27 e 28 = Não se aplica, risco = Não se aplica, campo 24 = Não reportado"
+    resultado: "Não se aplica"
+  - regra: "Campo 23 = Nenhum ou Não se aplica → campo 28 = Não se aplica e campo 29 null"
+    resultado: "OK"
+  - regra: "Campo 30 = true e campo 5 = Principal → explique na observação"
+    resultado: "Não se aplica (campo 30 = false)"
+  - regra: "Campo 9 = Não se aplica → campo 10 null; caso contrário, campo 10 preenchido"
+    resultado: "OK (campo 9 = Todas e campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (3→4, 6→7, 11→12, 16→17, 18→19, 20→21, 24→25, 31→32)"
+    resultado: "OK (6→7 preenchido; demais sem Outro/Outra marcado e com texto null)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Moderado → QA3 = Partially / 0.5)"
+pontos_para_revisao_humana:
+  - "Campo 13 (punhos): o artigo menciona dados de IMU do Apple Watch Series 4 e inclui 'Handedness' como metadado na Tabela 1, mas não explicita qual punho (esquerdo, direito ou ambos) do PADS foi utilizado."
+  - "Campo 18 e 20 (representacao_entrada e familia_algoritmo): o modelo no PADS é uma 1D CNN (Deep Learning), porém a entrada descrita na Seção IV-A3 e Tabela 1 não é a série temporal bruta, e sim um vetor tabular de 22 atributos extraídos por janela (16 atributos estatísticos/espectrais de IMU + 3 demográficos + 3 flags one-hot de tarefa)."
+  - "Campo 23 (balanceamento_augmentation): status inferido ('Nenhum'); no módulo PADS o desbalanceamento (276 PD vs. 79 HC) é tratado apenas no pós-processamento via ajuste dos limiares t_w=0,560 (Youden's J) e t_s=0,44 (maximização da balanced accuracy)."
+  - "Campo 24 (estrategia_validacao) e aux_preproc_apenas_treino: a Seção IV-A4 cita '5-fold Group K-Fold cross-validation with 80/20 patient-level stratified split' e deriva t_w e t_s durante a 5-fold Group K-Fold CV; verificar se 80/20 refere-se apenas à proporção 4:1 das 5 dobras ou a um hold-out separado, e notar que não é informado se o standard-scaling no PADS foi ajustado apenas no treino."
+  - "QA5: avaliado como 'No' (0.0) pois o código não está disponível e a arquitetura detalhada/hiperparâmetros de treino da 1D CNN não são informados (embora pré-processamento, atributos da Tabela 1, quantização 8-bit e limiares t_w e t_s estejam descritos)."

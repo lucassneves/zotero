@@ -1,0 +1,378 @@
+meta:
+  row_id: 92
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "85VJWA6S"
+  titulo: "Improved Deep Learning for Parkinson’s Diagnosis Based on Wearable Sensors"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Seção 2.1, p. 3 — 'In this study, the Parkinson’s disease smartwatch (PADS)dataset (https://physionet.org/content/parkinsons-disease-smartwatch/1.0.0/ (accessed on 12 June 2024)) was used'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 92
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2024"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho, p. 1 — 'Electronics 2024, 13, 4638... Published: 25 November 2024'"
+    auditoria: null
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'In this study, we propose a new Parkinson’s diagnosis method using deep learning techniques.'"
+    auditoria: null
+    observacao: "Propõe o modelo CA_LSTM_FCN (combinação de LSTM_FCN com Channel Attention Mechanism) aliado a data augmentation para séries temporais."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 = 'Novo modelo'; opção 'Outro' não marcada"
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 — 'In this study, the Parkinson’s disease smartwatch (PADS)dataset... was used, and the data pertained to 469 individual cases [34].'"
+    auditoria: null
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 — 'In this study, the Parkinson’s disease smartwatch (PADS)dataset... was used, and the data pertained to 469 individual cases [34].'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 — apenas o PADS foi utilizado nos experimentos"
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 4 — 'Data for the experiment were collected through sensorimotor recordings... smartwatches simultaneously captured acceleration and rotation data'"
+    auditoria: null
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Subconjunto"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 4 — 'three specific evaluation steps did not contribute significantly to the classification process and were therefore eliminated: step 3... step 5... and step 8'"
+    auditoria: null
+    observacao: "Das 11 etapas de avaliação (14 segmentos de 10 s), as etapas 3, 5 e 8 foram eliminadas, restando 8 etapas (11 segmentos de 10 s, totalizando 132 canais por participante)."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "1a Resting with closed eyes while sitting; 1b Resting while the patient is calculating sevens; 2 Lift and extend arms; 4 Hold one-kilogram weight in each hand for 5 s; 6 Drink from glass; 7 Cross and extend both arms; 9 Tap own nose with index finger; 10 Entrainment"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2 e Seção 2.1, p. 4 — 'three specific evaluation steps... were therefore eliminated: step 3... step 5... and step 8... became 132 channels.'"
+    auditoria: null
+    observacao: "8 de 11 etapas da Tabela 2 mantidas após exclusão das etapas 3 ('Arms remain lifted'), 5 ('Point index finger to the examiner's lifted hand') e 8 ('Bring both index fingers to each other'). As etapas de 20 s (1a, 1b e 10) são divididas em duas partes de 10 s, resultando em 11 séries de 10 s (11 × 2 punhos × 2 sensores × 3 eixos = 132 canais)."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 4 — 'these smartwatches simultaneously captured acceleration and rotation data along the three spatial axes (x, y, z) at a frequency of 100 Hz.'"
+    auditoria: null
+    observacao: "Foram avaliados três subconjuntos: apenas acelerômetro (acc), apenas giroscópio/rotação (rot) e ambos combinados (both / acc + rot)."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 4 — apenas acelerômetro e giroscópio foram utilizados; opção 'Outro' não marcada"
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 4 — 'equipped with two smartwatches... with one on each wrist... (14 recordings × 2 arms × 2 sensors × 3 axes = 168)'"
+    auditoria: null
+    observacao: "Sinais de ambos os punhos concatenados ao longo dos eixos XYZ (132 canais por participante após remoção de 3 etapas)."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 e Seção 3, p. 10 — 'the data pertained to 469 individual cases... This task puts together samples from all the participants in the dataset'"
+    auditoria: null
+    observacao: "No experimento de 3 classes entram todos os 469 participantes (276 PD, 79 HC, 114 DD); em PD×HC entram 355 (276 PD, 79 HC) e em PD×DD entram 390 (276 PD, 114 DD). Após data augmentation (HC expandido por fator 2 e DD por fator 1), o total de amostras passa a 276 PD, 237 HC e 228 DD (741 amostras)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=114"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 e Tabela 1, p. 4 — 'The dataset comprised a total of 276 PD patients, 79 healthy individuals, and 114 patients with differential diagnoses.'"
+    auditoria: null
+    observacao: "Em número de participantes originais (soma = 469). Após data augmentation na Seção 2.2 (p. 5), o número de amostras passa a 276 PD, 237 HC e 228 DD."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["3 classes (Mult-Class)", "PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'The pd vs. hc and pd vs. dd classification tasks were performed... this study conducted the pd vs. hc vs. dd triple classification task'"
+    auditoria: null
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 e Seção 3, p. 9-10 — apenas os cenários PD×HC, PD×DD e 3 classes foram avaliados; opção 'Outro' não marcada"
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 e Seção 2.1, p. 4 — 'The method takes multi-channel sensor signals as inputs... time-series data corresponding to each participant became 132 channels.'"
+    auditoria: null
+    observacao: "Séries temporais multicanal pré-processadas (corte dos primeiros 50 pontos e remoção de tendência gravitacional por l1-trend filtering) inseridas diretamente na rede CA_LSTM_FCN."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.1-2.3, p. 4-7 — apenas série temporal bruta/pré-processada usada como entrada do modelo proposto; opção 'Outro' não marcada"
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — 'a novel deep learning model for sensor data was proposed. The model combined LSTM_FCN and a channel attention mechanism.'"
+    auditoria: null
+    observacao: "O artigo propõe e avalia CA_LSTM_FCN e compara com LSTM_FCN; também apresenta gráficos comparativos (Figuras 8 e 9) com resultados reportados anteriormente por Varghese et al. [34] (SVM, NN, CatBoost)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 5 — modelos avaliados pertencem à família Deep Learning; opção 'Outro' não marcada"
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "CA_LSTM_FCN; LSTM_FCN"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 7 e Seção 3, p. 11-13 — 'Architecture of CA_LSTM_FCN... Comparison of CA_LSTM_FCN and LSTM_FCN.'"
+    auditoria: null
+    observacao: "CA_LSTM_FCN (3 blocos convolucionais temporais com 128, 256 e 128 filtros + BatchNorm + Channel Attention + bloco LSTM + Dropout + SoftMax). Nas Figuras 8 e 9, os autores também comparam graficamente com os baselines de Varghese et al. [34]: svm(B), nn(A) e catboost(B)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 5 — 'Similar to Um et al. [43], random time bending and axis rotation were performed... HC was expanded by a factor of two, and the DD was expanded by a factor of one.'"
+    auditoria: null
+    observacao: "Data augmentation em séries temporais (random time bending/warping e axis rotation) para balancear as classes minoritárias (HC e DD)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 9 — 'A 5-fold cross-validation was performed to ensure a balanced proportion of categories in each fold.'"
+    auditoria: null
+    observacao: "Validação cruzada de 5 dobras (5-fold CV), também incorporada ao processo de otimização de hiperparâmetros na Seção 3 (p. 11)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 9 — estratégia utilizada foi 5-fold CV; opção 'Outra' não marcada"
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 9 — 'The experimental samples contained enhanced data and labels... A 5-fold cross-validation was performed to ensure a balanced proportion of categories in each fold.'"
+    auditoria: null
+    observacao: "Termos buscados: subject, patient, group, split, fold. O artigo não declara a unidade de particionamento, mas as matrizes de confusão de validação (Figuras 6b, 7b e 10b, p. 10 e 12) exibem 48 HC, 55-56 PD e 45 DD em uma dobra (~1/5 das 237 HC, 276 PD e 228 DD amostras aumentadas), indicando sorteio no nível de amostra após data augmentation."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Pouco claro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 5 e Seção 2.4, p. 9 — 'there are now 276 PD, 237 HC, and 228 DD samples... A 5-fold cross-validation was performed to ensure a balanced proportion of categories in each fold.'"
+    auditoria: null
+    observacao: "O artigo menciona apenas 5-fold CV estratificado por categoria, sem declarar divisão por participante (Regra 9 -> 'Pouco claro'). Ademais, a presença de 48 HC e 45 DD na dobra de validação (Figuras 6b, 7b e 10b) evidencia que as cópias aumentadas dos 79 HC (237 amostras) e 114 DD (228 amostras) foram geradas antes da divisão em 5 dobras, permitindo que amostras originais e aumentadas do mesmo sujeito fiquem em treino e validação simultaneamente."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Antes do split"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 5 e Seção 2.4, p. 9 — 'there are now 276 PD, 237 HC, and 228 DD samples... The experimental samples contained enhanced data and labels... A 5-fold cross-validation was performed'"
+    auditoria: null
+    observacao: "Embora a Seção 2.2 mencione genericamente que data augmentation foi aplicado 'during training', o texto afirma que o conjunto de dados passou a ter 276 PD, 237 HC (79×3) e 228 DD (114×2) amostras e a Seção 2.4 confirma que as amostras experimentais já continham os dados aumentados antes do 5-fold CV. Isso é comprovado pelas matrizes de confusão de validação (Figuras 6b, 7b e 10b, p. 10 e 12), onde uma dobra (20%) contém 48 HC (20% de 237) e 45 DD (20% de 228), valores impossíveis sem o aumento prévio ao split."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Data augmentation em séries temporais (random time bending/warping e axis rotation, baseado em Um et al. [43]): sem expansão em PD (276 amostras), expansão por fator de 2 em HC (de 79 para 237 amostras) e por fator de 1 em DD (de 114 para 228 amostras)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 5 — 'random time bending and axis rotation were performed... HC was expanded by a factor of two, and the DD was expanded by a factor of one. Therefore, there are now 276 PD, 237 HC, and 228 DD samples.'"
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 3 e Seção 2.4, p. 9 — experimentos realizados exclusivamente no dataset PADS com 5-fold CV"
+    auditoria: null
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 8 e Tabela 3, p. 9 — 'several key metrics were used: accuracy, precision, recall, and F1 scores [52].'"
+    auditoria: null
+    observacao: "Recall corresponde a Sensitivity (Equação 3, p. 8). O artigo não especifica se o F1 (e Precision/Recall) no cenário de 3 classes é macro ou ponderado."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 8 — apenas Accuracy, Precision, Recall (Sensitivity) e F1 foram reportadas; opção 'Outra' não marcada"
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; CA_LSTM_FCN (acc + rot); Accuracy; 92.15%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 3, p. 9 — 'pd vs. hc | acc + rot | Accuracy 92.15% | Precision 95.08% | Recall 89.73% | F1 91.24%'"
+    auditoria: null
+    observacao: "Melhores resultados por cenário (acc + rot): PD×HC Accuracy=92.15%, F1=91.24%; PD×DD Accuracy=85.38%, F1=85.51%; 3 classes Accuracy=78.23%, F1=76.02%."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; CA_LSTM_FCN (acc + rot); Precision; 95.08% | PD×HC; CA_LSTM_FCN (acc + rot); Sensitivity; 89.73% | PD×HC; CA_LSTM_FCN (acc + rot); F1; 91.24% | PD×HC; CA_LSTM_FCN (rot); Accuracy; 88.35% | PD×HC; CA_LSTM_FCN (rot); Precision; 97.78% | PD×HC; CA_LSTM_FCN (rot); Sensitivity; 80.13% | PD×HC; CA_LSTM_FCN (rot); F1; 88.63% | PD×HC; CA_LSTM_FCN (acc); Accuracy; 81.55% | PD×HC; CA_LSTM_FCN (acc); Precision; 83.33% | PD×HC; CA_LSTM_FCN (acc); Sensitivity; 81.82% | PD×HC; CA_LSTM_FCN (acc); F1; 83.25% | PD×DD; CA_LSTM_FCN (acc + rot); Accuracy; 85.38% | PD×DD; CA_LSTM_FCN (acc + rot); Precision; 88.75% | PD×DD; CA_LSTM_FCN (acc + rot); Sensitivity; 83.42% | PD×DD; CA_LSTM_FCN (acc + rot); F1; 85.51% | PD×DD; CA_LSTM_FCN (rot); Accuracy; 76.24% | PD×DD; CA_LSTM_FCN (rot); Precision; 75.41% | PD×DD; CA_LSTM_FCN (rot); Sensitivity; 83.64% | PD×DD; CA_LSTM_FCN (rot); F1; 79.11% | PD×DD; CA_LSTM_FCN (acc); Accuracy; 72.28% | PD×DD; CA_LSTM_FCN (acc); Precision; 72.13% | PD×DD; CA_LSTM_FCN (acc); Sensitivity; 80.00% | PD×DD; CA_LSTM_FCN (acc); F1; 76.58% | 3 classes (Mult-Class); CA_LSTM_FCN (acc + rot); Accuracy; 78.23% | 3 classes (Mult-Class); CA_LSTM_FCN (acc + rot); Precision; 82.13% | 3 classes (Mult-Class); CA_LSTM_FCN (acc + rot); Sensitivity; 75.71% | 3 classes (Mult-Class); CA_LSTM_FCN (acc + rot); F1; 76.02%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 3, p. 9 e Seção 3, p. 12 — 'where the accuracy was 78.23%, the precision was 82.13%, the recall was 75.71%, and the F1 value was 76.02%.'"
+    auditoria: null
+    observacao: null
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Data Availability Statement, p. 15 — 'Data are contained within the article.'"
+    auditoria: null
+    observacao: "Não há link para código-fonte ou dados derivados disponibilizados pelos autores."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção 3 (p. 9-10): o uso combinado dos sensores (acc + rot) aumentou o tempo de processamento de dados. Seção 4 (p. 14): os experimentos foram conduzidos usando apenas alguns minutos de dados coletados em ambiente laboratorial controlado."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 14 — 'However, one significant limitation was that the experiments were conducted using only a few minutes of data.'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção 4 (p. 14) e Seção 5 (p. 14): estender a duração da coleta de dados para horas ou dias para avaliar a consistência longitudinal do modelo, realizar experimentos fora do ambiente controlado de laboratório (cenários de mundo real) e combinar o método com outras técnicas sofisticadas de deep learning."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 14 — 'future work should aim to extend the data collection period to hours or even days... conducting experiments outside the laboratory would be important steps for future research.'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano"
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.4, p. 9 e Seção 3, p. 11 — 'The experimental samples contained enhanced data and labels... A 5-fold cross-validation was performed... five-fold cross-validation was incorporated into the hyperparameter optimization process'"
+    observacao: "O pré-processamento e o data augmentation (que expandiu o dataset para 276 PD, 237 HC e 228 DD) foram realizados antes da divisão do 5-fold CV, e a seleção de hiperparâmetros e o early stopping utilizaram as próprias dobras de validação."
+  risco_vazamento:
+    valor: "Alto"
+    regra: "campo 28 = Antes do split; aux_preproc_apenas_treino = Não"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenários de classificação (PD×HC, PD×DD e 3 classes) e tamanhos dos grupos do PADS (276 PD, 79 HC, 114 DD) estão claramente definidos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os cinco itens do recorte do PADS (modalidade, tarefas, sensores, punhos e N de participantes) foram reportados."
+    QA3:
+      resposta: "No"
+      nota: 0.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento alto: data augmentation aplicado antes da divisão das 5 dobras (confirmado pelas matrizes de confusão) e sem separação explícita por participante."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta F1 (além de Accuracy, Precision e Recall/Sensitivity), mas não especifica se o F1 é macro ou ponderado e não reporta Specificity, Balanced accuracy, AUC ou MCC."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Arquitetura, pré-processamento e hiperparâmetros (Tabela 4) estão descritos, mas o código não foi disponibilizado."
+  nota_qa: 3.0
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica"
+    resultado: "OK (modalidade Série temporal IMU)"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (PD=276; HC=79; DD=114)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (276 + 79 + 114 = 469)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim; Campo 26 = Gravação-sessão ou Janela/segmento → campo 27 = Não"
+    resultado: "OK (Campo 26 = Não reportado; Campo 27 = Pouco claro)"
+  - regra: "Campo 23 = Outro → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK (Campo 28 = Antes do split; Campo 29 preenchido)"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Alto → QA3 = No / 0.0)"
+pontos_para_revisao_humana:
+  - "Campo 28 (momento_balanceamento) e QA3: embora a Seção 2.2 diga genericamente que o data augmentation foi aplicado 'during training', a expansão para 276 PD, 237 HC (79×3) e 228 DD (114×2) ocorreu antes do 5-fold CV, como comprovam a Seção 2.4 (p. 9) e as matrizes de confusão de validação (Figuras 6b, 7b e 10b, p. 10 e 12), que contêm 48 HC e 45 DD em uma única dobra (20% das amostras aumentadas)."
+  - "Campos 26 e 27: o artigo não declara a unidade de particionamento do 5-fold CV nem separação por participante, e o sorteio sobre o conjunto aumentado (741 amostras de 469 sujeitos) implica vazamento de cópias aumentadas do mesmo participante entre treino e validação."
+  - "Campo 31 e QA4: no cenário de 3 classes (PD×HC×DD), o artigo reporta Precision (82.13%), Recall (75.71%) e F1 (76.02%) sem especificar se a agregação foi macro ou ponderada."
+  - "QA5: hiperparâmetros principais estão na Tabela 4 (p. 12), mas não há disponibilização de código-fonte (Data Availability Statement, p. 15)."

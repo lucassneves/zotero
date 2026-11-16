@@ -1,0 +1,376 @@
+meta:
+  row_id: 108
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "HEUSS8MW"
+  titulo: "Parkinson’s Disease Classification Employing a Questionnaire of Non-motor Symptoms and Machine Learning Methods"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Seção 2, p. 1 — 'The study utilized the Parkinson’s Disease Smartwatch Dataset (PADS)(Varghese et al. 2024b), which comprises a stratified sample of 234 participants.'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 108
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2024"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Referências, p. 2 — '[Varghese et al. 2024a] ... (2024a) ... [Varghese et al. 2024b] ... (2024b)'"
+    auditoria: "CONCORDA"
+    observacao: "O PDF de 2 páginas não traz cabeçalho/rodapé com ano ou DOI, mas cita artigos de 2024 (da Silva et al. 2024; Varghese et al. 2024a, 2024b) e o arquivo está registrado como 2024."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Estudo comparativo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 1 — 'This study proposes a diagnostic method by applying classical machine learning algorithms to questionnaire data'"
+    auditoria: "CONCORDA"
+    observacao: "Aplica e compara dois algoritmos clássicos de aprendizado de máquina (SVM e Random Forest) sobre as respostas do questionário de sintomas não motores em dois cenários binários."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 não marcado como Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'The study utilized the Parkinson’s Disease Smartwatch Dataset (PADS)(Varghese et al. 2024b)'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'The study utilized the Parkinson’s Disease Smartwatch Dataset (PADS)(Varghese et al. 2024b)'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas o PADS foi utilizado nos experimentos (Seção 2, p. 1)"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Questionário (PDNMS)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'The dataset holds the answer to a series of 30 true or false questions pertaining to non-motor symptoms'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'answer to a series of 30 true or false questions pertaining to non-motor symptoms'"
+    auditoria: "CONCORDA"
+    observacao: "Estudo utiliza apenas o questionário de sintomas não motores (PDNMS), sem sinais de tarefas motoras."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 9 = Não se aplica (estudo só com questionário)"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — estudo utiliza apenas o questionário de 30 questões, sem sensores IMU"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 = null (estudo só com questionário)"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — estudo utiliza apenas o questionário de 30 questões, sem sensores nos punhos"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 14
+    chave: "n_participantes"
+    valor: 234
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'comprises a stratified sample of 234 participants. Among these, 82 individuals have Parkinson’s disease, 82 present with various differential diagnoses, and 70 are healthy controls.'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo utiliza o subconjunto estratificado de 234 participantes (82 PD, 70 HC, 82 DD). No cenário HC vs. PD entram 152 participantes (82 PD + 70 HC) e no cenário DD vs. PD entram 164 participantes (82 PD + 82 DD)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=82; HC=70; DD=82"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'Among these, 82 individuals have Parkinson’s disease, 82 present with various differential diagnoses, and 70 are healthy controls.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'two binary classification scenarios: The first involving the classes of Healthy Controls (HC) and Parkinson’s Disease patients (PD), and the second contrasting the Differential Diagnosis (DD) and Parkinson’s Disease (PD) groups.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 não contém Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'The dataset holds the answer to a series of 30 true or false questions pertaining to non-motor symptoms'"
+    auditoria: "CONCORDA"
+    observacao: "Conforme regra de coerência para modalidade apenas Questionário (PDNMS), representação de entrada é null."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 = null"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'The employed classical machine learning algorithms are Support Vector Machine (SVM), using a linear kernel, and Random Forest'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 não contém Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Support Vector Machine (SVM); Random Forest"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'The employed classical machine learning algorithms are Support Vector Machine (SVM), using a linear kernel, and Random Forest'"
+    auditoria: "CONCORDA"
+    observacao: "SVM com kernel linear; demais hiperparâmetros do SVM e do Random Forest não foram informados."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Nenhum"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'comprises a stratified sample of 234 participants. Among these, 82 individuals have Parkinson’s disease, 82 present with various differential diagnoses, and 70 are healthy controls.'"
+    auditoria: "CONCORDA"
+    observacao: "Nenhuma técnica de oversampling/augmentation foi aplicada; o estudo já parte da amostra estratificada de 234 participantes (82 PD, 82 DD, 70 HC)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'both of which were trained using the technique of 5-fold Cross-Validation (CV).'"
+    auditoria: "CONCORDA"
+    observacao: "5-fold Cross-Validation (CV)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 não contém Outra"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "inferido"
+    confianca: "média"
+    evidencia: "Seção 4, p. 2 — 'dataset that consists of questionnaire data pertaining to nonmotor symptoms of Parkinson’s Disease, answered by 234 subjects'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não menciona explicitamente 'subject-wise', mas como o estudo utiliza exclusivamente o questionário de 30 perguntas respondido por 234 sujeitos (1 registro por participante, sem séries temporais ou janelamento) e sem oversampling, cada instância na validação cruzada de 5 dobras corresponde a um participante distinto."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – inferida"
+    status: "inferido"
+    confianca: "média"
+    evidencia: "Seção 2, p. 1 — 'The dataset holds the answer to a series of 30 true or false questions pertaining to non-motor symptoms'"
+    auditoria: "CONCORDA"
+    observacao: "Inferida pelo desenho: há apenas um questionário de 30 itens por participante e não há janelamento nem replicação de amostras, garantindo que um participante não apareça simultaneamente no treino e na validação de uma mesma dobra."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = Nenhum"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 = Nenhum"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'The performance of the algorithms was evaluated by calculating the mean accuracy, balanced accuracy, specificity, sensitivity and F1-score, obtained from all the validation folds.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "Balanced accuracy", "F1", "Sensitivity", "Specificity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — 'evaluated by calculating the mean accuracy, balanced accuracy, specificity, sensitivity and F1-score'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não especifica se o F1-Score é macro, ponderado ou binário."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 não contém Outra"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; Random Forest; Balanced accuracy; 0.87"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1, p. 2 — 'HC vs. PD | Random Forest | Accuracy 0.86 | Balanced Accuracy 0.87 | Specificity 0.93 | Sensitivity 0.80 | F1-Score 0.86'"
+    auditoria: "CONCORDA"
+    observacao: "No cenário mais desafiador (PD×DD), o melhor resultado em Balanced accuracy foi 0.75 (obtido tanto por Random Forest quanto por SVM)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; Random Forest; Accuracy; 0.86 | PD×HC; Random Forest; Specificity; 0.93 | PD×HC; Random Forest; Sensitivity; 0.80 | PD×HC; Random Forest; F1-Score; 0.86 | PD×HC; SVM; Accuracy; 0.82 | PD×HC; SVM; Balanced accuracy; 0.82 | PD×HC; SVM; Specificity; 0.84 | PD×HC; SVM; Sensitivity; 0.80 | PD×HC; SVM; F1-Score; 0.81 | PD×DD; Random Forest; Accuracy; 0.75 | PD×DD; Random Forest; Balanced accuracy; 0.75 | PD×DD; Random Forest; Specificity; 0.81 | PD×DD; Random Forest; Sensitivity; 0.70 | PD×DD; Random Forest; F1-Score; 0.75 | PD×DD; SVM; Accuracy; 0.72 | PD×DD; SVM; Balanced accuracy; 0.75 | PD×DD; SVM; Specificity; 0.84 | PD×DD; SVM; Sensitivity; 0.65 | PD×DD; SVM; F1-Score; 0.74"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1, p. 2 — 'Table 1. Average Model Performance - HC vs. PD and DD vs. PD.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Artigo completo, p. 1–2 — termos buscados: github, code, availability, repository; nenhuma menção a disponibilização de código ou dados derivados"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seções 3 e 4, p. 1–2 — termos buscados: limitation, drawback, challenge; nenhuma limitação declarada pelos autores"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 2 — termos buscados: future, further, gap, next; nenhum trabalho futuro ou lacuna em aberto declarado pelos autores"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano"
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2, p. 1 — termos buscados: normalization, scaling, feature selection, hyperparameter, tuning; nenhum detalhe sobre pré-processamento ou ajuste por dobra de treino foi reportado"
+    observacao: "As entradas são 30 respostas binárias (true/false); o artigo não informa se houve seleção de atributos, codificação adicional ou ajuste de hiperparâmetros dentro ou fora das dobras de treino."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; 27 = Sim – inferida; 28 = Não se aplica; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Cenários binários (PD×HC e PD×DD) e tamanhos dos grupos (82 PD, 70 HC, 82 DD) estão claramente definidos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Estudo apenas com questionário; modalidade (PDNMS) e N de participantes (234) estão claramente descritos."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento moderado: separação por participante garantida pelo desenho (1 questionário por sujeito), mas aux_preproc_apenas_treino não reportado."
+    QA4:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [31]
+      justificativa: "Reporta pelo menos duas métricas robustas ao desbalanceamento: Balanced accuracy e o par Sensitivity + Specificity."
+    QA5:
+      resposta: "No"
+      nota: 0.0
+      campos: [35, 22, 29]
+      justificativa: "Não disponibiliza código e não descreve hiperparâmetros dos classificadores (exceto kernel linear no SVM) nem detalhes de reprodução da subamostra de 234 sujeitos."
+  nota_qa: 3.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica; Quais tarefas null; Representação null"
+    resultado: "OK"
+  - regra: "Soma de PD+HC+DD (campo 15: 82+70+82=234) = campo 14 (234)"
+    resultado: "OK"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – inferida"
+    resultado: "OK"
+  - regra: "Campo 23 = Nenhum → campo 28 = Não se aplica e campo 29 null"
+    resultado: "OK"
+  - regra: "Campo 9 = Não se aplica → campo 10 null"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK"
+  - regra: "Nota de QA3 (0.5 / Partially) coerente com risco_vazamento (Moderado)"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campo 2 (ano_publicacao): status inferido ('2024') a partir das referências de 2024 e metadados do arquivo, pois o PDF não possui cabeçalho/rodapé editorial."
+  - "Campos 26 e 27 (unidade_particionamento e separacao_participante): marcados como 'Participante' e 'Sim – inferida' (status inferido, confiança média) porque o estudo usa exclusivamente as 30 respostas do questionário por participante (1 registro por sujeito, sem janelamento)."
+  - "Campo 14 e 15 (n_participantes = 234; PD=82, HC=70, DD=82): os autores tratam a subamostra estratificada de 234 sujeitos (descrita no artigo original de Varghese et al. 2024a) como sendo o próprio PADS."
+  - "QA3 (Partially / 0.5) e QA5 (No / 0.0): ausência de detalhes sobre ajuste de hiperparâmetros e disponibilização de código."

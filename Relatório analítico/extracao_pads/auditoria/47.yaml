@@ -1,0 +1,380 @@
+meta:
+  row_id: 47
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "ZP6R6QZ7"
+  titulo: "Improving Parkinson’s Diagnosis: A Stacked Ensemble Learning with Vocal Biomarkers and Data Balancing"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 47
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho, p. 67 (PDF p. 1) — 'Vol.10, No.1, August 2025 ... DOI : 10.25299/itjrd.2025.22310'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 67 (PDF p. 1) — 'This study proposes a stacked ensemble learning approach for early PD detection'"
+    auditoria: "CONCORDA"
+    observacao: "Propõe um pipeline de ensemble em stacking (CatBoostClassifier + RandomForestClassifier como base learners e LogisticRegression como meta-learner) aliado a RandomOverSampler, validação cruzada estratificada de 20 folds, calibração isotônica e explicabilidade via SHAP."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 = 'Novo modelo'; opção 'Outro' não marcada"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Validação externa-generalização"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 67 (PDF p. 1) — 'To evaluate generalizability, the model was tested on the Parkinson’s Disease Smartwatch (PADS) dataset'"
+    auditoria: "CONCORDA"
+    observacao: "Na Seção 4.5 ('Generalizability of the Proposed Model', p. 79), os autores declaram que a metodologia do modelo proposto foi aplicada ao PADS ('the proposed model’s methodology was applied to the Parkinson’s Disease Smartwatch (PADS) dataset') em um cenário de 3 classes (Healthy, Parkinson's, Other Movement Disorders), distinto do cenário binário de voz do dataset principal."
+  - id: 6
+    chave: "datasets"
+    valor: ["Outro público", "PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 67 (PDF p. 1) — 'A Kaggle dataset with 195 voice recordings ... tested on the Parkinson’s Disease Smartwatch (PADS) dataset'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "Parkinson Disease Detection (Kaggle / UCI Machine Learning Repository)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 73 (PDF p. 7) — 'The dataset used in this research is the “Parkinson Disease Detection” available on Kaggle.'"
+    auditoria: "CONCORDA"
+    observacao: "Dataset de biomarcadores vocais (Parkinsons.csv) com 195 gravações de voz de 31 indivíduos (23 PD e 8 controles saudáveis)."
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "baixa"
+    evidencia: "Seção 4.5, p. 79-80 (PDF p. 13-14) — 'with raw acceleration and rotation data ... using wearable sensor data.'"
+    auditoria: "CONCORDA"
+    observacao: "A Seção 4.5 descreve que o PADS possui dados brutos de aceleração e rotação, além de metadados demográficos/histórico médico e sintomas não motores, e conclui na p. 80 que a classificação foi obtida 'using wearable sensor data', mas não detalha o pré-processamento nem se os metadados/questionário também foram incluídos na matriz de entrada."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 79 (PDF p. 13) — 'recording 11 neurologist-designed movement tasks. The dataset contains 5,159 measurement steps'"
+    auditoria: "CONCORDA"
+    observacao: "O texto menciona que o PADS contém 11 tarefas motoras (5.159 passos de medição de 469 indivíduos) na descrição geral da base, mas não especifica quais tarefas foram efetivamente utilizadas na modelagem."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Não reportado (a Seção 4.5 apenas cita que o dataset contém 11 tarefas motoras desenhadas por neurologistas)"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 79 (PDF p. 13) — 'recording 11 neurologist-designed movement tasks'; nomes das tarefas não informados"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 4.5, p. 79 (PDF p. 13) — 'with raw acceleration and rotation data'"
+    auditoria: "CONCORDA"
+    observacao: "Mencionados na descrição do PADS na Seção 4.5 ('raw acceleration and rotation data' e 'using wearable sensor data')."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 sem opção 'Outro' marcada"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 79 (PDF p. 13) — 'comprising two wrist-worn smartwatches and a smartphone'; não informa qual punho entrou no modelo"
+    auditoria: "CONCORDA"
+    observacao: "A Seção 4.5 cita dois smartwatches de punho na descrição geral da coleta do PADS, sem especificar se o modelo utilizou ambos os punhos ou apenas um."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Resumo, p. 67 e Seção 4.5, p. 79 — 'The dataset contains 5,159 measurement steps from 469 individuals'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo cita 469 participantes/indivíduos (e 5.159 measurement steps) no PADS, e na Tabela 3 (conjunto de teste, após balanceamento e split 70/30) reporta Support = 249 amostras (83 Healthy, 83 Parkinson's, 83 Other Movement Disorders). No dataset principal de voz (Kaggle/UCI), N = 31 indivíduos (23 PD, 8 HC; 195 gravações)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 4.5, Tabela 3, p. 79-80 (PDF p. 13-14) — 'Healthy ... 83 | Parkinson's ... 83 | Other Movement Disorders ... 83'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não informa o número de participantes por classe (PD, HC, DD) dentre os 469 indivíduos originais do PADS; reporta apenas o suporte do conjunto de teste já balanceado na Tabela 3 (83 amostras por classe: Healthy=83, Parkinson's=83, Other Movement Disorders=83; total=249 amostras de teste)."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["3 classes (Mult-Class)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 80 (PDF p. 14) — 'distinguishing Healthy individuals, Parkinson’s disease patients, and those with other movement disorders'"
+    auditoria: "CONCORDA"
+    observacao: "No PADS (Seção 4.5, Tabela 3 e Figura 6), a classificação foi feita em 3 classes (Healthy, Parkinson's e Other Movement Disorders). No dataset principal de voz (Kaggle/UCI), o cenário foi binário (PD×HC)."
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 sem opção 'Outro' marcada"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 79-80 — termos buscados: feature extraction, window, spectrogram, statistical features para o PADS; não descrito"
+    auditoria: "CONCORDA"
+    observacao: "Para o dataset principal de voz (Kaggle/UCI), o modelo recebe 22 atributos manuais tabulares (jitter, shimmer, PPE, spread1, spread2 etc.). Para o PADS (Seção 4.5), o artigo não descreve como os sinais brutos ou metadados foram transformados em atributos de entrada para os classificadores baseados em árvores."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 = null; opção 'Outro' não marcada"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Hybrid-Ensemble"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3, p. 74-75 (PDF p. 8-9) — 'Two base models ... CatBoostClassifier and RandomForestClassifier ... LogisticRegression is chosen as the meta-learner in a stacking ensemble'"
+    auditoria: "CONCORDA"
+    observacao: "Ensemble em stacking combinando modelos de ML clássico (CatBoostClassifier e RandomForestClassifier no nível 0 e LogisticRegression no nível 1), seguido de calibração isotônica (CalibratedClassifierCV)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 sem opção 'Outro' marcada"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "CatBoostClassifier; RandomForestClassifier; LogisticRegression; StackingClassifier; CalibratedClassifierCV (isotonic regression)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 3.3 e 3.4, p. 74-75 (PDF p. 8-9) — 'CatBoostClassifier and RandomForestClassifier ... LogisticRegression ... StackingClassifier ... isotonic regression via CalibratedClassifierCV'"
+    auditoria: "CONCORDA"
+    observacao: "Os hiperparâmetros específicos dos modelos (número de árvores, profundidade, taxa de aprendizado, regularização) não são informados."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "SMOTE-oversampling"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 74 (PDF p. 8) — 'RandomOverSampler, from the imbalanced-learn library in Python, addresses this by oversampling the minority class'"
+    auditoria: "CONCORDA"
+    observacao: "Utilizou RandomOverSampler (sobremostragem aleatória da classe minoritária)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Hold-out", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 3.3 e 3.4, p. 75 (PDF p. 9) — 'divided into a 70% training set ... and a 30% test set' e '20-fold cross-validation'"
+    auditoria: "CONCORDA"
+    observacao: "O pipeline descrito combina 5-fold CV interno ao StackingClassifier, 20-fold stratified CV no dataset balanceado completo, divisão hold-out estratificada 70/30 (treino/teste) e 20-fold CV no conjunto de teste."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 sem opção 'Outra' marcada"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 79-80 (PDF p. 13-14) — reporta '83 samples per class' (249 no total) na Tabela 3 sem explicitar a unidade sorteada no PADS"
+    auditoria: "CONCORDA"
+    observacao: "Para o PADS (Seção 4.5), o artigo não explicita a unidade de particionamento, embora o suporte de teste de 249 amostras (83 por classe em 3 classes) corresponda a 30% de 828 (469 participantes sobreamostrados para 276 por classe antes do split). No dataset principal de voz (Seção 3.2), o identificador do paciente ('name') foi removido no pré-processamento e o particionamento ocorreu no nível de gravação após o oversampling."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Pouco claro"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seções 3.2, 3.3 e 4.5, p. 74-75 e 79-80 — termos buscados: subject-wise, patient-wise, group; nenhum trecho encontrado"
+    auditoria: "CONCORDA"
+    observacao: "O artigo menciona apenas 'stratified splitting' e '20-fold stratified cross-validation' (referente às classes). Além de remover a coluna identificadora de paciente ('name') na Seção 3.2, aplica RandomOverSampler antes da divisão treino/teste 70/30, o que duplica amostras das classes minoritárias entre treino e teste."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Antes do split"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3, item 4, p. 75 (PDF p. 9) — 'Post-design, the balanced dataset is divided into a 70% training set for model fitting and a 30% test set'"
+    auditoria: "CONCORDA"
+    observacao: "Confirmado também pela Figura 1 (p. 73), pela Seção 3.4 item 1 (p. 75: 'on the entire balanced dataset (prior to the train/test split)') e pela Tabela 3 do PADS (p. 79-80), na qual o conjunto de teste possui exatamente 83 amostras em cada uma das 3 classes."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "RandomOverSampler (biblioteca imbalanced-learn em Python) aplicado ao conjunto completo antes da divisão estratificada 70/30; no teste do PADS (Tabela 3), resultou em suporte perfeitamente igual de 83 amostras por classe (Healthy=83, Parkinson's=83, Other Movement Disorders=83; total=249)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 74 e Tabela 3, p. 79-80 — 'RandomOverSampler, from the imbalanced-learn library in Python ... Support: 83 / 83 / 83'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 79 e Seção 5, p. 81 — 'the proposed model’s methodology was applied to the Parkinson’s Disease Smartwatch (PADS) dataset' e 'further validation with external datasets would help confirm its robustness'"
+    auditoria: "CONCORDA"
+    observacao: "Embora o resumo mencione que o modelo foi testado no PADS para avaliar generalização, a Seção 4.5 esclarece que a metodologia foi reaplicada ao PADS em um problema de 3 classes (enquanto a base principal de voz é binária), avaliada por divisão interna do próprio PADS, e os próprios autores apontam nas Seções 4.2, 4.4 e 5 a necessidade futura de validação externa."
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "F1", "Outra", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, Tabela 3 e texto, p. 79-80 (PDF p. 13-14) — 'Precision Recall F1-score Support ... Accuracy ... Macro Avg ... Weighted Avg ... Brier Scores'"
+    auditoria: "CONCORDA"
+    observacao: "Para o PADS (Tabela 3, p. 79-80), são reportados Precision, Recall (Sensitivity), F1-score (por classe, Macro Avg e Weighted Avg), Accuracy e Brier Score. No experimento principal de voz (Seções 4.2-4.4), também foram reportados ROC AUC (1.00) e Specificity (100%)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: "Brier Score; Curvas de calibração One-vs-Rest (rotuladas na legenda da Figura 7 como ROC Curve)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, p. 80 (PDF p. 14) — 'The Brier Scores were extremely low 0.0001 for Healthy, 0.0000 for Parkinson’s, and 0.0001 for Other Movement Disorders'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "3 classes (Mult-Class); Calibrated Stacking Ensemble (CatBoostClassifier + RandomForestClassifier + LogisticRegression); Accuracy; 1.00 (100%)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, Tabela 3 e texto, p. 79-80 (PDF p. 13-14) — 'Accuracy 1.00 (Support 249)' e 'with an overall accuracy of 100%'"
+    auditoria: "CONCORDA"
+    observacao: "Desempenho de 100% no PADS decorre de provável vazamento de dados (aplicação de RandomOverSampler antes do split 70/30). No dataset principal de voz (Kaggle/UCI, PD×HC), obteve Accuracy = 100% no teste (89 amostras), ROC AUC = 1.00, 20-fold CV Accuracy = 98.64% ± 0.0272 e Brier Score médio = 0.0071."
+  - id: 34
+    chave: "demais_valores"
+    valor: "3 classes (Mult-Class); Calibrated Stacking Ensemble; Precision (Macro Avg); 1.00 | 3 classes (Mult-Class); Calibrated Stacking Ensemble; Recall (Macro Avg); 1.00 | 3 classes (Mult-Class); Calibrated Stacking Ensemble; F1-score (Macro Avg); 1.00 | 3 classes (Mult-Class); Calibrated Stacking Ensemble; F1-score (Weighted Avg); 1.00 | 3 classes (Mult-Class); Calibrated Stacking Ensemble; Average Brier Score; 0.0000 (Healthy: 0.0001; Parkinson's: 0.0000; Other Movement Disorders: 0.0001)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.5, Tabela 3 e texto, p. 79-80 (PDF p. 13-14) — 'Macro Avg 1.00 1.00 1.00 ... Weighted Avg 1.00 1.00 1.00 ... Brier Scores were extremely low 0.0001 for Healthy, 0.0000 for Parkinson’s, and 0.0001 for Other Movement Disorders yielding an average of 0.0000'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Artigo completo, p. 67-82 — termos buscados: github, code, availability, repository; nenhum repositório dos autores encontrado"
+    auditoria: "CONCORDA"
+    observacao: "Não há seção de disponibilidade de código ou dados derivados; o único link do GitHub no artigo é a referência bibliográfica [16] da biblioteca CatBoost."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Risco de overfitting, vazamento de dados (data leakage) ou dataset excessivamente curado sugerido pelo AUC/acurácia de 1.00 (Seção 4.3, p. 78); ausência de validação externa em coortes clínicas independentes de mundo real (Seções 4.2, p. 77; 4.4, p. 79; 5, p. 81)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4.3, p. 78 e Seção 4.4, p. 79 — 'an AUC of 1.00 raises concerns about potential overfitting, data leakage, or an overly curated dataset' e 'external validation on independent datasets is still necessary'"
+    auditoria: "CONCORDA"
+    observacao: "Nota: na Seção 4.3 (p. 78), há um erro textual no artigo original que menciona 'lung cancer detection' e 'lung cancer diagnosis' ao discutir a curva ROC da Figura 5."
+  - id: 37
+    chave: "lacuna"
+    valor: "Necessidade de validação externa em datasets independentes e ambientes clínicos reais para confirmar a robustez e a capacidade de generalização do modelo (Seções 4.2, p. 77; 4.4, p. 79; 5, p. 81)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5, p. 81 (PDF p. 15) — 'further validation with external datasets would help confirm its robustness.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo exclusivo do revisor humano"
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Figura 1, p. 73 e Seções 3.3-3.4, p. 75 — 'the balanced dataset is divided into a 70% training set ... and a 30% test set' e '20-fold cross-validation on the entire balanced dataset (prior to the train/test split)'"
+    observacao: "O balanceamento com RandomOverSampler, a validação cruzada de 20 folds e a calibração isotônica foram realizados sobre o dataset completo antes da divisão treino/teste 70/30."
+  risco_vazamento:
+    valor: "Alto"
+    regra: "campo 28 = Antes do split; aux_preproc_apenas_treino = Não"
+  qa:
+    QA1:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [16, 15]
+      justificativa: "O cenário de 3 classes no PADS (Healthy, Parkinson's, Other Movement Disorders) está explícito na Tabela 3, mas o N de pessoas por classe antes do balanceamento (campo 15) não é reportado."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Informa modalidade (8), sensores (11) e N total de participantes (14), mas não reporta quais tarefas (9) nem quais punhos (13) foram usados na modelagem."
+    QA3:
+      resposta: "No"
+      nota: 0.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Alto devido à aplicação de RandomOverSampler antes do split 70/30 e ausência de separação por participante."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "No experimento com o PADS (Tabela 3), reporta apenas uma métrica robusta da lista do protocolo (F1 macro = 1.00), além de Accuracy, Precision, Sensitivity (sem Specificity) e Brier Score."
+    QA5:
+      resposta: "No"
+      nota: 0.0
+      campos: [35, 22, 29]
+      justificativa: "Código não disponível (campo 35 = Não reportado), hiperparâmetros dos algoritmos omitidos e extração de atributos do PADS não descrita."
+  nota_qa: 1.5
+  nota_qa_max: 5
+  faixa_qa: "Baixa"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica"
+    resultado: "OK (modalidade = Série temporal (IMU))"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (campo 15 = null pois o artigo reporta apenas o suporte de 83 amostras por classe no conjunto de teste pós-balanceamento)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (campo 15 = null)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim; Campo 26 = Gravação-sessão ou Janela/segmento → campo 27 = Não"
+    resultado: "OK (campo 26 = Não reportado; campo 27 = Pouco claro)"
+  - regra: "Campo 24 contém Leave-one-subject-out → campo 26 = Participante e campo 27 = Sim"
+    resultado: "OK (não utiliza LOSO)"
+  - regra: "Campo 23 = SMOTE-oversampling → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK (campo 28 = Antes do split; campo 29 preenchido)"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK (campo 9 = Não reportado; campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado <-> campo de texto preenchido"
+    resultado: "OK (campos 6->7 e 31->32 preenchidos; demais null)"
+  - regra: "Nota de QA3 coerente com risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Alto -> QA3 = No / 0.0)"
+pontos_para_revisao_humana:
+  - "Seção 4.5 (PADS): o artigo não explica como os dados de sensores vestíveis do PADS foram pré-processados/transformados em atributos tabulares nem como um pipeline desenhado para classificação binária de voz foi adaptado para 3 classes no PADS (Tabela 3, numerada como Tabela 4 no texto da p. 80)."
+  - "Campos 26, 27, 28, 33 e QA3: vazamento severo de dados (data leakage) — RandomOverSampler é aplicado ao dataset completo antes da divisão 70/30 (Seção 3.3, p. 75 e Figura 1, p. 73), resultando em 83 amostras por classe no teste do PADS (249 amostras) e 100% em todas as métricas."
+  - "Inconsistências internas graves no artigo: na Seção 4.3 (p. 78), o texto refere-se à curva ROC como 'lung cancer detection' / 'lung cancer diagnosis'; na Seção 4.5 (p. 80), a Figura 7 é intitulada 'ROC Curve of Stacking Ensemble Model on PADS Dataset', mas o gráfico exibe 'Calibration Curves (One-vs-Rest)'."
+  - "Campos 8 e 11 (confiança baixa/média): a Seção 4.5 descreve o PADS como contendo dados de aceleração/rotação, metadados e sintomas não motores, afirmando ao final ter usado 'wearable sensor data', sem detalhar exatamente quais variáveis compuseram o vetor de entrada."

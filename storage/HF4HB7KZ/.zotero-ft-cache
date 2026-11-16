@@ -1,0 +1,67 @@
+Skip to main content
+Search
+Submit
+Donate
+Log in
+Electrical Engineering and Systems Science > Signal Processing
+[Submitted on 8 Nov 2025]
+Towards Human-AI-Robot Collaboration and AI-Agent based Digital Twins for Parkinson's Disease Management: Review and Outlook
+Hassan Hizeh, Rim Chighri, Muhammad Mahboob Ur Rahman, Mohamed A. Bahloul, Ali Muqaibel, Tareq Y. Al-Naffouri
+The current body of research on Parkinson's disease (PD) screening, monitoring, and management has evolved along two largely independent trajectories. The first research community focuses on multimodal sensing of PD-related biomarkers using noninvasive technologies such as inertial measurement units (IMUs), force/pressure insoles, electromyography (EMG), electroencephalography (EEG), speech and acoustic analysis, and RGB/RGB-D motion capture systems. These studies emphasize data acquisition, feature extraction, and machine learning-based classification for PD screening, diagnosis, and disease progression modeling. In parallel, a second research community has concentrated on robotic intervention and rehabilitation, employing socially assistive robots (SARs), robot-assisted rehabilitation (RAR) systems, and virtual reality (VR)-integrated robotic platforms for improving motor and cognitive function, enhancing social engagement, and supporting caregivers. Despite the complementary goals of these two domains, their methodological and technological integration remains limited, with minimal data-level or decision-level coupling between the two. With the advent of advanced artificial intelligence (AI), including large language models (LLMs), agentic AI systems, a unique opportunity now exists to unify these research streams. We envision a closed-loop sensor-AI-robot framework in which multimodal sensing continuously guides the interaction between the patient, caregiver, humanoid robot (and physician) through AI agents that are powered by a multitude of AI models such as robotic and wearables foundation models, LLM-based reasoning, reinforcement learning, and continual learning. Such closed-loop system enables personalized, explainable, and context-aware intervention, forming the basis for digital twin of the PD patient that can adapt over time to deliver intelligent, patient-centered PD care.
+Comments:	20 pages, 5 figures, 4 tables, under review with a journal
+Subjects:	Signal Processing (eess.SP); Robotics (cs.RO)
+Cite as:	arXiv:2511.06036 [eess.SP]
+ 	(or arXiv:2511.06036v1 [eess.SP] for this version)
+ 	
+https://doi.org/10.48550/arXiv.2511.06036
+Focus to learn more
+Submission history
+From: Muhammad Mahboob Ur Rahman [view email]
+[v1] Sat, 8 Nov 2025 15:14:20 UTC (3,949 KB)
+
+Access Paper:
+View PDFHTML (experimental)Source
+view license
+Current browse context: eess.SP
+< prev next >
+
+newrecent2025-11
+Change to browse by: cs cs.RO eess
+References & Citations
+SciX
+Google Scholar
+Semantic Scholar
+Export BibTeX Citation
+Bookmark
+Bibliographic Tools
+Bibliographic and Citation Tools
+Bibliographic Explorer Toggle
+Bibliographic Explorer (What is the Explorer?)
+Connected Papers Toggle
+Connected Papers (What is Connected Papers?)
+Litmaps Toggle
+Litmaps (What is Litmaps?)
+scite.ai Toggle
+scite Smart Citations (What are Smart Citations?)
+Code, Data, Media
+Demos
+Related Papers
+About arXivLabs
+Which authors of this paper are endorsers? | Disable MathJax (What is MathJax?)
+We gratefully acknowledge support from our major funders, member institutions, and all contributors.
+About
+·
+Help
+·
+Contact
+·
+Subscribe
+·
+Copyright
+·
+Privacy
+·
+Accessibility
+·
+Operational Status
+(opens in new tab)

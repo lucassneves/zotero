@@ -1,0 +1,380 @@
+meta:
+  row_id: 80
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "TRJRVQSJ"
+  titulo: "Multi-scale Frequency-Aware Adversarial Network for Parkinson’s Disease Assessment Using Wearable Sensors"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 80
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho lateral, p. 1 — 'arXiv:2510.10558v1 [cs.LG] 12 Oct 2025'"
+    auditoria: "CONCORDA"
+    observacao: "Preprint disponibilizado no arXiv em 12 de outubro de 2025."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'we propose the Multi-scale Frequency-Aware Adversarial Multi-Instance Network (MFAM).'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não foi marcada no campo 3."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'We comprehensively validated MFAM on both the public PADS dataset for PD versus differential diagnosis (DD) binary classification and a private dataset'"
+    auditoria: "CONCORDA"
+    observacao: "O PADS é uma das duas bases principais de treino e avaliação (junto a um dataset privado de 4 níveis de severidade)."
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS", "Privado-próprio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 — 'we conducted experiments on one private dataset and one public dataset. • PADS Public Dataset [23]... • Private Dataset'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "Private Dataset (coletado pela equipe dos autores, contendo HC e pacientes com DP em 3 níveis de severidade: mild, moderate, severe)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 — 'Private Dataset: This dataset was collected by our team and includes a healthy control group (HC) and PD patients at three different severity levels'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 — 'PADS Public Dataset [23]: This is a widely used PD assessment dataset collected via Apple Watch, also containing 6-channel motion signals at a 100 Hz sampling rate.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Subconjunto"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 6 — 'Activity Name: Relaxed1, Relaxed2, RelaxedTask1, RelaxedTask2, StretchHold, HoldWeight, DrinkGlas, CrossArms, TouchNose, Entrainment1, Entrainment2'"
+    auditoria: "CONCORDA"
+    observacao: "Modelo por tarefa: os resultados são avaliados e reportados separadamente para cada uma das 11 atividades motoras listadas na Tabela I."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Relaxed1; Relaxed2; RelaxedTask1; RelaxedTask2; StretchHold; HoldWeight; DrinkGlas; CrossArms; TouchNose; Entrainment1; Entrainment2"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 6 — 'Relaxed1... Relaxed2... RelaxedTask1... RelaxedTask2... StretchHold... HoldWeight... DrinkGlas... CrossArms... TouchNose... Entrainment1... Entrainment2'"
+    auditoria: "CONCORDA"
+    observacao: "Total de 11 atividades motoras avaliadas no PADS."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "inferido"
+    confianca: "média"
+    evidencia: "Seção IV-A, p. 5 — 'also containing 6-channel motion signals at a 100 Hz sampling rate... containing 6 channels of tri-axial acceleration and tri-axial angular velocity'"
+    auditoria: "CONCORDA"
+    observacao: "Para o PADS menciona-se 'also containing 6-channel motion signals', cuja definição ('6 channels of tri-axial acceleration and tri-axial angular velocity') é explicitada no parágrafo seguinte ao descrever o dataset privado."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não foi marcada no campo 11."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados na Seção IV (p. 5–6): wrist, left, right, hand, both; para o PADS menciona-se apenas 'collected via Apple Watch, also containing 6-channel motion signals'."
+    auditoria: "CONCORDA"
+    observacao: "Como cita 6 canais de movimento (3 de aceleração e 3 de velocidade angular), infere-se que pode ter usado apenas um punho por vez ou um único punho, mas o artigo não especifica qual punho do PADS foi utilizado."
+  - id: 14
+    chave: "n_participantes"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados na Seção IV (p. 5–6): participants, subjects, patients, 390, 469, 276, 114; nenhum número total de participantes ou amostras é informado."
+    auditoria: "CONCORDA"
+    observacao: "Na Seção IV-D e Fig. 3 (p. 6) menciona-se 'sample 50 is a PD patient, sample 100 is a DD patient' e '18 time windows', mas o N total de participantes do PADS usados no experimento não é reportado."
+  - id: 15
+    chave: "n_por_classe"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados na Seção IV (p. 5–6): PD, DD, HC, patients, subjects; os tamanhos dos grupos PD e DD não são informados."
+    auditoria: "CONCORDA"
+    observacao: "Apenas informa que o experimento no PADS contempla pacientes PD e DD (sem o grupo HC)."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×DD"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 — 'The task on this dataset is a binary classification between PD and DD, which is of great importance for clinical differential diagnosis.'"
+    auditoria: "CONCORDA"
+    observacao: "No dataset privado (fora do PADS), foi avaliado um cenário de 4 classes de severidade (HC, mild, moderate, severe)."
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não foi marcada no campo 16."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta", "Tempo-frequência (espectrograma, wavelet)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III, p. 3 — 'an input multivariate time series is first pre-processed by a Frequency Decomposition Module (FDM)... to isolate specific pathology-related frequency bands'"
+    auditoria: "CONCORDA"
+    observacao: "O MFAM recebe a série temporal bruta segmentada em janelas e aplica internamente o módulo FDM (FFT, máscara binária nas bandas 0.5–3 Hz, 3–7 Hz e 7–12 Hz, e IFFT) gerando sinais decompostos por sub-bandas de frequência concatenados nos canais. O baseline LGBM utiliza atributos manuais conforme citado na Seção IV-C (p. 5)."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não foi marcada no campo 18."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-C, p. 5 — 'The baselines included a traditional machine learning method LightGBM (LGBM) [16], classic hybrid deep learning architectures such as CNNLSTM [27] and LSTMCNN [28], and... ADAMIL [29].'"
+    auditoria: "CONCORDA"
+    observacao: "O modelo proposto MFAM e os baselines LSTMCNN e ADAMIL são arquiteturas de Deep Learning; o LGBM é Classical ML. O componente adversarial do MFAM (CDAN com GRL) é para adaptação de domínio entre sujeitos, não geração de dados sintéticos."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outro' não foi marcada no campo 20."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "MFAM (Multi-scale Frequency-Aware Adversarial Multi-Instance Network); LGBM (LightGBM); LSTMCNN; ADAMIL"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 6 — 'LGBM [16] | LSTMCNN [28] | ADAMIL [29] | Ours (MFAM)'"
+    auditoria: "CONCORDA"
+    observacao: "O modelo CNNLSTM [27] é citado na Seção IV-C (p. 5) e avaliado na Tabela II (dataset privado), mas não aparece na Tabela I (PADS)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Nenhum"
+    status: "inferido"
+    confianca: "média"
+    evidencia: "Seção IV-B, p. 5 — 'In the data preprocessing stage, the raw signals were segmented into 1-second windows with a 50% overlap.'"
+    auditoria: "CONCORDA"
+    observacao: "A descrição do pré-processamento e treinamento (Seções III e IV-B) não menciona uso de técnicas de balanceamento de classes ou data augmentation (termos buscados: SMOTE, oversampling, augmentation, balance)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 — 'we employed a subject-level (cross-subject) 4-fold cross-validation scheme for both datasets.'"
+    auditoria: "CONCORDA"
+    observacao: "4-fold cross-validation por participante. Na Seção IV-B (p. 5) menciona-se também 'early stopping based on validation set performance', sem especificar como o conjunto de validação foi separado."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outra' não foi marcada no campo 24."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 — 'Specifically, we randomly and evenly divided all participants (not data segments) into 4 groups.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 — 'we employed a subject-level (cross-subject) 4-fold cross-validation scheme... to ensure that each subject’s data was used for testing exactly once.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Não se aplica"
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 preenchido como 'Nenhum' (nenhuma técnica de balanceamento reportada)."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 23 preenchido como 'Nenhum'."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 — 'we employed a subject-level (cross-subject) 4-fold cross-validation scheme for both datasets.'"
+    auditoria: "CONCORDA"
+    observacao: "Embora o artigo utilize dois datasets (PADS e Private Dataset), cada um aborda uma tarefa distinta (PD×DD binário no PADS vs. 4 classes de severidade no dataset privado) e é avaliado separadamente por 4-fold CV interno, sem teste cruzado entre bases."
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A, p. 5 — 'We report the per-activity Accuracy, Macro-Precision, Macro-Recall, and Macro-F1 score as evaluation metrics.'"
+    auditoria: "CONCORDA"
+    observacao: "F1, Precision e Recall (mapeado para Sensitivity) são explicitamente calculados na forma Macro (Macro-Precision, Macro-Recall, Macro-F1). Nota: em classificação binária (PD×DD), Macro-Recall equivale matematicamente à Balanced accuracy."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Opção 'Outra' não foi marcada no campo 31."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×DD (CrossArms); MFAM; Accuracy; 81.29% (Macro-F1: 75.45%, Macro-Precision: 79.77%, Macro-Recall: 73.85%)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 6 — 'CrossArms | Ours (MFAM): Acc 81.29, Pre 79.77, Rec 73.85, F1 75.45'"
+    auditoria: "CONCORDA"
+    observacao: "Melhor desempenho do modelo proposto (MFAM) entre as 11 atividades do PADS na Tabela I (tanto em Accuracy quanto em Macro-F1 e Macro-Recall). Maior Macro-Precision isolada do MFAM ocorreu em Entrainment2 (79.98%)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×DD (Relaxed1); MFAM; Accuracy; 80.51% (Macro-F1: 73.66%, Macro-Precision: 78.99%, Macro-Recall: 72.23%) | PD×DD (Relaxed2); MFAM; Accuracy; 77.94% (Macro-F1: 70.21%, Macro-Precision: 74.28%, Macro-Recall: 69.18%) | PD×DD (RelaxedTask1); MFAM; Accuracy; 78.46% (Macro-F1: 70.22%, Macro-Precision: 75.67%, Macro-Recall: 68.78%) | PD×DD (RelaxedTask2); MFAM; Accuracy; 78.97% (Macro-F1: 69.25%, Macro-Precision: 78.36%, Macro-Recall: 67.85%) | PD×DD (StretchHold); MFAM; Accuracy; 78.45% (Macro-F1: 70.60%, Macro-Precision: 74.45%, Macro-Recall: 69.83%) | PD×DD (HoldWeight); MFAM; Accuracy; 79.74% (Macro-F1: 72.23%, Macro-Precision: 77.84%, Macro-Recall: 70.95%) | PD×DD (DrinkGlas); MFAM; Accuracy; 79.99% (Macro-F1: 74.11%, Macro-Precision: 76.30%, Macro-Recall: 72.94%) | PD×DD (TouchNose); MFAM; Accuracy; 79.99% (Macro-F1: 73.24%, Macro-Precision: 78.45%, Macro-Recall: 71.71%) | PD×DD (Entrainment1); MFAM; Accuracy; 79.49% (Macro-F1: 70.76%, Macro-Precision: 78.19%, Macro-Recall: 69.24%) | PD×DD (Entrainment2); MFAM; Accuracy; 80.01% (Macro-F1: 71.40%, Macro-Precision: 79.98%, Macro-Recall: 69.62%) | PD×DD (DrinkGlas); ADAMIL; Accuracy; 79.49% (Macro-F1: 72.35%, Macro-Precision: 76.83%, Macro-Recall: 70.57%) | PD×DD (CrossArms); ADAMIL; Accuracy; 79.23% (Macro-F1: 72.80%, Macro-Precision: 76.06%, Macro-Recall: 71.43%) | PD×DD (DrinkGlas); LSTMCNN; Accuracy; 77.55% (Macro-F1: 67.76%, Macro-Precision: 75.82%, Macro-Recall: 66.07%) | PD×DD (RelaxedTask1); LGBM; Accuracy; 76.53% (Macro-F1: 63.19%, Macro-Precision: 78.07%, Macro-Recall: 62.34%)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 6 — 'TABLE I PD vs. DD binary classification results on the PADS public dataset'"
+    auditoria: "CONCORDA"
+    observacao: "Valores da Tabela I para as demais tarefas com o MFAM e os melhores resultados dos baselines (ADAMIL, LSTMCNN e LGBM) no PADS."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados em todo o artigo (p. 1–7): github, code, availability, repository, gitlab, zenodo; nenhuma menção encontrada."
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados na Seção IV e V (p. 5–7): limitation, drawback, weakness, constraint; não há seção ou declaração explícita de limitações."
+    auditoria: "CONCORDA"
+    observacao: "De forma implícita, na Seção V (Conclusion, p. 7), os autores apontam como direções futuras estender a classificação discreta para regressão contínua de severidade, fundir sensores multimodais de diferentes locais do corpo e transferir dados de laboratório para ambientes de vida livre (free-living)."
+  - id: 37
+    chave: "lacuna"
+    valor: "Falta de especificidade patológica na extração de características e diluição de sintomas temporalmente esparsos em modelos de séries temporais de propósito geral (Seção I, p. 1–2); como trabalhos futuros (Seção V, p. 7), propõem regressão contínua de severidade, fusão multimodal de sensores em múltiplos locais do corpo, adaptação de domínio de laboratório para vida livre e maior interpretabilidade clínica via visualização de pesos de atenção."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V, p. 7 — 'Future work will proceed in three directions: First, exploring extending the current multi-class classification model into a regression model...'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo exclusivo para o revisor humano."
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV-B, p. 5 — 'All models were trained using early stopping based on validation set performance. In the data preprocessing stage, the raw signals were segmented...'"
+    observacao: "O artigo não detalha se houve normalização estatística dos sinais ajustada apenas nas dobras de treino, como o conjunto de validação para early stopping foi separado em cada fold, nem como foram extraídos/selecionados os atributos do baseline LGBM."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; campo 27 = Sim – explícita; campo 28 = Não se aplica; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "O cenário binário PD×DD no PADS está claramente definido, especificando explicitamente que entram apenas pacientes com DP e Diagnóstico Diferencial."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Informa modalidade (IMU), tarefas (11 atividades listadas) e sensores (6 canais de aceleração e velocidade angular), mas omite o punho utilizado e o N de participantes."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "A validação 4-fold separa explicitamente por participante, mas não há informação sobre isolamento do pré-processamento e do conjunto de early stopping apenas no treino (risco Moderado)."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta F1 explicitamente como Macro-F1 (uma métrica robusta da lista); reporta também Macro-Recall (que no caso binário equivale à Balanced accuracy, embora não nomeada como tal)."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Descreve a arquitetura MFAM, baselines, pré-processamento (janelas de 1s com 50% de sobreposição, bandas de frequência) e hiperparâmetros principais, mas não disponibiliza código."
+  nota_qa: 3.0
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica"
+    resultado: "OK (modalidade é Série temporal IMU)"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD > 0"
+    resultado: "OK (cenário é apenas PD×DD)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (ambos null por não serem reportados)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (campo 26 = Participante e campo 27 = Sim – explícita)"
+  - regra: "Campo 23 = Nenhum ou Não se aplica → campo 28 = Não se aplica e campo 29 null"
+    resultado: "OK (campo 23 = Nenhum, campo 28 = Não se aplica e campo 29 = null)"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK (campo 9 = Subconjunto e campo 10 lista as 11 tarefas)"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK (apenas campo 6 marcou Privado-próprio e preencheu campo 7)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Moderado → QA3 = Partially / 0.5)"
+pontos_para_revisao_humana:
+  - "Campo 11 (sensores): status inferido (confiança média); na descrição do PADS (Seção IV-A, p. 5) cita-se 'also containing 6-channel motion signals', cuja especificação como acelerômetro e giroscópio triaxial aparece logo abaixo na descrição do dataset privado."
+  - "Campos 13, 14 e 15 (punhos, n_participantes, n_por_classe): o artigo não reporta qual punho do PADS foi usado nem a quantidade total ou por classe (PD e DD) de participantes."
+  - "Campo 23 (balanceamento_augmentation): status inferido como 'Nenhum' pois a seção de pré-processamento e implementação (Seção IV-B, p. 5) não menciona técnicas de balanceamento ou augmentation."
+  - "QA3 e aux_preproc_apenas_treino: embora a divisão 4-fold CV seja explicitamente por participante ('divided all participants (not data segments) into 4 groups'), não é reportado como o conjunto de validação para early stopping foi separado nem se houve normalização ajustada apenas no treino."
+  - "Campo 31 e QA4: o artigo reporta Macro-Recall e Macro-F1; em classificação binária (PD×DD), Macro-Recall é matematicamente idêntico à Balanced accuracy, podendo elevar QA4 para 'Yes' (1.0) caso o revisor considere Macro-Recall binário como Balanced accuracy."
+  - "Campo 33 (melhor_resultado): como o artigo treina/avalia por atividade (11 atividades na Tabela I) sem reportar uma média geral no PADS, foi extraído o melhor resultado do MFAM (tarefa CrossArms: Acc 81.29%, Macro-F1 75.45%) e listadas as demais tarefas no campo 34."

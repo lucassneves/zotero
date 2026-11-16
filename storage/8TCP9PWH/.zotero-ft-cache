@@ -1,0 +1,488 @@
+Zotero automatically associated journals.sagepub.com with a previously defined proxy. Future requests to this site will be redirected through ez49.periodicos.capes.gov.br.
+Don’t Proxy This Site
+Proxy Settings
+✕
+Skip to main content
+Search this journal
+Enter search terms...
+Search
+Advanced search
+Cart
+Intelligent Data Analysis: An International Journal
+Impact Factor: 1.0
+5-Year Impact Factor: 1.0
+Open access
+Research article
+First published online September 28, 2026
+Re-use permissions
+Explainable deep learning for Parkinson’s disease detection with DeepNetX2
+Prabhjot Kaur https://orcid.org/0009-0000-1916-5436, Richa Sharma https://orcid.org/0000-0002-5391-8195, […], and Gautam Srivastava https://orcid.org/0000-0001-9851-4103 srivastavag@brandonu.ca+1View all authors and affiliations
+OnlineFirst
+https://doi-org.ez49.periodicos.capes.gov.br/10.1177/1088467X261488218
+Contents
+PDF/EPUB
+Abstract
+Parkinson’s disease is a progressive neurodegenerative disease. It has severe effects on motor and speech functions and has an acute need to find precise and interpretable diagnostic tools. In this research, the paper presents a neural network algorithmic representation of Parkinson’s disease detection on the basis of speech biomarkers. The strategy uses the DeepNetX2 model under two setups: a baseline model and an improved methodology, which involves Spearman correlation-based feature selection, normalization, dropout regularization, L2 penalties, and RMSprop optimization. Experimental analyses of the UCI Parkinson speech dataset indicate that the trained DeepNetX2 attains a better performance with 94.74% of accuracy and 96.07% area under the curve, compared with the vanilla implementation and the previous machine learning benchmarks. Explainable artificial intelligence methods made sure that there was transparency and used such tools as SHAP and LIME interpretability, which emphasized important speech features contributing to classification. These findings highlight the promise of streamlined deep learning pipelines with clinical decision support and encourage future studies on multimodal approaches that integrate speech and EEG data.
+1. Introduction
+Parkinson’s disease (PD) is a neurodegenerative disease characterized by progressive growth, which affects millions of people across the world, with symptoms including motor dysfunction and cognitive impairment. The increase in the prevalence of PD, which is accompanied by the lack of a clear cure, has put a high value on prompt and clear diagnosis. Traditional diagnostic methods tend to be subjective and require a lot of clinical experience; thus, the process is likely to be inconsistent and late in early detection. Computational intelligence approaches have therefore been proposed to be useful alternatives in the objective PD diagnosis. Initial applications of machine learning (ML) models showed how computational methods could be used to differentiate PD patients and healthy controls through measurable biomarkers such as speech, handwriting, and motion signs.1 The voice and speech signals are among these biomarkers that have been of specific interest because they are non-invasive and cost-effective. Speech impairment and vocal degradation are among the early observable symptoms of Parkinson’s disease and can provide important cues for early detection. Recent work has used ML algorithms to extract and analyze the voice features that are strongly correlated with vocal degradation in PD patients.2 Although these methods have shown promise, most have been constrained by a relative dearth of accuracy, non-generalizability, and the use of shallow ML classifiers, which are incapable of reflecting more complex features. Meanwhile, with the growing complexity of predictive models, the need to consider interpretability in healthcare applications has become a clear issue. Even though high predictive performance can be attained powered by the sophisticated ML and deep learning, the black-box nature of the predictive model raises issues of transparency and trust. To help solve these problems, explainable artificial intelligence (XAI) is proposed as a key paradigm that offers a balance between predictive accuracy and clinical interpretability. As an example, SHAP and LIME methods have been discussed in the medical field to elucidate model forecasts and emphasize the importance of features, which proves that XAI can be effective in improving the confidence of professionals.3 XAI-based structures have started delivering encouraging results in the scenario of PD detection. Recent studies that have used explainable voice-based analysis have shown that adding interpretability to the ML models can lead to not only a correct classification but also information on the most pertinent acoustic features linked to PD.4 Nevertheless, some of the current research still has limitations in the form of small data sets, unreliable cross-fold performance, and a lack of exploration of sophisticated deep learning models. Such constraints encourage the further enhancement of strong frameworks capable of enhancing accuracy without losing interpretability for clinical application.
+2. Related work
+The increased use of computational intelligence in neurodegenerative disease studies has given rise to various methodologies for diagnosing Parkinson’s disease (PD). As biomedical data are made available, investigators have resorted to the application of novel ML and deep learning algorithms in early diagnosis, both in classical modalities and new biomarkers. The recent literature has emphasized the expanded application of explainable artificial intelligence (XAI) in the diagnosis of neurodegenerative disorders. To illustrate this point, Wang et al.5 presented an overview of the XAI applications in neurodegenerative diseases in a holistic manner, noting that XAI is important in terms of transparency and clinical trust. Such a view stresses the importance of the explainability of PD research in which correct predictions might not be enough without interpretable outcomes for clinicians. Imaging-based techniques have demonstrated potential, as they are specific to PD. Pant et al.6 suggested a model that fuses deep learning-based feature extraction and ML classifiers with DaTscan images that showed a competitive predictive accuracy. Equally, Magesh et al.7 tested an explainable ML model with the LIME on the DaTscan image and confirmed the capacity of the interpretable frameworks to support the early detection of PD. Although these imaging-based approaches have shown excellent performance, they are restricted in scalability and are only accessible to routine clinical practice due to the use of special medical scans. There are also multimodal studies that focus on enhancing the accuracy of classification. A contrastive graph cross-view learning strategy to combine SPECT images with clinical features was first presented by Ding et al.,8 where it was demonstrated that multimodal fusion improves diagnostic reliability. In addition to imaging, reviews like the one by Aziz et al.9 have also indicated the growing role of XAI in healthcare and PD in particular, where accuracy and interpretability act as focal points of concern. Voice-based detection feature optimization methods are on the increase in the non-invasive and more approachable type of biomarkers. Aarti et al.10 also designed a deep learning model along with a dynamic bag-of-features optimization method and found that this method enhanced feature selection and classification among PD patients. These writings show that smart refinement of features can be useful in improving the performance of such models, especially when the data are high-dimensional. In general, the previous studies highlight two important trends: the development of shallow ML to deep learning and the trend of adding the concept of explainability to the decision-support framework. Even with these developments, there is still a disparity in integrating deep representation learning, feature optimization, and interpretability within the same framework, which detects speech-based PD, which inspired the methodology used in the proposed research. To conduct the literature survey, a systematic search of various academic databases was conducted, which included PubMed, Scopus, IEEE Xplore, and Google Scholar. The search was based on the 2018
+−
+2025 publishing year to cover both the old and the new studies. Relevant articles were retrieved with respect to such key words as Parkinson’s disease detection, speech biomarkers, deep learning models, explainable AI, and biomedical feature selection. Such a thorough methodology allowed identifying previous attempts in voice-based biomarkers, feature engineering approaches, and explanatory frameworks, which form the basis of the methodological advances that are provided in this paper. Figure 1 depicts the schematic structure. Although imaging-based studies have demonstrated strong diagnostic performance, speech-based biomarkers offer a non-invasive and cost-effective alternative that enables scalable screening. Recent studies have shown that acoustic features such as jitter, shimmer, Mel Frequency Cepstral Coefficients (MFCCs), and harmonic-to-noise ratio HNR provide meaningful indicators of Parkinson’s disease progression. Therefore, the present study focuses specifically on speech-based biomarkers while incorporating explainable AI methods to improve interpretability.
+OPEN IN VIEWER
+Figure 1. Process of Systematic Literature Review.
+3. Materials and methods
+The study methodology combines classical preprocessing and feature engineering techniques with a unique DeepNetX2 architecture to facilitate strong classification of Parkinson’s disease (PD). The general process starts with dataset preparation, followed by systematic preprocessing, feature selection, baseline modelling using DeepNetX2, training pipeline optimization, and the incorporation of explainable AI (XAI) methods for interpretability. Figure 2 illustrates the schematic overview of the pipeline showing how raw datasets flow to the final model explanations.
+OPEN IN VIEWER
+Figure 2. Summary of the procedure pipeline.
+3.1. Dataset description
+The UCI Parkinson Speech Dataset was used as the experimental dataset, offering various acoustic biomarkers of PD. It contains 756 cases based on 252 subjects—half healthy controls and half PD patients. Each instance includes 754 acoustic features, such as jitter, shimmer, harmonic-noise ratios, Mel frequency cepstral coefficients (MFCCs), spectral roll-off, skewness, and higher-order statistical values. This dataset has been used in several studies due to its high dimensionality and ability to capture subtle vocal pathologies in PD.11,12
+3.2. Preprocessing and cleaning
+Pre-processing involves several steps, including data cleaning, transformation, organization, standardization, and reconciliation. The raw data was loaded into a tabulated DataFrame, and the dimensional integrity was checked with the help of the commands df.shape and df.info. Several unnamed metadata columns were removed to eliminate redundancy. The binary target label (class) was elicited to represent 0 = healthy and 1 = PD as depicted in Figure 3. There were no missing values, and this made imputation easier. All the features were converted to float32 to be compatible with the operations of TensorFlow.13 The two modelling approaches were treated differently in standardization. In traditional ML baselines, the StandardScaler was used for standardization. In the DeepNetX2 architecture, normalization of the inputs was integrated as a special Keras Normalization layer, which is trained to acquire scaling parameters. This method does not lead to information leakage, and it is also consistent across folds.14,15 Stratified sampling was used for model development and evaluation. For the enhanced DeepNetX2 model, the dataset was partitioned into training, validation, and independent test sets using an 80%/10%/10% split, yielding 604 training, 76 validation, and 76 test samples. The vanilla DeepNetX2 baseline was evaluated using a 20% hold-out test set (152 samples), whereas the enhanced model was evaluated using the independent 10% test set (76 samples).
+OPEN IN VIEWER
+Figure 3. Class distribution.
+3.3. Feature selection
+Since the dataset is of high dimensionality, feature selection was undertaken to boost the discriminative power and to eliminate redundancy. To assess the monotonic relationship between the acoustic features and the target label, we used rank correlation as actualized by Spearman. Features with statistically significant correlations (
+p<0.01
+) were retained. This threshold was selected to remove weakly correlated features while preserving meaningful acoustic biomarkers. After applying this filtering step, the feature space was reduced from 754 to 480 features.
+ρ=1−6∑di2n(n2−1)
+(1)
+where 
+di
+ is the difference between the ranks of paired observations and 
+n
+ is the number of observations. The step makes sure that the retained features have monotonic relationships that are stable across the disease label, as implied in previous research on biomedical feature selection.16,17 The best 10 features were sorted with Spearman correlation, and p-values are presented in Table 1.
+OPEN IN VIEWER
+Table 1. Coherence methodological specifications: data, feature selection, model structure, and training configuration.
+Component	Details
+Dataset	UCI Parkinson’s Speech Dataset with PD speech features
+Instances	756
+Subjects	252 (126 PD, 126 Healthy)
+Features	754 acoustic biomarkers (jitter, shimmer, HNR, MFCCs, spectral roll-off, skewness, etc.)
+Feature Selection	Spearman’s rank correlation (p < 0.01) reduced from 754 to 480 features
+Top Features	Example features: jitter: DDP (
+ρ
+ = 0.41, p 
+<
+ 0.001), shimmer: APQ5 (
+ρ
+ = 0.38, p 
+<
+ 0.001)
+Architecture	Input (480 features) 
+→
+ Normalization 
+→
+ 4 Dense layers 
+→
+ Sigmoid output
+Parameters	
+∼
+562,945 (as per Keras summary)
+Training Setup	Binary cross-entropy loss; RMSprop optimizer (lr = 0.001); batch size = 32; max 100 epochs; early stopping (patience = 10); model checkpointing; GPU: RTX 3060 (12 GB VRAM)
+3.4. DeepNetX2 architecture
+DeepNetX2, which is a deep neural architecture trained on high-dimensional biomedical datasets, is the main classification framework.14,18 The model is designed as a complete network consisting of numerous dense blocks that include batch normalization and dropout to regularize the model. The architecture is as follows:
+•	
+Input Layer: (d selected) features.
+•	
+Normalization Layer: Scaling of mean and variances.
+•	
+Dense Block 1: Dense(512, ReLU) + L2 regularization (
+λ=1×10−4
+) + Dropout (0.3)
+•	
+Dense Block 2: Dense (256, ReLU) + L2 regularization + Dropout (0.3)
+•	
+Dense Block 3: Dense (128, ReLU) + L2 regularization + Dropout (0.3)
+•	
+Dense Block 4: Dense(64, ReLU) + L2 regularization
+•	
+Output Layer: Dense(1, Sigmoid)
+The number of parameters in this configuration is approximately 562,945, as verified by Keras model summaries. DeepNetX2 has a block diagram as shown in Figure 4, which emphasizes the flow of input features through the successive dense layers to the binary output.
+OPEN IN VIEWER
+Figure 4. Block diagram of the DeepNetX2 architecture illustrating the flow of input features through dense blocks to the output.
+3.5. Training procedure
+The aim of the training was binary classification, which was minimized using the equation:
+
+
+L=−1N∑i=1N[yilog(y^i)+(1−yi)log(1−y^i)]
+(2)
+where 
+yi
+ is the true label and 
+y^i
+ is the predicted probability. The adopted optimizer was RMSprop and a learning rate of 0.001, as effective in the case of a non-stationary objective. The training was done with a batch size of 32 and a limit of 100 epochs with early stopping, considering a patience of 10 epochs to avoid overfitting. The optimal weights were saved using model checkpoints. L2 regularization was applied to all dense kernels, and dropout (0.3) was used in the initial three dense blocks to prevent overfitting. Figure 4 integrates preprocessing, feature selection, DeepNetX2 modelling, and training into a single pipeline. It illustrates how raw data is cleaned, reduced from 754 to 480 features, passed through dense blocks with regularization, and optimized with RMSprop, early stopping, and checkpointing. This unified view highlights the continuous flow of the methodology.
+3.6. Evaluation metrics
+Accuracy, Precision, Recall, F1-score and Area Under the Curve (AUC) were used to assess the model. The definitions of the metrics are as follows:
+	
+Accuracy	=TP+TNTP+TN+FP+FN
+(3)
+	
+Precision	=TPTP+FP
+(4)
+	
+Recall	=TPTP+FN
+(5)
+	
+F1-score	=2⋅Precision⋅RecallPrecision+Recall
+(6)
+	
+AUC	=∫01TPR(FPR)dFPR
+(7)
+where True positives, true negatives, false positives and false negatives are denoted by TP, TN, FP and FN, respectively. Such measures present a unified evaluation of the overall performance of the classifier, both in terms of the total correctness and sensitivity to Parkinson’s Disease cases.19
+3.7. AI integration that can be explained
+In a bid to enforce the levels of transparency, the DeepNetX2 framework was advanced using the XAI methods. SHAP ( SHapley Additive exPlanations) was used to estimate the global feature contributions, averaging marginal contributions on subsets of features. SHAP values are used to measure the degree to which each contribution factor p is moving the prediction closer to or farther away, relative to the positive class. Parallel to this, LIME (Local Interpretable Model-Agnostic Explanations) was used to interpret single predictions. In each case, LIME perturbs the input features around the chosen test samples, and learns a surrogate linear model to estimate the black-box decision boundary.20 This enables clinicians to determine the acoustic features that yielded the most effect in the classification of an individual patient.
+3.8. Reproducibility
+To facilitate reproducibility, all hyperparameters, training configurations, and preprocessing steps are described in detail in Table 1. The model was implemented using TensorFlow and trained on an NVIDIA RTX 3060 GPU. Future work will include releasing the implementation code and experiment scripts to support transparent replication of the results.
+4. Results and discussion
+4.1. Results of vanilla DeepNetX2 analysis
+The baseline DeepNetX2 model, trained on the full 754-feature space, achieved moderate performance but revealed notable limitations in its generalization ability. As illustrated in Figure 5, the model converged after approximately 20 epochs; however, the persistent gap between training and validation accuracy indicates that the network was memorizing feature noise rather than learning generalizable patterns. The biggest weakness, as indicated in the confusion matrix in Figure 6, is the large false-negative rate. Some PD patients were classified as healthy controls, which reduced sensitivity directly. This in clinical practice means that the model may ignore cases of PD in their early-stage, which will limit its diagnostic capability. This weakness is supported in the ROC curve in Figure 7 where AUC is less than 0.90, and which means a weak discriminative power. Although vanilla DeepNetX2 has been used to identify acoustic anomalies as a result of its dense structure, the inability to remove irrelevant characteristics and regularize it limits its strength.21
+OPEN IN VIEWER
+Figure 5. Vanilla DeepNetX2 validity curves of training accuracy and validation accuracy.
+OPEN IN VIEWER
+Figure 6. Vanilla DeepNetX2 on the test set confusion matrix.
+OPEN IN VIEWER
+Figure 7. ROC curve Vanilla DeepNetX2 on test set.
+Overall, the baseline setup remains prone to overfitting and is not sufficiently robust. These flaws drive the improved strategy in the next subsection that incorporates the strategy of regularization of features and optimization to achieve better convergence and diagnostic consistency.
+4.2. Enhanced DeepNetX2 with feature selection and regularization
+The enhanced DeepNetX2 pipeline was developed to achieve the goals of the limitation experiment associated with the baseline model, including eliminating irrelevant feature parts using Spearman correlation coefficient, regularizing network weights using L2 regularization, encouraging neuron dropout, and using the RMSprop optimizer as a training method. Generalization and the convergence dynamics were virtually better with this combination.18,22–24 Figure 8 displays the influence of these improvements on the loss curve, and Figure 9 displays the same on the accuracy curve. The training curve and the validation curve are also well matched, with both curves levelling off at 94
+−
+95% with only a slight variance, which is a drastic contrast to the overfitting curve seen in vanilla DeepNetX2.
+OPEN IN VIEWER
+Figure 8. Training and validation accuracy curves of the enhanced DeepNetX2.
+OPEN IN VIEWER
+Figure 9. Training and validation loss curves of the enhanced DeepNetX2.
+A tremendous decrease in false negatives is shown by the confusion matrix of Figure 10, and the fact that PD cases are highly sensitive. This is of clinical value, of special relevance, since the cost of false negatives is much greater than that of false positives in screening for Parkinson’s in early stages. Also, in Figure 11, an AUC of over 0.94 is shown in the performance category. This affirms the fact that improvements resulted in improved discrimination and more accurate predictions in the test samples.
+OPEN IN VIEWER
+Figure 10. Confusion matrix DeepNetX2 version improved on test set.
+OPEN IN VIEWER
+Figure 11. ROC curve ROCX2 improved on the test set.
+In addition to the numerical benefits, interpretability was attained by combining SHAP and LIME. As per the summary plot by SHAP (Figure 12), it was also found that the values of jitter, shimmer, MFCCs, and harmonic-noise ratios were consistently among the leading contributors, consistent with known vocal biomarkers of PD studies. Visualizations of the LIME (Figure 13) helped to obtain the information about the case at hand, showing how the individual selection made by the model regarding a particular patient relies on a certain acoustic deviation. These interpretability tools, combined, build on clinical trust, converting the improved DeepNetX2 into an explainable and faithful decision support system, which is transforming the improved DeepNetX2 from a black-box model into a more explainable decision-support system.25
+OPEN IN VIEWER
+Figure 12. The contribution of features in the improved DeepNetX2 model shown by the SHAP summary plot.
+OPEN IN VIEWER
+Figure 13. LIME visualization of local interpretation of a sample prediction of Parkinson’s disease.
+4.3. Cross-validation and robustness analysis
+The efficiency of the improved DeepNetX2 structure was checked with the help of a 10-fold stratified cross-validation procedure. The model showed a stable mean accuracy of 93.68% 
+±
+ 1.45 and an AUC of 95.21% (
+±
+1.12) at different partitions of the data, thus indicating a strong consistency across different data partitions. This reliability means that the improvements are unlikely to be attributable to random variation or a particular train-test split according to a particular train, but we can use the improvement across unknown patient distributions. To examine the contribution of each methodological component, ablation studies were also run as well to study them.26–28 This held because the removal of the technique of selecting features based on their Spearman correlation lessened the accuracy by almost 3 percent, proving that dimensionality reduction was critical in the elimination of noise in the acoustic space. On the same note, the removal of the terms dropout and L2 regularization led to huge jumps in overfitting, which substantiates their necessity in the compromise of complexity and generalization of the models. Lastly, when substituting the use of RMSprop with the Adam optimizer, the convergence was unstable as well, which supports the feasibility of RMSprop in the present biomedical classification problem. Table 2 shows that the vanilla DeepNetX2 did not generalize and had overfitting, and the enhanced pipeline had the highest performance level compared to the other baselines and ablation variants, with the highest accuracy, sensitivity, and interpretability rates. Introduction of the so-called explainable AI (XAI) features of the SHAP and LIME not only made the model more trustworthy but also created a difference between it and purely predictive architectures. Taken together, the results in this article indicate that the improved DeepNetX2 is a clinically relevant and technically sound solution to the problem of detecting Parkinson’s disease - linking the high-quality acoustic biomarkers directly to understandable medical AI systems.
+OPEN IN VIEWER
+Table 2. Ablation study showing the impact of individual components of the DeepNetX2 pipeline.
+Model	Accuracy (%)	Precision (%)	Recall (%)	F1- score (%)	AUC (%)	Observations
+Vanilla DeepNetX2	88.82	89.34	96.46	92.77	89.18	Overfit tendency; lower AUC.
+Enhanced DeepNetX2 (Final)	94.74	94.83	98.21	96.49	96.07	Best overall performance.
+10-Fold CV (Enhanced)	93.68 
+±
+ 1.45	–	–	–	95.21 
+±
+ 1.12	Stable across folds.
+Without Spearman Feature Selection	91.82	–	–	–	93.50	Drop in performance.
+Without Dropout	92.14	–	–	–	94.01	Increased overfitting.
+Without
+L2 Regularization	92.42	–	–	–	94.25	Reduced generalization.
+Adam Optimizer (instead of RMSprop)	91.65	–	–	–	93.12	Less stable training.
+To further evaluate the robustness of the performance improvements, bootstrapped confidence intervals were computed across the cross-validation folds. The enhanced DeepNetX2 consistently outperformed baseline configurations, indicating that the observed improvements are unlikely to be due to random variation in the dataset partitions.
+5. Comparison with baseline study
+A comparative analysis with the DeepNetX2 approach was done against the baseline performance of Hossain and Amenta in relation to the proposed methodology to gauge the effectiveness of the proposed DeepNetX2 methodology, as cited by Hossain and Amenta.18,29 The baseline experiment has used ML classifiers, trained on the identical UCI Parkinson of Speech Dataset with an overall accuracy of 84.21% and an AUC of 90.00%. Their improved version of the classical pipeline registered a slightly higher accuracy of 85.09% and an AUC of 90.00%. In comparison, the suggested architecture, the so-called DeepNetX2, in which default preprocessing was the only option, demonstrated an accuracy of the most impressive 88.82% and AUC of the most impressive 89.18%, which exceeded the conventional ML methods. The resulting improved DeepNetX2 pipeline, that is, using Spearman correlation as a feature selection strategy, L2 regularization, dropout, RMSprop optimization, and explainable AI (XAI) modules, further improved the results to 94.74% and 96.07% accuracy and AUC, respectively.
+Table 3 concludes the outcomes of the proposed models that are better than the traditional methods of the ML framework.
+OPEN IN VIEWER
+Table 3. Comparison of study results with the baseline study results.
+Methodology	Accuracy (%)	Precision (%)	Recall (%)	F1-score (%)	AUC (%)
+Hossain et al. (Hossain et al.,18 baseline ML)	84.21	93.00	89.00	89.00	87.00
+Hossain et al. (Hossain et al.,18 pipeline ML)	85.09	92.00	91.00	89.00	90.00
+Vanilla DeepNetX2	88.82	89.34	96.46	92.77	89.18
+Enhanced DeepNetX2	94.74	94.83	98.21	96.49	96.07
+Although imaging-based studies have demonstrated strong diagnostic performance, speech-based biomarkers offer a non-invasive and cost-effective alternative that enables scalable screening. Recent studies have shown that acoustic features such as jitter, shimmer, MFCCs, and harmonic-to-noise ratios provide meaningful indicators of Parkinson’s disease progression. Therefore, the present study focuses specifically on speech-based biomarkers while incorporating explainable AI methods to improve interpretability. These findings prove that with proper optimization and regularization, deep learning is by far better at processing high-dimensional speech biomarkers to detect Parkinson’s disease compared to traditional methods. Generally, the comparative study highlights that the DeepNetX2 framework, using a well-regularized and integrated interpretable AI module, offers a more valid, strong, and clinically understandable solution when compared to traditional ML classifiers.
+6. Conclusion and future work
+The authors provided an improved DeepNetX2 pipeline speech-based classification of Parkinson’s disease (PD). With the DeepNetX2 model and an improved methodology of the use of Spearman correlation-based feature selection, normalization, dropout, L2 regularization, and RMSprop optimization, we have succeeded in enhancing the performance of the classification process much higher in comparison to the deep learning implementation and prior machine learning-based work.30 The given strategy gives an accuracy of 94.74% and an AUC of 96.07%, which is significantly higher (9.65 percentage points) than the results by Hossain and Amenta, who recorded the highest accuracy of 85.09%. The further improvement of interpretability, which provides useful information regarding the most influential speech features to detect Parkinson’s disease, is given by XAI tools (SHAP and LIME). These interpretability modules improved model transparency. Although these are positive results, some issues still exist. This dataset is limited in size, as well as demographic diversity, and, therefore, the question is its ability to generalize to wider groups of people, even though it is rich in acoustic biomarkers. Moreover, speech biomarkers cannot possibly be able to represent the entire range of PD types, especially the early or atypical PD. Future studies should thus look into the implementation of multimodal diagnostic solutions whereby speech biomarkers are incorporated with some other variables like the EEG signals, handwriting, or the gait kinematics. Specifically, it is possible that combining voice and EEG data may improve classification accuracy and robustness and can provide better accuracy and robust classification. Multimodal pipelines increase the diagnosis accuracy as well as allow early diagnostics of an illness and continuous tracking during real-world clinical conditions. Integrating speech and EEG signals introduces challenges related to modality alignment, temporal synchronization, and heterogeneous feature representations. Future architectures may employ multimodal deep learning frameworks such as attention-based fusion networks or graph-based learning models to effectively integrate these heterogeneous signals. All in all, the results highlight how the improvements made by incorporating systematic feature selection, regularization, and explainability into the framework make it immensely powerful when it comes to the diagnosis of Parkinson-related disease and its progression. This means that a combination of deep learning and explainable AI represents a way forward in the quest towards a transparent, reliable, and clinically versatile decision-support framework.
+Declaration of conflicting interests
+The authors declared no potential conflicts of interest with respect to the research, authorship, and/or publication of this article.
+Funding
+The author(s) received no financial support for the research, authorship and/or publication of this article.
+ORCID iDs
+Prabhjot Kaur https://orcid.org/0009-0000-1916-5436
+Richa Sharma https://orcid.org/0000-0002-5391-8195
+Saurabh Sharma https://orcid.org/0000-0002-0369-6299
+Gautam Srivastava https://orcid.org/0000-0001-9851-4103
+References
+1. Sandhiya S, Ashok S, Vishnu Vardhan Rao G, et al. Parkinson's disease prediction using machine learning algorithm. In: 2022 international conference on power, energy, control and transmission systems (ICPECTS), Chennai, India, 2022, pp.1–5. USA: IEEE. DOI: https://doi-org.ez49.periodicos.capes.gov.br/10.1109/ICPECTS56089.2022.10047447.
+Go To Reference
+Google Scholar
+2. Naeem I, Ditta A, Mazhar T, et al. Voice biomarkers as prognostic indicators for parkinson’s disease using machine learning techniques. Sci Rep 2025; 15: 1–17.
+Go To Reference
+Crossref
+Web of Science
+Google Scholar
+3. Vimbi V, Shaffi N, Mahmud M. Interpreting artificial intelligence models: a systematic review on the application of LIME and SHAP in Alzheimer’s disease detection. Springer, 2024.
+Go To Reference
+Google Scholar
+4. Shen M, Mortezaagha P, Rahgozar A. Explainable Artificial Intelligence to diagnose early parkinson’s disease via voice analysis. 2024. doi: 10.1101/2024.09.29.24314580.
+Go To Reference
+Crossref
+Google Scholar
+5. Wang H, Toumaj S, Heidari A, et al. Neurodegenerative disorders: A holistic study of the explainable artificial intelligence applications. Eng Appl Artif Intell 2025.
+Go To Reference
+Crossref
+Web of Science
+Google Scholar
+6. Pant J, Pant HK, Pant VK, et al. Deep learning-based feature extraction and machine learning models for parkinson’s disease prediction using daTscan image. Biomed Pharmacol J 2025; 18: 161–177.
+Go To Reference
+Crossref
+Google Scholar
+7. Magesh PR, Myloth RD, Tom RJ. An explainable machine learning model for early detection of parkinson’s disease using LIME on DaTscan Imagery. 2020. [Online]. Available: http://arxiv.org/abs/2008.00238.
+Go To Reference
+Crossref
+Google Scholar
+8. Ding J-E, Hsu C-C, Liu F. Parkinson’s disease classification using contrastive graph cross-view learning with multimodal fusion of SPECT images and clinical features. 2024. [Online]. Available: http://arxiv.org/abs/2311.14902.
+Go To Reference
+Crossref
+Google Scholar
+9. Aziz NA, Manzoor A, Mazhar Qureshi MD, et al. Unveiling explainable AI in healthcare: Current trends, challenges, and future directions. 2024. DOI: 10.1101/2024.08.10.24311735.
+Go To Reference
+Crossref
+Google Scholar
+10. Aarti S, Gowroju MIA, Begum ASM, et al. Optimal feature selection and classification for parkinson’s disease using deep learning and dynamic bag of features optimization. BioMedInformatics 2024; 4: 2223–2250.
+Go To Reference
+Crossref
+Web of Science
+Google Scholar
+11. Shokrpour S, MoghadamFarid AM, Bazzaz Abkenar S, et al. Machine learning for parkinson’s disease: a comprehensive review of datasets, algorithms, and challenges. NPJ Parkinson’s Dis 2025.
+Go To Reference
+Crossref
+PubMed
+Web of Science
+Google Scholar
+12. Costanzo P, Orphanou K. Performance, transparency and time: Feature selection to speed up the diagnosis of parkinson’s disease. 2022. [Online]. Available: http://arxiv.org/abs/2206.03716.
+Go To Reference
+Google Scholar
+13. Rabie H, Akhloufi MA. A review of machine learning and deep learning for parkinson’s disease detection. Springer Nat 2025.
+Go To Reference
+Crossref
+Google Scholar
+14. Matsumoto M, Miah ASM, Asai N, et al. Machine learning-based differential diagnosis of parkinson’s disease using kinematic feature extraction and selection. IEEE Access 2025.
+Crossref
+Web of Science
+Google Scholar
+15. Bharath E, Rajagopalana T. Parkinson’s disease classification using random forest kerb feature selection. Intell Autom Soft Comput 2023; 36: 1417–1433.
+Go To Reference
+Crossref
+Google Scholar
+16. Escobar-Grisales D, Ríos-Urrego CD, Orozco-Arroyave JR. Deep learning and artificial intelligence applied to model speech and language in parkinson’s disease. Diagnostics 2023; 13: 1–16.
+Go To Reference
+Crossref
+PubMed
+Web of Science
+Google Scholar
+17. van Gelderen L, Tejedor-García C. Innovative speech-based deep learning approaches for parkinson’s disease classification: A systematic review. Appl Sci 2024; 14: 1–24.
+Go To Reference
+Crossref
+Google Scholar
+18. Hossain MA, Amenta F. Machine learning-based classification of parkinson’s disease patients using speech biomarkers. J Parkinsons Dis 2024; 14: 95–109.
+Crossref
+PubMed
+Web of Science
+Google Scholar
+19. Islam MA, Hasan Majumder MZ, Hussein MA, et al. A review of machine learning and deep learning algorithms for parkinson’s disease detection using handwriting and voice datasets. Heliyon 2024; 10: 1–33.
+Go To Reference
+Web of Science
+Google Scholar
+20. Xu H, Xie W, Pang M, et al. Non-invasive detection of parkinson’s disease based on speech analysis and interpretable machine learning. Front Aging Neurosci 2025; 17: 1–11.
+Go To Reference
+Crossref
+Web of Science
+Google Scholar
+21. Cao F, Vogel AP, Gharahkhani P, et al. Speech and language biomarkers for parkinson’s disease prediction, early diagnosis and progression. NPJ Parkins Dis 2025.
+Go To Reference
+Crossref
+Web of Science
+Google Scholar
+22. Gimeno-Gómez D, Botelho C, Pompili A, et al. Unveiling interpretability in self-supervised speech representations for parkinson’s diagnosis. IEEE J Sel Top Signal Process 2025.
+Go To Reference
+Crossref
+Web of Science
+Google Scholar
+23. Simone L, Camporeale MG, Rubino VM, et al. Interpretable early detection of parkinson’s disease through speech analysis. 2025. [Online]. Available: http://arxiv.org/abs/2504.17739.
+Crossref
+Google Scholar
+24. Toye AA, Kompalli S. Comparative study of speech analysis methods to predict parkinson’s disease. 2021. [Online]. Available: http://arxiv.org/abs/2111.10207.
+Go To Reference
+Google Scholar
+25. Wang X, Huang J, Chatzakou M, et al. LSTM-CNN: An efficient diagnostic network for Parkinson’s disease utilizing dynamic handwriting analysis. 2023. [Online]. Available: http://arxiv.org/abs/2311.11756.
+Go To Reference
+Google Scholar
+26. Drotár P, Mekyska J, Smékal Z, et al. Contribution of different handwriting modalities to differential diagnosis of parkinson’s disease. 2022. DOI: 10.1109/MeMeA.2015.7145225.
+Go To Reference
+Crossref
+Google Scholar
+27. Naanoue J, Ayoub R, El Sayyadi F, et al. Parkinson’s disease detection from speech analysis using deep learning. In: International conference on advances in biomedical engineering (ICABME), 2023, pp.102–105, IEEE. DOI: 10.1109/ICABME59496.2023.10293142.
+Crossref
+Google Scholar
+28. Krishna GS, Supriya K, Mishra V, et al. Parkinson’s Disease detection from speech signals using explainable Artificial Intelligence. In: IEEE TENCON, 2023, pp.1123–1128. DOI: 10.1109/TENCON58879.2023.10322532.
+Go To Reference
+Crossref
+Google Scholar
+29. Varghese J, Brenner A, Fujarski M, et al. Machine learning in the parkinson’s disease smartwatch (PADS) dataset. NPJ Parkinson’s Dis 2024; 10: 1–11.
+Go To Reference
+Web of Science
+Google Scholar
+30. Tanim SA, Aurnob AR, Shrestha TE, et al. Explainable deep learning for diabetes diagnosis with deepNetX2. Biomed Signal Process Control 2025; 99.
+Go To Reference
+Crossref
+Web of Science
+Google Scholar
+Cite
+Cite
+Cite
+Copy Citation
+OR
+Download to reference manager
+
+If you have citation software installed, you can download citation data to the citation manager of your choice
+
+Select your citation manager software:
+Direct import
+Share options
+Share
+Share this publication
+Share with email
+Email Link
+Share on social media
+Facebook
+X (Formerly Twitter)
+LinkedIn
+WeChat
+Share access to this article
+
+Sharing links are not relevant where the article is open access and not available if you do not have a subscription.
+
+For more information view the Sage Journals article sharing page.
+
+Information, rights and permissions
+Information
+Authors
+Information
+Published In
+View
+Intelligent Data Analysis
+OnlineFirst
+Article first published online: September 28, 2026
+Keywords
+Deep learning
+explainable artificial intelligence
+Parkinson’s disease detection
+speech biomarkers
+biomedical signal analysis
+Rights and permissions
+© The Author(s) 2026.
+This article is distributed under the terms of the Creative Commons Attribution-NonCommercial 4.0 License (https://creativecommons.org/licenses/by-nc/4.0/) which permits non-commercial use, reproduction and distribution of the work without further permission provided the original work is attributed as specified on the SAGE and Open Access page (https://us-sagepub-com.ez49.periodicos.capes.gov.br/en-us/nam/open-access-at-sage).
+Request permissions for this article.
+Re-Use Permissions
+Opens In New Tab
+Metrics and citations
+Metrics
+Journals metrics
+
+This article was published in Intelligent Data Analysis.
+
+View All Journal Metrics
+Publication usage*
+
+Total views and downloads: 251
+
+*Usage tracking began in December 2016 or upon migration to Sage Journals, whichever is later. Prior usage data was not transferred.
+
+Publications citing this one
+
+Receive email alerts when this publication is cited
+
+Sign Up To Citation Alerts
+
+Web of Science: 0
+
+Crossref:
+
+There are no citing articles to show.
+
+Figures and tables
+Figures & Media
+Tables
+Figures & Media
+Show all sections
+Figures
+Media
+View Options
+View options
+PDF/EPUB
+View PDF/EPUB
+Access options
+
+If you have access to journal content via a personal subscription, university, library, employer or society, select from the options below:
+
+Sage Journals profile
+Institution
+
+Access journal content via a university, library or employer subscription.
+
+Access through your institution
+
+Alternatively, view purchase options below:
+
+Purchase access
+Read with DeepDyve
+Need help?
+More
+More
+Cite
+Share options
+Information, rights and permissions
+Metrics and citations
+Figures and tables
+back
+Also from Sage
+CQ LibraryElevating debate
+opens in new tab
+Sage DataUncovering insight
+opens in new tab
+Sage Business CasesShaping futures
+opens in new tab
+Sage CampusUnleashing potential
+opens in new tab
+Sage KnowledgeMultimedia learning resources
+opens in new tab
+Sage Research MethodsSupercharging research
+opens in new tab
+Sage VideoStreaming knowledge
+opens in new tab
+Technology from SageLibrary digital services
+opens in new tab
+About
+About Sage Journals
+Accessibility guide
+Historical content
+Advertising disclaimer
+Permissions
+Terms of use
+Sage discipline hubs
+Sage microsites
+Information for
+Authors
+Editors
+Librarians
+Researchers
+Reviewers
+Societies & Partners
+Advertising & Promotion
+FAQs
+Intelligent Data Analysis
+ISSN: 1088-467X
+Online ISSN: 1571-4128
+About Sage
+Contact us
+CCPA - Do not sell my personal information
+CCPA
+Privacy Policy
+Cookie Policy
+
+Copyright © 2026 by SAGE Publications

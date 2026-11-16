@@ -1,0 +1,374 @@
+meta:
+  row_id: 109
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "S399Z5MS"
+  titulo: "Parkinson’s Disease Classification Using Inertial Signals from Smartwatches and Tree-Based Classifiers"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Seção 2.1, p. 2 — 'The public dataset PADS - Parkinson’s Disease Smartwatch Dataset was used, comprising 469 participants'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 109
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "inferido"
+    confianca: "baixa"
+    evidencia: "PDF páginas 1–4 — sem cabeçalho/rodapé de ano ou DOI no PDF; nome do arquivo no Zotero indica '2025' e cita referências até 2024"
+    auditoria: null
+    observacao: "O PDF (4 páginas em template SBC) não exibe ano de publicação, DOI ou linha de copyright impressos; '2025' consta no metadado/nome do arquivo do Zotero."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Estudo comparativo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'This study evaluates the use of statistical features extracted from inertial signals obtained from smartwatches... tree-based classifiers were applied'"
+    auditoria: null
+    observacao: "Avalia atributos estatísticos e compara quatro classificadores baseados em árvores (Random Forest, Extra Trees, XGBoost e LightGBM) em três cenários binários, incluindo DD×CO."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 diferente de Outro"
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2 — 'The public dataset PADS - Parkinson’s Disease Smartwatch Dataset was used, comprising 469 participants'"
+    auditoria: null
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2 — 'The public dataset PADS - Parkinson’s Disease Smartwatch Dataset was used, comprising 469 participants'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas o PADS foi utilizado nos experimentos (Seção 2.1, p. 2)"
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Metadados demográficos-clínicos", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1 e 2.2, p. 2 — 'In this work, only smartwatch data were used' e 'To address participant laterality, we also performed experiments retaining only the dominant wrist columns'"
+    auditoria: null
+    observacao: "Afirma que apenas dados de smartwatch foram usados (sem questionário clínico), porém utilizou a informação de lateralidade (punho dominante) dos participantes para filtrar colunas no cenário PD×CO (Tabela 2, p. 4)."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 2 — 'Each participant performed 11 motor tasks using two wrists and two sensors'"
+    auditoria: null
+    observacao: "A extração inicial usa todas as 11 tarefas (vetor de 924 atributos). Na seleção manual das melhores configurações (Tabela 2, p. 4), PD×DD e DD×CO usam todas as 11 tarefas, enquanto PD×CO usa um subconjunto de 5 tarefas (StretchHold, HoldWeight, DrinkGlass, CrossArms, TouchNose)."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11 tarefas): Relaxed1; Relaxed2; RelaxedTask1; RelaxedTask2; StretchHold; HoldWeight; DrinkGlass; CrossArms; TouchNose; Entrainment1; Entrainment2"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 2, p. 4 — 'Tasks: Relaxed1, Relaxed2, RelaxedTask1, RelaxedTask2, StretchHold, HoldWeight, DrinkGlass, CrossArms, TouchNose, Entrainment1, Entrainment2'"
+    auditoria: null
+    observacao: "No melhor conjunto de atributos para o cenário PD×CO (Tabela 2), foram retidas 5 tarefas: StretchHold; HoldWeight; DrinkGlass; CrossArms; TouchNose."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 2 — 'extracted from the inertial sensor data (accelerometers and gyroscopes) collected from the left and right wrists'"
+    auditoria: null
+    observacao: "Na configuração final da Tabela 2 (p. 4), PD×CO e DD×CO usam Acelerômetro e Giroscópio, enquanto PD×DD usa apenas Giroscópio."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 não inclui Outro"
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 2 — 'collected from the left and right wrists during different motor tasks'"
+    auditoria: null
+    observacao: "Ambos os punhos (esquerdo e direito) compõem o vetor de 924 atributos e as configurações finais de PD×DD e DD×CO; para PD×CO foram retidas apenas as colunas do punho dominante ('Wrist: Dominant', Tabela 2, p. 4)."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2 — 'comprising 469 participants, distributed among PD (276), DD (114), and CO (79)'"
+    auditoria: null
+    observacao: "Os experimentos são divididos em três cenários binários: PD×CO (355 participantes), PD×DD (390 participantes) e DD×CO (193 participantes), cobrindo todos os 469 participantes."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=114"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1, p. 2 — 'comprising 469 participants, distributed among PD (276), DD (114), and CO (79)'"
+    auditoria: null
+    observacao: "O artigo utiliza a sigla CO (healthy control) para HC."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["DD×HC", "PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 3 — 'Analyses were conducted for different binary classification scenarios, namely PD×CO, PD×DD, and DD×CO'"
+    auditoria: null
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 não inclui Outro"
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 2 — 'five features were extracted: the mean, standard deviation, variance, kurtosis, and skewness. Additionally, the mean Euclidean distance'"
+    auditoria: null
+    observacao: "Vetor tabular de 924 atributos estatísticos por participante (Eq. 2, p. 2)."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 não inclui Outro"
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 3 — 'using four different tree-based classifiers: Random Forest, Extra Trees, XGBoost, and LightGBM'"
+    auditoria: null
+    observacao: null
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 não inclui Outro"
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Random Forest; Extra Trees; XGBoost; LightGBM"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 3 — 'four different tree-based classifiers: Random Forest, Extra Trees, XGBoost, and LightGBM'"
+    auditoria: null
+    observacao: "Hiperparâmetros dos classificadores não foram informados no artigo."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "SMOTE-oversampling"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 3 — 'the SMOTE (Synthetic Minority Over-sampling Technique) was applied to the training set to address class imbalance'"
+    auditoria: null
+    observacao: null
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 3 — 'Evaluation was performed using stratified 5-fold cross-validation, ensuring separation between training and test sets in each iteration'"
+    auditoria: null
+    observacao: "5-fold CV estratificado."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 não inclui Outra"
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção 2.2, p. 2 — 'the final feature vector of each participant integrates detailed information about the movements... composed of 924 attributes'"
+    auditoria: null
+    observacao: "Cada participante é representado por um único vetor concatenado de 924 atributos (11 tarefas × 2 punhos × 2 sensores × eixos/estatísticas, Eq. 2), garantindo que a divisão 5-fold ocorra no nível do participante."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – inferida"
+    status: "inferido"
+    confianca: "alta"
+    evidencia: "Seção 2.2 e 2.3, p. 2–3 — 'the final feature vector of each participant integrates detailed information' e 'Participant classification was performed... using stratified 5-fold cross-validation'"
+    auditoria: null
+    observacao: "Inferida pelo desenho experimental: como todas as tarefas, sensores e punhos de um indivíduo foram concatenados em um único registro de 924 atributos por participante antes da classificação, um participante não pode estar simultaneamente no treino e no teste."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 3 — 'and the SMOTE (Synthetic Minority Over-sampling Technique) was applied to the training set to address class imbalance'"
+    auditoria: null
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "SMOTE (Synthetic Minority Over-sampling Technique) aplicado ao conjunto de treino; parâmetros não informados"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 3 — 'the SMOTE (Synthetic Minority Over-sampling Technique) was applied to the training set to address class imbalance'"
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.1 e 2.3, p. 2–3 — avaliação realizada exclusivamente por validação cruzada 5-fold no próprio dataset PADS"
+    auditoria: null
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "Balanced accuracy", "F1"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 3 — 'The performance of the classifiers was evaluated in terms of accuracy, balanced accuracy, and weighted F1-score'"
+    auditoria: null
+    observacao: "O F1-score reportado é ponderado (weighted F1-score)."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 não inclui Outra"
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "DD×HC; Extra Trees; Balanced accuracy; 82.48%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1 e Seção 3, p. 3 — 'while Extra Trees obtained the best result in the DD×CO scenario (82.48%)'"
+    auditoria: null
+    observacao: "Na conclusão (Seção 4, p. 3), os autores destacam 'balanced accuracy of 74.31%' (que corresponde ao melhor resultado de PD×CO com LightGBM). Na Tabela 1, o maior valor global é DD×CO com Extra Trees (82.48% Bal Acc), e em PD×CO é LightGBM (74.31% Bal Acc)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; LightGBM; Balanced accuracy; 74.31% | PD×HC; LightGBM; Accuracy; 81.13% | PD×HC; LightGBM; F1; 81.34% | PD×HC; Extra Trees; Accuracy; 82.25% | PD×HC; Extra Trees; Balanced accuracy; 70.23% | PD×HC; Extra Trees; F1; 81.16% | PD×HC; Random Forest; Balanced accuracy; 69.83% | PD×HC; XGBoost; Balanced accuracy; 69.56% | PD×DD; LightGBM; Balanced accuracy; 67.37% | PD×DD; LightGBM; Accuracy; 74.62% | PD×DD; LightGBM; F1; 73.86% | PD×DD; XGBoost; Balanced accuracy; 63.87% | PD×DD; Extra Trees; Balanced accuracy; 62.43% | PD×DD; Random Forest; Balanced accuracy; 60.17% | DD×HC; Extra Trees; Accuracy; 82.39% | DD×HC; Extra Trees; F1; 82.36% | DD×HC; XGBoost; Balanced accuracy; 77.93% | DD×HC; LightGBM; Balanced accuracy; 76.89% | DD×HC; Random Forest; Balanced accuracy; 75.41%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela 1, p. 3 — 'Table 1. Classification results with SMOTE for different scenarios'"
+    auditoria: null
+    observacao: null
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados: GitHub, code, repository, availability; apenas o link público do PADS no PhysioNet foi citado na nota de rodapé 1 (p. 2)"
+    auditoria: null
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seções 3 e 4, p. 3–4 — termos buscados: limitation, drawback, challenge, future; nenhuma limitação foi declarada pelos autores"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 3–4 — termos buscados: future work, gap, further, open; os autores não apontam trabalhos futuros além de mencionar que estenderam a análise para DD×CO"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano"
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 2.3 e 3, p. 3 — 'Each scenario was repeatedly evaluated with the different feature sets... Table 1 presents the best results obtained for each classification scenario after exploring various feature sets'"
+    observacao: "Embora o SMOTE tenha sido explicitamente aplicado ao conjunto de treino ('applied to the training set'), não há menção de que a padronização z-score foi ajustada apenas no treino, e a seleção manual de subconjuntos de atributos (Tabela 2) foi escolhida avaliando repetidamente os subconjuntos na validação cruzada de 5 dobras e reportando o melhor resultado no mesmo conjunto de avaliação (vazamento na seleção de atributos/configuração)."
+  risco_vazamento:
+    valor: "Alto"
+    regra: "aux_preproc_apenas_treino = Não (seleção de subconjuntos de atributos otimizada sobre o próprio resultado da validação cruzada 5-fold e z-score sem especificação de ajuste restrito ao treino)"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Três cenários binários (PD×CO, PD×DD e DD×CO) e os tamanhos dos grupos no PADS (276 PD, 114 DD, 79 CO) estão claramente definidos."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Todos os itens aplicáveis do recorte (modalidade IMU/lateralidade, 11 tarefas, acelerômetro e giroscópio, ambos os punhos/dominante e N=469) estão descritos."
+    QA3:
+      resposta: "No"
+      nota: 0.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Alto devido à escolha da melhor configuração de atributos baseada diretamente no desempenho da CV de 5 dobras sem conjunto de teste externo/aninhado e incerteza sobre o z-score."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta apenas uma métrica robusta ao desbalanceamento (Balanced accuracy), além de Accuracy e F1 ponderado (weighted F1-score)."
+    QA5:
+      resposta: "No"
+      nota: 0.0
+      campos: [35, 22, 29]
+      justificativa: "Não disponibiliza código e não descreve os hiperparâmetros dos classificadores nem os parâmetros do SMOTE."
+  nota_qa: 2.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Soma de PD+HC+DD (campo 15: 276+79+114=469) = campo 14 (469)"
+    resultado: "OK"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – inferida"
+    resultado: "OK"
+  - regra: "Campo 23 = SMOTE-oversampling → campo 28 ≠ Não se aplica (Só no treino) e campo 29 preenchido"
+    resultado: "OK"
+  - regra: "Campo 9 ≠ Não se aplica → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK"
+  - regra: "Nota de QA3 (0.0 / No) coerente com risco_vazamento calculado (Alto)"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campo 2 (ano_publicacao): o PDF não contém cabeçalho/rodapé com ano ou DOI; '2025' foi obtido do metadado do arquivo Zotero."
+  - "Campos 26 e 27 (unidade_particionamento e separacao_participante): marcados como 'Participante' e 'Sim – inferida' porque a Eq. 2 (Seção 2.2) constrói um único vetor de 924 atributos por participante concatenando todas as tarefas, punhos e sensores."
+  - "aux_preproc_apenas_treino e QA3: marcado como 'Não' (risco Alto) porque múltiplos subconjuntos de atributos foram testados repetidamente na validação cruzada 5-fold e a Tabela 1 reporta os melhores resultados obtidos nessa busca, além de não especificar se o z-score foi ajustado só no treino."
+  - "Campo 33 (melhor_resultado): extraído o maior valor da Tabela 1 (DD×HC; Extra Trees; Balanced accuracy; 82.48%), embora a conclusão destaque 74.31% (PD×HC; LightGBM)."

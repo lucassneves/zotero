@@ -1,0 +1,380 @@
+meta:
+  row_id: 79
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "Q7E9QHNT"
+  titulo: "Three-Class Parkinson’s disease screening from smartwatch motion signals: A comparison of physics-informed handcrafted features and deep embeddings with patient-level validation"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Seção 3.1, p. 3 — 'This study uses the Parkinson’s Disease Smartwatch (PADS) dataset, which was made publicly available on PhysioNet in 2024.'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 79
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Rodapé, p. 1 — 'https://doi.org/10.1016/j.bspc.2026.111448 ... Available online 1 October 2026 1746-8094/© 2026 Elsevier Ltd.'"
+    auditoria: null
+    observacao: "O cabeçalho do volume indica 'Biomedical Signal Processing and Control 130 (2027) 111448', mas o DOI (2026.111448), data online (1 October 2026) e copyright (© 2026) indicam 2026; conforme regra do campo 2, usou-se o ano do DOI/copyright."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Estudo comparativo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 1, p. 2 — 'A comparative implementation of established deep-embedding and physics-informed handcrafted approaches under patient-level evaluation'"
+    auditoria: null
+    observacao: "Na Seção 2.6 (p. 3) e Seção 7 (p. 23), os autores enfatizam que não reclamam novidade para os algoritmos de CNN ou gradient boosting, mas sim uma avaliação e comparação metodológica rigorosa em nível de paciente."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 preenchido com 'Estudo comparativo' (não foi marcado 'Outro')."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'This study compares two three-class wearable-based screening frameworks using the PADS dataset, comprising 469 participants'"
+    auditoria: null
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 9 — 'No external datasets were used for pretraining or transfer learning.'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas o PADS foi utilizado nos experimentos (Seção 3.1, p. 3; Seção 4, p. 9)."
+    auditoria: null
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Metadados demográficos-clínicos", "Questionário (PDNMS)", "Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3; Seção 3.8, p. 7 — 'The first used only demographic and questionnaire variables in a three-class setting... motion signals'"
+    auditoria: null
+    observacao: "O pipeline principal de atributos manuais usa os sinais de movimento (IMU), enquanto o pipeline profundo combina sinais de movimento (2048x6) com um vetor demográfico de 7 dimensões (idade, idade no diagnóstico, peso, altura, gênero, histórico familiar, lateralidade). Os experimentos auxiliares (Stages 0, 1 e 2) usam variáveis demográficas e de questionário."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "inferido"
+    confianca: "média"
+    evidencia: "Resumo, p. 1 — 'comprising 469 participants and 5159 smartwatch measurement sessions'; Seção 3.1, p. 3 — 'includes multiple movement tasks'"
+    auditoria: null
+    observacao: "O artigo utiliza todas as 5159 sessões de medição dos 469 participantes (11 tarefas × 469 sujeitos = 5159 sessões), exemplificando na Seção 3.1 (p. 3-4) 'resting, arm lifting, holding weight, drinking motion, finger pointing, and rhythmic foot movement', sem declarar o número exato de tarefas."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (5159 sessões; exemplos citados: resting; arm lifting; holding weight; drinking motion; finger pointing; rhythmic foot movement)"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 3.1, p. 3-4 — 'multiple movement tasks such as resting, arm lifting, holding weight, drinking motion, finger pointing, and rhythmic foot movement'"
+    auditoria: null
+    observacao: "O número exato de tarefas (11) não é citado explicitamente, mas o total de 5159 sessões para 469 sujeitos corresponde a todas as 11 tarefas do PADS."
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 3 — 'Motion signals were recorded using accelerometer and gyroscope sensors operating at a sampling rate of 100 Hz.'"
+    auditoria: null
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 não inclui 'Outro' (Seção 3.2, p. 4 — 'three accelerometer axes and three gyroscope axes')."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção 3.1, p. 3 — 'includes a total of 5159 measurement sessions. Participants were required to perform interactive movement tasks while wearing two smartwatches placed on both wrists'"
+    auditoria: null
+    observacao: "Na Seção 3.2 (p. 4), cada gravação possui 6 canais ('six sensor channels, representing three accelerometer axes and three gyroscope axes'), agregando todas as gravações do paciente no nível do sujeito (Seção 3.9, p. 8)."
+  - id: 14
+    chave: "n_participantes"
+    valor: 469
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'using the PADS dataset, comprising 469 participants and 5159 smartwatch measurement sessions.'"
+    auditoria: null
+    observacao: "No experimento auxiliar PD×DD (Stage 2, Seção 5.3, p. 10), foram usados 390 participantes (276 PD e 114 DD)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "PD=276; HC=79; DD=114"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.1, p. 4 — 'The class distribution comprises approximately 276 PD cases, 114 other movement disorder cases, and 79 healthy controls'"
+    auditoria: null
+    observacao: "Confirmado exatamente na matriz de confusão out-of-fold de todos os 469 sujeitos (Tabela 9, p. 12 e Figura 2, p. 13: Healthy=79, PD=276, Other=114)."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["3 classes (Mult-Class)", "Outro", "PD×DD"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.8, p. 7 — 'three-class setting. The second addressed a binary PD-versus-non-PD problem. The third distinguished PD from other movement disorders.'"
+    auditoria: null
+    observacao: "A avaliação principal do artigo é o cenário de 3 classes (PD vs. HC vs. DD). Os cenários binários PD vs. Non-PD (Stage 1) e PD vs. DD (Stage 2) foram incluídos como análises diagnósticas auxiliares usando variáveis demográficas/questionário. Além disso, a Tabela 14 (p. 14) reporta ROC-AUC pareado one-vs-one derivado do modelo de 3 classes para Healthy vs. PD, Healthy vs. Other MD e PD vs. Other MD."
+  - id: 17
+    chave: "outro_cenario"
+    valor: "PD vs Non-PD (PD versus HC + DD combinados, Stage 1 auxiliar)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 5.2, p. 10 — 'merging healthy controls and other movement disorder cases into a single non-PD group, leaving 276 PD cases against 193 non-PD cases.'"
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)", "Outro", "Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'CNN–demographic network to extract 128-dimensional embeddings from motion signals and demographic variables... 150 physics-informed handcrafted features'"
+    auditoria: null
+    observacao: "O Pipeline A extrai 150 atributos manuais (domínio do tempo, frequência/FFT, tremor e resíduos wavelet) em janelas de 512 amostras. O Pipeline B (híbrido em dois estágios) processa a série bruta segmentada (2048×6) na CNN e funde com vetor demográfico de 7 dimensões para extrair embeddings profundos de 128 dimensões passados ao classificador gradient boosting. Nos estágios auxiliares também há atributos tabulares demográficos/clínicos."
+  - id: 19
+    chave: "outra_representacao"
+    valor: "Embeddings profundos multimodais (128 dimensões da rede CNN-demográfica) e variáveis tabulares demográficas/questionário"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.3, p. 6 — 'the embedding layer was used to transform recordings into 128-dimensional feature vectors for downstream gradient boosting classification.'"
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning", "Hybrid-Ensemble"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'CNN–demographic network to extract 128-dimensional embeddings ... followed by gradient-boosting classification ... soft-voting XGBoost–LightGBM ensemble.'"
+    auditoria: null
+    observacao: "Inclui Classical ML (Logistic Regression, SVM, Random Forest, XGBoost, LightGBM, CatBoost e soft-voting ensemble XGBoost+LightGBM), Deep Learning (LSTM, CNN-LSTM, CNN+Attention, CNN+Residual Attention) e Hybrid-Ensemble (pipeline de dois estágios combinando rede profunda CNN-demográfica extratora de embeddings com gradient boosting XGBoost/LightGBM/CatBoost)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 não inclui 'Outro'."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "XGBoost; LightGBM; Soft-voting XGBoost–LightGBM ensemble; CNN–demographic embedding network + XGBoost (isotonic-calibrated); CNN–demographic + LightGBM; CNN–demographic + CatBoost; CNN–demographic + Soft-voting ensemble; Logistic Regression; SVM; Random Forest; LSTM; CNN-LSTM; CNN + Attention; CNN + Residual Attention"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seções 3.4 a 3.7, p. 6-7 — 'Logistic Regression, Support Vector Machine, and Random Forest... XGBoost... LightGBM... LSTM... CNN-LSTM... CatBoost'"
+    auditoria: null
+    observacao: "Hiperparâmetros detalhados: Pipeline Handcrafted (Seção 3.5, p. 6): XGBoost (500 estimators, max_depth=6, lr=0.04, subsample=0.8, colsample=0.8, min_child_weight=3, gamma=0.1, L1=0.1, L2=1.0), LightGBM (500 estimators, max_depth=6, lr=0.04, subsample=0.8, min_child_samples=15, L1=0.1, L2=0.1), Ensemble soft-voting (60% XGBoost + 40% LightGBM). Pipeline Deep (Seção 3.6.4 e 3.6.5, p. 7): CNN (2 camadas Conv1D com 32 e 64 filtros, kernel=5, max-pooling=2) + ramo demográfico (32 unidades) -> camada de embedding de 128 unidades (Adam, batch_size=32, early stopping patience=3); 2º estágio: XGBoost (800 estimators, max_depth=8, lr=0.03, subsample=0.85, calibrado com regressão isotônica via CalibratedClassifierCV 3 folds), LightGBM (1000 estimators, 64 leaves, lr=0.03), CatBoost (800 iterations, depth=8, lr=0.03). Auxiliares (Seção 3.4, p. 6): LR (L-BFGS, max_iter=1000), SVM (RBF, C=1.0, gamma=scale), RF (300 estimators, sem restrição de profundidade)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.4, p. 6 — 'In Stage 2 and in the principal motion-based pipelines, imbalance was instead addressed using model-level class weights or inverse-frequency sample weights.'"
+    auditoria: null
+    observacao: "Nos pipelines principais baseados em movimento (Handcrafted e Deep) e no Stage 2, usou-se ponderação de classes/amostras pelo inverso da frequência (inverse-frequency sample/class weighting). Nos experimentos auxiliares demográficos (Stages 0 e 1), utilizou-se SMOTE (k=5) apenas no conjunto de treino."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Hold-out", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'evaluated using five-fold patient-disjoint cross-validation'; Seção 4, p. 9 — 'Earlier exploratory ... experiments used fixed patient-level train/test splits'"
+    auditoria: null
+    observacao: "Os dois pipelines principais e os estudos de ablação usaram 5-fold CV estratificado por paciente (com 10% do treino externo reservado para validação interna/early stopping na CNN e 3 folds internos para calibração isotônica no pipeline profundo, além de um experimento secundário de nested threshold na Seção 6.5.1). Os experimentos exploratórios iniciais (Stages 0, 1, 2, híbrido e desenvolvimento DL nas Tabelas 2 a 7) usaram Hold-out 80/20 no nível do paciente."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 não inclui 'Outra'."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.2, p. 5 — 'Patient-level partitioning was performed before window assignment and model training. All windows belonging to a given participant were therefore assigned exclusively'"
+    auditoria: null
+    observacao: "Tanto nos pipelines principais em 5-fold CV (StratifiedKFold na lista de pacientes únicos e StratifiedGroupKFold com identidade do paciente) quanto nos splits exploratórios (GroupShuffleSplit ou split estratificado de pacientes únicos, Seção 4, p. 9), a unidade de particionamento foi estritamente o participante."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 4, p. 9 — 'all recordings and derived samples from a participant remained within a single fold, preventing patient overlap between training and test partitions.'"
+    auditoria: null
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 6 — 'Nk is the number of training samples in class k'; Seção 4, p. 9 — 'SMOTE with five nearest neighbours was applied exclusively to the training partition.'"
+    auditoria: null
+    observacao: "Tanto os pesos de classe inversamente proporcionais à frequência (calculados a partir das amostras de treino Nk na Eq. 9, Seção 3.3.2, p. 6 e Seção 3.6.1, p. 6) quanto o SMOTE nos experimentos auxiliares (Seção 3.4, p. 6 e Seção 4, p. 9) foram aplicados exclusivamente às partições de treino."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Nos pipelines principais (Handcrafted e Deep): ponderação de amostras/classes inversamente proporcional à frequência de cada classe no treino (w_k = N / (K * N_k), com K=3). Nos experimentos auxiliares demográficos (Stages 0 e 1): SMOTE com 5 vizinhos mais próximos (k=5) aplicado exclusivamente à partição de treino (igualando em 221 amostras por classe no treino)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 6 — 'wk = N / (K Nk)'; Seção 3.4, p. 6 — 'SMOTE with five nearest neighbours was applied only to the training partitions'"
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 — 'External multimodal validation is required before the framework can support clinical deployment.'; Seção 4, p. 9 — 'No external datasets were used'"
+    auditoria: null
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["AUC", "Accuracy", "Balanced accuracy", "F1", "Precision", "Sensitivity", "Specificity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.10, p. 8 — 'Classification performance was assessed using accuracy, precision, recall, macro F1-score, balanced accuracy, sensitivity, and specificity... (ROC-AUC)'"
+    auditoria: null
+    observacao: "O artigo reporta tanto Macro F1 quanto Weighted F1 (nas Tabelas 2 a 7) e enfatiza o Macro F1-score e o Macro ROC-AUC nos experimentos principais de 3 classes (Tabelas 8, 10, 11, 12, 15, 18, 19, 20 e 22). Precision é mencionada na Seção 3.10 (p. 8), enquanto Accuracy, Balanced accuracy, F1 (macro e weighted), Sensitivity/Recall, Specificity e ROC-AUC (one-vs-rest, pairwise, macro e weighted) têm valores reportados nas tabelas."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 não inclui 'Outra'."
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "3 classes (Mult-Class); Soft-voting XGBoost–LightGBM ensemble (150 handcrafted features, patient-level 5-fold CV); Accuracy; 72.28% ± 3.19%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Resumo, p. 1 e Tabela 19, p. 17 — 'The handcrafted ensemble achieved 72.28% ± 3.19% patient-level accuracy, a macro F1-score of 0.662 ± 0.037, and a pooled macro ROC-AUC of 0.825.'"
+    auditoria: null
+    observacao: "Na Tabela 12 (p. 13), a acurácia em nível de paciente do ensemble é exibida arredondada em 3 casas decimais como 0.723 ± 0.032, enquanto nas Tabelas 11 (p. 13), 15 (p. 14), 19 (p. 17) e no Resumo/Texto aparece como 72.28% ± 3.19% (0.7228 ± 0.0319)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "3 classes (Mult-Class); Soft-voting XGBoost–LightGBM ensemble (handcrafted, patient-level 5-fold CV); Macro F1; 0.662 ± 0.037 | 3 classes (Mult-Class); Soft-voting XGBoost–LightGBM ensemble (handcrafted, patient-level OOF); Macro ROC-AUC; 0.825 | 3 classes (Mult-Class); Soft-voting XGBoost–LightGBM ensemble (handcrafted, patient-level OOF); Weighted ROC-AUC; 0.814 | 3 classes (Mult-Class); Soft-voting XGBoost–LightGBM ensemble (handcrafted, baseline argmax Table 22); Balanced accuracy; 0.658 ± 0.044 | 3 classes (Mult-Class); Soft-voting XGBoost–LightGBM ensemble (handcrafted, OOF); Sensitivity (HC / PD / DD); 72.2% / 85.1% / 41.2% | 3 classes (Mult-Class); Soft-voting XGBoost–LightGBM ensemble (handcrafted, OOF); Specificity (HC / PD / DD); 92.3% / 62.2% / 92.4% | 3 classes (Mult-Class); XGBoost (handcrafted, patient-level 5-fold CV); Accuracy; 0.719 ± 0.034 | 3 classes (Mult-Class); XGBoost (handcrafted, patient-level 5-fold CV); Macro F1; 0.653 ± 0.043 | 3 classes (Mult-Class); LightGBM (handcrafted, patient-level 5-fold CV); Accuracy; 0.716 ± 0.023 | 3 classes (Mult-Class); LightGBM (handcrafted, patient-level 5-fold CV); Macro F1; 0.659 ± 0.030 | 3 classes (Mult-Class); Deep No-attention pipeline (CNN-demographic + XGBoost, patient-level 5-fold CV); Accuracy; 0.689 ± 0.046 | 3 classes (Mult-Class); Deep No-attention pipeline (patient-level 5-fold CV); Macro F1; 0.618 ± 0.042 | 3 classes (Mult-Class); Deep No-attention pipeline (patient-level 5-fold CV); Balanced accuracy; 0.611 ± 0.031 | 3 classes (Mult-Class); Deep No-attention pipeline (patient-level OOF); Macro ROC-AUC; 0.799 | 3 classes (Mult-Class); Deep No-attention pipeline (recording-level 5-fold CV); Accuracy; 0.683 ± 0.040 | 3 classes (Mult-Class); Deep No-attention pipeline (recording-level 5-fold CV); Macro F1; 0.608 ± 0.042 | 3 classes (Mult-Class); Stage 0 Demographic LR (no SMOTE, hold-out); Accuracy; 0.70 (Macro F1: 0.58) | 3 classes (Mult-Class); Stage 0 Demographic LR + SMOTE (hold-out); Accuracy; 0.62 (Macro F1: 0.63) | Outro (PD vs Non-PD, Stage 1 Demographic); Random Forest + SMOTE (hold-out); Accuracy; 0.70 (Macro F1: 0.69) | PD×DD (Stage 2 Demographic); LightGBM + Feature Eng. (hold-out); Accuracy; 0.76 (Macro F1: 0.69) | PD×DD (Stage 2 Demographic); Logistic Regression (hold-out); Accuracy; 0.77 (Macro F1: 0.65)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabelas 2 a 22, p. 10-22 — 'Handcrafted ensemble: Patient accuracy 0.7228 ± 0.0319, Macro F1 0.662 ± 0.037, Macro AUC 0.825; Deep No-attention: 0.689 ± 0.046'"
+    auditoria: null
+    observacao: "Na Tabela 14 (p. 14), os valores de ROC-AUC pairwise calculados a partir das predições OOF do modelo de 3 classes foram: Handcrafted (Healthy vs. PD: 0.931; Healthy vs. Other MD: 0.903; PD vs. Other MD: 0.773) e Deep No-attention (Healthy vs. PD: 0.938; Healthy vs. Other MD: 0.902; PD vs. Other MD: 0.711)."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Data availability, p. 23 — 'The PADS dataset is publicly available on PhysioNet. Supplementary results are provided with this article, and code is available from the corresponding author on reasonable request.'"
+    auditoria: null
+    observacao: "Código disponível apenas mediante solicitação razoável ao autor correspondente (sem repositório público de código ou dados derivados abertos)."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção 6.7 (p. 22): (1) Os protocolos de segmentação, agregação e seleção de modelo não foram totalmente equiparados entre os dois pipelines, os pesos do ensemble (60:40) foram fixados heuristicamente e a arquitetura profunda não passou por busca exaustiva de hiperparâmetros; (2) Experimentos restritos ao PADS sob condições controladas em único smartwatch, sem avaliar vida livre, progressão longitudinal, variação de medicação, heterogeneidade de dispositivos ou módulo dedicado de remoção de artefatos/ruído; (3) Possível confusão demográfica (idade, idade no diagnóstico, peso e altura influenciaram fortemente os modelos e o ramo demográfico da rede profunda), sem análise de subgrupos ou calibração por estratos; (4) Explicabilidade SHAP restrita ao componente XGBoost e correlacional (não causal); (5) Segmentação com sobreposição introduziu dependência temporal intra-gravação e o conjunto held-out na análise multi-seed do CNN-LSTM foi usado para monitorar early stopping; (6) Ausência de benchmark com Transformers, TCNs ou aprendizado auto-supervisionado, ausência de validação externa, escores MDS-UPDRS pareados e baixa sensibilidade para a classe Other Movement Disorders (41,2%)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6.7, p. 22 — 'Several limitations should be considered when interpreting the present findings. First, although both pipelines were evaluated using five-fold patient-level cross-validation...'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seções 6.3, 6.7 e 7 (p. 20, 22-23): Necessidade de validação externa prospectiva multi-centro, gravações em vida livre (free-living) e múltiplos dispositivos vestíveis; combinação de embeddings profundos (para caracterização de episódios em alta resolução temporal) com atributos manuais (para agregação em nível de paciente); inclusão de modalidades adicionais, rótulos diagnósticos de subclasses mais detalhados, estado de medicação e acompanhamento longitudinal para melhorar a separação entre DP e outros distúrbios do movimento (DD); análises de subgrupos demográficos e calibração; experimentos controlados de artefatos e comparação sob protocolos pareados com arquiteturas temporais modernas (Transformers, TCN, auto-supervisionado)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 6.7, p. 22 — 'Future work should include prospective multi-site validation, free-living recordings, multiple wearable devices, subgroup and calibration analyses...'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo exclusivo do revisor humano (regra do formulário)."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção 3.3.2, p. 6 — 'All features were standardised using z-score normalisation computed on the training partition only'; Seção 3.6.4, p. 7 — '10% of the outer-training recordings'"
+    observacao: "O artigo detalha explicitamente que a padronização z-score (Eq. 9, p. 6), os pesos de classe inversos à frequência, o early stopping (10% do treino externo, p. 7), a calibração isotônica (CalibratedClassifierCV com 3 folds internos no treino externo, p. 7) e o SMOTE nos experimentos auxiliares (p. 6 e 9) foram todos ajustados exclusivamente nas partições de treino de cada fold. A única ressalva menor declarada pelos autores na Seção 3.5 (p. 6) e 6.7 (p. 22) é que o peso 60:40 do ensemble e a remoção de 10 atributos cross-axis vieram de estágio exploratório/heurístico de desenvolvimento."
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; 27 = Sim – explícita; 28 = Só no treino; aux_preproc_apenas_treino = Sim"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "O cenário principal de 3 classes e os cenários binários auxiliares estão explicitamente definidos com o número exato de participantes por grupo (PD=276, HC=79, DD=114)."
+    QA2:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Modalidade, tarefas (todas as 5159 sessões), sensores (acelerômetro e giroscópio), punhos (ambos) e N de participantes (469) estão informados."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Baixo: divisão estritamente por participante (StratifiedKFold em pacientes únicos / StratifiedGroupKFold), com normalização, ponderação de classes, validação interna e calibração restritas ao conjunto de treino."
+    QA4:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [31]
+      justificativa: "Reporta mais de duas métricas robustas ao desbalanceamento: Macro F1, Macro ROC-AUC, Balanced accuracy e o par Sensitivity + Specificity."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Os modelos, hiperparâmetros, pré-processamento e balanceamento estão descritos com alto nível de detalhe, mas o código não está publicamente disponível (apenas mediante solicitação ao autor)."
+  nota_qa: 4.5
+  nota_qa_max: 5
+  faixa_qa: "Alta"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica"
+    resultado: "OK (usa Série temporal IMU além de Questionário e Metadados)"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (PD=276; HC=79; DD=114)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (276 + 79 + 114 = 469)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (Participante → Sim – explícita)"
+  - regra: "Campo 23 = Outro → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK (campo 28 = Só no treino e campo 29 preenchido)"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (3→4, 6→7, 11→12, 16→17, 18→19, 20→21, 24→25, 31→32)"
+    resultado: "OK (16→17 e 18→19 preenchidos; demais null)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Baixo → QA3 = Yes / 1.0)"
+pontos_para_revisao_humana:
+  - "Campo 2 (ano_publicacao): cabeçalho indica 'Biomedical Signal Processing and Control 130 (2027) 111448', mas DOI (10.1016/j.bspc.2026.111448), data de disponibilização online (1 October 2026) e copyright (© 2026) indicam 2026; preenchido '2026' conforme regra do guia."
+  - "Campo 9 (tarefas_pads): status 'inferido' como 'Todas' porque o estudo utiliza todas as 5159 sessões de medição dos 469 sujeitos (11 tarefas por sujeito) e cita exemplos de tarefas na Seção 3.1, sem listar todas as 11 nominalmente."
+  - "Campo 13 (punhos): menciona que os participantes usaram smartwatches em ambos os punhos nas 5159 sessões e extrai 6 canais por gravação (3 eixos acelerômetro + 3 giroscópio), agregando todas as gravações do paciente."
+  - "Campo 23 (balanceamento_augmentation): marcado 'Outro' pois nos pipelines principais o desbalanceamento é tratado via pesos de classe/amostra inversamente proporcionais à frequência no treino, enquanto SMOTE (k=5 no treino) foi usado apenas nos estágios auxiliares demográficos (Stages 0 e 1)."
+  - "QA3 e aux_preproc_apenas_treino: classificado como 'Sim' e risco 'Baixo' dado o rigoroso protocolo patient-disjoint (normalização z-score, pesos, early stopping e calibração isotônica feitos apenas no treino externo); notar apenas que a razão 60:40 do ensemble e a exclusão de 10 variáveis cross-axis vieram de análise exploratória/heurística de desenvolvimento."
+  - "QA5: nota 0.5 ('Partially') pois embora o artigo descreva exaustivamente a arquitetura, equações, hiperparâmetros e ambiente de software, o código não está em repositório público ('available from the corresponding author on reasonable request')."

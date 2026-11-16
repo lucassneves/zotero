@@ -1,0 +1,48 @@
+Skip to main content
+Skip to article
+Archives of Physical Medicine and Rehabilitation
+Date: May 2026
+Conference abstract
+Full text access
+Get rights and content
+Research Poster 3160580
+Enhancing Parkinson’s Disease Detection Using Smartwatch IMU and Demographic Features
+Sanghoon Choi
+, 
+Hyo-Chang Seo
+Show more
+View PDF
+Download full issue
+Research Objectives
+To investigate whether smartwatch-based inertial sensor data (IMU) combined with demographic features (age at diagnosis, age, height, weight, gender) can improve the performance of deep learning models in classifying Parkinson’s Disease (PD) from healthy controls.
+Design
+Retrospective diagnostic study using a deep learning-based convolutional neural network (CNN) with residual connections (ResNet). The performance of the IMU-only model was compared with a dual-input model that additionally incorporates demographic information.
+Setting
+Secondary analysis of the Parkinson’s Disease Smartwatch (PADS) dataset from PhysioNet, which was collected during a prospective observational study conducted at the outpatient clinic for movement disorders at the University Hospital Münster, Germany. Participants wore smartwatches on both wrists and completed 11 neurologist-designed movement tasks in a supervised clinical setting.
+Participants
+A total of 498 participants were included, comprising both individuals diagnosed with Parkinson’s Disease and healthy controls. Inclusion criteria were based on the availability of complete IMU recordings and corresponding demographic metadata.
+Interventions
+No clinical intervention was performed. Raw smartwatch IMU signals (accelerometer and gyroscope, 100Hz sampling rate) were segmented into fixed-length windows and fed into a ResNet-based deep learning model. Demographic variables were separately input into a parallel dense layer pathway for multimodal fusion.
+Main Outcome Measures
+Primary outcome was binary classification accuracy (PD vs. Control). Secondary outcomes included confusion matrix analysis and the performance gain of the dual-input model (IMU + demographics) over the IMU-only model.
+Results
+The dual-input model incorporating both IMU data and demographic features achieved an accuracy of 91.3% on the held-out test set, compared to 87.4% for the IMU-only model. The inclusion of demographic variables significantly improved the model’s discriminative capability, particularly in borderline cases.
+Conclusions
+Combining smartwatch IMU signals with patient demographics enhances the performance of deep learning models for Parkinson’s Disease classification. This suggests the potential of multimodal data fusion in remote health monitoring. Further validation in real-world clinical settings is warranted.
+Key Words
+Parkinson’s Disease Classification; Multimodal Deep Learning; Smartwatch-based Inertial Sensing
+Previous article
+Next article
+Author(s) Disclosures: All authors declare no conflicts of interest related to the content of this study.
+View Abstract
+Recommended articles
+No articles found.
+Copyright © 2026 Published by Elsevier Inc.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.

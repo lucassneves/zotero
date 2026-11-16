@@ -1,0 +1,383 @@
+meta:
+  row_id: 44
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito, mas com Ressalvas"
+  zotero_key: "RR9P4YZP"
+  titulo: "Coverage-Aware Virtual IMU Augmentation for Low-Resource Human Activity Recognition"
+  ressalva_triagem: "Preprint (arXiv, CE2=Sim) incluído com ressalvas (Tier A); confirmar recorte experimental do PADS e protocolo de validação."
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 44
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Cabeçalho e nota lateral, p. 1 — 'IEEE TRANSACTIONS ON MOBILE COMPUTING, VOL. XX, NO. X, 2026' e 'arXiv:2609.16768v1 [cs.AI] 15 Sep 2026'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: trata-se de preprint no arXiv (arXiv:2609.16768v1, de 15 Sep 2026) submetido ao IEEE Transactions on Mobile Computing."
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'we propose a novel coverage-aware virtual IMU augmentation framework that decides where to supplement real data, how to generate and select virtual candidates'"
+    auditoria: null
+    observacao: "Propõe um novo framework de data augmentation virtual de IMU consciente de cobertura (seleção de âncoras de diversidade e escassez, síntese guiada por prompt e treinamento ponderado por confiabilidade)."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 diferente de Outro (marcado 'Novo modelo')."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Análise suplementar"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A1, p. 6 — 'PADS contains wrist-worn IMU recordings from clinical movement assessments and is treated as an exploratory medical extension rather than a standard HAR benchmark.'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: o estudo foca principalmente em três benchmarks de HAR (USC-HAD, PAMAP2 e RealWorld) e utiliza o PADS na Seção IV-F como uma extensão médica exploratória (análise secundária), treinando e avaliando no próprio PADS."
+  - id: 6
+    chave: "datasets"
+    valor: ["Outro público", "PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A1, p. 6 — 'We evaluate the proposed method on three IMU-based HAR benchmarks: USC-HAD [30], PAMAP2 [31], and RealWorld [32]. We further evaluate... using PADS [33]–[35].'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "USC-HAD; PAMAP2; RealWorld"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A1, p. 6 — 'three IMU-based HAR benchmarks: USC-HAD [30], PAMAP2 [31], and RealWorld [32].'"
+    auditoria: null
+    observacao: "Nos outros datasets públicos foram usados: USC-HAD (14 sujeitos, 7 atividades, sensor no quadril frontal direito), PAMAP2 (8 sujeitos, 5 atividades, sensor no peito) e RealWorld (15 sujeitos, 5 atividades, sensor no antebraço)."
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 — 'we conduct an exploratory evaluation on PADS [33], [34], a wearable IMU dataset for Parkinson’s disease (PD) versus healthy-control (HC) classification.'"
+    auditoria: null
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Subconjunto"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 — 'The evaluation uses both-wrist recordings from the StretchHold and HoldWeight tasks, with 20% labeled real data.'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: o recorte experimental do PADS compreende exclusivamente o subconjunto de 2 tarefas motoras (StretchHold e HoldWeight), utilizando 20% dos dados reais rotulados."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "StretchHold; HoldWeight"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 — 'The evaluation uses both-wrist recordings from the StretchHold and HoldWeight tasks'"
+    auditoria: null
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-B, pp. 4–5 e Seção IV-F, p. 10 — 'Intensity reflects the inertial energy in the accelerometer and gyroscope channels' e 'a wearable IMU dataset... both-wrist recordings'"
+    auditoria: null
+    observacao: "Na Seção IV-F o artigo menciona 'wearable IMU dataset' e 'both-wrist recordings', enquanto a Seção III-B especifica que o pipeline de extração dinâmica e simulação virtual opera sobre canais de acelerômetro e giroscópio."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 sem a opção 'Outro' marcada."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 — 'The evaluation uses both-wrist recordings from the StretchHold and HoldWeight tasks'"
+    auditoria: null
+    observacao: null
+  - id: 14
+    chave: "n_participantes"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 6 e Seção IV-F, p. 10 — termos buscados: subjects, participants, patients, 355, 469; Tabela I reporta apenas 'Folds: 5' para o PADS, sem informar o número de participantes."
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: o artigo reporta o N de sujeitos para USC-HAD (14), PAMAP2 (8) e RealWorld (15) na Tabela I, mas para o PADS substitui a coluna 'Subjects' por 'Folds: 5' e informa apenas o uso de '20% labeled real data' no cenário PD-vs-HC, omitindo a quantidade absoluta de participantes."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 6 e Seção IV-F, p. 10 — termos buscados: PD, HC, DD, subjects, participants; nenhum quantitativo de sujeitos por classe no PADS foi reportado."
+    auditoria: null
+    observacao: "Embora fique explícito que apenas as classes PD e HC entram no experimento (DD=0), o número de participantes de PD e de HC não é informado no texto nem nas tabelas."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 e Tabela I, p. 6 — 'a wearable IMU dataset for Parkinson’s disease (PD) versus healthy-control (HC) classification.'"
+    auditoria: null
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 sem a opção 'Outro' marcada."
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta"]
+    status: "explícito"
+    confianca: "média"
+    evidencia: "Seção III-A, p. 3 e Tabela II, p. 7 — 'a model receives a multichannel IMU time window and predicts its activity label' e 'Data preprocessing: 2-s windows; 1-s stride; 20 Hz'"
+    auditoria: null
+    observacao: "O pipeline geral segmenta as séries temporais de IMU em janelas deslizantes de 2 s com passo de 1 s a 20 Hz ('The same preprocessing pipeline is used across all compared methods') e também extrai 3 atributos dinâmicos (tempo, intensity, periodicity) para construir prompts de síntese. Na Seção IV-F, não é especificado se o RBF-SVM no PADS recebe as janelas brutas vetorizadas, embeddings do seed encoder ou atributos estatísticos."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 sem a opção 'Outro' marcada."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning", "Generativo-augmentation"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 e Tabela VI, p. 11 — 'We use a subject-level five-fold split and an RBF-SVM classifier' e métodos 'TimeGAN', 'Diffusion-TS', 'IMUGPT', 'Ours'"
+    auditoria: null
+    observacao: "No experimento com o PADS (Seção IV-F e Tabela VI), o classificador downstream é o RBF-SVM (Classical ML), avaliado em conjunto com modelos generativos/augmentation (TimeGAN, Diffusion-TS, IMUGPT e o framework proposto com Seed Encoder neural, T2M-GPT e IMUSim). Nos outros 3 benchmarks de HAR foram usados como classificadores downstream DeepConvLSTM, DeepConvLSTM-Attention e MLP-HAR."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 sem a opção 'Outro' marcada."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "RBF-SVM; T2M-GPT + IMUSim + Seed Encoder (Ours); IMUGPT; Diffusion-TS; TimeGAN"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 e Tabela VI, p. 11 — 'an RBF-SVM classifier' com configurações 'Real-only; Trad. Aug.; TimeGAN; Diffusion-TS; IMUGPT; Ours'"
+    auditoria: null
+    observacao: "No PADS o classificador avaliado é exclusivamente o RBF-SVM sob 6 configurações de dados/augmentation. Nos demais datasets de HAR (USC-HAD, PAMAP2 e RealWorld), os classificadores avaliados foram DeepConvLSTM, DeepConvLSTM-Attention e MLP-HAR."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-B, p. 5 e Seção IV-A4, p. 7 — 'We instantiate G with the synthesis pipeline adopted by IMUGPT [4], [5], using a pretrained T2M-GPT model [28] followed by IMUSim [29].'"
+    auditoria: null
+    observacao: "O método principal ('Ours') realiza síntese de dados virtuais de IMU guiada por âncoras (via T2M-GPT + IMUSim) e é comparado na Tabela VI com IMUGPT, Diffusion-TS (difusão), TimeGAN (Dados sintéticos GAN) e Traditional Augmentation (rotação, ruído gaussiano e bias aditivo)."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["CV aninhada", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 — 'We use a subject-level five-fold split and an RBF-SVM classifier; hyperparameters are selected by inner cross-validation using only the training subjects in each outer fold.'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: no PADS, o protocolo de validação é validação cruzada aninhada (nested CV) com 5 dobras externas no nível do sujeito (subject-level five-fold split) e validação cruzada interna restrita aos sujeitos de treino para seleção de hiperparâmetros. Nos outros 3 benchmarks de HAR (USC-HAD, PAMAP2 e RealWorld), o artigo utiliza Leave-one-subject-out (LOSO)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 sem a opção 'Outra' marcada."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 6 e Seção IV-F, p. 10 — 'subject-wise split' e 'We use a subject-level five-fold split'"
+    auditoria: null
+    observacao: "Confirmação da ressalva da triagem: tanto as 5 dobras externas quanto a validação cruzada interna no PADS respeitam o particionamento por sujeito/participante."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 e Tabela VI, p. 11 — 'We use a subject-level five-fold split... using only the training subjects in each outer fold' e 'five subject-level outer folds'"
+    auditoria: null
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-D, p. 6 e Seção IV-A1, p. 6 — 'All virtual samples, weights, and selection costs are computed strictly from the training split, without access to the held-out subject' e 'Virtual IMU data are used only for training.'"
+    auditoria: null
+    observacao: "Toda a seleção de âncoras, geração de dados sintéticos/virtuais e ponderação ocorre estritamente dentro do conjunto de treino de cada dobra, usando 20% dos dados reais rotulados."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Coverage-Aware Virtual IMU Augmentation (Ours): seleção de âncoras de diversidade (farthest-point sampling) e escassez (densidade local k-NN entre quantis Q_low e Q_high) no treino (com 20% de dados reais rotulados), extração de tempo/intensidade/periodicidade para prompts no T2M-GPT + IMUSim, geração de M=20 candidatos por âncora, retenção dos K_sel de menor custo (distância de cosseno no embedding + consistência de rótulo) e ponderação por tercis de risco e ranking intra-âncora (limite de 150 sequências por classe antes da segmentação); comparado com Traditional Augmentation (rotação, ruído gaussiano, bias), TimeGAN, Diffusion-TS e IMUGPT."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 7 e Seção IV-A4, p. 7 — '20 candidates per anchor', 'lowest-cost K_sel candidates' e 'limited to 150 sequences per activity class before window segmentation.'"
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-F, p. 10 — 'We use a subject-level five-fold split and an RBF-SVM classifier'"
+    auditoria: null
+    observacao: "O classificador RBF-SVM do PADS é treinado e avaliado por validação cruzada de 5 dobras dentro do próprio PADS, sem validação cruzada entre datasets distintos."
+  - id: 31
+    chave: "metricas"
+    valor: ["Balanced accuracy", "F1"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV-A2, p. 6 e Tabela VI, p. 11 — 'For PADS, we report Macro-F1 and balanced accuracy separately' e colunas 'Bal. Acc. ↑ | Macro-F1 ↑ | ∆Macro-F1'"
+    auditoria: null
+    observacao: "No PADS são reportados Balanced Accuracy e F1 explicitamente especificado como Macro-F1 (além de ∆Macro-F1, que representa o ganho absoluto sobre o baseline Real-only). A métrica Accuracy (Acc.) é reportada apenas para os outros 3 datasets de HAR na Tabela III."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 sem a opção 'Outra' marcada."
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; RBF-SVM (Ours); Balanced accuracy; 80.52 ± 9.08%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela VI, p. 11 — 'Ours | Bal. Acc.: 80.52 ± 9.08 | Macro-F1: 78.94 ± 8.64 | ∆Macro-F1: +13.92'"
+    auditoria: null
+    observacao: "Resultado obtido com 20% dos dados reais rotulados na avaliação de 5 dobras externas no nível do sujeito."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; RBF-SVM (Ours); Macro-F1; 78.94 ± 8.64% | PD×HC; RBF-SVM (IMUGPT); Balanced accuracy; 80.20 ± 8.76% | PD×HC; RBF-SVM (IMUGPT); Macro-F1; 78.28 ± 7.74% | PD×HC; RBF-SVM (Diffusion-TS); Balanced accuracy; 77.27 ± 4.31% | PD×HC; RBF-SVM (Diffusion-TS); Macro-F1; 77.22 ± 4.53% | PD×HC; RBF-SVM (TimeGAN); Balanced accuracy; 76.82 ± 9.84% | PD×HC; RBF-SVM (TimeGAN); Macro-F1; 73.29 ± 10.36% | PD×HC; RBF-SVM (Trad. Aug.); Balanced accuracy; 73.82 ± 10.47% | PD×HC; RBF-SVM (Trad. Aug.); Macro-F1; 74.94 ± 10.10% | PD×HC; RBF-SVM (Real-only); Balanced accuracy; 63.64 ± 8.90% | PD×HC; RBF-SVM (Real-only); Macro-F1; 65.02 ± 11.30%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela VI, p. 11 — 'TABLE VI: PD-VS-HC CLASSIFICATION RESULTS ON PADS.'"
+    auditoria: null
+    observacao: "Todos os valores da Tabela VI usam o classificador RBF-SVM com 20% dos dados reais rotulados em 5 dobras por sujeito."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Artigo completo, pp. 1–13 — termos buscados: code, GitHub, repository, availability, source; nenhuma declaração de disponibilidade de código ou dados derivados do estudo foi encontrada."
+    auditoria: null
+    observacao: "O texto menciona apenas o uso de implementações open-source de terceiros para baselines (TimeGAN e Diffusion-TS) e cita o repositório PhysioNet original do PADS [34], sem disponibilizar link de código próprio."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção V-A (p. 11): (1) Dependência do gerador de movimento upstream (T2M-GPT fixo), limitando a qualidade dos padrões de movimento fracamente representados no treino do gerador; (2) Simulação simplificada de sensores via IMUSim, que gera sinais ideais na articulação mais próxima sem modelar explicitamente mudanças de posicionamento/orientação durante o uso ou ruído e bias específicos de dispositivos; (3) Avaliação clínica e de mundo real limitada, com experimentos apenas offline e avaliação no PADS restrita a um recorte exploratório PD vs. HC sem validação clínica."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V-A, p. 11 — 'a) Dependence on the upstream motion generator... b) Simplified sensor simulation... c) Limited real-world and clinical evaluation.'"
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção V-B (p. 11) e Seção VI (p. 12): (1) Geração de IMU virtual consciente do sensor (sensor-aware), modelando posicionamento, orientação e ruído/bias do dispositivo; (2) Agente auto-evolutivo (self-evolving agent) para gerenciar e refinar prompts, regras de amostragem e critérios de seleção de candidatos entre atividades e datasets; (3) Extensão da geração virtual de IMU para eventos clínicos transitórios, como congelamento da marcha (freezing of gait), incluindo transições de entrada/saída do episódio e exemplos negativos difíceis (caminhada lenta, hesitação, paradas breves) para localização e estimativa de duração de eventos."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V-B, p. 11 — 'a) Sensor-aware virtual IMU generation... b) Self-evolving agent for virtual IMU generation... c) Extending virtual IMU generation to clinical events.'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano conforme instruções do guia."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 3, Seção IV-A1, p. 6 e Seção IV-F, p. 10 — 'each channel is normalized using statistics computed from the training subjects in the current fold' e 'hyperparameters are selected by inner cross-validation using only the training subjects in each outer fold.'"
+    observacao: "O artigo declara de forma explícita que normalização por canal, treinamento do seed encoder, seleção de âncoras, geração/seleção de candidatos virtuais e validação cruzada interna para ajuste de hiperparâmetros do RBF-SVM utilizam apenas os sujeitos de treino de cada dobra externa."
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; campo 27 = Sim – explícita; campo 28 = Só no treino; aux_preproc_apenas_treino = Sim"
+  qa:
+    QA1:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [16, 15]
+      justificativa: "O cenário binário PD×HC é explicitamente definido (campo 16), mas o número de participantes por classe não é reportado (campo 15 = Não reportado)."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Quatro dos cinco itens aplicáveis estão descritos (modalidade IMU, subconjunto de tarefas StretchHold/HoldWeight, sensores e ambos os punhos), mas o N de participantes no PADS não foi reportado (campo 14 = null)."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Baixo: divisão 5-fold por participante explícita, geração virtual restrita ao treino e normalização/ajuste de hiperparâmetros via CV interna apenas nos sujeitos de treino."
+    QA4:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [31]
+      justificativa: "Reporta duas métricas robustas ao desbalanceamento no experimento do PADS: Balanced accuracy e F1 explicitamente definido como Macro-F1."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Modelos, pipeline de pré-processamento e geração virtual estão descritos com protocolo de CV interna para hiperparâmetros, mas o código não foi disponibilizado (campo 35 = Não reportado)."
+  nota_qa: 3.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica; Quais tarefas null; Representação null"
+    resultado: "N/A (modalidade é Série temporal (IMU))"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "N/A (cenário é apenas PD×HC)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (ambos não reportados no artigo)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (campo 26 = Participante e campo 27 = Sim – explícita)"
+  - regra: "Campo 24 contém Leave-one-subject-out → campo 26 = Participante e campo 27 = Sim"
+    resultado: "N/A para o recorte do PADS (usa CV aninhada e k-fold CV por participante; LOSO é usado nos outros 3 datasets)"
+  - regra: "Campo 23 = SMOTE-oversampling, Dados sintéticos (GAN) ou Outro → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK (campo 23 = Outro, campo 28 = Só no treino e campo 29 preenchido)"
+  - regra: "Campo 30 = true e campo 5 = Principal → explique na observação"
+    resultado: "OK (campo 30 = false e campo 5 = Análise suplementar)"
+  - regra: "Campo 9 = Não se aplica → campo 10 null; caso contrário, campo 10 preenchido"
+    resultado: "OK (campo 9 = Subconjunto e campo 10 = 'StretchHold; HoldWeight')"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (3→4, 6→7, 11→12, 16→17, 18→19, 20→21, 24→25, 31→32)"
+    resultado: "OK (apenas campo 6 tem 'Outro público' com campo 7 preenchido; demais sem Outro/Outra e com null)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Baixo → QA3 = Yes, nota = 1.0)"
+pontos_para_revisao_humana:
+  - "Ressalva da triagem confirmada: preprint no arXiv (arXiv:2609.16768v1) que utiliza o PADS na Seção IV-F como extensão médica exploratória (tarefas StretchHold e HoldWeight, ambos os punhos, 20% de dados reais rotulados, cenário PD×HC com RBF-SVM em 5-fold subject-wise split com CV interna)."
+  - "Campos 14 e 15 (n_participantes e n_por_classe): o artigo omite o número total de participantes e o N por classe no PADS (na Tabela I informa apenas 'Folds: 5' em vez de 'Subjects', ao contrário dos outros 3 datasets)."
+  - "Campo 18 (representacao_entrada): confiança média; o pipeline geral opera sobre janelas de série bruta (2 s a 20 Hz) e extrai atributos dinâmicos para prompts, mas a Seção IV-F não detalha se o RBF-SVM no PADS recebe as janelas brutas vetorizadas, embeddings do seed encoder ou atributos extraídos."
+  - "Campos 24 a 28 e QA3: protocolo de validação no PADS é 5-fold CV no nível do sujeito com CV interna nos sujeitos de treino para ajuste de hiperparâmetros e geração virtual estritamente no treino (risco de vazamento Baixo)."
+  - "Campo 35 e QA5: não há declaração de disponibilidade de código no artigo; hiperparâmetros do RBF-SVM são selecionados por CV interna sem listagem da grade exata de busca."

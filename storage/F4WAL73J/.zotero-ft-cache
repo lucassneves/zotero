@@ -1,0 +1,1249 @@
+Skip to main content
+Skip to article
+Skip to minimise reading assistant
+Skip to summarize article
+Skip to summarize experiments
+Skip to ask about this article
+Reading Assistant
+powered by
+LeapSpace
+Opens in a new window
+Reading assistant options menu
+Actions you could take:
+Summarize this article
+Summarize experiments
+Ask about this article
+Submit query
+Reading assistant is powered by LeapSpace. AI responses may vary in quality.
+Information Fusion
+Date: December 2026
+Show more
+Research article
+Full text access
+Get rights and content
+Eco-xPD: Enhancing deep learning based Parkinson’s disease detection with domain adaptive knowledge distillation from high-cost imaging to low-cost modalities
+Farah Binta Haque
+, 
+Md. Shoaib Akhter Rafi
+, 
+Md. Kamrul Hasan
+Show more
+View PDF
+Download full issue
+Highlights
+•
+Training-time DaTscan distillation enables reliable Parkinson’s disease unimodal inference.
+•
+xReDA transfers relational neuroimaging structure across unpaired low-cost modalities.
+•
+Dual-domain representations enhance robustness across all non-clinical modalities.
+•
+Cross-modal knowledge transfer enables early PD detection through home-accessible modalities.
+•
+Extensive validation across six datasets confirms cross-modality generalization for PD.
+Abstract
+Early and reliable detection of Parkinson’s disease (PD) is increasingly important given the rising global prevalence of the disorder and the limited accessibility of high-cost diagnostic imaging. Although neuroimaging techniques such as DaTscan provide high diagnostic accuracy, their expense and limited availability restrict widespread use. This work introduces a clinically informed multimodal deep learning framework that transfers neurodegenerative knowledge from high-fidelity DaTscan imaging to low-cost, non-clinical biomarkers, including voice recordings, smartwatch sensor signals, or hand-drawing patterns while training, and discarded during inference. A central contribution of this study is cross-modal relational domain adaptation (xReDA), a cross-modal adaptation framework designed specifically for heterogeneous modalities. Unlike conventional domain adaptation approaches that operate at the instance level and typically require source and target data to share similar input-output structures, xReDA aligns how the imaging network learns, i.e., its relational and structural learning behavior, rather than what it learns. By distilling relational neurodegeneration patterns from DaTscan-derived feature graphs into non-clinical encoders, xReDA enables cross-domain knowledge transfer that is difficult to achieve effectively using traditional adaptation methods. For each non-clinical modality, the framework employs two complementary representation pathways: a raw domain encoder (RDE) that learns spatial-temporal patterns from raw signals or drawings, and a transformed domain encoder (TDE) that captures spectral and dynamic signatures associated with PD progression. Their outputs are integrated through a dual-stream fusion attention block (DFAB), which adaptively models inter-modal dependencies, prioritizes informative feature source, and produces a unified multimodal embedding with enhanced discriminative capacity. Extensive evaluations across six publicly available non-clinical PD datasets demonstrate that the proposed framework achieves upto 8.33% and 21.89% improvements in accuracy and F1-score, respectively, along with up to 5.93% gain in early disease detection compared to existing methods. Incorporating DaTscan-guided relational supervision through xReDA further enhances model stability, highlighting the value of cross-modal knowledge transfer in PD detection. Overall, this study establishes a practical framework for PD screening by combining clinical insight with accessible non-clinical biomarkers. The proposed approach offers a scalable, low-cost, and reliable alternative to imaging-based diagnostics, paving the way for practical early detection systems deployable in diverse healthcare environments.
+Keywords
+Parkinson’s disease; Deep learning; Dual-domain representation learning; Domain adaptation; Implicit relational knowledge infusion; Raw-transform domain fusion
+Previous article
+Next article
+1. Introduction
+Parkinson’s Disease (PD) is a progressive neurodegenerative disorder characterized by motor symptoms, e.g., tremor, bradykinesia, rigidity, and postural instability, alongside non-motor manifestations including cognitive decline, depression, and sleep disturbances, all severely impacting quality of life [1]. Affecting over 10 million people worldwide, with nearly one million cases in the United States alone, PD poses a major socioeconomic burden exceeding $14 billion annually in treatment costs, a figure set to grow as prevalence is expected to double by 2040 [2]. Critically, by the time clinical symptoms emerge, more than 50% of dopaminergic neurons are already lost, underscoring the urgent need for early diagnostic strategies [3], [4]. Clinical diagnosis has traditionally relied on neurological examination and symptom-based rating scales such as the UPDRS [5], but these assessments are inherently subjective and often fail to detect prodromal PD, where early intervention could decelerate disease progression [4]. Consequently, computational analyses of biomedical imaging and digital signals have gained prominence as objective, quantifiable diagnostic alternatives [6]. These modalities broadly divide into high-cost clinical imaging techniques, which are highly accurate but limited by expense and restricted availability, and low-cost sensor-based approaches that offer scalable, accessible options for early screening and home-based monitoring.
+Magnetic resonance imaging (MRI) and dopamine transporter SPECT (DaTscan) are the most prominent imaging modalities for PD assessment [7]. MRI provides high-resolution anatomical visualization of structural alterations in the basal ganglia and cortical regions [6], and deep learning (DL) approaches, particularly convolutional neural networks (CNNs) and three-dimensional residual networks (3D ResNets), have demonstrated strong potential in distinguishing PD from healthy controls (HC) [8], [9]. However, MRI primarily captures macrostructural changes and may miss subtle microstructural alterations that precede visible atrophy. DaTscan, by contrast, uses radiotracers to quantify dopamine transporter binding in the striatum, offering a direct measure of presynaptic dopaminergic integrity [10] and outperforming MRI in detection accuracy [6], [11]. Despite their respective strengths, both modalities are cost-prohibitive and infrastructure-dependent, limiting applicability in low-resource settings and motivating the need for affordable, non-invasive alternatives capable of identifying PD at its earliest stages.
+In recent years, digital biomarkers derived from low-cost, non-invasive sources, such as voice recordings, wearable sensors, and hand-drawing patterns, have emerged as promising tools for early PD detection [12], [13], [14]. These modalities capitalize on the ubiquity of consumer-grade devices (e.g., smartphones, smartwatches, tablets), enabling continuous, real-world monitoring without clinical supervision.
+Voice analysis has garnered considerable attention owing to its accessibility and high diagnostic sensitivity. Approximately 90% of individuals with PD exhibit hypokinetic dysarthria, characterized by diminished pitch variation, breathiness, and articulatory instability, which may manifest years before overt motor symptoms [15], [16]. While DL models trained on raw voice waveforms outperform traditional handcrafted feature-based approaches by capturing spectral-temporal dependencies [17], frequency-domain representations offer more discriminative and physiologically meaningful features. Accordingly, mel spectrogram-based CNNs have demonstrated superior diagnostic accuracy compared with raw-signal-based approaches [18], [19]; however, custom CNN architectures may still underperform pretrained deep networks due to their limited representational capacity and generalization ability.
+Smartwatch and accelerometer data have emerged as a promising modality for continuously monitoring tremor, bradykinesia, and gait disturbances associated with Parkinson’s disease [13], [20]. Deep learning models applied to multi-axial accelerometer and gyroscope signals effectively discern complex spatiotemporal motor patterns without manual feature extraction [21]. Beyond the temporal domain, frequency domain characteristics, such as tremor spectral energy, harmonic distortion, and rhythmic irregularities, are highly indicative of PD-induced motor dysfunction [22]; however, the potential of pretrained architectures for the diagnosis of motion-based PD remains largely unexplored.
+Hand-drawn image analysis offers a cost-effective means of quantifying fine motor control through digitized spiral or line-drawing tasks, with tremor-induced oscillations, trajectory deviations, and reduced smoothness serving as diagnostic biomarkers [14], [23]. Two-dimensional representations preserve spatial dependencies and movement dynamics more comprehensively than one-dimensional transforms [14], and pretrained CNNs generally exhibit stronger generalization than custom architectures [24]. Notably, transformed-domain features remain underexplored in this modality, despite evidence that DWT-based representations yield significant improvements over raw hand-drawing inputs [25].
+On the other hand, despite the promising achievements across these low-cost modalities, most extant research efforts remain confined to isolated domains, either raw data [14], [21], [26] or frequency domain representations [19], [25], thereby overlooking the inherent complementarity between them. Consequently, there remains a notable gap in the literature regarding frameworks for PD detection that can jointly leverage time-domain signals and their corresponding frequency-domain characteristics in a cohesive and computationally efficient manner. The lack of such unified modeling strategies limits the ability of existing approaches to fully capture complementary spatiotemporal cues that are critical for a more robust PD detection performance.
+Although few recent studies have focused on leveraging multiple data modalities rather than a single modality for PD detection [13], [27], [28], [29], such multimodal prediction systems, despite their potential performance gains, typically require multiple sensing devices or recording modules. This substantially increases system complexity and reduces accessibility, particularly for at-home screening scenarios. Moreover, the performance improvements achieved by multimodal frameworks are often marginal when weighed against their added architectural complexity, increased inference time, and the operational burden of deploying multiple sensing devices. Existing state-of-the art multimodal frameworks are mentioned in Table 1 along with their input modalities, datasets, number of subjects, and performance.
+
+Table 1. Summary of representative multi-modal approaches in Parkinson’s disease detection with reported results.
+
+Method	Year	Modality	Dataset	No. of subjects	Performance
+
+Empty Cell
+	
+Empty Cell
+	
+Empty Cell
+	
+Empty Cell
+	PD	HC	
+Empty Cell
+
+He et al. [13]	2025	Voice, Gait, Accelerometer+Gyroscope	mPower Mobile Parkinson Disease Study [30]	100	444	AUC: 89.1%
+Lv et al. [27]	2024	Voice, Video	Chinese PD Audio-visual Dataset [27]	130	90	Acc: 92.68%
+Sar et al. [28]	2025	Voice, DaT, Hand-drawn Image, MRI, ECG	MDVR-KCL [31]	16	21	Acc: 96.74%
+			The Parkinson’s Drawing Dataset [32]	27	28	
+			NTUA dataset [33]	55	23	
+			ECG motor movement dataset [34]	160a	516a	
+Shanthini et al. [29]	2025	Voice, Hand-drawn Image	mPower Mobile Parkinson Disease Study [30]	100	444	Acc: 89.69%
+			Parkinson’s Disease Detection [35]	28	27	
+a
+indicates number of samples here.
+Recent advances in multimodal learning have progressed beyond explicit feature concatenation toward more flexible knowledge transfer paradigms, including self-supervised contrastive representation learning, co-attention mechanisms, and latent contrastive alignment [36], [37]. Conventional knowledge distillation methods [38], [39] have focused mainly on transferring knowledge from large teacher networks to lightweight student models in paired-input settings, where both networks process identical samples and direct feature-level correspondence can be established. Consequently, these approaches inherently rely on instance-level alignment and paired feature imitation. Despite substantial progress, most existing multimodal frameworks still assume the availability of paired data across modalities, limiting their applicability in a realistic healthcare environment characterized by heterogeneous datasets, acquisition constraints, and incomplete modality overlap. Bridging this gap requires a framework capable of transferring diagnostically informative knowledge from clinically reliable modalities to cost-effective unimodal systems such that the auxiliary clinical modality is required only during training and can be discarded during inference. However, this objective remains highly challenging because real-world datasets rarely contain paired samples between expensive clinical modalities and accessible personal-device modalities for the same subjects, rendering conventional distillation strategies ineffective under inter-subject variability and severe cross-modality domain discrepancies [40], [41].
+Unlike traditional distillation frameworks, the primary objective of this study is not to compress the knowledge of a large network into a smaller one, but rather to transfer clinically informative knowledge from a neuroimaging-driven model into non-clinical, low-cost sensing modalities-driven network under completely unpaired conditions. Specifically, the proposed framework aims to distill disease-relevant structural knowledge learned from DaTscan neuroimaging data into networks trained on personal-device signals such as voice, accelerometer, gyroscope, and handwriting data. To the best of our knowledge, no prior work has explored knowledge transfer from clinical neuroimaging modalities to heterogeneous non-clinical signals in such an unpaired setting. Inspired by relational knowledge distillation (RKD) [42], the proposed approach reformulates knowledge transfer at the structural level by encouraging the student network to preserve the relational geometry of the neuroimaging embedding space through pairwise distance and angular relationships, rather than directly mimicking individual feature activations.
+Building upon this formulation, the proposed cross-modal relational domain adaptation (xReDA) framework jointly integrates relational distillation with adversarial latent-space alignment. The adversarial discriminator reduces modality-specific discrepancies by bringing the embedding distributions of the neuroimaging and non-clinical networks into a shared latent space, thereby facilitating effective cross-modal relational transfer. Simultaneously, the RKD objective transforms disease-dependent information into modality-agnostic structural knowledge, which is distilled into the non-clinical network through geometric constraints. Rather than enforcing direct similarity between individual embeddings, the framework guides the non-clinical network to adapt its embedding manifold so that its structural relationships resemble those of the neuroimaging network. Through this restructuring process, the non-clinical embeddings gradually evolve toward more discriminative and clinically informative representations, ultimately improving downstream PD detection performance. This relational-adversarial formulation enables geometry-aware and modality-agnostic relational knowledge infusion, effectively narrowing the performance gap between high-cost clinical imaging modalities and accessible personal-device sensing systems for PD detection.
+The primary objective of this work is to develop a clinically reliable DL framework that operates using a single low-cost modality at the inference time, rather than relying on multiple modalities. This design choice enables an early-stage PD detection strategy that is both practical and easily accessible. By eliminating the dependence on multiple sensing devices, the proposed approach significantly reduces the complexity of the system and deployment barriers. The key contributions of this work can be summarized as follows:
+(i)
+A cross-modal relational domain adaptation framework is proposed that transfers clinically enriched knowledge from DaTscan neuroimaging to low-cost personal-device signals (i.e., voice, smartwatch inertial data, or hand-drawn images) without requiring DaTscan at inference. This framework facilitates the effective integration of diagnostic information from multimodal clinical imaging with accessible unimodal deployment, supporting the scalable and clinically grounded evaluation of PD.
+(ii)
+Modality-aware dual-domain pipelines are designed for each low-cost signal, combining raw and transformed-domain representations through a proposed raw domain encoder (RDE), transformed domain encoder (TDE), and dual-stream fusion attention block (DFAB). Each modality, including voice, smartwatch, and hand-drawn image signals, is encoded using domain-specific representations such as mel spectrograms, inertial time-frequency features and filtered trajectory-based descriptors, respectively, resulting in enriched PD-relevant feature representations compared to single-domain baselines.
+(iii)
+A pretrained DaTscan-based neuroimaging encoder is employed as a privileged clinical feature extractor, leveraging its capacity to capture dopamine transporter abnormalities. Its latent representations serve as a clinically informed reference signal, guiding the training of non-clinical encoders without requiring paired imaging-signal data at inference time.
+(iv)
+A geometry-aware relational adaptation strategy, xReDA, is introduced for unpaired cross-modality knowledge transfer. Rather than direct feature imitation, xReDA transfers the structural organization of the neuroimaging latent space by modeling angular relationships and pairwise distances between embeddings. Combined with an adversarial distributional alignment module for reducing the modality gap between neuroimaging and non-clinical modalities, this yields a more consistent latent representation space that preserves clinically relevant structural information, extending standard adversarial and distillation-based approaches in a complementary manner.
+(v)
+Rigorous evaluation across six independent datasets spanning voice, smartwatch, and hand-drawing modalities demonstrates the effectiveness, robustness, and cross-signal versatility of the proposed framework, providing empirical evidence supporting the effectiveness of transferring neuroimaging-informed relational knowledge into low-cost sensing modalities for PD screening.
+2. Dataset
+The summary of all datasets used in this study is shown in Table 2. The table additionally reports the distribution of subjects across different PD stages, categorized as early, moderate, and advanced. Specifically, early-stage PD is defined based on UPDRS-II [43] levels 0 and 1; level 2 corresponds to moderate PD; and levels 3 and 4 are considered advanced PD. For the MDVR-KCL dataset, staging is determined using the Hoehn and Yahr Rating (HYR) scale [44], following analogous thresholding to maintain consistency across datasets.
+
+Table 2. Description of multi-modal datasets for Parkinson’s disease detection.
+
+Modality	Dataset	Disease Severity	No. of Subjects	No. of Samples
+
+Empty Cell
+	
+Empty Cell
+	Early	Moderate	Advanced	PD	HC	PD	HC
+DaTscan	NTUA1	30	17	1	55	23	590	330
+Voice	YouTubePD	23	10	26	58	201	58	201
+Voice	Cross-YouTubePD	23	10	36	68	201	68	201
+Voice	VoicePD	–	–	–	53	28	53	28
+Voice	MDVR-KCL	8	6	2	16	21	16	21
+Smartwatch	PADS	–	–	–	276	79	276	79
+Hand-drawn Image	HandPD	–	–	–	74	18	296	72
+Our analysis indicates that the majority of subjects, particularly in the voice-based datasets, belong to the early-to-mid stages of PD, which aligns with the study’s emphasis on early disease detection. Since speech impairment is often among the earliest observable symptoms of PD, these datasets provide a clinically relevant benchmark for evaluating low-cost non-clinical modalities. To further improve clinical coverage across different disease severities, the MDVR-KCL dataset was incorporated due to its explicit stage annotations spanning early, moderate, and advanced PD. In addition, the DaTscan dataset also contains disease severity information, enabling the neuroimaging teacher network to learn stage-dependent pathological characteristics. Through the proposed distillation framework, these clinically informative representations, particularly those associated with early-stage PD, can be transferred to the non-clinical student networks.
+2.1. DaTscan data
+The NTUA1 dataset [33] comprises MRI and DaTscan images from 78 participants (55 PD, 23 HC), organized into subject-specific subfolders under “PD Patients” and “Non-PD Patients” directories, each containing “MRI” and “DAT” subdirectories. The dataset includes 920 DaTscan images (590 PD, 330 HC) from 51 males and 27 females, with a mean age of 66.63 ± 11.43 years, capturing dopamine transporter activity to facilitate PD-HC differentiation.
+2.2. Voice data
+Four publicly available voice datasets are used in this study, each capturing distinct speech characteristics relevant to PD detection. The datasets utilized for voice to PD detection task are as follows:
+(i)
+YouTubePD [2] is the first publicly available multimodal benchmark for PD analysis, comprising over 200 in-the-wild YouTube videos with visual recordings, facial landmark annotations, and audio data. Audio tracks were extracted from interview videos featuring public figures, yielding 58 PD and 201 HC clips of approximately 10 s each, designed to capture speech manifestations of PD such as reduced vocal intensity, monotonicity, and tremor.
+(ii)
+Cross-YouTubePD was constructed by merging YouTubePD with the PD patients’ speech dataset (PPSD) [45], a collection of clinically diagnosed PD speech recordings developed by the SJTU-Yongfu Research Group. Since YouTubePD was predominantly HC, additional PD recordings from PPSD were incorporated to balance the dataset (68 PD, 201 HC).
+(iii)
+VoicePD [46] comprises 81 sustained vowel phonation recordings (53 PD, 28 HC), along with participant metadata including age, sex, and health status.
+(iv)
+Mobile Device Voice Recordings at King’s College London (MDVR-KCL) dataset [31] was collected at King’s College London Hospital using a Motorola Moto G4 smartphone in a realistic phone-call setting. During the recording procedure, participants (16 PD, 21 HC) performed scripted reading tasks, followed by spontaneous conversational speech to capture diverse vocal characteristics.
+2.3. Smartwatch dataset
+The PADS dataset [47] includes movement data from 469 participants (PD patients, differential diagnoses, and HC) recorded via wrist-worn smartwatches and a smartphone across 11 neurologist-designed tasks, yielding 5159 measurement steps. Sensor signals (acceleration and rotation) are provided alongside demographic and clinical metadata.
+2.4. Hand-drawn image dataset
+The HandPD dataset [48] comprises handwritten spiral and meander tasks from 92 participants (74 PD, 18 HC), collected at Botucatu Medical School, São Paulo State University, Brazil. The dataset yields 736 cropped JPG images (368 spirals, 368 meanders). The HC group consists of 6 males and 12 females (ages 19–79), and the PD group of 59 males and 15 females (ages 38–78).
+3. Methodology
+3.1. Proposed cross-modal relational domain adaptation
+The proposed cross-modal relational domain adaptation (xReDA) framework (see Fig. 1) is developed to support optimal cross-domain knowledge transfer for cost-effective PD detection. The framework adopts a unified learning strategy with adaptive weighting, in which a non-clinical data-driven network learns the structural characteristics of a neuroimaging-based network to enable knowledge transfer while preserving stable diagnostic performance. Specifically, xReDA consists of three principal components: (1) relational angular knowledge distillation (RAKD), which preserves the angular relationships among feature embeddings; (2) relational distance knowledge distillation (RDKD), which preserves the pairwise distance relationships within the embedding space; and (3) adversarial learning-based domain adaptation (ALDA), which aligns the latent feature distributions of neuroimaging and non-clinical modalities through adversarial training. Collectively, these components form a geometry-aware and modality-agnostic learning framework that jointly preserves relational structure while reducing cross-domain distribution discrepancies, enabling effective unpaired knowledge transfer.
+Download: Download high-res image (973KB)
+Download: Download full-size image
+
+Fig. 1. Detailed architectural overview of the proposed cross-modal relational domain adaptation framework, xReDA, designed for efficient and low-cost Parkinson’s disease detection.
+
+Within the xReDA architecture, the RAKD and RDKD modules operate collaboratively to transfer fine-grained relational knowledge from the neuroimaging domain to the non-clinical domain. To employ these modules, the outputs of both encoders are passed through additional fully connected networks (FCNs) with linear activation, which can be formulated as
+(1)
+	𝐟1
+𝑡=fFCN⁢(𝜃𝐸
+𝑡⁡(𝐗𝑡)),𝐟1
+𝑠=fFCN⁢(𝜃𝐸
+𝑠⁡(𝐗𝑠))
+(2)
+	𝐟𝑘
+𝑡=fFCN⁢(𝐟𝑘−1
+𝑡),𝐟𝑘
+𝑠=fFCN⁢(𝐟𝑘−1
+𝑠)
+where 𝜃𝐸
+𝑡⁡(·)
+ and 𝜃𝐸
+𝑠⁡(·)
+ denote the encoders of the neuroimaging network, and the non-clinical network that generate feature vectors 𝐟1
+𝑡,𝐟1
+𝑠∈ℝ256×1
+, respectively. The function fFCN( · ) represents the FCN transformation, and 𝐟𝑘
+𝑡,𝐟𝑘
+𝑠∈ℝ256×1
+ corresponds to the outputs of the k-th FCN layer for neuroimaging and non-clinical models, respectively.
+The output of these FCNs is then utilized to compute the angular and distance representations required by the proposed RAKD and RDKD modules. The RAKD module first computes normalized difference embeddings, 𝐞𝑘
+𝑡,𝐞𝑘
+𝑠∈ℝ256×1
+, among feature vectors as follows:
+(3)
+	𝐞𝑖
+𝑡=
+𝐟𝑖
+𝑡−𝐟𝑗
+𝑡
+∥𝐟𝑖
+𝑡−𝐟𝑗
+𝑡∥2
+,𝐞𝑖
+𝑠=
+𝐟𝑖
+𝑠−𝐟𝑗
+𝑠
+∥𝐟𝑖
+𝑠−𝐟𝑗
+𝑠∥2
+where ‖ · ‖2 indicates the L2 norm. These normalized difference embeddings yield angular feature representations A𝑇,A𝑆∈ℝ3×1
+, derived from the neuroimaging and non-clinical models, respectively, ensuring that directional correlations among samples remain consistent across domains. By preserving the geometric orientation of features, RAKD enables the non-clinical network to retain the neuroimaging network’s discriminative structure even under cross-domain variations. The computation of angular similarity and the corresponding relational loss can be expressed as
+(4)
+	A𝑇,𝑖=(e𝑖
+𝑡)𝑡·e𝑗
+𝑡,A𝑆,𝑖=(e𝑖
+𝑠)𝑡·e𝑗
+𝑠
+(5)
+	ℒ𝐴=
+1
+3
+⁢
+3
+∑
+𝑖=1
+|A𝑇,𝑖−A𝑆,𝑖|
+where |·|
+ represents the modulous operation. ( · )t denotes the transpose operation, and ℒ𝐴
+ represents the angular relational distillation loss, which minimizes the discrepancy between the angular similarities of the representations learned by the imaging and non-clinical networks, thereby aligning the angular structure of the latent representations.
+Complementarily, the RDKD module emphasizes preserving pairwise distance relationships between the feature representations of the models. It ensures that the relative distances among samples remain consistent across domains, thereby maintaining semantic proximity and the intrinsic manifold geometry of the latent space. The distance embeddings D𝑇,D𝑆∈ℝ3×1
+, computed from the neuroimaging and non-clinical features, respectively, capture these relational structures as follows:
+(6)
+	D𝑇,𝑖⁢=∥⁢𝐟𝑖
+𝑡−𝐟𝑗
+𝑡∥2
+2,D𝑆,𝑖=∥𝐟𝑖
+𝑠−𝐟𝑗
+𝑠∥2
+2
+(7)
+	ℒ𝐷=
+1
+3
+⁢
+3
+∑
+𝑖=1
+|D𝑇,𝑖−D𝑆,𝑖|
+By enforcing distance-based consistency through ℒ𝐷
+, RDKD enables the non-clinical model to mimic the feature separation of the neuroimaging model.
+To further minimize the global distributional discrepancy between the domains, the ALDA module introduces an adversarial optimization objective ℒ𝑑⁢𝑖⁢𝑠⁢𝑐
+ that enforces domain invariance in the latent feature space. In this adversarial setup, a domain discriminator 𝒟⁡(·)
+ is trained to differentiate between feature representations originating from the encoders of the neuroimaging and non-clinical models, while the encoders 𝜃𝐸
+𝑡
+ and 𝜃𝐸
+𝑠
+ are simultaneously optimized to generate indistinguishable feature distributions that deceive the discriminator. The optimization objective of the discriminator can be expressed as
+(8)
+	
+̂
+𝑑
+𝑡=𝒟⁡(𝐟3
+𝑡),
+̂
+𝑑
+𝑠=𝒟⁡(𝐟3
+𝑠)
+(9)
+	ℒ𝑑⁢𝑖⁢𝑠⁢𝑐=−𝔼𝑡⁡[log⁡𝑃⁡(
+̂
+𝑑
+𝑡∣𝑑𝑡)]
+	−𝔼𝑠⁡[log⁡(1−𝑃⁡(
+̂
+𝑑
+𝑠∣𝑑𝑠))]
+(10)
+	ℒ𝑠
+𝑎⁢𝑑⁢𝑣=−𝔼𝑠⁡[log⁡𝑃⁡(
+̂
+𝑑
+𝑠∣𝑑𝑡)]
+(11)
+	ℒ𝑡
+𝑎⁢𝑑⁢𝑣=−𝔼𝑡⁡[log⁡𝑃⁡(
+̂
+𝑑
+𝑡∣𝑑𝑠)]
+where 𝔼𝑡
+, and 𝔼𝑠
+ are the expectation functions for the neuroimaging and non-clinical networks, respectively. The discriminator outputs 
+̂
+𝑑
+𝑡
+ and 
+̂
+𝑑
+𝑠
+, representing the predicted probabilities that the extracted features belong to the neuroimaging and non-clinical domains, respectively. The discriminator loss ℒ𝑑⁢𝑖⁢𝑠⁢𝑐
+ is formulated as a binary cross-entropy objective, which trains 𝒟⁡(·)
+ to correctly distinguish between non-clinical and neuroimaging feature distributions by maximizing the likelihood of correct domain assignments. Specifically, neuroimaging features are encouraged to align with label 1, while non-clinical features are encouraged to align with label 0.
+In contrast, the adversarial objectives ℒ𝑠
+𝑎⁢𝑑⁢𝑣
+ and ℒ𝑡
+𝑎⁢𝑑⁢𝑣
+ are imposed on the non-clinical and neuroimaging encoders, respectively, to encourage confusion of the discriminator. These losses effectively reverse the domain labels, encouraging non-clinical features to be classified closer to neuroimaging features and vice versa. As a result, the encoders are trained to learn more domain-invariant representations, thereby reducing the discrepancy between heterogeneous feature distributions. This adversarial interplay follows a standard minimax formulation, where the discriminator seeks to improve domain separability, while the encoders are optimized to reduce this separability by aligning feature distributions across domains. Consequently, the proposed ALDA mechanism promotes global distribution alignment, complementing the relational distillation modules (i.e., RAKD and RDKD), which focus on preserving local structural consistency. Together, these components help maintain consistency between geometric relationships and statistical characteristics across domains, thereby improving generalization in cross-domain PD prediction.
+Therefore, xReDA integrates relational distillation with adversarial alignment to enable a non-clinical model to benefit from guidance provided by a neuroimaging model, even when their inputs are from different subjects or sensing modalities. Unlike typical distillation, which transfers only individual predictions or logits, relational distillation preserves inter-sample relationships and captures the global geometry of the feature space, allowing the non-clinical model to learn not only individual sample-level supervision but also how samples relate to each other in a task-relevant structure. This relational guidance enables the non-clinical model to approximate the discriminative behavior of the imaging network, capturing subtle patterns that are important for PD prediction. In parallel, adversarial alignment encourages distributional consistency between the feature representations of the two networks, thereby reducing statistical gaps arising from modality differences. By combining relational and adversarial supervision, xReDA enables the non-clinical model to more closely inherit the predictive behavior of the imaging model, as it captures not only its outputs but also its underlying relational and structural representations, ultimately supporting reliable PD prediction across heterogeneous, low-cost modalities and offering a scalable and clinically meaningful cross-subject knowledge transfer mechanism.
+3.2. Architecture of the neuroimaging network
+A DaTscan is one of the most accurate clinical tools for detecting PD. It visualizes dopaminergic neuron activity using the radioactive tracer 123I-Ioflupane, which binds to dopamine transporters in the striatum. In HC, normal DaT binding produces a comma- or crescent-shaped uptake pattern in both hemispheres, whereas in PD, reduced dopamine transporter availability, particularly in the posterior putamen, results in an asymmetric or dot-shaped appearance (see Fig. 2) [49]. The extent and symmetry of signal loss correlate with disease severity. Since DaTscan provides the most definitive visualization for differentiating PD from HC in comparison to other imaging modalities, e.g., MRI, or CTscan [50], it has been utilized as the neuroimaging model in this study.
+Download: Download high-res image (468KB)
+Download: Download full-size image
+
+Fig. 2. Arbitrary samples of DaTscan images of (a, b) HC and (c, d) PD affected subjects.
+
+The illustrated architecture in Fig. 3 represents a DenseNet121-based CNN used as the neuroimaging supervisor network for PD detection from DaTscan images. The network processes DaTscan inputs of size 224 × 224 × 3, extracting progressively abstract features through a sequence of dense blocks and transition layers. As shown in the figure, the backbone consists of an initial convolutional layer followed by four dense blocks, each separated by a convolution-pooling transition layer that reduces spatial dimensionality while preserving feature reuse. Within each Dense Block, every BN-ReLU-Conv layer receives concatenated feature maps from all preceding layers, enabling rich multi-scale gradient flow and alleviating vanishing gradient issues, a property particularly beneficial for the subtle and spatially distributed imaging biomarkers characteristic of PD in DaTscan data.
+Download: Download high-res image (964KB)
+Download: Download full-size image
+
+Fig. 3. Detailed architectural overview of the proposed neuroimaging network utilizing DaTscan data as input with DenseNet121 network.
+
+The final dense block’s output is passed through a global average pooling (GAP) layer, yielding a compact 1024 × 1 feature vector. In parallel, an adapter sub-network processes the 1024 × 1 GAP features through a bottleneck projection (1024 → 512 → 1024), providing a domain-regularized auxiliary representation. The fused features are then projected through a series of fully connected layers (256 × 1) and reduced to a 2 × 1 output, followed by a sigmoid activation (σ) to produce the final binary PD prediction 
+̂
+𝑦
+𝑡
+. The classification process can be illustrated as follows:
+(12)
+	𝐟1
+𝑡=fFCN⁢(fDenseNet⁢(𝐗𝑡))
+(13)
+	𝐟𝑘
+𝑡=fFCN⁢(𝐟𝑘−1
+𝑡)
+(14)
+	
+̂
+𝑦
+𝑡=𝜎⁡(fpred⁢(𝐟3
+𝑡))
+where fDenseNet( · ) represents the DenseNet121 encoder, fpred( · ) is the final prediction layer that maps the feature vector from ℝ256×1
+ to ℝ2×1
+, and σ is the sigmoid activation function. This DenseNet-based model serves as a high-capacity reference network, capable of distilling rich spatial-semantic representations from DaTscan images. Its knowledge is later transferred to the non-clinical model trained on low-cost modalities, thereby facilitating cross-domain knowledge transfer for simple and cost-efficient PD detection. To ensure effective knowledge distillation, a lightweight adapter module is attached to the last block of the encoder, positioned between the final feature stage and the output embedding. This adapter selectively fine-tunes the encoder’s terminal representations without modifying the frozen backbone parameters, serving as a trainable bridge that aligns the teacher’s output embedding space with that of the student. This design not only facilitates stable and efficient knowledge transfer but also constitutes a parameter-efficient tuning strategy, as the backbone remains frozen and only the compact adapter parameters are updated during training [51].
+3.3. Architecture of the non-clinical network
+To evaluate the effectiveness of the proposed xReDA module, extensive experiments were conducted individually on three distinct non-clinical models, Voice-Net, Smartwatch-Net, and Hand-Net, while employing a DaT-based neuroimaging model in each case. This setup allows xReDA to be assessed in terms of its ability to transfer knowledge from a clinically informative modality to heterogeneous low-cost non-clinical modalities in a one-to-one evaluation setting. Furthermore, to support stable performance of each non-clinical model even without neuroimaging supervision, the architecture of every non-clinical network is designed to learn discriminative modality-specific representations. Specifically, each non-clinical network (see Fig. 4) contains two parallel encoding pathways: (i) an RDE module that extracts raw-domain features, and (ii) a TDE module that extracts complementary transform-domain features, operating on the raw input signal and its transformed counterpart, respectively.
+Download: Download high-res image (669KB)
+Download: Download full-size image
+
+Fig. 4. General architecture of the proposed non-clinical network, where multi-domain inputs are processed by dedicated raw- and transformed-domain encoders, followed by the DFAB for attention-guided dual-path feature fusion.
+
+The RDE is designed to extract salient temporal and morphological cues from the raw input, capturing fine-grained patterns inherent in the data, while the TDE operates on transformed representations (e.g., Fourier- or Wavelet-based), enabling the model to capture complementary frequency- and time-frequency-dependent characteristics that may be useful for identifying subtle pathological patterns. The architectural configuration of both RDE and TDE is modality-specific and configured to improve representational quality for each input modality. The encoders ℰ𝑟⁡(·)
+ and ℰ𝑓⁡(·)
+ transform these inputs into latent embeddings as follows:
+(15)
+	𝐟𝑟=ℰ𝑟⁡(𝐗𝑟),𝐟𝑓=ℰ𝑓⁡(𝐗𝑓)
+where Xr denotes the raw-domain input and Xf represents its transform-domain counterpart, and 𝐟𝑟,𝐟𝑓∈ℝ256×1
+ denote the feature maps extracted from the respective domains.
+To integrate complementary information from both domains, the extracted feature maps fr and ff are fed into the proposed DFAB module (see Fig. 4). Within the DFAB module, the convolutional block attention module (CBAM) [52] applies channel and spatial attention to the concatenated feature representation of fr and ff, refining the features in a lightweight and interpretable manner. The refined features are subsequently passed to a CNN-based fusion module that performs dual-path integration: the first path processes the features through a pair of 1D convolutional layers (Filter = 8 and Filter = 2, respectively), expanding and then reducing the channel dimensionality; the second path applies an adapter-style bottleneck that compresses the concatenated feature vector to a lower-dimensional representation before expanding it back, facilitating efficient cross-domain feature consolidation.
+This dual-domain representation learning is well aligned with the goal of cross-modal fusion, as the two paths capture complementary aspects of the joint representation. The convolutional path first projects the features into a higher-dimensional space, allowing the network to explore a richer set of cross-modal feature interactions and capture fine-grained correlations before distilling them back into a compact representation. Conversely, the adapter-style bottleneck path first reduces the concatenated features to a lower-dimensional embedding, serving as an information bottleneck that helps reduce modality-specific noise and retains more transferable, domain-agnostic features, before re-expanding to restore representational capacity. The outputs of both paths are combined via element-wise addition to yield the final fused representation. The fused representation is mapped to 𝐟fused∈ℝ256×1
+. The entire processing can be summarized as follows:
+(16)
+	𝐟𝑠⁢𝑡⁢𝑎⁢𝑐⁢𝑘=[𝐟𝑟,𝐟𝑓]
+(17)
+	𝐟fused=ffusion⁢(fCBAM⁢(𝐟𝑠⁢𝑡⁢𝑎⁢𝑐⁢𝑘))
+The fused representation ffused is subsequently passed through additional dense projection layers and a sigmoid classifier to predict the diagnostic label 
+̂
+𝑦
+𝑠∈0,1
+, corresponding to HC or PD. The prediction by the non-clinical network can be illustrated as
+(18)
+	𝐟1
+𝑠=fFCN⁢(𝐟fused)
+(19)
+	𝐟𝑘
+𝑠=fFCN⁢(𝐟𝑘−1
+𝑠)
+(20)
+	
+̂
+𝑦
+𝑠=𝜎⁡(fpred⁢(𝐟3
+𝑠))
+In summary, the proposed dual-encoder architecture, equipped with a raw-transform domain fusion strategy, aims to leverage both raw-domain and transformed-domain cues in a complementary manner. The use of CBAM-inspired attention helps enhance discriminative feature learning by allowing the network to focus on more informative channels and spatial regions. Overall, this design supports robust modality-specific representation learning that may be beneficial for reliable PD detection. The encoder architectures and training procedures of each network are described in the following subsections.
+3.3.1. Voice-net architecture
+Voice impairments arise from motor control deficits affecting phonation, articulation, and respiration for PD patients. Acoustically, PD speech exhibits increased jitter and shimmer (unstable pitch and amplitude), reduced harmonic-to-noise ratio (breathy or rough voice), diminished pitch and intensity variability (monotone speech), and slower, irregular rhythm. Overall, speech rate and energy dynamics decline, with longer pauses and reduced prosody [53]. These anomalies manifest as blurred harmonic structures, increased high-frequency noise, flattened formant trajectories, and lower spectral variance over time in the mel spectrogram domain. PD spectrograms often appear less vibrant, with weak energy in higher bands [54]. Arbitrary samples of both PD and HC voice recordings are shown in Fig. 5, where the mel spectrogram for PD (see Fig. 5(d)) shows weaker harmonic structures with reduced high frequency energy compared to HC (see Fig. 5(b)).
+Download: Download high-res image (527KB)
+Download: Download full-size image
+
+Fig. 5. Arbitrary segments of voice signals and their corresponding mel spectrograms for healthy controls (HC) and Parkinson’s disease (PD) patients. (a) HC voice signal segment, (b) mel spectrogram of (a); (c) PD voice signal segment, (d) mel spectrogram of (c).
+
+For the voice modality, a dedicated network, Voice-Net (see Fig. 6), is designed to effectively capture discriminative acoustic representations associated with PD. Each voice recording is segmented into short overlapping intervals of 1.5 s at 44.1 kHz to ensure sufficient temporal resolution while maintaining spectral consistency. For each segment, two parallel representations are generated: (i) the raw voice waveform 𝐗𝑟∈ℝ1000×1
+, and (ii) its corresponding mel spectrogram 𝐗𝑓∈ℝ250×250×3
+, computed using a short-time Fourier transform (STFT), followed by mel filter bank processing. Formally, the mel spectrogram can be expressed as
+(21)
+	𝐗𝑓=MelSpec⁡(STFT⁡(𝐗𝑟))
+where MelSpec( · ) denotes the mel filter bank operation that maps frequency bins to the perceptually uniform mel scale.
+Download: Download high-res image (533KB)
+Download: Download full-size image
+
+Fig. 6. Architecture of the proposed Voice-Net utilizing raw voice signal as well as corresponding mel spectrogram through ResNet50-based RDE and FDE (equivalent to TDE in the Fourier domain) networks.
+
+For processing the voice data, both the RDE and the frequency domain encoder, FDE–corresponding to the TDE module described in Section 3.3 when a Fourier transform is used–are implemented using ResNet50 backbones, with the final fully connected prediction layer removed to retain high-level feature abstractions. The extraction of fr and ff for voice modality can be summarized as
+(22)
+	𝐟𝑟=fFCN⁢(fResNet-1D⁢(𝐗𝑟))
+(23)
+	𝐟𝑓=fFCN⁢(fResNet-2D⁢(𝐗𝑓))
+where fResNet-1D( · ), and fResNet-2D( · ) represent the 1D and 2D ResNet50 backbones without the final fully connected layer in ResNet.
+The fr, ff serve as complementary representations of temporal and spectral information, respectively, and are subsequently fused using the proposed DFAB (see Eqs. (16), (17)) to form a unified feature embedding for downstream classification. The processing of the downstream classification has already been described in Section 3.3. The three deepest intermediate layers preceding the prediction head of the Voice-Net are utilized for domain-adaptive relational knowledge distillation from the DaTscan-based neuroimaging network through the proposed xReDA framework, as these layers capture the most discriminative and transferable high-level abstractions across both models.
+3.3.2. Smartwatch-net architecture
+Motor impairments such as tremor, bradykinesia, and rigidity are reflected in accelerometer and gyroscope signals as distinct kinematic patterns. Accelerometer data typically show enhanced low-frequency oscillations (3–8 Hz) corresponding to tremor, reduced signal amplitude and smoothness due to bradykinesia, and irregular inter-peak intervals indicating loss of rhythmic control (see Fig. 7). Gyroscope readings reveal decreased angular velocity, inconsistent rotational motion, and increased signal entropy from tremor-induced micro-oscillations. In the spectral domain, PD motion data exhibit dominant tremor bands and lower high-frequency energy, signifying reduced agility and coordination. Together, these temporal and spectral irregularities, manifesting as unstable, low-amplitude, and repetitive movement patterns form robust biomarkers for distinguishing motion affected by PD from healthy activity [55].
+Download: Download high-res image (747KB)
+Download: Download full-size image
+
+Fig. 7. Arbitrary samples of accelerometer and gyroscope signals (x, y, and z axis) and corresponding spectrogram representations (x axis) of smartwatch data for (a) PD and (b) HC subjects.
+
+For the accelerometric modality, a dedicated network, Smartwatch-Net (see Fig. 8), is designed to optimally model motion-related biomarkers associated with PD. Each experimental trial consists of tri-axial accelerometer and gyroscope recordings, each comprising 1024 temporal samples along the (x, y, z) axes. Considering all 16 experimental sessions, a total of 96 raw sensor signals are obtained for subsequent processing. To capture both temporal and spectral characteristics, two complementary representations are constructed for each signal. The raw domain representation, denoted by 𝐗𝑟∈ℝ96×1024
+, corresponds to the direct time-domain measurements from the inertial sensors. The frequency domain representation, 𝐗𝑓∈ℝ250×250×3×96
+, is derived by transforming each signal into a spectrogram using STFT. By stacking the spectrograms of the three axes across all trials, a unified spectro-temporal volume is formed to preserve inter-axis correlations.
+Download: Download high-res image (806KB)
+Download: Download full-size image
+
+Fig. 8. Architecture of the proposed Smartwatch-Net using raw smartwatch data (accelerometer and gyroscope) and corresponding spectrograms, processed via convLSTM-based RDE and 3D ResNet50-based FDE (equivalent to TDE in the Fourier domain), respectively.
+
+The RDE for Smartwatch-Net is implemented as a hybrid temporal model combining convolutional and recurrent operations to capture both local and long-range dependencies. Specifically, the RDE comprises two consecutive convolutional blocks, each consisting of a convolutional layer, batch normalization (BN), and max-pooling (MP), followed by a BiLSTM and a unidirectional LSTM layer to encode sequential motion dynamics. Formally, the extraction of features in the raw-domain can be expressed as
+(24)
+	𝐟𝑟=fFCN⁢(LSTM⁡(BiLSTM⁡(CBM2⁢(𝐗𝑟))))
+where CBM2( · ) denotes two stacked convolutional blocks with BN and MP layers.
+The FDE–i.e., the TDE module described in Section 3.3 when using a Fourier transform–is designed to process the spectro-temporal stacking of multi-axis spectrograms using a 3D-ResNet backbone, enabling spatiotemporal feature extraction across both frequency and time dimensions. The 3D-ResNet output is further processed by an LSTM layer to capture inter-frame temporal transitions, expressed as
+(25)
+	𝐟𝑓=fFCN⁢(LSTM⁡(3D-ResNet(𝐗𝑓)))
+The features fr and ff represent complementary temporal and spectral-motion descriptors, respectively, and are subsequently fused through the proposed DFAB (see Eqs. (16), (17)) to form a unified discriminative embedding for downstream PD and HC classification. The three deepest intermediate layers preceding the prediction head of Smartwatch-Net are utilized for domain-adaptive relational knowledge distillation from the DaTscan-based neuroimaging network through the proposed xReDA framework.
+3.3.3. Hand-net architecture
+Hand-drawing analysis serves as an effective biomarker for PD by capturing motor abnormalities such as tremor, bradykinesia, and rigidity. Tasks such as spiral and meander drawing are commonly used for this purpose. While HC drawings appear smooth and consistent, PD drawings exhibit irregular paths, micro-oscillations, and tremor-induced distortions. Applying wavelet transform enables frequency analysis of these drawings, isolating high-frequency tremor components and transient fluctuations. This enhances the detection of subtle motor irregularities, providing an optimal basis for distinguishing PD from HC individuals [56]. Representative samples of hand-drawings from both PD and HC participants are presented in Fig. 9.
+Download: Download high-res image (1MB)
+Download: Download full-size image
+
+Fig. 9. Spiral and meander hand-drawn images: (a-b) samples from HC and (c-d) samples from PD. The images below each drawing show the corresponding IDWT reconstructions after suppression of low-frequency components.
+
+For the hand-drawn image modality, a specialized network, Hand-Net (see Fig. 10), is developed to analyze motor control irregularities manifested in hand-drawn trajectories such as spiral and meander patterns. These drawings, acquired through digitized handwriting systems, can capture fine-grained neuromotor fluctuations that are often associated with PD-related tremors and dyskinesia.
+Download: Download high-res image (517KB)
+Download: Download full-size image
+
+Fig. 10. Architecture of the proposed Hand-Net using raw hand-drawn images and low-frequency-suppressed IDWT images, processed through ResNet50-based RDE and TDE networks.
+
+Each drawing sample serves as the raw domain input, represented as an image 𝐗𝑟∈ℝ250×250×3
+. To extract complementary detail enhanced spatial representations, a spectrally filtered raw domain counterpart 𝐗𝑓
+𝑟∈ℝ250×250×3
+ is constructed through discrete wavelet transform (DWT) and inverse DWT (IDWT). In this process, the original image is decomposed into four subbands–approximation (low-frequency) and three detail coefficients corresponding to horizontal, vertical, and diagonal orientations. To emphasize high-frequency motor irregularities while suppressing global low-frequency components, the approximation coefficients are set to zero, and the detail coefficients are retained. The signal is then reconstructed from the modified wavelet coefficients via the IDWT, formally expressed as
+(26)
+	𝐂𝐴,𝐂𝐻,𝐂𝑉,𝐂𝐷=DWT⁡(𝐗𝑟)
+(27)
+	𝐗𝑓
+𝑟=IDWT⁡(𝟎,𝐂𝐻,𝐂𝑉,𝐂𝐷)
+where CA, CH, CV, and CD denote the approximation, horizontal, vertical, and diagonal detail coefficients, respectively.
+Both the RDE and the TDE of Hand-Net are implemented using ResNet50 backbones, with their final classification layers removed. The RDE learns structural and geometric patterns intrinsic to the handwriting, while the TDE processes the IDWT-reconstructed image, which preserves high-frequency components, enabling it to capture distortions associated with fine motor dysfunctions. The extraction of fr and ff for hand-drawn image modality can be summarized as
+(28)
+	𝐟𝑟=fFCN⁢(fResNet-2D⁢(𝐗𝑟))
+(29)
+	𝐟𝑓=fFCN⁢(fResNet-2D⁢(𝐗𝑓
+𝑟))
+The features extracted from both encoders, fr and ff, are subsequently integrated through the proposed DFAB (see Eqs. (16), (17)), yielding a unified latent representation for downstream classification. The three deepest intermediate layers preceding the prediction head of Hand-Net are utilized for domain-adaptive relational knowledge distillation from the DaTscan-based neuro imaging network through the proposed xReDA framework.
+3.4. Loss function
+The training of the non-clinical networks is guided by a composite loss function designed to balance the primary classification objective with auxiliary domain-alignment tasks. The primary losses for neuroimaging and non-clinical networks are defined as the binary cross-entropy (BCE) loss between the predicted class probabilities and the ground-truth labels:
+(30)
+	ℒ𝑡
+𝑝=−
+1
+𝑁
+⁢
+𝑁
+∑
+𝑖=1
+[𝑦𝑖
+𝑡⁢log⁡(
+̂
+𝑦
+𝑖
+𝑡)+(1−𝑦𝑖
+𝑡)⁢log⁡(1−
+̂
+𝑦
+𝑖
+𝑡)]
+(31)
+	ℒ𝑠
+𝑝=−
+1
+𝑁
+⁢
+𝑁
+∑
+𝑖=1
+[𝑦𝑖
+𝑠⁢log⁡(
+̂
+𝑦
+𝑖
+𝑠)+(1−𝑦𝑖
+𝑠)⁢log⁡(1−
+̂
+𝑦
+𝑖
+𝑠)]
+where N denotes the number of samples, and ℒ𝑠
+𝑝
+ and ℒ𝑡
+𝑝
+ are the primary losses for non-clinical and neuroimaging networks, respectively.
+In addition to the primary task, an auxiliary loss ℒDA
+ is introduced during training to facilitate domain adaptation and structural feature alignment between source and target representations. The auxiliary loss consists of three components: (1) the angular relational distillation loss ℒ𝐴
+, the distance-based relational distillation loss ℒ𝐷
+, and the adversarial loss ℒadv
+.
+However, to further improve the effectiveness of relational alignment, we introduce a dynamic uncertainty-aware weighting strategy that adaptively modulates the contribution of each sample to the domain adaptation loss. Specifically, instead of treating all samples equally, the ℒDA
+ loss is weighted according to the uncertainity of the neuroimaging network. The uncertainty of each sample is estimated using the entropy of the neuroimaging model’s predictive distribution and is subsequently normalized within each batch to obtain sample-wise weights. Using these weights, the batch-wise domain adaptation loss is reformulated as a weighted aggregation of per-sample losses. The overall adaptation loss formulation, along with the dynamic weighting strategy, is given as follows:
+(32)
+	ℒ𝑠,(𝑖)
+DA=ℒ(𝑖)
+𝐴+ℒ(𝑖)
+𝐷+ℒ𝑠,(𝑖)
+adv
+(33)
+	ℒ𝑡,(𝑖)
+DA=ℒ(𝑖)
+𝐴+ℒ(𝑖)
+𝐷+ℒ𝑡,(𝑖)
+adv
+(34)
+	𝑢𝑖=−∑
+𝑦𝑝⁡(𝑦∣𝑥𝑖)⁢log⁡𝑝⁡(𝑦∣𝑥𝑖)
+(35)
+	𝑤𝑖=
+𝑢𝑖
+∑𝑁
+𝑗=1𝑢𝑗
+(36)
+	ℒ𝑠
+DA,total=
+𝑁
+∑
+𝑖=1
+𝑤𝑖ℒ𝑠,(𝑖)
+DA
+(37)
+	ℒ𝑡
+DA,total=
+𝑁
+∑
+𝑖=1
+𝑤𝑖ℒ𝑡,(𝑖)
+DA
+where ℒ(𝑖)
+𝐴
+ and ℒ(𝑖)
+𝐷
+ denote angular and distance-based distillation losses, respectively. Additionally, ℒ𝑠,(𝑖)
+adv
+ and ℒ𝑡,(𝑖)
+adv
+ denote the adversarial losses for the student and teacher encoders, respectively, while p(y∣xi) represents the output probability of the teacher model.
+The total loss for the non-clinical network is then defined by a weighted sum of the primary and auxiliary losses, which is described as
+(38)
+	ℒ𝑠=ℒ𝑠
+𝑝+𝛼ℒ𝑠
+DA,total
+where α is the coupling factor to prioritize the primary classification task while still leveraging the auxiliary losses to guide domain adaptation and relational alignment. The elegance of the proposed model lies in its inference stage: unlike conventional approaches, the auxiliary components are omitted, and the network’s predictions are governed solely by the features learned under the influence of ℒ𝑠
+𝑝
+.
+Existing study shows that reducing the sharpness gap via variance reduction in teacher logits improves distillation performance [51]. However, such approaches are not directly applicable in this framework, as the proposed method operates on relational distillation rather than explicit logit matching. To accommodate this distinction, a partial online distillation strategy [57], [58] is adopted in this study. Specifically, only the adapter module and the three FCN layers used for distillation are updated, while the remaining network components are kept frozen. The optimization is performed using a weighted combination of the binary cross-entropy classification loss, denoted as ℒ𝑡
+𝑝
+, and the domain adaptation loss ℒDA
+, defined as
+(39)
+	ℒ𝑡=ℒ𝑡
+𝑝+𝛽,ℒ𝑡
+DA,total
+where the coupling factor β ensures that the neuroimaging network maintains strong clinical prediction performance while still effectively contributing to domain adaptation.
+To identify the optimal hyperparameter configuration, we conducted an extensive grid-based evaluation across the validation data over the ranges α ∈ [0.05, 0.075, 0.1, 0.125, 0.15] and β ∈ [0.03, 0.04, 0.05, 0.06, 0.07]. The empirical results indicate that the optimal settings vary across modalities. Specifically, the best-performing configurations, based on peak accuracy attained at a local minimum of the loss (which may or may not coincide with the global minimum), are (𝛼,𝛽)=(0.125,0.05)
+ for the voice modality, (0.1, 0.04) for the smartwatch modality, and (0.1, 0.06) for the hand-drawn image modality. These modality-specific optima highlight the sensitivity of the model to task-dependent weighting of the corresponding loss components.
+3.5. Implementation details
+The hardware specifications for the experimental setup used in this work are provided in Table 3. Detailed training and testing procedures are presented in the following subsections.
+
+Table 3. Device specifications.
+
+CPU	Intel(R) Core i7-7700K @ 4.20 GHz
+GPU	24GB NVIDIA GeForce RTX 4090
+RAM	48GB DDR4 @ 3200 MHz
+3.5.1. Training details
+For each modality, both the non-clinical and neuroimaging datasets are partitioned into training, validation, and testing subsets following a 70: 15: 15 split ratio to ensure fair evaluation and avoid data leakage. The training process is conducted in two sequential stages: (i) independent pretraining of the neuroimaging network as well as the non-clinical network, and (ii) supervised adaptation of the corresponding non-clinical network under the guidance of the pretrained neuroimaging network.
+During the pretraining phase, both the neuroimaging network and the non-clinical networks are trained independently to learn modality-specific representations. The Adam optimizer is employed with an initial learning rate of 1×10−4
+. To ensure stable convergence, a ReduceLROnPlateau strategy is applied, reducing the learning rate when validation performance plateaus for 10 consecutive epochs. Pretraining is conducted for a maximum of 100 epochs, with an early stopping criterion that halts training if no improvement is observed for consecutive 35 epochs.
+After pretraining, the non-clinical network is trained under the supervision of the neuroimaging model to facilitate knowledge transfer through the proposed xReDA mechanism. The Adam optimizer is again utilized with an initial learning rate of 1×10−4
+, following the same learning rate scheduling and early stopping criteria as in the pre-training phase. The total training is conducted for up to 300 epochs. During this phase, the adapter module and the three FCN layers of the neuroimaging network, utilized for knowledge transfer, are also fine-tuned with a smaller learning rate of 1×10−5
+ to allow adaptive alignment with the evolving feature space of the non-clinical network, while keeping the base DenseNet121 network frozen.
+3.5.2. Testing details
+During inference, each non-clinical network is evaluated exclusively on the test set corresponding to its sensing modality. At this stage, the non-clinical network operates in a fully autonomous manner, completely detached from the neuroimaging network, thereby demonstrating its ability to generalize and make predictions without any external guidance or modality-level supervision. Owing to our innovative xReDA-based distillation strategy, the non-clinical network internalizes and adopts the structural learning behavior of the neuroimaging network, enabling it to extract more discriminative representations and ultimately achieve improved performance. This setup ensures that the reported performance reflects the intrinsic representational power learned by each non-clinical model, independent of direct supervision.
+3.6. Evaluation metrics
+To comprehensively assess the classification performance of non-clinical networks, four standard evaluation metrics are employed: accuracy, precision, recall, and the F1-score. These metrics collectively capture both the overall correctness and class-specific discriminative capability of the models, ensuring robust evaluation of PD classification. The evaluation metrics are defined as follows:
+(40)
+	Accuracy=
+TP+TN
+TP+TN+FP+FN
+(41)
+	Precision=
+TP
+TP+FP
+(42)
+	Recall=
+TP
+TP+FN
+(43)
+	F1-score=
+2×Precision×Recall
+Precision+Recall
+where TP, TN, FP, and FN denote the number of true positives, true negatives, false positives, and false negatives, respectively.
+4. Result analysis
+Table 4 presents the comparative performance of PD prediction across multiple modalities: voice, smartwatch, and hand-drawing, evaluated against state-of-the-art approaches, both with and without the proposed xReDA module. The performance metrics are obtained by running the each method on five different random seeds and getting the average and standard deviation (SD) of them. The results clearly demonstrate the consistent superiority of the proposed framework in all modalities and datasets, with particularly remarkable gains in generalization and discriminative precision once xReDA is incorporated.
+
+Table 4. Comparison of PD prediction performance across different modalities with and without xReDA.
+
+Modality	Dataset	Method	Accuracy	Precision	Recall	F1-score
+Voice	YouTubePD	Shen et al. [19]	90.44% ± 1.48%	72.45% ± 8.37%	51.22% ± 11.90%	58.76% ± 7.59%
+		Islam et al. [18]	89.18% ± 0.41%	73.28% ± 5.47%	51.83% ± 3.30%	60.51% ± 1.15%
+		Lv et al.a [27]	88.76% ± 1.48%	67.76% ± 12.12%	50.57% ± 7.50%	57.25% ± 6.86%
+		He et al.a [13]	84.52% ± 3.21%	71.35% ± 6.22%	53.37% ± 8.94%	60.68% ± 1.48%
+		Siniukov et al.a [59]	81.53% ± 2.84%	71.13% ± 5.26%	53.15% ± 4.10%	60.79% ± 4.28%
+		Proposed (Without xReDA)	91.23% ± 1.15%	73.57% ± 9.05%	66.39% ± 10.78%	70.47% ± 9.42%
+		Proposed (With xReDA)	94.61% ± 0.80%	83.84% ± 3.43%	78.05% ± 3.86%	82.68% ± 2.92%
+Voice	Cross-YouTubePD	Shen et al. [19]	91.92% ± 0.78%	85.35% ± 2.70%	53.22% ± 3.26%	65.52% ± 2.88%
+		Islam et al. [18]	86.34% ± 2.75%	74.51% ± 2.32%	54.84% ± 0.89%	63.15% ± 1.17%
+		Lv et al.a [27]	91.34% ± 0.49%	85.36% ± 2.44%	55.48% ± 2.82%	67.17% ± 1.32%
+		He et al.a [13]	86.27% ± 2.53%	72.67% ± 3.32%	64.07% ± 3.15%	68.09% ± 3.09%
+		Siniukov et al.a [59]	84.00% ± 1.52%	64.55% ± 4.63%	59.60% ± 2.39%	61.83% ± 1.02%
+		Proposed (Without xReDA)	92.52% ± 0.97%	85.68% ± 0.81%	72.11% ± 5.27%	76.77% ± 3.22%
+		Proposed (With xReDA)	95.53% ± 1.12%	89.51% ± 4.47%	83.37% ± 1.61%	85.68% ± 2.31%
+Voice	VoicePD	Shen et al. [19]	98.86% ± 1.39%	98.12% ± 2.27%	100% ± 0.00%	99.04% ± 1.17%
+		Islam et al. [18]	93.64% ± 0.62%	95.59% ± 0.82%	93.33% ± 1.07%	94.44% ± 0.55%
+		Lv et al.a [27]	99.07% ± 0.54%	98.20% ± 1.22%	99.50% ± 0.50%	98.85% ± 0.85%
+		He et al.a [13]	96.81% ± 1.48%	96.98% ± 2.79%	98.04% ± 1.39%	97.48% ± 1.26%
+		Siniukov et al. [59]	93.33% ± 0.62%	93.16% ± 1.23%	93.73% ± 0.33%	93.44% ± 0.52%
+		Proposed (Without xReDA)	99.30% ± 0.51%	98.89% ± 0.92%	100% ± 0.00%	99.44% ± 0.47%
+		Proposed (With xReDA)	99.91% ± 0.07%	99.82% ± 0.12%	100% ± 0.00%	99.91% ± 0.06%
+Voice	MDVR-KCL	Shen et al. [19]	93.02% ± 0.70%	93.06% ± 0.82%	91.50% ± 0.89%	92.27% ± 0.83%
+		Islam et al. [18]	92.38% ± 0.59%	92.32% ± 0.44%	90.43% ± 0.45%	91.36% ± 0.45%
+		Lv et al.a [27]	91.92% ± 1.16%	91.96% ± 1.17%	89.44% ± 1.95%	90.68% ± 1.47%
+		He et al.a [13]	90.72% ± 0.49%	90.98% ± 0.91%	89.54% ± 1.68%	90.25% ± 1.65%
+		Siniukov et al. [59]	89.96% ± 0.52%	89.99% ± 0.52%	87.93% ± 0.53%	88.95% ± 0.52%
+		Proposed (Without xReDA)	97.55% ± 0.18%	97.27% ± 0.20%	95.74% ± 0.25%	96.51% ± 0.23%
+		Proposed (With xReDA)	98.88% ± 0.10%	98.77% ± 0.13%	97.55% ± 0.17%	98.16% ± 0.15%
+Smartwatch	PADS	Varghese et al. [60]	78.98% ± 1.47%	81.37% ± 1.60%	94.49% ± 1.41%	87.42% ± 0.76%
+		Hur et al. [22]	81.59% ± 0.95%	84.01% ± 3.09%	94.41% ± 4.58%	88.78% ± 0.74%
+		Jovanovic et al. [61]	77.95% ± 0.63%	79.63% ± 3.39%	96.20% ± 5.47%	89.96% ± 0.69%
+		He et al.b [13]	79.32% ± 1.69%	82.11% ± 3.61%	94.12% ± 4.76%	87.55% ± 0.78%
+		Proposed (Without xReDA)	86.39% ± 1.70%	90.08% ± 1.56%	95.19% ± 0.89%	92.56% ± 1.17%
+		Proposed (With xReDA)	89.92% ± 2.02%	92.01% ± 1.43%	95.27% ± 1.40%	93.60% ± 1.03%
+Hand-drawn Image	HandPD	Wang et al. [62]	91.67% ± 1.96%	92.58% ± 2.40%	97.44% ± 3.12%	94.90% ± 1.23%
+		Ali et al. [14]	87.96% ± 2.85%	89.97% ± 4.03%	95.81% ± 2.11%	92.72% ± 1.50%
+		Kansizoglou et al. [24]	91.85% ± 1.96%	92.34% ± 0.91%	97.91% ± 1.52%	95.03% ± 0.30%
+		Proposed (Without xReDA)	92.97% ± 0.86%	92.86% ± 1.95%	97.39% ± 0.53%	95.06% ± 1.10%
+		Proposed (With xReDA)	95.30% ± 0.51%	95.00% ± 1.46%	98.24% ± 1.06%	96.59% ± 0.85%
+a
+Using only voice modality network due to absence of matching subjects.
+b
+Using only smartwatch modality network due to absence of matching subjects.
+On the YouTubePD dataset, prior voice-based approaches exhibit limited discriminative capability. Shen et al. employ a multi-kernel CNN-RNN architecture, Islam et al. utilize an attention-augmented CNN, and Lv et al. rely on a VGGish-based feature extractor, achieving F1-scores of 58.76% ± 7.59%, 60.51% ± 1.15%, and 57.25% ± 6.86%, respectively. He et al. extract handcrafted acoustic representations using the Geneva Minimalistic Acoustic Parameter Set (GeMAPS) and the INTERSPEECH 2009 Emotion Challenge (IS09) feature set, followed by prediction through a learning-based classifier, yielding an F1-score of 60.68% ± 1.48%. While such handcrafted-feature-driven strategies offer interpretability, they remain sensitive to speaker variability and domain shifts. Siniukov et al. [59] suggested a HuBERT based network with domain adversarial neural network (DANN)-based adaptation, achieving 60.79% ± 4.28% F1-score. The proposed framework without xReDA already improves performance on YouTubePD, achieving an F1-score of 70.47% ± 9.42% through joint modeling of raw waveform and frequency-domain representations with dual-stream fusion. When xReDA is incorporated, performance increases substantially to an F1-score of 82.68% ± 2.92%, corresponding to approximately 12% performance gain. Notably, the standard deviation is significantly reduced from 9.42% to 2.92%, indicating improved training stability and more consistent performance across folds. This improvement indicates that cross-modal relational supervision effectively transfers discriminative cues from auxiliary DaTscan-derived representations, enhancing robustness against intra-speaker variability.
+To further evaluate cross-domain generalization, models are tested on Cross-YouTubePD dataset. Siniukov et al. showed the worst generalization with F1-score 61.83% ± 1.02%. Shen et al. and Islam et al. achieve F1-scores of 65.52% ± 2.88% and 63.15% ± 1.17%, respectively. Lv et al. and He et al. demonstrate relatively stronger generalization with F1-scores of 67.17% ± 1.32% and 68.09% ± 3.09%. The proposed model without xReDA maintains a competitive F1-score of 76.77% ± 3.22%, highlighting the effectiveness of its unified representation learning. With xReDA enabled, the framework further improves to an F1-score of 85.68% ± 2.31%, outperforming all competing methods by a clear margin. A further reduction in standard deviation (from 3.22% to 2.31%) highlights enhanced generalization stability under domain shift conditions. Finally, on the VoicePD dataset, the proposed framework achieves 99.30% ± 0.51% F1-score without xReDA and reaches almost perfect classification performance with 99.91% ± 0.06% F1-score when supervised with xReDA, surpassing both handcrafted-feature-based approaches and deep attention-driven architectures. The near-zero SD (i.e., 0.06%) further reflects highly reliable and consistent predictions across different splits. Collectively, these results demonstrate that xReDA not only improves in-domain accuracy but also plays a critical role in enhancing cross-dataset generalization in voice-based PD prediction.
+On the MDVR-KCL dataset, which contains clinically annotated PD severity stages spanning early, moderate, and advanced conditions, the proposed framework also demonstrates substantial improvements over existing voice-based approaches. Shen et al. achieve an F1-score of 92.27% ± 0.83%, while Islam et al., Lv et al., and He et al. report F1-scores of 91.36% ± 0.45%, 90.68% ± 1.47%, and 90.25% ± 1.65%, respectively. The HuBERT-DANN-based framework proposed by Siniukov et al. achieves comparatively lower performance with an F1-score of 88.95% ± 0.52%. In contrast, the proposed framework without xReDA already attains a significantly higher F1-score of 96.51% ± 0.23%, demonstrating the effectiveness of the proposed dual-stream representation learning framework in capturing disease-relevant speech characteristics across varying PD severities. When xReDA is incorporated, the performance further improves to an F1-score of 98.16% ± 0.15%, outperforming all competing methods by a considerable margin. Furthermore, the extremely low standard deviation highlights highly stable optimization and robust generalization across folds. Since the MDVR-KCL dataset provides explicit disease severity annotations, we further evaluate model performance across different PD severity levels (see Fig. 11). The average results on each severity level demonstrate that the proposed method consistently outperforms existing approaches across all stages, including early, moderate, and advanced PD. Notably, the performance gains introduced by xReDA are more pronounced in the early and moderate stages, where discriminative features are typically more subtle. This observation further validates the effectiveness of the proposed distillation strategy in capturing fine-grained, clinically relevant patterns. The comparatively lower performance observed in the advanced severity stage may be attributed to the limited availability of samples within that category.
+Download: Download high-res image (811KB)
+Download: Download full-size image
+
+Fig. 11. Performance comparison of the proposed method with existing approaches across PD severity levels (early, moderate, and advanced) on the MDVR-KCL dataset.
+
+For the PADS dataset, existing smartwatch-based methods, such as Varghese et al.’s feed-forward neural network, Hur et al.’s hybrid LSTM-GRU architecture, and Jovanovic et al.’s CNN enhanced with metaheuristic optimization achieve F1-scores in the range of 87–090%, primarily constrained by their limited ability to capture long-range motion dependencies and contextual movement patterns. The proposed approach surpasses all competing methods, attaining an F1-score of 92.56% ± 1.17% without xReDA through the use of stacked three-dimensional spectral representations and a multi-channel ConvLSTM network that jointly models spatial-temporal motion dynamics. With xReDA enabled, performance further improves to 93.60% ± 1.03%, exceeding the closest competitor by approximately 3%. A modest yet consistent reduction in standard deviation (from 1.17% to 1.03%) further indicates improved robustness and reduced sensitivity to subject-specific variations. This gain can be attributed to xReDA’s ability to align smartwatch motion embeddings with relational priors derived from DaTscan representations, thereby reducing domain-induced variability and improving robustness to subject-specific behavioral differences.
+Additionally, for the hand-drawn image modality, methods in Wang et al. (LSTM + CNN), Ali et al. (Chi-squared aware network), and Kansizoglou et al. (residual architecture) reach 92–95% F1-scores. However, the proposed system achieves 96.59% ± 0.85% F1-score with xReDA by integrating cross-modal relational learning, allowing effective transfer of neuro-motor relational patterns between drawing and DaT domains. The relatively low standard deviation (i.e., 0.85%) further supports the stability and reliability of the proposed approach in this modality.
+Overall, xReDA delivers a consistent and substantial performance improvement across all modalities by learning shared relational embeddings that unify heterogeneous data distributions. In contrast to prior architectures constrained by intra-modal optimization, the proposed framework aligns latent structures across domains, thereby enhancing the discriminative capacity for PD prediction through the transfer of intrinsic feature representations from high-performing yet costly modalities. The impact of this cross-domain relational alignment is further corroborated by the t-SNE visualizations in Fig. 12, where xReDA yields distinctly separated feature clusters.
+Download: Download high-res image (560KB)
+Download: Download full-size image
+
+Fig. 12. Comparison of t-SNE plots utilizing bottleneck feature vector of (a) Voice, (b) Smartwatch, and (c) Hand-drawn Image without (top), and with (bottom) the effects of proposed xReDA.
+
+Additionally, Fig. 13 reveals the distribution of False Positives (FP) and False Negatives (FN) across different modalities. The smartwatch and hand-drawing modalities exhibit lower FN rates (1.73%, and 2.47%, respectively), successfully identifying all PD cases, but at the expense of higher FP rates (28.32% and 7.59%, respectively). This indicates that these models are more sensitive, though they may incorrectly classify some healthy controls as PD. From a clinical perspective, minimizing FN is generally more critical in early PD detection to avoid missed diagnoses, even if it leads to an increase in FP. Therefore, the smartwatch and hand-drawing models demonstrate a preferable bias toward sensitivity. On the other hand, the voice-based model shows a relatively higher FN rate (17.07%) compared to a low FP rate (2.49%), indicating a tendency to miss some PD cases. This behavior can be attributed to the significant class imbalance in the YouTubePD dataset, where PD samples are substantially fewer than non-PD samples. Although class weighting was applied to mitigate this imbalance, the issue persists due to the extent of the disparity. Nevertheless, considering that voice is the most accessible, low-cost, and easy-to-acquire modality, this trade-off was anticipated in our experiments.
+Download: Download high-res image (277KB)
+Download: Download full-size image
+
+Fig. 13. Confusion matrix analysis of PD and HC predictions across (a) Voice (YouTubePD dataset), (b) Smartwatch, and (c) Hand-drawn Image modality.
+
+The results demonstrate that the proposed framework achieves substantial performance gains for each modality when evaluated individually. Compared to existing multi-modal networks (see Table 1), our framework outperforms most state-of-the-art methods, with the exception of Sar et al. [28], which simultaneously employs five different sensor-based modalities for PD prediction. Remarkably, our approach achieves nearly equivalent performance using only the hand-drawing modality at inference, enhanced through DaTscan-based knowledge distillation via the proposed xReDA during training. This underscores the potential of our method to play a vital role in early detection of PD through home-based, easily accessible devices, in contrast to costly, complex hospital-grade systems that often discourage or even prevent early detection, as in Sar et al.[28]. It should be noted that the datasets used by the multi-modal methods in Table 1 are not publicly available; therefore, the comparison relies on the reported performances in the original studies.
+Additionally, Fig. 14 presents a comparative evaluation of xReDA against the baseline and several distillation methods, including DANN [38], conventional RKD [42], Disc+RDKD, and Disc+RAKD, across three modalities: voice, smartwatch, and hand-drawing. Across all three settings, xReDA consistently achieves the highest accuracy, reaching 95.04%, 90.64%, and 95.67% respectively, thereby demonstrating its superiority over all competing approaches. Disc+RDKD and Disc+RAKD provide insight into the individual contributions of distance and angular alignment within xReDA, and the results clearly illustrate that angular alignment contributes more significantly to performance gains across all three modalities than distance alignment. In contrast, standard RKD and DANN methods fail to effectively distill knowledge in this setting, reducing performance even below the base model in several cases, underscoring the importance of the relational distillation design choices made in xReDA.
+Download: Download high-res image (413KB)
+Download: Download full-size image
+
+Fig. 14. Performance comparison of xReDA and conventional KD methods on the proposed baselines, using knowledge from the neuroimaging network.
+
+5. Discussion
+5.1. Discussion on unpaired cross-modal, cross-subject knowledge distillation
+The primary objective of this study is fundamentally different from that of conventional knowledge distillation (KD). Traditional KD is primarily designed to transfer knowledge from a computationally heavy teacher network to a smaller student network, where the emphasis is placed on model compression, computational efficiency, and preserving predictive consistency between paired teacher-student samples [63]. In contrast, the proposed framework focuses on transferring clinically informative knowledge from a diagnostically reliable modality to accessible non-clinical modalities. Consequently, the teacher network in this study is not required to be architecturally larger or computationally heavier; instead, its importance arises from the richness and clinical reliability of the modality from which it learns. Furthermore, unlike standard KD settings, the teacher and student data in this framework are neither paired nor modality-aligned, making conventional instance-level distillation strategies ineffective.
+Standard KD assumes paired inputs, where teacher and student networks process corresponding samples, enabling direct feature-level, logit-level, or relational alignment [42]. However, in the proposed cross-domain setting, the neuroimaging modality (DaTscan) and the non-clinical modalities (e.g., voice, hand-drawn images, smartwatch signals) originate from different subjects and heterogeneous sensing domains [64], [65], [66]. As a result, instance-level correspondence is unavailable, and samples within a batch are not guaranteed to be semantically aligned. Although RKD partially alleviates this limitation by transferring structural relationships rather than individual embeddings [42], conventional RKD formulations still implicitly assume that teacher and student representations originate from paired or distributionally compatible data [67]. This assumption significantly limits the applicability of classical RKD in fully unpaired cross-modal scenarios.
+From the conventional understanding of RKD, introducing class-constrained relational alignment may initially appear theoretically desirable. Restricting relational transfer to semantically consistent groups (e.g., PD–PD and HC–HC relationships) intuitively seems likely to reduce optimization ambiguity and strengthen semantic consistency between teacher and student spaces. Such formulations are generally effective in homogeneous or modality-consistent settings, where class-conditioned manifolds are expected to share comparable geometric topology. Under those conditions, preserving class-specific relational structure can reinforce discriminative alignment and improve representation consistency.
+However, the proposed framework operates in a fundamentally different setting, where the latent organization of disease classes is not expected to remain geometrically consistent across modalities. Each non-clinical modality captures Parkinsonian characteristics through fundamentally different physiological mechanisms and feature representations: voice encodes dysphonia and hypokinetic dysarthria characteristics [64], smartwatch signals capture gait dynamics and motor fluctuations [65], and hand-drawn images reflect micrographia and tremor-related irregularities [66]. In contrast, the DaTscan teacher network organizes its embedding space according to neuroimaging-derived biomarkers associated with striatal dopamine transporter availability. Consequently, the geometric organization of PD and HC samples in the neuroimaging space is not expected to be isomorphic to the organization induced by any individual behavioral modality.
+Under these conditions, enforcing strict class-conditioned relational preservation introduces a substantially stronger structural constraint that the heterogeneous cross-modal setting may not sustain. In particular, constraining the optimization to preserve PD-PD or HC-HC relational structures implicitly assumes that disease-specific manifold geometry should remain consistent across modalities. This assumption is overly restrictive in the present setting and may unintentionally suppress modality-specific complementary information that is critical for effective adaptation [68]. Rather than encouraging generalized structural transfer, the optimization becomes biased toward preserving a specific class-wise geometric arrangement inherited from the neuroimaging space, even when such geometry may not be optimal for the target modality.
+For this reason, the proposed framework intentionally avoids treating PD-PD or HC-HC relational preservation as a hard requirement. Instead, xReDA adopts a broader and more class-invariant relational transfer strategy, where the objective is to preserve higher-order structural organization rather than enforce explicit class-conditioned correspondence. Within this formulation, the role of RKD changes fundamentally when embedded within a multi-objective optimization jointly governed by adversarial domain alignment and discriminative task supervision.
+Specifically, the total training objective is formulated as ℒ𝑠=ℒ𝑠
+𝑝+𝛼ℒ𝑠
+DA,total
+. Critically, under this formulation, RKD does not uniquely determine the latent geometry. Instead, it acts as a distributional structural regularizer—a weak geometric prior that encourages the student embedding manifold to develop globally consistent relational structure, while supervised classification preserves discriminative class separation and adversarial alignment reduces inter-modal distributional discrepancy [69].
+Rather than enforcing strict instance-level correspondence between semantically matched pairs, the effective optimization under randomized unpaired batching is more appropriately interpreted as a distributional alignment, i.e., P(DT) ≈ P(DS), where the distributions of pairwise relational distances and angular relationships become progressively aligned over training, rather than individual pairwise distances themselves [67]. Under stochastic batch sampling, mismatches in batch-wise class composition behave primarily as optimization noise that gradually averages out over training. Consequently, RKD functions not as a rigid correspondence mechanism, but as a geometry-preserving regularizer that aligns the global statistical structure of the student manifold with that of the clinically informative teacher [42].
+The underlying intuition is that disease-relevant information is embedded not only in individual feature vectors, but also in the relative organization of samples within the latent space. A teacher network trained on high-quality neuroimaging data learns a structured representation in which samples are organized according to clinically meaningful disease characteristics and class boundaries. By encouraging the student network to preserve this broader relational geometry without enforcing direct sample-wise or class-conditioned matching, the proposed framework enables discriminative structural knowledge to be transferred across modalities even in the absence of subject-level correspondence [41]. Importantly, the student is not forced to imitate individual teacher embeddings; instead, it gradually reorganizes its embedding manifold so that its global geometric structure becomes compatible with that of the clinically informative neuroimaging network while remaining adaptive to the intrinsic properties of the target modality.
+Two additional mechanisms further stabilize this process. First, the supervised classification loss preserves disease-discriminative separation throughout training, preventing RKD from driving the student toward degenerate geometric configurations. The combined effect becomes a form of label-preserving geometric regularization, where classification anchors semantic separability while RKD promotes globally coherent relational structure. Second, adversarial domain confusion enforces approximate alignment between teacher and student embedding distributions prior to relational comparison [69], reducing modality-specific structural discrepancies before RKD is applied. This distinction is important because the relational geometries being compared already originate from partially aligned latent spaces rather than arbitrarily mismatched distributions. To further reduce the representation gap, the framework additionally performs partial fine-tuning of the teacher’s final refinement layers during training, while keeping the DaTscan backbone frozen, allowing the teacher representation to become more compatible with the student embedding domain without sacrificing clinically grounded feature organization.
+To further analyze this behavior, t-SNE visualizations of the teacher representations (see Fig. 15) reveal that raw embeddings from the penultimate layer exhibit clear class separability, whereas the corresponding difference vectors significantly reduce this separation. This suggests that difference embeddings suppress disease-specific (class-dependent) information while preserving relational structure, such as relative distances and angular relationships. As a result, these representations are inherently more suitable for cross-domain transfer, as they encode modality-agnostic structural knowledge rather than instance-level semantics.
+Download: Download high-res image (334KB)
+Download: Download full-size image
+
+Fig. 15. t-SNE visualization of neuroimaging network representations at different levels of abstraction: (a) raw embeddings from the penultimate layer showing clear PD-HC class separability; (b)–(d) difference embeddings (𝑓3
+𝑡−𝑓2
+𝑡)
+, (𝑓2
+𝑡−𝑓1
+𝑡)
+, and (𝑓3
+𝑡−𝑓1
+𝑡)
+, respectively. The difference embeddings exhibit progressively reduced class separability compared to raw features, suggesting a diminished encoding of class-specific information while preserving relational structure. This behavior indicates that difference vectors primarily capture structure-aware representations, making them more suitable for structure-driven (rather than instance-driven) knowledge transfer in unpaired cross-domain, cross-subject settings.
+
+Empirical observations further demonstrate the effectiveness of the proposed framework. Comparative t-SNE visualizations (see Fig. 16) suggest that, without explicit domain alignment, conventional RKD exhibits limited alignment between teacher and student embedding distributions. In contrast, the proposed approach generates more aligned and coherent embeddings, facilitating more effective transfer of relational knowledge across modalities. In addition, the convergence curves (see Fig. 17) illustrate the training behavior of the proposed xReDA framework in terms of classification loss across voice, hand-drawing, and smartwatch modalities. The training trajectory of the proposed framework remains substantially stable, characterized by progressively reduced fluctuations and eventual convergence to a higher-performing solution. This stable behavior suggests effective learning of cross-domain alignment and distillation objectives during training.
+Download: Download high-res image (345KB)
+Download: Download full-size image
+
+Fig. 16. t-SNE plots illustrating that the latent representations of non-clinical modalities become more closely aligned with those of the neuroimaging modality after applying xReDA: (a) Voice, (b) Smartwatch, and (c) Hand-drawn Image modalities.
+
+Download: Download high-res image (299KB)
+Download: Download full-size image
+
+Fig. 17. Convergence curves of the proposed methods for (a) Voice, (b) Smartwatch, and (c) Hand-drawn Image modalities using the xReDA approach.
+
+Overall, this formulation highlights that effective knowledge distillation in heterogeneous, unpaired settings can be achieved by shifting the focus from instance-level correspondence to structure-level consistency. By transferring the learned geometry of the embedding space, the proposed framework enables robust cross-domain generalization while preserving discriminative performance across diverse modalities.
+5.2. Discussion on reliability
+To further demonstrate the effectiveness of the proposed framework, Grad-CAM visualizations are incorporated to identify the input regions contributing most strongly to the model’s predictions. The heatmaps were generated from the layer immediately preceding the multimodal fusion stage [70], [71], enabling visualization of modality-specific feature representations before multimodal aggregation. These visualizations provide an attention-based view of the regions and patterns that activate the modality-specific encoders and therefore offer qualitative insights into the learned representations. However, as with other interpretability approaches in medical AI, such visualizations should be interpreted as complementary explanatory evidence rather than definitive descriptions of the underlying decision-making process [72]. Since the encoders are optimized jointly through classification, RKD, and domain-discrimination objectives, the highlighted regions may reflect the combined influence of these learning mechanisms. Furthermore, because the visualizations are generated prior to multimodal fusion, they provide only a partial view of the overall decision-making process.
+Fig. 18 presents representative Grad-CAM visualizations for the voice modality. The figure contains mel spectrogram inputs alongside their corresponding activation heatmaps for the MDVR-KCL dataset, illustrating the spectro-temporal regions that most strongly influence the model’s predictions. Distinct differences between HC and PD samples can be observed in the spectrogram patterns. HC samples exhibit relatively stable harmonic structures and consistent energy distributions across time and frequency, whereas PD samples show disrupted harmonic organization, increased temporal irregularity, and altered energy concentration patterns. The corresponding Grad-CAM heatmaps emphasize acoustically informative spectro-temporal regions associated with the observed distinctions between HC and PD samples.
+Download: Download high-res image (1MB)
+Download: Download full-size image
+
+Fig. 18. Arbitrary samples of mel spectrograms of voice recordings and the corresponding Grad-CAM visualizations generated by the trained model with the xReDA module for (a, b) HC samples and (c, d) PD samples from MDVR-KCL dataset.
+
+Additionally, Fig. 19 presents representative Grad-CAM visualizations for the hand-drawn image modality, covering both spiral and meander drawing tasks alongside their corresponding Grad-CAM maps. These visualizations facilitate the examination of the spatial regions that contribute most strongly to the model’s predictions. Qualitative differences can be observed between HC and PD drawings. HC samples generally exhibit smoother trajectories, greater line continuity, and more regular geometric patterns, whereas PD samples tend to display irregularities such as tremor-related fluctuations, disrupted curvature, and reduced stroke stability. The Grad-CAM maps indicate that the model distributes its attention across substantial portions of the drawn trajectories rather than focusing exclusively on isolated regions. This observation suggests that the model relies on global structural characteristics of the drawings, including stroke geometry, continuity, and overall pattern organization.
+Download: Download high-res image (884KB)
+Download: Download full-size image
+
+Fig. 19. Arbitrary samples of hand drawings and the corresponding Grad-CAM visualizations generated by the trained model with the xReDA module for (a, b) HC samples and (c, d) PD samples.
+
+Although the Grad-CAM visualizations provide useful insights into the input regions emphasized by the trained model, they should be interpreted with caution. Grad-CAM highlights spatially salient regions by projecting gradient-weighted feature map activations back to the input resolution, and therefore cannot directly visualize the latent-space geometry, pairwise distance relationships, or angular constraints learned through RKD. Consequently, the presented visualizations provide complementary evidence regarding the learned representations but do not directly reveal the knowledge-transfer mechanism underlying the RKD-regularized embedding space. Overall, the Grad-CAM analyses support the presence of meaningful modality-specific representations and complement the quantitative performance results with additional interpretability, consistent with the broader objective of improving transparency and trustworthiness in medical AI systems [72].
+6. Ablation study
+6.1. Selection of neuroimaging backbone
+Table 5 presents a comparative analysis of multiple backbone architectures for the neuroimaging branch, highlighting the trade-off between classification performance and computational complexity in Parkinson’s Disease detection using DaTscan data. Although VGG16 achieves the highest accuracy (98.03%) with the adapter, this gain comes at the cost of substantially higher model size (136.40M parameters) and computational burden (40.06 GFLOPs), making it less practical for efficient deployment. In contrast, lighter architectures such as EfficientNetB0 offer significantly lower complexity but exhibit comparatively reduced performance. Among the evaluated models, DenseNet121 provides a well-balanced compromise, achieving competitive accuracy (96.50%) with a relatively small parameter count (9.06M) and moderate computational cost (7.26 GFLOPs). This favorable trade-off motivates its selection as the neuroimaging backbone in our framework.
+
+Table 5. Performance-complexity trade-off in base model selection for DaTscan modality in Parkinson’s disease detection.
+
+Model	Adapter (Yes/No)	Accuracy (%)	Precision (%)	Recall (%)	F1-score (%)	Parameter (M)	Flops (G)
+VGG16	No	96.59	92.34	94.38	93.36	136.27	40.04
+VGG16	Yes	98.03	92.34	96.77	94.45	136.40	40.06
+Resnet50	No	93.87	86.90	92.65	89.69	26.20	17.66
+Resnet50	Yes	95.50	91.84	94.92	93.39	28.30	18.10
+DenseNet121	No	94.96	90.68	92.49	91.57	8.53	7.15
+DenseNet121	Yes	96.50	92.84	95.43	94.12	9.06	7.26
+EfficientNetB0	No	94.87	90.28	92.29	91.28	5.34	2.56
+EfficientNetB0	Yes	95.59	90.54	93.41	91.93	6.16	2.73
+6.2. Impact of the proposed modules on non-clinical networks
+Table 6 presents the ablation results illustrating the individual and cumulative impact of each proposed module–(a) RDE, (b) TDE ( = FDE in the Fourier domain), (c) DFAB, and (d) xReDA–across Voice, Smartwatch, and Hand Drawing datasets.
+
+Table 6. Ablation study results demonstrating the impact of multiple parallel modules across different multimodal datasets.
+
+Modality	Model	Loss	Performance Metrics
+
+Empty Cell
+	
+Empty Cell
+	ℒ𝑝
+	ℒDA
+	Accuracy	Precision	Recall	F1-score
+Voice (YouTubePD)	(a) RDE	✔	–	82.31%	61.48%	53.77%	57.37%
+	(b) a + FDE	✔	–	86.09%	62.23%	54.16%	57.92%
+	(c) b + DFAB	✔	–	90.54%	66.20%	57.32%	61.44%
+	(d) c + xReDA	✔	✔	95.04%	84.62%	80.49%	82.50%
+Smartwatch	(a) RDE	✔	–	78.14%	79.73%	81.91%	80.81%
+	(b) a + FDE	✔	–	81.62%	85.34%	84.58%	84.96%
+	(c) b + DFAB	✔	–	85.77%	91.55%	92.59%	92.07%
+	(d) c + xReDA	✔	✔	90.64%	92.67%	93.65%	93.16%
+Hand-drawn Image	(a) RDE	✔	–	85.43%	88.17%	84.34%	86.21%
+	(b) a + TDE	✔	–	88.76%	90.06%	87.72%	88.87%
+	(c) b + DFAB	✔	–	92.28%	94.06%	94.98%	94.52%
+	(d) c + xReDA	✔	✔	95.67%	94.74%	97.74%	96.22%
+Starting from the baseline RDE, which extracts fundamental features from raw temporal data, the addition of TDE consistently improves performance in all modalities. The F1-score increases from 57.37% to 57.92% (+0.55%) in Voice, 80.81% to 84.96% (+4.15%) in Smartwatch, and 86.21% to 88.87% (+2.66%) in Hand-drawing. This demonstrates that incorporating transformed-domain (spectrogram-based) and wavelet-based, detail-enhanced representations complements raw-domain features by jointly capturing spectral and time-frequency dependencies, which are particularly beneficial for modeling physiological and behavioral signals with non-stationary dynamics.
+Introducing the DFAB module further enhances model performance by adaptively emphasizing modality-relevant spatial and channel-level features. The F1-scores rise by 3.52%, 7.11%, and 5.65% for voice, smartwatch, and hand-drawing, respectively. This significant improvement confirms that DFAB effectively strengthens inter-feature interactions and fuses complementary information across domains, leading to more discriminative latent representations.
+Finally, integrating xReDA, the cross-modal relational domain adaptation module, yields the most pronounced gain–achieving 82.50%, 93.16%, and 96.22% F1-scores for the three modalities, respectively. The improvements of 21.06%, 1.09%, and 1.70% over the previous configuration highlight xReDA’s capability to align latent feature distributions between heterogeneous modalities. By enforcing relational consistency across modalities, xReDA guides the non-clinical network to mimic the structural decision-making patterns of the neuroimaging network rather than merely matching feature values. This relational alignment helps the non-clinical models preserve clinically meaningful inter-sample relationships that are otherwise absent in low-cost sensing modalities. As a result, xReDA not only reduces the domain gap between clinical and non-clinical inputs but also equips the non-clinical network with richer, more discriminative representations, ultimately leading to stronger performance and improved generalization.
+Overall, each module contributes a distinct yet complementary role: TDE ( = FDE in the Fourier domain) enriches representational diversity, DFAB selectively fuses and emphasizes informative features, and xReDA bridges domain gaps through relational adaptation. Their progressive integration results in consistent performance gains across all multimodal datasets, validating the synergistic effectiveness of the proposed architecture.
+7. Computational complexity analysis
+As shown in Table 7, the computational complexity of the proposed method remains broadly comparable to existing baseline approaches across all three modalities, while delivering meaningful performance improvements. For the Voice modality, the proposed method achieves a test-time parameter count of 41.10M and a notably competitive latency of 14.92 ms, demonstrating that the added representational capacity of the proposed network does not translate into prohibitive inference overhead. Similarly, in the Smartwatch modality, the proposed method maintains a reasonable parameter footprint (36.92M at test time) and memory usage (147.70MB), remaining well within the same computational order of magnitude as prior works such as Varghese et al. and Hur et al. For Hand Drawing, while training-time FLOPs are moderately higher (42.56G), the test-time FLOPs reduce to 35.32G with the lowest latency of 8.71 ms across the group, underscoring the inference efficiency of the proposed design. Taken together, these results demonstrate that the proposed method achieves its performance gains without imposing a disproportionate computational burden, the complexity is commensurate with the state-of-the-art baselines, making it a practically viable and computationally responsible solution across diverse biometric modalities.
+
+Table 7. Computational efficiency and model complexity comparison across different modalities.
+
+Modality	Method	Params (M)	FLOPs (G)	Memory (MB)	Latency (ms)
+
+Empty Cell
+	
+Empty Cell
+	Train	Test	Train	Test	Train	Test	Train	Test
+Voice	Shen et al. [19]	79.25	79.25	28.11	28.11	291.05	291.05	1.39	1.39
+	Islam et al. [18]	32.06	32.06	13.84	13.84	128.24	128.24	0.71	0.71
+	Lv et al.a [27]	93.15	93.15	26.36	26.36	350.62	350.62	1.80	1.80
+	He et al.a [13]	0.28	0.28	6.00×10−4
+	6.00×10−4
+	1.15	1.15	43.23	43.23
+	Siniukov et al. [59]	95.32	95.01	20.14	20.07	138.39	137.22	21.31	21.16
+	Proposed	50.15	41.10	25.43	18.19	198.72	164.41	21.81	14.92
+Smartwatch	Varghese et al. [60]	50.46	50.46	0.10	0.10	198.86	198.86	0.08	0.08
+	Hur et al. [22]	6.40	6.40	14.09	14.09	25.87	25.87	0.55	0.55
+	Jovanovic et al. [61]	0.39	0.39	1.70×10−3
+	1.70×10−3
+	1.56	1.56	0.47	0.47
+	He et al.b [13]	2.69	2.69	5.30×10−3
+	5.30×10−3
+	10.77	10.77	0.65	0.65
+	Proposed	45.98	36.92	8.62	1.38	184.00	147.70	84.09	77.20
+Hand-drawn Image	Wang et al. [62]	27.44	27.44	9.21	9.21	108.98	108.98	0.53	0.53
+	Ali et al. [14]	41.10	41.10	39.92	39.92	158.92	158.92	1.97	1.97
+	Kansizoglou et al. [24]	24.56	24.56	17.66	17.66	98.24	98.24	1.36	1.36
+	Proposed	57.72	48.66	42.56	35.32	227.02	190.72	15.60	8.71
+a
+Using only Voice modality network due to absence of matching subjects.
+b
+Using only Smartwatch modality network due to absence of matching subjects.
+Since the proposed framework is intended for accessible self-screening using commonly available personal devices, we additionally evaluated its practical deployment feasibility across desktop, smartphone, and tablet client devices under a cloud-assisted inference setting. In this deployment configuration, data acquisition, lightweight preprocessing, and user interaction are performed locally on the client device, while computationally intensive inference is executed on a remote cloud server. For deployment evaluation, the trained models were hosted on a cloud-based CPU inference environment using the Hugging Face inference infrastructure, while the client devices communicated with the server through standard internet connectivity. The reported latency measurements therefore include the complete end-to-end pipeline, including client-side data acquisition and preprocessing, network transmission, server-side inference on CPU hardware, and response generation. Consequently, the latency values reported in Table 8 reflect realistic screening conditions rather than isolated model inference times.
+
+Table 8. Practical deployment feasibility analysis across resource-constrained consumer devices using cloud-assisted inference.
+
+Modality	Device	Specification	Latency (s)
+Voice	Desktop	CPU: Intel(R) Core(TM) i9-10900 @ 2.80GHz RAM: 16.0 GB @2933 MHz	13.52
+	Mobile	CPU: Octa-core CPU, 12nm, up to 2.0GHz RAM: 4GB LPDDR4X (Device: Realme C25s)	10.07
+	Tablet	CPU: Octa-core CPU, 4nm, up to 3.36GHz RAM: 12GB LPDDR5X (Device: Samsung Galaxy Tab S9+)	11.88
+Hand-drawn Image	Desktop	CPU: Intel(R) Core(TM) i9-10900 @ 2.80GHz RAM: 16.0 GB @2933 MHz	2.41
+	Mobile	CPU: Octa-core CPU, 12nm, up to 2.0GHz RAM: 4GB LPDDR4X (Device: Realme C25s)	2.38
+	Tablet	CPU: Octa-core CPU, 4nm, up to 3.36GHz RAM: 12GB LPDDR5X (Device: Samsung Galaxy Tab S9+)	1.96
+Smartwatch	Desktop	CPU: Intel(R) Core(TM) i9-10900 @ 2.80GHz RAM: 16.0 GB @2933 MHz	5.72
+	Mobile	CPU: Octa-core CPU, 12nm, up to 2.0GHz RAM: 4GB LPDDR4X (device: Realme C25s)	6.75
+	Tablet	CPU: Octa-core CPU, 4nm, up to 3.36GHz RAM: 12GB LPDDR5X (Device: Samsung Galaxy Tab S9+)	6.29
+As shown in Table 8, the proposed framework demonstrates practical feasibility for real-time screening on low-cost consumer devices with acceptable end-to-end latency. Although the current implementation relies on internet connectivity for cloud-assisted inference and is not yet optimized for fully on-device execution, the computational efficiency analysis (see Table 7) and deployment evaluation (see Table 8) suggest the potential applicability of the framework in home-based or resource-constrained screening environments. Further optimization for embedded and mobile AI hardware remains an important direction for future work.
+8. Conclusion
+This work introduces a multimodal deep learning framework for PD diagnosis by transferring knowledge from clinically grounded data to accessible, low-cost non-clinical biomarkers. A DaTscan-based clinical model is used as a supervisory reference, guiding networks trained on non-clinical modalities such as voice, smartwatch sensor data, and hand-drawing patterns. DaTscan is employed as a reference source because it provides clinically established measurements of dopaminergic integrity, capturing disease-related patterns that are not directly observable in non-clinical modalities. To enable cross-modality knowledge transfer, a relational domain alignment strategy, termed xReDA, is proposed. Unlike conventional domain alignment methods, which typically enforce instance-level or feature-level matching between source and target domains, xReDA focuses on transferring relational information from the neuroimaging network to non-clinical networks. In this setting, feature-level alignment alone may be limited in capturing the differences between clinically acquired imaging data and low-cost sensing signals, as these modalities exhibit substantially different data characteristics. Instead of relying on direct feature matching, xReDA encourages the non-clinical network to learn from the relational structure induced by the DaTscan-based model, preserving inter-sample relationships in a task-relevant manner. By focusing on these relational patterns rather than individual feature values, xReDA provides a mechanism to better connect high-fidelity clinical data with non-clinical inputs, enabling the learning of more informative and discriminative representations that can improve generalization to unseen data.
+For each non-clinical modality, modality-specific architectures are employed to extract complementary information from both raw input and transformed-domain representations. Experimental results indicate that the proposed strategy consistently improves diagnostic performance and generalization compared to several unimodal and multimodal baselines. Moreover, when guided by DaTscan-derived knowledge, the xReDA-based framework shows notable gains in PD detection performance, suggesting its potential usefulness for reliable classification in practical settings. Overall, this study highlights an application-oriented direction for cost-efficient, clinically informed AI-assisted PD diagnostics, with potential to support earlier identification of disease-related patterns under low-cost sensing scenarios.
+CRediT authorship contribution statement
+Farah Binta Haque: Writing – original draft, Software, Methodology, Data curation, Conceptualization. Md. Shoaib Akhter Rafi: Software, Methodology, Writing – original draft. Md. Kamrul Hasan: Project administration, Funding acquisition, Supervision, Conceptualization, Methodology, Writing – original draft, Writing – review & editing.
+Declaration of competing interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Acknowledgment
+This research was carried out with partial financial support from the Committee for Advanced Studies and Research (CASR) and the BUET Basic Research Grant. The authors further acknowledge with gratitude the BUET87 Foundation for their generous support of the AI research laboratory, which has substantially enhanced the research environment.
+Appendix A. Supplementary materials
+Download: Download Acrobat PDF file (309KB)
+Data availability
+Data will be made available on request.
+References
+[1]
+L. Omberg, E. Chaibub Neto, T.M. Perumal, A. Pratap, A. Tediarjo, J. Adams, B.R. Bloem, B.M. Bot, M. Elson, S.M. Goldman, et al.
+Remote smartphone monitoring of Parkinson’s disease and individual response to therapy
+Nat. Biotechnol., 40 (4) (2022), pp. 480-487
+CrossrefView in ScopusGoogle Scholar
+[2]
+A. Zhou, S. Li, P. Sriram, X. Li, J. Dong, A. Sharma, Y. Zhong, S. Luo, V. Kindratenko, G. Heintz, et al.
+YouTubePD: a multimodal benchmark for Parkinson’s disease analysis
+Adv. Neural Inf. Process. Syst., 36 (2023), pp. 55140-55159
+CrossrefView in ScopusGoogle Scholar
+[3]
+H. Ghayvat, M. Awais, R. Geddam, M.T. Quasim, S.A. Khowaja, K. Dev
+AiCareGaitRehabilitation: multi-modalities sensor data fusion for AI-IoT enabled realtime electrical stimulation device for pre-Fog and post-fog to person with Parkinson’s disease
+Inf. Fusion, 122 (2025), Article 103155
+View PDF
+View articleView in ScopusGoogle Scholar
+[4]
+M.J. Armstrong, M.S. Okun
+Diagnosis and treatment of Parkinson disease: a review
+Jama, 323 (6) (2020), pp. 548-560
+CrossrefView in ScopusGoogle Scholar
+[5]
+C.G. Goetz, B.C. Tilley, S.R. Shaftman, G.T. Stebbins, S. Fahn, P. Martinez-Martin, W. Poewe, C. Sampaio, M.B. Stern, R. Dodel, et al.
+Movement disorder society-sponsored revision of the unified Parkinson’s disease rating scale (MDS-UPDRS): scale presentation and clinimetric testing results
+Mov. Disord. Off. J. Mov. Disord. Soc., 23 (15) (2008), pp. 2129-2170
+CrossrefView in ScopusGoogle Scholar
+[6]
+A.H. Ropper
+Caroline M. Tanner, MD, Ph. D., and Jill L. ostrem, MD
+N. Engl. J. Med., 391 (2024), pp. 442-452
+Google Scholar
+[7]
+D.J. Brooks
+Imaging approaches to Parkinson disease
+J. Nucl. Med., 51 (4) (2010), pp. 596-609
+CrossrefView in ScopusGoogle Scholar
+[8]
+M. Camacho, M. Wilms, H. Almgren, K. Amador, R. Camicioli, Z. Ismail, O. Monchi, N.D. Forkert, A.D.N. Initiative
+Exploiting macro-and micro-structural brain changes for improved Parkinson’s disease classification from MRI data
+NPJ Park. Dis., 10 (1) (2024), p. 43
+CrossrefView in ScopusGoogle Scholar
+[9]
+M. Yang, X. Huang, L. Huang, G. Cai
+Diagnosis of Parkinson’s disease based on 3D ResNet: the frontal lobe is crucial
+Biomed. Signal Process. Control, 85 (2023), Article 104904
+View PDF
+View articleView in ScopusGoogle Scholar
+[10]
+E.D. Wallert, E. van de Giessen, R.J.J. Knol, M. Beudel, R.M.A. de Bie, J. Booij
+Imaging dopaminergic neurotransmission in neurodegenerative disorders
+J. Nucl. Med., 63 (Supplement 1) (2022), pp. 27S-32S
+CrossrefGoogle Scholar
+[11]
+B. Majhi, A. Kashyap, S.S. Mohanty, S. Dash, S. Mallik, A. Li, Z. Zhao
+An improved method for diagnosis of Parkinson’s disease using deep learning models enhanced with metaheuristic algorithm
+BMC Med. Imaging, 24 (1) (2024), p. 156
+View in ScopusGoogle Scholar
+[12]
+A. Zhao, Y. Liu, X. Yu, X. Xing, H. Zhou
+Artificial intelligence-enabled detection and assessment of Parkinson’s disease using multimodal data: a survey
+Inf. Fusion, 121 (2025), Article 103175
+View PDF
+View articleView in ScopusGoogle Scholar
+[13]
+T. He, J. Chen, M.S. Hossain, Z. Lyu
+Enhanced detection of early Parkinson’s disease through multi-sensor fusion on smartphone-based IoMT platforms
+Inf. Fusion, 117 (2025), Article 102889
+View PDF
+View articleView in ScopusGoogle Scholar
+[14]
+L. Ali, M.-F. Leung, M.A. Khan, R. Nour, Y. Imrana, A.V. Vasilakos
+ChiGa-Net: a genetically optimized neural network with refined deeply extracted features using χ2 statistical score for trustworthy Parkinson’s disease detection
+Neurocomputing, 624 (2025), Article 129450
+View PDF
+View articleView in ScopusGoogle Scholar
+[15]
+E.S. Levy, G. Moya-Galé, Y.H.M. Chang, K. Freeman, K. Forrest, M.F. Brin, L.A. Ramig
+The effects of intensive speech treatment on intelligibility in Parkinson’s disease: a randomised controlled trial
+EClinicalMedicine, 24 (2020), Article 100429
+View PDF
+View articleView in ScopusGoogle Scholar
+[16]
+B.R. Bloem, M.S. Okun, C. Klein
+Parkinson’s disease
+Lancet, 397 (10291) (2021), pp. 2284-2303
+View PDF
+View articleView in ScopusGoogle Scholar
+[17]
+W. Wang, J. Lee, F. Harrou, Y. Sun
+Early detection of Parkinson’s disease using deep learning and machine learning
+IEEE Access, 8 (2020), pp. 147635-147646
+CrossrefView in ScopusGoogle Scholar
+[18]
+M. Islam, K. Akter, M.A. Hossain, M.A.A. Dewan
+PD-Net: Parkinson’s disease detection through fusion of two spectral features using attention-based hybrid deep neural network
+Information, 16 (2) (2025), p. 135
+Google Scholar
+[19]
+M. Shen, P. Mortezaagha, A. Rahgozar
+Explainable artificial intelligence to diagnose early Parkinson’s disease via voice analysis
+Sci. Rep., 15 (1) (2025), Article 11687
+View in ScopusGoogle Scholar
+[20]
+J.L. Adams, T. Kangarloo, Y. Gong, V. Khachadourian, B. Tracey, D. Volfson, R.D. Latzman, J. Cosman, J. Edgerton, D. Anderson, et al.
+Using a smartwatch and smartphone to assess early Parkinson’s disease in the WATCH-PD study over 12 months
+NPJ Park. Dis., 10 (1) (2024), p. 112
+View in ScopusGoogle Scholar
+[21]
+J. Prince, M. De Vos
+A deep learning framework for the remote detection of Parkinson’s disease using smart-phone sensor data
+2018 40th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), IEEE (2018), pp. 3144-3147
+CrossrefView in ScopusGoogle Scholar
+[22]
+S. Hur, J. Zhang, M.-H. Kim, T.-M. Chung
+Real-world Parkinson’s hand tremor detection using ensemble learning techniques
+IEEE Access, 13 (2025), pp. 22678-22693
+CrossrefView in ScopusGoogle Scholar
+[23]
+K.I. Taylor, F. Lipsmeier, M.A. Scelsi, E. Volkova-Volkmar, D. Rukina, W. Popp, S. Lambrecht, J. Anzures-Cabrera, D. Summers, M. Abt, et al.
+Exploratory digital outcome measures of motor sign progression in Parkinson’s disease patients treated with prasinezumab
+NPJ Digit. Med., 8 (1) (2025), p. 365
+View in ScopusGoogle Scholar
+[24]
+I. Kansizoglou, K.A. Tsintotas, D. Bratanov, A. Gasteratos
+Drawing-aware Parkinson’s disease detection through hierarchical deep learning models
+IEEE Access, 13 (2025), pp. 21880-21890
+CrossrefView in ScopusGoogle Scholar
+[25]
+A.B. Peachap, D. Tchiotsop, V. Louis-Dorr, D. Wolf
+Detection of early Parkinson’s disease with wavelet features using finger typing movements on a keyboard
+SN Appl. Sci., 2 (10) (2020), p. 1634
+View in ScopusGoogle Scholar
+[26]
+A. Rehman, T. Saba, M. Mujahid, F.S. Alamri, N. ElHakim
+Parkinson’s disease detection using hybrid LSTM-GRU deep learning model
+Electronics, 12 (13) (2023), p. 2856
+CrossrefView in ScopusGoogle Scholar
+[27]
+C. Lv, L. Fan, H. Li, J. Ma, W. Jiang, X. Ma
+Leveraging multimodal deep learning framework and a comprehensive audio-visual dataset to advance Parkinson’s detection
+Biomed. Signal Process. Control, 95 (2024), Article 106480
+View PDF
+View articleView in ScopusGoogle Scholar
+[28]
+A. Sar, P.S. Puri, H. Naz, S. Aich, T. Choudhury, L.A. Gabralla
+Multi-modal deep learning framework for early detection of Parkinson’s disease using neurological and physiological data for high-fidelity diagnosis
+Sci. Rep., 15 (1) (2025), Article 34835
+View in ScopusGoogle Scholar
+[29]
+S. Shanthini, A. Chandrasekar
+Multimodal Parkinson’s disease classification using voice signals and hand-drawn images based on deep learning enabled by chronological tangent search optimization
+Biomed. Signal Process. Control, 102 (2025), Article 107274
+View PDF
+View articleView in ScopusGoogle Scholar
+[30]
+Sage Bionetworks, mPower mobile Parkinson disease study, 2016, https://www.synapse.org/#!Synapse:syn4993293, Accessed: 2026-04-18.
+Google Scholar
+[31]
+H. Jaeger, D. Trivedi, M. Stadtschnitzer
+Mobile Device Voice Recordings at King’s College London (MDVR-KCL) from both Early and Advanced Parkinson’s Disease Patients and Healthy Controls
+Zenodo (2019)
+Google Scholar
+[32]
+P. Zham, D.K. Kumar, P. Dabnichki, S. Poosapadi Arjunan, S. Raghav
+Distinguishing different stages of Parkinson’s disease using composite index of speed and pen-pressure of sketching a spiral
+Front. Neurol., 8 (2017), p. 435
+View in ScopusGoogle Scholar
+[33]
+A. Tagaris, D. Kollias, A. Stafylopatis, G. Tagaris, S. Kollias
+Machine learning for neurodegenerative disorder diagnosis–survey of practices and launch of benchmark dataset
+Int. J. Artif. Intell. Tools, 27 (03) (2018), Article 1850011
+CrossrefView in ScopusGoogle Scholar
+[34]
+A.L. Goldberger, L.A.N. Amaral, L. Glass, J.M. Hausdorff, P.C. Ivanov, R.G. Mark, J.E. Mietus, G.B. Moody, C.K. Peng, H.E. Stanley
+PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals
+Circulation, 101 (23) (2000), pp. e215-e220
+CrossrefGoogle Scholar
+[35]
+basel99, Parkinson’s disease detection, 2024, https://www.kaggle.com/code/basel99/parkinson-s-disease-detection, Kaggle Notebook, Accessed: 2026-04-18.
+Google Scholar
+[36]
+Y. Wei, Y. Zhang, X. Xiao, T. Wang, X. Wang, V.D. Calhoun
+4D multimodal co-attention fusion network with latent contrastive alignment for Alzheimer’s diagnosis
+Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (2026), pp. 5457-5466
+CrossrefView in ScopusGoogle Scholar
+[37]
+Y. Wei, A. Abrol, J. Lah, A.I. Levey, V.D. Calhoun
+From symptomatic to pre-symptomatic: adaptive knowledge distillation for early Alzheimer’s detection using functional MRI
+IEEE Trans. Biomed. Eng., 73 (2025), pp. 1024-1038
+CrossrefView in ScopusGoogle Scholar
+[38]
+Y. Ganin, V. Lempitsky
+Unsupervised domain adaptation by backpropagation
+International Conference on Machine Learning, PMLR (2015), pp. 1180-1189
+View in ScopusGoogle Scholar
+[39]
+B. Sun, J. Feng, K. Saenko
+Correlation alignment for unsupervised domain adaptation
+Domain Adaptation in Computer Vision Applications, Springer (2017), pp. 153-171
+CrossrefView in ScopusGoogle Scholar
+[40]
+Y. Himeur, N. Aburaed, O. Elharrouss, I. Varlamis, S. Atalla, W. Mansoor, H. Al-Ahmad
+Applications of knowledge distillation in remote sensing: a survey
+Inf. Fusion, 115 (2025), Article 102742
+View PDF
+View articleView in ScopusGoogle Scholar
+[41]
+S. Gupta, J. Hoffman, J. Malik
+Cross modal distillation for supervision transfer
+Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2016), pp. 2827-2836
+CrossrefView in ScopusGoogle Scholar
+[42]
+W. Park, D. Kim, Y. Lu, M. Cho
+Relational knowledge distillation
+Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2019), pp. 3967-3976
+View in ScopusGoogle Scholar
+[43]
+M. D. S. T. F. on Rating Scales for Parkinson’s Disease
+The unified Parkinson’s disease rating scale (UPDRS): status and recommendations
+Mov. Disord., 18 (7) (2003), pp. 738-750
+Google Scholar
+[44]
+R. Bhidayasiri, D. Tarsy
+Parkinson’s disease: Hoehn and Yahr scale
+Movement Disorders: A Video Atlas: a Video Atlas, Springer (2012), pp. 4-5
+CrossrefGoogle Scholar
+[45]
+Q. Yu, Y. Ma, Y. Li
+Enhancing speech recognition for Parkinson’s disease patient using transfer learning technique
+J. Shanghai Jiaotong Univ., 27 (1) (2022), pp. 90-98
+CrossrefView in ScopusGoogle Scholar
+[46]
+F. Prior, T. Virmani, A. Iyer, L. Larson-Prior, A. Kemp, Y. Rahmatallah, L. Pillai, A. Glover, Voice samples for patients with Parkinson’s disease and healthy controls (2023). 10.6084/m9.figshare.23849127.v1.
+Google Scholar
+[47]
+J. Varghese, A. Brenner, L. Plagwitz, C. van Alen, M. Fujarski, T. Warnecke
+PADS-Parkinsons disease smartwatch dataset
+PhysioNet, 101 (23) (2024), pp. e215-e220
+Google Scholar
+[48]
+C.R. Pereira, D.R. Pereira, F.A. Silva, J.P. Masieiro, S.A.T. Weber, C. Hook, J.P. Papa
+A new computer vision-based approach to aid the diagnosis of Parkinson’s disease
+Comput. Methods Programs Biomed., 136 (2016), pp. 79-88
+View PDF
+View articleView in ScopusGoogle Scholar
+[49]
+D.S.W. Djang, M.J.R. Janssen, N. Bohnen, J. Booij, T.A. Henderson, K. Herholz, S. Minoshima, C.C. Rowe, O. Sabri, J. Seibyl, et al.
+SNM practice guideline for dopamine transporter imaging with 123I-ioflupane SPECT 1.0
+J. Nucl. Med., 53 (1) (2012), pp. 154-163
+CrossrefView in ScopusGoogle Scholar
+[50]
+G. Shogbesan, H. Schroeder III, D. Newallo, L.T. Hall
+Molecular imaging of Parkinson’s disease
+Molecular Imaging and Therapy (2023)
+Google Scholar
+[51]
+J. Rao, X. Meng, L. Ding, S. Qi, X. Liu, M. Zhang, D. Tao
+Parameter-efficient and student-friendly knowledge distillation
+IEEE Trans. Multimed., 26 (2023), pp. 4230-4241
+CrossrefGoogle Scholar
+[52]
+S. Woo, J. Park, J.-Y. Lee, I.S. Kweon
+Cbam: convolutional block attention module
+Proceedings of the European Conference on Computer Vision (ECCV) (2018), pp. 3-19
+CrossrefGoogle Scholar
+[53]
+K. Daoudi, B. Das, T. Tykalova, J. Klempir, J. Rusz
+Speech acoustic indices for differential diagnosis between Parkinson’s disease, multiple system atrophy and progressive supranuclear palsy
+NPJ Park. Dis., 8 (1) (2022), p. 142
+View in ScopusGoogle Scholar
+[54]
+M. Hireš, M. Gazda, P. Drotár, N.D. Pah, M.A. Motin, D.K. Kumar
+Convolutional neural network ensemble for Parkinson’s disease detection from voice recordings
+Comput. Biol. Med., 141 (2022), Article 105021
+View PDF
+View articleView in ScopusGoogle Scholar
+[55]
+A. Salarian, H. Russmann, F.J.G. Vingerhoets, P.R. Burkhard, K. Aminian
+Ambulatory monitoring of physical activities in patients with Parkinson’s disease
+IEEE Trans. Biomed. Eng., 54 (12) (2007), pp. 2296-2299
+View in ScopusGoogle Scholar
+[56]
+S. Wang, T. Schwirtlich, D. McLaughlin, M. Beestrum, A.W. Heinemann
+Clinical applications and measurement properties of the digitized archimedes spiral drawing test: a scoping review
+Mov. Disord. Clin. Pract., 12 (11) (2025), pp. 1742-1755
+CrossrefView in ScopusGoogle Scholar
+[57]
+Y. Zhang, T. Xiang, T.M. Hospedales, H. Lu
+Deep mutual learning
+Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (2018), pp. 4320-4328
+CrossrefView in ScopusGoogle Scholar
+[58]
+Q. Guo, X. Wang, Y. Wu, Z. Yu, D. Liang, X. Hu, P. Luo
+Online knowledge distillation via collaborative learning
+Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2020), pp. 11020-11029
+Google Scholar
+[59]
+M. Siniukov, E. Xing, S.A. Isfahani, M. Soleymani, Towards a generalizable speech marker for Parkinson’s disease diagnosis, (2025). arXiv: 2501.03581.
+Google Scholar
+[60]
+J. Varghese, A. Brenner, M. Fujarski, C.M. van Alen, L. Plagwitz, T. Warnecke
+Machine learning in the Parkinson’s disease smartwatch (PADs) dataset
+NPJ Park. Dis., 10 (1) (2024), p. 9
+View in ScopusGoogle Scholar
+[61]
+L. Jovanovic, R. Damaševičius, R. Matic, M. Kabiljo, V. Simic, G. Kunjadic, M. Antonijevic, M. Zivkovic, N. Bacanin
+Detecting parkinson’s disease from shoe-mounted accelerometer sensors using convolutional neural networks optimized with modified metaheuristics
+PeerJ Comput. Sci., 10 (2024), Article e2031
+CrossrefView in ScopusGoogle Scholar
+[62]
+X. Wang, J. Huang, M. Chatzakou, K. Medijainen, A. Toomela, S. Nõmm, M. Ruzhansky
+LSTM-CNN: an efficient diagnostic net- work for Parkinson’s disease utilizing dynamic handwriting analysis
+Methods Programs Biomed., 247 (2024), Article 108066
+View PDF
+View articleView in ScopusGoogle Scholar
+[63]
+D. Neogi, N. Das, S. Deb
+FitNet: a deep neural network driven architecture for real time posture rectification
+2021 International Conference on Innovation and Intelligence for Informatics, Computing, and Technologies (3ICT), NIT (2021), pp. 354-359
+CrossrefView in ScopusGoogle Scholar
+[64]
+A. Tsanas, MA. Little, PE. McSharry, LO. Ramig
+Accurate telemonitoring of Parkinson’s disease progression by non-invasive speech tests
+IEEE Trans. Biomed. Eng., 57 (4) (2010), pp. 884-893
+View in ScopusGoogle Scholar
+[65]
+W. Maetzler, J. Domingos, K. Srulijes, J.J. Ferreira, B.R. Bloem
+Quantitative wearable sensors for objective assessment of Parkinson’s disease
+Mov. Disord., 28 (12) (2013), pp. 1628-1637
+CrossrefView in ScopusGoogle Scholar
+[66]
+M. Isenkul, B. Sakar, O. Kursun, et al.
+Improved spiral test using digitized graphics tablet for monitoring Parkinson’s disease
+The 2nd International Conference on E-health and Telemedicine (ICEHTM-2014), Vol. 5 (2014), pp. 171-175
+Google Scholar
+[67]
+F. Tung, G. Mori
+Similarity-preserving knowledge distillation
+Proceedings of the IEEE/CVF International Conference on Computer Vision (2019), pp. 1365-1374
+CrossrefView in ScopusGoogle Scholar
+[68]
+W. Wang, D. Tran, M. Feiszli
+What makes training multi-modal classification networks hard?
+Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (2020), pp. 12695-12705
+View in ScopusGoogle Scholar
+[69]
+Y. Ganin, E. Ustinova, H. Ajakan, P. Germain, H. Larochelle, F. Laviolette, M. March, V. Lempitsky
+Domain-adversarial training of neural networks
+J. Mach. Learn. Res., 17 (59) (2016), pp. 1-35
+Google Scholar
+[70]
+D. Rastogi, P. Johri, M. Donelli, T. Agarwal, S. Tiwari, P. Singh
+XAI-BT-EdgeNet: explainable edge-aware deep learning with squeeze-and-excitation for brain tumor detection and prediction
+Front. Artif. Intell., 8 (2025), Article 1676524
+View in ScopusGoogle Scholar
+[71]
+J. Dhar, N. Zaidi, M. Haghighat, S. Roy, P. Goyal, A. Alavi, V. Kumar
+Multimodal fusion learning with dual attention for medical imaging
+2025 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), IEEE (2025), pp. 4362-4371
+CrossrefView in ScopusGoogle Scholar
+[72]
+J. Hatherley, R. Sparrow, M. Howard
+The virtues of interpretable medical AI
+Camb. Q. Healthc. Ethics, 33 (3) (2024), pp. 323-332
+CrossrefView in ScopusGoogle Scholar
+View Abstract
+Recommended articles
+Based on reading popularity
+Research article
+Full text access
+DEF-DSVM: A deep ensemble feature learning and deepSVM approach for multifaceted analysis and diagnosis of Alzheimer’s disease from EEG signals
+Shabnam Hesari, …, Khosro Rezaee
+Methods • Volume 242 • 2025 • Pages 169-186
+View PDF
+Research article
+Open access
+A deep learning-based computer-aided diagnosis system for detecting atypical endometrial hyperplasia and endometrial cancer through hysteroscopy
+Wenwen Wang, …, Wenfeng Shen
+iScience • Volume 28, Issue 8 • 2025 • Article 113045
+View PDF
+Research article
+Full text access
+A convolution and transformer-based method with effective stain normalization for breast cancer detection from whole slide images
+Evgin Goceri
+Biomedical Signal Processing and Control • Volume 110, Part A • 2025 • Article 108138
+View PDF
+Chapter
+Chapter 4 - Machine learning and its application in microscopic image analysis
+F. Xing, L. Yang
+Machine Learning and Medical Imaging • 2016 • Pages 97-127
+Research article
+Full text access
+Optimizing deep neuro-fuzzy classifier with a novel evolutionary arithmetic optimization algorithm
+Noureen Talpur, …, Mohd Hafizul Afifi Abdullah
+Journal of Computational Science • Volume 64 • 2022 • Article 101867
+View PDF
+Research article
+Full text access
+Mitosis detection in breast cancer histopathology images using hybrid feature space
+Noorulain Maroof, …, Seong-O Shim
+Photodiagnosis and Photodynamic Therapy • Volume 31 • 2020 • Article 101885
+View PDF
+Metrics
+Captures
+Mendeley Readers
+2
+View details
+© 2026 Elsevier B.V. All rights are reserved, including those for text and data mining, AI training, and similar technologies.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.

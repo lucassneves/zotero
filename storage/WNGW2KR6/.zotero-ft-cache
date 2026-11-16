@@ -1,0 +1,1559 @@
+Skip to main content
+Skip to article
+Skip to minimise reading assistant
+Skip to summarize article
+Skip to ask about this article
+Reading Assistant
+powered by
+LeapSpace
+Opens in a new window
+Reading assistant options menu
+Actions you could take:
+Summarize this article
+Ask about this article
+Submit query
+Reading assistant is powered by LeapSpace. AI responses may vary in quality.
+View PDF
+Download full issue
+Clinical Neurophysiology
+Volume 190, October 2026, 2111913
+Review
+Technologies in clinical neurophysiology for brain-body interfacing: IFCN handbook chapter
+Author links open overlay panel
+Andrea Cimolato a b 1
+,
+Anna Sparapani a b 1
+, Stanisa Raspopovic a b
+Show more
+Share
+Cite
+https://doi.org/10.1016/j.clinph.2026.2111913
+Get rights and content
+View accessibility information
+Under a Creative Commons license
+Open access
+Abstract
+Interfacing the brain with the body represents a central challenge in contemporary clinical neurophysiology. Neurological injuries such as stroke, spinal cord injury, and limb loss disrupt the bidirectional flow of information between central and peripheral circuits, impairing voluntary movement, sensation, and embodiment. Clinical neurophysiology provides the quantitative and methodological foundation necessary to understand and modulate this communication. By characterizing neural signals across cortical, spinal, and peripheral levels, it establishes the principles required to decode and stimulate the nervous system.
+Traditionally focused on diagnostic assessment through electrophysiological techniques, clinical neurophysiology provides the conceptual and technical basis for active brain–body interfacing. Within this framework, interfacing encompasses both “reading” and “writing” neural information. Decoding refers to the extraction of meaningful variables (e.g., movement intention) from neural activity. Actuation refers to the targeted delivery of electrical stimulation or mechanical assistance to modulate neural circuits or generate movement and sensation.
+This chapter reviews neurophysiology-based strategies across multiple neuroanatomical levels and how integrating decoding and actuation into closed-loop architectures enables the re-establishment of bidirectional information flow. By coupling neural control with functional feedback, these systems enhance control precision, support embodiment, and engage activity-dependent plasticity, providing a mechanistically grounded strategy for modulating disrupted neural communication.
+Previous
+Next
+Keywords
+Brain-body interfaceNeurophysiologyCorticalSpinalPeripheral nerveDecodingElectrical stimulationClosed-loop controlSensory feedbackNeuroprosthetics
+1. Clinical neurophysiology for brain–body interfacing
+Interfacing the brain with the body is a central challenge in contemporary clinical neurophysiology and neuroengineering. Neurological injuries such as spinal cord injury (SCI), stroke, and limb loss disrupt the bidirectional flow of information between the nervous system and the periphery, leading to impairments in voluntary movement, sensation, and body perception(Courtine and Sofroniew, 2019, Krakauer et al., 2012, Langhorne et al., 2011, Makin and Flor, 2020).
+Clinical neurophysiology provides the quantitative and methodological foundation for brain–body interfacing by linking nervous system signals to functional output across multiple levels of organization (Farina et al., 2014, Nicolas-Alonso and Gomez-Gil, 2012). Traditional clinical neurophysiology has focused on the assessment of neural function using electrophysiological techniques such as electroencephalogram (EEG), electromyography (EMG), nerve conduction studies, and evoked potentials, primarily for diagnostic purposes (Cruccu et al., 2008, Preston and Shapiro, 2012, Rossini et al., 2015). However, the same tools and principles now underpin therapeutic and assistive neurotechnologies that actively interact with neural circuits. Within this framework, interfacing refers explicitly to both “reading” and “writing” neural information. Decoding encompasses the extraction of meaningful variables (e.g., movement intent) from neural or myoelectric signals recorded at central or peripheral levels (Nicolelis, 2001). Actuation refers to the delivery of targeted outputs, via electrical stimulation or robotic assistance, that modify neural activity or directly generate movement and sensation (Grill et al., 2009, Wolpaw, 2013). This bidirectional definition distinguishes modern brain–body interfaces from earlier assistive technologies that relied solely on mechanical substitution or passive support (Coscia et al., 2019, Graczyk et al., 2024, Raspopovic, 2020).
+Brain–body interfaces aim to restore this flow by establishing artificial communication pathways that link neural activity to bodily function (de Vos and Meier, 2024, Thibaut and Martens, 2024). Crucially, this interaction is inherently bidirectional: neural signals must be decoded to infer intention, while appropriate information must be written back to the nervous system or peripheral effectors to generate action, sensation, or physiological regulation(Lebedev and Nicolelis, 2006, Losanno et al., 2023, Micera et al., 2020, Raspopovic, 2021). This bidirectional perspective has driven a shift from early open-loop systems toward closed-loop architectures that integrate neural decoding with stimulation-based feedback, reflecting the fundamental role of sensory, proprioceptive, and interoceptive signals in shaping motor control, embodiment, and activity-dependent plasticity (Dawson et al., 2024).
+Despite the advances of invasive neural interfaces (Badi et al., 2021, Musk and Neuralink, , 2019, Rowald et al., 2022), most clinical and experimental systems remain predominantly decoding-oriented. However, users equipped with these systems must substitute missing afferent information with vision, increasing cognitive demand and degrading precision in fine manipulation (Ghez et al., 1995, Johansson and Flanagan, 2009, Wolpert et al., 1995). Closing the loop is therefore the defining requirement for naturalistic neural control. In intact physiology, efferent commands are continuously exploited to modulate by afferent feedback both at the central level and in reflexes (Scott, 2004, Shadmehr et al., 2010). When afferent pathways are lost there are downstream consequences that extend beyond control down to body representation and maladaptive plasticity, including phantom phenomena and chronic pain (Flor et al., 2006, Lotze and Moseley, 2007, Risso et al., 2022). Restoring feedback reintroduces the physiological signal that gates activity-dependent plasticity in cortical and spinal circuits, enabling durable recovery (Abbott and Nelson, 2000, Jackson et al., 2006). Accordingly, recent work emphasizes that artificially evoked afferent input can be leveraged therapeutically to guide adaptive reorganization after injury, rather than merely compensating for lost function (Cimolato and Raspopovic, 2024, Courtine and Sofroniew, 2019).
+The aim of this chapter is to provide an integrated overview of decoding and actuation technologies in clinical neurophysiology, and to examine how these components are combined into closed-loop brain–body interfaces across multiple neuroanatomical levels. We further discuss emerging methodological frameworks, including computational modeling and artificial intelligence, that have been increasingly adopted in recent years to enable adaptive, personalized closed-loop systems and to accelerate clinical translation.
+2. Decoding technologies: How we “read” the nervous system
+This section reviews how neural information is extracted from the nervous system to infer user intent or status, focusing on decoding approaches across multiple neuroanatomical levels (Fig. 1). We emphasize decoding-only systems that transform neural activity into control variables for communication, prosthetic control, or virtual interaction, without direct sensory or motor actuation.
+Download: Download high-res image (208KB)
+Download: Download full-size image
+
+Fig. 1. Schematic illustration of neural recording and interface modalities across the central and peripheral nervous systems used for decoding neural information.
+
+2.1. Intracortical decoding
+Intracortical brain–computer interfaces (BCI) decode movement- or action-related variables directly from spiking activity recorded using microelectrode arrays implanted in cortical gray matter, most commonly within the primary motor or premotor cortex (Lebedev and Nicolelis, 2006), providing access to high temporal and spatial resolution neural signals.
+Pioneering clinical studies from the BrainGate consortium established that intended arm and hand movements can be reliably decoded from primary motor cortex (M1) activity in individuals with chronic tetraplegia. Using 96-channel Utah microelectrode arrays and Kalman filter–based decoders, Hochberg et al. (2012) demonstrated continuous three-dimensional reach and grasp control of a robotic arm, enabling functional actions such as object manipulation. This work provided the first proof that high-dimensional motor intent remains decodable years after paralysis (Hochberg et al., 2012). Subsequent studies substantially expanded decoding dimensionality and performance. Collinger et al. (2013) showed that signals from two intracortical arrays implanted in M1 could be decoded into seven degrees of freedom. This in particular supported the possibility to coordinate control of 3D translation, orientation, and grasp aperture with success rates exceeding 90% on complex tasks (Collinger et al., 2013). Follow-up work further increased control dimensionality to ten degrees of freedom by incorporating wrist and hand kinematics demonstrating scalable decoding of complex arm movements (Wodlinger et al., 2014). Beyond basic kinematic decoding, later studies investigated how task context and object interaction modulate cortical representations. Downey et al. (2017) showed that many M1 units exhibit context-dependent tuning, with increased firing during object-directed reaches compared to matched movements in free space. Ignoring this modulation degraded decoding performance, highlighting the importance of incorporating task context into decoder design (Downey et al., 2017). Related work demonstrated that grasp force and effort are also represented in M1 and can be decoded as discrete or graded variables, providing a neural substrate for force-aware prosthetic control (Rastogi et al., 2020).
+Building on early demonstrations of gross arm and hand decoding, recent work has substantially expanded the speed, dexterity, and functional scope of intracortical motor decoding. Advances in high-density recordings coupled with modern machine-learning approaches have enabled fine-grained extraction of complex motor representations beyond simple cursor or whole-arm control. An example is the handwriting BCI developed by Willett et al. (2021), in which Utah arrays implanted in premotor cortex were combined with a recurrent neural network decoder to translate attempted handwriting movements into text in real time. This system achieved typing speeds of approximately 90 characters per minute with ∼ 94% raw accuracy (exceeding 99% with autocorrection), approaching typical smartphone typing performance (Willett et al., 2021). Extending this paradigm to dexterous motor control, Willsey et al. (2025) demonstrated continuous decoding up to four simultaneous degrees of freedom in a person with tetraplegia. This enabled complex interactions which could be exploited for virtual object interactions (Willsey et al., 2025). Notably, participants reported increased engagement, recreation, and social connectedness, underscoring how high-resolution intracortical decoding can support not only functional control but also meaningful real-world use.
+While most intracortical decoding studies target the hand and arm regions of M1, concurrent works suggest that signals from sulcal cortex, white matter, and association areas may offer additional discriminability for finger-level decoding (Bouton et al., 2021). Advances in high-density recordings and machine learning have further improved decoding robustness and speed, and animal studies using ultra-high-channel-count probes such as Neuropixels point toward future scalability (Steinmetz et al., 2021). Some groups have also explored signals from posterior parietal cortex to decode goal-directed movement intentions, highlighting the contribution of association cortices to higher-level aspects of motor planning (Haghi et al., 2024).
+2.2. Electrocorticography decoding
+Electrocorticography (ECoG) provides a window into cortical population dynamics, occupying a unique position between non-invasive EEG and penetrating intracortical recordings. By placing electrodes directly on the cortical surface (either subdurally or epidurally) ECoG achieves higher signal-to-noise ratio, broader bandwidth, and superior spatial specificity compared to scalp EEG, while avoiding the tissue penetration and long-term signal degradation often associated with microelectrode arrays (Slutzky, 2019, Wu et al., 2024).
+Early proof-of-concept studies established that volitional motor intent can be decoded from ECoG in real time. Leuthardt and colleagues first demonstrated online one-dimensional cursor control using spectral features extracted from sensorimotor cortex, showing rapid learning and high accuracy after minimal training (Leuthardt et al., 2004). Shortly thereafter, Schalk et al. extended this work to continuous decoding of two-dimensional cursor trajectories, revealing that both spectral power and local motor potential (LMP) encode movement direction and position with performance comparable to that achieved using intracortical recordings (Schalk et al., 2008). Subsequent work expanded ECoG decoding beyond simple cursor paradigms to continuous reconstruction of limb kinematics. Using linear models and state-space formulations, including linear state-space implementations, multiple studies demonstrated decoding of hand and arm position, velocity, and speed in two- and three-dimensional space during naturalistic reaching movements (Bundy et al., 2018, Pistohl et al., 2008, Wang et al., 2012). Notably, informative signals were found not only in M1, but also in premotor, parietal, and even prefrontal regions, supporting a distributed representation of motor control (Bundy et al., 2018, Schalk et al., 2008). ECoG has also proven effective for decoding kinetic variables. Continuous reconstruction of isometric grip force has been demonstrated with high fidelity, with high-gamma activity and LMP emerging as dominant predictors (Flint et al., 2014).
+A major advantage of ECoG lies in its ability to resolve fine somatotopic organization on the cortical surface, enabling decoding of individual finger movements and complex hand gestures (Branco et al., 2017, Korik et al., 2018). Multiple studies have demonstrated reliable classification of finger flexion/extension and multi-digit gestures using high-density ECoG grids placed over sensorimotor cortex (Kubánek et al., 2009, Miller et al., 2009). Beyond discrete classification, continuous reconstruction of finger trajectories has also been achieved, with correlation coefficients approaching those observed in intracortical systems (Acharya et al., 2010, Hotson et al., 2016).
+A distinct translational trajectory of ECoG-based motor decoding has been pursued by the Clinatec research center in Grenoble. Using a fully implanted, wireless epidural ECoG system (WIMAGINE), two 64-channel electrode arrays were placed bilaterally over sensorimotor cortex in participants with chronic tetraplegia(Mestais et al., 2015). Neural activity associated with motor imagery was decoded in real time to control both a virtual avatar and a full-body exoskeleton. Over a 24-month protocol, the participant achieved voluntary control of up to eight degrees of freedom, including bilateral upper-limb movements and lower-limb stepping commands (Benabid et al., 2019, Larzabal et al., 2021). Decoder stability was maintained for several weeks without retraining, highlighting the feasibility of chronic, wireless ECoG for complex motor assistive technologies.
+Except for movement intention, ECoG has emerged as one of the most powerful modalities for decoding speech-related neural activity. High-density ECoG recordings over ventral sensorimotor cortex reveal detailed articulatory representations that can be mapped to words and continuous speech (Anumanchipalli et al., 2019, Mugler et al., 2014). Complementary studies have shown that ECoG signals recorded from superior temporal gyrus can be used to reconstruct perceived and imagined speech, extending decoding beyond motor production to auditory and linguistic representations (Akbari et al., 2019, Pasley et al., 2012).
+2.3. Electroencephalography decoding
+EEG is the most widely deployed non-invasive neural recording modality in neurophysiology, because it combines millisecond-scale temporal resolution with low cost, portability, and an excellent safety profile (Lotte et al., 2018, Nicolas-Alonso and Gomez-Gil, 2012). EEG signals measured at the scalp primarily reflect synchronized postsynaptic potentials in large neuronal populations, but the same biophysics that makes EEG non-invasive (volume conduction through cerebrospinal fluid, skull, and scalp) also reduces spatial specificity and attenuates high-frequency components compared with invasive recordings (Buzsáki et al., 2012, Slutzky, 2019). In practice, EEG must contend with low signal-to-noise ratio (SNR), strong non-neural contamination (ocular, facial, and neck muscle artifacts), and nonstationarity across sessions and contexts (Lotte et al., 2018).
+In visual EEG paradigms, particularly those based on repetitive or flickering stimuli, sustained use can lead to visual fatigue and reduced user comfort, limiting practical deployment (Cao et al., 2014, Xie et al., 2016). Current research therefore focuses on reducing visual fatigue and improving usability through alternative stimulation strategies, including code-modulated paradigms based on pseudorandom sequences, and hybrid paradigms that integrate multiple neural responses (e.g., SSVEP and P300) to enhance robustness and user performance. In parallel, advancements in EEG hardware are moving toward dry electrodes and wearable acquisition systems, aiming to reduce setup time and improve user comfort. One of the major branches of EEG decoding focuses on reliable communication via evoked potentials. P300 spellers use brain responses linked to attention and have long provided a reliable way for people with severe paralysis to communicate (e.g., writing text), especially when stimulus timing is optimized and language models are used to support text selection (Farwell and Donchin, 1988, Krusienski et al., 2008, Mak and Wolpaw, 2009). Faster communication is possible when event-evoked potentials are combined with steady-state visual evoked potentials (SSVEP), where users focus on flickering visual targets and frequency-specific brain responses can be decoded efficiently (Chen et al., 2015, Muller-Putz and Pfurtscheller, 2008, Nakanishi et al., 2018). More recently, hybrid paradigms have been proposed that combine SSVEP and P300 responses, leveraging complementary neural mechanisms to improve classification accuracy and robustness (Li et al., 2013, Xu et al., 2013).
+Another foundational branch of EEG BCIs exploits sensorimotor rhythms (SMRs), task-related modulations in mu (∼8–13 Hz) and beta (∼13–30 Hz), to decode motor imagery or attempted movement for continuous or discrete control (Pfurtscheller and Neuper, 2001, Wolpaw and McFarland, 2004). Classic pipelines combined band-power features with classifiers (e.g., LDA, SVM) and adaptive training to address user learning and session drift (Blankertz et al., 2008). A major methodological advance came from geometry-aware decoding approaches, which represent EEG signal relationships as points on a mathematical manifold that preserves how channels co-vary across the scalp. By using this representation instead of collapsing signals into arbitrary features, these methods achieve greater robustness to noise and inter-session variability and have become strong baselines for motor-imagery decoding (Congedo et al., 2017).
+Clinical translation in EEG BCIs increasingly emphasizes reducing training time, improving long-term reliability, and enabling “everyday” use in rehabilitation and assistive technologies. Shared-control strategies, where EEG decodes high-level intent and autonomous robotics handles low-level execution, have repeatedly proven essential for practical navigation and manipulation tasks, lowering user cognitive load and mitigating decoding errors (del Millán et al., 2010, Pfurtscheller et al., 2010).
+Finally, asynchronous (self-paced) operation and error monitoring are key to moving EEG BCIs from cue-based demonstrations to naturalistic interaction. Movement-related cortical potentials (MRCPs) and related low-frequency components can support intention-onset detection without external timing cues, enabling more autonomous control modes(Lew et al., 2012, Mak and Wolpaw, 2009). In parallel, error-related potentials (ErrPs), neural signatures elicited when users perceive a mistake, provide a biologically grounded supervision channel that can be used to veto, correct, or adapt BCI actions online, improving reliability in closed-loop systems (Chavarriaga and Millán, 2010).
+2.4. Spinal cord decoding
+Electrophysiological recordings from the human spinal cord have historically been developed and deployed primarily for clinical and diagnostic purposes, rather than for real-time neural decoding or brain–computer interface applications. Early and influential work established spinal recordings as tools to assess functional integrity, lesion severity, and prognosis, particularly after SCI. For example, recordings of somatosensory evoked potentials and related signals have been used intraoperatively and post-injury to detect conduction block, monitor ischemia, and predict neurological outcome (Curt and Dietz, 1999, Whittle et al., 1986). In these contexts, spinal signals are interpreted qualitatively or through simple amplitude and latency metrics, rather than decoded as high-dimensional representations of motor or sensory intent.
+Reviews of locomotor control emphasize how recordings from spinal interneurons and descending pathways have been used to infer how reticulospinal and propriospinal commands are encoded and transformed into coordinated movement (Deliagina et al., 2002, Kiehn, 2016). However, despite this rich physiological information readout, spinal cord recordings have not yet matured into neural interfaces comparable to more central interfaces. Technical barriers, including mechanical instability, signal attenuation, and limited long-term access, have constrained the development of chronic, high-resolution spinal recording platforms suitable for decoding-based control. Consequently, even recent reviews of human motor decoding focus predominantly on cortical and peripheral nerve signals, with spinal recordings appearing mainly in the context of neuromodulation and clinical monitoring rather than as primary information sources for interfaces (Tam et al., 2019).
+2.5. Peripheral nerve decoding
+Electroneurographic (ENG) signals offer, in principle, direct access to the highly organized efferent and afferent pathways of the peripheral nervous system (PNS). However, despite decades of research, peripheral nerve recordings are rarely used as stable chronic signal sources, particularly in human applications. Unlike surface EMG or cortical recordings, direct neural recordings from peripheral nerves are highly susceptible to foreign body response, fibrotic encapsulation, axonal degeneration, and electrode migration, which collectively degrade signal quality over time (Micera et al., 2010, Navarro et al., 2005).
+Peripheral nerve interfaces span a spectrum of invasiveness with corresponding limitations. Extraneural cuff electrodes provide excellent surgical safety and less invasive, but recorded signals are typically low-amplitude compound action potentials strongly attenuated by the epineurium, resulting in limited SNR and poor selectivity. Intraneural electrodes such as LIFE and TIME arrays offer improved spatial resolution and access to fascicle-level activity, yet they introduce direct trauma to the nerve and reliably provoke inflammatory and fibrotic responses that compromise long-term viability. Consequently, most intraneural interfaces demonstrate recording instability over weeks to months, restricting their use primarily to short-term experiments rather than chronic decoding (Badia et al., 2016). As a result of these constraints, peripheral nerve decoding has not followed the same trajectory as cortical BCIs. Although algorithmic studies demonstrate that motor intent and kinematic variables can be decoded from nerve recordings under controlled conditions, sustained high-performance decoding over long timescales remains elusive. Reviews of human motor decoding consistently emphasize that peripheral nerve signals are far less stable than cortical signals, and that their clinical utility is limited by biological rather than algorithmic factors (Tam et al., 2019).
+To circumvent the instability of direct peripheral nerve recordings, the field has increasingly shifted toward hybrid strategies that convert neural activity into more robust bioelectric signals. The most prominent example is the Regenerative Peripheral Nerve Interface (RPNI), in which transected peripheral nerves reinnervate multiple autologous muscle grafts that function as biological amplifiers. This approach effectively leverages the stability and signal amplitude of EMG recordings while confining the implant site to the muscle grafts. Importantly, muscle grafts can support multiple, independently decodable control signals, enabling extraction of multiple degrees of freedom without increasing neural invasiveness (Kubiak et al., 2018, Kung et al., 2014, Vu et al., 2020). A closely related strategy is Targeted Muscle Reinnervation (TMR), in which residual peripheral nerves are surgically redirected to reinnervate alternative muscle targets following amputation. TMR has been widely adopted in clinical practice for prosthetic control and pain management, with studies demonstrating improved signal separability, intuitive motor mapping (Kuiken et al., 2017, Kuiken et al., 2009, Walsh et al., 2023, Zhou et al., 2007).
+2.6. Muscle activity decoding
+EMG analysis has long occupied a central role in clinical neurophysiology as a tool to characterize muscle activation patterns. In clinical practice, classical approaches such as needle electromyography and motor unit action potential (MUAP) analysis are widely used to assess neuromuscular function and diagnose peripheral and central disorders, providing detailed information on motor unit morphology, recruitment, and pathological changes (Kimura, 2013). However, these techniques are primarily designed for diagnostic evaluation and are less suited for continuous or real-time decoding applications. In contrast, multichannel EMG is increasingly analysed through the lens of muscle synergies, low-dimensional patterns of co-activated muscles that reflect how the nervous system organizes movement (d’Avella et al., 2003). Synergy-based analyses have been widely used to assess motor impairments in stroke, SCI, and other neurological disorders, revealing reduced dimensionality, abnormal merging, or altered recruitment of synergies as signatures of impaired neural control (Cheung et al., 2012, Clark et al., 2010, Tresch et al., 1999).
+At the same time, EMG has long been one of the most accessible and intuitive bioelectric signals for motor decoding in humans. Unlike central neural recordings, EMG reflects the final common pathway of motor control: the activation of skeletal muscle fibers by spinal motoneurons. As a result, the EMG signal envelope correlates closely with muscle activation level and force production, enabling relatively direct mappings between recorded activity and intended movement. This favorable physiological relationship has made EMG one of the earliest and most widely used signals for motor decoding in neuroprosthetics and rehabilitation (De Luca et al., 2006, Farina et al., 2014, Scheme and Englehart, 2011).
+Surface EMG is particularly attractive due to its non-invasiveness, low cost, and ease of chronic deployment. By placing electrodes over target muscles, surface EMG enables effective direct control strategies, where EMG amplitude or envelope is mapped proportionally to actuator velocity, force, or joint angle. Such mappings align well with natural motor output and require limited user training, contributing to their widespread clinical adoption (Cimolato et al., 2022, Tam et al., 2019). Despite these advantages, surface EMG suffers from well-known limitations. Signals are highly susceptible to cross-talk from adjacent muscles, motion artifacts, changes in skin–electrode impedance, and anatomical variability across subjects and sessions. Muscle fatigue, posture, and electrode displacement further introduce nonstationarity, leading to performance degradation during prolonged or real-world use (Farina et al., 2014, Fougner et al., 2011). From a neurophysiological perspective, surface EMG represents a spatially blurred summation of multiple motor unit action potentials, obscuring the structure of underlying neural commands and limiting decoding specificity.
+To mitigate these limitations, EMG decoding has progressively evolved toward multichannel and high-density EMG (HD-EMG) recordings. HD-EMG arrays sample muscle activity over spatial grids, enabling partial separation of motor unit territories and improved estimation of activation patterns. In humans, HD-EMG has enabled decomposition of surface recordings into individual motor unit firing trains under controlled conditions, providing insight into spinal motoneuron output and enhancing decoding potential (Farina and Holobar, 2016, Negro et al., 2016). However, HD-EMG remains highly sensitive to electrode shift, muscle deformation, and limb movement, which limits its robustness during dynamic behaviors and outside laboratory environments (Hug et al., 2021).
+A fundamental limitation of EMG decoding arises in neurological conditions where the descending neural connection to muscle is disrupted. In cases of complete SCI, advanced motor neuron disease, or severe peripheral neuropathy, voluntary muscle activation is often absent, rendering standard surface EMG largely unusable for decoding motor intent (Farina et al., 2014). However, emerging evidence suggests that HD-EMG can, in some cases, detect and decode sparse residual motor unit activity even in the absence of overt movement (Tacca et al., 2026). Studies in these individuals indicate that HD-EMG decomposition can reveal voluntarily modulated motor unit firing below the lesion level, demonstrating preserved descending control that is not evident in force production or standard EMG recordings (Miller et al., 2014, Oliveira et al., 2024, Tanzarella et al., 2019). Despite these promising findings, HD-EMG remains highly susceptible to electrode displacement, muscle deformation, and motion artifacts, restricting its applicability in daily-life scenarios and across long time scales. To address these limitations, the field is increasingly moving toward implantable myoelectric interfaces, which provide closer access to motor units and improved chronic stability. Pioneering work using implanted EMG electrodes demonstrates that stable, high-quality myoelectric signals can be recorded over extended periods and support reliable decoding even when surface recordings fail, particularly in individuals with severe motor impairment (Hahne et al., 2016, Jung et al., 2022, Ortiz-Catalan et al., 2014).
+3. Encoding technologies: How we “write” into the nervous system
+Re-establishing communication between the brain and the body requires not only accurate decoding of neural activity but also the ability to actuate volitional intention through external hardware or physiological interfaces. Over the past decades, a wide range of actuation technologies has emerged, including neurorobotic systems and electrical stimulation systems capable of activating muscles or modulating neural circuits. Although these approaches differ considerably in their mechanisms and intended applications, they share the common objective of restoring functional motor output in individuals with neurological or orthopedic impairments (Fig. 2). Translation of these technologies has recently been shaped by the idea that there is no one-fits-all solution; instead, each system targets a specific combination of impairment severity, residual voluntary function, and therapeutic goals (Coscia et al., 2019, Micera et al., 2020).
+Download: Download high-res image (179KB)
+Download: Download full-size image
+
+Fig. 2. Schematic illustration of invasive and non-invasive neuromodulation strategies for motor and sensory actuation across the nervous system. Technologies highlighted in light blue have been validated exclusively for motor actuation, while those shown in blue and green have been validated for both motor and sensory actuation. (For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article.)
+
+3.1. Robotics and Exosuits
+Robotic systems were among the first actuation technologies to reach clinical implementation. These devices were designed to deliver highly repeatable and precisely controlled movements, enabling high-intensity training that exceeds what can typically be provided manually by therapists. The rationale for their introduction into stroke and SCI rehabilitation was initially grounded in the principles of motor learning, which highlight the importance of task specificity, repetition, and early mobilization (Maier et al., 2019).
+Robotic gait trainers and upper-limb robots reduce the physical burden on clinicians, allow a higher volume of practice, and improve safety during early rehabilitation sessions, particularly during gait training, which often requires several therapists during conventional therapy. Early clinical studies in stroke demonstrated improvements in motor function and activity performance attributable to robotic assistance (Fasoli et al., 2004, Hsieh et al., 2012). More recently, neuroimaging and neurophysiological studies have shown that robotic training can induce adaptive plasticity in corticospinal and sensorimotor networks (Calabrò et al., 2026), supporting its role not only as an assistive device but also as a neurorehabilitative intervention.
+Several exoskeleton systems have progressed from early laboratory prototypes to devices that are now commercially available and cleared for clinical use. Among these, the Hybrid Assistive Limb (HAL) was the first to obtain FDA clearance (FDA protocol number K171909) for bioelectrical signal–based gait rehabilitation in stroke and SCI, marking an important step in the regulatory approval of neuro-controlled exoskeletons. Other systems such as Ekso, ReWalk, Indego, and the Lokomat have since become widely incorporated into rehabilitation practice and are used to support both task-specific gait training and mobility assistance (Tamburella et al., 2022). At the same time, upper limb exoskeletons have been explored, with particular attention to stroke rehabilitation, showing improvements compared to dose-matched traditional therapy, while not meeting the minimum clinically important difference (Park et al., 2025). Across these platforms, clinical studies and meta-analyses have reported improvements in gait speed, endurance, balance, and cardiometabolic parameters in individuals with stroke or SCI, along with reductions in spasticity and enhancements in quality of life (Park et al., 2025, Tamburella et al., 2022). Neurophysiological assessments further suggest that these improvements may be accompanied by adaptive changes in corticospinal excitability and functional connectivity during training (Calabrò et al., 2026). Adverse events remain relatively uncommon and typically mild, supporting the overall safety of exoskeleton-based rehabilitation.
+Despite these advances, current exoskeletons still face notable limitations. Clinical adoption is hindered by high device costs: international comparisons indicate substantial heterogeneity in cost-effectiveness across health systems. For example, the United Kingdom has reported high per-session costs due largely to persistent 1:1 therapist–patient ratios even when robotic platforms are utilized (Gower et al., 2025). Many systems remain bulky and difficult to use outside clinical environments, limiting their application as assistive devices for daily life. Furthermore, most clinical studies continue to rely on relatively small samples and short follow-up durations, and many devices have limited adaptability for patients with very severe weakness, contractures, or poor trunk control. Alongside these barriers, heterogeneity in populations, robotic devices and outcome measures limits the accessibility of robotic paradigms in these contexts (Park et al., 2025). These factors collectively limit the generalizability of findings and highlight the need for more scalable and autonomous designs.
+Importantly, evidence increasingly suggests that purely passive robotic limb mobilization is insufficient to optimally drive motor recovery. Motor learning and neuroplasticity depend on active engagement of motor intent and sensorimotor integration, whereas passive movement alone elicits limited corticospinal reorganization and weaker functional gains (Lotze et al., 2003, Nudo, 2013).
+3.2. Functional electrical stimulation
+Functional Electrical Stimulation (FES) is the most commonly used electrical stimulation technique for restoring movement in individuals with neurological motor impairments (Losanno et al., 2023). It has been investigated for more than 60 years as both a rehabilitative and assistive strategy. Unlike external hardware supports such as exoskeletons, FES generates functional movements by directly depolarizing peripheral nerves and activating muscle fibers, enabling movement even in fully paralyzed muscles, provided the neuromuscular junction and muscle fibers are still excitable. Compared to robotic approaches, FES additionally induces peripheral physiological benefits (Sheffler and Chae, 2007), including improvements in muscle mass (Sanna et al., 2025) and enhanced central neuroplasticity (Carson and Buick, 2021, Gandolla et al., 2016). FES’s most established clinical adoption is in stroke rehabilitation, particularly through commercial foot-drop devices (WalkAide by Innovative Neurotronics, L300 by Bioness/Ottobock, ODFS Pace by Odstock). These systems use single-channel stimulation to correct a common gait impairment with low invasiveness, making foot-drop correction the most widespread FES application outside research. Beyond these applications, multi-channel FES has been investigated for more complex motor tasks, especially in the rehabilitation of stroke and SCI, and often in combination with external supports such as orthoses or exoskeletons (Anaya et al., 2018). FES has been applied to a wide range of upper- and lower-limb tasks, including standing, walking, reaching, and grasping (Höhler et al., 2024).
+Several FDA-approved or CE-marked systems are now commercially available, enabling standardized and user-friendly deployment of FES in clinical research (e.g., Rehamove and Rehastim by Hasomed GmbH, MyndMove by MyndTec and FES cycling systems RT300 by Restorative Therapies). Although these systems remain costly, they are substantially less expensive than robotic exoskeletons or advanced prostheses.
+Nevertheless, despite sustained research interest, FES has not achieved widespread clinical or home-based use for complex motor restoration. Key limiting factors include reduced dexterity and rapid fatigue. Fatigue develops more rapidly during electrically elicited contractions for two main reasons. First, whereas natural fused contractions arise from asynchronous activation of many motor units at low rates (∼ 5 Hz), electrical stimulation activates motor units synchronously and therefore requires higher frequencies (>20 Hz) to achieve fusion. Second, electrical stimulation preferentially recruits large-diameter, fast-fatiguing motor fibers due to their lower electrical thresholds: an “inverse recruitment” order opposite to physiological activation. Comfort and usability also affect clinical translation. Because sensory fibers have lower activation thresholds than motor fibers, FES often activates them concurrently, which may cause discomfort in individuals with preserved sensation. In addition, system setup, usability, and the visibility of external components all influence patient acceptance. Dexterity primarily depends on stimulation selectivity, which differs markedly between non-invasive and invasive approaches.
+Surface FES delivers stimulation through adhesive electrodes placed on the skin over the motor points of targeted muscles and connected to an external stimulator (Losanno et al., 2023). Electrodes may be integrated into garments or external supports such as exoskeletons to improve placement consistency. Surface FES is non-invasive, relatively inexpensive, and adaptable to individual patient needs. It has been extensively studied for both upper- (Ambrosini et al., 2021) and lower-limb (Ambrosini et al., 2011, Dell’Eva et al., 2025, Ferrante et al., 2016) rehabilitation in stroke survivors, often combined with robotic or orthotic assistance. Despite this flexibility, surface FES has not gained widespread adoption as a daily assistive technology. Its primary use remains in rehabilitation settings, with commercial systems generally targeting specific, gross motor tasks. Major limitations include low spatial selectivity, restricting movement precision, and the need for individualized electrode placement and stimulation parameter calibration. While such calibration is manageable in clinical environments, it remains challenging for unsupervised home use. To address this limitation, emerging solutions include the use of multi-pad (matrix) electrodes, which eliminates the need for manual electrode placement by enabling “electronic repositioning” through onboard channel switching (Malešević and Antfolk, 2024, Malešević et al., 2012). This flexibility opens the door to more advanced and semi-automated calibration strategies, for example by integrating EMG recordings to identify optimal stimulation sites, such as motor points or nerve junctions (Baumgart et al., 2024, Tacca et al., 2024).
+FES electrodes can also be implanted surgically, either intramuscularly or on the epimysium, providing higher selectivity compared with surface stimulation. For this reason, implanted FES has been widely investigated for hand-function restoration. The FreeHand system, for example, was implanted in more than 250 individuals with SCI in the early 2000 s (Peckham et al., 2001), before being discontinued about half a decade later. Similar systems have been evaluated in stroke (Burridge et al., 2011, Spensley, 2007) and SCI (A. Bolu Ajiboye et al., 2017) individuals, though none has achieved broad clinical deployment. The limited adoption of implanted FES is likely related to the surgical complexity, the need for multidisciplinary expertise, and ongoing postoperative maintenance. In recent years, interest has increasingly shifted from muscle or peripheral nerve stimulation toward spinal stimulation approaches. These target the central nervous system more directly, potentially enabling more physiological recruitment order and offering enhanced opportunities for neuroplasticity. Substantial research and industry investment now focus on spinal stimulation as a promising direction for future motor restoration strategies. This shift reflects the ongoing pursuit of stimulation strategies that can achieve high selectivity while maintaining physiological recruitment patterns.
+3.3. Peripheral nerve stimulation
+Moving more proximally, the next obvious target for neuromodulation are peripheral nerves. PNS differs fundamentally from intramuscular FES in both the site of actuation and the electrode architecture, targeting directly the nerve trunk, where axons of multiple α-motor neurons are bundled together. This allows PNS to activate several functionally related muscles through a single interface (axons of multiple α-motor neurons are bundled together), substantially reducing the number of implanted electrodes and surgical sites required for complex motor restoration (Azevedo Coste et al., 2026, Badi et al., 2021). However, this setup advantage comes at the cost of reduced intrinsic selectivity. Because a single peripheral nerve contains motor fibers projecting to multiple muscles, nerve-level stimulation does not provide the one-to-one muscle targeting achievable with intramuscular electrodes. As a result, selectivity in PNS is not determined by implantation site alone, but depends critically on electrode design, contact configuration, and stimulation strategy (Azevedo-Coste et al., 2019).
+To address this limitation, several classes of peripheral nerve electrodes have been developed. Epineural (extraneural) interfaces (FINE and Cuff electrodes), such as nerve cuff electrodes, surround the nerve without penetrating it and are favored for their mechanical stability and long-term safety, but offer limited fascicular selectivity. In contrast, intrafascicular electrodes (LIFE and TIME electrodes) penetrate the nerve to access individual fascicles, providing higher selectivity at the expense of increased invasiveness and potential risks to nerve integrity (Badi et al., 2021). Multi-contact electrodes enable spatial shaping of the electric field, allowing partial discrimination between fascicular groups. Indeed, selectivity can be further modulated through calibration of the stimulation paradigms. In particular, bipolar and multipolar configurations have been shown to reduce current spread and improve spatial confinement of activation compared with monopolar stimulation, leading to more differentiated muscle recruitment within the same nerve (Azevedo Coste et al., 2026). While these strategies do not fully overcome the fundamental limitation that multiple motor pools coexist within a single nerve, they provide a pragmatic balance between selectivity, robustness, and implant complexity. In an effort to further mitigate selectivity constraints while preserving a limited surgical footprint, the ReHAB project employed multi-contact epineural FINE electrodes to stimulate a restricted set of proximal and distal upper-limb nerves under intracortical control (Herring et al., 2024). This approach successfully enabled coordinated reaching and grasping movements of the participant’s own arm; however, motor output remained largely ballistic, with limited capacity for smooth, continuously graded force or velocity modulation. Similar constraints have been reported in the European AI-Hand project, suggesting that epineural nerve-level stimulation, even with advanced decoding and multi-contact interfaces, may be insufficient to fully support fine, continuously modulated motor control (Azevedo Coste et al., 2026). Evidence from primate studies using intrafascicular TIME electrodes suggests that higher-resolution access to individual fascicles can enable more graded and fractionated motor control (Badi et al., 2021). Whether these findings can be translated safely and reliably to human clinical applications remains an open question and represents a key challenge for future peripheral nerve interface development.
+3.4. Spinal cord stimulation
+SCS has evolved from an analgesic technique into a neuromodulation strategy for motor rehabilitation. Over the past decade, SCS has shown the capacity to amplify residual descending motor commands, engage spinal sensorimotor networks, and restore volitional movement in individuals with severe neurological injury (Courtine et al., 2009). SCS originated in the 1960 s as an application of Melzack and Wall’s gate control theory of pain (1965), using epidural electrodes to modulate dorsal column afferents. Early reports in the 1970s observed reflexive motor responses following epidural stimulation, suggesting activation of spinal circuits beyond analgesia. Modern SCS exploits this principle: electrical currents primarily recruit large‑diameter Ia afferents in the dorsal roots − fibers with the lowest activation threshold due to their diameter and myelination − eliciting a posterior root muscle (PRM) reflex through trans‑synaptic excitation of α‑motoneurons (Minassian et al., 2020). This indirect recruitment preserves physiological muscle synergies and facilitates activity‑dependent plasticity within spared spinal and supraspinal pathways. Depending on the functional target, stimulation is applied over lumbar segments for lower‑limb or cervical segments for upper‑limb motor restoration.
+Epidural spinal cord stimulation (eSCS) delivers electrical current into the epidural space via multi-contact paddle leads, with stimulation fields spreading through cerebrospinal fluid to primarily activate dorsal-root afferents and modulate spinal sensorimotor interneuronal networks (Hofstoetter et al., 2018). By increasing the excitability of spinal circuits below the lesion, eSCS enables weak residual supraspinal inputs to regain functional influence over motor output (Balaguer et al., 2025, Greiner et al., 2021). The clinical efficacy of eSCS has been most extensively investigated in SCI. Landmark studies demonstrated that, when combined with intensive task-specific training, eSCS can enable recovery of volitional standing and stepping in individuals with chronic motor-complete SCI (Angeli et al., 2018, Hofstoetter et al., 2015, Moritz et al., 2024, Sasaki et al., 2025, Wagner et al., 2018). Subsequent work refined stimulation strategies by introducing spatiotemporally patterned protocols aligned with gait phases, improving the naturalness and robustness of locomotor control (Rowald et al., 2022). More recently, eSCS has been translated to cervical applications for upper-limb rehabilitation after stroke. Initial human evidence showed that cervical eSCS can acutely facilitate arm and hand movements in individuals with chronic post-stroke hemiparesis (Powell et al., 2023). In 2024, a multi-participant pilot using individualized lead configurations and integrated kinematic feedback confirmed reproducible task-specific facilitation of upper-limb movements and carry-over improvements following training (Capogrosso et al., 2024). Beyond SCI and stroke, exploratory applications of eSCS have been reported across other neurological domains. These include improvements in gait regularity and reductions in freezing episodes in Parkinson’s disease (Milekovic et al., 2023), enhanced muscle strength and walking endurance in spinal muscular atrophy (Prat-Ortega et al., 2025), and mitigation of autonomic dysfunction in chronic cervical SCI (Phillips et al., 2025).
+In parallel with epidural approaches, non-invasive SCS methods have emerged as a less invasive alternative for modulating spinal circuits. Transcutaneous spinal cord stimulation (tSCS) applies surface electrodes over the spine to deliver current through the skin and subcutaneous tissue to the dorsal roots. Its mechanism parallels epidural SCS, predominantly recruiting large‑diameter sensory afferents that synaptically excite spinal interneurons and motoneurons, thereby modulating sensorimotor network excitability. Compared with epidural approaches, tSCS is non‑invasive, low‑cost, and easily deployable, but suffers from reduced spatial selectivity and requires higher stimulation amplitudes to achieve comparable neural recruitment.
+At lumbar levels, the posterior root muscle reflexes evoked by tSCS and epidural SCS are physiologically similar, confirming common activation of afferent pathways (Hofstoetter et al., 2018). At cervical levels, optimal electrode configurations remain under investigation, with ongoing debate on current paths and muscle selectivity. Similarly to eSCS, tSCS was initially explored as both an assistive and rehabilitative intervention for SCI. In incomplete SCI, it has demonstrated immediate improvements in lower-limb motor output (Gerasimenko et al., 2015, Meyer et al., 2020) and has enhanced gains when combined with task-specific motor training (Hofstoetter et al., 2015, McHugh et al., 2020). Upper-limb applications after cervical SCI have also shown translational potential (Inanici et al., 2021) including evidence from controlled studies reporting improvements in pinch force, hand prehension, and motor scores when paired with rehabilitation (Moritz et al., 2024). Application to the stroke scenario is emerging. Early findings indicate immediate facilitation of lower-limb muscle activation and increased gait velocity after lumbar tSCS in chronic stroke (Lim et al., 2025). Evidence from controlled studies also shows reduced Modified Ashworth Scale scores and improved passive range of motion (Alashram et al., 2023), suggesting that tSCS has benefits in spastic hypertonia modulation, particularly at higher frequencies (≥30 Hz).
+Historically, tSCS has been paired with high-frequency carriers to reduce the sensation and pain caused by the stimulation. The issue is still debated, with multiple studies arguing that there is no discomfort reduction when employing carriers (Dalrymple et al., 2023) and that they might be less efficient in generating sensory activation (Keesey et al., 2024).
+3.5. Brain stimulation
+Brain stimulation technologies constitute a distinct class methods capable of modulating neural activity to generate measurable behavioural effects or provide therapeutic benefits. These approaches range from non-invasive to fully implanted systems and have been extensively investigated across cognitive, neuropsychiatric, and neurological domains. A substantial body of research demonstrates their applicability to cognitive deficits (Wu et al., 2025) and psychiatric disorders (Hyde et al., 2022), particularly in individuals who do not respond adequately to pharmacological interventions (Fitzgerald et al., 2006, Romero et al., 2019). Within the context of motor rehabilitation and restoration, two modalities stand out for their ability to produce clear, quantifiable motor effects: Transcranial Magnetic Stimulation (TMS) and Deep Brain Stimulation (DBS).
+Non-invasive brain stimulation (NIBS) techniques, including TMS and transcranial Direct Current Stimulation (tDCS), have been applied to cognitive, linguistic, and motor disorders, as well as to deficits arising from brain lesions such as stroke (Rektorová et al., 2025). Among these approaches, TMS is the best characterized for eliciting direct motor output. TMS delivers brief magnetic pulses that induce electric currents in targeted cortical regions, modulating neuronal excitability according to coil orientation and stimulation intensity. When applied over the primary motor cortex, sufficiently intense pulses generate descending corticospinal volleys that can be recorded in peripheral muscles using surface electromyography (Edwards et al., 2008). Direct actuation of discrete movements is possible; for example, stimulation of the motor cortex can evoke individual finger movements in humans and non-human primates (Romero et al., 2019).
+Clinically, TMS has been used both as a diagnostic and therapeutic tool in movement disorders (Edwards et al., 2008). Applications include tremor modulation, where static-field TMS has demonstrated reductions in postural tremor in essential tremor (Urso et al., 2025). Stroke rehabilitation has been the domain of most intensive NIBS development, with upper-limb motor recovery being a primary target in stroke (Rektorová et al., 2025). Early studies suggested potential benefits, but large randomized controlled trials have not consistently confirmed added value during rehabilitation (Harvey et al., 2018). To enhance usability and facilitate translation, recent efforts have explored wearable repetitive TMS devices capable of delivering stimulation with greater portability and reduced setup time (Qi et al., 2025, Tang et al., 2026). tDCS has followed a similar translational trajectory. Preliminary trials in stroke reported improvements in motor outcomes (Bornheim et al., 2020, Garrido et al., 2023), but these findings have not been consistently replicated in larger controlled studies (Cordes et al., 2024). The divergence between early promise and large-scale clinical evidence underscores persistent challenges in dosing, targeting, individual variability, and integration with rehabilitation protocols.
+DBS represents the invasive end of the brain stimulation spectrum and is distinguished by its robust and well-characterized motor effects. DBS has long-standing clinical approval for movement disorders, particularly Parkinson’s disease, where stimulation of deep nuclei modulates pathological oscillatory activity and alleviates motor symptoms. Its impact on Parkinsonian symptoms is well established, with multiple controlled studies demonstrating significant and sustained improvements following chronic stimulation (Timmermann et al., 2015, Vitek et al., 2020). DBS has also shown efficacy in the management of chronic pain syndromes (Fasano et al., 2012) expanding its therapeutic scope within motor and sensory domains.
+Critically, brain stimulation approaches, should be distinguished from actuation technologies such as FES and robotic systems. While the latter directly generate movement by activating muscles or applying external forces, brain stimulation primarily acts by modulating the excitability and gain of existing neural circuits, enabling residual voluntary commands or task-specific training to become effective. In this sense, these technologies do not create movement de novo, but rather facilitate, gate, or enhance endogenous motor control, aligning them more closely with rehabilitation and plasticity-oriented paradigms than with pure assistive actuation.
+4. Closing the loop
+At the final stage of the neuroengineering cycle, the central challenge is the integration of motor actuation and sensory feedback into a coherent, functional system. The ultimate goal of closed-loop neurotechnologies is to restore functions in a way that is naturally perceived and intuitively used by the end-users (Markovic et al., 2018). For example, a prosthetic limb should support intuitive voluntary control while simultaneously providing meaningful tactile and proprioceptive information (Raspopovic, 2021). Because neurological injuries rarely affect motor or sensory pathways in isolation, effective solutions must address both domains synergistically (Cimolato and Raspopovic, 2024, Krakauer et al., 2012). Closed-loop sensorimotor neurotechnologies aim to integrate motor intent decoding with sensory feedback delivery to reproduce the bidirectional information flow underlying natural movement. Across implementations, neural or myoelectric signals are decoded to control an external effector, such as a robotic limb, functional electrical stimulation system, or virtual interface, while sensory information from the effector is encoded and returned to the nervous system through central or peripheral stimulation pathways (Daly and Wolpaw, 2008, Jackson and Zimmermann, 2012). Over the past decades, multiple approaches have been proposed to close the sensorimotor loop. The motor decoding, actuation and sensory feedback strategies discussed in the previous sections have been combined and integrated.
+4.1. Closed-loop control within the central nervous system
+The first compelling demonstration of fully intracortical closed-loop control was provided in non-human primates. In a landmark study, O’Doherty et al. (2011) introduced a brain–machine–brain interface in which a monkey controlled a virtual avatar arm using neuronal recordings from M1, while tactile feedback from the avatar’s hand was delivered via intracortical microstimulation (ICMS) of primary somatosensory cortex (S1). When the virtual hand contacted an object, ICMS pulses conveyed artificial touch sensations that the animal could actively use to guide behavior. Crucially, the animal did not merely react to stimulation but learned to integrate the artificial sensory feedback into motor planning, enabling active sensory exploration (O’Doherty et al., 2011). These concepts were subsequently translated to humans with severe motor impairment (Flesher et al., 2016). In a seminal study, Flesher et al. (2016) implanted one microelectrode array in motor cortex and a second array in S1 of a participant with tetraplegia, creating a fully intracortical bidirectional BCI. Motor cortical activity was decoded to control a robotic arm, while tactile information from sensors embedded in the robotic hand was encoded as ICMS patterns delivered to S1. The addition of artificial tactile feedback produced clear functional benefits. Compared with visual feedback alone, the participant demonstrated more accurate grip-force modulation, improved object manipulation, and faster task completion. Follow-up work further consolidated this concept, establishing bidirectional BCIs as a viable approach for restoring functional sensorimotor interactions (Flesher et al., 2021).
+As closed-loop intracortical systems matured, attention shifted toward their long-term stability and real-time robustness. A key challenge is the potential interference between sensory stimulation and motor decoding (Shelchkova et al., 2023). Shelchkova et al. (2023) demonstrated that continuous, high-frequency ICMS in S1 can modulate activity in motor cortex, leading to modest but measurable reductions in decoding performance. Crucially, this interference is not an intrinsic feature of bidirectional architectures, but depends strongly on the stimulation strategy employed. Biomimetic encoding approaches, designed to reflect natural neural population coding through structured, event-related sensory signals, substantially mitigate motor interference while preserving perceptual salience (Bensmaia and Miller, 2014, Callier et al., 2019, Hobbs et al., 2025). These findings underscore that selectivity alone is insufficient for effective sensory feedback. Rather, they reinforce the principle that the functional impact of ICMS depends not only on where information is written in the brain, but critically on how it is encoded. Multiple studies have shown that the perceptual quality and functional utility of ICMS depend on how closely stimulation patterns respect natural population-level coding in S1, rather than on stimulation intensity or spatial precision alone (Tabot et al., 2013, Valle, 2025, Valle et al., 2024).
+Advances in electrode technology and stimulation paradigms have further improved the fidelity of intracortical sensory restoration. Multi-electrode stimulation has been shown to evoke more spatially specific and consistent percepts than single-electrode stimulation, supporting finer motor control and more reliable feedback (Greenspon et al., 2024, Hobbs et al., 2025). Beyond immediate performance, early evidence suggests that repeated intracortical sensory stimulation may engage longer-term plastic mechanisms. Preliminary results indicate partial persistence of sensory improvements beyond the stimulation period (Cater et al., 2025), raising the possibility that intracortical BCIs may serve not only as assistive devices but also as tools for sensorimotor rehabilitation.
+Intracortical recordings have been used not only in fully intracortical BCIs, but also in hybrid configurations in which cortical decoding is combined with downstream actuation technologies that engage biological or mechanical effectors. One of the most clinically validated examples of this approach couples intracortical decoding with spinal cord stimulation, effectively creating an artificial corticospinal bypass. Work in this framework demonstrated that motor cortical activity can be decoded and translated into spatiotemporally patterned epidural spinal stimulation, enabling volitional control of locomotion and upper-limb movements by dynamically engaging spinal sensorimotor circuit (Bonizzato et al., 2018, Capogrosso et al., 2016, Lorach et al., 2023, Lorach et al., 2022). Intracortical decoding has also been combined with multi-channel FES to directly recruit paralyzed muscles. Motor intent decoded from intracortical recordings was than translated into coordinated muscle stimulations, restoring volitional reaching and grasping in a person with tetraplegia (A Bolu Ajiboye et al., 2017). The same research group further extended this concept to PNS, using intracortical decoding to electrically-driven the motor output from the nerve. This hybrid configuration combined (intracortical motor decoding and stimulation for sensory feedback), while motor actuation was obtained distally, demonstrated for the first time the feasibility of closing the sensorimotor loop by integrating multiple neural interface technologies, even in individuals with complete paralysis (Herring et al., 2024). However, hybrid configurations are not limited to intracortical recordings. Similar architectures have been implemented using ECoG, which provides stable cortical signals suitable for high-level control. ECoG-based systems have demonstrated reliable command-level decoding that can be used to drive robotic assistive devices such as exoskeletons, enabling overground walking and complex whole-body movements in individuals with tetraplegia by translating cortically decoded commands into exoskeleton control signals (Benabid et al., 2019, Larzabal et al., 2021). At a more translational level, EEG-based interfaces have enabled control of wheelchairs and robotic exoskeletons across multiple laboratories in individuals with tetraplegia (Leeb et al., 2007, López-Larraz et al., 2016, del Millán et al., 2010) or upper limb stroke paralysis in stroke survivors (Ang et al., 2014, Colucci et al., 2026). A more focused application for EEG recordings involves their integration with FES, primarily for stroke rehabilitation. Early studies showed that chronic stroke survivors using closed-loop BCI-FES systems achieved significant and lasting upper limb recovery, likely driven by the simultaneous activation of efferent and afferent pathways promoting Hebbian plasticity (Biasiucci et al., 2018). Further long-term studies have confirmed that such systems can sustain neuroplasticity and functional gains over several years, even in elderly patients (Chen et al., 2025). This approach has also been extended to SCI where it was demonstrated that BCI-triggered FES enabled volitional reaching and grasping in individuals with incomplete SCI (Jovanovic et al., 2021).
+In parallel with cortical approaches, sensory restoration has also been demonstrated at the level of the spinal cord, particularly in amputee populations. Although these studies have not yet been integrated into fully closed-loop brain–man interfaces, they provide critical evidence that artificial somatosensory feedback can be delivered targeting dorsal column pathways. This approaches have shown to evoke somatotopically organized sensations referred to the phantom limb in both upper and lower amputees, with perceptual qualities suitable for conveying tactile information (Chandrasekaran et al., 2023, Chandrasekaran et al., 2020, Iversen et al., 2024, Nanivadekar et al., 2023).
+4.2. Closed-loop control within the peripheral nervous system
+Among the most clinically mature approaches for sensory restoration are invasive PNS systems. These involve surgically implanted electrodes that directly interface with peripheral nerves, either wrapped around the nerve (cuff electrodes), pressed onto its surface (flat interface arrays), or inserted within the fascicles themselves (intrafascicular electrodes such as Utah arrays or TIME micro-wires). The value of these interfaces lies in their ability to engage specific populations of sensory fibers, evoking localized and somatotopically organized sensations referred to specific regions of the phantom limb (e.g., fingers, palm, or foot), a finding that has been robustly demonstrated across multiple studies (Graczyk et al., 2018a, Graczyk et al., 2018b, Micera et al., 2010, Raspopovic et al., 2014, Schiefer et al., 2018). These interfaces support functional improvements in object manipulation, grip force control, and locomotion, and their perceptual quality can be further enhanced through biomimetic encoding strategies that better approximate natural afferent firing patterns (Oddo et al., 2016, Petrini et al., 2019a, Valle et al., 2018). However, although these approaches can approximate key features of natural touch and support functional interaction, the elicited sensations remain qualitatively artificial due to the non-selective activation of afferent fibers (Cimolato and Raspopovic, 2024).
+Early studies demonstrated that an amputee could reliably discriminate textures such as rough and smooth surfaces through stimulation delivered via a bionic fingertip, which detected surface features and translated them into specific stimulation profiles (Oddo et al., 2016). These sensations were often described as originating from specific locations in the phantom limb, and in some cases resembled pressure or vibration (Graczyk et al., 2018a, Graczyk et al., 2018b, Soghoyan et al., 2023). With continued research in the field, biomimetic encoding, mimicking natural afferent firing via amplitude and frequency modulation, has significantly enhanced the naturalness of sensory feedback, outperforming standard stimulation strategies in both nuance and functional utility (Valle et al., 2018). Longitudinal studies, including take-home trials, have shown that implanted interfaces can remain stable and effective over time, up to after several months of daily use (Ortiz-Catalan et al., 2020). While early work focused primarily on pressure and contact sensations, newer research has begun to incorporate thermal feedback (Iberite et al., 2023). These studies demonstrated that adding temperature cues alongside tactile input enhanced the naturalness and expressiveness of prosthetic interactions, further blurring the line between artificial and biological sensation (Muheim et al., 2024).
+Similar techniques are now being extended to the lower limbs. Tibial nerve stimulation, coupled with foot pressure sensors, has allowed transfemoral amputees to regain awareness of ground contact (Petrini et al., 2019a).It was also showed that such feedback not only improved walking confidence and balance but also helped users navigate more complex terrain (Petrini et al., 2019b, Valle et al., 2021).
+A growing body of work has investigated non-invasive electrical stimulation as a strategy to restore sensory feedback in prosthetic and neurorehabilitation applications, largely motivated by the desire to avoid surgical risks (Bucciarelli et al., 2023). However, many early non-invasive systems failed to achieve somatotopic correspondence, instead eliciting sensations localized directly under the stimulation electrodes. These approaches therefore relied primarily on sensory substitution rather than true sensory restoration (Jorgovanovic et al., 2014, Schweisfurth et al., 2016, Štrbac et al., 2016). While electrically evoked sensations in these studies improved motor performance and object interaction, users were required to learn abstract mappings of artificial stimulation patterns and sensorimotor variables, with possible impacts in intuitiveness and require training to achieve effective use (Preatoni et al., 2023, Stephens-Fripp et al., 2018). The extent to which different feedback strategies influence embodiment and user preference remains an active area of investigation.
+More recent work has demonstrated that, through careful electrode placement over residual functional nerves and appropriate tuning of stimulation parameters, non-invasive stimulation can elicit phantom limb sensations and provide functionally relevant sensory cues at the level of the missing limb. This represents a key conceptual shift toward anatomically meaningful feedback (Stephens-Fripp et al., 2018). In this context, somatotopically matched transcutaneous nerve stimulation has been shown to improve sensorimotor performance (J. Zhang et al., 2024), with subsequent studies demonstrating partial restoration of tactile sensation in amputees supported by objective EEG correlates (Y. Zhang et al., 2024). Complementary biomimetic approaches have further expanded the sensory repertoire, including motion perception (Cimolato et al., 2023, Ding et al., 2025) and event-based encoding strategies for dynamic tactile information such as slip detection and protective reflex feedback (Xie et al., 2024).
+Non-invasive sensory feedback has also been explored in lower-limb prostheses and in patients with peripheral neuropathies. Although the evoked sensations are generally less intense and selective than those produced by implanted interfaces, studies in lower-limb amputees have shown that non-invasive feedback can yield comparable cognitive and functional benefits, including improved prosthesis use and reduced attentional demand (Chee et al., 2022a, Chee et al., 2022b, Frumento et al., 2024). Because they can be deployed rapidly and without surgical risk, non-invasive systems are especially suited for use as transitional or standalone interventions (Basla et al., 2022). Importantly, similar sensorimotor deficits are present in peripheral neuropathy, where loss of afferent feedback affects up to 30% of patients. In this population, a pilot study introduced a wearable neuroprosthesis in the form of an electrically stimulating sock that delivered calibrated stimulation to partially intact tibial nerve fibers, resulting in partial restoration of foot sensation, improved gait cadence, and reduced pain after only one day of use (Gozzi et al., 2024a).
+Because stable and selective recording of ENG signals remains technically challenging, fully closed-loop brain–body interfaces relying exclusively on peripheral nerve recording and stimulation are still largely unrealized in humans. Consequently, the vast majority of clinically deployed and experimentally validated systems adopt hybrid architectures, combining peripheral nerve stimulation for sensory feedback with motor decoding from muscles or the brain. In upper-limb amputees, this hybrid approach has been successfully implemented using superficial EMG for prosthetic control in combination with invasive electrical stimulation for sensory restoration, in which intraneural electrodes implanted in the median and ulnar nerves delivered patterned stimulation driven by pressure sensors embedded in the prosthetic hand (Raspopovic et al., 2014). Subsequent studies refined this paradigm by distributing stimulation across multiple contacts and employing biomimetic encoding strategies, showing that improvements in the naturalness of sensory percepts translated not only into enhanced sensory perception but also into superior functional performance and prosthesis control (Clemente et al., 2019, George et al., 2019, Valle et al., 2018). In cases of more proximal or severe amputations, TMR has been combined with peripheral nerve stimulation to improve robustness of motor control (Ortiz-Catalan et al., 2020). By rerouting transected nerves to residual muscles, TMR enables reliable decoding of motor intent from reinnervated muscle activity, providing meaningful control signals that can be paired with peripheral nerve stimulation for sensory feedback.
+5. Future perspectives: Toward integrated, personalized and biologically grounded neurointerfaces
+The next phase of brain–body interfacing will be defined not by a single technological breakthrough, but by the convergence of advances across surgical techniques, bio-interfaces, computational modeling, and adaptive control frameworks. While artificial intelligence and in silico modeling are central enabling tools, their impact will depend on parallel progress in how neural interfaces are physically integrated with the body and how biological signals are accessed, stabilized, and interpreted over long timescales.
+Indeed, as brain–body interfaces evolve toward increasingly sophisticated closed-loop architectures, the number of variables that must be considered for effective clinical deployment grows rapidly. Functional outcomes depend not only on the choice of interface technology, but also on patient-specific factors such as lesion level and chronicity, residual sensory pathways, cognitive engagement, fatigue, and ongoing neuroplastic changes. In parallel, device-related parameters, including decoding features, stimulation sites, amplitudes, timing, and encoding strategies, must often be tuned and retuned across sessions and rehabilitation phases. In this context, artificial intelligence (AI) should be viewed not as an autonomous decision-maker, but as a set of computational tools that can assist clinicians in integrating complex data, identifying relevant patterns, and supporting adaptive parameter adjustment of closed-loop systems over the course of rehabilitation. In neurorehabilitation, there is growing advocacy for a paradigm shift toward precision medicine, emphasizing the development of integrative, personalized, and knowledge-driven technologies rather than “one-fits-all” solutions (Micera et al., 2020).
+Within this broader ecosystem, AI serves as an integrative layer that connects multimodal data streams, computational models, and control systems. Rather than replacing clinical decision-making, AI enables the extraction of latent structure from high-dimensional neurophysiological data and supports adaptive parameter tuning in complex closed-loop systems. In particular, AI-driven methods are used to extract clinically meaningful features from kinematic, electrophysiological, and multimodal recordings, enabling more precise characterization of motor impairments in conditions such as stroke, Parkinson’s disease, and SCI (Hossain et al., 2023, Mobbs et al., 2024, Rupprechter et al., 2021). Beyond assessment, such approaches have begun to support clinical decision-making in neuromodulation, for example by integrating multimodal neuroimaging and physiological data to inform parameter selection for deep brain stimulation, leading to improved motor outcomes (Roediger et al., 2023). AI is also increasingly applied to longitudinal monitoring, where continuous neurophysiological and behavioural data acquired through wearable systems can be leveraged to track disease progression, infer latent physiological states, and identify biomarkers relevant for therapy adaptation (Aurucci et al., 2023, Gozzi et al., 2024b, Varghese et al., 2024, Yao et al., 2026). Finally, predictive modeling based on neurophysiological and clinical data enables estimation of recovery trajectories and treatment responsiveness, supporting personalized rehabilitation planning and fostering mechanistic insight through explainable models (Gandolfi et al., 2023).
+A second major impact of AI is the transition from generic, one-size-fits-all interfaces toward personalized neurotechnologies. Inter-subject variability in neural signals, anatomy, and recovery trajectories makes individualized strategies essential for both decoding and stimulation (Saha and Baumert, 2020). Deep learning enables personalized decoders by capturing user-specific spatial and temporal patterns of activity in EEG and ECoG data (Willett et al., 2021). More recently, large-scale neural network architectures and foundation models trained on extensive neurophysiological datasets have enabled rapid fine-tuning to individual patients, substantially reducing calibration time and user burden (Craik et al., 2019, Lawhern et al., 2018). Importantly, personalization enabled by AI extends beyond decoding to actuation and neuromodulation. Adaptive optimization methods, including reinforcement learning and Bayesian optimization, have been used to adjust stimulation parameters such as pulse frequency, amplitude, and spatial configuration in response to ongoing physiological and behavioral feedback (Aiello et al., 2023, Bonizzato et al., 2023, Borda et al., 2023). These approaches allow stimulation settings to evolve alongside patient physiology, achieving performance comparable to or exceeding expert manual tuning while substantially reducing calibration effort.
+Computational modelling has become an essential complementary tool for understanding and optimizing neural interfaces, particularly in the context of electrical stimulation and neuromusculoskeletal coupling. In silico models enable the simulation of neural, musculoskeletal, and biomechanical responses to neural interfaces or robotic systems, thereby supporting device design, prototyping, and optimization prior to or alongside clinical use (Ciotti et al., 2025, Ciotti et al., 2024, Ciotti et al., 2023, Raspopovic et al., 2011). In the context of neurostimulation, such models have been used to represent the electrical activation of targeted peripheral nerves and their interaction with surrounding tissues and inform stimulation strategies (Capogrosso et al., 2013, Cimolato et al., 2023, Ding et al., 2025, Formento et al., 2018, Katic et al., 2023, Valle et al., 2022). Related computational frameworks developed within the neuroengineering community have also integrated neuromusculoskeletal modeling to predict motor output, bridging neural activation with biomechanical function (Durandau et al., 2019, Sartori et al., 2016).
+Nevertheless, traditional in silico models are often limited by their standalone nature and by their reliance on fixed parameters, which often fail to capture the substantial inter-subject variability in nerve geometry, tissue conductivity, muscle architecture, and neural recruitment. As a result, models that perform well at the group level frequently show limited predictive accuracy when applied to individual patients. This limitation is particularly critical in neurostimulation, where small differences in electrode placement or tissue properties can lead to large variations in neural activation patterns and functional outcomes (Capogrosso et al., 2013, Raspopovic et al., 2011). To address this challenge, recent efforts have focused on the development of subject-specific models, integrating imaging data (e.g., Magnetic resonance imaging, ultrasound), electrophysiological recordings, and biomechanical measurements to tailor simulations to individual anatomy and physiology. Building on this paradigm, the concept of a digital twin has recently emerged as a promising frontier in computational modeling. However, despite its potential, the creation of fully functional digital twins still lacks validated approaches for real-time personalization and continuous adaptation. Future developments aimed at the integration of longitudinal, patient-specific data streams could enable dynamic updating of model parameters, transforming these models from static analytical tools into adaptive systems capable of both prediction and inference, including the estimation of parameters that are not directly measurable in vivo. In the context of brain–body interfaces, the integration of sensing, modeling, and control within a digital twin framework could enable closed-loop optimization of both decoding and stimulation strategies. This would reduce reliance on manual calibration and support adaptive, patient-specific optimization (Cellupica et al., 2024, Ciotti et al., 2024). For example, a recent study implemented a digital twin of a hand neuroprosthesis within a virtual environment to optimize training strategies for newly amputated individuals, with the model iteratively updated based on user-specific sensor data and performance metrics (Cellupica et al., 2024).
+In parallel, complementary efforts are focusing on surgical strategies to establish more reliable and physiologically grounded human–machine interfaces by leveraging residual neuromechanical structures. Innovative approaches such as the Agonist–Antagonist Myoneural Interface (AMI) and the Cutaneous Mechanoneural Interface (CMI) aim to restore more natural sensorimotor dynamics by preserving or reconstructing biomechanical and neural relationships at the amputation site. The AMI reconstructs mechanically coupled agonist–antagonist muscle pairs, enabling proprioceptive feedback via natural muscle stretch receptors and improving both motor control and perceived embodiment (Clites et al., 2018, Srinivasan et al., 2020). In parallel, CMI strategies exploit skin–nerve interactions to provide stable, mechanically mediated sensory feedback, offering an alternative to purely electrical encoding approaches (S. Srinivasan and M. Herr, 2022). These biologically integrated interfaces represent a conceptual shift from purely electronic stimulation toward hybrid bioelectronic systems that exploit residual physiology to generate more naturalistic feedback and long-term stability.
+In parallel, advances in regenerative interfaces, including RPNI, CMRPNI, TMR, and TSR continue to expand the interface between biological tissue and artificial systems, improving signal quality and enabling more intuitive control mappings (Kubiak et al., 2021, Kuiken et al., 2017, Shu et al., 2024, Vu et al., 2020). Importantly, these approaches inherently embed subject-specific anatomical and physiological information, further reinforcing the shift toward personalized neurotechnologies.
+Future progress will likely be driven by tighter integration between sensing, actuation, and prediction, enabling closed-loop neurotechnologies that continuously adapt to patient-specific neurophysiology. However, translation into routine clinical practice will require addressing several practical challenges. These include standardization of outcome measures across devices and conditions, validation in longitudinal and multi-center studies, and the development of regulatory frameworks that can accommodate adaptive algorithms whose behavior evolves over time. Equally important is the need to preserve clinician oversight and accountability, particularly when algorithmic systems influence stimulation parameters or therapeutic decisions. Transparent models, clear reporting of uncertainty, and clinician-in-the-loop paradigms will be essential to ensure safe and effective deployment.
+Ethical considerations become increasingly salient as neurotechnologies move toward long-term use and deeper integration with the nervous system. Issues of data privacy, informed consent, and ownership of neurophysiological data are amplified by continuous monitoring and cloud-based analysis. Moreover, adaptive systems that modify neural activity raise questions about agency, responsibility, and the boundary between rehabilitation and augmentation (Ienca et al., 2025). When developed and deployed responsibly, the integration with closed-loop neurotechnologies has the potential not only to improve functional outcomes, but also to fundamentally enhance how neurological recovery is assessed, guided, and supported within clinical neurophysiology.
+Declaration of Competing Interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+References
+Abbott and Nelson, 2000
+L.F. Abbott, S.B. Nelson
+Synaptic plasticity: taming the beast
+Nat. Neurosci., 3 (2000), pp. 1178-1183, 10.1038/81453
+View in ScopusGoogle Scholar
+Acharya et al., 2010
+S. Acharya, M.S. Fifer, H.L. Benz, N.E. Crone, N.V. Thakor
+Electrocorticographic amplitude predicts finger positions during slow grasping motions of the hand
+J. Neural Eng., 7 (2010), Article 046002, 10.1088/1741-2560/7/4/046002
+View in ScopusGoogle Scholar
+Aiello et al., 2023
+G. Aiello, G. Valle, S. Raspopovic
+Recalibration of neuromodulation parameters in neural implants with adaptive bayesian optimization
+J. Neural Eng., 20 (2023), Article 026037, 10.1088/1741-2552/acc975
+View in ScopusGoogle Scholar
+Ajiboye et al., 2017
+A.B. Ajiboye, F.R. Willett, D.R. Young, W.D. Memberg, B.A. Murphy, J.P. Miller, B.L. Walter, J.A. Sweet, H.A. Hoyen, M.W. Keith, P.H. Peckham, J.D. Simeral, J.P. Donoghue, L.R. Hochberg, R.F. Kirsch
+Restoration of reaching and grasping movements through brain-controlled muscle stimulation in a person with tetraplegia: a proof-of-concept demonstration
+Lancet, 389 (2017), pp. 1821-1830, 10.1016/S0140-6736(17)30601-3
+View PDF
+View articleView in ScopusGoogle Scholar
+Akbari et al., 2019
+H. Akbari, B. Khalighinejad, J.L. Herrero, A.D. Mehta, N. Mesgarani
+Towards reconstructing intelligible speech from the human auditory cortex
+Sci. Rep., 9 (2019), p. 874, 10.1038/s41598-018-37359-z
+View in ScopusGoogle Scholar
+Alashram et al., 2023
+A.R. Alashram, E. Padua, M. Raju, C. Romagnoli, G. Annino
+Transcutaneous spinal cord stimulation effects on spasticity in patients with spinal cord injury: a systematic review
+J. Spinal Cord Med., 46 (2023), pp. 582-589, 10.1080/10790268.2021.2000200
+View in ScopusGoogle Scholar
+Ambrosini et al., 2011
+E. Ambrosini, S. Ferrante, A. Pedrocchi, G. Ferrigno, F. Molteni
+Cycling induced by electrical stimulation improves motor recovery in postacute hemiparetic patients: a randomized controlled trial
+Stroke, 42 (2011), pp. 1068-1073, 10.1161/STROKEAHA.110.599068
+View in ScopusGoogle Scholar
+Ambrosini et al., 2021
+E. Ambrosini, G. Gasperini, J. Zajc, N. Immick, A. Augsten, M. Rossini, R. Ballarati, M. Russold, S. Ferrante, G. Ferrigno, M. Bulgheroni, W. Baccinelli, T. Schauer, C. Wiesener, M. Gfoehler, M. Puchinger, M. Weber, S. Weber, A. Pedrocchi, F. Molteni, K. Krakow
+A robotic system with EMG-triggered functional eletrical stimulation for restoring arm functions in stroke survivors
+Neurorehabil. Neural Repair, 35 (2021), pp. 334-345, 10.1177/1545968321997769
+View in ScopusGoogle Scholar
+Anaya et al., 2018
+F. Anaya, P. Thangavel, H. Yu
+Hybrid FES–robotic gait rehabilitation technologies: a review on mechanical design, actuation, and control strategies
+Int. J. Intell. Robot. Appl., 2 (2018), pp. 1-28, 10.1007/s41315-017-0042-6
+View in ScopusGoogle Scholar
+Ang et al., 2014
+K.K. Ang, C. Guan, K.S. Phua, C. Wang, L. Zhou, K.Y. Tang, G.J. Ephraim Joseph, C.W.K. Kuah, K.S.G. Chua
+Brain-computer interface-based robotic end effector system for wrist and hand rehabilitation: results of a three-armed randomized controlled trial for chronic stroke
+Front. Neuroengineering, 7 (2014), 10.3389/fneng.2014.00030
+Google Scholar
+Angeli et al., 2018
+C.A. Angeli, M. Boakye, R.A. Morton, J. Vogt;, K. Benton, Y. Chen, C.K. Ferreira, S.J. Harkema
+Recovery of over-ground walking after chronic motor complete spinal cord injury
+N. Engl. J. Med., 379 (2018), pp. 1244-1250, 10.1056/NEJMoa1803588
+View in ScopusGoogle Scholar
+Anumanchipalli et al., 2019
+G.K. Anumanchipalli, J. Chartier, E.F. Chang
+Speech synthesis from neural decoding of spoken sentences
+Nature, 568 (2019), pp. 493-498, 10.1038/s41586-019-1119-1
+View in ScopusGoogle Scholar
+Aurucci et al., 2023
+G.V. Aurucci, G. Preatoni, A. Damiani, S. Raspopovic
+Brain-computer interface to deliver individualized multisensory intervention for neuropathic pain
+Neurotherapeutics, 20 (2023), pp. 1316-1329, 10.1007/s13311-023-01396-y
+View PDF
+View articleView in ScopusGoogle Scholar
+Azevedo Coste et al., 2026
+C. Azevedo Coste, T. Guiho, F. Ferreira, F. Bailly, B. Degeorge, A. Geffrier, D. Andreu, J. Teissier, D. Guiraud, C. Fattal
+Restoring hand grasping for patients with a complete tetraplegia with selective epineural stimulation: a parsimonious thus relevant clinical approach
+J. NeuroEngineering Rehabil. (2026), 10.1186/s12984-025-01857-9
+Google Scholar
+Badi et al., 2021
+Badi, M., Wurth, S., Scarpato, I., Roussinova, E., Losanno, E., Bogaard, A., Delacombaz, M., Borgognon, S., C̆vanc̆ara, P., Fallegger, F., Su, D.K., Schmidlin, E., Courtine, G., Bloch, J., Lacour, S.P., Stieglitz, T., Rouiller, E.M., Capogrosso, M., Micera, S., 2021. Intrafascicular peripheral nerve stimulation produces fine functional hand movements in primates. Sci. Transl. Med. 13, eabg6463. doi:10.1126/scitranslmed.abg6463.
+Google Scholar
+Badia et al., 2016
+J. Badia, S. Raspopovic, J. Carpaneto, S. Micera, X. Navarro
+Spatial and functional selectivity of peripheral nerve signal recording with the transversal intrafascicular multichannel electrode (TIME)
+IEEE Trans. Neural Syst. Rehabil. Eng., 24 (2016), pp. 20-27, 10.1109/TNSRE.2015.2440768
+View in ScopusGoogle Scholar
+Balaguer et al., 2025
+J.-M. Balaguer, G. Prat-Ortega, J. Ostrowski, L. Borda, N. Verma, P. Yadav, E. Sorensen, R. de Freitas, S. Ensel, S. Donadio, L. Liang, J. Ho, A. Damiani, E.M. Grigsby, D.P. Fields, J.A. Gonzalez-Martinez, P.C. Gerszten, L.E. Fisher, D.J. Weber, E. Pirondini, M. Capogrosso
+Neural mechanisms underlying the recovery of voluntary control of motoneurons after paralysis with spinal cord stimulation
+Neuron, 113 (2025), pp. 3846-3862.e6, 10.1016/j.neuron.2025.08.023
+View PDF
+View articleView in ScopusGoogle Scholar
+Basla et al., 2022
+C. Basla, L. Chee, G. Valle, S. Raspopovic
+A non-invasive wearable sensory leg neuroprosthesis: mechanical, electrical and functional validation
+J. Neural Eng., 19 (2022), Article 016008, 10.1088/1741-2552/ac43f8
+View in ScopusGoogle Scholar
+Baumgart et al., 2024
+Baumgart, I.W., Darrow, M.J., Tacca, N.J., Dunlap, C.F., Colachis, S.C., Kamath, A., Schlink, B.R., Putnam, P.T., Branch, J., Friedenberg, D.A., Wengerd, L.R., Meyers, E.C., 2024. Restoration of upper-extremity function after task-oriented, intention-driven functional electrical stimulation therapy using a wearable sleeve in adults with chronic stroke: a case series. doi:10.1101/2024.01.18.24301486.
+Google Scholar
+Benabid et al., 2019
+A.L. Benabid, T. Costecalde, A. Eliseyev, G. Charvet, A. Verney, S. Karakas, M. Foerster, A. Lambert, B. Morinière, N. Abroug, M.-C. Schaeffer, A. Moly, F. Sauter-Starace, D. Ratel, C. Moro, N. Torres-Martinez, L. Langar, M. Oddoux, M. Polosan, S. Pezzani, V. Auboiroux, T. Aksenova, C. Mestais, S. Chabardes
+An exoskeleton controlled by an epidural wireless brain–machine interface in a tetraplegic patient: a proof-of-concept demonstration
+Lancet Neurol., 18 (2019), pp. 1112-1122, 10.1016/S1474-4422(19)30321-7
+View PDF
+View articleView in ScopusGoogle Scholar
+Bensmaia and Miller, 2014
+S.J. Bensmaia, L.E. Miller
+Restoring sensorimotor function through intracortical interfaces: progress and looming challenges
+Nat. Rev. Neurosci., 15 (2014), pp. 313-325, 10.1038/nrn3724
+View in ScopusGoogle Scholar
+Biasiucci et al., 2018
+A. Biasiucci, R. Leeb, I. Iturrate, S. Perdikis, A. Al-Khodairy, T. Corbet, A. Schnider, T. Schmidlin, H. Zhang, M. Bassolino, D. Viceic, P. Vuadens, A.G. Guggisberg, J.D.R. Millán
+Brain-actuated functional electrical stimulation elicits lasting arm motor recovery after stroke
+Nat. Commun., 9 (2018), p. 2421, 10.1038/s41467-018-04673-z
+View in ScopusGoogle Scholar
+Blankertz et al., 2008
+B. Blankertz, F. Losch, M. Krauledat, G. Dornhege, G. Curio, K.-R. Müller
+The Berlin Brain-Computer Interface: Accurate performance from first-session in BCI-naive subjects
+I.E.E.E. Trans. Biomed. Eng., 55 (2008), pp. 2452-2462, 10.1109/TBME.2008.923152
+View in ScopusGoogle Scholar
+Bonizzato et al., 2023
+M. Bonizzato, R.G. Hottin, S.L. Côté, E. Massai, L. Choinière, U. Macar, S. Laferrière, P. Sirpal, S. Quessy, G. Lajoie, M. Martinez, N. Dancause
+Autonomous optimization of neuroprosthetic stimulation parameters that drive the motor cortex and spinal cord outputs in rats and monkeys
+Cell Rep. Med., 4 (2023), 10.1016/j.xcrm.2023.101008
+Google Scholar
+Bonizzato et al., 2018
+M. Bonizzato, G. Pidpruzhnykova, J. DiGiovanna, P. Shkorbatova, N. Pavlova, S. Micera, G. Courtine
+Brain-controlled modulation of spinal circuits improves recovery from spinal cord injury
+Nat. Commun., 9 (2018), p. 3015, 10.1038/s41467-018-05282-6
+View in ScopusGoogle Scholar
+Borda et al., 2023
+L. Borda, N. Gozzi, G. Preatoni, G. Valle, S. Raspopovic
+Automated calibration of somatosensory stimulation using reinforcement learning
+J. NeuroEngineering Rehabil., 20 (2023), p. 131, 10.1186/s12984-023-01246-0
+View in ScopusGoogle Scholar
+Bornheim et al., 2020
+S. Bornheim, J.-L. Croisier, P. Maquet, J.-F. Kaux
+Transcranial direct current stimulation associated with physical-therapy in acute stroke patients - a randomized, triple blind, sham-controlled study
+Brain Stimulat., 13 (2020), pp. 329-336, 10.1016/j.brs.2019.10.019
+View PDF
+View articleView in ScopusGoogle Scholar
+Branco et al., 2017
+M.P. Branco, Z.V. Freudenburg, E.J. Aarnoutse, M.G. Bleichner, M.J. Vansteensel, N.F. Ramsey
+Decoding hand gestures from primary somatosensory cortex using high-density ECoG
+Neuroimage, 147 (2017), pp. 130-142, 10.1016/j.neuroimage.2016.12.004
+View PDF
+View articleView in ScopusGoogle Scholar
+Bucciarelli et al., 2023
+V. Bucciarelli, N. Gozzi, N. Katic, G. Aiello, M. Razzoli, G. Valle, S. Raspopovic
+Multiparametric non-linear TENS modulation to integrate intuitive sensory feedback
+J. Neural Eng., 20 (2023), Article 036026, 10.1088/1741-2552/acd4e8
+View in ScopusGoogle Scholar
+Bundy et al., 2018
+D.T. Bundy, N. Szrama, M. Pahwa, E.C. Leuthardt
+Unilateral, 3D arm movement kinematics are encoded in ipsilateral human cortex
+J. Neurosci., 38 (2018), pp. 10042-10056, 10.1523/JNEUROSCI.0015-18.2018
+View in ScopusGoogle Scholar
+Burridge et al., 2011
+J.H. Burridge, R. Turk, D. Merrill, B. Dibb, A.-M. Hughes, O. Sparrow, H. Roberts, R. Davis
+A personalized sensor-controlled microstimulator system for arm rehabilitation poststroke. Part 2: objective outcomes and patients’ perspectives
+Neuromodulation Technol. Neural Interface, 14 (2011), pp. 80-88, 10.1111/j.1525-1403.2010.00310.x
+View PDF
+View articleView in ScopusGoogle Scholar
+Buzsáki et al., 2012
+G. Buzsáki, C.A. Anastassiou, C. Koch
+The origin of extracellular fields and currents — EEG, ECoG, LFP and spikes
+Nat. Rev. Neurosci., 13 (2012), pp. 407-420, 10.1038/nrn3241
+View in ScopusGoogle Scholar
+Calabrò et al., 2026
+R.S. Calabrò, A. Calderone, L. Simoncini, A. Naro, L.O.S. Haughton, A. Quartarone, C.F.D. Leochico
+The potential of robotics: a systematic review of neuroplastic changes following advanced lower limb rehabilitation in neurological disorders
+Neurosci. Biobehav. Rev., 180 (2026), Article 106459, 10.1016/j.neubiorev.2025.106459
+View PDF
+View articleView in ScopusGoogle Scholar
+Callier et al., 2019
+T. Callier, A.K. Suresh, S.J. Bensmaia
+Neural coding of contact events in somatosensory cortex
+Cereb. Cortex, 29 (2019), pp. 4613-4627, 10.1093/cercor/bhy337
+View in ScopusGoogle Scholar
+Cao et al., 2014
+T. Cao, F. Wan, C.M. Wong, J.N. da Cruz, Y. Hu
+Objective evaluation of fatigue by EEG spectral analysis in steady-state visual evoked potential-based brain-computer interfaces
+Biomed. Eng. Online, 13 (2014), p. 28, 10.1186/1475-925X-13-28
+View in ScopusGoogle Scholar
+Capogrosso et al., 2024
+Capogrosso, M., Balaguer, J.-M., Prat-Ortega, G., Verma, N., Yadav, P., Sorensen, E., De Freitas, R., Ensel, S., Borda, L., Donadio, S., Liang, L., Ho, J., Damiani, A., Grigsby, E., Fields, D., Gonzalez-Martinez, J., Gerszten, P., Weber, D., Pirondini, E., 2024. Supraspinal control of motoneurons after paralysis enabled by spinal cord stimulation. doi:10.21203/rs.3.rs-3650257/v1.
+Google Scholar
+Capogrosso et al., 2016
+M. Capogrosso, T. Milekovic, D. Borton, F. Wagner, E.M. Moraud, J.-B. Mignardot, N. Buse, J. Gandar, Q. Barraud, D. Xing, E. Rey, S. Duis, Y. Jianzhong, W.K.D. Ko, Q. Li, P. Detemple, T. Denison, S. Micera, E. Bezard, J. Bloch, G. Courtine
+A brain–spine interface alleviating gait deficits after spinal cord injury in primates
+Nature, 539 (2016), pp. 284-288, 10.1038/nature20118
+View in ScopusGoogle Scholar
+Capogrosso et al., 2013
+M. Capogrosso, N. Wenger, S. Raspopovic, P. Musienko, J. Beauparlant, L. Bassi Luciani, G. Courtine, S. Micera
+A computational model for epidural electrical stimulation of spinal sensorimotor circuits
+J. Neurosci., 33 (2013), pp. 19326-19340, 10.1523/JNEUROSCI.1688-13.2013
+View in ScopusGoogle Scholar
+Carson and Buick, 2021
+R.G. Carson, A.R. Buick
+Neuromuscular electrical stimulation-promoted plasticity of the human brain
+J. Physiol., 599 (2021), pp. 2375-2399, 10.1113/JP278298
+View in ScopusGoogle Scholar
+Cater et al., 2025
+Cater, E., Wandelt, S., Jangam, A., Elias, Z., Ibroci, E., Maffei, C., Griffin, D., Bickel, S., Ben-Shalom, N., Stein, A., Mehta, A., Chandrasekaran, S., Bouton, C., 2025. Cortically Interfaced Human Avatar Enables Remote Volitional Grasp and Shared Discriminative Touch. doi:10.1101/2025.09.21.25336267.
+Google Scholar
+Cellupica et al., 2024
+A. Cellupica, M. Cirelli, G. Saggio, E. Gruppioni, P.P. Valentini
+An interactive digital-twin model for virtual reality environments to train in the use of a sensorized upper-limb prosthesis
+Algorithms, 17 (2024), 10.3390/a17010035
+Google Scholar
+Chandrasekaran et al., 2023
+S. Chandrasekaran, N.A. Bhagat, R. Ramdeo, S. Ebrahimi, P.D. Sharma, D.G. Griffin, A. Stein, S.J. Harkema, C.E. Bouton
+Targeted transcutaneous spinal cord stimulation promotes persistent recovery of upper limb strength and tactile sensation in spinal cord injury: a pilot study
+Front. Neurosci., 17 (2023), 10.3389/fnins.2023.1210328
+Google Scholar
+Chandrasekaran et al., 2020
+S. Chandrasekaran, A.C. Nanivadekar, G. McKernan, E.R. Helm, M.L. Boninger, J.L. Collinger, R.A. Gaunt, L.E. Fisher
+Sensory restoration by epidural stimulation of the lateral spinal cord in upper-limb amputees
+eLife, 9 (2020), Article e54349, 10.7554/eLife.54349
+Google Scholar
+Chavarriaga and Millán, 2010
+R. Chavarriaga, J.D.R. Millán
+Learning from EEG error-related potentials in noninvasive brain-computer interfaces
+IEEE Trans. Neural Syst. Rehabil. Eng., 18 (2010), pp. 381-388, 10.1109/TNSRE.2010.2053387
+View in ScopusGoogle Scholar
+Chee et al., 2022a
+L. Chee, G. Valle, M. Marazzi, G. Preatoni, F.L. Haufe, M. Xiloyannis, R. Riener, S. Raspopovic
+Optimally-calibrated non-invasive feedback improves amputees’ metabolic consumption, balance and walking confidence
+J. Neural Eng., 19 (2022), Article 046049, 10.1088/1741-2552/ac883b
+View in ScopusGoogle Scholar
+Chee et al., 2022b
+L. Chee, G. Valle, G. Preatoni, C. Basla, M. Marazzi, S. Raspopovic
+Cognitive benefits of using non-invasive compared to implantable neural feedback
+Sci. Rep., 12 (2022), p. 16696, 10.1038/s41598-022-21057-y
+View in ScopusGoogle Scholar
+Chen et al., 2025
+S. Chen, N. Xie, Y. Tang, Y. Ji, Z. He, Y. Wang, X. Huang, J. Fu, M. Ge, Q. Liu, M. Li, Q. Xiao, Y. Xu, J. Wang, J. Jia, S. Xu
+Long-term brain–computer interface functional electrical stimulation enhances neuroplasticity and functional recovery in elderly stroke: a 4.5-year longitudinal study integrating electroencephalography biomarkers and clinical assessments
+Research, 8 (2025), p. 0984, 10.34133/research.0984
+View in ScopusGoogle Scholar
+Chen et al., 2015
+X. Chen, Y. Wang, S. Gao, T.-P. Jung, X. Gao
+Filter bank canonical correlation analysis for implementing a high-speed SSVEP-based brain–computer interface
+J. Neural Eng., 12 (2015), Article 046008, 10.1088/1741-2560/12/4/046008
+View in ScopusGoogle Scholar
+Cheung et al., 2012
+V.C.K. Cheung, A. Turolla, M. Agostini, S. Silvoni, C. Bennis, P. Kasi, S. Paganoni, P. Bonato, E. Bizzi
+Muscle synergy patterns as physiological markers of motor cortical damage
+Proc. Natl. Acad. Sci., 109 (2012), pp. 14652-14656, 10.1073/pnas.1212056109
+View in ScopusGoogle Scholar
+Cimolato et al., 2023
+A. Cimolato, F. Ciotti, J. Kljajić, G. Valle, S. Raspopovic
+Symbiotic electroneural and musculoskeletal framework to encode proprioception via neurostimulation
+ProprioStim, iScience 26 (2023), Article 106248, 10.1016/j.isci.2023.106248
+View PDF
+View articleView in ScopusGoogle Scholar
+Cimolato et al., 2022
+A. Cimolato, J.J.M. Driessen, L.S. Mattos, E. De Momi, M. Laffranchi, L. De Michieli
+EMG-driven control in lower limb prostheses: a topic-based systematic review
+J. NeuroEngineering Rehabil., 19 (2022), p. 43, 10.1186/s12984-022-01019-1
+View in ScopusGoogle Scholar
+Cimolato and Raspopovic, 2024
+A. Cimolato, S. Raspopovic
+Closing the sensory feedback loop is necessary for effective neurorehabilitation
+PLoS Biol., 22 (2024), Article e3002866, 10.1371/journal.pbio.3002866
+View in ScopusGoogle Scholar
+Ciotti et al., 2025
+F. Ciotti, A. Cimolato, N. Gozzi, P. Palopoli, L. Brugnoli, N.K. Secerovic, R. Gallivan, A. Shokurov, C. Menon, J. Weichart, I. Delgado-Martinez, W. Song, S. Zanos, X. Navarro, S. Raspopovic
+From In-silico optimized microfabrication to experimental validation: engineering a tridimensional epi-intraneural interface
+Adv. Funct. Mater., n/a (2025), Article e22367, 10.1002/adfm.202522367
+Google Scholar
+Ciotti et al., 2023
+F. Ciotti, A. Cimolato, G. Valle, S. Raspopovic
+Design of an adaptable intrafascicular electrode (AIR) for selective nerve stimulation by model-based optimization
+PLoS Comput. Biol., 19 (2023), Article e1011184, 10.1371/journal.pcbi.1011184
+View in ScopusGoogle Scholar
+Ciotti et al., 2024
+F. Ciotti, R. John, N. Katic Secerovic, N. Gozzi, A. Cimolato, N. Jayaprakash, W. Song, V. Toth, T. Zanos, S. Zanos, S. Raspopovic
+Towards enhanced functionality of vagus neuroprostheses through in silico optimized stimulation
+Nat. Commun., 15 (2024), p. 6119, 10.1038/s41467-024-50523-6
+View in ScopusGoogle Scholar
+Clark et al., 2010
+D.J. Clark, L.H. Ting, F.E. Zajac, R.R. Neptune, S.A. Kautz
+Merging of healthy motor modules predicts reduced locomotor performance and muscle coordination complexity post-stroke
+J. Neurophysiol., 103 (2010), pp. 844-857, 10.1152/jn.00825.2009
+View in ScopusGoogle Scholar
+Clemente et al., 2019
+F. Clemente, G. Valle, M. Controzzi, I. Strauss, F. Iberite, T. Stieglitz, G. Granata, P.M. Rossini, F. Petrini, S. Micera, C. Cipriani
+Intraneural sensory feedback restores grip force control and motor coordination while using a prosthetic hand
+J. Neural Eng., 16 (2019), Article 026034, 10.1088/1741-2552/ab059b
+View in ScopusGoogle Scholar
+Clites et al., 2018
+T.R. Clites, M.J. Carty, J.B. Ullauri, M.E. Carney, L.M. Mooney, J.F. Duval, S.S. Srinivasan, H.M. Herr
+Proprioception from a neurally controlled lower-extremity prosthesis
+Sci. Transl. Med., 10 (2018), 10.1126/scitranslmed.aap8373
+Google Scholar
+Collinger et al., 2013
+J.L. Collinger, B. Wodlinger, J.E. Downey, W. Wang, E.C. Tyler-Kabara, D.J. Weber, A.J. McMorland, M. Velliste, M.L. Boninger, A.B. Schwartz
+High-performance neuroprosthetic control by an individual with tetraplegia
+Lancet, 381 (2013), pp. 557-564, 10.1016/S0140-6736(12)61816-9
+View PDF
+View articleView in ScopusGoogle Scholar
+Colucci et al., 2026
+A. Colucci, M. Vermehren, C. Angerhöfer, N. Peekhaus, W.-S. Kim, W.K. Chang, V. Hömberg, N.-J. Paik, S.R. Soekadar
+Hybrid brain/neural exoskeleton enables bimanual adl training in routine stroke rehabilitation
+Stroke, 57 (2026), pp. 505-510, 10.1161/STROKEAHA.125.052008
+Google Scholar
+Congedo et al., 2017
+M. Congedo, A. Barachant, R. Bhatia
+Riemannian geometry for EEG-based brain-computer interfaces; a primer and a review
+Brain-Comput. Interfaces, 4 (2017), pp. 155-174, 10.1080/2326263X.2017.1297192
+View in ScopusGoogle Scholar
+Cordes et al., 2024
+D. Cordes, C. Gerloff, K.-F. Heise, F.C. Hummel, R. Schulz, S. Wolf, K. Haevernick, H. Krüger, L. Krause, A. Suling, K. Wegscheider, A. Zapf, J. Dressnandt, B. Schäpers, C. Schrödl, B. Hauptmann, A. Kirchner, A. Brault, A. Gutschalk, C. Richter, D.A. Nowak, J. Veldema, G. Koch, M. Maiella, C. Dohle, K. Jettkowski, M. Pilz, F. Hamzei, L. Olischer, C. Renner, M. Groß, M. Jöbges, B. Voller
+Efficacy and safety of transcranial direct current stimulation to the ipsilesional motor cortex in subacute stroke (NETS): a multicenter, randomized, double-blind, placebo-controlled trial
+Lancet Reg. Health - Eur., 38 (2024), Article 100825, 10.1016/j.lanepe.2023.100825
+View in ScopusGoogle Scholar
+Coscia et al., 2019
+M. Coscia, M.J. Wessel, U. Chaudary, J.D.R. Millán, S. Micera, A. Guggisberg, P. Vuadens, J. Donoghue, N. Birbaumer, F.C. Hummel
+Neurotechnology-aided interventions for upper limb motor rehabilitation in severe chronic stroke
+Brain, 142 (2019), pp. 2182-2197, 10.1093/brain/awz181
+View in ScopusGoogle Scholar
+Courtine et al., 2009
+G. Courtine, Y. Gerasimenko, R. van den Brand, A. Yew, P. Musienko, H. Zhong, B. Song, Y. Ao, R.M. Ichiyama, I. Lavrov, R.R. Roy, M.V. Sofroniew, V.R. Edgerton
+Transformation of nonfunctional spinal circuits into functional states after the loss of brain input
+Nat. Neurosci., 12 (2009), pp. 1333-1342, 10.1038/nn.2401
+View in ScopusGoogle Scholar
+Courtine and Sofroniew, 2019
+G. Courtine, M.V. Sofroniew
+Spinal cord repair: advances in biology and technology
+Nat. Med., 25 (2019), pp. 898-908, 10.1038/s41591-019-0475-6
+View in ScopusGoogle Scholar
+Craik et al., 2019
+A. Craik, Y. He, J.L. Contreras-Vidal
+Deep learning for electroencephalogram (EEG) classification tasks: a review
+J. Neural Eng., 16 (2019), Article 031001, 10.1088/1741-2552/ab0ab5
+View in ScopusGoogle Scholar
+Cruccu et al., 2008
+G. Cruccu, M.J. Aminoff, G. Curio, J.M. Guerit, R. Kakigi, F. Mauguiere, P.M. Rossini, R.-D. Treede, L. Garcia-Larrea
+Recommendations for the clinical use of somatosensory-evoked potentials
+Clin. Neurophysiol., 119 (2008), pp. 1705-1719, 10.1016/j.clinph.2008.03.016
+View PDF
+View articleView in ScopusGoogle Scholar
+Curt and Dietz, 1999
+A. Curt, V. Dietz
+Electrophysiological recordings in patients with spinal cord injury: significance for predicting outcome
+Spinal Cord, 37 (1999), pp. 157-165, 10.1038/sj.sc.3100809
+View in ScopusGoogle Scholar
+d’Avella et al., 2003
+A. d’Avella, P. Saltiel, E. Bizzi
+Combinations of muscle synergies in the construction of a natural motor behavior
+Nat. Neurosci., 6 (2003), pp. 300-308, 10.1038/nn1010
+View in ScopusGoogle Scholar
+Dalrymple et al., 2023
+A.N. Dalrymple, C.A. Hooper, M.G. Kuriakose, M. Capogrosso, D.J. Weber
+Using a high-frequency carrier does not improve comfort of transcutaneous spinal cord stimulation
+J. Neural Eng., 20 (2023), 10.1088/1741-2552/acabe8
+Google Scholar
+Daly and Wolpaw, 2008
+J.J. Daly, J.R. Wolpaw
+Brain–computer interfaces in neurological rehabilitation
+Lancet Neurol., 7 (2008), pp. 1032-1043, 10.1016/S1474-4422(08)70223-0
+View PDF
+View articleView in ScopusGoogle Scholar
+Dawson et al., 2024
+J. Dawson, A.H. Abdul-Rahim, T.J. Kimberley
+Neurostimulation for treatment of post-stroke impairments
+Nat. Rev. Neurol., 20 (2024), pp. 259-268, 10.1038/s41582-024-00953-z
+View in ScopusGoogle Scholar
+De Luca et al., 2006
+C.J. De Luca, A. Adam, R. Wotiz, L.D. Gilmore, S.H. Nawab
+Decomposition of surface EMG signals
+J. Neurophysiol., 96 (2006), pp. 1646-1657, 10.1152/jn.00009.2006
+View in ScopusGoogle Scholar
+de Vos and Meier, 2024
+C.C. de Vos, K. Meier
+Spinal cord stimulation for the treatment of chronic pain
+Nat. Rev. Neurol., 20 (2024), pp. 447-448, 10.1038/s41582-024-00981-9
+View in ScopusGoogle Scholar
+Deliagina et al., 2002
+Deliagina, T.G., Zelenin, P.V., Orlovsky, G.N., 2002. Encoding and decoding of reticulospinal commands. Brain Res. Rev., The Segerfalk symposium on Principles of Spinal Cord Function, Plasticity and Repair 40, 166–177. doi:10.1016/S0165-0173(02)00199-6.
+Google Scholar
+Dell’Eva et al., 2025
+F. Dell’Eva, E. Guanziroli, V. Camerini, M. Gandolla, L. Brignole, S. Maludrottu, E. Gruppioni, G. Ferrigno, F. Molteni, E. Ambrosini, A. Pedrocchi
+A multifaceted hybrid ES-robotic device for gait training in individuals with neurological disorders
+Nat. Commun., 16 (2025), p. 8510, 10.1038/s41467-025-63474-3
+View in ScopusGoogle Scholar
+Ding et al., 2025
+Q. Ding, C. Tong, D. Liu, B. Yan, F. Wang, S. Han
+Muscle spindle model-based non-invasive electrical stimulation for motion perception feedback in prosthetic hands
+IEEE Trans. Neural Syst. Rehabil. Eng., 33 (2025), pp. 1316-1327, 10.1109/TNSRE.2025.3556726
+Google Scholar
+Downey et al., 2017
+J.E. Downey, L. Brane, R.A. Gaunt, E.C. Tyler-Kabara, M.L. Boninger, J.L. Collinger
+Motor cortical activity changes during neuroprosthetic-controlled object interaction
+Sci. Rep., 7 (2017), p. 16947, 10.1038/s41598-017-17222-3
+View in ScopusGoogle Scholar
+Durandau et al., 2019
+G. Durandau, D. Farina, G. Asín-Prieto, I. Dimbwadyo-Terrer, S. Lerma-Lara, J.L. Pons, J.C. Moreno, M. Sartori
+Voluntary control of wearable robotic exoskeletons by patients with paresis via neuromechanical modeling
+J. NeuroEngineering Rehabil., 16 (2019), p. 91, 10.1186/s12984-019-0559-z
+View in ScopusGoogle Scholar
+Edwards et al., 2008
+M.J. Edwards, P. Talelli, J.C. Rothwell
+Clinical applications of transcranial magnetic stimulation in patients with movement disorders
+Lancet Neurol., 7 (2008), pp. 827-840, 10.1016/S1474-4422(08)70190-X
+View PDF
+View articleView in ScopusGoogle Scholar
+Farina and Holobar, 2016
+D. Farina, A. Holobar
+Characterization of human motor units from surface EMG decomposition
+Proc. IEEE, 104 (2016), pp. 353-373, 10.1109/JPROC.2015.2498665
+View in ScopusGoogle Scholar
+Farina et al., 2014
+D. Farina, N. Jiang, H. Rehbaum, A. Holobar, B. Graimann, H. Dietl, O.C. Aszmann
+The extraction of neural information from the Surface EMG for the control of upper-limb prostheses: emerging avenues and challenges
+IEEE Trans. Neural Syst. Rehabil. Eng., 22 (2014), pp. 797-809, 10.1109/TNSRE.2014.2305111
+View in ScopusGoogle Scholar
+Farwell and Donchin, 1988
+L.A. Farwell, E. Donchin
+Talking off the top of your head: toward a mental prosthesis utilizing event-related brain potentials
+Electroencephalogr. Clin. Neurophysiol., 70 (1988), pp. 510-523, 10.1016/0013-4694(88)90149-6
+View PDF
+View articleView in ScopusGoogle Scholar
+Fasano et al., 2012
+A. Fasano, A. Daniele, A. Albanese
+Treatment of motor and non-motor features of Parkinson’s disease with deep brain stimulation
+Lancet Neurol., 11 (2012), pp. 429-442, 10.1016/S1474-4422(12)70049-2
+View PDF
+View articleView in ScopusGoogle Scholar
+Fasoli et al., 2004
+S.E. Fasoli, H.I. Krebs, J. Stein, W.R. Frontera, R. Hughes, N. Hogan
+Robotic therapy for chronic motor impairments after stroke: follow-up results
+Arch. Phys. Med. Rehabil., 85 (2004), pp. 1106-1111, 10.1016/j.apmr.2003.11.028
+View PDF
+View articleView in ScopusGoogle Scholar
+Ferrante et al., 2016
+S. Ferrante, N. Chia Bejarano, E. Ambrosini, A. Nardone, A.M. Turcato, M. Monticone, G. Ferrigno, A. Pedrocchi
+A personalized multi-channel FES controller based on muscle synergies to support gait rehabilitation after stroke
+Front. Neurosci., 10 (2016), p. 425
+View in ScopusGoogle Scholar
+Fitzgerald et al., 2006
+P.B. Fitzgerald, S. Huntsman, R. Gunewardene, J. Kulkarni, Z.J. Daskalakis
+A randomized trial of low-frequency right-prefrontal-cortex transcranial magnetic stimulation as augmentation in treatment-resistant major depression
+Int. J. Neuropsychopharmacol., 9 (2006), p. 655, 10.1017/S1461145706007176
+View in ScopusGoogle Scholar
+Flesher et al., 2016
+S.N. Flesher, J.L. Collinger, S.T. Foldes, J.M. Weiss, J.E. Downey, E.C. Tyler-Kabara, S.J. Bensmaia, A.B. Schwartz, M.L. Boninger, R.A. Gaunt
+Intracortical microstimulation of human somatosensory cortex
+Sci. Transl. Med., 8 (2016), Article 361ra141-361ra141, 10.1126/scitranslmed.aaf8083
+Google Scholar
+Flesher et al., 2021
+S.N. Flesher, J.E. Downey, J.M. Weiss, C.L. Hughes, A.J. Herrera, E.C. Tyler-Kabara, M.L. Boninger, J.L. Collinger, R.A. Gaunt
+A brain-computer interface that evokes tactile sensations improves robotic arm control
+Science, 372 (2021), pp. 831-836, 10.1126/science.abd0380
+View in ScopusGoogle Scholar
+Flint et al., 2014
+R.D. Flint, P.T. Wang, Z.A. Wright, C.E. King, M.O. Krucoff, S.U. Schuele, J.M. Rosenow, F.P.K. Hsu, C.Y. Liu, J.J. Lin, M. Sazgar, D.E. Millett, S.J. Shaw, Z. Nenadic, A.H. Do, M.W. Slutzky
+Extracting kinetic information from human motor cortical signals
+Neuroimage, 101 (2014), pp. 695-703, 10.1016/j.neuroimage.2014.07.049
+View PDF
+View articleView in ScopusGoogle Scholar
+Flor et al., 2006
+H. Flor, L. Nikolajsen, T. Staehelin Jensen
+Phantom limb pain: a case of maladaptive CNS plasticity?
+Nat. Rev. Neurosci., 7 (2006), pp. 873-881, 10.1038/nrn1991
+View in ScopusGoogle Scholar
+Formento et al., 2018
+E. Formento, K. Minassian, F. Wagner, J.B. Mignardot, C.G. Le Goff-Mignardot, A. Rowald, J. Bloch, S. Micera, M. Capogrosso, G. Courtine
+Electrical spinal cord stimulation must preserve proprioception to enable locomotion in humans with spinal cord injury
+Nat. Neurosci., 21 (2018), pp. 1728-1741, 10.1038/s41593-018-0262-6
+View in ScopusGoogle Scholar
+Fougner et al., 2011
+A. Fougner, E. Scheme, A.D.C. Chan, K. Englehart, Ø. Stavdahl
+Resolving the limb position effect in myoelectric pattern recognition
+IEEE Trans. Neural Syst. Rehabil. Eng., 19 (2011), pp. 644-651, 10.1109/TNSRE.2011.2163529
+View in ScopusGoogle Scholar
+Frumento et al., 2024
+S. Frumento, G. Preatoni, L. Chee, A. Gemignani, F. Ciotti, D. Menicucci, S. Raspopovic
+Unconscious multisensory integration: behavioral and neural evidence from subliminal stimuli
+Front. Psychol., 15 (2024), Article 1396946, 10.3389/fpsyg.2024.1396946
+View in ScopusGoogle Scholar
+Gandolfi et al., 2023
+M. Gandolfi, I. Boscolo Galazzo, R. Gasparin Pavan, F. Cruciani, N. Valè, A. Picelli, S.F. Storti, N. Smania, G. Menegaz
+eXplainable AI allows predicting upper limb rehabilitation outcomes in sub-acute stroke patients
+IEEE J. Biomed. Health Inform., 27 (2023), pp. 263-273, 10.1109/JBHI.2022.3220179
+View in ScopusGoogle Scholar
+Gandolla et al., 2016
+M. Gandolla, N.S. Ward, F. Molteni, E. Guanziroli, G. Ferrigno, A. Pedrocchi
+The neural correlates of long-term carryover following functional electrical stimulation for stroke
+Neural Plast., 2016 (2016), Article 4192718, 10.1155/2016/4192718
+View in ScopusGoogle Scholar
+Garrido et al., 2023
+Garrido M, M., Álvarez E, E., Acevedo P, F., Moyano V, Á., Castillo N, N., Cavada Ch, G., 2023. Early transcranial direct current stimulation with modified constraint-induced movement therapy for motor and functional upper limb recovery in hospitalized patients with stroke: a randomized, multicentre, double-blind, clinical trial. Brain Stimulat. 16, 40–47. doi:10.1016/j.brs.2022.12.008.
+Google Scholar
+George et al., 2019
+J.A. George, D.T. Kluger, T.S. Davis, S.M. Wendelken, E.V. Okorokova, Q. He, C.C. Duncan, D.T. Hutchinson, Z.C. Thumser, D.T. Beckler, P.D. Marasco, S.J. Bensmaia, G.A. Clark
+Biomimetic sensory feedback through peripheral nerve stimulation improves dexterous use of a bionic hand
+Sci. Rob., 4 (2019), Article eaax2352, 10.1126/scirobotics.aax2352
+View in ScopusGoogle Scholar
+Gerasimenko et al., 2015
+Y. Gerasimenko, R. Gorodnichev, T. Moshonkina, D. Sayenko, P. Gad, V. Reggie Edgerton
+Transcutaneous electrical spinal-cord stimulation in humans
+Ann. Phys. Rehabil. Med., 58 (2015), pp. 225-231, 10.1016/j.rehab.2015.05.003
+View PDF
+View articleView in ScopusGoogle Scholar
+Ghez et al., 1995
+C. Ghez, J. Gordon, M.F. Ghilardi
+Impairments of reaching movements in patients without proprioception. II. Effects of visual information on accuracy
+J. Neurophysiol., 73 (1995), pp. 361-372, 10.1152/jn.1995.73.1.361
+View in ScopusGoogle Scholar
+Gower et al., 2025
+V. Gower, T. Hamilton, F. Spinelli, M. Randazzo, I.G. Aprile, F. Falchini, M. Germanotta, F. Gramatica, T. Wagner, H.I. Krebs
+Breaking down costs: rehabilitation robotics vs. usual care therapy in diverse healthcare models
+Sci. Rep., 15 (2025), p. 40720, 10.1038/s41598-025-24656-7
+View in ScopusGoogle Scholar
+Gozzi et al., 2024a
+N. Gozzi, L. Chee, I. Odermatt, S. Kikkert, G. Preatoni, G. Valle, N. Pfender, F. Beuschlein, N. Wenderoth, C. Zipser, S. Raspopovic
+Wearable non-invasive neuroprosthesis for targeted sensory restoration in neuropathy
+Nat. Commun., 15 (2024), p. 10840, 10.1038/s41467-024-55152-7
+View in ScopusGoogle Scholar
+Gozzi et al., 2024b
+N. Gozzi, G. Preatoni, F. Ciotti, M. Hubli, P. Schweinhardt, A. Curt, S. Raspopovic
+Unraveling the physiological and psychosocial signatures of pain by machine learning
+Med, 5 (2024), pp. 1495-1509.e5, 10.1016/j.medj.2024.07.016
+View PDF
+View articleView in ScopusGoogle Scholar
+Graczyk et al., 2024
+E. Graczyk, B. Hutchison, G. Valle, D. Bjanes, D. Gates, S. Raspopovic, R. Gaunt
+Clinical applications and future translation of somatosensory neuroprostheses
+J. Neurosci., 44 (2024), Article e1237242024, 10.1523/JNEUROSCI.1237-24.2024
+View in ScopusGoogle Scholar
+Graczyk et al., 2018a
+E.L. Graczyk, B.P. Delhaye, M.A. Schiefer, S.J. Bensmaia, D.J. Tyler
+Sensory adaptation to electrical stimulation of the somatosensory nerves
+J. Neural Eng., 15 (2018), Article 046002, 10.1088/1741-2552/aab790
+View in ScopusGoogle Scholar
+Graczyk et al., 2018b
+E.L. Graczyk, L. Resnik, M.A. Schiefer, M.S. Schmitt, D.J. Tyler
+Home use of a neural-connected sensory prosthesis provides the functional and psychosocial experience of having a hand again
+Sci. Rep., 8 (2018), p. 9866, 10.1038/s41598-018-26952-x
+View in ScopusGoogle Scholar
+Greenspon et al., 2024
+C.M. Greenspon, G. Valle, N.D. Shelchkova, T.G. Hobbs, C. Verbaarschot, T. Callier, E.I. Berger-Wolf, E.V. Okorokova, B.C. Hutchison, E. Dogruoz, A.R. Sobinov, P.M. Jordan, J.M. Weiss, E.E. Fitzgerald, D. Prasad, A. Van Driesche, Q. He, F. Liu, R.F. Kirsch, J.P. Miller, R.C. Lee, D. Satzer, J. Gonzalez-Martinez, P.C. Warnke, A.B. Ajiboye, E.L. Graczyk, M.L. Boninger, J.L. Collinger, J.E. Downey, L.E. Miller, N.G. Hatsopoulos, R.A. Gaunt, S.J. Bensmaia
+Evoking stable and precise tactile sensations via multi-electrode intracortical microstimulation of the somatosensory cortex
+Nat. Biomed. Eng., 9 (2024), pp. 935-951, 10.1038/s41551-024-01299-z
+Google Scholar
+Greiner et al., 2021
+N. Greiner, B. Barra, G. Schiavone, H. Lorach, N. James, S. Conti, M. Kaeser, F. Fallegger, S. Borgognon, S. Lacour, J. Bloch, G. Courtine, M. Capogrosso
+Recruitment of upper-limb motoneurons with epidural electrical stimulation of the cervical spinal cord
+Nat. Commun., 12 (2021), p. 435, 10.1038/s41467-020-20703-1
+View in ScopusGoogle Scholar
+Grill et al., 2009
+W.M. Grill, S.E. Norman, R.V. Bellamkonda
+Implanted neural interfaces: biochallenges and engineered solutions
+Annu. Rev. Biomed. Eng., 11 (2009), pp. 1-24, 10.1146/annurev-bioeng-061008-124927
+View in ScopusGoogle Scholar
+Haghi et al., 2024
+B. Haghi, T. Aflalo, S. Kellis, C. Guan, J.A. Gamez De Leon, A.Y. Huang, N. Pouratian, R.A. Andersen, A. Emami
+Enhanced control of a brain–computer interface by tetraplegic participants via neural-network-mediated feature extraction
+Nat. Biomed. Eng., 9 (2024), pp. 917-934, 10.1038/s41551-024-01297-1
+Google Scholar
+Hahne et al., 2016
+J.M. Hahne, D. Farina, N. Jiang, D. Liebetanz
+A Novel percutaneous electrode implant for improving robustness in advanced myoelectric control
+Front. Neurosci., 10 (2016), 10.3389/fnins.2016.00114
+Google Scholar
+Harvey, R.L., Edwards, D., Dunning, K., Fregni, F., Stein, J., Laine, J., Rogers, L.M., Vox, F., Durand-Sanchez, A., Bockbrader, M., Goldstein, L.B., Francisco, G.E., Kinney, C.L., Liu, C.Y., on behalf of the NICHE Trial Investigators et al., 2018
+Harvey, R.L., Edwards, D., Dunning, K., Fregni, F., Stein, J., Laine, J., Rogers, L.M., Vox, F., Durand-Sanchez, A., Bockbrader, M., Goldstein, L.B., Francisco, G.E., Kinney, C.L., Liu, C.Y., on behalf of the NICHE Trial Investigators, 2018. Randomized Sham-Controlled Trial of Navigated Repetitive Transcranial Magnetic Stimulation for Motor Recovery in Stroke. Stroke 49, 2138–2146. doi:10.1161/STROKEAHA.117.020607.
+Google Scholar
+Herring et al., 2024
+E.Z. Herring, E.L. Graczyk, W.D. Memberg, R. Adams, G. Fernandez Baca-Vaca, B.C. Hutchison, J.T. Krall, B.J. Alexander, E.C. Conlan, K.E. Alfaro, P. Bhat, A.B. Ketting-Olivier, C.A. Haddix, D.M. Taylor, D.J. Tyler, J.A. Sweet, R.F. Kirsch, A.B. Ajiboye, J.P. Miller
+Reconnecting the hand and arm to the brain: efficacy of neural interfaces for sensorimotor restoration after tetraplegia
+Neurosurgery, 94 (2024), pp. 864-874, 10.1227/neu.0000000000002769
+View in ScopusGoogle Scholar
+Hobbs et al., 2025
+T.G. Hobbs, C.M. Greenspon, C. Verbaarschot, G. Valle, C.L. Hughes, M.L. Boninger, S.J. Bensmaia, R.A. Gaunt
+Biomimetic stimulation patterns drive natural artificial touch percepts using intracortical microstimulation in humans
+J. Neural Eng., 22 (2025), Article 036014, 10.1088/1741-2552/adc2d4
+View in ScopusGoogle Scholar
+Hochberg et al., 2012
+L.R. Hochberg, D. Bacher, B. Jarosiewicz, N.Y. Masse, J.D. Simeral, J. Vogel, S. Haddadin, J. Liu, S.S. Cash, P. Van Der Smagt;, J.P. Donoghue
+Reach and grasp by people with tetraplegia using a neurally controlled robotic arm
+Nature, 485 (2012), pp. 372-375, 10.1038/nature11076
+View in ScopusGoogle Scholar
+Hofstoetter et al., 2018
+U.S. Hofstoetter, B. Freundl, H. Binder, K. Minassian
+Common neural structures activated by epidural and transcutaneous lumbar spinal cord stimulation: elicitation of posterior root-muscle reflexes
+PLoS One, 13 (2018), 10.1371/journal.pone.0192013
+Google Scholar
+Hofstoetter et al., 2015
+U.S. Hofstoetter, M. Krenn, S.M. Danner, C. Hofer, H. Kern, W.B. Mckay, W. Mayr, K. Minassian
+Augmentation of voluntary locomotor activity by transcutaneous spinal cord stimulation in motor-incomplete spinal cord-injured individuals
+Artif. Organs, 39 (2015), pp. E176-E186, 10.1111/aor.12615
+View in ScopusGoogle Scholar
+Höhler et al., 2024
+C. Höhler, E. Trigili, D. Astarita, J. Hermsdörfer, K. Jahn, C. Krewer
+The efficacy of hybrid neuroprostheses in the rehabilitation of upper limb impairment after stroke, a narrative and systematic review with a meta-analysis
+Artif. Organs, 48 (2024), pp. 232-253, 10.1111/aor.14618
+View in ScopusGoogle Scholar
+Hossain et al., 2023
+D. Hossain, S.H. Scott, T. Cluff, S.P. Dukelow
+The use of machine learning and deep learning techniques to assess proprioceptive impairments of the upper limb after stroke
+J. NeuroEngineering Rehabil., 20 (2023), p. 15, 10.1186/s12984-023-01140-9
+View in ScopusGoogle Scholar
+Hotson et al., 2016
+G. Hotson, D.P. McMullen, M.S. Fifer, M.S. Johannes, K.D. Katyal, M.P. Para, R. Armiger, W.S. Anderson, N.V. Thakor, B.A. Wester, N.E. Crone
+Individual finger control of a modular prosthetic limb using high-density electrocorticography in a human subject
+J. Neural Eng., 13 (2016), Article 026017, 10.1088/1741-2560/13/2/026017
+View in ScopusGoogle Scholar
+Hsieh et al., 2012
+Y. Hsieh, C. Wu, K. Lin, G. Yao, K. Wu, Y. Chang
+Dose–response relationship of robot-assisted stroke motor rehabilitation
+Stroke, 43 (2012), pp. 2729-2734, 10.1161/STROKEAHA.112.658807
+View in ScopusGoogle Scholar
+Hug et al., 2021
+F. Hug, S. Avrillon, A. Del Vecchio, A. Casolo, J. Ibanez, S. Nuccio, J. Rossato, A. Holobar, D. Farina
+Analysis of motor unit spike trains estimated from high-density surface electromyography is highly reliable across operators
+J. Electromyogr. Kinesiol., 58 (2021), Article 102548, 10.1016/j.jelekin.2021.102548
+View PDF
+View articleView in ScopusGoogle Scholar
+Hyde et al., 2022
+J. Hyde, H. Carr, N. Kelley, R. Seneviratne, C. Reed, V. Parlatini, M. Garner, M. Solmi, S. Rosson, S. Cortese, V. Brandt
+Efficacy of neurostimulation across mental disorders: systematic review and meta-analysis of 208 randomized controlled trials
+Mol. Psychiatry, 27 (2022), pp. 2709-2719, 10.1038/s41380-022-01524-8
+View in ScopusGoogle Scholar
+Iberite et al., 2023
+F. Iberite, J. Muheim, O. Akouissi, S. Gallo, G. Rognini, F. Morosato, A. Clerc, M. Kalff, E. Gruppioni, S. Micera, S. Shokur
+Restoration of natural thermal sensation in upper-limb amputees
+Science, 380 (2023), pp. 731-735, 10.1126/science.adf6121
+View in ScopusGoogle Scholar
+Ienca et al., 2025
+M. Ienca, G. Valle, S. Raspopovic
+Clinical trials for implantable neural prostheses: understanding the ethical and technical requirements
+Lancet Digit. Health, 7 (2025), pp. e216-e224, 10.1016/S2589-7500(24)00222-X
+View PDF
+View articleView in ScopusGoogle Scholar
+Inanici et al., 2021
+F. Inanici, L.N. Brighton, S. Samejima, C.P. Hofstetter, C.T. Moritz
+Transcutaneous spinal cord stimulation restores hand and arm function after spinal cord injury
+IEEE Trans. Neural Syst. Rehabil. Eng., 29 (2021), pp. 310-319, 10.1109/TNSRE.2021.3049133
+View in ScopusGoogle Scholar
+Iversen et al., 2024
+M.M. Iversen, A.T. Harrison, C.T. Stanley, A.N. Dalrymple
+Rehabilitation of motor and sensory function using spinal cord stimulation: recent advances
+Curr. Opin. Biomed. Eng., 32 (2024), Article 100566, 10.1016/j.cobme.2024.100566
+View PDF
+View articleView in ScopusGoogle Scholar
+Jackson et al., 2006
+A. Jackson, J. Mavoori, E.E. Fetz
+Long-term motor cortex plasticity induced by an electronic neural implant
+Nature, 444 (2006), pp. 56-60, 10.1038/nature05226
+View in ScopusGoogle Scholar
+Jackson and Zimmermann, 2012
+A. Jackson, J.B. Zimmermann
+Neural interfaces for the brain and spinal cord—restoring motor function
+Nat. Rev. Neurol., 8 (2012), pp. 690-699, 10.1038/nrneurol.2012.219
+View in ScopusGoogle Scholar
+Johansson and Flanagan, 2009
+R.S. Johansson, J.R. Flanagan
+Coding and use of tactile signals from the fingertips in object manipulation tasks
+Nat. Rev. Neurosci., 10 (2009), pp. 345-359, 10.1038/nrn2621
+View in ScopusGoogle Scholar
+Jorgovanovic et al., 2014
+N. Jorgovanovic, S. Dosen, D.J. Djozic, G. Krajoski, D. Farina
+Virtual grasping: closed-loop force control using electrotactile feedback
+Comput. Math. Methods Med., 2014 (2014), Article 120357, 10.1155/2014/120357
+View in ScopusGoogle Scholar
+Jovanovic et al., 2021
+L.I. Jovanovic, N. Kapadia, V. Zivanovic, H.J. Rademeyer, M. Alavinia, C. McGillivray, S. Kalsi-Ryan, M.R. Popovic, C. Marquez-Chin
+Brain–computer interface-triggered functional electrical stimulation therapy for rehabilitation of reaching and grasping after spinal cord injury: a feasibility study
+Spinal Cord Ser. Cases, 7 (2021), p. 24, 10.1038/s41394-020-00380-4
+View in ScopusGoogle Scholar
+Jung et al., 2022
+Jung, M.K., Muceli, S., Rodrigues, C., Megía-García, Á., Pascual-Valdunciel, A., del-Ama, A.J., Gil-Agudo, A., Moreno, J.C., Barroso, F.O., Pons, J.L., Farina, D., 2022. Intramuscular EMG-Driven Musculoskeletal Modelling: Towards Implanted Muscle Interfacing in Spinal Cord Injury Patients. IEEE Trans. Biomed. Eng. 69, 63–74. doi:10.1109/TBME.2021.3087137.
+Google Scholar
+Katic et al., 2023
+N. Katic, R.K. Siqueira, L. Cleland, N. Strzalkowski, L. Bent, S. Raspopovic, H. Saal
+Modeling foot sole cutaneous afferents
+FootSim iScience, 26 (2023), Article 105874, 10.1016/j.isci.2022.105874
+View PDF
+View articleView in ScopusGoogle Scholar
+Keesey et al., 2024
+Keesey, R., Hofstoetter, U., Hu, Z., Lombardi, L., Hawthorn, R., Bryson, N., Rowald, A., Minassian, K., Seáñez, I., 2024. Fundamental limitations of kilohertz-frequency carriers in afferent fiber recruitment with transcutaneous spinal cord stimulation. doi:10.1101/2024.07.26.603982.
+Google Scholar
+Kiehn, 2016
+O. Kiehn
+Decoding the organization of spinal circuits that control locomotion
+Nat. Rev. Neurosci., 17 (2016), pp. 224-238, 10.1038/nrn.2016.9
+View in ScopusGoogle Scholar
+Kimura, 2013
+Kimura, J., 2013. Electrodiagnosis in diseases of nerve and muscle: principles and practice. OUP USA.
+Google Scholar
+Korik et al., 2018
+A. Korik, R. Sosnik, N. Siddique, D. Coyle
+Decoding imagined 3D hand movement trajectories from EEG: evidence to support the use of mu, beta, and low gamma oscillations
+Front. Neurosci., 12 (2018), 10.3389/fnins.2018.00130
+Google Scholar
+Krakauer et al., 2012
+J.W. Krakauer, S.T. Carmichael, D. Corbett, G.F. Wittenberg
+Getting neurorehabilitation right: what can be learned from animal models?
+Neurorehabil. Neural Repair, 26 (2012), pp. 923-931, 10.1177/1545968312440745
+View in ScopusGoogle Scholar
+Krusienski et al., 2008
+D.J. Krusienski, E.W. Sellers, D.J. McFarland, T.M. Vaughan, J.R. Wolpaw
+Toward enhanced P300 speller performance.
+J. Neurosci. Methods Brain-Computer Interfaces (BCIs), 167 (2008), pp. 15-21, 10.1016/j.jneumeth.2007.07.017
+View PDF
+View articleView in ScopusGoogle Scholar
+Kubánek et al., 2009
+J. Kubánek, K.J. Miller, J.G. Ojemann, J.R. Wolpaw, G. Schalk
+Decoding flexion of individual fingers using electrocorticographic signals in humans
+J. Neural Eng., 6 (2009), Article 066001, 10.1088/1741-2560/6/6/066001
+View in ScopusGoogle Scholar
+Kubiak et al., 2018
+C.A. Kubiak, S.W.P. Kemp, P.S. Cederna
+Regenerative peripheral nerve interface for management of postamputation neuroma
+JAMA Surg., 153 (2018), pp. 681-682, 10.1001/jamasurg.2018.0864
+View in ScopusGoogle Scholar
+Kubiak et al., 2021
+C.A. Kubiak, S.R. Svientek, A. Dehdashtian, N.G. Lawera, V. Nadarajan, J.V. Bratley, T.A. Kung, P.S. Cederna, S.W.P. Kemp
+Physiologic signaling and viability of the muscle cuff regenerative peripheral nerve interface (MC-RPNI) for intact peripheral nerves
+J. Neural Eng., 18 (2021), Article 0460d5, 10.1088/1741-2552/ac1b6b
+Google Scholar
+Kuiken et al., 2017
+T.A. Kuiken, A.K. Barlow, L.J. Hargrove, G.A. Dumanian
+Targeted muscle reinnervation for the upper and lower extremity
+Tech. Orthop., 32 (2017), pp. 109-116, 10.1097/BTO.0000000000000194
+View in ScopusGoogle Scholar
+Kuiken et al., 2009
+T.A. Kuiken, G. Li, B.A. Lock, R.D. Lipschutz, L.A. Miller, K.A. Stubblefield, K.B. Englehart
+Targeted muscle reinnervation for real-time myoelectric control of multifunction artificial arms
+J. Am. Med. Assoc., 301 (2009), pp. 619-628, 10.1001/jama.2009.116
+View in ScopusGoogle Scholar
+Kung et al., 2014
+T.A. Kung, N.B. Langhals, D.C. Martin, P.J. Johnson, P.S. Cederna, M.G. Urbanchek
+Regenerative peripheral nerve interface viability and signal transduction with an implanted electrode
+Plast. Reconstr. Surg., 133 (2014), pp. 1380-1394, 10.1097/PRS.0000000000000168
+View in ScopusGoogle Scholar
+Langhorne et al., 2011
+P. Langhorne, J. Bernhardt, G. Kwakkel
+Stroke rehabilitation
+Lancet, 377 (2011), pp. 1693-1702, 10.1016/S0140-6736(11)60325-5
+View PDF
+View articleView in ScopusGoogle Scholar
+Larzabal et al., 2021
+C. Larzabal, S. Bonnet, T. Costecalde, V. Auboiroux, G. Charvet, S. Chabardes, T. Aksenova, F. Sauter-Starace
+Long-term stability of the chronic epidural wireless recorder WIMAGINE in tetraplegic patients
+J. Neural Eng., 18 (2021), Article 056026, 10.1088/1741-2552/ac2003
+View in ScopusGoogle Scholar
+Lawhern et al., 2018
+V.J. Lawhern, A.J. Solon, N.R. Waytowich, S.M. Gordon, C.P. Hung, B.J. Lance
+EEGNet: a compact convolutional neural network for EEG-based brain–computer interfaces
+J. Neural Eng., 15 (2018), Article 056013, 10.1088/1741-2552/aace8c
+View in ScopusGoogle Scholar
+Lebedev and Nicolelis, 2006
+M.A. Lebedev, M.A.L. Nicolelis
+Brain–machine interfaces: past, present and future
+Trends Neurosci., 29 (2006), pp. 536-546, 10.1016/j.tins.2006.07.004
+View PDF
+View articleView in ScopusGoogle Scholar
+Leeb et al., 2007
+R. Leeb, D. Friedman, G.R. Müller-Putz, R. Scherer, M. Slater, G. Pfurtscheller
+Self-paced (asynchronous) BCI control of a wheelchair in virtual environments: a case study with a tetraplegic
+Comput. Intell. Neurosci., 2007 (2007), Article 079642, 10.1155/2007/79642
+Google Scholar
+Leuthardt et al., 2004
+E.C. Leuthardt, G. Schalk, J.R. Wolpaw, J.G. Ojemann, D.W. Moran
+A brain–computer interface using electrocorticographic signals in humans*
+J. Neural Eng., 1 (2004), p. 63, 10.1088/1741-2560/1/2/001
+View in ScopusGoogle Scholar
+Lew et al., 2012
+E. Lew, R. Chavarriaga, S. Silvoni, J. del Millán, R.,
+Detection of self-paced reaching movement intention from EEG signals
+Front. Neuroengineering, 5 (2012), 10.3389/fneng.2012.00013
+Google Scholar
+Li et al., 2013
+Y. Li, J. Pan, F. Wang, Z. Yu
+A hybrid BCI system combining P300 and SSVEP and its application to wheelchair control
+I.E.E.E. Trans. Biomed. Eng., 60 (2013), pp. 3156-3166, 10.1109/TBME.2013.2270283
+View in ScopusGoogle Scholar
+Lim et al., 2025
+H. Lim, S. Yan, I. Hameeduddin, W. Dee, V. Pech, W.Z. Rymer, M. Wu
+Noninvasive spatiotemporal spinal neuromodulation targeting dorsal roots improves paretic leg motor control during walking in persons with stroke
+J. Neurophysiol., 134 (2025), pp. 1518-1530, 10.1152/jn.00316.2025
+View in ScopusGoogle Scholar
+López-Larraz et al., 2016
+López-Larraz, E., Trincado-Alonso, F., Rajasekaran, V., Pérez-Nombela, S., del-Ama, A.J., Aranda, J., Minguez, J., Gil-Agudo, A., Montesano, L., 2016. Control of an Ambulatory Exoskeleton with a Brain–Machine Interface for Spinal Cord Injury Gait Rehabilitation. Front. Neurosci. 10. doi:10.3389/fnins.2016.00359.
+Google Scholar
+Lorach et al., 2022
+H. Lorach, G. Charvet, J. Bloch, G. Courtine
+Brain–spine interfaces to reverse paralysis
+Natl. Sci. Rev., 9 (2022), Article nwac009, 10.1093/nsr/nwac009
+Google Scholar
+Lorach et al., 2023
+H. Lorach, A. Galvez, V. Spagnolo, F. Martel, S. Karakas, N. Intering, M. Vat, O. Faivre, C. Harte, S. Komi, J. Ravier, T. Collin, L. Coquoz, I. Sakr, E. Baaklini, S.D. Hernandez-Charpak, G. Dumont, R. Buschman, N. Buse, T. Denison, I. Van Nes, L. Asboth, A. Watrin, L. Struber, F. Sauter-Starace, L. Langar, V. Auboiroux, S. Carda, S. Chabardes, T. Aksenova, R. Demesmaeker, G. Charvet, J. Bloch, G. Courtine
+Walking naturally after spinal cord injury using a brain–spine interface
+Nature, 618 (2023), pp. 126-133, 10.1038/s41586-023-06094-5
+View in ScopusGoogle Scholar
+Losanno et al., 2023
+E. Losanno, M. Mender, C. Chestek, S. Shokur, S. Micera
+Neurotechnologies to restore hand functions
+Nat. Rev. Bioeng., 1 (2023), pp. 390-407, 10.1038/s44222-023-00054-4
+View in ScopusGoogle Scholar
+Lotte et al., 2018
+F. Lotte, L. Bougrain, A. Cichocki, M. Clerc, M. Congedo, A. Rakotomamonjy, F. Yger
+A review of classification algorithms for EEG-based brain–computer interfaces: a 10 year update
+J. Neural Eng., 15 (2018), Article 031005, 10.1088/1741-2552/aab2f2
+View in ScopusGoogle Scholar
+Lotze et al., 2003
+M. Lotze, C. Braun, N. Birbaumer, S. Anders, L.G. Cohen
+Motor learning elicited by voluntary drive
+Brain, 126 (2003), pp. 866-872, 10.1093/brain/awg079
+View in ScopusGoogle Scholar
+Lotze and Moseley, 2007
+M. Lotze, G.L. Moseley
+Role of distorted body image in pain
+Curr. Rheumatol. Rep., 9 (2007), pp. 488-496, 10.1007/s11926-007-0079-x
+View in ScopusGoogle Scholar
+Maier et al., 2019
+M. Maier, B.R. Ballester, P.F.M.J. Verschure
+Principles of neurorehabilitation after stroke based on motor learning and brain plasticity mechanisms
+Front. Syst. Neurosci., 13 (2019), p. 74, 10.3389/fnsys.2019.00074
+View in ScopusGoogle Scholar
+Mak and Wolpaw, 2009
+J.N. Mak, J.R. Wolpaw
+Clinical applications of brain-computer interfaces: current state and future prospects
+IEEE Rev. Biomed. Eng., 2 (2009), pp. 187-199, 10.1109/RBME.2009.2035356
+View in ScopusGoogle Scholar
+Makin and Flor, 2020
+T.R. Makin, H. Flor
+Brain (re)organisation following amputation: implications for phantom limb pain
+Neuroimage, 218 (2020), Article 116943, 10.1016/j.neuroimage.2020.116943
+View PDF
+View articleView in ScopusGoogle Scholar
+Malešević and Antfolk, 2024
+N. Malešević, C. Antfolk
+Sensory feedback in upper limb prosthetics: advances and challenges
+Nat. Rev. Neurol., 20 (2024), pp. 449-450, 10.1038/s41582-024-00987-3
+View in ScopusGoogle Scholar
+Malešević et al., 2012
+N.M. Malešević, L.Z. Maneski, V. Ilić, N. Jorgovanović, G. Bijelić, T. Keller, D.B. Popović
+A multi-pad electrode based functional electrical stimulation system for restoration of grasp
+J. NeuroEngineering Rehabil., 9 (2012), p. 66, 10.1186/1743-0003-9-66
+View in ScopusGoogle Scholar
+Markovic et al., 2018
+M. Markovic, M.A. Schweisfurth, L.F. Engels, T. Bentz, D. Wüstefeld, D. Farina, S. Dosen
+The clinical relevance of advanced artificial feedback in the control of a multi-functional myoelectric prosthesis
+J. NeuroEngineering Rehabil., 15 (2018), p. 28, 10.1186/s12984-018-0371-1
+View in ScopusGoogle Scholar
+McHugh et al., 2020
+L.V. McHugh, A.A. Miller, K.A. Leech, C. Salorio, R.H. Martin
+Feasibility and utility of transcutaneous spinal cord stimulation combined with walking-based therapy for people with motor incomplete spinal cord injury
+Spinal Cord Ser. Cases, 6 (2020), 10.1038/s41394-020-00359-1
+Google Scholar
+Mestais et al., 2015
+C.S. Mestais, G. Charvet, F. Sauter-Starace, M. Foerster, D. Ratel, A.L. Benabid
+WIMAGINE: wireless 64-channel ECoG recording implant for long term clinical applications
+IEEE Trans. Neural Syst. Rehabil. Eng., 23 (2015), pp. 10-21, 10.1109/TNSRE.2014.2333541
+View in ScopusGoogle Scholar
+Meyer et al., 2020
+C. Meyer, U.S. Hofstoetter, M. Hubli, R.H. Hassani, C. Rinaldo, A. Curt, M. Bolliger
+Immediate effects of transcutaneous spinal cord stimulation on motor function in chronic, sensorimotor incomplete spinal cord injury
+J. Clin. Med., 9 (2020), pp. 1-18, 10.3390/jcm9113541
+Google Scholar
+Micera et al., 2020
+S. Micera, M. Caleo, C. Chisari, F.C. Hummel, A. Pedrocchi
+Advanced neurotechnologies for the restoration of motor function
+Neuron, 105 (2020), pp. 604-620, 10.1016/j.neuron.2020.01.039
+View PDF
+View articleView in ScopusGoogle Scholar
+Micera et al., 2010
+S. Micera, J. Carpaneto, S. Raspopovic
+Control of hand prostheses using peripheral information
+IEEE Rev. Biomed. Eng., 3 (2010), pp. 48-68, 10.1109/RBME.2010.2085429
+View in ScopusGoogle Scholar
+Milekovic et al., 2023
+T. Milekovic, E.M. Moraud, N. Macellari, C. Moerman, F. Raschellà, S. Sun, M.G. Perich, C. Varescon, R. Demesmaeker, A. Bruel, L.N. Bole-Feysot, G. Schiavone, E. Pirondini, C. YunLong, L. Hao, A. Galvez, S.D. Hernandez-Charpak, G. Dumont, J. Ravier, C.G. Le Goff-Mignardot, J.-B. Mignardot, G. Carparelli, C. Harte, N. Hankov, V. Aureli, A. Watrin, H. Lambert, D. Borton, J. Laurens, I. Vollenweider, S. Borgognon, F. Bourre, M. Goillandeau, W.K.D. Ko, L. Petit, Q. Li, R. Buschman, N. Buse, M. Yaroshinsky, J.-B. Ledoux, F. Becce, M.C. Jimenez, J.F. Bally, T. Denison, D. Guehl, A. Ijspeert, M. Capogrosso, J.W. Squair, L. Asboth, P.A. Starr, D.D. Wang, S.P. Lacour, S. Micera, C. Qin, J. Bloch, E. Bezard, G. Courtine
+A spinal cord neuroprosthesis for locomotor deficits due to Parkinson’s disease
+Nat. Med., 29 (2023), pp. 2854-2865, 10.1038/s41591-023-02584-1
+View in ScopusGoogle Scholar
+del Millán et al., 2010
+Millán, J. del R., Rupp, R., Mueller-Putz, G., Murray-Smith, R., Giugliemma, C., Tangermann, M., Vidaurre, C., Cincotti, F., Kubler, A., Leeb, R., Neuper, C., Mueller, K.R., Mattia, D., 2010. Combining Brain–Computer Interfaces and Assistive Technologies: State-of-the-Art and Challenges. Front. Neurosci. 4. doi:10.3389/fnins.2010.00161.
+Google Scholar
+Miller et al., 2009
+K.J. Miller, S. Zanos, E.E. Fetz, M. den Nijs, J.G. Ojemann
+Decoupling the cortical power spectrum reveals real-time representation of individual finger movements in humans
+J. Neurosci., 29 (2009), pp. 3132-3137, 10.1523/JNEUROSCI.5506-08.2009
+View in ScopusGoogle Scholar
+Miller et al., 2014
+Miller, L.C., Thompson, C.K., Negro, F., Heckman, C.J., Farina, D., Dewald, J.P.A., 2014. High-density surface EMG decomposition allows for recording of motor unit discharge from proximal and distal flexion synergy muscles simultaneously in individuals with stroke, in: 2014 36th Annual International Conference of the IEEE Engineering in Medicine and Biology Society. Presented at the 2014 36th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), IEEE, Chicago, IL, pp. 5340–5344. doi:10.1109/EMBC.2014.6944832.
+Google Scholar
+Minassian et al., 2020
+Minassian, K., Hofstoetter, U.S., Freundl, B., 2020. The posterior root-muscle reflex, in: Neurophysiology in Neurosurgery: A Modern Approach. Elsevier, pp. 239–253. doi:10.1016/B978-0-12-815000-9.00018-6.
+Google Scholar
+Mobbs et al., 2024
+A. Mobbs, M. Kahn, G. Williams, B.F. Mentiplay, Y.-H. Pua, R.A. Clark
+Machine learning for automating subjective clinical assessment of gait impairment in people with acquired brain injury – a comparison of an image extraction and classification system to expert scoring
+J. NeuroEngineering Rehabil., 21 (2024), p. 124, 10.1186/s12984-024-01406-w
+View in ScopusGoogle Scholar
+Moritz et al., 2024
+C. Moritz, E.C. Field-Fote, C. Tefertiller, I. Van Nes, R. Trumbower, S. Kalsi-Ryan, M. Purcell, T.W.J. Janssen, A. Krassioukov, L.R. Morse, K.D. Zhao, J. Guest, R.J. Marino, L.M. Murray, J.M. Wecht, M. Rieger, J. Pradarelli, A. Turner, J. D’Amico, J.W. Squair, G. Courtine
+Non-invasive spinal cord electrical stimulation for arm and hand function in chronic tetraplegia: a safety and efficacy trial
+Nat. Med., 30 (2024), pp. 1276-1283, 10.1038/s41591-024-02940-9
+View in ScopusGoogle Scholar
+Mugler et al., 2014
+E.M. Mugler, J.L. Patton, R.D. Flint, Z.A. Wright, S.U. Schuele, J. Rosenow, J.J. Shih, D.J. Krusienski, M.W. Slutzky
+Direct classification of all American English phonemes using signals from functional speech motor cortex
+J. Neural Eng., 11 (2014), Article 035015, 10.1088/1741-2560/11/3/035015
+View in ScopusGoogle Scholar
+Muheim et al., 2024
+J. Muheim, F. Iberite, O. Akouissi, R. Monney, F. Morosato, E. Gruppioni, S. Micera, S. Shokur
+A sensory-motor hand prosthesis with integrated thermal feedback
+Med, 5 (2024), pp. 118-125.e5, 10.1016/j.medj.2023.12.006
+View PDF
+View articleView in ScopusGoogle Scholar
+Muller-Putz and Pfurtscheller, 2008
+G.R. Muller-Putz, G. Pfurtscheller
+Control of an electrical prosthesis with an SSVEP-based BCI
+I.E.E.E. Trans. Biomed. Eng., 55 (2008), pp. 361-364, 10.1109/TBME.2007.897815
+View in ScopusGoogle Scholar
+Musk and Neuralink, , 2019
+E. Musk, Neuralink
+An integrated brain-machine interface platform with thousands of channels
+J. Med. Internet Res., 21 (2019), Article e16194, 10.2196/16194
+View in ScopusGoogle Scholar
+Nakanishi et al., 2018
+M. Nakanishi, Y. Wang, X. Chen, Y.-T. Wang, X. Gao, T.-P. Jung
+Enhancing detection of SSVEPs for a high-speed brain speller using task-related component analysis
+I.E.E.E. Trans. Biomed. Eng., 65 (2018), pp. 104-112, 10.1109/TBME.2017.2694818
+View in ScopusGoogle Scholar
+Nanivadekar et al., 2023
+A.C. Nanivadekar, R. Bose, B.A. Petersen, E.V. Okorokova, D. Sarma, T.J. Madonna, B. Barra, J. Farooqui, A.N. Dalrymple, I. Levy, E.R. Helm, V.J. Miele, M.L. Boninger, M. Capogrosso, S.J. Bensmaia, D.J. Weber, L.E. Fisher
+Restoration of sensory feedback from the foot and reduction of phantom limb pain via closed-loop spinal cord stimulation
+Nat. Biomed. Eng., 8 (2023), pp. 992-1003, 10.1038/s41551-023-01153-8
+Google Scholar
+Navarro et al., 2005
+X. Navarro, T.B. Krueger, N. Lago, S. Micera, T. Stieglitz, P. Dario
+A critical review of interfaces with the peripheral nervous system for the control of neuroprostheses and hybrid bionic systems
+J. Peripher. Nerv. Syst., 10 (2005), pp. 229-258, 10.1111/j.1085-9489.2005.10303.x
+View in ScopusGoogle Scholar
+Negro et al., 2016
+F. Negro, S. Muceli, A.M. Castronovo, A. Holobar, D. Farina
+Multi-channel intramuscular and surface EMG decomposition by convolutive blind source separation
+J. Neural Eng., 13 (2016), Article 026027, 10.1088/1741-2560/13/2/026027
+View in ScopusGoogle Scholar
+Nicolas-Alonso and Gomez-Gil, 2012
+L.F. Nicolas-Alonso, J. Gomez-Gil
+Brain computer interfaces, a review
+Sensors, 12 (2012), pp. 1211-1279, 10.3390/s120201211
+View in ScopusGoogle Scholar
+Nicolelis, 2001
+M.A.L. Nicolelis
+Actions from thoughts
+Nature, 409 (2001), pp. 403-407, 10.1038/35053191
+View in ScopusGoogle Scholar
+Nudo, 2013
+R.J. Nudo
+Recovery after brain injury: mechanisms and principles
+Front. Hum. Neurosci., 7 (2013), 10.3389/fnhum.2013.00887
+Google Scholar
+Oddo et al., 2016
+Oddo, C.M., Raspopovic, S., Artoni, F., Mazzoni, A., Spigler, G., Petrini, F., Giambattistelli, F., Vecchio, F., Miraglia, F., Zollo, L., Di Pino, G., Camboni, D., Carrozza, M.C., Guglielmelli, E., Rossini, P.M., Faraguna, U., Micera, S., 2016. Intraneural stimulation elicits discrimination of textural features by artificial fingertip in intact and amputee humans. eLife 5, e09148. doi:10.7554/eLife.09148.
+Google Scholar
+O’Doherty et al., 2011
+J.E. O’Doherty, M.A. Lebedev, P.J. Ifft, K.Z. Zhuang, S. Shokur, H. Bleuler, M.A.L. Nicolelis
+Active tactile exploration using a brain–machine–brain interface
+Nature, 479 (2011), pp. 228-231, 10.1038/nature10489
+View in ScopusGoogle Scholar
+Oliveira et al., 2024
+D.S. Oliveira, M. Ponfick, D.I. Braun, M. Osswald, M. Sierotowicz, S. Chatterjee, D. Weber, B. Eskofier, C. Castellini, D. Farina, T.M. Kinfe, A. Del Vecchio
+A direct spinal cord–computer interface enables the control of the paralysed hand in spinal cord injury
+Brain, 147 (2024), pp. 3583-3595, 10.1093/brain/awae088
+View in ScopusGoogle Scholar
+Ortiz-Catalan et al., 2014
+M. Ortiz-Catalan, B. Håkansson, R. Brånemark
+An osseointegrated human-machine gateway for long-term sensory feedback and motor control of artificial limbs
+Sci. Transl. Med., 6 (2014), Article 257re6-257re6, 10.1126/scitranslmed.3008933
+Google Scholar
+Ortiz-Catalan et al., 2020
+M. Ortiz-Catalan, E. Mastinu, P. Sassu, O. Aszmann, R. Brånemark
+Self-contained neuromusculoskeletal arm prostheses
+N. Engl. J. Med., 382 (2020), pp. 1732-1738, 10.1056/NEJMoa1917537
+View in ScopusGoogle Scholar
+Park et al., 2025
+J.M. Park, H.J. Park, S.Y. Yoon, Y.W. Kim, J.I. Shin, S.C. Lee
+Effects of robot-assisted therapy for upper limb rehabilitation after stroke: an umbrella review of systematic reviews
+Stroke, 56 (2025), pp. 1243-1252, 10.1161/STROKEAHA.124.048183
+View in ScopusGoogle Scholar
+Pasley et al., 2012
+B.N. Pasley, S.V. David, N. Mesgarani, A. Flinker, S.A. Shamma, N.E. Crone, R.T. Knight, E.F. Chang
+Reconstructing speech from human auditory cortex
+PLoS Biol., 10 (2012), Article e1001251, 10.1371/journal.pbio.1001251
+View in ScopusGoogle Scholar
+Peckham et al., 2001
+P.H. Peckham, M.W. Keith, K.L. Kilgore, J.H. Grill, K.S. Wuolle, G.B. Thrope, P. Gorman, J. Hobby, M.J. Mulcahey, S. Carroll, V.R. Hentz, A. Wiegner
+Efficacy of an implanted neuroprosthesis for restoring hand grasp in tetraplegia: a multicenter study
+Arch. Phys. Med. Rehabil., 82 (2001), pp. 1380-1388, 10.1053/apmr.2001.25910
+View PDF
+View articleView in ScopusGoogle Scholar
+Petrini et al., 2019a
+F.M. Petrini, M. Bumbasirevic, G. Valle, V. Ilic, P. Mijović, P. Čvančara, F. Barberi, N. Katic, D. Bortolotti, D. Andreu, K. Lechler, A. Lesic, S. Mazic, B. Mijović, D. Guiraud, T. Stieglitz, A. Alexandersson, S. Micera, S. Raspopovic
+Sensory feedback restoration in leg amputees improves walking speed, metabolic cost and phantom pain
+Nat. Med., 25 (2019), pp. 1356-1363, 10.1038/s41591-019-0567-3
+View in ScopusGoogle Scholar
+Petrini et al., 2019b
+F.M. Petrini, G. Valle, M. Bumbasirevic, F. Barberi, D. Bortolotti, P. Cvancara, A. Hiairrassary, P. Mijovic, A.Ö. Sverrisson, A. Pedrocchi, J.-L. Divoux, I. Popovic, K. Lechler, B. Mijovic, D. Guiraud, T. Stieglitz, A. Alexandersson, S. Micera, A. Lesic, S. Raspopovic
+Enhancing functional abilities and cognitive integration of the lower limb prosthesis
+Sci. Transl. Med., 11 (2019), Article eaav8939, 10.1126/scitranslmed.aav8939
+View in ScopusGoogle Scholar
+Pfurtscheller et al., 2010
+G. Pfurtscheller, B.Z. Allison, G. Bauernfeind, C. Brunner, T. Solis Escalante, R. Scherer, T.O. Zander, G. Mueller-Putz, C. Neuper, N. Birbaumer
+The hybrid BCI
+Front. Neurosci., 4 (2010), 10.3389/fnpro.2010.00003
+Google Scholar
+Pfurtscheller and Neuper, 2001
+G. Pfurtscheller, C. Neuper
+Motor imagery and direct brain-computer communication
+Proc. IEEE, 89 (2001), pp. 1123-1134, 10.1109/5.939829
+View in ScopusGoogle Scholar
+Phillips et al., 2025
+A.A. Phillips, A.P. Gandhi, N. Hankov, S.D. Hernandez-Charpak, J. Rimok, A.V. Incognito, A.E.J. Nijland, M. D’Ercole, A. Watrin, M. Berney, A. Damianaki, G. Dumont, N. Macellari, L. De Herde, N. Intering, D. Smith, R. Miller, M.N. Smith, J. Lee, E. Baaklini, J.-B. Ledoux, J.G. Ordonnez, T. Newton, E.F. Meliadò, L. Duguet, C. Jacquet, L. Bole-Feysot, M. Rieger, K. Gelenitis, Y. Dumeny, M. Caban, D. Ganty, E. Paoles, T. Baumgartner, C. Harte, C.D. Sasportes, P. Romo, T. Vouga, J. Fasola, J. Ravier, M. Gautier, F. Merlos, R. Buschman, T. Milekovic, A. Rowald, S. Mandija, C.A.T. van den Berg, N. Kuster, E. Neufeld, E. Pralong, L. Hirt, S. Carda, F. Becce, E. Aleton, K. Rogan, P. Schoettker, G. Wuerzner, N. Langerak, N.L.W. Keijsers, B.K. Kwon, J.D. Guest, E. Ross, J. Murphy, E. Kurt, S. Casha, F. Girgis, I. van Nes, K.A. Larkin-Kaiser, R. Demesmaeker, L. Asboth, J.W. Squair, J. Bloch, G. Courtine
+An implantable system to restore hemodynamic stability after spinal cord injury
+Nat. Med., 31 (2025), pp. 2946-2957, 10.1038/s41591-025-03614-w
+View in ScopusGoogle Scholar
+Pistohl et al., 2008
+T. Pistohl, T. Ball, A. Schulze-Bonhage, A. Aertsen, C. Mehring
+Prediction of arm movement trajectories from ECoG-recordings in humans
+J. Neurosci. Methods Brain-Computer Interfaces (BCIs), 167 (2008), pp. 105-114, 10.1016/j.jneumeth.2007.10.001
+View PDF
+View articleView in ScopusGoogle Scholar
+Powell et al., 2023
+M.P. Powell, N. Verma, E. Sorensen, E. Carranza, A. Boos, D.P. Fields, S. Roy, S. Ensel, B. Barra, J. Balzer, J. Goldsmith, R.M. Friedlander, G.F. Wittenberg, L.E. Fisher, J.W. Krakauer, P.C. Gerszten, E. Pirondini, D.J. Weber, M. Capogrosso
+Epidural stimulation of the cervical spinal cord for post-stroke upper-limb paresis
+Nat. Med., 29 (2023), pp. 689-699, 10.1038/s41591-022-02202-6
+View in ScopusGoogle Scholar
+Prat-Ortega et al., 2025
+G. Prat-Ortega, S. Ensel, S. Donadio, L. Borda, A. Boos, P. Yadav, N. Verma, J. Ho, E. Carranza, S. Frazier-Kim, D.P. Fields, L.E. Fisher, D.J. Weber, J. Balzer, T. Duong, S.D. Weinstein, M.J.L. Eliasson, J. Montes, K.S. Chen, P.R. Clemens, P. Gerszten, G.Z. Mentis, E. Pirondini, R.M. Friedlander, M. Capogrosso
+First-in-human study of epidural spinal cord stimulation in individuals with spinal muscular atrophy
+Nat. Med., 31 (2025), pp. 1246-1256, 10.1038/s41591-024-03484-8
+View in ScopusGoogle Scholar
+Preatoni et al., 2023
+G. Preatoni, F. Dell’Eva, G. Valle, A. Pedrocchi, S. Raspopovic
+Reshaping the full body illusion through visuo-electro-tactile sensations
+PLoS One, 18 (2023), Article e0280628, 10.1371/journal.pone.0280628
+View in ScopusGoogle Scholar
+Preston and Shapiro, 2012
+Preston, D.C., Shapiro, B.E., 2012. Electromyography and Neuromuscular Disorders E-Book: Clinical-Electrophysiologic Correlations. Elsevier Health Sciences.
+Google Scholar
+Qi et al., 2025
+Z. Qi, H. Liu, F. Jin, Y. Wang, X. Lu, L. Liu, Z. Yang, L. Fan, M. Song, N. Zuo, T. Jiang
+A wearable repetitive transcranial magnetic stimulation device
+Nat. Commun., 16 (2025), p. 2731, 10.1038/s41467-025-58095-9
+View in ScopusGoogle Scholar
+Raspopovic, 2021
+S. Raspopovic
+Neurorobotics for neurorehabilitation
+Science, 373 (2021), pp. 634-635, 10.1126/science.abj5259
+View in ScopusGoogle Scholar
+Raspopovic, 2020
+S. Raspopovic
+Advancing limb neural prostheses
+Science, 370 (2020), pp. 290-291, 10.1126/science.abb1073
+View in ScopusGoogle Scholar
+Raspopovic et al., 2011
+S. Raspopovic, M. Capogrosso, S. Micera
+A computational model for the stimulation of rat sciatic nerve using a transverse intrafascicular multichannel electrode
+IEEE Trans. Neural Syst. Rehabil. Eng., 19 (2011), pp. 333-344, 10.1109/TNSRE.2011.2151878
+View in ScopusGoogle Scholar
+Raspopovic et al., 2014
+S. Raspopovic, M. Capogrosso, F.M. Petrini, M. Bonizzato, J. Rigosa, G. Di Pino, J. Carpaneto, M. Controzzi, T. Boretius, E. Fernandez, G. Granata, C.M. Oddo, L. Citi, A.L. Ciancio, C. Cipriani, M.C. Carrozza, W. Jensen, E. Guglielmelli, T. Stieglitz, P.M. Rossini, S. Micera
+Restoring natural sensory feedback in real-time bidirectional hand prostheses
+Sci. Transl. Med., 6 (2014), Article 222ra19-222ra19, 10.1126/scitranslmed.3006820
+Google Scholar
+Rastogi et al., 2020
+A. Rastogi, C.E. Vargas-Irwin, F.R. Willett, J. Abreu, D.C. Crowder, B.A. Murphy, W.D. Memberg, J.P. Miller, J.A. Sweet, B.L. Walter, S.S. Cash, P.G. Rezaii, B. Franco, J. Saab, S.D. Stavisky, K.V. Shenoy, J.M. Henderson, L.R. Hochberg, R.F. Kirsch, A.B. Ajiboye
+Neural representation of observed, imagined, and attempted grasping force in motor cortex of individuals with chronic tetraplegia
+Sci. Rep., 10 (2020), p. 1429, 10.1038/s41598-020-58097-1
+View in ScopusGoogle Scholar
+Rektorová et al., 2025
+I. Rektorová, M. Pupíková, L. Fleury, L. Brabenec, F.C. Hummel
+Non-invasive brain stimulation: current and future applications in neurology
+Nat. Rev. Neurol., 21 (2025), pp. 669-686, 10.1038/s41582-025-01137-z
+View in ScopusGoogle Scholar
+Risso et al., 2022
+G. Risso, G. Preatoni, G. Valle, M. Marazzi, N.M. Bracher, S. Raspopovic
+Multisensory stimulation decreases phantom limb distortions and is optimally integrated
+iScience, 25 (2022), Article 104129, 10.1016/j.isci.2022.104129
+View PDF
+View articleView in ScopusGoogle Scholar
+Roediger et al., 2023
+J. Roediger, T.A. Dembek, J. Achtzehn, J.L. Busch, A.-P. Krämer, K. Faust, G.-H. Schneider, P. Krause, A. Horn, A.A. Kühn
+Automated deep brain stimulation programming based on electrode location: a randomised, crossover trial using a data-driven algorithm
+Lancet Digit. Health, 5 (2023), pp. e59-e70, 10.1016/S2589-7500(22)00214-X
+View PDF
+View articleView in ScopusGoogle Scholar
+Romero et al., 2019
+M.C. Romero, M. Davare, M. Armendariz, P. Janssen
+Neural effects of transcranial magnetic stimulation at the single-cell level
+Nat. Commun., 10 (2019), p. 2642, 10.1038/s41467-019-10638-7
+View in ScopusGoogle Scholar
+Rossini et al., 2015
+P.M. Rossini, D. Burke, R. Chen, L.G. Cohen, Z. Daskalakis, R. Di Iorio, V. Di Lazzaro, F. Ferreri, P.B. Fitzgerald, M.S. George, M. Hallett, J.P. Lefaucheur, B. Langguth, H. Matsumoto, C. Miniussi, M.A. Nitsche, A. Pascual-Leone, W. Paulus, S. Rossi, J.C. Rothwell, H.R. Siebner, Y. Ugawa, V. Walsh, U. Ziemann
+Non-invasive electrical and magnetic stimulation of the brain, spinal cord, roots and peripheral nerves: basic principles and procedures for routine clinical and research application. an updated report from an I.F.C.N
+Committee. Clin. Neurophysiol., 126 (2015), pp. 1071-1107, 10.1016/j.clinph.2015.02.001
+View PDF
+View articleView in ScopusGoogle Scholar
+Rowald et al., 2022
+A. Rowald, S. Komi, R. Demesmaeker, E. Baaklini, S.D. Hernandez-Charpak, E. Paoles, H. Montanaro, A. Cassara, F. Becce, B. Lloyd, T. Newton, J. Ravier, N. Kinany, M. D’Ercole, A. Paley, N. Hankov, C. Varescon, L. McCracken, M. Vat, M. Caban, A. Watrin, C. Jacquet, L. Bole-Feysot, C. Harte, H. Lorach, A. Galvez, M. Tschopp, N. Herrmann, M. Wacker, L. Geernaert, I. Fodor, V. Radevich, K. Van Den Keybus, G. Eberle, E. Pralong, M. Roulet, J.-B. Ledoux, E. Fornari, S. Mandija, L. Mattera, R. Martuzzi, B. Nazarian, S. Benkler, S. Callegari, N. Greiner, B. Fuhrer, M. Froeling, N. Buse, T. Denison, R. Buschman, C. Wende, D. Ganty, J. Bakker, V. Delattre, H. Lambert, K. Minassian, C.A.T. Van Den Berg, A. Kavounoudias, S. Micera, D. Van De Ville, Q. Barraud, E. Kurt, N. Kuster, E. Neufeld, M. Capogrosso, L. Asboth, F.B. Wagner, J. Bloch, G. Courtine
+Activity-dependent spinal cord neuromodulation rapidly restores trunk and leg motor functions after complete paralysis
+Nat. Med., 28 (2022), pp. 260-271, 10.1038/s41591-021-01663-5
+View in ScopusGoogle Scholar
+Rupprechter et al., 2021
+S. Rupprechter, G. Morinan, Y. Peng, T. Foltynie, K. Sibley, R.S. Weil, L.-A. Leyland, F. Baig, F. Morgante, R. Gilron, R. Wilt, P. Starr, R.A. Hauser, J. O’Keeffe
+A clinically interpretable computer-vision based method for quantifying gait in Parkinson’s disease
+Sensors, 21 (2021), 10.3390/s21165437
+Google Scholar
+Srinivasan et al., 2022
+S. Srinivasan, S., M. Herr, H., 2022. A cutaneous mechanoneural interface for neuroprosthetic feedback. Nat. Biomed. Eng. 6, 731–740. doi:10.1038/s41551-020-00669-7.
+Google Scholar
+Saha and Baumert, 2020
+S. Saha, M. Baumert
+Intra- and inter-subject variability in EEG-based sensorimotor brain computer interface: a review
+Front. Comput. Neurosci., 13 (2020), 10.3389/fncom.2019.00087
+Google Scholar
+Sanna et al., 2025
+N. Sanna, R. Nossa, E. Biffi, E. Guanziroli, E. Diella, S. Ferrante, F. Molteni, D. Peruzzo, N. Casali, A. Mastropietro, G. Rizzo, M. Tarabini, A. Pedrocchi, E. Ambrosini
+Evaluating the health and fitness benefits of a 6-month FES-cycling program on a recumbent trike for individuals with motor complete SCI: a pilot study
+J. NeuroEngineering Rehabil., 22 (2025), p. 55, 10.1186/s12984-025-01585-0
+View in ScopusGoogle Scholar
+Sartori et al., 2016
+M. Sartori, D.G. Llyod, D. Farina
+Neural data-driven musculoskeletal modeling for personalized neurorehabilitation technologies
+I.E.E.E. Trans. Biomed. Eng., 63 (2016), pp. 879-893, 10.1109/TBME.2016.2538296
+View in ScopusGoogle Scholar
+Sasaki et al., 2025
+Sasaki, A., Fadli, R.A., Yuasa, A., Boogaart, Z., Saito, H., Musikic, N., Freitas, R. de, Macellari, N., Davis, K.C., Datta, N., Piedade, G.S., Tigchelaar, S., Ivan, M.E., Dietrich, W.D., Desai, N., Zivanovic, V., Popovic, M.R., Pirondini, E., Jagid, J., Prasad, A., Guest, J.D., Capogrosso, M., Cordeiro, J.G., Milosevic, M., 2025. Brain-controlled epidural stimulation restores corticospinal connectivity to improve upper-limb function in chronic tetraplegia. doi:10.1101/2025.07.02.25330433.
+Google Scholar
+Schalk et al., 2008
+G. Schalk, K.J. Miller, N.R. Anderson, J.A. Wilson, M.D. Smyth, J.G. Ojemann, D.W. Moran, J.R. Wolpaw, E.C. Leuthardt
+Two-dimensional movement control using electrocorticographic signals in humans
+J. Neural Eng., 5 (2008), p. 75, 10.1088/1741-2560/5/1/008
+View in ScopusGoogle Scholar
+Scheme and Englehart, 2011
+E. Scheme, K. Englehart
+Electromyogram pattern recognition for control of powered upper-limb prostheses: state of the art and challenges for clinical use
+J. Rehabil. Res. Dev., 48 (2011), pp. 643-659, 10.1682/jrrd.2010.09.0177
+Google Scholar
+Schiefer et al., 2018
+M.A. Schiefer, E.L. Graczyk, S.M. Sidik, D.W. Tan, D.J. Tyler
+Artificial tactile and proprioceptive feedback improves performance and confidence on object identification tasks
+PLoS One, 13 (2018), Article e0207659, 10.1371/journal.pone.0207659
+View in ScopusGoogle Scholar
+Schweisfurth et al., 2016
+M.A. Schweisfurth, M. Markovic, S. Dosen, F. Teich, B. Graimann, D. Farina
+Electrotactile EMG feedback improves the control of prosthesis grasping force
+J. Neural Eng., 13 (2016), Article 056010, 10.1088/1741-2560/13/5/056010
+View in ScopusGoogle Scholar
+Scott, 2004
+S.H. Scott
+Optimal feedback control and the neural basis of volitional motor control
+Nat. Rev. Neurosci., 5 (2004), pp. 532-545, 10.1038/nrn1427
+Google Scholar
+Shadmehr et al., 2010
+R. Shadmehr, M.A. Smith, J.W. Krakauer
+Error correction, sensory prediction, and adaptation in motor control
+Annu. Rev. Neurosci., 33 (2010), pp. 89-108, 10.1146/annurev-neuro-060909-153135
+View in ScopusGoogle Scholar
+Sheffler and Chae, 2007
+L.R. Sheffler, J. Chae
+Neuromuscular electrical stimulation in neurorehabilitation
+Muscle Nerve, 35 (2007), pp. 562-590, 10.1002/mus.20758
+View in ScopusGoogle Scholar
+Shelchkova et al., 2023
+N.D. Shelchkova, J.E. Downey, C.M. Greenspon, E.V. Okorokova, A.R. Sobinov, C. Verbaarschot, Q. He, C. Sponheim, A.F. Tortolani, D.D. Moore, M.T. Kaufman, R.C. Lee, D. Satzer, J. Gonzalez-Martinez, P.C. Warnke, L.E. Miller, M.L. Boninger, R.A. Gaunt, J.L. Collinger, N.G. Hatsopoulos, S.J. Bensmaia
+Microstimulation of human somatosensory cortex evokes task-dependent, spatially patterned responses in motor cortex
+Nat. Commun., 14 (2023), p. 7270, 10.1038/s41467-023-43140-2
+View in ScopusGoogle Scholar
+Shu et al., 2024
+T. Shu, G. Herrera-Arcos, C.R. Taylor, H.M. Herr
+Mechanoneural interfaces for bionic integration
+Nat. Rev. Bioeng., 2 (2024), pp. 374-391, 10.1038/s44222-024-00151-y
+View in ScopusGoogle Scholar
+Slutzky, 2019
+M.W. Slutzky
+Brain-machine interfaces: powerful tools for clinical treatment and neuroscientific investigations
+Neuroscientist, 25 (2019), pp. 139-154, 10.1177/1073858418775355
+View in ScopusGoogle Scholar
+Soghoyan et al., 2023
+G. Soghoyan, A. Biktimirov, Y. Matvienko, I. Chekh, M. Sintsov, M.A. Lebedev
+Peripheral nerve stimulation enables somatosensory feedback while suppressing phantom limb pain in transradial amputees
+Brain Stimulat., 16 (2023), pp. 756-758, 10.1016/j.brs.2023.04.017
+View PDF
+View articleView in ScopusGoogle Scholar
+Spensley, 2007
+Spensley, J., 2007. STIMuGRIP; a new hand control implant. Annu. Int. Conf. IEEE Eng. Med. Biol. Soc. IEEE Eng. Med. Biol. Soc. Annu. Int. Conf. 2007, 513. doi:10.1109/IEMBS.2007.4352336.
+Google Scholar
+Srinivasan et al., 2020
+S.S. Srinivasan, G. Tuckute, J. Zou, S. Gutierrez-Arango, H. Song, R.L. Barry, H.M. Herr
+Agonist-antagonist myoneural interface amputation preserves proprioceptive sensorimotor neurophysiology in lower limbs
+Sci. Transl. Med., 12 (2020), Article eabc5926, 10.1126/scitranslmed.abc5926
+View in ScopusGoogle Scholar
+Stephens-Fripp et al., 2018
+B. Stephens-Fripp, G. Alici, R. Mutlu
+A review of non-invasive sensory feedback methods for transradial prosthetic hands
+IEEE Access, 6 (2018), pp. 6878-6899, 10.1109/ACCESS.2018.2791583
+View in ScopusGoogle Scholar
+Štrbac et al., 2016
+M. Štrbac, M. Belić, M. Isaković, V. Kojić, G. Bijelić, I. Popović, M. Radotić, S. Došen, M. Marković, D. Farina, T. Keller
+Integrated and flexible multichannel interface for electrotactile stimulation
+J. Neural Eng., 13 (2016), Article 046014, 10.1088/1741-2560/13/4/046014
+View in ScopusGoogle Scholar
+Tabot et al., 2013
+G.A. Tabot, J.F. Dammann, J.A. Berg, F.V. Tenore, J.L. Boback, R.J. Vogelstein, S.J. Bensmaia
+Restoring the sense of touch with a prosthetic hand through a brain interface
+Proc. Natl. Acad. Sci., 110 (2013), pp. 18279-18284, 10.1073/pnas.1221113110
+View in ScopusGoogle Scholar
+Tacca et al., 2024
+N. Tacca, C. Dunlap, S.P. Donegan, J.O. Hardin, E. Meyers, M.J. Darrow, S. Colachis IV, A. Gillman, D.A. Friedenberg
+Wearable high-density EMG sleeve for complex hand gesture classification and continuous joint angle estimation
+Sci. Rep., 14 (2024), p. 18564, 10.1038/s41598-024-64458-x
+View in ScopusGoogle Scholar
+Tacca et al., 2026
+N. Tacca, J.T. Levine, M.K. Heimann, B.R. Schlink, S. Cady, S.C. Colachis, I. Baumgart, A. Bollinger, C. Dunlap, P. Putnam, M.J. Darrow, L. Wengerd, J.L. Pons, D.A. Friedenberg, E.C. Meyers
+Leveraging neural drive to assess hand motor function in individuals with chronic stroke
+J. NeuroEngineering Rehabil., 23 (2026), p. 7, 10.1186/s12984-025-01806-6
+View in ScopusGoogle Scholar
+Tam et al., 2019
+W. Tam, T. Wu, Q. Zhao, E. Keefer, Z. Yang
+Human motor decoding from neural signals: a review
+BMC Biomed. Eng., 1 (2019), p. 22, 10.1186/s42490-019-0022-z
+Google Scholar
+Tamburella et al., 2022
+F. Tamburella, M. Lorusso, M. Tramontano, S. Fadlun, M. Masciullo, G. Scivoletto
+Overground robotic training effects on walking and secondary health conditions in individuals with spinal cord injury: systematic review
+J. NeuroEngineering Rehabil., 19 (2022), p. 27, 10.1186/s12984-022-01003-9
+View in ScopusGoogle Scholar
+Tang et al., 2026
+Y. Tang, Y. Wang, W. Zhang, X. Liu, Y. Li, W. Hu, L. Ding, F. Feng, X. Chen, J. Feng, S. Xu, S. Chen, J. Wang
+Magnetic NeuroRing: a portable adaptive brain-computer interface for real-time transcranial magnetic stimulation in post-stroke motor rehabilitation
+Npj Biomed. Innov., 3 (2026), p. 4, 10.1038/s44385-025-00055-5
+Google Scholar
+Tanzarella et al., 2019
+Tanzarella, S., Muceli, S., Del Vecchio, A., Casolo, A., Farina, D., 2019. A high-density surface EMG framework for the study of motor neurons controlling the intrinsic and extrinsic muscles of the hand, in: 2019 41st Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC). Presented at the 2019 41st Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), pp. 2307–2310. doi:10.1109/EMBC.2019.8856825.
+Google Scholar
+Thibaut and Martens, 2024
+A. Thibaut, G. Martens
+Neuromodulation for severe brain injury: time for a paradigm shift?
+Nat. Rev. Neurol., 20 (2024), pp. 441-442, 10.1038/s41582-024-00980-w
+View in ScopusGoogle Scholar
+Timmermann et al., 2015
+L. Timmermann, R. Jain, L. Chen, M. Maarouf, M.T. Barbe, N. Allert, T. Brücke, I. Kaiser, S. Beirer, F. Sejio, E. Suarez, B. Lozano, C. Haegelen, M. Vérin, M. Porta, D. Servello, S. Gill, A. Whone, N.V. Dyck, F. Alesch
+Multiple-source current steering in subthalamic nucleus deep brain stimulation for Parkinson’s disease (the VANTAGE study): a non-randomised, prospective, multicentre, open-label study
+Lancet Neurol., 14 (2015), pp. 693-701, 10.1016/S1474-4422(15)00087-3
+View PDF
+View articleView in ScopusGoogle Scholar
+Tresch et al., 1999
+M.C. Tresch, P. Saltiel, E. Bizzi
+The construction of movement by the spinal cord
+Nat. Neurosci., 2 (1999), pp. 162-167, 10.1038/5721
+View in ScopusGoogle Scholar
+Urso et al., 2025
+D. Urso, M.H.G. Monje, B. Fernández-Rodríguez, L. Vela-Desojo, A. Oliviero, G. Foffani, C. Ammann
+Transcranial static magnetic field stimulation of the primary motor cortex in essential tremor: a randomized pilot study
+Npj Park. Dis., 11 (2025), p. 336, 10.1038/s41531-025-01182-x
+View in ScopusGoogle Scholar
+Valle, 2025
+G. Valle
+Cortical somatosensory feedback for brain-controlled bionic hands
+Nat. Rev. Electr. Eng., 2 (2025), pp. 704-706, 10.1038/s44287-025-00218-x
+Google Scholar
+Valle et al., 2022
+G. Valle, G. Aiello, F. Ciotti, P. Cvancara, T. Martinovic, T. Kravic, X. Navarro, T. Stieglitz, M. Bumbasirevic, S. Raspopovic
+Multifaceted understanding of human nerve implants to design optimized electrodes for bioelectronics
+Biomaterials, 291 (2022), Article 121874, 10.1016/j.biomaterials.2022.121874
+View PDF
+View articleView in ScopusGoogle Scholar
+Valle et al., 2024
+G. Valle, N. Katic Secerovic, D. Eggemann, O. Gorskii, N. Pavlova, F.M. Petrini, P. Cvancara, T. Stieglitz, P. Musienko, M. Bumbasirevic, S. Raspopovic
+Biomimetic computer-to-brain communication enhancing naturalistic touch sensations via peripheral nerve stimulation
+Nat. Commun., 15 (2024), p. 1151, 10.1038/s41467-024-45190-6
+View in ScopusGoogle Scholar
+Valle et al., 2018
+G. Valle, A. Mazzoni, F. Iberite, E. D’Anna, I. Strauss, G. Granata, M. Controzzi, F. Clemente, G. Rognini, C. Cipriani, T. Stieglitz, F.M. Petrini, P.M. Rossini, S. Micera
+Biomimetic intraneural sensory feedback enhances sensation naturalness, tactile sensitivity, and manual dexterity in a bidirectional prosthesis
+Neuron, 100 (2018), pp. 37-45.e7, 10.1016/j.neuron.2018.08.033
+View PDF
+View articleView in ScopusGoogle Scholar
+Valle et al., 2021
+G. Valle, A. Saliji, E. Fogle, A. Cimolato, F.M. Petrini, S. Raspopovic
+Mechanisms of neuro-robotic prosthesis operation in leg amputees
+Sci. Adv., 7 (2021), Article eabd8354, 10.1126/sciadv.abd8354
+View in ScopusGoogle Scholar
+Varghese et al., 2024
+J. Varghese, A. Brenner, M. Fujarski, C.M. van Alen, L. Plagwitz, T. Warnecke
+Machine Learning in the Parkinson’s disease smartwatch (PADS) dataset
+Npj Park. Dis., 10 (2024), p. 9, 10.1038/s41531-023-00625-7
+View in ScopusGoogle Scholar
+Vitek et al., 2020
+Vitek, J.L., Jain, R., Chen, L., Tröster, A.I., Schrock, L.E., House, P.A., Giroux, M.L., Hebb, A.O., Farris, S.M., Whiting, D.M., Leichliter, T.A., Ostrem, J.L., Luciano, M.S., Galifianakis, N., Metman, L.V., Sani, S., Karl, J.A., Siddiqui, M.S., Tatter, S.B., Haq, I. ul, Machado, A.G., Gostkowski, M., Tagliati, M., Mamelak, A.N., Okun, M.S., Foote, K.D., Moguel-Cobos, G., Ponce, F.A., Pahwa, R., Nazzaro, J.M., Buetefisch, C.M., Gross, R.E., Luca, C.C., Jagid, J.R., Revuelta, G.J., Takacs, I., Pourfar, M.H., Mogilner, A.Y., Duker, A.P., Mandybur, G.T., Rosenow, J.M., Cooper, S.E., Park, M.C., Khandhar, S.M., Sedrak, M., Phibbs, F.T., Pilitsis, J.G., Uitti, R.J., Starr, P.A., 2020. Subthalamic nucleus deep brain stimulation with a multiple independent constant current-controlled device in Parkinson’s disease (INTREPID): a multicentre, double-blind, randomised, sham-controlled study. Lancet Neurol. 19, 491–501. doi:10.1016/S1474-4422(20)30108-3.
+Google Scholar
+Vu et al., 2020
+P.P. Vu, A.K. Vaskov, Z.T. Irwin, P.T. Henning, D.R. Lueders, A.T. Laidlaw, A.J. Davis, C.S. Nu, D.H. Gates, R.B. Gillespie, S.W.P. Kemp, T.A. Kung, C.A. Chestek, P.S. Cederna
+A regenerative peripheral nerve interface allows real-time control of an artificial hand in upper limb amputees
+Sci. Transl. Med., 12 (2020), Article eaay2857, 10.1126/scitranslmed.aay2857
+View in ScopusGoogle Scholar
+Wagner et al., 2018
+F.B. Wagner, J.B. Mignardot, C.G. Le Goff-Mignardot, R. Demesmaeker, S. Komi, M. Capogrosso, A. Rowald, I. Seáñez, M. Caban, E. Pirondini, M. Vat, L.A. McCracken, R. Heimgartner, I. Fodor, A. Watrin, P. Seguin, E. Paoles, K. Van Den Keybus, G. Eberle, B. Schurch, E. Pralong, F. Becce, J. Prior, N. Buse, R. Buschman, E. Neufeld, N. Kuster, S. Carda, J. von Zitzewitz, V. Delattre, T. Denison, H. Lambert, K. Minassian, J. Bloch, G. Courtine
+Targeted neurotechnology restores walking in humans with spinal cord injury
+Nature, 563 (2018), pp. 65-93, 10.1038/s41586-018-0649-2
+View in ScopusGoogle Scholar
+Walsh et al., 2023
+A.R. Walsh, J. Lu, E. Rodriguez, S. Diamond, S.M. Sultan
+The current state of targeted muscle reinnervation: a systematic review
+J. Reconstr. Microsurg., 39 (2023), pp. 238-244, 10.1055/s-0042-1755262
+View in ScopusGoogle Scholar
+Wang et al., 2012
+Z. Wang, A. Gunduz, P. Brunner, A.L. Ritaccio, Q. Ji, G. Schalk
+Decoding onset and direction of movements using Electrocorticographic (ECoG) signals in humans
+Front. Neuroengineering, 5 (2012), 10.3389/fneng.2012.00015
+Google Scholar
+Whittle et al., 1986
+I.R. Whittle, I.H. Johnston, M. Besser
+Recording of spinal somatosensory evoked potentials for intraoperative spinal cord monitoring
+J. Neurosurg., 64 (1986), pp. 601-612, 10.3171/jns.1986.64.4.0601
+View in ScopusGoogle Scholar
+Willett et al., 2021
+F.R. Willett, D.T. Avansino, L.R. Hochberg, J.M. Henderson, K.V. Shenoy
+High-performance brain-to-text communication via handwriting
+Nature, 593 (2021), pp. 249-254, 10.1038/s41586-021-03506-2
+View in ScopusGoogle Scholar
+Willsey et al., 2025
+M.S. Willsey, N.P. Shah, D.T. Avansino, N.V. Hahn, R.M. Jamiolkowski, F.B. Kamdar, L.R. Hochberg, F.R. Willett, J.M. Henderson
+A high-performance brain–computer interface for finger decoding and quadcopter game control in an individual with paralysis
+Nat. Med., 31 (2025), pp. 96-104, 10.1038/s41591-024-03341-8
+View in ScopusGoogle Scholar
+Wodlinger et al., 2014
+B. Wodlinger, J.E. Downey, E.C. Tyler-Kabara, A.B. Schwartz, M.L. Boninger, J.L. Collinger
+Ten-dimensional anthropomorphic arm control in a human brain−machine interface: difficulties, solutions, and limitations
+J. Neural Eng., 12 (2014), Article 016011, 10.1088/1741-2560/12/1/016011
+Google Scholar
+Wolpaw, 2013
+Wolpaw, J.R., 2013. Brain–computer interfaces, in: Handbook of Clinical Neurology, Chapter 6. Elsevier, pp. 67–74. doi:10.1016/B978-0-444-52901-5.00006-X.
+Google Scholar
+Wolpaw and McFarland, 2004
+J.R. Wolpaw, D.J. McFarland
+Control of a two-dimensional movement signal by a noninvasive brain-computer interface in humans
+Proc. Natl. Acad. Sci., 101 (2004), pp. 17849-17854, 10.1073/pnas.0403504101
+View in ScopusGoogle Scholar
+Wolpert et al., 1995
+D.M. Wolpert, Z. Ghahramani, M.I. Jordan
+An Internal Model for Sensorimotor Integration
+Science, 269 (1995), pp. 1880-1882, 10.1126/science.7569931
+View in ScopusGoogle Scholar
+Wu et al., 2025
+M. Wu, W. Song, X. Wang, L. Teng, J. Li, J. Zhang, X. Li, D. Yu, H. Jia, B. Wang, Q. Tang, L. Zhu
+Efficacy of non-invasive brain stimulation interventions on cognitive impairment: an umbrella review of meta-analyses of randomized controlled trials
+J. NeuroEngineering Rehabil., 22 (2025), p. 22, 10.1186/s12984-025-01566-3
+View in ScopusGoogle Scholar
+Wu et al., 2024
+X. Wu, B. Metcalfe, S. He, H. Tan, D. Zhang
+A review of motor brain-computer interfaces using intracranial electroencephalography based on surface electrodes and depth electrodes
+IEEE Trans. Neural Syst. Rehabil. Eng., 32 (2024), pp. 2408-2431, 10.1109/TNSRE.2024.3421551
+View in ScopusGoogle Scholar
+Xie et al., 2024
+A. Xie, Z. Zhang, J. Zhang, T. Li, W. Chen, J. Patton, N. Lan
+Biomimetic strategies of slip sensing, perception, and protection in prosthetic hand grasp
+Biomimetics, 9 (2024), 10.3390/biomimetics9120751
+Google Scholar
+Xie et al., 2016
+J. Xie, G. Xu, J. Wang, M. Li, C. Han, Y. Jia
+Effects of mental load and fatigue on steady-state evoked potential based brain computer interface tasks: a comparison of periodic flickering and motion-reversal based visual attention
+PLoS One, 11 (2016), Article e0163426, 10.1371/journal.pone.0163426
+View in ScopusGoogle Scholar
+Xu et al., 2013
+M. Xu, H. Qi, B. Wan, T. Yin, Z. Liu, D. Ming
+A hybrid BCI speller paradigm combining P300 potential and the SSVEP blocking feature
+J. Neural Eng., 10 (2013), Article 026001, 10.1088/1741-2560/10/2/026001
+View in ScopusGoogle Scholar
+Yao et al., 2026
+H. Yao, G.V. Aurucci, N. Gozzi, F. Davidhi, S. Raspopovic
+Multimodal experimental platform to disentangle emotional and physiological pain components
+I.E.E.E. Trans. Biomed. Eng., 73 (2026), pp. 793-802, 10.1109/TBME.2025.3593280
+View in ScopusGoogle Scholar
+Zhang et al., 2024a
+J. Zhang, C.-H. Chou, M. Hao, W. Liang, Z. Zhang, A. Xie, J.L. Patton, W. Pei, N. Lan
+Somatotopically evoked tactile sensation via transcutaneous electrical nerve stimulation improves prosthetic sensorimotor performance
+IEEE Trans. Neural Syst. Rehabil. Eng., 32 (2024), pp. 2815-2825, 10.1109/TNSRE.2024.3435570
+View in ScopusGoogle Scholar
+Zhang et al., 2024b
+Zhang, Y., Cao, J., Dong, Y., Li, Q., Huang, J., Jiang, N., Li, G., Liang, W., Fang, P., 2024. Restoration of Tactile Sensation for Prosthetic Users by Non-Invasive Electrical Stimulation and Assessment with EEG*, in: 2024 IEEE International Conference on Real-Time Computing and Robotics (RCAR). Presented at the 2024 IEEE International Conference on Real-time Computing and Robotics (RCAR), pp. 437–442. doi:10.1109/RCAR61438.2024.10670955.
+Google Scholar
+Zhou et al., 2007
+P. Zhou, M.M. Lowery, K.B. Englehart, H. Huang, G. Li, L. Hargrove, J.P.A. Dewald, T.A. Kuiken
+Decoding a new neural–machine interface for control of artificial limbs
+J. Neurophysiol., 98 (2007), pp. 2974-2982, 10.1152/jn.00178.2007
+View in ScopusGoogle Scholar
+Cited by (3)
+The prospects and challenges of closed-loop high-bandwidth brain-to-body-and-machine interfacing
+2026, Clinical Neurophysiology
+Hybrid Decision-Making Management for Material Selection in the Design of Wearable Pressure-Sensing Orthoses in Neurorehabilitation
+2026, Biomimetics
+A Federated Explainable AI Framework for Privacy-Preserving Brain Stroke Risk Prediction Using Clinical Data
+2026, Proceedings of the 3rd International Conference on Innovations in Cybersecurity and Data Science, ICICDS 2026
+1
+These authors contributed equally to this work.
+© 2026 The Authors. Published by Elsevier B.V. on behalf of International Federation of Clinical Neurophysiology.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.

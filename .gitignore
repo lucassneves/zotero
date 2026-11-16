@@ -1,0 +1,18 @@
+# Arquivo compactado acima do limite de 100 MB do GitHub
+zotero.zip
+
+# Arquivos temporários, de lock e WAL do SQLite / Office
+~$*
+.~lock.*
+*.sqlite-shm
+*.sqlite-wal
+*.tmp-shm
+*.tmp-wal
+*.bak
+storage/tmp-*/
+
+# Temporários do sistema / Python
+__pycache__/
+*.pyc
+Thumbs.db
+Desktop.ini

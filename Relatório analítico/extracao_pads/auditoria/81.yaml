@@ -1,0 +1,383 @@
+meta:
+  row_id: 81
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "WKHH536I"
+  titulo: "Energy Optimized Feature Engineering for Parkinson’s Disease Detection Using Wearable Sensor Data"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: "Abstract, p. 1 — 'utilizing wearable sensor data from the publicly accessible Parkinson’s Disease Smartwatch (PADS) dataset.'"
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 81
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Rodapé, p. 1 — '2026 11th International Conference on Machine Learning Technologies (ICMLT) | 979-8-3315-4865-0/26/$31.00 ©2026 IEEE | DOI: 10.1109/ICMLT69916.2026.11689215'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'This paper presents an energy efficient machine learning framework for the detection of Parkinson’s Disease (PD)'"
+    auditoria: "CONCORDA"
+    observacao: "Propõe um pipeline de engenharia de atributos de energia quadrática em janelas + FFT combinado a uma arquitetura em duas vias (incluindo ensemble ANN–BiLSTM), além de realizar comparação sistemática entre 6 modelos (SVM, ANN, CNN, BiLSTM, Random Forest e ANN–BiLSTM)."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 diferente de Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 2 — 'The data for this project comes from the Parkinson’s Disease Smartwatch (PADS) dataset'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 2 — 'The data for this project comes from the Parkinson’s Disease Smartwatch (PADS) dataset including 469 participants'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Apenas o PADS foi utilizado nos experimentos"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 3 — 'The proposed PD detection architecture employs three axis accelerometer and gyroscope data obtained from wrist worn sensors [1].'"
+    auditoria: "CONCORDA"
+    observacao: "Há contradição interna no artigo sobre o uso da variável idade (metadado): a Seção IV (p. 3) declara 'The bias is reduced by excluding the error data and age variables [1], [6]', porém a Seção III-B (p. 2) afirma 'windowed signal energy was ranked as the second most influential feature (18.8%) after age' e a Fig. 2 (p. 4) exibe 'Raw Sensor Data + Age of Diagnosis' no caminho de séries temporais."
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Todas"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 2 — 'on whom bilateral wrist, worn IMUs sampled at 100 Hz during 11 motor activities were used [1].'"
+    auditoria: "CONCORDA"
+    observacao: "A Fig. 2 (p. 4) também confirma '132 Channels (11 task)'."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "todas (11 tarefas motoras; nomes individuais não especificados)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 2 — 'bilateral wrist, worn IMUs sampled at 100 Hz during 11 motor activities were used'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 3 — 'The proposed PD detection architecture employs three axis accelerometer and gyroscope data obtained from wrist worn sensors'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 não inclui Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Ambos"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 2 — 'on whom bilateral wrist, worn IMUs sampled at 100 Hz during 11 motor activities were used'"
+    auditoria: "CONCORDA"
+    observacao: "Confirmado na Fig. 2 (p. 4): '132 Channels (11 task) / Acc+Gyro (X,Y,Z)' (11 tarefas × 2 punhos × 6 eixos = 132 canais)."
+  - id: 14
+    chave: "n_participantes"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 2 e Seção IV, p. 3 — 'including 469 participants, with 298 Parkinson’s patients, 96 healthy controls and 75 subjects with other movement disorders' / 'excluding the error data'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não informa o N efetivamente usado no experimento binário PD×HC após excluir DD e 'error data'. Na Seção III-A (p. 2), cita 469 participantes no PADS com números que divergem da distribuição real da base (298 PD, 96 HC e 75 DD, em vez de 276 PD, 79 HC e 114 DD). Na Seção III-B (p. 3), menciona '71 test samples' (20% de 355), enquanto as matrizes de confusão da Fig. 4 (p. 5) somam 70 amostras de teste (57 PD e 13 HC, compatível com ~350 sujeitos no split 80/20)."
+  - id: 15
+    chave: "n_por_classe"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 2 e Fig. 4, p. 5 — 'with 298 Parkinson’s patients, 96 healthy controls and 75 subjects with other movement disorders' / 'Binary Classification: Healthy vs Parkinson’s Disease'"
+    auditoria: "CONCORDA"
+    observacao: "O total por classe efetivamente incluído no experimento PD×HC após exclusão de dados com erro ('excluding the error data', Seção IV, p. 3) não é reportado. Na descrição geral da Seção III-A constam 298 PD, 96 HC e 75 DD; já no conjunto de teste de 20% da Fig. 4 (p. 5) aparecem 57 PD e 13 HC (total = 70 no teste)."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 3 — 'The goal is to differentiate between Parkinson’s Disease patients and healthy controls'"
+    auditoria: "CONCORDA"
+    observacao: "Confirmado também na Fig. 2 (p. 4: 'Healthy vs Parkinson’s Disease') e na Fig. 4 (p. 5: 'binary classification of Healthy versus Parkinson’s Disease subjects')."
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 não inclui Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)", "Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 3 — 'Feature based models utilize derived metrics, while BiLSTM works directly with the original time series data'"
+    auditoria: "CONCORDA"
+    observacao: "No primeiro caminho (SVM, ANN, CNN, RF), usam-se atributos manuais no domínio do tempo (energia quadrática em 4 janelas, média, DP, variância, RMS, curtose, assimetria, amplitude, IQR) e da frequência via FFT (bandpower 1–19 Hz, coeficientes FFT, entropia espectral, frequência dominante, PSD). No segundo caminho (BiLSTM), a série temporal bruta é fornecida diretamente à rede."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 não inclui Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning", "Hybrid-Ensemble"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 — 'including Support Vector Machines (SVM), Artificial Neural Networks (ANN), Convolutional Neural Networks (CNN), Bidirectional Long Short Term Memory (BiLSTM) networks, Random Forests, and an ANN–BiLSTM ensemble.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 não inclui Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "Support Vector Machine (SVM); Random Forest (RF); Artificial Neural Network (ANN); Convolutional Neural Network (CNN); Bidirectional Long Short Term Memory (BiLSTM); ANN–BiLSTM ensemble"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 5 — 'Model: Random Forest, ANN-BiLSTM, ANN, SVM, CNN, BiLSTM'"
+    auditoria: "CONCORDA"
+    observacao: "Hiperparâmetros reportados na Seção V (p. 4): RF com 100 árvores, profundidade máxima 10 e regra sqrt; SVM com kernel RBF, gamma=scale, C=1.0 (o texto também menciona '=10. 0' na frase anterior) e pesos de classe balanceados; ANN com camadas densas (4092→256→128→64→1), ReLU, batch normalization, dropout 0.3, Adam (lr=0.001); BiLSTM com 2 camadas BiLSTM (total 256 unidades) + densas (256→64→1), Adam (lr=0.001), binary cross-entropy e early stopping; Ensemble ANN–BiLSTM via soft voting ponderado pelo desempenho de validação."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V-B, p. 4 — 'Balanced class weights were introduced in the training phase to address the unbalanced classes of Parkinson’s Disease patients and healthy controls'"
+    auditoria: "CONCORDA"
+    observacao: "A Seção V (p. 4) declara 'class balancing' no pipeline unificado e a Seção V-B explicita o uso de 'balanced class weights' no treinamento."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["Hold-out", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 3 e Seção IV-A, p. 4 — 'A subject wise stratified 80/20 split was used' / 'tested by means of five fold cross validation'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo menciona tanto divisão estratificada 80/20 por participante (Seção IV, p. 3; Seção V-B, p. 4 com random_state=42; matrizes de confusão na Fig. 4 com N=70 de teste) quanto validação cruzada de 5 dobras (Seção IV-A, p. 4; Fig. 2, p. 4; Seção VI, p. 5)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 não inclui Outra"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 3 — 'A subject wise stratified 80/20 split was used to ensure that all recordings from a given participant were assigned exclusively to either the training or testing set.'"
+    auditoria: "CONCORDA"
+    observacao: "As matrizes de confusão do teste (Fig. 4, p. 5) têm 70 instâncias (57 PD e 13 HC), confirmando que a unidade avaliada no teste é o participante (1 registro agregado de 4092 atributos / 132 canais por participante). Para a 5-fold CV mencionada na Seção IV-A, o texto não detalha se o agrupamento por sujeito foi mantido."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 3 — 'A subject wise stratified 80/20 split was used to ensure that all recordings from a given participant were assigned exclusively to either the training or testing set. This prevents subject level data leakage'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V-B, p. 4 — 'Balanced class weights were introduced in the training phase to address the unbalanced classes'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Pesos de classe balanceados (balanced class weights) aplicados na fase de treinamento para lidar com o desbalanceamento entre PD e HC."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V-B, p. 4 — 'Balanced class weights were introduced in the training phase to address the unbalanced classes of Parkinson’s Disease patients and healthy controls [10].'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III-A, p. 2 e Seção VI, p. 5 — 'The data for this project comes from the Parkinson’s Disease Smartwatch (PADS) dataset' / 'validated using cross validation on unseen test partitions of the dataset'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 5 — 'Model | Accuracy | F1 Score | Precision | Recall'"
+    auditoria: "CONCORDA"
+    observacao: "Recall é mapeado para Sensitivity. O artigo não declara se o F1 Score é macro, ponderado ou binário da classe positiva (pelos valores das matrizes de confusão da Fig. 4, trata-se do F1 binário da classe PD: ex. RF com TP=55, FP=10, FN=2 resulta em Recall=96.5% e F1=89.7%). Na Seção III-B (p. 3), menciona-se ainda o 'Healthy class recall' (que equivale à especificidade para PD), passando de 37.5% para 62.5%."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 não inclui Outra"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; Random Forest; Accuracy; 82.86%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 5 — 'Random Forest | Accuracy: 82.86 | F1 Score: 89.7 | Precision: 83.9 | Recall: 96.3'"
+    auditoria: "CONCORDA"
+    observacao: "O ensemble ANN-BiLSTM empatou em Accuracy (82.86%), com F1 Score de 89.5%, Precision de 85.0% e Recall de 94.4% (Tabela II, p. 5)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; Random Forest; F1; 89.7% | PD×HC; Random Forest; Precision; 83.9% | PD×HC; Random Forest; Sensitivity; 96.3% | PD×HC; ANN-BiLSTM; Accuracy; 82.86% | PD×HC; ANN-BiLSTM; F1; 89.5% | PD×HC; ANN-BiLSTM; Precision; 85.0% | PD×HC; ANN-BiLSTM; Sensitivity; 94.4% | PD×HC; ANN; Accuracy; 80.0% | PD×HC; ANN; F1; 86.3% | PD×HC; ANN; Precision; 91.7% | PD×HC; ANN; Sensitivity; 81.5% | PD×HC; SVM; Accuracy; 78.6% | PD×HC; SVM; F1; 85.4% | PD×HC; SVM; Precision; 89.8% | PD×HC; SVM; Sensitivity; 81.5% | PD×HC; CNN; Accuracy; 78.6% | PD×HC; CNN; F1; 87.8% | PD×HC; CNN; Precision; 78.3% | PD×HC; CNN; Sensitivity; 100.0% | PD×HC; BiLSTM; Accuracy; 77.1% | PD×HC; BiLSTM; F1; 87.1% | PD×HC; BiLSTM; Precision; 77.1% | PD×HC; BiLSTM; Sensitivity; 100.0%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela II, p. 5 — 'SUMMARY OF MODEL PERFORMANCE'"
+    auditoria: "CONCORDA"
+    observacao: "Ablação de formulação de energia (Tabela I, p. 2): Simple sum Accuracy = 68.2%; Absolute sum Accuracy = 76.5%; Squared sum Accuracy = 82.86%. Comparação espectral (Seção III-C, p. 3): FFT Accuracy = 82.86% vs. Welch Accuracy = 77%."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Termos buscados: GitHub, code, availability, repository, link; nenhum trecho encontrado no artigo (pp. 1–6)"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Seção V-C, p. 5: o ensemble ANN–BiLSTM não supera consistentemente o melhor modelo individual em acurácia; Seção VII, p. 5: escassez de dados de PD em estágio inicial/prodrômico com rótulos clínicos confiáveis dificulta a identificação de sintomas leves com alta acurácia."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção VII, p. 5 — 'the lack of early stage PD data with reliable clinical labels remains the biggest challenge in the identification of mild symptoms with high accuracy'"
+    auditoria: "CONCORDA"
+    observacao: "Observação técnica adicional: na Fig. 4 (p. 5), os modelos CNN e BiLSTM classificam todas as 70 amostras de teste na classe majoritária PD (0 acertos em Healthy, Recall PD = 100%), embora a Tabela II reporte acurácias de 78.6% e 77.1%."
+  - id: 37
+    chave: "lacuna"
+    valor: "Seção VII, p. 5: detecção de marcadores patológicos na fase prodrômica/inicial com coortes maiores e mais diversas (indivíduos jovens em risco e pré-diagnósticos); embarque do pipeline em smartwatches/dispositivos vestíveis para monitoramento contínuo em atividades diárias; fusão multimodal (voz, sono e motricidade fina); e aprendizado federado/processamento on-device para preservação de privacidade."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção VII, p. 5 — 'developing the model to be clinically more relevant with an emphasis on detection of pathological markers during the prodromal phase.'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano"
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 3 e Seção V-B, p. 4 — 'then the signals are standardized by z scores' / 'All input features were normalized to have unit variance before training.'"
+    observacao: "O artigo afirma que os atributos foram normalizados para variância unitária 'before training' (Seção V-B, p. 4) em um pipeline unificado (Seção V, p. 4), mas também menciona na Seção VI (p. 5) que as partições de teste não foram envolvidas no processo de treinamento. Como não explicita se os parâmetros de normalização (média/variância entre sujeitos) foram ajustados exclusivamente no conjunto de treino, marca-se Não reportado."
+  risco_vazamento:
+    valor: "Moderado"
+    regra: "campo 26 = Participante; campo 27 = Sim – explícita; campo 28 = Só no treino; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [16, 15]
+      justificativa: "O cenário binário PD×HC é explícito (campo 16), mas o artigo não informa o N efetivo por classe no experimento após exclusão de DD e 'error data' (campo 15 null) e traz números divergentes da base na Seção III-A."
+    QA2:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Quatro dos cinco itens estão informados (modalidade, tarefas, sensores e punhos), mas o N efetivo de participantes do experimento (campo 14) não é reportado."
+    QA3:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [26, 27, 28]
+      justificativa: "Há separação explícita por participante (80/20 subject-wise split) e pesos de classe no treino, mas não é reportado se a normalização de atributos foi ajustada apenas no treino (risco_vazamento = Moderado)."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta Accuracy, Precision, Sensitivity (Recall) e F1, sem indicar F1 macro/ponderado e sem Balanced accuracy, MCC ou AUC."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Descreve pré-processamento, arquiteturas e hiperparâmetros principais (campos 22 e 29), mas não disponibiliza código ou repositório (campo 35 = Não reportado)."
+  nota_qa: 2.5
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade só Questionário → Sensores null; Tarefas e Punho = Não se aplica; Quais tarefas null; Representação null"
+    resultado: "OK (modalidade é Série temporal (IMU))"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe com PD, HC e DD maiores que 0"
+    resultado: "OK (cenário é apenas PD×HC)"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14, quando ambos preenchidos"
+    resultado: "OK (ambos null por não relato do N efetivo do experimento)"
+  - regra: "Campo 26 = Participante → campo 27 = Sim – explícita ou Sim – inferida"
+    resultado: "OK (campo 26 = Participante e campo 27 = Sim – explícita)"
+  - regra: "Campo 24 contém Leave-one-subject-out → campo 26 = Participante e campo 27 = Sim"
+    resultado: "OK (não aplicável)"
+  - regra: "Campo 23 = Outro → campo 28 diferente de Não se aplica e campo 29 preenchido"
+    resultado: "OK (campo 28 = Só no treino e campo 29 preenchido)"
+  - regra: "Campo 30 = true e campo 5 = Principal → explique na observação"
+    resultado: "OK (campo 30 = false)"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK (campo 9 = Todas e campo 10 preenchido)"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
+    resultado: "OK (nenhum campo com par de texto marcou Outro/Outra)"
+  - regra: "A nota de QA3 deve ser coerente com o risco_vazamento calculado"
+    resultado: "OK (risco_vazamento = Moderado → QA3 = Partially / 0.5)"
+pontos_para_revisao_humana:
+  - "Campos 14 e 15 (n_participantes e n_por_classe): a Seção III-A descreve o PADS completo com 469 sujeitos mas com contagens por grupo divergentes da base canônica (298 PD, 96 HC e 75 DD) e não informa o N efetivo usado no experimento PD×HC após excluir DD e 'error data' (o teste tem 71 amostras na Seção III-B e 70 amostras [57 PD, 13 HC] na Fig. 4)."
+  - "Campo 8 (modalidade_pads): contradição interna sobre a variável idade — a Seção IV (p. 3) diz que 'age variables' foram excluídas para reduzir viés, mas a Seção III-B (p. 2) cita a idade como o atributo mais importante no Random Forest e a Fig. 2 (p. 4) inclui 'Age of Diagnosis' no ramo de séries temporais."
+  - "Campos 24, 26, 27 e QA3: a Seção IV (p. 3) declara explicitamente 'subject wise stratified 80/20 split', enquanto a Seção IV-A (p. 4) menciona 5-fold CV sem explicitar agrupamento por participante, e a Seção V-B (p. 4) cita normalização de variância unitária 'before training' sem esclarecer se foi ajustada apenas no treino."
+  - "Campos 31, 33 e 34: na Fig. 4 (p. 5), as matrizes de confusão de CNN e BiLSTM preveem todas as 70 amostras de teste como PD (57 TP e 13 FP, o que daria 57/70 = 81.43% de acurácia), divergindo das acurácias reportadas na Tabela II (78.6% para CNN e 77.1% para BiLSTM)."
+  - "QA5 e campo 22 (especificacao_algoritmo): na Seção V-B (p. 4), o texto menciona 'regularization parameter was set to =10. 0' em uma frase e logo em seguida 'trained using a regularization parameter C = 1.0'."

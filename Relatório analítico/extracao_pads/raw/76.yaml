@@ -1,0 +1,379 @@
+meta:
+  row_id: 76
+  modo: "EXTRAÇÃO"
+  status_triagem: "Aceito"
+  zotero_key: "GNT5T8YH"
+  titulo: "ASA-DSNet: A Dual-Stage Framework with Ambiguous Sample Augmentation for Robust Parkinson’s Disease Identification"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium)"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 76
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: null
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2025"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Rodapé, p. 1 (4291) — '2025 IEEE International Conference on Bioinformatics and Biomedicine (BIBM) | 979-8-3315-1557-7/25/$31.00 ©2025 IEEE | DOI: 10.1109/BIBM66473.2025.11356270'"
+    auditoria: null
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract, p. 1 (4291) — 'This paper proposes ASA-DSNet, a dual-stage learning framework for PD detection using smartwatch motion data.'"
+    auditoria: null
+    observacao: null
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 = Novo modelo (opção Outro não marcada)."
+    auditoria: null
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 3 (4293) — 'This study is primarily based on the publicly available PADS dataset [12], which supports a multiclass classification task involving PD, DD and HC.'"
+    auditoria: null
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["Outro público", "PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 3 (4293) — 'primarily based on the publicly available PADS dataset [12] ... we additionally conducted experiments on the Monipar dataset [13].'"
+    auditoria: null
+    observacao: null
+  - id: 7
+    chave: "outros_datasets"
+    valor: "Monipar"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 3 (4293) — 'we additionally conducted experiments on the Monipar dataset [13].'"
+    auditoria: null
+    observacao: "O dataset Monipar é utilizado em tarefa separada de classificação de níveis de severidade de tremor (Level 0 vs. 1 vs. 2)."
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract e Seção II.A, p. 1 (4291) — 'PD detection using smartwatch motion data' / 'extracting coupled temporal–frequency representations from raw upper-limb motion'"
+    auditoria: null
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seções II e III, p. 1–3 (4291–4293) — termos buscados: task, movement, activity, relax, hold; cita apenas 'raw upper-limb motion' sem informar quais tarefas motoras do PADS foram usadas."
+    auditoria: null
+    observacao: null
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seções II e III, p. 1–3 (4291–4293) — termos buscados: task, movement, activity; nenhuma tarefa motora específica do PADS é nomeada ou quantificada."
+    auditoria: null
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Abstract e Seção IV, p. 1 e 4 (4291, 4294) — termos buscados: accelerometer, gyroscope, sensor, channel; o artigo menciona apenas 'smartwatch inertial data' e 'smartwatch motion data', sem especificar se usou acelerômetro, giroscópio ou ambos."
+    auditoria: null
+    observacao: "O artigo refere-se genericamente a 'smartwatch motion data', 'smartwatch inertial data' e 'raw upper-limb motion', sem discriminar acelerômetro ou giroscópio."
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 sem a opção Outro marcada."
+    auditoria: null
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seções II e III, p. 1–3 (4291–4293) — termos buscados: wrist, left, right, hand, arm, both; menciona apenas 'raw upper-limb motion', sem informar qual punho foi utilizado."
+    auditoria: null
+    observacao: null
+  - id: 14
+    chave: "n_participantes"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 3 (4293) — termos buscados: subject, participant, patient, sample, 469, 276, 79, 114; o artigo não informa o número de participantes nem de janelas/gravações utilizadas."
+    auditoria: null
+    observacao: "Nenhum número de participantes, gravações ou janelas é reportado para o PADS ou para o Monipar."
+  - id: 15
+    chave: "n_por_classe"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 3 (4293) — termos buscados: 276, 79, 114, PD, DD, HC; embora cite os grupos PD, DD e HC, o artigo não reporta o N por classe."
+    auditoria: null
+    observacao: null
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["3 classes (Mult-Class)", "PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I e Seção III.D, p. 3 (4293) — 'On PADS, it reaches 94.37% (PD vs. HC), 86.90% (PD vs. DD), and 80.85% (PD vs. HC vs. DD).'"
+    auditoria: null
+    observacao: null
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 sem a opção Outro marcada."
+    auditoria: null
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II.A e II.B, p. 1–2 (4291–4292) — 'extracting coupled temporal–frequency representations from raw upper-limb motion' / 'Given the forward sequence X, we first obtain the initial feature map F0 = Conv(X)'"
+    auditoria: null
+    observacao: "Apesar de denominar o segundo ramo de M1 como 'Multi-Scale Frequency Encoder', a Equação (6) e o texto da Seção II.B.b indicam que a sequência bruta X ∈ R^(B×T×D) é apenas redimensionada para X' ∈ R^(B×T×D×1) e processada por convoluções 2D paralelas (11×1, 1×9, 3×3), sem transformada de espectrograma ou wavelet prévia."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 sem a opção Outro marcada."
+    auditoria: null
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II.B–D e III.C, p. 1–3 (4291–4293) — 'Stage 1 (M1)... DC Conv... ECA... 2D convolutions' / 'Stage 2 model M2 is based on the MLSTM-FCN backbone and integrates Convolutional Block Attention Modules (CBAM)'"
+    auditoria: null
+    observacao: "O framework proposto (ASA-DSNet) é de Deep Learning (CNN 1D dilatada + ECA + CNN 2D no Estágio 1; MLSTM-FCN + CBAM no Estágio 2), utilizando K-Means apenas na etapa intermediária (ASA) para minerar amostras de fronteira. Entre os baselines de séries temporais comparados, além de redes neurais profundas, há ROCKET e MiniRocket (kernels convolucionais aleatórios com classificador linear)."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 sem a opção Outro marcada."
+    auditoria: null
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "ASA-DSNet; InceptionTime; Rocket; MiniRocket; TIMNET; TF-FusNET; LightCNN; MLSTM-FCN; CA-LSTM-FCN; TapNET"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I e Seção III.C, p. 3 (4293) — 'InceptionTime [14], ROCKET/MiniRocket [15], [16], TIMNET [17], TF-FusNet [18], LightCNN [19], MLSTM-FCN and its channel-attention variant CA-MLSTM-FCN [20], [21], and TapNet [22]'"
+    auditoria: null
+    observacao: "ASA-DSNet combina M1 (convoluções causais dilatadas 1D + ECA + convoluções 2D multiescala + WeightLayer), ASA (K-Means no espaço de atributos de M1) e M2 (MLSTM-FCN + CBAM)."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "Outro"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II.C, p. 2–3 (4292–4293) — 'To strengthen learning on ambiguous samples, ASA identifies and upweights these challenging instances after each inner-loop training of M1... D_aug = D_inner-train ∪ M ∪ B'"
+    auditoria: null
+    observacao: "O método propõe o Ambiguous Sample Augmenter (ASA), que duplica/concatena e repondera amostras mal classificadas e amostras de fronteira (identificadas via K-Means) no conjunto de treino interno."
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["CV aninhada", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 3 (4293) — 'we adopt a nested cross-validation protocol with Kouter=5 outer folds for evaluation and Kinner=5 inner folds for model selection.'"
+    auditoria: null
+    observacao: "Validação cruzada aninhada 5×5 (5 outer folds e 5 inner folds)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 sem a opção Outra marcada."
+    auditoria: null
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 3 (4293) — termos buscados: subject, patient, participant, group, window, segment, recording; informa apenas 'nested cross-validation protocol with Kouter=5 outer folds... and Kinner=5 inner folds', sem declarar a unidade de particionamento."
+    auditoria: null
+    observacao: null
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Pouco claro"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 3 (4293) — 'To obtain unbiased estimates and avoid data leakage, we adopt a nested cross-validation protocol with Kouter=5 outer folds for evaluation and Kinner=5 inner folds for model selection.'"
+    auditoria: null
+    observacao: "Os autores mencionam evitar vazamento de dados ('avoid data leakage') via CV aninhada, mas não declaram se a divisão das dobras respeita a separação por participante (subject-wise/patient-wise)."
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II.C, p. 2–3 (4292–4293) — 'identifies and upweights these challenging instances after each inner-loop training of M1... for all samples in the inner training set D_inner-train... D_aug = D_inner-train ∪ M ∪ B'"
+    auditoria: null
+    observacao: null
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "Ambiguous Sample Augmenter (ASA): após o treino de M1 no conjunto de treino interno (D_inner-train), coleta as amostras mal classificadas (M) e agrupa as representações f_final^(1) via K-Means para selecionar amostras de fronteira (B, distância ao centroide mais próximo <= θ, ex.: 20º percentil), formando D_aug = D_inner-train ∪ M ∪ B com pesos adaptativos w_i (β para M, γ para B, max(β,γ) para M∩B, 1 para as demais)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção II.C, Eq. (8)–(11), p. 2–3 (4292–4293) — 'clustered using K-Means, and samples with small distances to the nearest centroid (e.g., within the 20th percentile) are regarded as boundary samples... D_aug = D_inner-train ∪ M ∪ B'"
+    auditoria: null
+    observacao: null
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.A e Tabela I, p. 3 (4293) — 'Unlike PADS, the Monipar dataset focuses on a different yet clinically relevant task-classifying tremor severity levels in PD patients'"
+    auditoria: null
+    observacao: "O dataset Monipar foi usado em experimento independente com outra variável-alvo (severidade de tremor: Level 0 vs. 1 vs. 2), e não para testar o modelo treinado no PADS."
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "F1", "Precision", "Sensitivity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B e Tabela I, p. 3 (4293) — 'We report macro-averaged Accuracy, Precision, Recall, and F1, computed per outer test fold and then averaged.'"
+    auditoria: null
+    observacao: "Recall é mapeado para Sensitivity. O texto declara explicitamente que Accuracy, Precision, Recall e F1 são macro-averaged ('macro-averaged Accuracy, Precision, Recall, and F1')."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 sem a opção Outra marcada."
+    auditoria: null
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "3 classes (Mult-Class); ASA-DSNet; Accuracy; 80.85%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Abstract e Tabela I, p. 1 e 3 (4291, 4293) — 'ASA-DSNet achieves accuracies of 80.85% and 95.17% on the PADS and Monipar datasets' / 'PDvs.HC vs.DD (PADS) | ASA-DSNet (Ours) | 80.85'"
+    auditoria: null
+    observacao: "80.85% é o resultado destacado no Abstract para o PADS (cenário principal de 3 classes: PD vs. HC vs. DD). O maior valor numérico absoluto no PADS ocorre no cenário binário PD×HC (Accuracy de 94.37%, F1-score de 94.24%). No dataset Monipar (Level 0 vs. 1 vs. 2), ASA-DSNet obteve Accuracy de 95.17% e F1-score de 96.87%."
+  - id: 34
+    chave: "demais_valores"
+    valor: "3 classes (Mult-Class); ASA-DSNet; Precision; 81.29% | 3 classes (Mult-Class); ASA-DSNet; Sensitivity; 80.85% | 3 classes (Mult-Class); ASA-DSNet; F1; 80.09% | PD×HC; ASA-DSNet; Accuracy; 94.37% | PD×HC; ASA-DSNet; Precision; 94.33% | PD×HC; ASA-DSNet; Sensitivity; 94.36% | PD×HC; ASA-DSNet; F1; 94.24% | PD×DD; ASA-DSNet; Accuracy; 86.90% | PD×DD; ASA-DSNet; Precision; 86.83% | PD×DD; ASA-DSNet; Sensitivity; 86.82% | PD×DD; ASA-DSNet; F1; 86.74% | 3 classes (Mult-Class); CA-LSTM-FCN; Accuracy; 78.23% | 3 classes (Mult-Class); CA-LSTM-FCN; F1; 76.02% | PD×HC; CA-LSTM-FCN; Accuracy; 92.15% | PD×HC; CA-LSTM-FCN; F1; 91.24% | PD×DD; CA-LSTM-FCN; Accuracy; 85.38% | PD×DD; CA-LSTM-FCN; F1; 85.51%"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 3 (4293) — 'PDvs.HC (PADS) ASA-DSNet (Ours) 94.37 94.33 94.36 94.24 | PDvs.DD (PADS) ASA-DSNet (Ours) 86.90 86.83 86.82 86.74 | PDvs.HC vs.DD (PADS) ASA-DSNet (Ours) 80.85 81.29 80.85 80.09'"
+    auditoria: null
+    observacao: "A Tabela I também reporta resultados para InceptionTime, Rocket, MiniRocket, TIMNET, TF-FusNET, LightCNN, MLSTM-FCN e TapNET nos três cenários do PADS, além do cenário Level 0 vs. 1 vs. 2 no dataset Monipar."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Artigo completo, p. 1–4 (4291–4294) — termos buscados: github, code, available, availability, repository, http; não há declaração de disponibilidade de código ou dados derivados."
+    auditoria: null
+    observacao: null
+  - id: 36
+    chave: "limitacoes"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seções III e IV, p. 3–4 (4293–4294) — termos buscados: limitation, drawback, constraint, weakness; os autores não declaram limitações do próprio método ou estudo."
+    auditoria: null
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Na Introdução (Seção I, p. 1), os autores apontam que métodos existentes negligenciam amostras ambíguas (próximas à fronteira de decisão ou mal classificadas) e focam apenas em classificação binária (PD vs. HC), ignorando diagnósticos diferenciais (DD). Na Conclusão (Seção IV, p. 4), indicam como trabalhos futuros a integração de dados sensoriais multimodais e a implantação em ambientes clínicos reais."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV, p. 4 (4294) — 'Future work will explore the integration of multi-modal sensing data and real-world deployment in clinical environments.'"
+    auditoria: null
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano."
+    auditoria: null
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seções II.C e III.B, p. 2–3 (4292–4293) — embora o ASA opere em D_inner-train e a seleção de modelos use o loop interno da CV aninhada, o artigo não descreve o pré-processamento do sinal bruto (janelamento, filtragem ou normalização) nem se foi ajustado apenas no treino."
+    observacao: null
+  risco_vazamento:
+    valor: "Indeterminado"
+    regra: "campo 26 = Não reportado; campo 27 = Pouco claro; campo 28 = Só no treino; aux_preproc_apenas_treino = Não reportado"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Os três cenários de classificação no PADS (PD vs. HC, PD vs. DD e PD vs. HC vs. DD) e os grupos correspondentes estão explicitamente definidos na Seção III.A e Tabela I (embora o N por classe não seja informado)."
+    QA2:
+      resposta: "No"
+      nota: 0.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Apenas 1 dos 5 itens aplicáveis (modalidade IMU) foi reportado; tarefas motoras, sensores específicos, punho e N de participantes não foram informados."
+    QA3:
+      resposta: "No"
+      nota: 0.0
+      campos: [26, 27, 28]
+      justificativa: "O risco de vazamento é Indeterminado, pois a unidade de particionamento e a separação por participante na CV aninhada não foram descritas."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta F1 explicitamente indicado como macro-averaged (uma métrica robusta ao desbalanceamento), além de Accuracy, Precision e Recall (Sensitivity) macro-averaged."
+    QA5:
+      resposta: "No"
+      nota: 0.0
+      campos: [35, 22, 29]
+      justificativa: "Código não disponível e faltam detalhes essenciais de pré-processamento dos sinais e hiperparâmetros de treinamento para replicação."
+  nota_qa: 1.5
+  nota_qa_max: 5
+  faixa_qa: "Baixa"
+verificacao_de_coerencia:
+  - regra: "Modalidade inclui Série temporal (IMU) → campos de tarefas e punhos aplicáveis"
+    resultado: "OK"
+  - regra: "Cenários com 3 classes (Mult-Class) → N por classe (null pois não reportado no artigo)"
+    resultado: "OK"
+  - regra: "Soma de PD+HC+DD (campo 15) = campo 14 (ambos null por não serem reportados)"
+    resultado: "OK"
+  - regra: "Campo 26 = Não reportado e Campo 27 = Pouco claro → risco_vazamento = Indeterminado"
+    resultado: "OK"
+  - regra: "Campo 23 = Outro → campo 28 diferente de Não se aplica (Só no treino) e campo 29 preenchido"
+    resultado: "OK"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido (6→7, 23→29)"
+    resultado: "OK"
+  - regra: "Nota de QA3 (0.0 / No) coerente com risco_vazamento = Indeterminado"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campos 26 e 27 (QA3): o artigo afirma adotar validação cruzada aninhada 5×5 'to obtain unbiased estimates and avoid data leakage' (Seção III.B, p. 3), mas não especifica se as dobras foram particionadas por participante (subject-wise) ou por janela/amostra."
+  - "Campos 9, 11, 13, 14 e 15 (QA2): o artigo não detalha o recorte do PADS (N de participantes, N por classe, quais tarefas motoras, quais punhos ou se usou acelerômetro, giroscópio ou ambos)."
+  - "Campo 31 e QA4: o artigo reporta 'macro-averaged Accuracy, Precision, Recall, and F1'; matematicamente, o Recall macro-averaged equivale à Balanced Accuracy, mas foi mantido apenas Sensitivity + F1 (macro) conforme o rótulo 'Recall' da Tabela I."
+  - "Campo 33: foi registrado no campo 33 o resultado destacado no Abstract (3 classes: 80.85% Accuracy) e no campo 34 o maior valor absoluto no PADS (PD×HC: 94.37% Accuracy) e demais métricas."
+  - "QA5: não há link de código nem descrição de janelamento, filtragem, normalização dos sinais ou hiperparâmetros de otimização (learning rate, batch size, épocas, pesos β e γ do ASA)."

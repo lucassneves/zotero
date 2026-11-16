@@ -1,0 +1,441 @@
+Skip to main content
+Skip to article
+Skip to minimise reading assistant
+Skip to summarize article
+Skip to summarize experiments
+Skip to ask about this article
+Reading Assistant
+powered by
+LeapSpace
+Opens in a new window
+Reading assistant options menu
+Actions you could take:
+Summarize this article
+Summarize experiments
+Ask about this article
+Submit query
+Reading assistant is powered by LeapSpace. AI responses may vary in quality.
+Gait & Posture
+Date: October 2026
+Show more
+Research article
+Open access
+Under a Creative Commons license
+Get rights and content
+Wearable gait analysis for differentiating progressive supranuclear palsy and Parkinson’s disease: Clinically interpretable digital biomarkers using machine learning
+Maryam Sadeghi a
+, 
+Ehsan Barouti b
+, Kelly E. Lyons c, Rajesh Pahwa c, 
+Abiodun Akinwuntan a d
+, 
+Jeffrey Thompson e
+, 
+Sanghee Moon f
+, Hannes Devos a
+Show more
+View PDF
+Download full issue
+Highlights
+•
+Wearable gait data differentiate PSP from Parkinson’s disease.
+•
+Aggregate features perform comparably to raw IMU signals.
+•
+Ensemble models achieve strong classification performance (macro-F1 ≈ 0.88).
+•
+Key gait markers reflect PSP-related postural instability.
+•
+Interpretable features support clinical implementation.
+Abstract
+Background
+Early differentiation of progressive supranuclear palsy from Parkinson’s disease is challenging due to overlapping motor features, particularly in early disease stages where clinical misclassification is common. Wearable inertial sensors provide high-resolution gait data that may reveal disease-specific and clinically relevant signatures.
+Objective
+To evaluate whether sensor-derived gait measures can distinguish progressive supranuclear palsy from Parkinson’s disease using machine learning, and to compare performance between raw time-series signals and aggregate spatiotemporal variables, with emphasis on clinically interpretable gait biomarkers.
+Methods
+In this retrospective study, 34 participants with progressive supranuclear palsy and 410 with Parkinson’s disease completed an instrumented Timed-Up-and-Go while wearing six synchronized sensors. Two input modalities were analyzed: raw accelerometer, gyroscope, and magnetometer signals sampled at 128 Hz; and 48 curated spatiotemporal features. Eight classifiers, including logistic regression, support vector machine, k-nearest neighbors, neural network, decision tree, random forest, extreme gradient boosting, and a baseline, were trained to classify progressive supranuclear palsy versus Parkinson’s disease at the participant level using cross-validation procedures designed to prevent data leakage. The primary performance metric was macro-averaged F1-score. Shapley Additive Explanations were applied to aggregate-feature models to identify key discriminative gait features.
+Results
+Raw time-series models performed strongly, with gradient boosting achieving the highest macro-F1 (0.87), followed by random forest (0.86) and support vector machine (0.83). Aggregate models performed comparably, with gradient boosting reaching 0.88, followed by random forest (0.87) and support vector machine (0.84). Shapley analyses identified increased double-support time and mediolateral sway, and reduced stride length, gait speed, and trunk range of motion as the most distinctive gait impairments characterizing PSP relative to PD.
+Conclusions
+Ensemble models reliably differentiated progressive supranuclear palsy from Parkinson’s disease. Aggregate spatiotemporal models achieved performance comparable to raw signals while yielding clinically interpretable and physiologically meaningful gait biomarkers. These findings support the use of wearable sensor–based gait analysis combined with machine learning as a practical tool for improving differential diagnosis in movement disorder clinics.
+Abbreviations
+PSP, Progressive supranuclear palsy; PD, Parkinson’s disease; KUMC, University of Kansas Medical Center; IMU, Inertial measurement unit; HDF5, Hierarchical Data Format version 5; TUG, Timed-Up-and-Go; APDM, APDM Mobility Lab wearable sensor system; ML, Machine learning; SVM, Support vector machine; KNN, k-nearest neighbors; DT, Decision tree; RF, Random forest; XGBoost, Extreme Gradient Boosting; GB, Gradient-boosted trees; LR, Logistic regression; NN, Neural network; MLP, Multilayer perceptron; RBF, Radial basis function; CNN, Convolutional neural network; SHAP, Shapley Additive Explanations; SMOTE, Synthetic Minority Over-sampling Technique; F1, F1-score; TP, True positives; TN, True negatives; FP, False positives; FN, False negatives; H&Y, Hoehn and Yahr; ON, Best-medication “on” state; MoCA, Montreal Cognitive Assessment; LEDD, Levodopa-equivalent daily dose; Acc, Acceleration; GC, Gait cycle; RMS, Root mean square; ROM, Range of motion; SD, Standard deviation
+Keywords
+Progressive Supranuclear Palsy; Parkinson's Disease; Inertial Measurement Units; Digital Biomarkers; Diagnosis; Machine Learning
+Previous article
+Next article
+1. Introduction
+Early differentiation between progressive supranuclear palsy (PSP) and idiopathic Parkinson’s disease (PD) is challenging because the two disorders share many motor features [1], [2], [3]. PSP is a relatively rare condition, affecting about 5–6 people per 100,000 [4] and most clinicians encounter few cases in practice. This limited exposure often delays recognition and contributes to frequent misdiagnosis as PD. Early and accurate diagnosis is essential because PSP and PD differ in progression, prognosis, and treatment strategies [5]. Importantly, misclassification is particularly common in early disease stages when clinical signs are subtle and overlapping [2], highlighting the need for objective and sensitive biomarkers to support differential diagnosis.
+Gait and balance impairment are hallmark features of PSP, particularly in the Richardson syndrome phenotype, which presents with early postural instability, frequent backward falls, and vertical gaze palsy [2], [6], [7]. Quantitative gait analyses show that, compared with PD, individuals with PSP walk more slowly, take shorter steps, adopt a wider base of support, and exhibit greater mediolateral sway with reduced trunk rotation [8], [9], [10]. By contrast, early PD often manifests with subtler gait changes, including loss of arm swing, increased stride-to-stride variability, and impaired turning, which may precede clinical diagnosis by years [11], [12]. These partially overlapping yet distinct gait characteristics suggest that quantitative gait assessment may provide a valuable avenue for differential diagnosis.
+Wearable inertial measurement unit (IMU) sensors allow high-resolution capture of multi-segment gait kinematics in laboratory and real-world settings [13], [14], [15], [16]. These sensors produce rich, high-dimensional time series that go beyond the capabilities of conventional aggregate metrics. Machine learning (ML) provides complementary advantages by identifying complex, subtle, and potentially non-linear patterns within these multi-sensor signals, facilitating the identification of digital gait biomarkers, while still allowing analyses based on summary features when interpretability is a priority [17], [18], [19], [20].
+To our knowledge, only one prior study has applied ML to wearable sensor-based gait data to directly distinguish PSP from PD, reporting ∼86% sensitivity and ∼90% specificity using a six-sensor array [21]. While encouraging, that study relied exclusively on a single logistic regression model trained on pre-processed spatiotemporal gait features. Thus, it remains unclear whether more advanced and interpretable modeling approaches can improve classification while preserving clinical relevance. Relying on a single algorithm leaves unanswered whether multi-layer tree-based ensembles such as eXtreme Gradient Boosting (XGBoost) or random forest ML approaches might better capture the complex, non-linear gait signatures distinguishing PSP from PD or address class imbalance more effectively. Ensemble methods are particularly well-suited for wearable-sensor data because they can model high-dimensional, correlated time-series inputs, reduce overfitting by aggregating many decision trees, and naturally handle noisy or imbalanced datasets [22]. Prior work in PD and related movement disorders has shown that ensemble classifiers often outperform linear models by capturing subtle, non-linear interactions among gait variables [11], [12], [17], [18], [19], [20].
+Another limitation of prior work is the exclusive reliance on aggregate spatiotemporal gait features to differentiate PD from PSP, without examining raw sensor data [21]. Aggregates summarize gait cycles but attenuate fine-scale information, whereas raw IMU signals preserve intra-cycle transients, cross-segment phase relationships, and frequency-domain/non-linear dynamics [23]. These high-dimensional signatures may be particularly relevant for capturing PSP’s hallmark axial and postural instability, which are not fully represented in summary features. However, the relative performance and clinical interpretability of raw versus aggregate representations in this context remain insufficiently characterized.
+Therefore, the present study had two primary aims: (1) to evaluate whether IMU-derived gait measures can distinguish PSP from PD using machine learning (ML), and (2) to compare classification performance between raw time-series signals and aggregate spatiotemporal variables. We further aim to identify clinically interpretable gait features that differentiate PSP from PD, linking data-driven analysis to clinically meaningful outcomes.
+2. Methods
+2.1. Participants and study design
+We conducted a single-center, retrospective observational study using de-identified records from the Parkinson’s Disease and Movement Disorder Clinic at the University of Kansas Medical Center (KUMC). Participants were enrolled in the study between January 2016 and March 2024. From the full clinic database (n = 954), eligible cases were adults with probable PSP-Richardson syndrome [2] and individuals with idiopathic PD diagnosed according to the Movement Disorders Society clinical diagnostic criteria [24] who completed standardized wearable-sensor gait assessments during their clinic visit. Exclusion criteria were applied to the full screened cohort prior to matching. Specifically, we excluded individuals with prior deep brain stimulation surgery (n = 382), who were unable to walk 10 m without physical assistance due to comorbid neurological or orthopedic conditions affecting gait (n = 87), and those with corrupted or incomplete sensor files (n = 41). Subsequently, 444 participants were included for analysis (410 PD, 34 PSP).
+Participants with PSP did not differ from those with PD with respect to age, sex, or Hoehn and Yahr (ON) stage. However, disease duration was shorter in PSP than PD. PSP also showed lower MoCA scores, lower LEDD, and more frequent recent falls than PD (Table 1).
+
+Table 1. Demographic and clinical characteristics.
+
+Variables	PSP (n = 34)	PD (n = 410)	P value
+Age, y	66.98 ± 9.84	66.52 ± 8.15	0.79
+Sex, female: male	12: 22	199: 211	0.16
+MoCA score (0–30)	21.46 ± 4.18	24.25 ± 3.24	< 0.001
+Disease duration, y	6.20 ± 5.11	13.83 ± 9.79	< 0.001
+H&Y stage (ON), 1: 2: 3	3: 12: 19	53: 189: 168	0.24
+LEDD, mg/day	187.5 ± 96.1	298.8 ± 217.9	< 0.001
+Falls in previous 6 mo, yes: no	29: 5	232: 191	< 0.001
+NOTE. Continuous variables are mean ± SD and were compared using independent-samples t-tests; categorical variables were compared using Chi-square or Fisher’s exact tests as appropriate. LEDD = levodopa-equivalent daily dose; MoCA = Montreal Cognitive Assessment; ON = On-medication state.
+The KUMC Institutional Review Board approved the protocol (STUDY00160769), and all participants had provided written informed consent permitting secondary use of their data.
+2.2. Protocol and materials
+Participants wore six wireless inertial measurement unit (IMU) sensors (Opal v2; APDM Wearable Technologies, Portland, OR, USA [16]). Sensors were positioned bilaterally on the dorsum of each foot over the metatarsus and on the anteromedial aspect of each shank just below the tibial tuberosity, with additional units secured at the sternum and over the lumbar spine at the L5 level (Fig. 1). Each sensor was affixed using adjustable elastic Velcro™ straps to ensure a stable yet comfortable fit. All assessments were performed with participants wearing a safety gait belt, with an examiner providing standby assistance throughout. Each Opal device integrates two tri-axial accelerometers (± 16 g and ± 200 g ranges; 14-bit and 17.5-bit resolutions), a tri-axial gyroscope (± 2000°/s range; 16-bit resolution), and a tri-axial magnetometer (± 8 Gauss range; 12-bit resolution). Data from all channels were sampled at 128 Hz, hardware-synchronized across sensors, and maintained with inter-unit clock drift under 1 ms.
+Download: Download high-res image (81KB)
+Download: Download full-size image
+
+Fig. 1. IMU sensor placement and instrumented Timed Up-and-Go (iTUG) protocol. The turn marker shown in the schematic is illustrative only. During testing, the turning location was indicated by coloured floor tape positioned 3 m from the chair, and participants performed a free 180° turn using their self-selected strategy without walking around a physical object.
+
+All Opal v2 IMUs were factory-calibrated according to the manufacturer's specifications before deployment and were used following the standard Mobility Lab acquisition protocol throughout the study.
+2.3. Instrumented Timed-Up-and-Go (TUG) protocol
+Following a 30-s seated rest to stabilize baseline recordings, participants were instructed to complete the instrumented Timed-Up-and-Go (TUG): (1) Rise from a 45 cm armless chair on an auditory cue; (2) Walk forward 3 m at a self-selected comfortable pace; (3) Execute a 180° turn at a marked location indicated by coloured floor tape, using a self-selected turning strategy (no physical object was circumnavigated); (4) Return to the starting chair; and (5) Sit down in a controlled manner (Fig. 1).
+The instrumented Timed Up and Go (iTUG) was the standardized mobility assessment routinely administered with body-worn inertial sensors during clinical visits to the Parkinson's Disease and Movement Disorder Clinic at the University of Kansas Medical Center between 2016 and 2024. The iTUG is particularly relevant for the study of progressive supranuclear palsy (PSP) because it provides an integrated assessment of functional mobility within a single brief, validated task. Specifically, it captures sit-to-stand, gait initiation, steady-state walking, a 180° turn, and turn-to-sit, thereby sampling motor domains commonly affected in PSP, including gait initiation, axial motor control, turning, and postural transitions. In addition, the iTUG is practical for routine clinical use and can be performed safely by individuals with early postural instability and increased fall risk, making it a clinically relevant measure of mobility challenges encountered in daily activities.
+Two trials were collected, and the trial with the fewest data packet losses (< 0.1% of total samples) was retained for analysis. The instrumented TUG has been shown to provide reliable and valid measures of mobility and postural control in Parkinsonian disorders (intraclass correlation coefficient > 0.90) [15], [16].
+2.4. Data analysis
+2.4.1. Comparison of group differences
+Group differences in demographic and clinical variables were assessed using independent-samples t-tests for continuous variables with normal distributions, and Mann–Whitney U tests otherwise. Categorical variables were compared using Chi-square or Fisher’s exact tests, as appropriate, where expected cell counts were < 5. A two-tailed significance threshold of p < 0.05 was applied.
+2.5. Raw data set
+The raw data set consisted of the synchronized IMU time-series (HDF5 files) from all six sensors (tri-axial accelerometer, gyroscope, and magnetometer channels, 128 Hz). Raw channels were z-standardized per subject and sensor within the training folds, and the resulting parameters (mean, SD) were then applied to the corresponding test folds to avoid data leakage.
+Because individual instrumented TUG trials differed in duration and number of strides, the multichannel signals were of variable length and were transformed into fixed-dimensional inputs prior to classification. Each of the 54 channels was resampled to a common temporal length of 512 samples using linear interpolation, thereby preserving the temporal morphology of the waveform while normalizing trial duration across participants. The resampled channels were subsequently concatenated into a single fixed-length vector (54 × 512 = 27,648 values) for each participant, which served as the input to the machine-learning classifiers. No sliding-window segmentation or time-domain feature engineering was applied to the raw modality. All preprocessing parameters were fixed a priori and applied identically to both groups, and normalization statistics were estimated exclusively from the training folds to prevent data leakage.
+2.6. Aggregate, pre-processed data set
+A total of 130 spatiotemporal gait and postural stability metrics were extracted automatically using the Mobility Lab software (APDM, Inc., Portland, OR, USA) [16], [25]. The software’s pre-processed outputs have been validated by comparison with measurements from a 3-dimensional motion capture system, demonstrating high accuracy [25], [26].
+From these, 48 variables with strong clinical applicability were retained for analysis, selected according to (1) a published review highlighting gait and balance parameters most relevant in neurological disorders [23] and (2) the clinical expertise of the study team [27] (Table 2; Supplementary Table 1). Detailed descriptions and graphical examples of each metric are publicly available on the manufacturer’s website (https://www.apdm.com/mobility/).
+
+Table 2. Gait and balance features extracted from the Mobility Lab software.
+
+Domain	Feature
+Gait – lower limb	Cadence [left], Cadence [right], Cadence [overall], Double support [left], Double support [right], Gait speed [left], Gait speed [right], Lateral step variability [left], Lateral step variability [right], Foot strike angle [left], Foot strike angle [right], Toe-off angle [left], Toe-off angle [right], Single limb support [left], Single limb support [right], Stance [left], Stance [right], Step duration [left], Step duration [right], Stride length [left], Stride length [right], Swing [left], Swing [right], Terminal double support [left], Terminal double support [right], Foot clearance (cm), Circumduction (cm)
+Gait – lumbar	Coronal range of motion, Sagittal range of motion, Transverse range of motion
+Gait – trunk	Coronal range of motion, Sagittal range of motion, Transverse range of motion
+Postural sway	Mean velocity, Mean velocity [coronal], Mean velocity [sagittal], Acc – path length, Acc – path length [coronal], Acc – path length [sagittal], Acc – RMS sway, Acc – RMS sway [coronal], Acc – RMS sway [sagittal], Acc – range, Acc – range [coronal], Acc – range [sagittal], Sway area radius [coronal], Sway area rotation, Sway area
+Abbreviation: Acc = acceleration; GC = gait cycle; RMS = root mean square.
+2.7. Addressing imbalance in class distribution
+The class distribution was notably imbalanced, with 410 participants diagnosed with PD (∼92.4%) and 34 with PSP (∼7.6%). To address class imbalance, we applied the Synthetic Minority Over-sampling Technique (SMOTE) [28] exclusively within the training folds, with all resampling performed only on the training data. SMOTE was never applied to the held-out test folds. Because SMOTE can have limited benefit with some classifiers (e.g., tree-based ensembles), we also compared models with and without resampling as a sensitivity check, which produced similar results (Supplementary Table 5). Missing data accounted for only 0.0002% of all feature values. Missing values were rare (<0.001% per feature) and were imputed within the training folds only, using mean (for continuous variables) or mode (for categorical variables) imputation estimated from the training data distribution. The same parameters were then applied to the held-out test folds to avoid data leakage. As a sensitivity check, we repeated analyses using a multivariate imputation approach incorporating all available features; results were consistent. Specifically, within each cross-validation iteration, preprocessing was performed in the following order: (1) missing-data imputation, (2) feature standardization, and (3) SMOTE applied exclusively to the training fold. For the corresponding held-out test fold, only the imputation and standardization parameters estimated from the training fold were applied.
+2.8. Classification approach and model selection
+We compared eight supervised classifiers: logistic regression (LR), support vector machine (SVM), k-nearest neighbors (kNN), neural network (NN; MLP), decision tree (DT), random forest (RF), extreme gradient boosting (XGBoost), and a reference “dummy” classifier that always predicts the majority class. To ensure stable optimization, features were z-score standardized within the training folds for models sensitive to feature scale (SVM, kNN) and for linear/logistic models and neural networks where standardization can improve convergence. For scale-invariant tree-based models (DT, RF, XGBoost), raw feature scales were retained. Standardization parameters were estimated from the training data and applied to the held-out folds to avoid data leakage.
+We used stratified threefold nested cross-validation, with outer folds reserved for unbiased performance estimation and inner folds used for hyperparameter tuning via grid search (Supplementary Table 2). This ensured that tuning and evaluation were performed on disjoint data to avoid optimistic bias.
+A stratified three-fold design was selected a priori because of the limited number of participants with PSP (n = 34). Increasing the number of folds would substantially reduce the number of minority-class samples available in each held-out test fold (approximately seven with five-fold cross-validation and three to four with ten-fold cross-validation), thereby increasing the variability of class-specific performance metrics such as precision, recall, and F1-score. The three-fold design therefore represented an appropriate balance between preserving adequate minority-class representation in each test fold and obtaining an unbiased estimate of model generalization performance. The same hyperparameter ranges were applied for both the aggregate feature dataset and the raw data models. The cross-validation preserved the PSP/PD ratio in each fold, and the final model for each algorithm was refit on all data in the outer training folds using the best hyper-parameters. All classifiers were trained and evaluated twice: once using the raw IMU time-series modality and once using the 48 aggregate features, under an identical cross-validation and tuning protocol.
+2.9. Performance evaluation
+Model performance was evaluated using multiple classification metrics implemented in scikit-learn (version 1.3.2). The primary model-selection criterion was the macro-averaged F1-score (macro-F1) computed under stratified 3-fold cross-validation. Macro-averaging ensures that both minority (PSP) and majority (PD) classes are weighted equally despite class imbalance. The F1-score is preferred over accuracy as F1 penalizes false positives and false negatives symmetrically and is therefore less biased by class prevalence. We report macro-F1 (each class weighted equally), alongside class-specific F1-scores for PSP and PD. The F1-score (harmonic mean of precision and recall) and additional classifiers such as accuracy (proportion of correct predictions), recall (sensitivity; proportion of true positives identified), and precision (positive predictive value) were calculated using the following formulas (with PSP as positive class):
+𝐴𝑐𝑐𝑢𝑟𝑎𝑐𝑦=(𝑇𝑃+𝑇𝑁)/(𝑇𝑃+𝑇𝑁+𝐹𝑃+𝐹𝑁)
+𝑃𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛⁡(𝑃𝑃𝑉)=𝑇𝑃/(𝑇𝑃+𝐹𝑃)
+𝑅𝑒𝑐𝑎𝑙𝑙⁡(𝑆𝑒𝑛𝑠𝑖𝑡𝑖𝑣𝑖𝑡𝑦)=𝑇𝑃/(𝑇𝑃+𝐹𝑁)
+𝐹⁡1−𝑠𝑐𝑜𝑟𝑒=2×
+𝑃𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛×𝑅𝑒𝑐𝑎𝑙𝑙
+𝑃𝑟𝑒𝑐𝑖𝑠𝑖𝑜𝑛+𝑅𝑒𝑐𝑎𝑙𝑙
+(Where TP = true positives, TN= true negatives, FP= false positives, FN = false negatives.).
+3. Results
+3.1. Classification using raw IMU time-series
+Fig. 2A presents performance metrics of the ML models on the raw time-series, ranked by macro-F1 score. XGBoost and RF achieved the highest performance (macro-F1 = 0.87 and 0.86, respectively). SVM (RBF), MLP, LR, kNN, and DT followed with lower macro-F1 scores (0.83, 0.82, 0.80, 0.78, and 0.73, respectively). Accuracy, precision, and recall followed a similar ranking pattern (Fig. 2A; Supplementary Table 3). Class-specific F1-scores revealed clear asymmetry (PSP ≈ 0.80 vs PD ≈ 0.94).
+Download: Download high-res image (442KB)
+Download: Download full-size image
+
+Fig. 2. Classifier performance on PSP–PD discrimination. (A) Raw IMU time-series. (B) Aggregate features. Bars show Accuracy (black), Precision (green), Recall (blue), and macro F1-score (red) averaged over stratified 3-fold cross-validation with SMOTE applied within training folds. Models: logistic regression (LR), support vector machine with RBF kernel (SVM), neural network (MLP), k-nearest neighbors (kNN), decision tree (DT), random forest (RF), extreme gradient boosting (XGBoost), and a majority-class dummy baseline. Numeric values are plotted above bars.
+
+3.2. Classification using aggregate features
+Fig. 2B presents performance metrics of the ML models on aggregate features, also ranked by macro-F1 score. Similar to the raw time-series models, XGBoost achieved the highest performance (macro-F1 = 0.88), followed by RF (macro-F1 = 0.87). SVM (RBF) ranked next (macro-F1 = 0.84), followed by logistic regression (macro-F1 = 0.83), MLP (macro-F1 = 0.82), kNN (macro-F1 = 0.79), and a single decision tree (macro-F1 = 0.75). As expected for a majority-class baseline, the dummy classifier produced a low macro-F1 score (0.33), reflecting poor sensitivity to the minority (PSP) class.
+Other performance measures followed a similar pattern (Fig. 2B; Supplementary Table 4). Class-specific F1-scores showed clear asymmetry (Supplementary Table 4). The top performing XGBoost model exhibited a PSP F1 of 0.81 and a PD F1 of 0.95.
+A pooled confusion matrix for the best-performing model (XGBoost), constructed by concatenating the held-out outer-fold predictions, is provided in Supplementary Fig. 1; 27 of the 34 participants with PSP were correctly identified and 7 were classified as PD.
+Performance differences between raw and aggregate pipelines were minimal. For example, XGBoost showed only a marginal improvement with aggregate features (macro-F1: 0.87 → 0.88), with similar small differences observed for RF and SVM. As a sensitivity analysis, repeating the aggregate-feature models without SMOTE produced nearly identical classifier rankings and only minimal changes in macro-F1 scores (Δ = 0.00–0.02 for all models; Supplementary Table 5), indicating that the principal findings were not driven by synthetic oversampling.
+3.3. Interpretability of aggregate-feature models
+To identify gait signatures that drove model decisions, we examined feature importance from the two ensemble classifiers (XGBoost and RF) and computed global SHAP values for these models on the aggregate-feature modality. We focused on these ensembles because they achieved the highest predictive performance in our study, provide native feature-importance measures, and are well-suited for SHAP analysis.
+The native feature importance and SHAP values converged on a consistent feature profile: temporal stability and base-of-support measures (e.g., double support [%GC], terminal double support, single-limb support) and spatiotemporal amplitude metrics (e.g., stride length, gait speed) ranked highest, alongside segmental range-of-motion features from the trunk/lumbar segments and mediolateral sway indices (Fig. 3).
+Download: Download high-res image (197KB)
+Download: Download full-size image
+
+Fig. 3. Top aggregate gait and balance features by global SHAP importance from the XGBoost model (stratified 3-fold cross-validation); Point color reflects feature value (red = higher, blue = lower); x-axis direction indicates contribution toward PSP (positive) or PD (negative).
+
+Fig. 3 shows the SHAP summary plot of the top-performing model (XGBoost). The top 12 features were retained for visualization clarity, as feature importance plateaued beyond this rank. Directionality is conveyed by the color coding of individual points (red = higher feature values, blue = lower feature values) and their position on the x-axis (positive SHAP values shift predictions toward PSP, negative values toward PD).
+For example, higher values of double support (red points on the positive SHAP axis) increased the likelihood of PSP classification, whereas lower gait speed (blue points on the negative SHAP axis) also shifted predictions toward PSP. Collectively, increased double support and mediolateral sway, together with reduced stride length, gait speed, and trunk/lumbar range of motion, consistently contributed to PSP classification.
+We repeated the SHAP analyses using RF. The most influential features in the RF model showed substantial overlap with those identified in the XGBoost model. While absolute SHAP values differed slightly between models, feature rankings and directional effects were largely consistent, supporting the robustness of the identified gait signatures.
+The most influential discriminative features originated from multiple locations within the six-IMU array. Spatiotemporal gait measures were derived primarily from the bilateral foot and shank sensors, lumbar range-of-motion and postural sway measures from the lumbar (L5) sensor, and trunk range-of-motion measures from the sternal sensor (Supplementary Table 6). For transparency, performance metrics recomputed from pooled outer-fold predictions are summarized in Supplementary Table S7.
+4. Discussion
+Using six synchronized IMUs and a prespecified machine-learning pipeline, we show that objective gait information can differentiate PSP from PD, with tree-based ensembles (XGBoost, RF) achieving the strongest cross-validated performance on both raw input and aggregate modalities. XGBoost reached macro-F1 of 0.87 on raw time-series and 0.88 on aggregate data.
+Our study adds a head-to-head comparison of raw time-series versus aggregate spatiotemporal features in the same cohort, showing near-equivalent accuracy across modalities, with aggregate features slightly outperforming raw time-series, although differences were minimal, suggesting that input representation may be less critical than model class in this context. This near-equivalent performance was not unexpected. Aggregate spatiotemporal features such as gait speed, stride length, and double support are derived directly from the raw IMU signals, meaning they already capture much of the clinically relevant variance for distinguishing PSP from PD. Prior studies have shown that summary gait metrics retain high discriminative power, with accuracies ≈ 0.89–0.92 in early PSP versus PD [29]. Moreover, machine-learning work in related neurodegenerative cohorts suggests that carefully engineered features can perform as well as, or better than, models trained directly on raw signals, particularly when sample sizes are modest [11], [12], [17], [18], [19], [20].
+One possible explanation for the comparable performance of the aggregate-feature models is that the curated representation provided a substantially lower-dimensional input space (48 features versus 27,648 raw signal values per participant), potentially reducing susceptibility to overfitting at the available sample size while preserving clinically informative gait characteristics. These findings support a pragmatic clinical pathway, whereby clinics equipped with systems such as APDM Mobility Lab can implement interpretable models directly from aggregate features without loss of performance relative to raw-signal models in this cohort [16], [25].
+Tree-based ensembles consistently outperformed linear, kernel, single-tree, and shallow neural models. This superiority likely reflects their capacity to capture nonlinear interactions and higher-order dependencies among gait features, while remaining robust to noise and multicollinearity [22]. Notably, the most influential features identified by these models, including temporal stability and base-of-support measures (e.g., double support, stance variability, mediolateral sway), align closely with PSP’s characteristic axial and postural instability phenotype [2].
+Global SHAP analysis on the aggregate-feature models converged on a coherent clinical picture: more double support and terminal double support, greater mediolateral sway, and reduced stride length, gait speed, and trunk/lumbar ROM pushed predictions toward PSP. These signatures are compatible with PSP’s early postural instability and axial involvement, and with PD’s comparatively preserved base of support early in the disease course [2], [6], [8], [9]. The strong overlap in the top features between XGBoost and RF supports the stability of these signatures across algorithms.
+Although turning impairment is a hallmark clinical feature of PSP, the curated aggregate-feature set used in the present study was primarily designed to characterize steady-state gait, axial range of motion, and postural sway, and did not include dedicated turn-specific kinematic variables such as turn duration, number of turn steps, or peak turning velocity. Consequently, the SHAP analysis ranked the most informative features among those available to the models rather than all potentially relevant gait characteristics. Importantly, feature importance should not be interpreted as equivalent to diagnostic specificity. Turn-specific measures may ultimately prove more specific for PSP, even if they were not represented in the present feature set. Future studies incorporating dedicated turning metrics and turn-focused protocols will help determine their incremental diagnostic value for differentiating PSP from PD.
+Baseline comparison (Table 1) showed that the PSP and PD groups were well matched for age, sex, and Hoehn & Yahr stage assessed in the ON medication state. The observed differences in disease duration, MoCA score, and LEDD are consistent with the established clinical phenotype of PSP rather than unexpected group imbalances. PSP is characterized by more rapid disease progression, earlier cognitive impairment, and reduced responsiveness to levodopa, resulting in comparable motor severity despite a shorter disease duration and typically lower levodopa-equivalent doses. Because all instrumented assessments were performed in the ON state and the groups were comparable with respect to Hoehn & Yahr stage, these baseline differences are unlikely to fully explain the observed gait differences. Furthermore, the discriminative gait signatures identified by the models, including increased double-support time and mediolateral sway together with reduced stride length, gait speed, and trunk/lumbar range of motion, all closely correspond to the established axial and postural phenotype of PSP. Nevertheless, residual confounding cannot be completely excluded in a retrospective observational study, and future studies using prospectively matched cohorts or covariate-adjusted analyses will be important to further confirm the independence of these gait biomarkers.
+Previous quantitative gait models separated early PSP from newly diagnosed PD with overall accuracies ≈ 0.89–0.92, typically showing higher sensitivity for PD than PSP [9]. This pattern mirrors our class-specific F1 asymmetry (Tables S2–S3). In our imbalanced cohort, PSP was harder for the models to detect, and the class-specific F1 for PSP remained lower than for PD even after we applied SMOTE during training, reflecting residual recall asymmetry. More broadly, wearable studies applying ML models attempting multi-disorder differentials tend to achieve lower performance, underscoring the value of a focused PSP–PD design using rich gait signals, which can achieve strong classification performance (macro-F1 ≈ 0.80–0.90) [30]. These findings suggest that clinic-based IMU protocols (e.g., instrumented TUG) can reveal disease-specific gait signatures not captured by standard clinical rating scales, particularly in early disease stages when PSP may resemble PD. However, improving sensitivity for PSP detection remains a key priority, and future work should explore combining gait with complementary modalities such as oculomotor or speech assessments.
+Our findings extend the emerging literature on PSP–PD discrimination using wearable sensing and machine learning. Prior differential-diagnosis studies outside direct PSP–PD gait comparisons often emphasized upper-limb or postural tasks or evaluated a limited subset of gait variables, with heterogeneous performance [16], [31], [32], [33], [34]. In contrast, the few wearable-sensor studies that directly compared PSP and PD using gait reported stronger performance [9], [10], [21]. The present study is unique in three respects: (i) we analyzed a relatively large sample of 34 PSP and 410 PD within a single standardized protocol; (ii) we conducted a head-to-head comparison of raw IMU time-series and aggregate spatiotemporal features in the same cohort and pipeline; and (iii) we benchmarked eight classifier families with a prespecified emphasis on tree-based ensembles (XGBoost, random forest) and provided model-agnostic explanations (global SHAP) together with directional clinical mapping (increased double support, terminal double support, and mediolateral sway; reduced stride length, gait speed, and trunk/lumbar range of motion).
+However, several limitations should be noted. The single-center retrospective design restricts generalizability. Although within-fold SMOTE and macro-averaged metrics were applied, PSP remained more difficult to detect than PD, underscoring the need to improve sensitivity and reduce false negatives through complementary assessments such as gaze or speech. Because this study was retrospective, the analysis was limited to the iTUG that formed part of the routine clinical assessment. Longer continuous walking protocols (e.g., the 2-minute or 10-m walk) and complementary mobility tasks may capture additional gait characteristics and should be investigated in future prospective studies. Future work will also focus on reproducing the models on alternative IMU systems in prospective, multisite study designs, and extending evaluation beyond iTUG administered in the clinic to home monitoring.
+In addition, although all participants were assessed using the same sensors, acquisition protocol, and clinical environment, indoor magnetic disturbances may influence magnetometer-based orientation estimates and therefore represent an inherent limitation of IMU systems incorporating magnetometers.
+In this study, we applied the same machine learning models to both raw time-series and aggregated (pre-processed) IMU data to directly compare their performance metrics. The primary objective was to compare the two data representations while keeping the learning framework consistent across modalities. Both pipelines yielded similar discriminatory ability, suggesting that carefully engineered summary features preserve most of the discriminative information contained in the raw signals. We recognize that dedicated sequence-based architectures (e.g., recurrent or convolutional neural networks) may better capture the temporal dependencies inherent in raw signals. However, such architectures also introduce substantially greater model complexity and typically require considerably larger training datasets to achieve robust generalization. Consequently, benchmarking sequence-oriented deep learning models was beyond the scope of the present study. Although our cohort is relatively large from a clinical standpoint, particularly given the challenges of collecting standardized IMU assessments in patients with PD and PSP, the sample size remains modest for training more complex machine learning models. Future work should therefore explore sequence-oriented approaches in larger, multicenter datasets to determine whether they provide incremental benefit over clinically interpretable aggregate-feature approaches.
+5. Conclusions
+Wearable-sensor gait analysis combined with ensemble machine learning differentiates PSP from PD with robust accuracy (macro-F1 ≈ 0.87–0.88) and yields clinically interpretable gait signatures consistent with known pathophysiology. The close agreement between raw and aggregate inputs suggests multiple viable pathways for clinical translation, pending prospective multi-site validation and targeted optimization for PSP detection.
+CRediT authorship contribution statement
+Hannes Devos: Writing – review & editing, Writing – original draft, Validation, Supervision, Resources, Project administration, Methodology, Funding acquisition, Data curation, Conceptualization. Rajesh Pahwa: Writing – review & editing, Methodology, Data curation, Conceptualization. Kelly E. Lyons: Writing – review & editing, Methodology, Data curation. Ehsan Barouti: Writing – review & editing, Software, Data curation. Maryam Sadeghi: Writing – review & editing, Writing – original draft, Visualization, Validation, Software, Project administration, Methodology, Investigation, Funding acquisition, Formal analysis, Data curation, Conceptualization. Sanghee Moon: Writing – review & editing, Data curation. Jeffrey Thompson: Writing – review & editing, Visualization, Validation, Software, Formal analysis, Data curation, Conceptualization. Abiodun Akinwuntan: Writing – review & editing.
+Ethics approval and consent to participate
+The research involving human participants underwent a review and received approval (STUDY00160769) from the Institutional Review Board (IRB) at the University of Kansas Medical Center.
+Author Roles
+1.
+Research Project: A. Conception, B. Organization, C. Execution
+2.
+Statistical Analysis: A. Design, B. Execution, C. Review and Critique
+3.
+Manuscript: A. Writing of the first draft, B. Review and Critique
+MS: 1A, 1B, 1C; 2A; 2B; 3A.
+EB: 2A, 2B; 3B.
+KEL: 1C; 3B.
+RP: 1C; 3B.
+AA: 1B; 3B.
+JT: 2A, 2C; 3B.
+SM: 2C; 3B.
+HD: 1A, 1B; 2C; 3B.
+Financial disclosures (last 12 months)
+MS: supported by the Mabel A. Woodyard Fellowship in Neurodegenerative Disorders.
+EB, SM, JT, KEL, RP, HD: nothing to disclose.
+AA: Dean, School of Health Professions, University of Kansas Medical Center.
+Funding statement
+This study was funded by the Mabel A. Woodyard Fellowship in Neurodegenerative Disorders (M.S.).
+Declaration of Competing Interest
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+This study was conducted as part of academic research at the University of Kansas Medical Center, using data collected from the Parkinson’s Disease and Movement Disorder Clinic. The authors received no financial support from any commercial entities related to the development, analysis, or interpretation of the data presented in this manuscript.
+All authors confirm that they have no conflicts of interest relevant to the content of this manuscript.
+Acknowledgements
+We are sincerely grateful to all patients who generously agreed to participate in this project, as well as to their family caregivers for their invaluable support. We also wish to thank the dedicated nurses and research staff at the Parkinson’s Disease and Movement Disorder Clinic at the University of Kansas Medical Center for their assistance and commitment throughout this study.
+Appendix A. Supplementary material
+Download: Download Word document (120KB)
+
+Supplementary material
+
+Data Availability
+Data will be made available upon reasonable request to the corresponding author.
+References
+[1]
+A. Schrag, Y. Ben-Shlomo, N.P. Quinn
+Prevalence of progressive supranuclear palsy and multiple system atrophy: a cross-sectional study
+Lancet, 354 (9192) (1999), pp. 1771-1775
+View PDF
+View articleView in ScopusGoogle Scholar
+[2]
+G.U. Hoglinger, et al.
+Clinical diagnosis of progressive supranuclear palsy: the movement disorder society criteria
+Mov. Disord., 32 (6) (2017), pp. 853-864
+CrossrefView in ScopusGoogle Scholar
+[3]
+M. Mamarabadi, H. Razjouyan, L.I. Golbe
+Is the latency from progressive supranuclear palsy onset to diagnosis improving?
+Mov. Disord. Clin. Pract., 5 (6) (2018), pp. 603-606
+CrossrefView in ScopusGoogle Scholar
+[4]
+S. Lyons, et al.
+The prevalence and incidence of progressive supranuclear palsy and corticobasal syndrome: a systematic review and meta-analysis
+J. Neurol., 270 (9) (2023), pp. 4451-4465
+CrossrefView in ScopusGoogle Scholar
+[5]
+A.S. Talai, et al.
+Widespread diffusion changes differentiate Parkinson's disease and progressive supranuclear palsy
+Neuroimage Clin., 20 (2018), pp. 1037-1043
+View PDF
+View articleView in ScopusGoogle Scholar
+[6]
+F.S. Brown, et al.
+Falls in progressive supranuclear palsy
+Mov. Disord. Clin. Pract., 7 (1) (2020), pp. 16-24
+CrossrefView in ScopusGoogle Scholar
+[7]
+S. Kammermeier, et al.
+Postural stabilization differences in idiopathic parkinson's disease and progressive supranuclear palsy during self-triggered fast forward weight lifting
+Front. Neurol., 8 (2017), p. 743
+Google Scholar
+[8]
+M.L. Dale, et al.
+Balance and gait in progressive supranuclear palsy: a narrative review of objective metrics and exercise interventions
+Front. Neurol., 14 (2023), Article 1212185
+View in ScopusGoogle Scholar
+[9]
+M. Amboni, et al.
+Gait analysis may distinguish progressive supranuclear palsy and Parkinson disease since the earliest stages
+Sci. Rep., 11 (1) (2021), p. 9297
+View in ScopusGoogle Scholar
+[10]
+M. Sharma, et al.
+Remote at-home wearable-based gait assessments in progressive Supranuclear Palsy compared to Parkinson's Disease
+BMC Neurol., 23 (1) (2023), p. 434
+View in ScopusGoogle Scholar
+[11]
+J. Watts, et al.
+Machine learning model comparison for freezing of gait prediction in advanced Parkinson's disease
+Front. Aging Neurosci., 16 (2024), Article 1431280
+View in ScopusGoogle Scholar
+[12]
+M. Mancini, et al.
+Digital gait biomarkers in Parkinson's disease: susceptibility/risk, progression, response to exercise, and prognosis
+NPJ Park. Dis., 11 (1) (2025), p. 51
+View in ScopusGoogle Scholar
+[13]
+M. Parati, et al.
+The reliability of gait parameters captured via instrumented walkways: a systematic review and meta-analysis
+Eur. J. Phys. Rehabil. Med., 58 (3) (2022), pp. 363-377
+Google Scholar
+[14]
+X. Wu, et al.
+Wearable sensor devices can automatically identify the ON-OFF status of patients with Parkinson's disease through an interpretable machine learning model
+Front. Neurol., 15 (2024), Article 1387477
+View in ScopusGoogle Scholar
+[15]
+A. Salarian, et al.
+iTUG, a sensitive and reliable measure of mobility
+IEEE Trans. Neural Syst. Rehabil. Eng., 18 (3) (2010), pp. 303-310
+View in ScopusGoogle Scholar
+[16]
+M. Mancini, et al.
+Mobility lab to assess balance and gait with synchronized body-worn sensors
+J. Bioeng. Biomed. Sci. (1) (2011), p. 007
+Google Scholar
+[17]
+A. Channa, et al.
+Parkinson's disease resting tremor severity classification using machine learning with resampling techniques
+Front. Neurosci., 16 (2022), Article 955464
+View in ScopusGoogle Scholar
+[18]
+J. Hwang, et al.
+Machine learning for early detection and severity classification in people with Parkinson's disease
+Sci. Rep., 15 (1) (2025), p. 234
+View in ScopusGoogle Scholar
+[19]
+Navita, et al.
+Gait-based Parkinson's disease diagnosis and severity classification using force sensors and machine learning
+Sci. Rep., 15 (1) (2025), p. 328
+View in ScopusGoogle Scholar
+[20]
+J. Song, et al.
+Differential diagnosis between Parkinson's disease and atypical parkinsonism based on gait and postural instability: Artificial intelligence using an enhanced weight voting ensemble model
+Park. Relat. Disord., 98 (2022), pp. 32-37
+View PDF
+View articleCrossrefGoogle Scholar
+[21]
+M. De Vos, et al.
+Discriminating progressive supranuclear palsy from Parkinson's disease using wearable technology and machine learning
+Gait Posture, 77 (2020), pp. 257-263
+View PDF
+View articleView in ScopusGoogle Scholar
+[22]
+T. Chen, C. Guestrin
+XGBoost: a scalable tree boosting system
+Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, Association for Computing Machinery, San Francisco, California, USA (2016), pp. 785-794
+CrossrefView in ScopusGoogle Scholar
+[23]
+A. Muro-de-la-Herran, B. Garcia-Zapirain, A. Mendez-Zorrilla
+Gait analysis methods: an overview of wearable and non-wearable systems, highlighting clinical applications
+Sensors (Basel), 14 (2) (2014), pp. 3362-3394
+CrossrefView in ScopusGoogle Scholar
+[24]
+R.B. Postuma, et al.
+MDS clinical diagnostic criteria for Parkinson's disease
+Mov. Disord., 30 (12) (2015), pp. 1591-1601
+CrossrefView in ScopusGoogle Scholar
+[25]
+R. Morris, et al.
+Validity of Mobility Lab (version 2) for gait assessment in young adults, older adults and Parkinson's disease
+Physiol. Meas., 40 (9) (2019), Article 095003
+CrossrefView in ScopusGoogle Scholar
+[26]
+D.C. Dewey, et al.
+Automated gait and balance parameters diagnose and correlate with severity in Parkinson disease
+J. Neurol. Sci., 345 (1-2) (2014), pp. 131-138
+View PDF
+View articleView in ScopusGoogle Scholar
+[27]
+M. Mancini, F.B. Horak
+Potential of APDM mobility lab for the monitoring of the progression of Parkinson's disease
+Expert. Rev. Med. Devices, 13 (5) (2016), pp. 455-462
+CrossrefView in ScopusGoogle Scholar
+[28]
+N.V. Chawla, et al.
+SMOTE: synthetic minority over-sampling technique
+J. Artif. Intell. Res., 16 (2002), pp. 321-357
+CrossrefView in ScopusGoogle Scholar
+[29]
+M. Amboni, et al.
+Gait analysis may distinguish progressive supranuclear palsy and Parkinson disease since the earliest stages
+Sci. Rep., 11 (1) (2021), p. 9297
+View in ScopusGoogle Scholar
+[30]
+J. Varghese, et al.
+Machine Learning in the Parkinson's disease smartwatch (PADS) dataset
+NPJ Park. Dis., 10 (1) (2024), p. 9
+View in ScopusGoogle Scholar
+[31]
+S. Moon, et al.
+Classification of Parkinson's disease and essential tremor based on balance and gait characteristics from wearable motion sensors via machine learning techniques: a data-driven approach
+J. Neuroeng. Rehabil., 17 (1) (2020), p. 125
+View in ScopusGoogle Scholar
+[32]
+X. Xing, et al.
+Identification and classification of parkinsonian and essential tremors for diagnosis using machine learning algorithms
+Front. Neurosci., 16 (2022), Article 701632
+View in ScopusGoogle Scholar
+[33]
+R.M. Khalil, et al.
+Applying wearable sensors and machine learning to the diagnostic challenge of distinguishing Parkinson's disease from other forms of Parkinsonism
+Biomedicines, 13 (3) (2025)
+Google Scholar
+[34]
+F. Aracri, et al.
+Multimodal imaging and electrophysiological study in the differential diagnosis of rest tremor
+Front. Neurol., 15 (2024), Article 1399124
+View in ScopusGoogle Scholar
+Recommended articles
+Based on reading popularity
+Research article
+Open access
+Plastic classification via in-line hyperspectral camera analysis and unsupervised machine learning
+Martin L. Henriksen, …, Mogens Hinge
+Vibrational Spectroscopy • Volume 118 • 2022 • Article 103329
+View PDF
+Research article
+Open access
+A survey on the design and evolution of social robots — Past, present and future
+Hamza Mahdi, …, Kerstin Dautenhahn
+Robotics and Autonomous Systems • Volume 156 • 2022 • Article 104193
+View PDF
+Data article
+Open access
+LiRA-CD: An open-source dataset for road condition modelling and research
+Asmus Skar, …, Matteo Pettinari
+Data in Brief • Volume 49 • 2023 • Article 109426
+View PDF
+Review article
+Open access
+Artificial Intelligence and liver: Opportunities and barriers
+Clara Balsano, …, Piergiorgio Donatelli
+Digestive and Liver Disease • Volume 55, Issue 11 • 2023 • Pages 1455-1461
+View PDF
+Research article
+Full text access
+Ultra-wideband high accuracy distance measurement based on hybrid compensation of temperature and distance error
+Sheng Liu, …, Qianen He
+Measurement • Volume 206 • 2023 • Article 112276
+View PDF
+Research article
+Full text access
+Machine learning approach to determine the decision rules in ergonomic assessment of working posture in sewing machine operators
+Jun-Ming Su, …, Chi-Jane Wang
+Journal of Safety Research • Volume 87 • 2023 • Pages 15-26
+View PDF
+Metrics
+Captures
+Mendeley Readers
+8
+View details
+© 2026 The Authors. Published by Elsevier B.V.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.

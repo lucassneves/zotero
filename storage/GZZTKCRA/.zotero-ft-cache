@@ -1,0 +1,1096 @@
+Skip to main content
+Skip to article
+Skip to minimise reading assistant
+Skip to summarize article
+Skip to ask about this article
+Reading Assistant
+powered by
+LeapSpace
+Opens in a new window
+Reading assistant options menu
+Actions you could take:
+Summarize this article
+Ask about this article
+Submit query
+Reading assistant is powered by LeapSpace. AI responses may vary in quality.
+Informatics in Medicine Unlocked
+Date: October 2026
+Show more
+Review article
+Open access
+Under a Creative Commons license
+Get rights and content
+Artificial intelligence in Parkinson's disease: A critical review of multimodal biomarkers, validation, and clinical translation
+Kagne Raveena Rajendra a
+, 
+Jerry Gao b
+, 
+Roopa Gangadhar Devihosur c
+, 
+Mohini Kathrotiya a
+Show more
+View PDF
+Download full issue
+Highlights
+•
+Surveys ML methods across speech, gait, imaging, and protein biomarkers.
+•
+Critical comparison of existing methods on 20+ public Parkinson disease datasets.
+•
+Identifies key challenges in data quality, interpretability, and clinical deployment.
+•
+Proposes an integrated multimodal framework for robust disease diagnosis.
+•
+Provides a research roadmap bridging Artificial Intelligence and clinical practice.
+Abstract
+Parkinson's disease (PD) is a heterogeneous neurodegenerative disorder whose early diagnosis and longitudinal assessment remain difficult because motor and non-motor manifestations vary across patients and clinically evident symptoms often emerge after substantial dopaminergic degeneration. Artificial intelligence (AI) can integrate heterogeneous biomarkers, but the reliability of reported performance depends strongly on dataset composition, validation design, model interpretability, and external generalisability. This PRISMA-guided review qualitatively synthesised 74 eligible studies and this review therefore evaluates how machine learning (ML), deep learning (DL), multimodal learning, and explainable and privacy-preserving AI have been used for PD detection, severity assessment, progression modelling, digital-biomarker discovery, and AI-assisted drug discovery.
+The review provides a dataset-centric assessment of more than 20 publicly available benchmark datasets spanning seven biomarker modalities, including speech, gait and wearable signals, handwriting, neuroimaging, clinical assessments, molecular and multi-omics data, and multimodal combinations. Across these areas, conventional ML remains useful for smaller structured datasets, whereas DL supports automated feature learning from high-dimensional signals and images; multimodal approaches may capture complementary disease information but require larger harmonised cohorts and more complex validation. The evidence is limited by small or imbalanced samples, inconsistent evaluation protocols, overfitting, scarce independent external validation, restricted interpretability, and demographic and acquisition-related dataset shift. Consequently, high within-dataset performance should not be interpreted as clinical readiness. Future progress requires standardised benchmarks, prospective multicentre validation, explainable multimodal models, longitudinal monitoring, and privacy-preserving data collaboration.
+Keywords
+Parkinson's disease; Artificial intelligence; Machine learning; Deep learning; Multimodal biomarkers; Public datasets; Clinical validation
+Previous article
+Next article
+1. Introduction
+Parkinson's disease (PD) is a progressive neurodegenerative disorder and represents one of the fastest-growing neurological causes of disability worldwide. Clinically, PD is characterized by four major motor symptoms: resting tremor, rigidity, bradykinesia, and postural instability. PD also includes many non-motor symptoms such as cognitive decline, sleep disturbance, mood disorders, and autonomic dysfunctions. Most importantly, motor symptoms of PD develop only after considerable degeneration of dopaminergic neurons in the substantia nigra, which greatly diminishes the opportunity for early therapeutic intervention [1,2,3,4].
+The global burden of PD is increasing. The estimated number of people living with PD rose from approximately 2.5 million in 1990 to 6.1 million in 2016, and the World Health Organization reported more than 8.5 million cases in 2019 [5,6]. Projections suggest that prevalence may exceed 25 million by 2050 as populations age [7]. In the United States alone, the annual economic burden exceeds USD 50 billion [8]. This growing clinical and socioeconomic burden is especially important because available therapies primarily alleviate symptoms rather than modify the underlying neurodegenerative process [6] [9].
+Current diagnostic frameworks rely primarily on clinical examination and rating scales, including the Movement Disorder Society-sponsored revision of the Unified Parkinson's Disease Rating Scale (MDS-UPDRS). Although clinically valuable, these assessments are partly subjective, vulnerable to inter-rater variation, and provide only intermittent snapshots of fluctuating symptoms. Molecular and imaging biomarkers, particularly those related to alpha-synuclein pathology, have shown diagnostic potential [10]; however, no single biomarker currently provides sufficient sensitivity, specificity, accessibility, and validation for population-scale early screening. These limitations motivate the development of data-driven approaches that can integrate complementary clinical, digital, imaging, and molecular information.
+Over the past decade, ML and DL methods have been applied to speech [11], handwriting [12], gait and movement [13,14], neuroimaging [15], and longitudinal wearable or mobile sensor data from resources such as mPower [16] and the Parkinson's Progression Markers Initiative (PPMI) [17]. Multimodal models seek to combine complementary behavioural, imaging, physiological, and molecular signals rather than treating each source in isolation [18]. Federated learning may also support multisite model development without centralising all patient-level data [19]. Beyond diagnosis and monitoring, AI has been used in quantitative structure-activity relationship modelling, structure-based drug design, and virtual screening for targets implicated in PD, including alpha-synuclein aggregation and leucine-rich repeat kinase 2 (LRRK2) [20]. These applications differ in data scale, model complexity, interpretability, and clinical maturity; therefore, their reported performance cannot be compared reliably without considering the underlying datasets and validation protocols.
+Despite encouraging results, the evidence base has important methodological weaknesses. Many studies use small, single-centre, or modality-specific cohorts and evaluate models only through random within-dataset splits. Such designs can inflate performance when records from the same participant, device, or acquisition environment appear in both training and test sets. Generalisation commonly deteriorates under independent or cross-dataset evaluation because hardware, acquisition protocols, cohort demographics, clinical definitions, and annotation strategies differ across studies. DL can learn complex representations from high-dimensional data, but this advantage is offset by greater data and computational requirements, overfitting risk, and limited clinical interpretability. Multimodal and multisite research introduces additional problems of missing data, harmonisation, privacy, governance, and reproducibility. Moreover, patient-level digital phenotyping and molecular-level drug-discovery research are often developed as separate pipelines, limiting the construction of biologically informed, end-to-end models.
+Recent reviews have broadened the discussion of AI for PD. Sharma et al. [21], for example, organised ML and DL evidence across imaging, electroencephalography, voice, gait, handwriting, emotion, biomarkers, public datasets, explainable AI, and multimodal analysis. That review provides a useful methodology-oriented overview, but a gap remains for a dataset-centric synthesis that links cohort characteristics and data accessibility to validation strategy, reported performance, generalisability, and clinical readiness. The relationship between patient-level digital biomarkers and molecular evidence, including proteomics, transcriptomics, multi-omics integration, and AI-assisted drug discovery, also remains fragmented. The present review addresses these gaps by evaluating more than 20 public benchmark datasets across seven biomarker modalities; comparing conventional ML, DL, multimodal, explainable, and privacy-preserving approaches; and examining external validity, interpretability, and clinical translation as cross-cutting criteria. It further integrates digital phenotyping with molecular AI and proposes a conceptual multimodal framework for diagnosis, severity assessment, and progression monitoring. The objective is not merely to catalogue studies, but to identify why apparently strong results may fail to generalise and to define testable priorities for future PD research. Fig. 1 summarises how this analytical scope is organised across the manuscript [22,23,24].
+Download: Download high-res image (1MB)
+Download: Download full-size image
+
+Fig. 1. Organization of the introduction and scope of the survey.
+
+1.1. Novelty and contributions
+Recent reviews, including Sharma et al. [21], already cover multiple PD data modalities and AI methods. The contribution of the present review is therefore not multimodal coverage alone, but the following combination of dataset-level, methodological, translational, and molecular analyses:
+1.
+Dataset-centric evidence synthesis. More than 20 publicly accessible benchmark datasets are assessed across seven biomarker modalities: speech, neuroimaging, gait and wearable sensing, handwriting, clinical assessment, genetic and biofluid markers, and protein or molecular data. The analysis considers cohort composition, accessibility, annotation quality, task suitability, and validation constraints rather than listing datasets by name alone.
+2.
+Integration of digital phenotyping and molecular AI. The review connects behavioural and sensor-derived markers with proteomic, transcriptomic, multi-omics, and alpha-synuclein evidence. This cross-scale perspective is used to identify where patient-level prediction and molecular drug-discovery pipelines remain disconnected.
+3.
+Conceptual multimodal framework. Fig. 11 synthesises previously reported methods into a conceptual pipeline for combining molecular, behavioural, imaging, and clinical inputs for diagnosis, severity assessment, and progression monitoring. The framework is not presented as an experimentally validated model; its purpose is to expose the data, fusion, validation, and translation decisions required for future implementation.
+4.
+Critical methodological appraisal. Section 6.1 examines recurrent weaknesses, including benchmark overfitting, inadequate study design, modality imbalance, omission of classical baselines, and inconsistent outcome metrics. These weaknesses are interpreted in relation to reproducibility, external validity, and the risk of overstating clinical performance, and each is paired with a methodological recommendation.
+5.
+Cross-method comparison and emerging approaches. The review compares conventional ML, DL, multimodal and transformer-based fusion, explainable AI, federated learning, and lightweight edge architectures in terms of data requirements, computational burden, interpretability, validation needs, and potential clinical use. Emerging methods such as spatiotemporal graph convolutional networks for gait and privacy-preserving multisite learning are discussed without assuming that technical novelty establishes clinical value.
+6.
+Explicit positioning against earlier surveys. Table 1 compares the scope of this review with previous PD-AI reviews, including coverage of public datasets, molecular biomarkers, multimodal fusion, longitudinal modelling, privacy-preserving learning, and drug-discovery pipelines. The comparison is used to define complementary coverage rather than to claim that earlier reviews are incomplete.
+
+Table 1. Critical comparison of AI studies in Parkinson's disease, grouped by data category, model purpose, validation limitations and level of clinical readiness.
+
+Ref	Modality/data and scale	Model/task	Reported evaluation	Validation context/principal limitation	Clinical readiness
+[11]	Speech/Voice	SVM; early detection	Accuracy, AUC	Internal evaluation; language, microphone and participant leakage risks; external test NR	Benchmark research
+[25]	SVM; PD classification	Accuracy, sensitivity, specificity	Internal evaluation; recording and language shift; external test NR	Benchmark research
+[26]	Aggregation ML; robust prediction	Accuracy, precision, sensitivity, specificity, F1	Aggregation tests repeat-recording stability; independent cross-dataset validation NR	Research-stage
+[27]	Random forest; classification	Accuracy, F1, AUC	Feature-based internal evaluation; cohort and acoustic-protocol dependence	Benchmark research
+[28]	Neuroimaging (MRI)	C-SVM/logistic regression; diagnosis	Accuracy, sensitivity, specificity	Retrospective imaging; scanner and site effects; external validation NR	Research-stage
+[29]	CNN/3D CNN; diagnosis and prognosis	Accuracy, AUC	Multicentre retrospective design; harmonisation and prospective testing remain	Advanced research
+[30]	CNN; diagnosis	Accuracy, sensitivity, specificity	Region-focused retrospective analysis; site transportability and explanation need testing	Research-stage
+[31]	Deep learning; classification	Accuracy, AUC	Internal/retrospective evidence; scanner and cohort shift	Research-stage
+[32]	Neuroimaging (DaTSCAN)	Feature ML; PD prediction	Accuracy, precision, recall	Protocol- and site-sensitive imaging; independent-centre evaluation NR	Research-stage adjunct
+[13]	Gait & Wearables	Classical ML; motor classification	Accuracy, clinical correlation	Controlled walking tasks; limited real-world and device validation	Research-stage
+[16]	CNN/RNN; longitudinal monitoring	Accuracy, RMSE	Large remote cohort but self-report, adherence, missingness and device bias	Remote-monitoring research
+[14]	Temporal ML; gait detection	Accuracy, sensitivity	Laboratory/task dependence; participant-independent and external tests NR	Research-stage
+[12]	Handwriting/Fine Motor Skills	SVM; PD detection	Accuracy, precision, recall	Task/tablet-specific internal evaluation; external replication NR	Low-cost research tool
+[33]	Random forest; PD detection	Accuracy, precision, recall	Small benchmark cohort; task and device dependence	Benchmark research
+[34]	CNN/LinkNet-GhostNet; detection	Accuracy	Image-level overfitting and participant leakage require exclusion; external test NR	Research-stage
+[18]	Multimodal
+Learning	Fusion ML; integrated diagnosis	Accuracy, AUC	Matched-cohort attrition, missing modalities and baseline fairness	Framework/research
+[35]	Transformer/fusion; assessment	Accuracy, AUC	Alignment, data demand and interpretability; external validation NR	Framework/research
+[36]	Deep fusion; diagnosis/monitoring	Accuracy, AUC	Small matched multimodal cohort; comparison depends on identical validation folds	Research-stage
+[20]	Protein/Molecular Biomarkers	QSAR; candidate prioritisation	Binding affinity	In-silico evaluation; assay, toxicity and pharmacokinetic confirmation required	Preclinical discovery
+[37]	ML; biomarker discovery	ROC-AUC	Cohort and assay-platform effects; independent clinical validation NR	Biomarker research
+[38]	Structure DL; target identification	Screening efficiency	Computational and experimental screening; therapeutic efficacy not established	Preclinical discovery
+[39]	QSAR; target prediction	Accuracy, ROC-AUC	Retrospective molecular benchmarks; assay shift and prospective wet-lab validation	Preclinical discovery
+[40]	Structure ML; virtual screening	Ranking/screening efficiency	In-silico prioritisation; experimental confirmation required	Preclinical discovery
+[10]	ML; therapeutic discovery	Predictive performance	Batch effects, missing modalities and weak phenotype linkage	Exploratory research
+[19]	Privacy-Preserving & Clinical AI	Federated learning; secure analysis	Accuracy, privacy-utility trade-off	Cross-site heterogeneity, leakage and communication cost; governance required	Infrastructure research
+[41]	Federated learning; collaboration	Accuracy, privacy-utility trade-off	Institutional transportability, fairness and attack resistance need evaluation	Infrastructure research
+Note: AUC, area under the receiver operating characteristic curve; CNN, convolutional neural network; C-SVM, cost-sensitive support vector machine; DL, deep learning; F1, F1-score; ML, machine learning; MRI, magnetic resonance imaging; NR, not reported; PD, Parkinson's disease; QSAR, quantitative structure–activity relationship; RMSE, root mean square error; RNN, recurrent neural network; SNP, single-nucleotide polymorphism; SVM, support vector machine.
+7.
+Actionable research priorities. Section 8 translates recurring evidence limitations into specific priorities, including standardised benchmarking, participant-independent evaluation, explainable multimodal fusion, longitudinal wearable monitoring, federated learning, and prospective multicentre validation. These priorities are intended to make future claims more reproducible, generalisable, and clinically testable.
+1.2. Research objectives
+Accordingly, this review addresses seven research objectives:
+●
+Characterise how conventional machine learning, deep learning, multimodal learning, explainable AI, privacy-preserving learning, and generative AI have been applied to PD detection, severity assessment, progression modelling, biomarker discovery, and drug discovery.
+●
+Evaluate more than 20 publicly available PD benchmark datasets across seven biomarker modalities with respect to cohort size and composition, demographic representation, annotation quality, accessibility, longitudinal structure, and suitability for supervised, semi-supervised, or self-supervised learning.
+●
+Interpret reported model performance in relation to sample size, class balance, participant-level data separation, validation strategy, comparator selection, and independent or cross-dataset testing, rather than treating accuracy or area under the receiver operating characteristic curve (AUC) as directly comparable across studies.
+●
+Compare early, intermediate, late, and attention-based multimodal fusion strategies, including their potential advantages over unimodal baselines and their requirements for data harmonisation, missing-data handling, computational resources, and interpretability.
+●
+Examine how genetic, biofluid, proteomic, transcriptomic, and multi-omics data are used for PD biomarker discovery and AI-assisted therapeutic development, with particular attention to alpha-synuclein, leucine-rich repeat kinase 2 (LRRK2), and cross-scale integration with digital phenotypes.
+●
+Identify barriers to clinical translation, including dataset shift, modality imbalance, limited external validation, poor reproducibility, insufficient interpretability, privacy and governance constraints, regulatory requirements, and integration with clinical workflows.
+●
+Develop an evidence-informed conceptual framework and a specific research agenda for designing and testing future PD-AI systems, while clearly distinguishing proposed methodological directions from experimentally validated clinical tools.
+1.3. Scope of the survey
+This review examines AI applications to PD in peer-reviewed journal articles and established conference proceedings published between 2007 and 2026, with emphasis on work published from 2018 onward and retention of earlier foundational studies. The scope covers seven biomarker modalities: speech and voice; neuroimaging, including magnetic resonance imaging (MRI), dopamine transporter imaging (DaTSCAN), positron emission tomography (PET), and single-photon emission computed tomography (SPECT); gait and wearable sensing; handwriting and fine-motor assessment; clinical scales and structured clinical data; genetic and biofluid biomarkers; and protein, molecular, and chemical data. The principal applications are PD detection, severity assessment, progression modelling, digital and molecular biomarker discovery, and AI-assisted drug discovery. Cross-cutting methods include multimodal fusion, explainable AI, federated and privacy-preserving learning, generative molecular modelling, foundation models, and clinical decision-support approaches. More than 20 public benchmark datasets are assessed within this scope.
+The review does not provide clinical practice guidelines, recommend medications, or replace specialist diagnostic judgement. A statistical meta-analysis is not performed because the included studies differ substantially in populations, modalities, tasks, outcomes, and validation protocols; reported metrics are therefore synthesised comparatively and interpreted in methodological context. Purely deterministic signal-processing methods without a learning component are discussed only when needed to explain preprocessing or feature extraction. Animal and in vitro studies are included only when they directly inform molecular AI or therapeutic-discovery pipelines. Regulatory, privacy, and reimbursement considerations are discussed at the level required to evaluate clinical translation, but the review does not constitute a formal legal, regulatory, or health-economic analysis.
+The complete search strategy, databases, search terms, screening stages, duplicate-removal procedure, eligibility criteria, reasons for exclusion, and study-quality appraisal are reported in Section 3 using a Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA)-guided process. Eligible evidence prioritises peer-reviewed studies. Selected preprints are considered only when they describe a highly relevant emerging method or an authoritative dataset and are identified as non-peer-reviewed evidence. This distinction is maintained during interpretation so that preliminary findings are not given the same evidential weight as externally validated peer-reviewed studies.
+Fig. 1 presents the high-level analytical structure of the review. Section 2 summarises the clinical and pathological basis of PD and the rationale for AI-assisted assessment. Section 3 reports the systematic review methodology. Section 4 critically compares existing research across behavioural, imaging, multimodal, and molecular applications. Section 5 examines data collection, preprocessing, modalities, and public benchmark datasets. Section 6 compares ML and DL approaches and interprets their reported performance. Section 7 presents the conceptual multimodal case study while explicitly separating illustrative outcomes from experimental results. Section 8 synthesises limitations, clinical-translation challenges, and future research priorities. Section 9 provides the conclusion.
+2. Understanding Parkinson's disease detection using AI
+Parkinson's disease is a multisystem neurodegenerative disorder characterised by progressive loss of dopaminergic neurons in the substantia nigra pars compacta and by pathological alpha-synuclein aggregation, including Lewy-body formation [38]. Its core motor manifestations are bradykinesia, rigidity, resting tremor, and postural instability. Non-motor features include hyposmia, rapid-eye-movement sleep behaviour disorder, constipation, depression, autonomic dysfunction, and cognitive impairment; several may precede recognisable motor symptoms by years [3,42]. The prodromal phase is therefore important for risk stratification and disease-modification trials, although earlier detection should not be equated with the availability of a proven disease-modifying intervention.
+Clinical and biological heterogeneity is a central challenge for both diagnosis and model development. The presence, severity, and rate of progression of symptoms vary across patients and reflect interactions among genetic susceptibility, including LRRK2, SNCA, and GBA variants, environmental exposures, comorbidities, treatment state, and age-related neurobiology [43]. Consequently, a model trained on one cohort or disease stage may learn cohort-specific patterns rather than generalisable PD biology. No single clinical, digital, imaging, or molecular marker currently captures the full disease spectrum; complementary modalities must therefore be evaluated for both incremental information and potential sources of bias [44,4].
+PD data span acoustic signals, motion trajectories, neuroimages, wearable measurements, clinical assessments, genetic variants, biofluid markers, and molecular interaction data. Machine learning can model nonlinear relationships within these data, while deep learning can learn representations directly from high-dimensional signals and images. These advantages are conditional: performance depends on sample size, label quality, participant-independent validation, confounder control, and consistency between training and deployment settings. Multimodal integration may provide complementary information, but it also introduces missing-modality, harmonisation, computational, and interpretability challenges. Fig. 2 summarises the progression from modality-specific analysis toward integrated and clinically oriented AI frameworks.
+Download: Download high-res image (402KB)
+Download: Download full-size image
+
+Fig. 2. Evolution of integration of Artificial Intelligence in Parkinson's Disease Research. The progression from single-modality models to multimodal and clinically oriented systems increases the potential information captured, but also increases requirements for harmonisation, external validation, interpretability, privacy protection, and workflow integration.
+
+Tremor is treated as a distinct motor phenotype, not as a component of gait. It is not listed as a separate top-level data modality because tremor measurements are acquired through several existing modality groups: accelerometers and gyroscopes in the gait and wearable category, electromyography or video-based movement signals, and pen trajectories or spiral drawings in the handwriting and fine-motor category [13,16,14,45]. Within these groups, tremor-specific outcomes—including amplitude, dominant frequency, temporal variability, body location, task condition, and medication response must be analysed separately from gait outcomes such as stride length, cadence, postural stability, and freezing of gait. This organisation avoids duplicating datasets while preserving tremor as an explicit clinical and computational target.
+Conventional machine-learning methods, including support vector machines, random forests, k-nearest neighbours, and regularised regression, remain useful when datasets are modest and clinically interpretable features can be specified in advance. Their lower computational cost and clearer feature-level attribution can support transparent baselines; however, performance depends strongly on preprocessing, feature selection, and control of confounding variables. Deep-learning architectures relax part of this feature-engineering requirement: convolutional neural networks can learn spatial or spectrotemporal representations, whereas recurrent and temporal-convolutional networks model sequential sensor or speech data. These benefits require larger, well-labelled samples and stronger safeguards against overfitting, data leakage, and site-specific shortcuts. Transformer-based models can capture long-range dependencies and support multimodal or longitudinal modelling, but their parameter count, data demand, calibration, and computational burden may limit their advantage in small PD cohorts. Consequently, architecture complexity should be justified by participant-independent and preferably external validation rather than by within-dataset accuracy alone. Fig. 3 summarises this progression from feature-based models to integrated architectures.
+Download: Download high-res image (281KB)
+Download: Download full-size image
+
+Fig. 3. Progression of AI integration models for Parkinson's disease. More complex models can support temporal and multimodal learning but require more data, computation, interpretation, and external validation; complexity alone does not establish clinical reliability.
+
+Privacy-preserving learning can facilitate multi-institutional PD research without transferring all raw patient records to a central repository. Federated learning, for example, enables participating sites to exchange model updates rather than source data [19]. This design may reduce central data exposure, but it does not by itself guarantee privacy, regulatory compliance, or equitable performance. Model updates may leak information unless additional safeguards are used, and differences in devices, acquisition protocols, clinical populations, label definitions, and local sample sizes can destabilise training or produce uneven site-level performance. Secure aggregation, differential privacy, governance agreements, audit trails, and external evaluation across participating and unseen centres are therefore required before federated PD models can be considered clinically dependable.
+Clinical severity and progression in Parkinson's disease are commonly characterised using standardised rating instruments. The Movement Disorder Society-sponsored Unified Parkinson's Disease Rating Scale (MDS-UPDRS) contains four parts covering non-motor experiences of daily living, motor experiences of daily living, motor examination, and motor complications [46]. The Hoehn and Yahr (H&Y) scale provides a coarser stage-based description of motor disability and functional dependence. These instruments are clinically meaningful reference measures for supervised modelling, but they should not be described as error-free ground truth. Scores may vary with examiner training, patient self-report, medication state, time of assessment, and the scale's sensitivity to small or short-term changes; the H&Y scale also compresses heterogeneous clinical presentations into a limited number of stages.
+AI-based severity models can complement these episodic assessments by extracting repeated or continuous measures from speech, gait, tremor, handwriting, video, smartphones, and wearable sensors. Their potential value lies in quantifying within-person variation between clinic visits and relating digital changes to treatment state or disease trajectory. However, frequent measurement is not automatically clinically valid: models may capture device placement, task adherence, environment, medication timing, or individual behaviour rather than disease progression. Evaluation should therefore report agreement with relevant clinical outcomes, test-retest reliability, sensitivity to meaningful change, calibration, participant-independent validation, and performance across demographic and clinical subgroups. Digital measures should be presented as adjuncts to—not replacements for neurological examination and validated patient- and clinician-reported outcomes. Fig. 4 organises the principal AI method families considered in this review and highlights their different analytical roles.
+●
+Conventional machine learning: Support vector machines (SVMs), random forests, k-nearest neighbours (KNNs), and regularised regression are appropriate baselines for modest, structured datasets with clinically interpretable features [11,25,27]. They generally require less computation and can support feature-level inspection, but performance is sensitive to preprocessing, feature selection, class imbalance, and participant leakage. Reported accuracy values cannot be compared directly across acoustic or kinematic studies unless cohort composition, task design, and validation strategy are comparable.
+●
+Unimodal deep learning: Convolutional neural networks (CNNs) learn spatial or spectrotemporal representations, whereas recurrent neural networks (RNNs) and long short-term memory (LSTM) networks model sequential dependencies in speech and sensor data [26,28,30]. These architectures reduce manual feature engineering but usually require larger samples and careful regularisation. High within-dataset performance in neuroimaging or speech studies [29,[30], [47], [48]] may reflect scanner, recording, or participant-specific signals; subject-level splitting and external testing are therefore essential.
+●
+Multimodal deep learning: Early fusion combines features before modelling, intermediate fusion learns shared representations, and late fusion combines modality-specific predictions; transformer or attention-based approaches can additionally model cross-modal relationships [18,35,36]. Multimodal models may capture complementary disease information, but an apparent improvement over a unimodal baseline is meaningful only when the same participants, validation folds, and missing-data rules are used. Alignment, incomplete modalities, sample-size reduction, and increased computational burden can offset the theoretical benefit of fusion.
+●
+Privacy-preserving AI: Federated learning, differential privacy, secure aggregation, and secure multiparty computation can support collaborative model development while limiting direct exchange of patient-level data [19,49]. These techniques reduce particular exposure risks but do not automatically ensure compliance with the Health Insurance Portability and Accountability Act (HIPAA), the General Data Protection Regulation (GDPR), or local governance requirements. Privacy guarantees, utility loss, communication cost, site heterogeneity, and performance across institutions must be reported explicitly.
+●
+Generative and molecular AI: Graph neural networks (GNNs), quantitative structure-activity relationship (QSAR) models, and variational autoencoders (VAEs) support protein-interaction modelling, virtual screening, and candidate generation [[20], [37], [38], [39],40,10]. These methods can prioritise alpha-synuclein aggregation inhibitors or LRRK2-related targets, but computational ranking is an early discovery step rather than evidence of therapeutic efficacy. Experimental confirmation, toxicity assessment, pharmacokinetic evaluation, and clinical validation remain necessary.
+●
+Explainable AI (XAI): Class activation mapping (CAM), Shapley additive explanations (SHAP), local interpretable model-agnostic explanations (LIME), and attention visualisation can expose influential regions or features [50,41,51]. Explanation quality should not be inferred from visual plausibility alone: attributions may be unstable, method-dependent, or faithful to a biased model. Clinical evaluation should test reproducibility, agreement with domain knowledge, usefulness for error detection, and whether explanations improve decisions rather than merely increase user confidence.
+Download: Download high-res image (562KB)
+Download: Download full-size image
+
+Fig. 4. Principal AI method families in Parkinson's disease research. The taxonomy distinguishes feature-based, unimodal deep-learning, multimodal-fusion, privacy-preserving, molecular-generative, and explainable approaches; their clinical value depends on matching model complexity to data volume, validation design, interpretability, and deployment requirements.
+
+3. Systematic review methodology
+The review used a PRISMA-guided search and screening process to identify relevant evidence and a structured methodological appraisal to support critical synthesis. Fig. 5 provides bibliometric context rather than an eligibility count: indexed publications increased markedly after 2020, while the 2026 value represents a partial-year observation and should not be interpreted as a decline. Publication volume demonstrates activity in the field but does not establish evidence quality or clinical readiness.
+Download: Download high-res image (851KB)
+Download: Download full-size image
+
+Fig. 5. Annual publication trend and document-type distribution for AI-related Parkinson's disease literature indexed from 2007 to March 2026. The partial 2026 count is not directly comparable with complete calendar years; the figure describes publication activity and was not used to determine study eligibility.
+
+Search strategy: IEEE Xplore, PubMed, ScienceDirect, SpringerLink, the ACM Digital Library, and Google Scholar were searched for records published from January 2007 through 31 March 2026. Searches covered titles, abstracts, and available keywords. Boolean combinations were constructed around three concept groups: Parkinson's disease; artificial intelligence, machine learning, deep learning, or computational modelling; and application or modality terms including speech, voice, tremor, gait, wearable sensors, handwriting, neuroimaging, MRI, DaTSCAN, digital biomarkers, genetics, biofluids, multimodal learning, explainable AI, federated learning, molecular modelling, and drug discovery. Database-specific syntax was adapted where required, and reference lists of eligible studies and relevant reviews were examined for additional records.
+Record management and screening: Retrieved records were combined in a master record set. Duplicate removal was performed first by matching digital object identifiers and then by comparing normalised titles, first authors, and publication years; uncertain matches were resolved by manual inspection. Screening proceeded in two stages: title/abstract review followed by full-text eligibility assessment using the criteria below.
+●
+Selection procedure: Of 618 identified records, 108 duplicates were removed and 510 titles and abstracts were screened. A total of 360 records were excluded because they were unrelated to PD, lacked an AI component, or did not provide accessible full text. The remaining 150 reports underwent full-text assessment. Seventy-six were excluded: 46 lacked sufficient methodological detail and 30 did not report a quantitative evaluation relevant to the review questions. Seventy-four studies were retained for qualitative synthesis. Fig. 6 reports these stages and exclusion reasons.
+Download: Download high-res image (689KB)
+Download: Download full-size image
+
+Fig. 6. PRISMA-guided study-selection flow. The diagram reports database and reference-list identification, duplicate removal, title/abstract screening, full-text assessment, explicit exclusion reasons, and the 74 studies retained for qualitative synthesis and structured methodological appraisal.
+
+●
+Inclusion criteria: Studies were eligible when they (i) were English-language, peer-reviewed full-text articles or established conference papers; (ii) applied AI, machine learning, or deep learning to PD detection, severity estimation, progression modelling, biomarker analysis, or drug discovery; (iii) evaluated at least one prespecified behavioural, clinical, imaging, wearable, genetic, biofluid, protein, or molecular modality; and (iv) reported sufficient methodological and quantitative information for critical interpretation. Selected preprints were considered only as clearly identified emerging evidence and were not treated as equivalent to peer-reviewed validation studies.
+●
+Exclusion criteria: Records were excluded when they (i) used only conventional statistical analysis without a learning component; (ii) duplicated or substantially overlapped a previously included dataset and analysis without adding relevant evidence; (iii) were editorials, letters, abstracts, protocols, or unavailable full texts; (iv) did not address PD diagnosis, monitoring, progression, biomarkers, or therapeutic discovery; or (v) lacked enough information to evaluate the model, data, or validation procedure. Non-English reports were excluded because translation resources were not available, creating a potential language bias acknowledged in Section 8.
+Methodological appraisal and synthesis: Because the evidence spans diagnostic classification, progression modelling, digital sensing, neuroimaging, and molecular discovery, no single formal risk-of-bias instrument was applicable to every study. Instead, each included study was appraised using a common review-specific framework covering dataset size and provenance, class balance, participant-level separation, missing-data handling, feature or model transparency, internal and external validation, metric appropriateness, reproducibility, and clinical relevance. These domains were used to qualify reported performance and identify recurring limitations; no statistical meta-analysis was conducted because populations, modalities, outcomes, and validation protocols were too heterogeneous for defensible pooling. The final corpus comprised 74 studies across seven modality groups and more than 20 benchmark datasets. The following PRISMA flowchart summarises the paper selection procedure as shown in Fig. 6.
+4. Comparative review of existing research
+Fig. 7 summarises the vocabulary used across the included literature. The prominence of 'data', 'dataset', 'model', 'machine learning', and 'deep learning' reflects a method- and resource-centred research landscape, while modality terms such as speech, MRI, gait, and neuroimaging indicate substantial heterogeneity in inputs and evaluation settings. This distribution supports the need for modality-specific interpretation: identical metric labels do not imply comparable clinical tasks or evidence strength. The word cloud is descriptive and frequency-based; it does not measure study quality, effect size, or clinical readiness and is used only to orient the comparative synthesis that follows.
+Download: Download high-res image (1MB)
+Download: Download full-size image
+
+Fig. 7. Frequency-based word cloud of terms in the included AI-Parkinson's disease literature. Larger terms indicate more frequent usage, not stronger evidence, larger effects, or greater clinical readiness; the figure is used only to orient the modality-specific synthesis.
+
+The transition from descriptive clinical observation to computational analysis reflects a broader change in how Parkinson's disease is studied. Historical descriptions established tremor, rigidity, bradykinesia, and gait disturbance as recognisable clinical manifestations [1,2], whereas contemporary research treats PD as a heterogeneous multisystem disorder requiring behavioural, imaging, clinical, and molecular evidence. AI is relevant because these data are high-dimensional and partly complementary; however, algorithmic analysis does not remove uncertainty in diagnosis, labels, or treatment response. Table 1 therefore compares representative studies by modality, model and task, reported evaluation, validation limitations, and clinical readiness rather than ranking them solely by headline performance.
+1.
+Speech and voice: Illustrates why high reported classification performance must be interpreted cautiously. Feature-based SVM and random-forest models are efficient for small acoustic datasets [11,25,27], whereas aggregation and deep-learning approaches can reduce sensitivity to individual utterances [26]. However, repeated recordings from the same participant must remain within a single validation fold; otherwise, a model can identify speakers rather than PD. Language, sex, age, microphone, task, medication state, and recording environment also alter acoustic distributions. Cross-dataset results reported in recent reviews show that performance can fall substantially when models are transferred between voice corpora [21]. Speech is therefore promising for low-cost screening and monitoring, but current evidence supports an adjunctive research role rather than stand-alone diagnosis.
+2.
+Neuroimaging: MRI and DaTSCAN provide anatomically and physiologically relevant information but create a different validation problem. Studies use conventional classifiers, CNNs, 3D CNNs, attention mechanisms, and region-focused architectures [15,17,[28], [29], [32],[30], [47], [48]]. Multicentre datasets can improve heterogeneity, yet random participant splitting does not guarantee transportability when scanner manufacturer, field strength, preprocessing, or site composition differ. Site-stratified or leave-one-centre-out evaluation is more informative than pooled internal accuracy. Interpretability is also modality-specific: a salient brain region is not necessarily a disease mechanism, and models may exploit acquisition artefacts. Imaging AI is therefore best evaluated as a specialist decision-support adjunct requiring external-centre and prospective workflow validation.
+3.
+Gait, tremor, wearables, and smartphones: These modalities offer repeated measurements outside the clinic and may reveal fluctuations missed by episodic examinations [13,16,14]. Their principal strength is ecological and temporal coverage, not inherently higher diagnostic accuracy. Real-world signals are affected by sensor placement, device generation, walking surface, footwear, medication timing, comorbidity, adherence, and missingness. Large remote cohorts such as mPower increase scale but may rely on self-reported labels and non-random participation [16]. Reliable evaluation therefore requires participant-level separation, device- and site-stratified testing, comparison with clinically meaningful change, and reporting of data loss and adherence. These modalities are currently more defensible for monitoring defined symptoms than for replacing neurological diagnosis.
+4.
+Spatio-temporal graph convolutional networks (ST-GCNs): These are an emerging approach for representing body joints as graph nodes and skeletal connections as edges, enabling joint modelling of spatial relationships and movement over time [[52], [53], [54], [55], [56]]. This inductive structure may be useful for gait deviation, postural instability, and freezing-of-gait analysis, but greater architectural sophistication does not resolve small cohorts, inconsistent pose estimation, occlusion, class imbalance, or protocol shift. Comparisons with simpler temporal baselines should use identical participant splits and report computational demand, calibration, and external performance. Evidence for ST-GCN-based PD assessment remains predominantly retrospective; prospective evaluation in unconstrained clinical and home environments is still required.
+5.
+Handwriting and fine-motor assessment: Digitised handwriting and drawing provide low-cost measures of pen pressure, velocity, acceleration, in-air time, and stroke geometry [12,33,34]. Their clinical interpretability is attractive because the tasks probe bradykinesia and tremor directly; nevertheless, performance is highly dependent on the tablet, sampling rate, task instructions, handedness, medication state, and feature-extraction pipeline. Image-based CNNs can also learn page layout or acquisition artefacts rather than motor physiology if images from the same participant occur in both training and test sets. Participant-level splitting, device-independent testing, and comparison with established motor scores are therefore necessary. Current evidence supports handwriting as a complementary motor assessment, not an independent diagnostic test.
+6.
+Multimodal learning and cohort-scale modelling: Combining speech, imaging, gait, clinical, and genetic data can represent complementary aspects of PD [18,35,36], but improved performance is not guaranteed by adding modalities. Multimodal cohorts are usually smaller than their unimodal source datasets because only participants with complete matched measurements can be included. This creates selection bias, while missing-modality imputation can introduce further uncertainty. Fusion models should therefore be compared with strong unimodal baselines on identical participants and validation folds, and should report the incremental value, calibration, missing-data strategy, computational cost, and interpretability of each modality. Until externally validated, multimodal gains should be interpreted as evidence of complementary signal rather than proof of clinical superiority.
+7.
+Molecular biomarkers and AI-assisted drug discovery: Structure-based ML, quantitative structure-activity relationship modelling, and virtual screening can prioritise alpha-synuclein or LRRK2-related candidates [[20], [37], [38], [39],40]. These approaches reduce the experimental search space, but docking scores, binding predictions, and screening efficiency are intermediate computational outcomes rather than evidence of therapeutic efficacy. Candidate ranking remains sensitive to structural assumptions, assay composition, chemical-space bias, and data leakage between related compounds. Prospective wet-laboratory confirmation, toxicity and pharmacokinetic testing, and ultimately clinical evaluation are required. Molecular AI should therefore be presented as a preclinical prioritisation tool rather than a demonstrated treatment-discovery endpoint.
+4.1. Proteomics, transcriptomics, and multi-omics in AI-driven PD research
+Molecular omics can complement patient-level behavioural and imaging biomarkers by describing biological heterogeneity in PD. The most relevant evidence clusters into three areas: alpha-synuclein seed-amplification and proteomic assays; single-cell or single-nucleus transcriptomic atlases; and integrative models combining genomic, epigenomic, proteomic, imaging, and clinical data. These sources operate at different biological resolutions and cannot be treated as interchangeable predictors. Their value depends on assay reproducibility, cohort representativeness, phenotype linkage, and validation in independent samples. Accordingly, this section evaluates what each omics layer contributes, which biases accompany its measurement, and whether reported associations support diagnosis, stratification, progression modelling, or only hypothesis generation.
+Alpha-synuclein seed-amplification assays (SAAs) in cerebrospinal fluid and blood-derived material are among the most clinically relevant molecular developments in PD. PPMI analyses report high discrimination between PD and healthy controls and suggest biologically distinct subgroups [57], while neuronal extracellular-vesicle approaches may enable less invasive or prodromal assessment [58]. AI-assisted mass-spectrometry studies have also reported plasma proteomic signatures with held-out AUCs above 0.9 [59]. These results should not be compared directly, however, because matrices, assay platforms, case definitions, disease stages, and control groups differ. A high held-out AUC within one cohort does not establish calibration, differential-diagnosis performance, or transportability. Multicentre prospective validation with prespecified thresholds is required before these biomarkers can support routine diagnosis.
+Single-nucleus RNA sequencing of post-mortem substantia nigra has identified vulnerable dopaminergic-neuron subtypes, glial activation patterns, and previously under-characterised cell populations associated with PD-risk genes [[60], [61], [62]]. Machine learning can organise these high-dimensional profiles using feature selection, matrix factorisation, topic models, or neural networks, while bulk and integrated RNA-seq analyses identify recurrent pathways involving synaptic and mitochondrial dysfunction, neuroinflammation, and protein homeostasis [63]. The evidence is primarily mechanistic and retrospective: post-mortem tissue represents late disease, cell recovery and dropout are non-random, batch and ancestry effects can dominate biological signal, and cell-level observations are not independent patient samples. These atlases therefore strengthen biological hypotheses but do not yet constitute validated patient-level diagnostic models.
+Multi-omics integration combines partially complementary layers, including methylation, gene expression, proteomics, imaging, cerebrospinal-fluid measures, and clinical phenotypes. Sparse PLS-DA, DIABLO, network analysis, gradient boosting, and temporal matrix-factorisation frameworks have been applied to PPMI and experimental disease models [[64], [65], [66]]. Such integration may improve stratification or progression modelling, but claims of added value require comparison on the same participants, because complete-case filtering can create a smaller and less representative cohort. Feature selection must be nested within validation, batch correction must not use test information, and external evaluation must preserve the full preprocessing pipeline. These studies describe an emerging framework for diagnosis and therapeutic-target prioritisation, but prospective clinical utility remains unestablished.
+Proteomic, transcriptomic, and integrated-omics studies share several limitations. Molecular cohorts are often smaller than imaging or voice datasets; SomaScan, Olink, and label-free mass spectrometry have different measurement ranges and batch effects; and somatic, germline, bulk-tissue, and single-cell signals answer different biological questions. Post-mortem scarcity, dropout, missing modalities, resolution mismatch, limited longitudinal sampling, and weak linkage between molecular signatures and in-vivo phenotypes further restrict generalisability. Priorities are therefore standardised assay and preprocessing protocols, diverse public biofluid cohorts, preregistered external validation, and cross-modal models that quantify uncertainty rather than merely concatenate molecular and phenotypic features.
+Across modalities, model choice should follow the clinical question and data-generating process rather than perceived algorithmic sophistication. Acoustic models require speaker-independent validation; neuroimaging requires scanner- and site-aware evaluation; handwriting, gait, tremor, and wearable models require participant-, task-, and device-aware splits; molecular models require scaffold- or assay-aware testing; and multimodal models require matched-cohort baselines and explicit missing-data analysis [11,25,12,13,[20], [26], [37], [38], [39],[10], [18], [35], [40],[14], [16], [17], [27], [33], [41],36]. Federated learning can support distributed analysis [19,41], but it does not itself correct site imbalance, inconsistent labels, or domain shift. This comparison shows that validation design, not headline architecture, is the principal determinant of credible performance.
+The recurring weaknesses are small or selectively sampled cohorts, class imbalance, repeated-measure leakage, inconsistent preprocessing, absent calibration, limited external validation, and incomplete reporting of demographic and device characteristics. These problems explain why high internal accuracy may not translate across languages, scanners, sensors, assays, institutions, or clinical populations. Reproducible PD AI therefore requires participant-level separation, transparent preprocessing, clinically relevant comparators, uncertainty estimates, subgroup analysis, and independent prospective testing. Privacy-preserving or computationally complex frameworks should additionally report communication cost, privacy-utility trade-offs, failure modes, and governance requirements [19,41].
+5. Parkinson's disease data collection and preprocessing
+Parkinson's disease research combines heterogeneous, high-dimensional data rather than one uniformly 'big' dataset. Volume arises from imaging, continuous sensor streams, sequencing, and molecular profiling; variety spans clinical scores, audio, movement, images, and omics; velocity is most relevant to longitudinal smartphone and wearable monitoring; and veracity is constrained by sensor noise, missingness, diagnostic uncertainty, and inconsistent clinical annotations [67,68]. These properties make data provenance, preprocessing, storage, and validation part of the scientific method. In particular, preprocessing performed before participant-level splitting can leak information, and harmonisation fitted on pooled sites can inflate generalisation. The central challenge is therefore not only computational scale, but preserving clinically meaningful signals while preventing leakage, bias, and site-specific shortcuts.
+5.1. Major data modalities in PD research
+Table 2 maps the principal PD data modalities to their collection methods, analytical roles, and representative public resources. The table is intended as a data-provenance guide rather than evidence that every listed resource is equally large, representative, externally validated, or clinically ready. Modality choice determines the likely confounders: language and microphone for speech; scanner and protocol for imaging; task, device, medication state, and environment for movement; clinician variability for rating scales; and assay platform, batch, ancestry, and tissue source for molecular data. These differences must be considered before model performance is compared across studies.
+
+Table 2. Parkinson's disease data modalities, collection methods, analytical roles, and representative public resources.
+
+Ref	Data Modality	Collection Method	Analytical role	Representative Public Dataset
+[11]	Speech/Voice	Microphone-based speech recording	Early diagnosis, dysarthria analysis, and severity estimation	SJTU-YONGFU Parkinson Patient Speech Dataset
+[25]	Microphone-based speech recording	Early diagnosis, dysarthria analysis, and severity estimation	NTUA Parkinson Dataset
+[69]	Sustained vowel recordings	Voice biomarker analysis	UCI Parkinson's Disease Speech Dataset
+[70]	Longitudinal voice recordings	Disease progression monitoring	UCI Parkinson's Disease Telemonitoring Dataset
+[71]	Voice recordings	PD classification and dysphonia analysis	MDVR-KCL (Madrid Voice and Respiratory Dataset)
+[72]	Read speech and sentence recordings	Speech biomarker extraction	PC-GITA (Parkinson's Corpus GITA)
+[17]	Neuroimaging	MRI and DaTSCAN imaging	Diagnosis and disease staging	Parkinson's Progression Markers Initiative (PPMI)
+[15]	MRI imaging	Neuroimaging analysis	NTUA Imaging Subsets
+[73]	Multimodal imaging repository	Disease progression modeling	AMP-PD Neuroimaging Resources
+[14]	Gait/Wearables/Motion	Force plates	Gait abnormality detection	PhysioNet VGRF Dataset
+[13]	Motion capture systems	Walking analysis	Overground Walking Dataset
+[16]	Smartphone sensors	Remote monitoring	mPower
+[74]	Wearable inertial sensors	Freezing-of-gait detection	Daphnet FoG Dataset
+[75]	Handwriting/Fine Motor	Digitised tablet	Tremor quantification	PaHaW Dataset
+[45]	Handwriting recordings	PD classification	NewHandPD Dataset
+[76]	Handwriting recordings	Fine motor assessment	HandPD Dataset
+[17]	Clinical Assessment	UPDRS, H&Y scales	Severity scoring	PPMI Clinical Dataset
+[73]	Clinical repositories	Progression modeling	AMP-PD Clinical Resources
+[17]	Genetic	GWAS and sequencing	Risk stratification	PPMI Genetics Cohort
+[43]	GWAS studies	Genetic association analysis	GWAS PD Cohorts
+[17]	Biofluid Biomarkers	CSF and blood sampling	Biomarker discovery	PPMI Biofluid Cohort
+[20]	Protein/Molecular	X-ray crystallography	Target identification	RCSB Protein Data Bank
+[38]	Protein structure prediction	Structural biology	AlphaFold Database
+[77]	Bioactivity database	Drug discovery	ChEMBL
+[78]	Chemical compound database	Virtual screening	ZINC
+[79]	Mass spectrometry (CSF/plasma)	Biomarker discovery, prodromal detection	PRIDE Archive (proteomicsexchange.org)
+[59]	Proteomics	Aptamer-based proteomics (SomaScan), Olink PEA	Plasma proteomic panels for PD risk	PPMI Proteomics Sub-study
+[80]	α-Syn SAA	Seed amplification assay (RT-QuIC, PMCA)	Biologically defined PD diagnosis	PPMI SAA Cohort, SYNTap® Biomarker Test
+[60]	Transcriptomics	snRNA-seq of substantia nigra	Cell-type-specific PD biology	GEO/Human Cell Atlas snRNA-seq SN datasets
+[81]	Transcriptomics	Bulk RNA-seq (blood, brain)	Differential expression, biomarker panels	NCBI GEO (e.g., GSE99039, GSE68719)
+[82]	Epigenomics	DNA methylation arrays	Methylation biomarkers, epi-aging	PPMI Methylation Sub-study
+[83]	Protein–protein interactions	Curated PPI databases	Network analysis, target prioritisation	STRING (string-db.org), BioGRID
+[84]	Protein sequences & function	Sequence repositories	Sequence-based modelling	UniProt (uniprot.org)
+[85]	Binding affinity	Structure-affinity database	Docking benchmarks, drug design	PDBbind, BindingDB
+[86]	Chemical compounds	Compound database	Virtual screening, chemoinformatics	PubChem
+[87]	Variant data	Genetic variant catalogues	Risk variant analysis	ClinVar, dbGaP
+[88]	Disease–gene associations	Phenotype–gene catalogue	Gene prioritisation	OMIM, DisGeNET
+Note: PD = Parkinson's disease; MRI = magnetic resonance imaging; DaTSCAN = dopamine transporter scan; SPECT = single-photon emission computed tomography; GWAS = genome-wide association study; CSF = cerebrospinal fluid; UPDRS = Unified Parkinson's Disease Rating Scale. Tremor is treated as an independent motor modality, not as a component of gait. It may be measured during rest, posture, action, handwriting, or walking using inertial sensors, smartphones, digitising tablets, or clinical examination. Its placement with gait/wearable/motion data in Table 2 reflects a shared sensor-based collection pathway, not biological equivalence. Listing a public resource does not imply population representativeness, external validation, or clinical readiness.
+Speech and voice recordings offer scalable, non-invasive measurement of phonation, articulation, and prosody [11,25,26,27]. Their low acquisition cost is a strength, but sustained vowels, read speech, and spontaneous speech capture different tasks and cannot be pooled without accounting for language, microphone, environment, medication state, and repeated speakers. Speech models are therefore most credible when evaluated with participant-independent and cross-corpus testing and positioned as screening or monitoring adjuncts rather than stand-alone diagnostic tools.
+Structural and functional MRI and SPECT-based DaTSCAN provide complementary anatomical, connectivity, and dopaminergic information [15,17]. They do not provide interchangeable labels: DaTSCAN supports assessment of presynaptic dopaminergic deficit but does not by itself establish idiopathic PD, while MRI findings can be subtle and protocol-dependent. PPMI improves protocol consistency, yet multicentre transportability still requires scanner-aware harmonisation and site-held-out validation. Imaging AI is therefore better framed as specialist decision support for diagnosis, staging, or differential assessment than as automated confirmation.
+Gait, tremor, and other sensor-based motor measures should be distinguished analytically. Gait reflects locomotor timing, balance, and postural control, whereas tremor is an oscillatory symptom that can occur at rest, during posture or action, and independently of walking. Wearables and smartphones can capture both, along with bradykinesia and activity patterns [13,89,90,16]. Their repeated real-world measurements support symptom monitoring and medication-response analysis, but device placement, adherence, context, missingness, and self-reported labels limit comparability. Thus, tremor is included within the sensor/motion family for collection purposes, not considered part of gait [[91], [92], [93], [94]].
+Digitised handwriting and drawing quantify pressure, velocity, timing, and trajectory features affected by bradykinesia and tremor [12,33]. These tasks are inexpensive and clinically intuitive, but results depend on the tablet, stylus, sampling rate, instructions, handedness, and task design. Participant-level separation and cross-device replication are required before handwriting performance can be generalised beyond a benchmark dataset [95].
+Genetic data identify susceptibility loci and pathways, including LRRK2, SNCA, and GBA, and may support risk stratification or target prioritisation [38,43,17]. Predictive utility is constrained by ancestry imbalance, population structure, incomplete penetrance, and the difference between inherited risk and current clinical state. Models should therefore be evaluated across ancestries and should not present genetic association as deterministic diagnosis. Structure-based drug discovery is a related but preclinical application that requires experimental confirmation.
+Clinical scales such as the UPDRS and Hoehn and Yahr staging remain essential outcomes and labels, but they are not error-free ground truth. Inter-rater variability, medication state, visit timing, missing follow-up, and changes in assessment practice can affect supervised-learning targets. Longitudinal cohorts such as PPMI are valuable for progression modelling [1,2,89], provided that repeated visits from one participant remain within the same validation partition and clinically meaningful change is distinguished from measurement noise.
+Biofluid biomarkers measure molecular processes such as alpha-synuclein aggregation, inflammation, and neuronal injury. Their biological proximity to disease mechanisms is valuable, but assay platform, sample handling, batch effects, disease stage, and control selection influence reported performance. Integrating biofluids with genetics, imaging, or clinical data may improve biological stratification, yet the incremental value must be demonstrated in matched participants with external validation rather than inferred from multimodal complexity.
+Table 2 therefore demonstrates complementarity rather than a hierarchy of modalities. No single source captures diagnosis, severity, progression, and biological subtype simultaneously. Multimodal integration is justified when it answers a defined clinical question and adds validated information beyond simpler baselines; otherwise, it can amplify missingness, selection bias, and implementation burden. Standardised collection, transparent provenance, participant-level splitting, and external validation remain prerequisites for reproducible comparison.
+5.2. Benchmark datasets and data scale
+Table 3 compares representative public and controlled PD resources by modality, cohort or data scale, format, annotation, principal signal, and intended AI use. Public availability improves reproducibility only when participant identity, repeated measurements, preprocessing, and train-test partitions are reported. Dataset size is also modality-specific: thousands of recordings from a small number of speakers are not equivalent to thousands of independent participants, and millions of molecular structures do not constitute clinical PD cases. The table therefore pairs each resource with a concise limitation so that scale is not mistaken for representativeness, independent validation, or clinical readiness.
+
+Table 3. Representative Parkinson's disease benchmark resources, analytical uses, and principal limitations.
+
+Ref	Modality	Dataset	Access	Data Volume	Data Format	Annotations	Key Features	AI Applications
+[69]	Speech/Voice	UCI Parkinson's Speech Dataset	Open	195 recordings
+PD: 23/HC: 8	Tabular	Diagnosis label	Jitter, shimmer, pitch	Binary classification (PD vs HC)
+[70]	UCI Telemonitoring Dataset	Open	5875 samples
+PD only	Tabular	UPDRS scores (motor & total)	Frequency & amplitude features	Severity regression
+[72]	PC-GITA Corpus	Open	Multi-task recordings
+PD: 50/HC: 50	WAV + text	Group label, task ID	Phonation, reading, DDK tasks	Cross-task robustness analysis
+[96]	Gait/Wearables	PhysioNet Gait (VGRF)	Open	∼2 min/subject
+PD: 93/HC: 73	Time-series	Diagnosis (3 sub-studies)	Ground reaction force signals	Biomarker extraction
+[97]	Daphnet FoG Dataset	Open	237 min
+PD only	Time-series	FoG event labels	Accelerometer signals	FoG detection & segmentation
+[75]	Handwriting	PaHaW Dataset	Open	Multiple tasks
+PD: 38/HC: 37	Time-series	Motor impairment signals	x, y, pressure, velocity	Tremor & bradykinesia analysis
+[34]	NewHandPD	Open	Image samples
+PD: 31/HC: 35	Images	Diagnosis label	Stroke patterns, shapes	Vision-based classification
+[45]	HandPD	Open	Multi-task drawings
+PD/HC varies	Images	Diagnosis, task labels	Spiral & meander drawings	Fine-motor assessment
+[16]	Smartphone/Digital	mPower (ResearchKit)	Controlled	∼2.2 GB
+∼12,000 (mixed)	JSON/CSV	Self-reported labels	Accelerometer, voice, tapping	Longitudinal modeling
+[17]	Clinical/Multimodal	PPMI	Controlled	TB-scale
+∼1400+	DICOM, FASTQ	UPDRS, H&Y, demographics	MRI, genetics, clinical scores	Disease progression prediction
+[20]	Protein/Molecular	RCSB Protein Data Bank	Open	∼200K structures	PDB, mmCIF	Atomic annotations	3D protein structures	Target identification
+[38]	AlphaFold DB	Open	∼200M proteins	CIF	Confidence scores (pLDDT)	Predicted 3D structures	Structure modeling
+[39]	Chemical/Drug	ChEMBL	Open	∼2.4M compounds	SMILES, SDF	Bioactivity data	Molecular descriptors	Virtual screening
+[40]	ZINC Database	Open	>1B molecules	Graphs (2D/3D)	Physicochemical properties	Chemical structures	Generative drug design
+[10]	Drug Discovery	DrugBank	Open	∼15K drugs	XML	Drug-target interactions	Pharmacological data	Drug repurposing
+Note: PD = Parkinson's disease; HC = healthy control; UPDRS = Unified Parkinson's Disease Rating Scale; H&Y = Hoehn and Yahr scale; DICOM = Digital Imaging and Communications in Medicine; FASTQ = DNA sequencing format; SMILES = Simplified Molecular-Input Line-Entry System; pLDDT = predicted local distance difference test. 'Open' indicates public access; 'Controlled' requires registration and compliance with data-use agreements. Counts refer to the units reported by each resource and should not be treated as independent participant counts unless explicitly stated. Approximate database totals are dynamic and must be verified at the time of analysis. A listed AI application indicates research use, not demonstrated clinical utility.
+Longitudinal resources illustrate why the unit of analysis matters. PPMI includes repeated clinical, imaging, biospecimen, and genetic observations and is valuable for progression modelling [17], but repeated visits from one participant cannot be distributed across training and test folds. PD-only datasets can estimate severity or change but cannot independently evaluate PD-versus-control discrimination. Missing follow-up, treatment changes, site composition, and informative dropout must also be modelled. Thus, PPMI supports rich longitudinal research, but valid performance depends on participant-level splitting, time-aware evaluation, and external cohort testing rather than on dataset scale alone. The neuroimaging modalities typically considered for data analysis are shown in Fig. 8.
+Download: Download high-res image (375KB)
+Download: Download full-size image
+
+Fig. 8. Illustrative MRI and dopamine-transporter imaging examples used to show that neuroimaging modalities encode different biological information. The displayed images are not paired diagnostic evidence and should not be interpreted as demonstrating that a single MRI or DaTSCAN image can confirm Parkinson's disease.
+
+AMP-PD harmonises controlled-access clinical and molecular data from multiple PD cohorts, including PPMI and BioFIND, within a shared analytical environment [89,17]. Its principal strength is cross-cohort scale and common infrastructure; however, harmonisation does not remove differences in recruitment, visit schedules, assays, missingness, or phenotype definitions. Analyses must preserve cohort provenance, evaluate cohort-held-out performance, and distinguish technical harmonisation from biological comparability. AMP-PD is therefore valuable for reproducible multicohort research, but not an automatically homogeneous population sample.
+Speech benchmarks such as MDVR-KCL, SJTU-YONGFU, NTUA, and related UCI resources enable rapid comparison of feature-based and deep models [11,25,26,27]. Their repeated use has also encouraged benchmark overfitting and selective reporting. Recordings may differ in language, task, microphone, environment, medication state, and number of samples per participant. Consequently, random recording-level splits can inflate performance by allowing the same speaker to appear in training and testing. Credible evaluation requires speaker-independent partitions, locked preprocessing, and external cross-corpus testing. Fig. 9 illustrates a waveform, but waveform appearance alone is not a diagnostic marker [98].
+Download: Download high-res image (438KB)
+Download: Download full-size image
+
+Fig. 9. Illustrative speech waveform from the Parkinson MDVR-KCL resource. The waveform visualises signal amplitude over time; PD classification requires validated acoustic or learned features and cannot be inferred from this image alone.
+
+Movement resources differ substantially in setting and label quality. PhysioNet gait and overground walking datasets contain structured laboratory measurements, whereas mPower provides large-scale remote smartphone data with variable adherence, devices, environments, and self-reported information [13,90,16]. Laboratory control improves signal consistency but may reduce ecological validity; remote scale improves coverage but increases missingness and selection bias. Robustness should therefore be tested across participants, devices, sites, and collection contexts, with data loss and medication timing reported. These datasets are currently strongest for defined symptom-monitoring tasks rather than unqualified clinical diagnosis.
+PaHaW, NewHandPD, and HandPD standardise selected writing or drawing tasks and support comparison of fine-motor features. Their small cohorts, repeated tasks, image-level sampling, and device dependence create a high risk of participant leakage and unstable estimates. Low acquisition cost makes handwriting attractive for complementary screening or monitoring, but clinical efficacy cannot be inferred from benchmark accuracy alone. Fig. 10 shows example task outputs; it illustrates the input form and participant variability rather than a visually diagnostic pattern.
+Download: Download high-res image (815KB)
+Download: Download full-size image
+
+Fig. 10. Example spiral and meander tasks from the HandPD dataset: (a) and (b) control participants; (c) and (d) participants with PD [76]. The examples illustrate task and inter-participant variability; visual inspection of these traces is not sufficient for diagnosis. Figure labelling has been standardised throughout the manuscript.
+
+Download: Download high-res image (1MB)
+Download: Download full-size image
+
+Fig. 11. Conceptual multimodal workflow for Parkinson's disease assessment. The diagram illustrates candidate inputs, preprocessing, feature fusion, model outputs, uncertainty feedback, and clinical endpoints; it does not report an implemented model or experimental performance.
+
+Structural and chemical databases such as the RCSB Protein Data Bank, AlphaFold DB, ChEMBL, ZINC, and BindingDB support target prioritisation, molecular representation learning, virtual screening, and compound ranking [[20], [37], [38], [39],40]. Their scale reflects structures, predictions, assays, or compounds rather than PD participants. Database overlap, related molecular scaffolds, uncertain predicted structures, assay heterogeneity, and temporal leakage can inflate retrospective evaluation. Molecular benchmarks should therefore use scaffold- or time-aware splits and prospective experimental confirmation; reproducible screening is not equivalent to validated therapeutic efficacy.
+Across public PD datasets, the dominant limitations are small or selective cohorts, ancestry and socioeconomic imbalance, underrepresentation of prodromal and atypical parkinsonism, inconsistent diagnostic criteria, incomplete follow-up, repeated-measure leakage, and limited linkage between modalities. Most resources were designed for a narrow task, so they cannot by themselves evaluate an end-to-end multimodal clinical workflow [[10], [18], [35]]. Moreover, frequent reuse of the same benchmark can make incremental architecture comparisons appear more certain than they are.
+Next-generation benchmarks should combine diverse multicentre cohorts with standardised core variables while retaining site and cohort provenance. Prespecified participant-level splits, hidden external test sets, calibration, subgroup reporting, clinically meaningful baselines, and common evaluation code are more important than dataset volume alone. Federated learning may enable distributed collaboration, but it does not correct biased recruitment, inconsistent labels, or domain shift; foundation models likewise require independent evaluation and transparent pretraining data [[19], [35], [90]]. Privacy, consent, governance, and re-identification risk must be evaluated alongside predictive performance.
+In summary, benchmark datasets enable reproducibility only when their sampling units, labels, preprocessing, and validation boundaries are explicit. Progress requires not merely larger repositories, but datasets that represent real clinical populations and evaluation frameworks that test transportability across language, device, site, cohort, and time.
+5.3. Data preprocessing and feature representation
+Preprocessing converts raw speech, movement, imaging, handwriting, clinical, and molecular observations into model inputs, but it is also a potential source of bias and information leakage. Filtering, smoothing, normalisation, artefact correction, resampling, segmentation, imputation, and region or event detection may improve signal quality, yet each operation embeds assumptions about which variation is noise and which is disease-related. Every data-dependent step, including scaling, feature selection, imputation, harmonisation, and augmentation, must be fitted within the training partition and then applied unchanged to validation and test data. Reporting only the final model without the preprocessing pipeline prevents reproducibility and can exaggerate performance.
+Modality-specific preprocessing should be justified rather than applied as a fixed recipe. Speech pipelines may use denoising, silence removal, amplitude normalisation, segmentation, and spectral representations [11,25,26,69,70], but aggressive filtering can remove weak dysarthric information and corpus-specific voice-activity rules can create domain shift. Augmentation must not produce related versions of one participant in different folds. Speaker identity, language, microphone, task, and recording environment should remain traceable throughout evaluation.
+Neuroimaging pipelines commonly include motion correction, skull stripping, registration, intensity normalisation, and segmentation; scanner harmonisation must be learned without test-site information. Gait, tremor, and wearable pipelines require calibration, temporal alignment, filtering, windowing, and missingness handling, with windows from one participant kept in the same fold. Handwriting preprocessing should preserve clinically relevant timing and pressure signals while controlling tablet and task effects. Molecular pipelines require assay quality control, batch correction, normalisation, and careful handling of related compounds, genes, or patient samples. These choices can alter the apparent disease signal and must be included in sensitivity analyses.
+Feature representation also changes the evidence being tested. Conventional ML uses prespecified acoustic, kinematic, radiomic, clinical, or molecular descriptors, which can be efficient and interpretable but sensitive to feature engineering. Deep learning learns representations from spectrograms, voxel grids, time-series tensors, images, or molecular graphs, but its larger capacity increases the need for independent data and regularisation. Multimodal systems additionally require temporal alignment, unit harmonisation, missing-modality strategies, and matched-participant baselines. Preprocessing and representation should therefore be evaluated as components of the model, with ablation studies and locked external pipelines rather than treated as neutral preliminary steps.
+6. A comparative review of machine learning models
+This section compares conventional machine learning and deep learning across speech, imaging, motor, multimodal, and molecular applications. Model classes are evaluated by data requirements, interpretability, computational burden, validation design, and plausible clinical role rather than ranked by reported accuracy. Cross-study performance values are not directly comparable because cohorts, tasks, class balance, preprocessing, and test protocols differ. Table 4 therefore summarises representative conventional ML results together with the validation context needed to interpret them.
+
+Table 4. Representative conventional machine-learning studies and validation context in Parkinson's disease research.
+
+Ref	Biomarker Type	Task	Model Type	Evaluation Metrics	Reported performance/validation context
+[11]	Speech/Voice	PD vs. Healthy Control Classification	SVM	Accuracy, AUC	About 81%; small corpus; external validation NR
+[25]	PD vs. Healthy Control Classification	SVM	Accuracy, Sensitivity, Specificity	About 85%; protocol-specific; external validation NR
+[27]	PD vs. Healthy Control Classification	Random Forest	Accuracy, F1-score, AUC	Approaching 90%; internal evaluation; cohort shift
+[26]	Robust PD Prediction	Classical ML with Aggregation	Accuracy, Precision, Sensitivity, Specificity, F1-score	88.0%; sensitivity 94.2%; specificity 69.5%; external validation NR
+[28]	Neuroimaging (MRI)	Automated PD Diagnosis	C-SVM, Logistic Regression	Accuracy, Sensitivity, Specificity	About 85-90%; retrospective; scanner/site transfer NR
+[32]	Neuroimaging (DaTSCAN)	PD Prediction Using Dopaminergic Imaging	ML Classifier on Extracted Features	Accuracy, Precision, Recall	About 90-95%; protocol-sensitive; external-centre test NR
+[12]	Handwriting	PD Detection from Writing Tasks	SVM	Accuracy, Precision, Recall	About 85%; task/device dependent; external test NR
+[33]	PD Detection from Writing Tasks	Random Forest	Accuracy, Precision, Recall	About 90%; small cohort; cross-device test NR
+[13]	Gait/Wearables	Motor Symptom Classification	Classical ML	Accuracy, Correlation with Clinical Scores	Moderate-high; controlled tasks; clinical correlation varies
+[14]	Gait-Based PD Detection	Time-Series ML	Accuracy, Sensitivity	Moderate-high; participant-level temporal split required
+[39]	Protein/Molecular	Drug Target Identification	QSAR	Binding Affinity, Screening Efficiency	About 87.5%; ROC-AUC 0.91; molecular benchmark only
+[40]	Virtual Screening and Drug Discovery	Structure-Based ML	Binding Affinity, Ranking Performance	High screening efficiency; efficacy/toxicity confirmation required
+Note: SVM = support vector machine; C-SVM = C-support vector machine; QSAR = quantitative structure-activity relationship; AUC = area under the receiver-operating-characteristic curve; F1 = F1-score; NR = not reported in this summary. Approximate performance values reproduce the cited reports but are not directly comparable across different cohorts or protocols. 'External validation NR' means that independent testing is not established in this summary; it does not imply that the original article omitted every robustness analysis. Molecular screening outcomes are preclinical and should not be interpreted as diagnostic accuracy or therapeutic efficacy.
+Table 4 shows that conventional models remain useful when datasets are modest and features are clinically motivated. SVMs and random forests are computationally efficient and can offer clearer feature attribution than high-capacity deep networks. Their apparent advantage may disappear, however, when feature selection is not nested within cross-validation, repeated observations, cross folds, or hyperparameters are tuned on the test set. Model selection should therefore consider calibration, external performance, sensitivity to preprocessing, and clinical consequences of false positives and false negatives, not accuracy alone.
+●
+Speech-based modelling approaches: Conventional speech models use jitter, shimmer, harmonic-to-noise measures, cepstral coefficients, and related acoustic descriptors with SVMs, random forests, or nearest-neighbour methods [11,25,26,27,69,70]. They are efficient for small datasets, but their features are influenced by age, sex, language, microphone, task, medication state, and comorbidity. CNN or CNN-RNN models can learn spectral and temporal representations from waveforms or spectrograms [26,71], yet greater capacity increases speaker memorisation and corpus dependence. Comparisons must use identical speaker-independent folds and external corpora; otherwise, higher accuracy cannot be attributed confidently to the architecture. Current evidence supports low-cost adjunctive screening or monitoring, not stand-alone diagnosis.
+●
+Neuroimaging-based modelling approaches: Two-dimensional CNNs analyse selected MRI slices efficiently, whereas three-dimensional CNNs preserve volumetric context but require more data, memory, and scanner harmonisation [28,36]. Region-focused models may improve anatomical plausibility, while whole-brain models can capture distributed effects but are more vulnerable to site and preprocessing shortcuts. Reported gains from residual, dense, or attention architectures cannot be attributed to architecture alone when cohorts, regions of interest, preprocessing, and validation schemes differ [32,36]. MRI and DaTSCAN also answer different clinical questions, and neither should be treated as a stand-alone confirmation of idiopathic PD. Clinically credible imaging models therefore require participant-level evaluation, scanner- and centre-held-out testing, calibration, and evidence that predictions remain useful beyond demographic and acquisition covariates.
+●
+Handwriting and fine-motor models: Handcrafted kinematic features such as velocity, acceleration, pressure, jerk, and stroke smoothness can be interpretable and data-efficient, whereas CNN-based image models learn spatial patterns from spirals, meanders, or written text [12,33,45]. Image-only models may discard timing and pressure information and can learn page layout, tablet, or task artefacts. Conversely, online-signal models depend on sampling rate and device calibration. Because the same participant often completes multiple tasks, splitting by image or trial rather than participant can markedly inflate accuracy. Handwriting is therefore best supported as a low-cost complementary motor assessment; cross-device, cross-task, and externally recruited validation are needed before diagnostic claims are justified [75,76].
+●
+Gait, wearable, and time-series models: Classical models use engineered stride, force, frequency, or variability features, while RNNs, LSTMs, temporal convolutional networks, transformers, and spatiotemporal graph convolutional networks learn sequential or skeletal representations [13,16,14,[52], [53], [54], [55], [56]]. Higher-capacity models can capture freezing of gait and postural dynamics but require larger, consistently sampled datasets and may learn participant, device, or laboratory signatures. Laboratory force-plate data provide precise measurement but limited ecological validity; smartphones and wearables improve longitudinal coverage while introducing adherence, placement, missingness, and firmware effects [16,74]. Evaluation should therefore separate participants and recording periods, report event-level class imbalance and false-alarm burden, and test transportability across devices and free-living settings. Current evidence is strongest for symptom monitoring and event detection, not autonomous diagnosis.
+●
+Multimodal learning frameworks: Combining voice, imaging, gait, wearables, clinical examinations, genetics, and molecular biomarkers may improve prediction only when modalities are available for matched participants and add information beyond strong unimodal and clinical baselines [18,35,36]. Apparent gains can otherwise reflect a larger feature space, selective inclusion of complete cases, or leakage between correlated visits. Multimodal studies should report the number of participants contributing each modality combination, missing-data mechanisms, modality ablations, calibration, and performance when one or more inputs are unavailable. Clinical value depends on incremental utility relative to acquisition cost, burden, and workflow, not simply higher internal accuracy [99,100].
+●
+Fusion strategies for multimodal Parkinson's disease analysis: Early fusion is simple and can model cross-modal associations, but it is sensitive to scale differences, high dimensionality, and missing values. Intermediate fusion learns modality-specific representations before combining them through shared embeddings, attention, graphs, or transformers; it can capture interactions but has high data and computation requirements and may be difficult to interpret. Late fusion combines modality-specific predictions and is more modular when inputs are absent, although it may miss low-level interactions [18,35,36,73]. No strategy is universally superior. Comparisons require identical cohorts, preprocessing, validation partitions, parameter-budget controls, unimodal ablations, and evaluation under realistic missing-modality patterns. Otherwise, a reported fusion advantage cannot be separated from differences in data availability or model capacity.
+●
+Explainable artificial intelligence for Parkinson's disease analysis: SHAP and LIME can describe local feature contributions, while Grad-CAM and Integrated Gradients highlight influential image regions [19,90,32,36]. These methods do not by themselves establish causal biomarkers, biological validity, fairness, or safe clinical reasoning. Explanations can be unstable across model retraining, correlated features, background choices, and preprocessing, and attention weights should not automatically be interpreted as explanations. Evaluation should therefore test explanation stability, sensitivity to clinically irrelevant perturbations, agreement with domain knowledge, subgroup consistency, and usefulness to clinicians. XAI is most defensible as an audit and communication layer accompanying calibrated performance and uncertainty, not as a substitute for external validation.
+●
+Multi-omics fusion models: Genomic, transcriptomic, proteomic, metabolomic, imaging, and clinical data can support molecular subtyping and progression research, but multi-omics cohorts often have far fewer matched participants than measured features [37,38,43,10]. Cross-attention and transformer-based fusion can represent nonlinear associations, yet their capacity increases overfitting risk and does not resolve batch effects, ancestry imbalance, missing assays, or tissue and time-point mismatch [35,36,73]. Valid studies should use participant-matched inputs, assay-aware quality control, nested feature selection, cohort-held-out validation, and ablations against single-omics and clinical baselines. PPMI and AMP-PD improve access to harmonised resources [17,73], but harmonisation does not eliminate cohort provenance or guarantee that molecular signatures generalise to independent populations.
+●
+Molecular and protein-structure modelling: QSAR, docking, virtual screening, protein representation learning, and structure-based deep learning can prioritise PD-related targets or compounds involving alpha-synuclein, LRRK2, mitochondrial pathways, and inflammation [[77], [78], [101]]. However, performance on ChEMBL, ZINC, DrugBank, or predicted-structure benchmarks measures ranking or affinity-related tasks, not patient diagnosis or therapeutic efficacy. Random molecular splits can place related scaffolds in training and testing, while database overlap and uncertain predicted structures can exaggerate retrospective performance. Scaffold- or time-aware evaluation, prospective biochemical assays, toxicity and pharmacokinetic assessment, and eventual in-vivo and clinical validation are required. These models therefore support hypothesis generation and preclinical prioritisation rather than direct clinical diagnosis.
+Table 5 shows that deep learning can reduce manual feature engineering and model spatial, temporal, or cross-modal structure, but the evidence does not establish a general performance advantage over conventional ML. Many reported results arise from small or controlled cohorts, and model capacity increases sensitivity to participant leakage, augmentation design, site effects, and hyperparameter tuning. Fair comparisons require the same participants, preprocessing, validation folds, and parameter-selection procedure, together with confidence intervals, computational-cost reporting, external testing, and clinically meaningful baselines. Deep learning is most justified when its representational benefit persists under these controls and provides useful calibration or decision support.
+
+Table 5. Representative deep-learning studies, reported performance, and validation context in Parkinson's disease research.
+
+Ref	Biomarker Type	Task	Model Type	Evaluation Metrics	Reported performance/validation context
+[26]	Speech/Voice	PD vs. Healthy Control Classification	CNN, DL Aggregation Models	Accuracy, F1-score, AUC	85-92%; speaker/corpus split sensitive; external test NR
+[29]	Neuroimaging (MRI)	Automated PD Diagnosis	CNN-Based Model	Accuracy, Sensitivity, Specificity	88-95%; high capacity; site-held-out test NR
+[30]
+[47]
+[48]
+[29]	Multi-Center PD Diagnosis and Prognosis	3D CNN	Accuracy, AUC	90-94%; requires centre-held-out testing
+[32]	Neuroimaging (DaTSCAN)	PD Prediction Using Dopaminergic Imaging	Deep Feature Extraction + ML Classifier	Accuracy, Precision, Recall	90-96%; acquisition-sensitive; external-centre test NR
+[34]	Handwriting	PD Detection from Spiral and Writing Tasks	CNN-Based Computer Vision Model	Accuracy, Precision, Recall	85-95%; small cohorts; participant/device tests needed
+[34]	Automated PD Detection	LinkNet–GhostNet Variant	Accuracy	94-97%; task/device dependent; strong baseline NR
+[16]	Gait/Wearables	Motor Symptom Monitoring	CNNs, RNNs for Time-Series Analysis	Accuracy, Correlation, RMSE	Monitoring; report temporal split, missingness, false alarms
+[36]	Multimodal	PD Diagnosis Using Integrated Biomarkers	Deep Multimodal Fusion Framework	Accuracy, AUC	3-8% gain; matched-cohort ablation/missing-modality tests needed
+[38]	Protein/Molecular	Drug Discovery for PD-Related Targets	Structure-Based Deep Learning	Binding Affinity, Screening Efficiency	Improved screening; scaffold/time split and prospective assay needed
+Note: CNN = convolutional neural network; RNN = recurrent neural network; 3D CNN = three-dimensional convolutional neural network; RMSE = root mean square error; AUC = area under the receiver-operating-characteristic curve; NR = not reported in this summary. Approximate values reproduce the cited reports but are not directly comparable across cohorts, tasks, preprocessing pipelines, or test protocols. 'External validation NR' means independent testing is not established in this summary; it does not imply that the original article omitted every robustness analysis. Molecular screening outcomes are preclinical and are not diagnostic or therapeutic efficacy measures.
+6.1. Critical analysis and comparative evaluation
+Across the reviewed evidence, five recurring problems limit inference: overfitting to controlled benchmarks, insufficient statistical reporting, imbalance in the modalities studied, weak baseline comparisons, and inconsistent evaluation metrics. These problems interact. Small datasets increase variance; flexible models amplify leakage and tuning risk; selective metric reporting obscures calibration and error costs; and modality imbalance directs attention toward accessible benchmarks rather than clinically decisive evidence. The following appraisal therefore interprets Table 4, Table 5 as contextual summaries rather than a ranking of algorithms.
+6.1.1. Overfitting of controlled benchmarks
+Reported accuracies of approximately 85-97% across speech, imaging, and handwriting should be interpreted in relation to cohort size and sampling unit. The UCI Parkinson's speech resource contains repeated recordings from 23 participants with PD and 8 healthy controls, while PaHaW contains 38 participants with PD and 37 controls [69,70,75]. If recordings, images, windows, or visits from the same participant cross folds, a model can recognise participant- or device-specific patterns rather than disease. Repeated reuse of a benchmark also encourages implicit tuning to its acquisition and annotation conventions. Consequently, high internal accuracy may represent benchmark fit rather than transportable diagnostic evidence.
+Independent external validation remains uncommon in the summarized evidence, and performance often decreases when acquisition hardware, clinical protocols, language, site, or population changes [29,30]. This domain shift should be quantified using centre-, device-, language-, or cohort-held-out evaluation rather than inferred from random splits. Benchmark results are therefore not upper-bound estimates of clinical utility; they are conditional estimates under a specific sampling and validation design. Generalisable claims require prospective testing on independently recruited participants and reporting of calibration and subgroup performance.
+6.1.2. Insufficient statistical rigor
+Statistical reporting is inconsistent across the literature. A single train-test split can produce unstable estimates in small cohorts, while ordinary cross-validation remains optimistic if feature selection, preprocessing, augmentation, or hyperparameter tuning is performed outside the training fold. Accuracy or AUC without participant counts, confidence intervals, variance across repeats, class prevalence, or threshold-specific errors does not support robust model comparison. Future studies should use participant-level nested resampling where appropriate, preserve a final untouched test set, report confidence intervals and repeated-run variability, and compare paired predictions with suitable statistical tests [50,51]. Table 4, Table 5 summarize different studies and therefore should not be used as a meta-analysis or as evidence of statistically significant superiority.
+6.1.3. Modality imbalance in the literature
+The reviewed literature is concentrated in speech and neuroimaging, partly because public benchmarks lower the cost of entry. This accessibility accelerates method development but can create a feedback loop in which frequently reused datasets attract further architecture studies while biofluid, genetic, longitudinal, and multimodal cohorts remain comparatively underexamined. Publication counts therefore reflect data availability and research convenience as well as clinical importance. A balanced agenda should prioritise modalities according to the clinical question, required invasiveness, biological proximity, longitudinal value, and feasibility of independent validation rather than benchmark availability alone.
+Biofluid and molecular markers may provide evidence closer to PD biology, including alpha-synuclein-related and inflammatory processes [10,17], but invasive collection, assay variability, batch effects, limited matched cohorts, and uncertain reference standards constrain AI development. Molecular and protein models are also often disconnected from patient-level phenotypes and clinical outcomes. Progress requires shared assay standards, diverse multicentre cohorts, matched clinical and molecular measurements, transparent missingness and batch correction, and prospective confirmation. Increasing dataset size without these design controls would not resolve the evidence gap.
+6.1.4. Absence of strong classical baselines in deep learning studies
+Deep-learning studies do not always compare against well-tuned classical models under identical conditions. For example, handwriting and neuroimaging architectures in Table 5 report high performance, but differences in preprocessing, augmentation, splits, and optimisation prevent attribution of gains to the neural architecture alone [29,34,30]. A fair baseline must use the same participants, input information, test set, and tuning budget. It should include simple clinical or demographic predictors where relevant, as well as regularised linear models, SVMs, or tree-based methods. Without these controls, additional complexity may improve benchmark fit without improving generalisation or clinical utility.
+Conventional models can be computationally efficient and easier to audit, particularly when sample sizes are modest and features are clinically motivated. Deep models may be preferable for high-dimensional images, raw waveforms, or long sequences, but only when their incremental benefit survives ablation, nested tuning, and external testing. Studies should report parameter counts, training cost, inference latency, missing-data behaviour, calibration, and paired performance against strong baselines. The relevant question is not whether deep learning is newer, but whether it adds reliable information at an acceptable operational and clinical cost [50,35].
+6.1.5. Evaluation metric inconsistency
+Evaluation metrics vary because tasks differ: classification, severity estimation, event detection, longitudinal forecasting, and molecular screening do not share a single outcome. Accuracy can be misleading under class imbalance; AUC-ROC measures ranking but not calibration or benefit at a clinical threshold; and sensitivity and specificity depend on the chosen operating point. Event-detection studies additionally require false alarms per unit time and temporal tolerance, regression requires absolute error and calibration against clinical scales, and molecular screening requires prospective enrichment or assay confirmation. Cross-study comparisons are defensible only within the same task, population, endpoint definition, and validation protocol.
+No single metric should be mandated for all PD AI studies. Binary classification should report sensitivity, specificity, positive and negative predictive values at prespecified thresholds, AUC-ROC, precision-recall AUC when classes are imbalanced, and calibration. Severity or progression models should report MAE or RMSE together with uncertainty and correlation to established scales, while longitudinal models require time-aware validation. Decision-curve or utility analysis can show whether predictions improve a defined clinical action. Standardised reporting and shared challenge protocols, including independent test sets and complete participant flow, would improve comparability more than selecting one universal score [89].
+Overall, the literature demonstrates technical feasibility across several PD-related tasks, but the certainty of clinical benefit remains limited by benchmark dependence, incomplete statistical reporting, weak comparator design, and heterogeneous endpoints. More credible evidence will require prespecified participant-level analyses, transparent preprocessing, strong baselines, external multicentre validation, calibration, subgroup evaluation, and task-appropriate metrics. These requirements inform the translational challenges and future priorities discussed in the following sections.
+7. Illustrative case study: conceptual multimodal AI framework for Parkinson's disease assessment
+Fig. 11 presents an illustrative workflow for integrating speech, neuroimaging, handwriting, gait and wearable signals, genetics, biofluids, and molecular representations in PD research [18,35,36]. This is a conceptual case study, not an implemented experiment or validated diagnostic system. Its purpose is to specify the intended application, processing stages, outputs, and evaluation requirements of a multimodal pipeline without implying that the framework has produced patient-level results. The proposed application is decision support for three distinct research tasks: PD-versus-control classification, severity estimation, and longitudinal progression-risk modelling. These tasks would require separate cohorts, endpoints, and validation protocols.
+The input stage uses modality-specific processing while preserving participant identity and acquisition provenance. Speech processing may include denoising, voice-activity detection, and acoustic or learned representations [11,26,69]. MRI and DaTSCAN require modality-appropriate correction, registration, normalisation, and region or representation extraction [17,[28], [29], [30], [31], [32], [34], [36], [47], [48], [102]]. Handwriting and gait pipelines may use kinematic, spatial, temporal, or frequency-domain features [12,13,16,14,33,45]. All preprocessing parameters must be learned within training data, and repeated recordings, images, windows, or visits from one participant must remain in the same validation partition. The diagram therefore represents data-flow options rather than a single mandatory preprocessing recipe.
+Genetic and biofluid inputs require assay quality control, ancestry and batch-effect assessment, missing-data handling, and feature reduction that is nested within model validation [37,38,43,10,17]. Molecular descriptors, graphs, or protein representations may support target or compound prioritisation [20,38,40,10], but these inputs are not patient-level diagnostic evidence unless they are linked to matched clinical participants and outcomes. Molecular screening should therefore be evaluated separately with scaffold- or time-aware splits and prospective assays before any connection to therapeutic benefit is proposed.
+The fusion layer may use early, intermediate, or late integration. A defensible implementation would compare these strategies on the same matched cohort, include strong unimodal and clinical baselines, report which participants contribute each modality combination, and test performance when inputs are missing [18,35,36]. Outputs must be task-specific: classification should be calibrated at prespecified thresholds; severity estimates should be compared with clinical scales using error and uncertainty; and progression models require time-aware validation. The conceptual framework does not assume that fusion will improve performance; incremental value must be demonstrated through ablation and external testing.
+XAI methods such as SHAP, LIME, Grad-CAM, and Integrated Gradients may help audit feature contributions [19,90], but their outputs should not be interpreted as causal biomarkers. Explanation stability, clinically irrelevant shortcuts, subgroup consistency, and agreement with domain knowledge must be examined. Uncertainty estimates should identify low-confidence or out-of-distribution cases and support referral to a clinician rather than automate a diagnosis. Any longitudinal updating procedure would require version control, drift monitoring, recalibration, and prospective governance; a model should not self-update in clinical use without controlled revalidation.
+Case-study outcome, application, result, and observations: The outcome of this conceptual exercise is a testable workflow and reporting checklist, not a diagnostic accuracy value. Its intended application is multimodal research and clinician-facing decision support. No experimental result is reported because the framework has not been implemented. The principal observations are that matched-participant data, participant-level splitting, missing-modality analysis, unimodal ablations, calibration, uncertainty, external multicentre validation, and workflow evaluation are prerequisites for judging whether multimodal integration adds clinical value. These limitations are stated explicitly to avoid presenting an illustrative architecture as validated evidence.
+8. Issues, challenges, and future needs
+AI research in PD has expanded across speech, wearables, neuroimaging, handwriting, clinical scales, and molecular data, but technical feasibility has not yet established routine clinical benefit. The main barriers are fragmented evidence, sparse longitudinal follow-up, domain shift, demographic and cohort bias, limited interpretability, weak linkage between digital and molecular evidence, privacy constraints, and high validation and implementation costs. The following issue-challenge-future-need structure links each limitation to a specific research response and defines the evidence required for progress.
+8.1. Issue #1 - fragmented single-modality evidence
+Many studies optimize a model for one biomarker type, such as speech, handwriting, gait, or imaging. This approach simplifies acquisition and interpretation, but it can capture modality-specific nuisance variation and cannot represent all motor, non-motor, cognitive, and biological aspects of PD. Conversely, combining modalities is not automatically superior: complete-case selection may reduce sample size and introduce bias, while additional features increase overfitting and acquisition burden. The unresolved question is therefore whether a second modality provides reproducible incremental information beyond a strong clinical and unimodal baseline, not whether multimodal models achieve higher internal accuracy.
+8.2. Challenge #1 - heterogeneous acquisition and incomplete modality overlap
+Sensors, scanners, microphones, tasks, assays, sampling rates, medication states, and annotation rules differ across studies [26,29]. Multimodal cohorts additionally contain unequal visit schedules and missing inputs, so participants with complete data may not represent the target population. Naive pooling can therefore combine technical and biological variation, generate domain shift, and make model comparisons uninterpretable. Harmonisation must retain site and cohort provenance and must be fitted without access to held-out data.
+8.3. Future need #1 - matched multimodal benchmarks and incremental-value testing
+Future benchmarks should collect core behavioral, imaging, clinical, and molecular variables from matched participants across multiple centres while allowing transparent reporting of unavailable modalities [103,104]. Prespecified participant-level splits, hidden external test sets, modality ablations, missing-modality stress tests, calibration, subgroup results, and acquisition-cost analysis are required. Adaptive fusion should be compared with simpler early and late fusion under identical conditions [35,51]. A benchmark should reward transportability and clinical utility, not only peak accuracy.
+8.4. Issue #2 - limited longitudinal and temporal evidence
+Most PD AI studies use cross-sectional data and therefore estimate group differences at one time point rather than individual progression. Longitudinal resources such as PPMI and mPower provide repeated observations, but visit attrition, medication changes, irregular sampling, informative missingness, and practice or device effects complicate inference. Repeated visits also create leakage when observations from one participant appear in training and testing. Consequently, cross-sectional discrimination should not be described as progression prediction, and a time-aware model must be evaluated against clinically relevant future outcomes.
+8.5. Challenge #2 - sparse, irregular, and treatment-dependent follow-up
+Longitudinal labels may be missing, delayed, or measured at irregular intervals, and clinical scales contain measurement error and rater variability. Participants who discontinue follow-up may differ systematically from those retained. High-dimensional models can exploit visit timing, treatment status, or site schedules as shortcuts. These factors reduce effective sample size and can bias trajectories unless observation processes, censoring, treatment exposure, and within-participant correlation are modelled explicitly.
+8.6. Future need #2 - prespecified time-aware and longitudinal validation
+Future studies should use temporal holdouts, participant-level trajectory modelling, survival or joint longitudinal-event methods where appropriate, and evaluation at clinically meaningful forecast horizons [90,105]. Baselines should include current clinical scores, treatment status, and simple change models. Performance should report calibration over time, uncertainty, missingness sensitivity, and benefit for a defined monitoring or intervention decision. Model updating requires drift surveillance, locked version histories, and prospective revalidation; uncontrolled self-updating would undermine reproducibility and regulatory oversight.
+8.7. Issue #3 - weak cross-dataset generalisation
+Models that perform well within one dataset often lose accuracy or calibration when hardware, language, acquisition protocols, preprocessing, annotation, disease spectrum, or population composition changes [26,103,29]. Random internal splits do not measure this domain shift, especially when related participants, sites, or repeated recordings occur in both partitions. Cross-dataset performance should therefore be treated as a distinct endpoint. A model that requires extensive target-dataset tuning may be useful for adaptation research but has not demonstrated transportability to an unseen clinical setting.
+8.8. Challenge #3 - demographic, clinical, and cohort bias
+PD datasets often underrepresent racial and ethnic groups, lower-resource settings, prodromal disease, atypical parkinsonism, advanced disability, and participants with important comorbidities. Age, sex, language, education, socioeconomic status, treatment, and referral patterns can correlate with both labels and acquisition conditions. Aggregate performance can therefore conceal clinically important subgroup failure. Bias assessment must examine representation, label quality, missingness, calibration, and error rates within prespecified subgroups while recognising that very small subgroup samples yield uncertain estimates.
+8.9. Future need #3 - external validation, harmonised reporting, and subgroup evaluation
+Evaluation should include centre-, device-, language-, and cohort-held-out tests, followed by prospective multicentre validation when the intended use is clinical [50,51]. Reports should disclose participant flow, exclusions, prevalence, preprocessing, thresholds, calibration, confidence intervals, and subgroup results. Domain adaptation or self-supervised pretraining may improve transfer, but comparisons must include a no-adaptation baseline and must not use test labels for model selection. Harmonised reporting and shared evaluation code are preferable to forcing heterogeneous datasets into a single pooled distribution.
+8.10. Issue #4 - limited clinical interpretability and trust
+Deep models can represent high-dimensional imaging and multimodal data [35,29,30], but an explanation that highlights a feature or region does not establish biological causality, diagnostic validity, or clinical usefulness. Clinicians also require calibrated probabilities, uncertainty, failure-mode information, and a clear statement of the model's intended role. Interpretability is therefore broader than visual explanation: it includes traceable data provenance, clinically meaningful outputs, comparator performance, and evidence that users understand and act on the system appropriately [50,51].
+8.11. Challenge #4 - accountability, human factors, and regulatory evidence
+Opaque or overconfident predictions can promote automation bias and make error investigation difficult [41]. Responsibility for data quality, model updates, threshold selection, overrides, and adverse-event monitoring must be assigned before deployment. Regulatory evidence depends on a defined intended use, representative validation, risk management, cybersecurity, software version control, and post-deployment monitoring. A technically accurate model may still fail if it disrupts workflow, increases false referrals, or transfers decisions without adequate clinician oversight.
+8.12. Future need #4 - explainable, uncertainty-aware, and workflow-tested AI
+Future systems should combine calibrated prediction and uncertainty with explanations that are stable, clinically interpretable, and tested for user benefit [50,51]. Evaluation should include simulated and prospective workflow studies measuring decision quality, time, false reassurance, referral burden, override behaviour, and subgroup effects. Language models may assist with evidence retrieval or draft reporting, but generated content requires source grounding, privacy controls, human verification, and monitoring for unsupported statements [73]. Retrieval augmentation can reduce but not eliminate error; it should not convert an unvalidated predictive model into an autonomous clinical decision-maker.
+8.13. Issue #5 - disconnect between digital phenotypes and molecular mechanisms
+Patient-level digital models and molecular AI frequently address different endpoints in different cohorts. Speech, gait, handwriting, and imaging models estimate observable phenotype or clinical status, whereas protein, genetic, and compound models examine mechanisms or preclinical targets. Correlation between these levels cannot be inferred when participants, tissues, time points, and outcomes are unmatched. This separation limits biological interpretation of predictive features and prevents claims that a digital signature identifies a specific molecular mechanism.
+8.14. Challenge #5 - cross-scale alignment, confounding, and causal interpretation
+Phenotypic and molecular measurements differ in units, sampling frequency, tissue relevance, biological hierarchy, and nomenclature [10,106]. Disease duration, medication, age, ancestry, comorbidity, and batch effects may influence both levels and create non-causal associations. Matched multi-omics cohorts are typically smaller than unimodal datasets, while high dimensionality increases overfitting and multiple-testing risk. Cross-scale fusion therefore requires explicit causal assumptions, temporally aligned samples, assay-aware preprocessing, negative controls, and validation in independent cohorts.
+8.15. Future need #5 - translational multiscale studies with mechanistic validation
+Future work should link digital biomarkers, neuroimaging, clinical trajectories, genetics, biofluids, and molecular targets in matched longitudinal participants [104,106]. Analyses should prespecify whether the goal is prediction, mediation, subtyping, or target discovery; compare against clinical and single-scale baselines; and use nested feature selection, cohort-held-out validation, and sensitivity analyses for confounding. Candidate cross-scale relationships require replication and experimental or biological confirmation before they are described as mechanisms. Causal and representation-learning methods may help generate hypotheses, but they do not replace appropriate study design or therapeutic validation.
+8.16. Issue #6 - privacy, governance, and data-sharing constraints
+Clinical, imaging, wearable, genomic, and molecular data involve different consent, ownership, access, retention, and re-identification risks [19,49]. Centralising data may improve analysis but can conflict with participant expectations, institutional policy, data-use agreements, and jurisdiction-specific requirements. Privacy protection is not merely a technical barrier to be minimised; it is a condition of trustworthy research. Governance must define permitted uses, participant withdrawal, access review, breach response, secondary use, and responsibility for derived models.
+8.17. Challenge #6 - institutional silos and non-identical local data
+Data silos limit external validation and reduce diversity, but institutions also differ in case mix, coding, acquisition, labels, missingness, and clinical workflow. A distributed analysis can therefore fail even when raw data never move. Common data models and harmonised variables may improve comparability, yet they can conceal local meaning if provenance is removed. Collaborative studies should preserve site-level metadata, assess local label quality, and distinguish technical interoperability from clinical equivalence.
+8.18. Future need #6 - governed privacy-preserving collaboration
+Federated learning, secure multiparty computation, differential privacy, and encrypted aggregation can support collaboration without pooling all raw data [19,49], but they do not automatically guarantee privacy, fairness, or generalisation. Evaluation should include membership and reconstruction risk, malicious or unreliable clients, non-identically distributed data, communication cost, convergence, privacy-utility trade-offs, site-held-out performance, and subgroup calibration. A standard PD protocol should specify governance, consent compatibility, threat model, privacy budget where applicable, audit logs, model-update approval, and reproducible baselines. Privacy-preserving learning is therefore one component of a governed multicentre study, not a substitute for it.
+8.19. Issue #7 - computational and operational scalability
+PD AI pipelines may combine volumetric imaging, continuous sensor streams, speech, handwriting, clinical records, and molecular representations [17,105]. Their requirements differ: training a molecular or imaging foundation model is not equivalent to running an inference model on a wearable device. Claims of terabyte- or petabyte-scale need should be supported by the actual data unit and workflow. The relevant constraints are storage, transfer, memory, training time, inference latency, reliability, integration, and maintenance relative to the intended clinical or research task.
+8.20. Challenge #7 - cost, sustainability, access, and maintenance
+Specialised hardware, cloud services, data engineering, security, monitoring, and repeated validation create costs that may exclude smaller centres and lower-resource settings. Energy use is one consideration, but operational sustainability also includes staff expertise, vendor dependence, downtime, software updates, cybersecurity, and the cost of false alerts. A model with marginally higher accuracy may provide less value if it is difficult to deploy, recalibrate, or support. Resource use should therefore be assessed alongside clinical benefit and equity.
+8.21. Future need #7 - cost-aware and deployment-tested AI
+Future studies should report parameter count, training and inference time, memory, energy or compute estimates where feasible, hardware, latency, failure recovery, and maintenance requirements [105]. Lightweight architectures, pruning, quantisation, knowledge distillation, and edge inference may support wearable monitoring [16,[52], [53], [54], [55], [56]], but compression must be evaluated for calibration, subgroup performance, robustness, and battery or connectivity constraints. Prospective workflow testing should compare local, edge, and cloud deployment against simpler alternatives and measure total cost per clinically useful decision. Scalability should mean reliable service across representative settings, not only the ability to process more data.
+9. Limitations of the review
+This review is limited by heterogeneity in study populations, diagnostic criteria, modality definitions, preprocessing, outcome measures, and validation protocols. The evidence base is vulnerable to publication and selective-reporting bias because positive model results and peak metrics may be reported more often than negative findings, calibration failures, or unsuccessful external tests. The review also depends on information available in the cited reports; missing participant-level details, incomplete subgroup data, and inconsistent reporting prevented formal meta-analysis and direct ranking of algorithms.
+The literature search and screening process may not capture every eligible study, particularly non-English, non-indexed, recently released, or rapidly updated AI work. Public-dataset and database characteristics can change, and repeated publications from overlapping cohorts may reduce the effective independence of the evidence. Molecular screening outcomes, retrospective diagnostic performance, and conceptual frameworks were therefore interpreted separately. These limitations mean that the review identifies patterns and priorities but cannot establish pooled diagnostic accuracy, comparative superiority, or clinical effectiveness.
+10. Conclusion
+This review synthesises AI research across speech, gait and wearables, handwriting, neuroimaging, clinical measures, genetics, biofluids, molecular modelling, and drug-discovery-related tasks in PD. The available evidence demonstrates technical feasibility for classification, symptom monitoring, severity estimation, progression research, and preclinical prioritisation. It does not establish that any model family or multimodal framework is ready for autonomous diagnosis or routine clinical deployment. Conclusions must remain conditional on cohort composition, sampling unit, preprocessing, validation design, endpoint definition, and external testing.
+Conventional ML can be efficient and interpretable when datasets are modest and features are clinically motivated, while deep learning can represent images, raw signals, sequences, and molecular graphs with less manual feature engineering. Neither is consistently superior across heterogeneous studies. Multimodal fusion may add complementary information, but it also increases missing-data bias, computation, and acquisition burden. Its value must be demonstrated against strong clinical and unimodal baselines using matched participants, ablations, calibration, and external validation.
+The most consistent weaknesses in the reviewed literature are small or selective cohorts, repeated-measure leakage, class imbalance, inconsistent endpoints, incomplete statistical reporting, limited external and prospective validation, weak calibration, and insufficient subgroup analysis. Fig. 11 is an illustrative workflow that organises these considerations; it is not evidence that feature fusion or feedback optimisation resolves them. Clinical translation additionally depends on interpretability, uncertainty, privacy, regulation, workflow integration, cost, and post-deployment monitoring.
+The gap between digital phenotypes and molecular mechanisms remains substantial because these data are rarely measured in matched longitudinal participants and predictive association does not establish causality. Federated and privacy-preserving methods may enable multicentre analysis, but they cannot correct biased recruitment, inconsistent labels, or domain shift. The strongest near-term priorities are standardised reporting, participant-level and time-aware evaluation, representative multicentre cohorts, independent external tests, explainable and uncertainty-aware decision support, multimodal missing-data analysis, and prospective validation for a clearly defined clinical task.
+In conclusion, current evidence supports AI as a research and adjunctive decision-support tool for selected PD-related tasks, with the level of support varying substantially by modality and validation design. Claims of clinical readiness should be reserved for models that demonstrate reproducible incremental value, calibration, subgroup reliability, usability, and safety in independent prospective settings. The principal contribution of this review is a dataset- and modality-aware critical synthesis that connects model choice with validation risk, clinical role, multiscale evidence, and concrete research priorities, rather than an assertion that a single unified architecture has already solved PD assessment.
+CRediT authorship contribution statement
+Kagne Raveena Rajendra: Writing – review & editing, Writing – original draft, Visualization, Methodology, Data curation. Jerry Gao: Supervision, Conceptualization. Roopa Gangadhar Devihosur: Writing – review & editing, Validation, Formal analysis, Conceptualization. Mohini Kathrotiya: Writing – review & editing, Visualization, Investigation.
+Ethics statement
+This review did not collect new data from human participants, animals, or biological specimens and did not conduct a clinical intervention. It analyses information reported in published studies and in public or controlled-access research resources. Accordingly, no new participant consent or ethics approval was obtained for this review; access to any controlled dataset remains governed by the original study approvals and applicable data-use agreements.
+Data availability statement
+No new dataset was generated or analysed for this review. The resources discussed are available under the access conditions stated by their respective repositories. Some clinical, imaging, and molecular platforms, including PPMI and AMP-PD, require registration, approval, and compliance with data-use agreements; other repositories provide public records or impose account, licence, or use restrictions that may change over time. Researchers should verify current access, consent, and licensing requirements directly with each repository. Dataset citations and access descriptions are provided in the manuscript.
+Preprint disclosure (if applicable)
+Preprint Server: None.
+Preprint DOI: N/A.
+Posting Date: N/A.
+Statement for studies in humans/animals
+This article does not contain any studies with human participants or animals performed by any of the authors.
+Declaration of generative AI and AI-assisted technologies
+During the preparation of this work, the authors used an AI-assisted language tool to improve the grammar, clarity, readability, and organization of the manuscript. The authors reviewed and edited the output as needed, verified the scientific claims and citations, and take full responsibility for the final content of the article.
+Declaration of generative AI use
+AI Tool(s) Used: Grammarly AI.
+Purpose: improve grammar, clarity, and readability.
+Statement: During the preparation of this work, the authors used Grammarly AI in order to improve grammar, clarity, and readability. After using this tool/service, the authors reviewed and edited the content as needed and take full responsibility for the published article.
+Funding sources
+Funding Statement: No Funding
+If no funding: No Funding
+Declaration of competing interests
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+Acknowledgements
+The authors would like to thank Dr. Jerry Gao for his guidance and support throughout this research. We also acknowledge San José State University for providing the resources required for this study.
+References
+[1]
+J. Parkinson
+An essay on the shaking palsy
+J Neuropsychiatry Clin Neurosci, 14 (2) (2002), pp. 223-236, 10.1176/jnp.14.2.223
+Spring
+Google Scholar
+[2]
+C.G. Goetz
+The history of Parkinson's disease: early clinical descriptions and neurological therapies
+Cold Spring Harb Perspect Med, 1 (1) (2011), Article a008862, 10.1101/cshperspect.a008862
+Google Scholar
+[3]
+D. Berg, et al.
+Prodromal parkinson disease: the decade past, the decade to come
+Mov Disord, 30 (5) (2015), pp. 665-675, 10.1002/mds.26137
+Google Scholar
+[4]
+L. Klingelhoefer, H. Reichmann
+Parkinson's disease as a multisystem disorder
+J Neural Transm, 124 (6) (2017), pp. 709-713, 10.1007/s00702-017-1692-0
+Google Scholar
+[5]
+E. Nichols, et al.
+Global, regional, and national burden of Parkinson's disease, 1990–2016: a systematic analysis for the global burden of disease study 2016
+Lancet Neurol, 17 (11) (2018), pp. 939-953, 10.1016/S1474-4422(18)30295-3
+Google Scholar
+[6]
+World Health Organization
+Parkinson disease
+WHO fact sheet (2022)
+[Online]. Available:
+https://www.who.int/news-room/fact-sheets/detail/parkinson-disease
+Google Scholar
+[7]
+T. Dorsey, et al.
+Projected number of people with Parkinson's disease to 2050
+BMJ, 388 (2024), Article e080952, 10.1136/bmj-2024-080952
+Google Scholar
+[8]
+A.M. Willis, et al.
+The economic burden of Parkinson's disease in the United States
+npj Parkinson's Dis, 3 (2017), 10.1038/npjparkd.2017.15
+15
+Google Scholar
+[9]
+Grand View Research
+Parkinson's disease treatment market size, share & trends analysis report
+[Online]. Available:
+https://www.grandviewresearch.com/industry-analysis/parkinsons-disease-treatment-market (2024)
+Google Scholar
+[10]
+J. Kim, et al.
+Artificial intelligence-driven drug repositioning uncovers efavirenz as a modulator of α-synuclein propagation: implications in Parkinson's disease
+Biomed Pharmacother, 174 (2024), Article 116442, 10.1016/j.biopha.2024.116442
+View PDF
+View articleGoogle Scholar
+[11]
+SJTU-YONGFU Research Group, "Parkinson patient speech dataset," GitHub repository. [Online]. Available: https://github.com/SJTU-YONGFU-RESEARCH-GRP/Parkinson-Patient-Speech-Dataset.
+Google Scholar
+[12]
+P. Zham, D.K. Kumar, P. Dabnichki, S. Poosapadi Arjunan, S. Raghav
+Distinguishing different stages of parkinson's disease using composite index of speed and pen-pressure of sketching a spiral
+Front Neurol, 8 (2017), Article 268142, 10.3389/fneur.2017.00435
+Google Scholar
+[13]
+D. Boari
+A dataset of overground walking full-body kinematics and kinetics in individuals with Parkinson's disease
+figshare (2021), 10.6084/m9.figshare.14896881.v4
+Google Scholar
+[14]
+J.M. Hausdorff
+Gait dynamics in Parkinson's disease: common and distinct behavior among stride length, gait variability, and fractal-like scaling
+Chaos, 19 (2) (2009), Article 026113, 10.1063/1.3147408
+Google Scholar
+[15]
+L. Badea, M. Onu, T. Wu, A. Roceanu, O. Bajenaru
+Exploring the reproducibility of functional connectivity alterations in Parkinson's disease
+PLoS One, 12 (11) (2017), Article e0188196, 10.1371/journal.pone.0188196
+Google Scholar
+[16]
+B.M. Bot, et al.
+The mPower study, parkinson disease mobile data collected using ResearchKit
+Sci Data, 3 (1) (2016), Article 160011, 10.1038/sdata.2016.11
+Google Scholar
+[17]
+K. Marek, et al.
+The parkinson progression marker initiative (PPMI)
+Prog Neurobiol, 95 (2011), pp. 629-635, 10.1016/j.pneurobio.2011.09.005
+View PDF
+View articleGoogle Scholar
+[18]
+S.A. Hannan
+Advancing Parkinson's disease severity prediction using multimodal convolutional recursive deep belief networks
+Int J Adv Comput Sci Appl, 15 (2) (2024), p. 467
+Google Scholar
+[19]
+R. Pratihar, R. Sankar
+Integrative federated learning framework for multimodal parkinson's disease biomarker fusion
+Computers, 14 (9) (2025), 10.3390/computers14090388
+Google Scholar
+[20]
+F. Wang, D. Lin, Z. Lv, J. Tan
+The crystal structure of parkinson disease protein 7 (DJ-1) from biortus (PDB 7C62)
+RCSB Protein Data Bank (2020), 10.2210/pdb7C62/pdb
+Google Scholar
+[21]
+A. Sharma, A. Agarwal, M. Kalenga Wa Kalenga, V. Gupta, V. Srivastava
+AI in parkinson's disease: a short review of machine learning approaches for diagnosis
+Processes, 14 (2026), 10.3390/pr14020199
+199
+Google Scholar
+[22]
+B. Twala
+AI-driven precision diagnosis and treatment in Parkinson's disease: a comprehensive review and experimental analysis
+Front Aging Neurosci, 17 (2025), Article 1638340, 10.3389/fnagi.2025.1638340
+Google Scholar
+[23]
+A. Loh, et al.
+Machine learning for Parkinson's disease: a comprehensive review of datasets, algorithms, and challenges
+npj Parkinson's Dis (2025), 10.1038/s41531-025-01025-9
+Google Scholar
+[24]
+E. Goceri, et al.
+Applications of machine learning for computer-aided diagnosis of Parkinson's disease: progress and benchmark case study
+Artif Intell Rev (2025), 10.1007/s10462-025-11347-y
+Google Scholar
+[25]
+AILS Lab, "NTUA parkinson dataset," GitHub repository. [Online]. Available: https://github.com/ails-lab/ntua-parkinson-dataset.
+Google Scholar
+[26]
+Z. Yang, et al.
+Optimizing parkinson's disease prediction: a comparative analysis of data aggregation methods using multiple voice recordings via an automated artificial intelligence pipeline
+Data, 10 (1) (2025), p. 4, 10.3390/data10010004
+Google Scholar
+[27]
+T.Y. Zhong, et al.
+Evaluating the usefulness of non-diagnostic speech data for developing parkinson's disease classifiers
+arXiv preprint (2025), 10.21437/Interspeech.2025-1805
+Google Scholar
+[28]
+P.M. Shah, A. Zeb, U. Shafi, S.F.A. Zaidi, M.A. Shah
+Detection of parkinson disease in brain MRI using convolutional neural network
+Proc. 24th int. conf. autom. comput. (ICAC) (2018), pp. 1-6, 10.23919/IConAC.2018.8749023
+Newcastle Upon Tyne, UK
+Google Scholar
+[29]
+S. Basaia, et al.
+Multi-center 3D CNN for Parkinson's disease diagnosis and prognosis using clinical and T1-weighted MRI data
+Neuroimage, Clin, 48 (2025), Article 103859, 10.1016/j.nicl.2025.103859
+View PDF
+View articleGoogle Scholar
+[30]
+T. Welton, et al.
+Classification of Parkinson's disease by deep learning on midbrain MRI
+Front Aging Neurosci, 16 (2024), Article 1425095, 10.3389/fnagi.2024.1425095
+Google Scholar
+[31]
+I. Mushta, S. Koks, A. Popov, O. Lysenko
+Exploring the potential imaging biomarkers for Parkinson's disease using machine learning approach
+Bioengineering, 12 (1) (2024), p. 11, 10.3390/bioengineering12010011
+Google Scholar
+[32]
+J. Pant, H.K. Pant, V.K. Pant, V. Bhatt, D. Singh, K. Joshi
+Deep learning-based feature extraction and machine learning models for parkinson's disease prediction using DaTscan image
+Biomed Pharmacol J, 18 (Mar. 2025)
+Google Scholar
+[33]
+J. Shin, A.S. Miah, K. Hirooka, M.A. Hasan, M. Maniruzzaman
+Parkinson disease detection based on in-air dynamics feature extraction and selection using machine learning
+Sci Rep, 15 (1) (2025), Article 28027, 10.1038/s41598-025-12115-2
+Google Scholar
+[34]
+P. Pradeep, J. Kamalakannan
+Automated detection of Parkinson's disease using improved linknet-ghostnet model based on handwriting images
+Sci Rep, 15 (2025), Article 30731, 10.1038/s41598-025-12636-w
+Google Scholar
+[35]
+A. Sar, et al.
+Multi-modal deep learning framework for early detection of Parkinson's disease using neurological and physiological data for high-fidelity diagnosis
+Sci Rep, 15 (1) (2025), Article 34835, 10.1038/s41598-025-21407-6
+Google Scholar
+[36]
+J. Cao, X. Long
+RACF: a multimodal deep learning framework for Parkinson's disease diagnosis using SNP and MRI data
+Appl Sci, 15 (8) (2025), p. 4513, 10.3390/app15084513
+Google Scholar
+[37]
+T.K.F. Shida, et al.
+A public data set of walking full-body kinematics and kinetics in individuals with Parkinson's disease
+Front Neurosci, 17 (2023), Article 992585, 10.3389/fnins.2023.992585
+Google Scholar
+[38]
+R.I. Horne, et al.
+Discovery of potent inhibitors of α-synuclein aggregation using structure-based iterative learning
+Nat Chem Biol, 20 (5) (2024), pp. 634-645, 10.1038/s41589-024-01580-x
+Google Scholar
+[39]
+V. Sebastián-Pérez, et al.
+QSAR modelling to identify LRRK2 inhibitors for parkinson's disease
+J Integr Bioinform, 16 (1) (2019), Article 20180063, 10.1515/jib-2018-0063
+Google Scholar
+[40]
+Z.-D. Chen, et al.
+A novel artificial intelligence protocol to investigate potential leads for Parkinson's disease
+RSC Adv, 10 (2020), pp. 22939-22958, 10.1039/D0RA04028B
+Google Scholar
+[41]
+F. Cabitza, R. Rasoini, G.F. Gensini
+Unintended consequences of machine learning in medicine
+JAMA, 318 (6) (2017), pp. 517-518, 10.1001/jama.2017.7797
+Google Scholar
+[42]
+A. Iranzo, et al.
+Neurodegenerative disorder risk in idiopathic REM sleep behavior disorder
+Lancet Neurol, 18 (4) (2019), pp. 306-315, 10.1016/S1474-4422(19)30030-9
+Google Scholar
+[43]
+M. Aijaz, et al.
+The role of artificial intelligence in parkinson's disease: a comprehensive review
+World J Adv Pharm Med Res, 10 (2024), pp. 270-279
+[Online]. Available:
+https://www.researchgate.net/publication/384632234
+Google Scholar
+[44]
+B.L. Santos-Lobato
+Towards a methodological uniformization of environmental risk studies in Parkinson's disease
+npj Parkinson's Dis, 10 (1) (2024), p. 86, 10.1038/s41531-024-00709-y
+Google Scholar
+[45]
+C.R. Pereira, et al.
+A new approach to diagnose Parkinson's disease using a digitized graphics tablet
+Comput Methods Progr Biomed, 131 (2016), pp. 19-35, 10.1016/j.cmpb.2016.03.035
+Google Scholar
+[46]
+Movement Disorder Society
+MDS-unified parkinson's disease rating scale
+MDS-UPDRS) (2023)
+[Online]. Available:
+https://www.movementdisorders.org
+Google Scholar
+[47]
+H. Acikgoz, D. Korkmaz, T. Talan
+An automated diagnosis of parkinson's disease from MRI scans based on enhanced residual dense network with attention mechanism
+J Imaging Inform Med, 38 (4) (2024), pp. 1935-1949, 10.1007/s10278-024-01316-2
+Google Scholar
+[48]
+M. Alrawis, F. Mohammad, S. Al-Ahmadi, J. Al-Muhtadi
+FCN-PD: an advanced deep learning framework for Parkinson's disease diagnosis using MRI data
+Diagnostics, 15 (8) (2025), p. 992, 10.3390/diagnostics15080992
+Google Scholar
+[49]
+S. Roy, et al.
+Federated learning for privacy-preserving Parkinson's disease analysis using multimodal clinical data
+Artif Intell Med, 146 (2024), Article 102686, 10.1016/j.artmed.2024.102686
+Google Scholar
+[50]
+S. Desai, K. Mehta, H. Chhikaniwala
+A survey of detection of Parkinson's disease using artificial intelligence models with multiple modalities and various data preprocessing techniques
+J Educ Health Promot, 13 (2024), p. 388, 10.4103/jehp.jehp_1777_23
+Google Scholar
+[51]
+J. Li, et al.
+Multimodal machine learning for neurological disease diagnosis: methods, challenges, and applications
+IEEE Transact Neural Networks Learn Syst, 35 (1) (2024), pp. 1-18, 10.1109/TNNLS.2023.3320197
+Google Scholar
+[52]
+J. Wu, et al.
+Insights into gait performance in parkinson's disease via latent features of deep graph neural networks
+Front Neurol (2025), 10.3389/fneur.2025.1567344
+Google Scholar
+[53]
+B. Filtjens, et al.
+Automated freezing of gait assessment using multi-stage graph convolutional networks
+arXiv preprint, arXiv:210315449 (2021)
+Google Scholar
+[54]
+X. Zhang, et al.
+WM-STGCN: a novel spatiotemporal modeling method for parkinson's disease gait recognition
+Sensors, 23 (10) (2023), p. 4980
+Google Scholar
+[55]
+C. Neves, Y. Zeng, Y. Xiao
+Parkinson's disease detection from resting-state EEG using multi-head graph structure learning with gradient-weighted graph attention explanations
+arXiv preprint, arXiv:240800906 (2024)
+Google Scholar
+[56]
+X.S. Zhang, L. He, K. Chen, Y. Luo, J. Zhou, F. Wang
+Multi-view graph convolutional network and its applications on neuroimage analysis for parkinson's disease
+arXiv preprint, arXiv:180508801 (2018)
+Google Scholar
+[57]
+A. Siderowf, L. Concha-Marambio, D.E. Lafontant, C.M. Farris, Y. Ma, P.A. Urenia, et al.
+Assessment of heterogeneity among participants in the Parkinson's progression markers initiative cohort using α-synuclein seed amplification: a cross-sectional study
+Lancet Neurol, 22 (5) (2023), pp. 407-417, 10.1016/S1474-4422(23)00109-6
+View PDF
+View articleGoogle Scholar
+[58]
+A. Kluge, J. Bunk, E. Schaeffer, A. Drobny, W. Xiang, H. Knacke, et al.
+Detecting misfolded α-synuclein in blood years before the diagnosis of parkinson's disease
+Mov Disord, 39 (8) (2024), pp. 1289-1299, 10.1002/mds.29766
+Google Scholar
+[59]
+J. Hällqvist, M. Bartl, M. Dakna, et al.
+Plasma proteomics identify biomarkers predicting parkinson's disease up to 7 years before symptom onset
+Nat Commun, 15 (2024), p. 4759, 10.1038/s41467-024-48961-3
+Google Scholar
+[60]
+T. Kamath, A. Abdulraouf, S.J. Burris, J. Langlieb, V. Gazestani, N.M. Nadaf, et al.
+Single-cell genomic profiling of human dopamine neurons identifies a population that selectively degenerates in parkinson's disease
+Nat Neurosci, 25 (5) (2022), pp. 588-595, 10.1038/s41593-022-01061-1
+Google Scholar
+[61]
+Q. Wang, M. Wang, I. Choi, L. Sarrafha, M. Liang, L. Ho, et al.
+Molecular profiling of human substantia nigra identifies diverse neuron types associated with vulnerability in parkinson's disease
+Sci Adv, 10 (2) (2024), Article eadi8287, 10.1126/sciadv.adi8287
+Google Scholar
+[62]
+Neural networks reveal novel gene signatures in parkinson disease from single-nuclei transcriptomes
+npj Parkinson's Dis, 11 (2025), 10.1038/s41531-025-01147-0
+1147
+Google Scholar
+[63]
+Comparative bulk and single-cell RNA-Seq study of post-mortem PD brain
+Mol Neurobiol (2024), 10.1007/s12035-024-04124-5
+Google Scholar
+[64]
+W. Liu, L. Xu, X. Wang, J. Wang, V. Kumar
+Integrative multi-omics and network-based machine learning for early diagnosis of parkinson's disease
+PLoS One, 21 (1) (2026), Article e0329980, 10.1371/journal.pone.0329980
+Google Scholar
+[65]
+K. Mihajlović, N. Malod-Dognin, C. Ameli, A. Skupin, N. Pržulj
+MONFIT: multi-omics factorization-based integration of time-series data sheds light on parkinson's disease
+NAR Mol Med, 1 (4) (2024), Article ugae012, 10.1093/narmme/ugae012
+Google Scholar
+[66]
+A multi-omics framework based on machine learning as a predictor of cognitive impairment progression in early parkinson's disease
+Neurol Ther, 14 (2) (2025), 10.1007/s40120-025-00716-y
+Google Scholar
+[67]
+X. Bledsoe, M.J. Betti, E.R. Gamazon
+Neuroimaging transcriptomic analyses of parkinson's disease highlight molecular, cellular, and neurobiological mechanisms
+npj Parkinson's Dis, 11 (1) (2025), p. 303, 10.1038/s41531-025-01149-y
+Google Scholar
+[68]
+J. Zhang
+Mining imaging and clinical data with machine learning approaches for the diagnosis and early detection of parkinson's disease
+npj Parkinson's Dis, 8 (2022), 10.1038/s41531-021-00266-8
+Google Scholar
+[69]
+M.A. Little, P.E. McSharry, S.J. Roberts, et al.
+Exploiting nonlinear recurrence and fractal scaling properties for voice disorder detection
+Biomed Eng Online, 6 (2007), p. 23, 10.1186/1475-925X-6-23
+Google Scholar
+[70]
+A. Tsanas, M.A. Little, P.E. McSharry, L.O. Ramig
+Accurate telemonitoring of Parkinson's disease progression by noninvasive speech tests
+IEEE Trans Biomed Eng, 57 (4) (2010), pp. 884-893, 10.1109/TBME.2009.2036000
+Google Scholar
+[71]
+A. Tsanas, M.A. Little, P.E. McSharry, J. Spielman, L.O. Ramig
+Novel speech signal processing algorithms for high-accuracy classification of parkinson's disease
+IEEE Trans Biomed Eng, 59 (5) (2012), pp. 1264-1271, 10.1109/TBME.2012.2183367
+Google Scholar
+[72]
+J.R. Orozco-Arroyave, et al.
+Characterization methods for the detection of multiple voice disorders: neurological, functional, and laryngeal diseases
+IEEE J Biomed Health Inform, 19 (6) (2015), pp. 1820-1828, 10.1109/JBHI.2015.2467375
+Google Scholar
+[73]
+H. Iwaki, H.L. Leonard, M.B. Makarious, et al.
+Accelerating medicines partnership: parkinson's disease (AMP-PD): genetic resource for parkinson's disease research
+Mov Disord, 36 (8) (2021), pp. 1794-1804
+Google Scholar
+[74]
+D. Roggen, M. Plotnik, J. Hausdorff
+Daphnet freezing of gait
+UCI Machine Learning Repository (2010), 10.24432/C56K78
+Google Scholar
+[75]
+P. Drotár, J. Mekyska, I. Rektorová, L. Masaróvá, Z. Smékal, M. Faundez-Zanuy
+Analysis of in-air movement in handwriting: a novel marker for Parkinson's disease
+Comput Methods Progr Biomed, 117 (3) (2014), pp. 405-411, 10.1016/j.cmpb.2014.08.007
+View PDF
+View articleGoogle Scholar
+[76]
+J. P. Papa, "HANDPD dataset," Universidade Estadual Paulista (UNESP). [Online]. Available: https://wwwp.fc.unesp.br/∼papa/pub/datasets/Handpd/.
+Google Scholar
+[77]
+A. Gaulton, A. Hersey, M. Nowotka, et al.
+The ChEMBL database in 2017
+Nucleic Acids Res, 45 (D1) (2017), pp. D945-D954
+Google Scholar
+[78]
+T. Sterling, J.J. Irwin
+Zinc 15—Ligand discovery for everyone
+J Chem Inf Model, 55 (11) (2015), pp. 2324-2337
+Google Scholar
+[79]
+Y. Perez-Riverol, J. Bai, C. Bandla, D. García-Seisdedos, S. Hewapathirana, S. Kamatchinathan, et al.
+The PRIDE database resources in 2022: a hub for mass spectrometry-based proteomics evidences
+Nucleic Acids Res, 50 (D1) (2022), pp. D543-D552, 10.1093/nar/gkab1038
+Google Scholar
+[80]
+L. Concha-Marambio, S. Pritzkow, M. Shahnawaz, C.M. Farris, C. Soto
+Seed amplification assay for the detection of pathologic alpha-synuclein aggregates in cerebrospinal fluid
+Nat Protoc, 18 (4) (2023), pp. 1179-1196, 10.1038/s41596-022-00787-3
+Google Scholar
+[81]
+T. Barrett, S.E. Wilhite, P. Ledoux, C. Evangelista, I.F. Kim, M. Tomashevsky, et al.
+NCBI GEO: archive for functional genomics data sets — update
+Nucleic Acids Res, 41 (D1) (2013), pp. D991-D995, 10.1093/nar/gks1193
+Google Scholar
+[82]
+PPMI Methylation Sub-study, Parkinson's progression markers initiative. [Online]. Available: https://www.ppmi-info.org/.
+Google Scholar
+[83]
+D. Szklarczyk, R. Kirsch, M. Koutrouli, K. Nastou, F. Mehryary, R. Hachilif, et al.
+The STRING database in 2023: Protein–protein association networks and functional enrichment analyses for any sequenced genome of interest
+Nucleic Acids Res, 51 (D1) (2023), pp. D638-D646, 10.1093/nar/gkac1000
+Google Scholar
+[84]
+The UniProt Consortium
+UniProt: the universal protein knowledgebase in 2025
+Nucleic Acids Res, 53 (D1) (2025), pp. D609-D617, 10.1093/nar/gkae1010
+Google Scholar
+[85]
+M.K. Gilson, T. Liu, M. Baitaluk, G. Nicola, L. Hwang, J. Chong
+BindingDB in 2015: a public database for medicinal chemistry, computational chemistry and systems pharmacology
+Nucleic Acids Res, 44 (D1) (2016), pp. D1045-D1053, 10.1093/nar/gkv1072
+Google Scholar
+[86]
+S. Kim, J. Chen, T. Cheng, A. Gindulyte, J. He, S. He, et al.
+PubChem 2023 update
+Nucleic Acids Res, 51 (D1) (2023), pp. D1373-D1380, 10.1093/nar/gkac956
+Google Scholar
+[87]
+M.J. Landrum, J.M. Lee, M. Benson, G.R. Brown, C. Chao, S. Chitipiralla, et al.
+ClinVar: improvements to accessing data
+Nucleic Acids Res, 48 (D1) (2020), pp. D835-D844, 10.1093/nar/gkz972
+Google Scholar
+[88]
+J. Piñero, J. Saüch, F. Sanz, L.I. Furlong
+The DisGeNET cytoscape app: exploring and visualizing disease genomics data
+Comput Struct Biotechnol J, 19 (2021), pp. 2960-2967, 10.1016/j.csbj.2021.05.015
+View PDF
+View articleGoogle Scholar
+[89]
+L. Kirsch, S. Dane, S. Adam, V. Dardov
+AMP®-parkinson’s disease progression prediction
+Kaggle (2023)
+[Online]. Available:
+https://kaggle.com/competitions/amp-parkinsons-disease-progression-prediction
+Google Scholar
+[90]
+Y.M. Sun, Z.Y. Wang, Y.Y. Liang, C.W. Hao, C.H. Shi
+Digital biomarkers for precision diagnosis and monitoring in Parkinson's disease
+npj Digit Med, 7 (1) (2024), p. 218, 10.1038/s41746-024-01217-2
+Google Scholar
+[91]
+M.R. Khalil, et al.
+Applying wearable sensors and machine learning to the diagnostic challenge of distinguishing Parkinson's disease from other forms of parkinsonism
+Biomedicines, 13 (3) (2025), p. 572, 10.3390/biomedicines13030572
+Google Scholar
+[92]
+X. Wu, L. Ma, P. Wei, Y. Shan, P. Chan, K. Wang, G. Zhao
+Wearable sensor devices can automatically identify the ON–OFF status of patients with Parkinson's disease through an interpretable machine learning model
+Front Neurol, 15 (2024), Article 1387477, 10.3389/fneur.2024.1387477
+Google Scholar
+[93]
+J. Varghese, A. Brenner, M. Fujarski, et al.
+Machine learning in the Parkinson's disease smartwatch (PADS) dataset
+npj Parkinson's Dis, 10 (2024), p. 9, 10.1038/s41531-023-00625-7
+Google Scholar
+[94]
+L. di Biase, P.M. Pecoraro, G. Pecoraro, S.A. Shah, V. Di Lazzaro
+Machine learning and wearable sensors for automated Parkinson's disease diagnosis aid: a systematic review
+J Neurol, 271 (10) (2024), pp. 6452-6470, 10.1007/s00415-024-12611-x
+Google Scholar
+[95]
+P. Drotár, J. Mekyska, I. Rektorová, L. Masarová, Z. Smékal, M. Faundez-Zanuy
+Evaluation of handwriting kinematics and pressure for differential diagnosis of Parkinson's disease
+Artif Intell Med, 67 (2016), pp. 39-46, 10.1016/j.artmed.2016.01.004
+View PDF
+View articleGoogle Scholar
+[96]
+J.M. Hausdorff, M.E. Cudkowicz, R. Firtion, J.Y. Wei, A.L. Goldberger
+Gait variability and basal ganglia disorders: stride-to-stride variations of gait cycle timing in Parkinson's disease and Huntington's disease
+Mov Disord, 13 (3) (1998), pp. 428-437, 10.1002/mds.870130310
+Google Scholar
+[97]
+M. Bachlin, et al.
+Wearable assistant for parkinson's disease patients with the freezing of gait symptom
+IEEE Trans Inf Technol Biomed, 14 (2) (2010), pp. 436-446, 10.1109/TITB.2009.2036165
+Google Scholar
+[98]
+T. Bayerl, et al.
+NeuroSpeech: an open-source software for Parkinson's speech analysis
+SoftwareX (2017), 10.1016/j.softx.2017.08.004
+Google Scholar
+[99]
+H. Park, et al.
+Using machine learning to identify Parkinson's disease severity subtypes with multimodal data
+npj Parkinson's Dis, 11 (2025), 10.1038/s41531-025-00954-9
+Google Scholar
+[100]
+V. Dentamaro, D. Impedovo, L. Musti, G. Pirlo, P. Taurisano
+Enhancing early Parkinson's disease detection through multimodal deep learning and explainable AI: insights from the PPMI database
+Sci Rep, 14 (1) (2024), Article 20941, 10.1038/s41598-024-70165-4
+Google Scholar
+[101]
+D.S. Wishart, Y.D. Feunang, A.C. Guo, et al.
+DrugBank 5.0: a major update to the DrugBank database for 2018
+Nucleic Acids Res, 46 (D1) (2018), pp. D1074-D1082
+Google Scholar
+[102]
+Z. Shawa, et al.
+Neuroimaging-based data-driven subtypes of spatiotemporal atrophy due to Parkinson's disease
+Brain Commun, 7 (2) (2025), Article fcaf146, 10.1093/braincomms/fcaf146
+Google Scholar
+[103]
+A. Zhao, Y. Liu, X. Yu, X. Xing
+Artificial intelligence-enabled detection and assessment of parkinson's disease using multimodal data: a survey
+arXiv preprint, arXiv:250210703 (2025)
+[Online]. Available:
+https://arxiv.org/abs/2502.10703
+Google Scholar
+[104]
+A.D. Nalls, et al.
+Advancing Parkinson's disease research using deep phenotyping and multimodal data integration
+Nat Rev Neurol, 19 (9) (2023), pp. 523-538, 10.1038/s41582-023-00785-6
+Google Scholar
+[105]
+M. Wagner, et al.
+Foundation models and digital biomarkers for Parkinson's disease monitoring
+npj Digit Med, 7 (2024), 10.1038/s41746-024-00952-1
+41
+Google Scholar
+[106]
+M. Channa, et al.
+Machine learning for Parkinson's disease drug discovery
+Front Pharmacol, 13 (2022), 10.3389/fphar.2022.997874
+Google Scholar
+Recommended articles
+Based on reading popularity
+Research article
+Full text access
+Machine Learning-Based Detection of Sleep-Disordered Breathing Type Using Time and Time-Frequency Features
+Mehmet Balci, …, Adem Golcuk
+Biomedical Signal Processing and Control • Volume 73 • 2022 • Article 103402
+View PDF
+Research article
+Full text access
+Fabrication and package of ISFET biosensor for micro volume analysis with the use of direct ink writing approach
+Oksana Gubanova, …, Alexander Kuznetsov
+Materials Science in Semiconductor Processing • Volume 60 • 2017 • Pages 71-78
+View PDF
+Research article
+Open archive
+Combined kinematic cup alignment reduces the rate of impingement and edge loading compared to mechanical and anatomical alignment. An in-vitro case-control study
+Thomas Aubert, Pierre-Alban Bouche
+Orthopaedics & Traumatology: Surgery & Research • Volume 109, Issue 1 • 2023 • Article 103468
+View PDF
+Research article
+Full text access
+Deep learning with explainability for characterizing age-related intrinsic differences in dynamic brain functional connectivity
+Chen Qiao, …, Yu-Ping Wang
+Medical Image Analysis • Volume 90 • 2023 • Article 102941
+View PDF
+Research article
+Open access
+Quantitative artifact reduction and pharmacologic paralysis improve detection of EEG epileptiform activity in critically ill patients
+Catherine V. Kulick-Soper, …, Erin C. Conrad
+Clinical Neurophysiology • Volume 145 • 2023 • Pages 89-97
+View PDF
+Research article
+Open access
+Comparative study of deep learning models for Parkinson’s disease detection
+Abdulaziz Salihu Aliero, Neha Malhotra
+BenchCouncil Transactions on Benchmarks, Standards and Evaluations • Volume 5, Issue 2 • 2025 • Article 100219
+View PDF
+Metrics
+Captures
+Mendeley Readers
+2
+Mentions
+News Mentions
+1
+View details
+© 2026 The Authors. Published by Elsevier Ltd.
+About ScienceDirect
+Remote access
+Contact and support
+Terms and conditions
+Privacy policy
+Cookie settings
+
+All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.

@@ -1,0 +1,375 @@
+meta:
+  row_id: 21
+  modo: "AUDITORIA"
+  status_triagem: "Aceito"
+  zotero_key: "7L9HHAFF"
+  titulo: "Early Detection and Differential Diagnosis of a Progressive Neurodegenerative Disorder Using Wearable Sensor Data and Machine Learning"
+  ressalva_triagem: null
+  elegibilidade: "USA PADS"
+  evidencia_elegibilidade: null
+  qualidade_do_texto: "completo"
+  prompt_versao: "1.0"
+  ia_modelo: "Gemini 4 Argon (Medium) - Auditor Independente"
+campos:
+  - id: 1
+    chave: "row_id"
+    valor: 21
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "fornecido pelo usuário"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 2
+    chave: "ano_publicacao"
+    valor: "2026"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Rodapé/margem, p. 1 — '2026 International Conference on Next-Gen Intelligent Computing and Applications (ICONICA) | 979-8-3195-1093-8/26/$31.00 ©2026 IEEE | DOI: 10.1109/ICONICA70605.2026.11736498'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 3
+    chave: "tipo_contribuicao"
+    valor: "Novo modelo"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção I, p. 1 — 'Secondly, we propose a dual-path system architecture where we combine a handcrafted-feature classical-ML based branch with a raw-signal CNN–BiLSTM–attention based branch'"
+    auditoria: "CONCORDA"
+    observacao: "Além de propor a arquitetura dual-path e a rede híbrida CNN–BiLSTM com atenção temporal, o estudo realiza comparação empírica com classificadores clássicos e 1D-CNN."
+  - id: 4
+    chave: "outra_contribuicao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 3 diferente de Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 5
+    chave: "papel_pads"
+    valor: "Principal"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.A, p. 3 — 'The main data set is PADS (Physio Net, v1.0.0), which contains a large number (469) of smartwatch accelerometer and gyroscope recordings'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 6
+    chave: "datasets"
+    valor: ["PADS"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.A, p. 3 — 'The main data set is PADS (Physio Net, v1.0.0)... We also cite two complementary open gait datasets, the Wear Gait-PD... and... (WATCH-PD)'"
+    auditoria: "CONCORDA"
+    observacao: "As Figuras 1 e 3 mencionam 'PADS, WearGait-PD, WATCH-PD', mas o texto da Seção IV.A explicita que WearGait-PD e WATCH-PD foram apenas citados para contextualizar faixas de acurácia, e a Seção VI confirma que o pipeline foi avaliado no PADS."
+  - id: 7
+    chave: "outros_datasets"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 6 sem Outro público ou Privado-próprio (WearGait-PD e WATCH-PD foram apenas citados na Seção IV.A, p. 3)"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 8
+    chave: "modalidade_pads"
+    valor: ["Série temporal (IMU)"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.B, p. 3 — 'The raw tri-axial accelerometer and gyroscope data is bandpass filtered between 0.3 and 20 Hz'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 9
+    chave: "tarefas_pads"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV.A, p. 3 — 'performed while resting, during postural hold and during movement tasks [5]'; termos buscados: task, tasks, protocol; não informa quais nem quantas tarefas entraram"
+    auditoria: "CONCORDA"
+    observacao: "O artigo descreve genericamente que o protocolo do PADS inclui repouso, manutenção postural e tarefas de movimento, mas não especifica se todas as tarefas ou um subconjunto foram utilizadas."
+  - id: 10
+    chave: "quais_tarefas_pads"
+    valor: "Não reportado (cita genericamente avaliação em repouso, manutenção postural e tarefas de movimento)"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV.A, p. 3 — 'performed while resting, during postural hold and during movement tasks [5]'; nomes específicos das tarefas não reportados"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 11
+    chave: "sensores"
+    valor: ["Acelerômetro", "Giroscópio"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 2 — 'Each window (4 s and 6 channels x/y/z of the accelerometer and x/y/z of the gyroscope)'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 12
+    chave: "outros_sensores"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 11 sem a opção Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 13
+    chave: "punhos"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção III.B, p. 2 — 'Each window (4 s and 6 channels x/y/z of the accelerometer and x/y/z of the gyroscope)'; termos buscados: left, right, wrist, hand, both; punho não especificado"
+    auditoria: "CONCORDA"
+    observacao: "A entrada da rede tem 6 canais (3 eixos do acelerômetro e 3 do giroscópio, equivalentes a um único smartwatch), mas o artigo não informa se usou o punho esquerdo, direito, dominante ou ambos separadamente."
+  - id: 14
+    chave: "n_participantes"
+    valor: null
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV.A, p. 3 — 'contains a large number (469) of smartwatch accelerometer and gyroscope recordings'; não reporta N de participantes por experimento ou classe"
+    auditoria: "CONCORDA"
+    observacao: "O artigo menciona apenas o número total de 469 gravações ('469 of smartwatch accelerometer and gyroscope recordings') ao descrever o PADS v1.0.0 como um todo, sem explicitar o número de pessoas efetivamente incluídas em cada tarefa binária (HC vs PD e PD vs DD) nem a divisão por classe."
+  - id: 15
+    chave: "n_por_classe"
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção IV.A, p. 3 — 'contains a large number (469) of smartwatch accelerometer and gyroscope recordings'; termos buscados: 276, 79, 114, HC, PD, DD; N por classe no PADS não informado"
+    auditoria: "CONCORDA"
+    observacao: "Os tamanhos dos grupos PD, HC e DD no PADS não são informados em nenhuma seção ou tabela (o texto cita N por classe apenas ao mencionar o dataset externo WearGait-PD: 100 PD e 85 controles)."
+  - id: 16
+    chave: "cenarios_classificacao"
+    valor: ["PD×DD", "PD×HC"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.C, p. 3 — 'Two binary classification tasks were created, HC vs PD (healthy controls vs clinically diagnosed PD patients) and PD vs DD'"
+    auditoria: "CONCORDA"
+    observacao: "Embora a Seção III.B e as Figuras 1 a 3 mencionem genericamente '{HC, PD, DD}' na saída da arquitetura, a Seção IV.C e a Tabela I definem e avaliam exclusivamente os dois cenários binários: HC vs PD e PD vs DD."
+  - id: 17
+    chave: "outro_cenario"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 16 sem a opção Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 18
+    chave: "representacao_entrada"
+    valor: ["Atributos manuais (handcrafted)", "Série bruta"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção III.A, p. 2 — 'We obtain two parallel model representations from each window: (i) a handcrafted-feature representation... (ii) a raw-signal representation'"
+    auditoria: "CONCORDA"
+    observacao: "A FFT é usada apenas para extrair atributos tabulares de potência nas bandas de tremor (3–7 Hz) e bradicinesia/marcha (0,5–3 Hz) para os modelos clássicos (Seção IV.B, p. 3), enquanto 1D-CNN e CNN–BiLSTM recebem a série temporal janelada bruta."
+  - id: 19
+    chave: "outra_representacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 18 sem a opção Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 20
+    chave: "familia_algoritmo"
+    valor: ["Classical ML", "Deep Learning"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.C, p. 3 — 'Four classical classifiers are trained... while a plain 1-D CNN and the proposed CNN–BiLSTM–attention network (Fig. 2) are both trained directly on the windowed raw signals'"
+    auditoria: "CONCORDA"
+    observacao: "Os dois ramos (Classical ML e Deep Learning) são treinados e avaliados de forma independente (Seção III.A, p. 2), sem fusão/ensemble entre famílias diferentes; a combinação neural CNN–BiLSTM + Attention enquadra-se em Deep Learning."
+  - id: 21
+    chave: "outra_familia"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 20 sem a opção Outro"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 22
+    chave: "especificacao_algoritmo"
+    valor: "k-NN; SVM (RBF kernel); Random Forest; Gradient Boosting (XGBoost); 1D-CNN; CNN–BiLSTM + Attention"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 4 — 'k-NN (baseline); SVM (RBF kernel); Random Forest; Gradient Boosting (XGBoost); 1D-CNN; Proposed CNN–BiLSTM + Attention'"
+    auditoria: "CONCORDA"
+    observacao: "O Resumo menciona apenas SVM, Random Forest e Gradient Boosting entre os modelos clássicos, mas a Seção IV.C e a Tabela I incluem também k-NN e 1D-CNN como baselines."
+  - id: 23
+    chave: "balanceamento_augmentation"
+    valor: "SMOTE-oversampling"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.B, p. 3 — 'class imbalance (HC, PD, and DD) is addressed using SMOTE oversampling in the folds for training'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 24
+    chave: "estrategia_validacao"
+    valor: ["CV aninhada", "Leave-one-subject-out", "k-fold CV"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.D e IV.E, p. 3 — 'evaluated by using 10-fold stratified cross validation and leave one subject out (LOSO) cross validation' / 'grid search on the training partition with 5-fold inner cross-validation'"
+    auditoria: "CONCORDA"
+    observacao: "Todos os modelos foram avaliados com 10-fold CV estratificado e LOSO CV, e os baselines clássicos utilizaram validação cruzada interna de 5 folds na partição de treino para busca em grade de hiperparâmetros (configurando CV aninhada)."
+  - id: 25
+    chave: "outra_estrategia_validacao"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 24 sem a opção Outra"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 26
+    chave: "unidade_particionamento"
+    valor: "Participante"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.E, p. 3 — 'and the same subject-level train/test partitions were applied to all models for a given fold, so they can be fairly compared'"
+    auditoria: "CONCORDA"
+    observacao: "A Seção IV.D (p. 3) também confirma que tanto o 10-fold CV quanto o LOSO evitam usar janelas da mesma pessoa simultaneamente nos folds de treino e de teste."
+  - id: 27
+    chave: "separacao_participante"
+    valor: "Sim – explícita"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.D e IV.E, p. 3 — 'avoid optimistic bias... when the same window from the same person is used both in the training and the testing folds' / 'subject-level train/test partitions'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 28
+    chave: "momento_balanceamento"
+    valor: "Só no treino"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.E, p. 3 — 'To prevent information leakage, SMOTE oversampling was used only within the folds of training data and not inside the data folds of validation or test data.'"
+    auditoria: "CONCORDA"
+    observacao: "Na Figura 3 (p. 4), o bloco 'Class balancing (SMOTE on training folds only)' está posicionado graficamente acima de 'Train / test split', mas o próprio texto do bloco e as Seções IV.B e IV.E afirmam explicitamente que o SMOTE foi aplicado apenas nos folds de treino."
+  - id: 29
+    chave: "detalhes_balanceamento"
+    valor: "SMOTE oversampling aplicado exclusivamente dentro dos folds de treino (parâmetros do SMOTE não informados)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.B e IV.E, p. 3 — 'SMOTE oversampling was used only within the folds of training data and not inside the data folds of validation or test data'"
+    auditoria: "CONCORDA"
+    observacao: "O artigo não especifica hiperparâmetros do SMOTE (como número de vizinhos k ou razão de amostragem) nem detalha se o SMOTE foi aplicado apenas ao espaço de atributos ou também às janelas brutas."
+  - id: 30
+    chave: "validacao_externa"
+    valor: false
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.A e IV.D, p. 3 — modelos treinados e avaliados por validação cruzada interna ao PADS (10-fold e LOSO); bases externas apenas citadas"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 31
+    chave: "metricas"
+    valor: ["Accuracy", "Sensitivity", "Specificity"]
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 4 — colunas 'HC vs PD Acc. (%) 10-f/LOSO', 'PD vs DD Acc. (%) 10-f/LOSO', 'Sens. (%)' e 'Spec. (%)'"
+    auditoria: "CONCORDA"
+    observacao: "A Seção IV.D (p. 3) e a Figura 3 (p. 4) mencionam que AUC também seria calculada, mas nenhum valor de AUC para os experimentos no PADS é reportado na Tabela I, na Figura 4 ou no texto da Seção V."
+  - id: 32
+    chave: "outras_metricas"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo 31 sem a opção Outra"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 33
+    chave: "melhor_resultado"
+    valor: "PD×HC; Proposed CNN–BiLSTM + Attention; Accuracy; 95.3±1.1% (10-fold) / 92.7±1.7% (LOSO)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 4 — 'Proposed CNN–BiLSTM + Attention: HC vs PD Acc. (%) 10-f/LOSO = 95.3±1.1 / 92.7±1.7'"
+    auditoria: "CONCORDA"
+    observacao: "Para o cenário PD×DD, o melhor resultado também foi obtido pelo Proposed CNN–BiLSTM + Attention, com Accuracy de 90.0±2.0% (10-fold) / 86.6±2.6% (LOSO)."
+  - id: 34
+    chave: "demais_valores"
+    valor: "PD×HC; Proposed CNN–BiLSTM + Attention; Sensitivity; 94.6% | PD×HC; Proposed CNN–BiLSTM + Attention; Specificity; 94.1% | PD×DD; Proposed CNN–BiLSTM + Attention; Accuracy; 90.0±2.0% (10-fold) / 86.6±2.6% (LOSO) | PD×HC; 1D-CNN; Accuracy; 93.8±1.4% (10-fold) / 90.9±2.1% (LOSO) | PD×HC; 1D-CNN; Sensitivity; 93.1% | PD×HC; 1D-CNN; Specificity; 92.6% | PD×DD; 1D-CNN; Accuracy; 85.9±2.5% (10-fold) / 82.4±3.0% (LOSO) | PD×HC; Gradient Boosting (XGBoost); Accuracy; 93.4±1.3% (10-fold) / 90.8±1.9% (LOSO) | PD×HC; Gradient Boosting (XGBoost); Sensitivity; 92.8% | PD×HC; Gradient Boosting (XGBoost); Specificity; 92.0% | PD×DD; Gradient Boosting (XGBoost); Accuracy; 85.1±2.4% (10-fold) / 81.9±2.8% (LOSO) | PD×HC; Random Forest; Accuracy; 92.1±1.5% (10-fold) / 89.4±2.0% (LOSO) | PD×HC; Random Forest; Sensitivity; 91.5% | PD×HC; Random Forest; Specificity; 90.8% | PD×DD; Random Forest; Accuracy; 82.7±2.6% (10-fold) / 79.6±3.0% (LOSO) | PD×HC; SVM (RBF kernel); Accuracy; 89.7±1.8% (10-fold) / 86.9±2.3% (LOSO) | PD×HC; SVM (RBF kernel); Sensitivity; 88.9% | PD×HC; SVM (RBF kernel); Specificity; 87.3% | PD×DD; SVM (RBF kernel); Accuracy; 78.4±2.9% (10-fold) / 75.1±3.3% (LOSO) | PD×HC; k-NN (baseline); Accuracy; 84.2±2.1% (10-fold) / 81.0±2.8% (LOSO) | PD×HC; k-NN (baseline); Sensitivity; 83.0% | PD×HC; k-NN (baseline); Specificity; 82.5% | PD×DD; k-NN (baseline); Accuracy; 71.6±3.4% (10-fold) / 68.3±3.9% (LOSO)"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Tabela I, p. 4 — 'TABLE 1.ACHIEVED CLASSIFICATION PERFORMANCE ACROSS MODELS (MEAN ± SD, 10-FOLD / LOSO CROSS-VALIDATION)'"
+    auditoria: "CONCORDA"
+    observacao: "A Tabela I apresenta apenas uma coluna para Sens. (%) e uma para Spec. (%) sem discriminar cenário ou protocolo no cabeçalho; o texto da Seção V (p. 4) e a Figura 4 associam esses valores ao cenário HC vs PD em 10-fold CV."
+  - id: 35
+    chave: "codigo_dados"
+    valor: "Nenhum"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.E, p. 3 — 'In order to facilitate reproducibility, code and configuration files will be provided after publishing.'"
+    auditoria: "CONCORDA"
+    observacao: "Os autores declaram que o código e arquivos de configuração seriam disponibilizados após a publicação, mas nenhum link ou repositório consta na versão publicada."
+  - id: 36
+    chave: "limitacoes"
+    valor: "Coortes de diagnóstico diferencial (DD) relativamente pequenas, heterogêneas e demograficamente restritas nos dados abertos; gravações curtas de sessão única (em vez de monitoramento domiciliar longitudinal); número limitado de pacientes restringindo a generalização inter-sujeitos (menor acurácia em LOSO); e heterogeneidade de dispositivos entre estudos (IMUs de pesquisa vs. smartwatches comerciais) dificultando a generalização entre datasets (Seção V, p. 4–5)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V, p. 5 — 'The current pipeline is limited by the characteristics of the open data used, such as relatively small and demographically narrow DD cohorts, short recordings per single session... and device heterogeneity'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 37
+    chave: "lacuna"
+    valor: "Fusão multimodal de dados de movimento com voz, dinâmica de digitação e questionários de sintomas não motores; aprendizado federado ou por transferência para agrupar dados de pacientes PD e DD entre centros sem centralizar dados clínicos sensíveis; e monitoramento longitudinal domiciliar para capturar flutuações de sintomas e permitir detecção mais precoce (Seção V e VI, p. 5)."
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção V, p. 5 — 'Future studies should focus on (i) multimodal fusion... (ii) federated or transfer-learning approaches... and (iii) longitudinal at-home monitoring'"
+    auditoria: "CONCORDA"
+    observacao: null
+  - id: 38
+    chave: "notas_revisor"
+    valor: null
+    status: "não se aplica"
+    confianca: "alta"
+    evidencia: "Campo reservado ao revisor humano"
+    auditoria: "CONCORDA"
+    observacao: null
+derivados:
+  aux_preproc_apenas_treino:
+    valor: "Sim"
+    status: "explícito"
+    confianca: "alta"
+    evidencia: "Seção IV.B e IV.E, p. 3 — 'features are z-score normalized in each subject' / 'parameter tuning... on the training partition with 5-fold inner cross-validation' / 'SMOTE oversampling was used only within the folds of training data'"
+    observacao: "A normalização z-score é feita intrassujeito ('in each subject', sem cruzar estatísticas entre sujeitos de treino e de teste), e tanto o ajuste de hiperparâmetros (grid search com 5-fold CV interno) quanto o SMOTE foram aplicados exclusivamente nas partições de treino."
+  risco_vazamento:
+    valor: "Baixo"
+    regra: "campo 26 = Participante; campo 27 = Sim – explícita; campo 28 = Só no treino; aux_preproc_apenas_treino = Sim"
+  qa:
+    QA1:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [16, 15]
+      justificativa: "Os dois cenários binários (PD×HC e PD×DD) e os grupos do PADS que compõem cada tarefa estão claramente definidos na Seção IV.C, embora o N por classe (campo 15) não seja reportado."
+    QA2:
+      resposta: "No"
+      nota: 0.0
+      campos: [8, 9, 11, 13, 14]
+      justificativa: "Apenas 2 dos 5 itens aplicáveis foram informados (modalidade e sensores); tarefas (campo 9), punho (campo 13) e N de participantes efetivamente usados por cenário (campo 14, citado apenas como 469 gravações totais do PADS) não foram reportados."
+    QA3:
+      resposta: "Yes"
+      nota: 1.0
+      campos: [26, 27, 28]
+      justificativa: "Risco de vazamento Baixo: particionamento explícito no nível do participante (10-fold subject-level e LOSO), SMOTE restrito aos folds de treino e ajuste de hiperparâmetros na partição de treino."
+    QA4:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [31]
+      justificativa: "Reporta Accuracy e o par Sensitivity + Specificity (que conta como uma métrica robusta); embora a Seção IV.D mencione AUC, nenhum valor de AUC foi reportado na Tabela I ou no texto."
+    QA5:
+      resposta: "Partially"
+      nota: 0.5
+      campos: [35, 22, 29]
+      justificativa: "Descreve a arquitetura, o pré-processamento e os hiperparâmetros (Seções III.B, IV.B e IV.E), mas o código não está disponível (prometido apenas para após a publicação, sem link)."
+  nota_qa: 3.0
+  nota_qa_max: 5
+  faixa_qa: "Média"
+verificacao_de_coerencia:
+  - regra: "Modalidade inclui Série temporal (IMU) → Sensores, Tarefas, Punho e Representação preenchidos"
+    resultado: "OK"
+  - regra: "Campo 9 != Não se aplica → campo 10 preenchido"
+    resultado: "OK"
+  - regra: "Campo 24 contém Leave-one-subject-out → campo 26 = Participante e campo 27 = Sim – explícita"
+    resultado: "OK"
+  - regra: "Campo 23 = SMOTE-oversampling → campo 28 != Não se aplica e campo 29 preenchido"
+    resultado: "OK"
+  - regra: "Nenhum Outro/Outra marcado → todos os campos de texto Outro/Outra com valor null"
+    resultado: "OK"
+  - regra: "QA3 coerente com risco_vazamento = Baixo"
+    resultado: "OK"
+pontos_para_revisao_humana:
+  - "Campos 14 e 15 e QA2: a Seção IV.A (p. 3) menciona apenas '469 of smartwatch accelerometer and gyroscope recordings' como total do PADS, sem informar quantos participantes compõem cada classe (PD, HC, DD) ou cada tarefa binária (HC vs PD e PD vs DD). Por seguir a regra do campo 14 ('não o total do PADS; se reporta apenas gravações, use null'), o campo 14 ficou null e o QA2 ficou 'No' (0.0, 2/5 itens); caso o revisor considere 469 como N de participantes usados nos dois experimentos combinados, o QA2 sobe para 'Partially' (0.5, 3/5 itens)."
+  - "Campos 24 a 28 e QA3: a Seção IV.E (p. 3) declara partições no nível do sujeito ('subject-level train/test partitions'), tuning por 5-fold CV interno na partição de treino e SMOTE restrito aos folds de treino, e a Seção IV.B indica normalização z-score por sujeito ('in each subject'). Contudo, na Figura 3 (p. 4), o diagrama posiciona o bloco de SMOTE antes do bloco de split treino/teste."
+  - "Campo 31 e QA4: a Seção IV.D (p. 3) afirma que a Tabela I traz valores de AUC ('accuracy, sensitivity, specificity and area under the ROC curve (AUC)'), mas a Tabela I (p. 4) omite a coluna de AUC e traz apenas uma coluna de Sens. (%) e Spec. (%) (associadas no texto ao cenário HC vs PD em 10-fold CV)."
+  - "Campo 33: resultados principais extraídos da Tabela I (p. 4): 95.3±1.1% (10-fold) / 92.7±1.7% (LOSO) em PD×HC e 90.0±2.0% (10-fold) / 86.6±2.6% (LOSO) em PD×DD para o modelo Proposed CNN–BiLSTM + Attention."
+  - "Campo 35 e QA5: os autores informam na Seção IV.E (p. 3) que o código seria disponibilizado após a publicação ('will be provided after publishing'), sem fornecer link ou repositório."
