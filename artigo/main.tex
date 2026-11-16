@@ -1,0 +1,42 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{graphicx,url}
+\usepackage{array,booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+
+\sloppy
+
+\newcommand{\pend}[1]{\textbf{[PENDÊNCIA: #1]}}
+\input{numeros.tex}
+
+\title{Smartwatches e Doença de Parkinson: Um Mapeamento Rápido dos Estudos que Utilizam o Dataset PADS}
+
+\author{Lucas de Sousa Neves\inst{1}}
+
+\address{Instituto de Informática, Universidade Federal de Goiás (UFG)
+  \email{lucass.neves17@discente.ufg.br}
+}
+
+\begin{document}
+
+\maketitle
+
+\input{secoes/resumo}
+
+\input{secoes/01-introducao}
+\input{secoes/02-contexto}
+\input{secoes/03-metodo}
+\input{secoes/04-resultados}
+\input{secoes/05-discussao}
+\input{secoes/06-conclusao}
+
+\bibliographystyle{sbc}
+\bibliography{referencias}
+
+\end{document}

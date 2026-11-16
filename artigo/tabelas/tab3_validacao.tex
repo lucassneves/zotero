@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Protocolos de validação e risco de vazamento reportado (QP4). *Multirrótulo; $N=27$ exclui \nNaoAplicaveisVaz\ análises estatísticas (N/A).}
+\label{tab:validacao}
+{\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{@{}l l l r@{}}
+\toprule
+\textbf{Aspecto} & \textbf{Categorias (na ordem das contagens)} & \textbf{Contagens ($n$)} & \textbf{Denominador} \\
+\midrule
+Estratégia* & k-fold CV / Hold-out / CV aninhada / Não rep. / LOSO / Outra & 24; 9; 6; 3; 1; 1 & $N=29$ \\
+Unid. particionamento & Participante / Não reportado / Não se aplica & 22 (81,5\%); 5; 2 & $N=27$ (+2 N/A) \\
+Separação participante & Sim explícita / Sim inferida / Pouco claro / N/A & 16; 6; 5; 2 & $N=27$ (+2 N/A) \\
+Momento balanceam. & Só no treino / Antes do split / Não rep. / N/A & 11; 4; 2; 12 & $N=29$ \\
+Pré-proc. só no treino & Sim / Não / Não reportado / Não se aplica & 10; 5; 12; 2 & $N=27$ (+2 N/A) \\
+Risco de vazamento & Baixo / Moderado / Alto / Indeterminado / N/A & 10; 10; 5; 2; 2 & $N=27$ (+2 N/A) \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

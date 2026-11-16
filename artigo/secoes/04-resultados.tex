@@ -1,0 +1,160 @@
+\section{Resultados} \label{sec:resultados}
+
+A Tabela~\ref{tab:estudos} reúne os \nTotal\ estudos selecionados. Campos
+multirrótulo somam acima de 100\%, e casos sem informação ou não aplicáveis
+trazem seus denominadores explícitos.
+
+\input{tabelas/tab1_estudos}
+
+\subsection{Panorama, Veículos e Contribuições (QP1)}
+
+A adoção do PADS cresceu rápido: \nAnoDoisQuatro\ estudos em 2024, \nAnoDoisCinco\
+em 2025 e \nAnoDoisSeis\ em 2026 (\pctAnoDoisSeis; Figura~\ref{fig:ano_contrib};
+\cite{zeebaree_three-class_2027} consta em 2027 no Zotero, mas tem DOI de 2026).
+Predominam anais (\nAnais/\nTotal) e periódicos (\nPeriodicos/\nTotal), além de
+\nPreprints\ \textit{preprints} (\nPreArxiv\ arXiv, \nPreMedrxiv\ medRxiv,
+\nPreRS\ Research Square e \nPreJMIR\ JMIR Preprints).
+
+Mais da metade propõe novos modelos (\nContribNovoModelo/\nTotal,
+\pctContribNovoModelo), seguidos por \nContribComparativo\ estudos comparativos,
+\nContribEstatistica\ estatísticos, \nContribPlataforma\ plataforma e o
+artigo-base. O PADS é fonte principal em \nPapelPrincipal/\nTotal\
+(\pctPapelPrincipal) trabalhos, suplementar em \nPapelSuplementar\ e declarado
+como validação externa em~\cite{abioye_improving_2025}; \nMultiBase\ combinam
+outras bases (\nOutroPublico\ públicas e \nPrivadoProprio\ privadas, com
+\nMultiBaseSobrep\ sobreposições).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{figuras/fig2_ano_contribuicao.pdf}
+\caption{Distribuição dos \nTotal\ estudos por ano de publicação e tipo de
+contribuição.}
+\label{fig:ano_contrib}
+\end{figure}
+
+\subsection{Tarefas de Classificação e Recortes do Dataset (QP2)}
+
+Pela Tabela~\ref{tab:recorte}, quase toda a literatura usa séries inerciais
+(\nModIMU/\nTotal), combinando giroscópio e acelerômetro; PDNMS e metadados
+entram como apoio, salvo dois estudos só com o
+questionário~\cite{ouabd_parkinsons_2026,padilha_parkinsons_2024}. Entre quem
+usa IMU, o recorte varia: \nTarTodas/\nTotal\ usam todas as tarefas e
+\nPunhoAmbos/\nTotal\ ambos os punhos, havendo várias omissões (\nTarNaoRep\ sem
+tarefas, \nPunhoNaoRep\ sem punho e \nSensVazio\ sem detalhar
+sensores~\cite{xing_asa-dsnet_2025}, além de ``IMU de 6 canais''
+em~\cite{wei_sgc-rml_2026}).
+
+O $N$ amostral consta em \nPartRep/\nTotal\ artigos (\nPartMin--\nPartMax\
+participantes, mediana \nPartMediana). Frente ao PADS oficial (276~PD, 79~HC,
+114~DD), há divergências em~\cite{djemaa_quantifying_2026} (295/71/103),
+\cite{zannat_label-efficient_2026} (291/79/99) e~\cite{vu_simple_2026} (HC=114 e
+DD=79 invertidos). Domina PD$\times$HC (\nCenPDHC/\nTotal, \pctCenPDHC),
+enquanto PD$\times$DD (\nCenPDDD/\nTotal), 3 classes (\nCenTresClasses/\nTotal)
+e DD$\times$HC (\nCenDDHC/\nTotal) aparecem menos.
+
+\input{tabelas/tab2_recorte}
+
+\subsection{Pré-processamento, Atributos e Modelos (QP3)}
+
+Na preparação, prevalecem séries brutas ou filtradas (\nRepBruta/\nTotal,
+\pctRepBruta), seguidas de atributos manuais (\nRepHandcrafted/\nTotal), com
+uso pontual de tempo-frequência e BOSS/\textit{embeddings} (\nRepTF/\nTotal\
+cada). Na modelagem (Figura~\ref{fig:cen_fam}), o \textit{deep learning} lidera
+(\nFamDL/\nTotal, \pctFamDL), à frente de ML clássico (\nFamML/\nTotal),
+híbridos/\textit{ensemble} (\nFamHybrid), generativos (\nFamGen) e
+auto-supervisionados (\nFamSSL), concentrando-se em PD$\times$HC. Para
+desbalanceamento, \nBalNenhum/\nTotal\ não aplicam correção; os demais usam
+perturbações/ponderação (\nBalOutro), SMOTE/\textit{oversampling} (\nBalSMOTE) e
+GANs (\nBalGAN), com \nBalNaoRep\ sem relato e \nBalNA\ N/A.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{figuras/fig3_cenario_familia.pdf}
+\caption{Coocorrência entre cenários de classificação e famílias de algoritmos
+($N=\nTotal$).}
+\label{fig:cen_fam}
+\end{figure}
+
+\subsection{Validação, Métricas, Vazamento e Desempenho (QP4)}
+
+Pela Tabela~\ref{tab:validacao}, \textit{k-fold} é o padrão (\nValKfold/\nTotal),
+muitas vezes com \textit{hold-out} (\nValHoldout), enquanto validação aninhada
+(\nValAninhada) e LOSO (\nValLOSO~\cite{sridhar_early_2026}) são raras. Embora
+\nUnidPart/\nAplicaveisVaz\ (\pctUnidPart) estudos preditivos dividam por
+participante (seis de forma inferida e cinco sem relato), a Figura~\ref{fig:risco_vaz}
+mostra outro quadro: só \nRiscoBaixo/\nAplicaveisVaz\ (\pctRiscoBaixoAplic)
+mantêm risco baixo de vazamento no relato. Outros \nRiscoModerado\ têm risco
+moderado por omissões no pré-processamento, e \nRiscoAlto\ incorrem em risco
+alto, incluindo quatro casos com balanceamento pré-\textit{split}~%
+\cite{zannat_label-efficient_2026,abioye_improving_2025,wang_parkinsons_2025,yu_improved_2024}.
+
+\input{tabelas/tab3_validacao}
+
+Além disso, nenhum estudo reportou validação externa independente
+(\nValExtSim/\nTotal; \pend{revisar critério em~\cite{abioye_improving_2025} e
+multi-base --- pendência I1}). Nas métricas, F1 (\nMetFOne/\nTotal) e acurácia
+(\nMetAcc/\nTotal) superam medidas sensíveis ao desbalanceamento, como acurácia
+balanceada (\nMetBalAcc/\nTotal) e AUC (\nMetAUC/\nTotal). A
+Tabela~\ref{tab:desempenho} lista o melhor resultado de cada estudo em ordem de
+\texttt{row\_id}, sem caráter comparativo direto porque cenários e protocolos
+diferem.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.50\textwidth]{figuras/fig4_risco_vazamento.pdf}
+\caption{Risco de vazamento reportado por unidade de particionamento (a) e
+separação (b).}
+\label{fig:risco_vaz}
+\end{figure}
+
+\input{tabelas/tab4_desempenho}
+
+\subsection{Qualidade e Reprodutibilidade (QP5)}
+
+Na avaliação de qualidade, a média ficou em \qaMediaPct\ (mediana \qaMedianaPct;
+de \qaMinPct\ a \qaMaxPct), concentrando os artigos na faixa Média
+(\nQAMedia/\nTotal), contra \nQAAlta\ na Alta e \nQABaixa\ na Baixa. Pela
+Figura~\ref{fig:qa}, quase todos os estudos definem bem tarefa e recorte (QA1 e
+QA2), mas falham nas métricas para desbalanceamento (QA4 parcial em
+\nQAQuatroPart/\nTotal) e, sobretudo, na replicabilidade (QA5): só
+\nCodDisponivel/\nTotal\ (\pctCodDisponivel) liberam código ou dados, sendo três
+com código~\cite{mohtavipour_deep_2026,xu_adaptive_2024,wei_sgc-rml_2026} e
+apenas o artigo-base com ambos~\cite{varghese_machine_2024}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.52\textwidth]{figuras/fig5_qa.pdf}
+\caption{Distribuição das respostas de qualidade (QA1 a QA5) nos
+\nTotal\ estudos.}
+\label{fig:qa}
+\end{figure}
+
+\subsection{Lacunas Identificadas e Oportunidades (QP5)}
+
+A Tabela~\ref{tab:lacunas} agrupa os cinco eixos de lacunas observados (com
+\nSemLimitacao\ artigos sem limitações declaradas e \nSemLacuna\ sem trabalhos
+futuros). Os principais pontos em aberto envolvem a falta de multimodalidade,
+explicabilidade (XAI) e calibração (\nLacunaMultimodalXAI/\nTotal), ausência de
+severidade clínica e coleta em vida livre (\nLacunaLongitSev/\nTotal), falta de
+coortes externas (\nLacunaValExt/\nTotal) e limitações no diagnóstico
+diferencial (\nLacunaPDDD/\nTotal), ao lado da baixa abertura de artefatos
+(\pctCodNenhum\ sem código/dados e \pctCodNaoRep\ sem menção).
+
+\input{tabelas/tab5_lacunas}
+
+\subsection{Literatura Cinzenta: Preprints e Análise de Sensibilidade}
+\label{sec:preprints}
+
+Os \nPreprints\ \textit{preprints} (\pctPreprints) são de 2026 e usam DL. Frente
+aos \nRevisadosPares\ artigos revisados (Tabela~\ref{tab:preprints}), focam
+ainda mais em PD$\times$HC (só um avalia PD$\times$DD), mas tiveram QA média
+maior (\qaMediaPrePct\ vs.\ \qaMediaRevPct) e mais casos de risco baixo graças a
+estudos voltados a evitar vazamento em
+\textit{augmentation}~\cite{djemaa_quantifying_2026}, ainda que incluam um caso
+de alto risco por janelamento dependente de
+classe~\cite{zannat_label-efficient_2026}. Sem os \textit{preprints}
+($N=\nRevisadosPares$), 2026 recua para \nRevAnoDoisSeis\ estudos, o risco baixo
+cai para \pctRevRiscoBaixoAplic\ e o código aberto para \pctRevCodDisp, mantendo
+o predomínio de PD$\times$HC, DL e zero validação externa.
+
+\input{tabelas/tab6_preprints}

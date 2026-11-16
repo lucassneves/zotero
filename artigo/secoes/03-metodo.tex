@@ -1,0 +1,138 @@
+\section{Método} \label{sec:metodo}
+
+\subsection{Diretrizes, PICOC e Questões de Pesquisa}
+
+Conduzimos um mapeamento sistemático rápido
+descritivo~\cite{garritty_cochrane_2021}, estruturado segundo protocolo no
+Parsifal \pend{referências metodológicas no Zotero para mapeamento sistemático e PRISMA}.
+Pelo acrônimo PICOC, definimos: \textit{Population} (\textit{Parkinson,
+Parkinsonism}); \textit{Intervention} (\textit{PADS, smartwatch, wearable,
+inertial sensor, accelerometer, gyroscope, ML/DL}); \textit{Comparison} (não
+aplicável); \textit{Outcome} (\textit{classification, detection, diagnosis,
+differential diagnosis, accuracy, F1-score, AUC, sensitivity, specificity}); e
+\textit{Context} (\textit{movement tasks, digital biomarkers, open dataset}).
+Guiado pelo modelo GQM, o levantamento responde a cinco questões: \textbf{QP1}
+(estudos, ano, veículo e contribuição); \textbf{QP2} (tarefas de classificação
+e recortes do PADS); \textbf{QP3} (pré-processamento, atributos e modelos);
+\textbf{QP4} (validação, métricas e desempenho reportado); e \textbf{QP5}
+(lacunas e oportunidades) \pend{confirmar adaptação da QP5 (``para a
+dissertação'') e inclusão de ``veículo'' na QP1 (pendência I3)}.
+
+\subsection{Busca, Fontes e Fluxo de Seleção}
+
+{\sloppy\setlength{\emergencystretch}{2em}
+A busca abrangeu seis fontes: rastreamento de citações ao
+artigo-base~\cite{varghese_machine_2024} no Google Scholar e na Nature Citations
+(Dimensions), além de consultas por \textit{string} nas bases IEEE Xplore,
+PubMed Central, ScienceDirect e Scopus. A \textit{string} geral combinou cinco
+blocos de termos: \texttt{"PADS"}, \texttt{Parkinson*}, sensores
+(\texttt{smartwatch}, \texttt{accelerometer}, \texttt{gyroscope},
+\texttt{inertial sensor}, \texttt{wearable}), técnicas de IA (\texttt{accurac*},
+\texttt{artificial intelligence}, \texttt{attention}, \texttt{framework},
+\texttt{learning}, \texttt{model}, \texttt{network}) e tarefa
+(\texttt{classification}, \texttt{detection}, \texttt{disease identification},
+\texttt{screening}), com ajustes à sintaxe de cada biblioteca (na
+ScienceDirect, restrita a título, resumo e palavras-chave) \pend{informar data
+de execução e corte da busca}.\par
+}
+
+Os \nImportados\ registros importados no Parsifal vieram de três frentes: (1)
+\textbf{citações}: \nScholarDireto\ pelo Google Scholar e \nNatureExcl\
+exclusivos da Nature Citations (\nNatureTotal\ no total; \nComumScholarNature\
+em comum, \nSoScholar\ só no Scholar e união de
+\nUniaoScholarNature\ \pend{confirmar interseção Scholar $\times$ Nature}); (2)
+\textbf{\textit{strings}}: \nStringsTotal\ resultados (IEEE
+Xplore~\nStringsIEEE, PubMed Central~\nStringsPMC, ScienceDirect~\nStringsSD\ e
+Scopus~\nStringsScopus\ \pend{confirmar mapeamento 7/1/3/6 por base}); e (3)
+\textbf{\textit{forward snowballing}}: \nSnowballing\ registros únicos a partir de
+\nSementesSnowballing\ estudos-semente (no recorte de \nScholarBalde\ do Scholar
+no protocolo) \pend{confirmar lista dos \nSementesSnowballing\ sementes e
+\nSnowballing\ de snowballing}.
+
+Na seleção, adotamos quatro critérios de inclusão (\textbf{CI1}: uso do PADS;
+\textbf{CI2}: publicação entre o lançamento do PADS \pend{data de lançamento do
+PADS} e a data da busca; \textbf{CI3}: artigo completo revisado por pares;
+\textbf{CI4}: texto em inglês ou português) e seis de exclusão (\textbf{CE1}:
+citação apenas como trabalho relacionado; \textbf{CE2}: literatura cinza,
+\textit{preprints}, livros ou resumos; \textbf{CE3}: revisões e
+\textit{surveys}; \textbf{CE4}: duplicatas ou versões preliminares;
+\textbf{CE5}: ausência de texto completo; \textbf{CE6}: outro idioma). Dos
+\nImportados\ registros importados, removemos \nDuplicados\ duplicados e
+triamos \nTriados\ trabalhos, chegando a \nRejeitados\ rejeitados e \nAceitos\
+incluídos na síntese (Figura~\ref{fig:fluxo}) \pend{discriminar rejeições por
+etapa e por CE1--CE6}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=0.25cm and 0.25cm,
+  box/.style={rectangle, draw=black, line width=0.65pt, align=center, font=\scriptsize, minimum height=0.52cm, inner sep=2.2pt},
+  widebox/.style={rectangle, draw=black, line width=0.65pt, align=center, font=\scriptsize, minimum height=0.48cm, text width=6.1cm, inner sep=2.2pt},
+  sidebox/.style={rectangle, draw=black, dashed, line width=0.55pt, align=left, font=\scriptsize, minimum height=0.48cm, text width=4.25cm, inner sep=2.2pt},
+  arr/.style={-{Stealth[length=2mm]}, line width=0.65pt}
+]
+\node[box, text width=3.95cm] (r1) {\textbf{Rota 1: Citações base}\\Scholar: \nScholarDireto; Nature: \nNatureExcl\ excl. (\nNatureTotal)};
+\node[box, right=0.25cm of r1, text width=3.6cm] (r2) {\textbf{Rota 2: Strings (\nStringsTotal)}\\IEEE \nStringsIEEE; PMC \nStringsPMC; SD \nStringsSD; Scopus \nStringsScopus};
+\node[box, right=0.25cm of r2, text width=3.55cm] (r3) {\textbf{Rota 3: Snowballing}\\ \nSnowballing\ reg. (\nSementesSnowballing\ sementes)};
+
+\node[widebox, below=0.32cm of r2] (imp) {\textbf{Importados no Parsifal ($n=\nImportados$)} (\nScholarDireto\ + \nNatureExcl\ + \nSnowballing\ + \nStringsTotal)};
+\node[widebox, below=0.25cm of imp] (tri) {\textbf{Registros únicos triados ($n=\nTriados$)}};
+\node[sidebox, right=0.35cm of tri] (dup) {\textbf{Duplicados removidos: \nDuplicados} (CE4)};
+\node[widebox, below=0.25cm of tri] (ace) {\textbf{Incluídos na síntese ($n=\nAceitos$)}: \nRevisadosPares\ revisados (incl.~\cite{varghese_machine_2024}) + \nPreprints\ \textit{preprints}};
+\node[sidebox, right=0.35cm of ace] (rej) {\textbf{Rejeitados: \nRejeitados} \pend{etapas e CE1--CE6}};
+
+\draw[arr] (r1.south) |- ([yshift=0.12cm]imp.north) -- (imp.north);
+\draw[arr] (r2.south) -- (imp.north);
+\draw[arr] (r3.south) |- ([yshift=0.12cm]imp.north) -- (imp.north);
+\draw[arr] (imp.south) -- (tri.north);
+\draw[arr] (tri.east) -- (dup.west);
+\draw[arr] (tri.south) -- (ace.north);
+\draw[arr] (tri.south) |- (rej.west);
+\end{tikzpicture}
+\caption{Fluxo de identificação, triagem e inclusão dos \nTotal\ estudos por rota
+de busca.}
+\label{fig:fluxo}
+\end{figure}
+
+\subsection{Desvio do Protocolo, QA e Extração Assistida por IA}
+
+\textbf{Desvio declarado e casos limítrofes:} embora CE2 e CI3 prevejam a
+exclusão de literatura cinza, optamos por incluir os \nPreprints\
+\textit{preprints} localizados sob a justificativa candidata de que o PADS é
+recente (2024) e parte expressiva dos trabalhos de 2026 ainda aguarda avaliação
+editorial \pend{validar justificativa para preprints e verificar versões
+publicadas posteriores (CE4)}. Mantivemos também o próprio
+artigo-semente~\cite{varghese_machine_2024} e dois estudos baseados apenas no
+questionário PDNMS~\cite{padilha_parkinsons_2024,ouabd_parkinsons_2026}, ainda
+que~\cite{padilha_parkinsons_2024} seja um resumo expandido de duas páginas
+\pend{decidir manutenção de~\cite{padilha_parkinsons_2024} frente a CI3 e
+sensibilidade sobre~\cite{zannat_label-efficient_2026}}.
+
+\textbf{Qualidade (QA1--QA5):} avaliamos cada estudo em cinco critérios
+(definição da tarefa em QA1, descrição do recorte em QA2, prevenção de vazamento
+entre participantes em QA3, métricas adequadas ao desbalanceamento em QA4 e
+replicabilidade ou código aberto em QA5), atribuindo \textit{Yes}=1,0,
+\textit{Partially}=0,5 e \textit{No}=0,0. Itens marcados como \textit{N/A}
+(nos dois estudos puramente
+estatísticos~\cite{abola_differentiating_2025,ren_baseline_2026}) saíram do
+denominador proporcional (\texttt{nota\_qa\_pct}), com classificação provisória
+em Alta ($\ge 80\%$), Média ($50\%$--$79\%$) e Baixa ($<50\%$) \pend{formalizar
+faixas de QA e tratamento N/A (pendência I4)}.
+
+\textbf{Extração e risco de vazamento:} a extração dos 38 campos no Parsifal
+(identificação, uso do PADS, amostra e cenários, técnicas, validação, métricas e
+reprodutibilidade) contou com apoio de IA (Gemini~4~Argon) e auditoria
+automatizada independente (Gemini~4~Argon/Hydrogen), somando \nCamposTotalAud\
+campos concordantes e \nPontosRevisao\ pontos encaminhados para conferência
+humana, sem dupla extração manual nem cálculo de $\kappa$ \pend{detalhar quem
+realizou a revisão humana e campos conferidos}. Tipo de publicação e veículo
+foram verificados no Zotero e na primeira página dos PDFs \pend{conferir tabela
+de metadados de veículo}. A classificação do risco de vazamento baseia-se
+estritamente no \textbf{relato} dos autores \pend{justificar regra de vazamento
+com literatura no Zotero (pendência I5)}: \textit{Não se aplica} (sem modelo
+preditivo); \textit{Alto} (divisão por janela ou gravação, mistura de sujeitos,
+ou balanceamento e pré-processamento antes do \textit{split}); \textit{Baixo}
+(particionamento por sujeito aliado a balanceamento ausente ou restrito ao
+treino e pré-processamento apenas no treino); \textit{Moderado} (caso misto,
+parcial ou sem detalhe do momento de pré-processamento); e
+\textit{Indeterminado} (ausência de dados).
