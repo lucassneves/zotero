@@ -317,14 +317,14 @@ campos:
     observacao: null
 derivados:
   aux_preproc_apenas_treino:
-    valor: "Não"
-    status: "explícito"
-    confianca: "média"
-    evidencia: "Seção 2.3 e 3, p. 3 — 'Each scenario was repeatedly evaluated with the different feature sets... Table 1 presents the best results obtained for each classification scenario after exploring various feature sets'"
-    observacao: "Embora o SMOTE tenha sido explicitamente aplicado ao conjunto de treino ('applied to the training set'), não há menção de que a padronização z-score foi ajustada apenas no treino, e a seleção manual de subconjuntos de atributos (Tabela 2) foi escolhida avaliando repetidamente os subconjuntos na validação cruzada de 5 dobras e reportando o melhor resultado no mesmo conjunto de avaliação (vazamento na seleção de atributos/configuração)."
+    valor: "Não reportado"
+    status: "não reportado"
+    confianca: "alta"
+    evidencia: "Seção 2.3, p. 3 — 'Data were standardized using the z-score transformation, and the SMOTE (Synthetic Minority Over-sampling Technique) was applied to the training set'"
+    observacao: "O SMOTE foi explicitamente aplicado apenas ao conjunto de treino ('applied to the training set'), porém o artigo não especifica se a padronização z-score foi ajustada exclusivamente nos conjuntos de treino de cada dobra do 5-fold CV (observando-se ainda comparação manual de subconjuntos de atributos na mesma CV sem teste aninhado)."
   risco_vazamento:
-    valor: "Alto"
-    regra: "aux_preproc_apenas_treino = Não (seleção de subconjuntos de atributos otimizada sobre o próprio resultado da validação cruzada 5-fold e z-score sem especificação de ajuste restrito ao treino)"
+    valor: "Moderado"
+    regra: "campo 26 = Participante; campo 27 = Sim – inferida; campo 28 = Só no treino; aux_preproc_apenas_treino = Não reportado"
   qa:
     QA1:
       resposta: "Yes"
@@ -337,10 +337,10 @@ derivados:
       campos: [8, 9, 11, 13, 14]
       justificativa: "Todos os itens aplicáveis do recorte (modalidade IMU/lateralidade, 11 tarefas, acelerômetro e giroscópio, ambos os punhos/dominante e N=469) estão descritos."
     QA3:
-      resposta: "No"
-      nota: 0.0
+      resposta: "Partially"
+      nota: 0.5
       campos: [26, 27, 28]
-      justificativa: "Risco de vazamento Alto devido à escolha da melhor configuração de atributos baseada diretamente no desempenho da CV de 5 dobras sem conjunto de teste externo/aninhado e incerteza sobre o z-score."
+      justificativa: "Separação por participante inferida (1 vetor por sujeito) e SMOTE restrito ao treino, mas não explicita se a padronização z-score foi ajustada apenas nas dobras de treino (risco Moderado)."
     QA4:
       resposta: "Partially"
       nota: 0.5
@@ -351,7 +351,7 @@ derivados:
       nota: 0.0
       campos: [35, 22, 29]
       justificativa: "Não disponibiliza código e não descreve os hiperparâmetros dos classificadores nem os parâmetros do SMOTE."
-  nota_qa: 2.5
+  nota_qa: 3.0
   nota_qa_max: 5
   faixa_qa: "Média"
 verificacao_de_coerencia:
@@ -365,10 +365,10 @@ verificacao_de_coerencia:
     resultado: "OK"
   - regra: "Cada Outro/Outra marcado ↔ campo de texto preenchido"
     resultado: "OK"
-  - regra: "Nota de QA3 (0.0 / No) coerente com risco_vazamento calculado (Alto)"
+  - regra: "Nota de QA3 (0.5 / Partially) coerente com risco_vazamento calculado (Moderado)"
     resultado: "OK"
 pontos_para_revisao_humana:
   - "Campo 2 (ano_publicacao): o PDF não contém cabeçalho/rodapé com ano ou DOI; '2025' foi obtido do metadado do arquivo Zotero."
   - "Campos 26 e 27 (unidade_particionamento e separacao_participante): marcados como 'Participante' e 'Sim – inferida' porque a Eq. 2 (Seção 2.2) constrói um único vetor de 924 atributos por participante concatenando todas as tarefas, punhos e sensores."
-  - "aux_preproc_apenas_treino e QA3: marcado como 'Não' (risco Alto) porque múltiplos subconjuntos de atributos foram testados repetidamente na validação cruzada 5-fold e a Tabela 1 reporta os melhores resultados obtidos nessa busca, além de não especificar se o z-score foi ajustado só no treino."
+  - "aux_preproc_apenas_treino e QA3: reclassificado após revisão humana para 'Não reportado' (risco Moderado, QA3=0.5), mantendo-se coerência com estudos que omitem o escopo do z-score e registram seleção manual de subconjuntos na CV."
   - "Campo 33 (melhor_resultado): extraído o maior valor da Tabela 1 (DD×HC; Extra Trees; Balanced accuracy; 82.48%), embora a conclusão destaque 74.31% (PD×HC; LightGBM)."

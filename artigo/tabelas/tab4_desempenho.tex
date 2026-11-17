@@ -1,24 +1,24 @@
 \begin{table}[htbp]
 \centering
-\caption{Melhor resultado reportado no PADS por estudo (ordem de \texttt{row\_id}; sem ranqueamento --- cenários, métricas e protocolos não são comparáveis).}
+\caption{Melhor resultado reportado por estudo (ordem de \texttt{row\_id}; sem ranqueamento --- protocolos não são comparáveis).}
 \label{tab:desempenho}
 {\tiny
-\setlength{\tabcolsep}{1.8pt}
-\renewcommand{\arraystretch}{0.88}
-\begin{tabular}{@{}r >{\raggedright\arraybackslash}p{3.15cm} >{\raggedright\arraybackslash}p{1.65cm} >{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash}p{1.35cm} >{\raggedright\arraybackslash}p{1.85cm} l@{}}
+\setlength{\tabcolsep}{1.3pt}
+\renewcommand{\arraystretch}{0.80}
+\begin{tabular*}{0.98\textwidth}{@{}r@{\extracolsep{\fill}} >{\raggedright\arraybackslash}p{3.08cm} >{\raggedright\arraybackslash}p{2.05cm} >{\raggedright\arraybackslash}p{2.45cm} >{\raggedright\arraybackslash}p{1.15cm} >{\raggedright\arraybackslash}p{2.05cm} l@{}}
 \toprule
 \textbf{ID} & \textbf{Estudo} & \textbf{Cenário} & \textbf{Modelo/Método} & \textbf{Métrica} & \textbf{Valor} & \textbf{Validação (Vaz.)} \\
 \midrule
-2 & \cite{djemaa_quantifying_2026} & PD vs. non-PD (binário) & BTE + SMOTE + Random Forest & AUC & 0.842$\pm$0.043 & k-fold (Baixo) \\
+2 & \cite{djemaa_quantifying_2026} & PD vs. non-PD & BTE+SMOTE+RF & AUC & 0.842$\pm$0.043 & k-fold (Baixo) \\
 13 & \cite{mohtavipour_deep_2026} & PD$\times$HC & Multi-stream CNN-Transf. & Bal. Acc. & 85.89\% $\pm$ 3.93\% & k-fold (Mod.) \\
 21 & \cite{sridhar_early_2026} & PD$\times$HC & CNN-BiLSTM + Attention & Accuracy & 95.3$\pm$1.1\% (10-fold) & Anin.+LOSO+k-fold (Baixo) \\
 23 & \cite{zannat_label-efficient_2026} & PD$\times$HC & Interleaved self-attn (ours) & AUROC & 0.963 & LOTO+k-fold (Alto) \\
-32 & \cite{huang_self-supervised_2025} & PL vs. PD & Ours & Acc / F1 / AUC & 81\% / 0.81 / 0.81 & HO (Mod.) \\
+32 & \cite{huang_self-supervised_2025} & PL vs. PD & Ours & Acc/F1/AUC & 81\% / 0.81 / 0.81 & HO (Mod.) \\
 40 & \cite{zhang_generative_2025} & PD$\times$HC & BOSS+SVM (TremorGANs) & Accuracy & 0.876$\pm$0.014 & k-fold (Baixo) \\
 44 & \cite{gao_coverage-aware_2026} & PD$\times$HC & RBF-SVM (Ours) & Bal. Acc. & 80.52 $\pm$ 9.08\% & Anin.+k-fold (Baixo) \\
 47 & \cite{abioye_improving_2025} & 3 classes & Stacking (CatBoost+RF+LR) & Accuracy & 1.00 (100\%) & HO+k-fold (Alto) \\
-49 & \cite{abola_differentiating_2025} & 6 grupos & Reg. Logística Multinom. & Pseudo R$^2$ & 0.068 (LR $\chi$$^2$(75) = 1740.33, p < 0.001) & Não rep. (N/A) \\
-51 & \cite{xu_adaptive_2024} & PD$\times$DD (tarefa StretchHold) & ADAMIL (Ours) & Accuracy & 81.44\% & k-fold (Mod.) \\
+49 & \cite{abola_differentiating_2025} & 6 grupos & Reg. Logística Multinom. & Pseudo R$^2$ & 0.068 (LR $\chi$$^2$=1740, p<0.001) & Não rep. (N/A) \\
+51 & \cite{xu_adaptive_2024} & PD$\times$DD (StretchHold) & ADAMIL (Ours) & Accuracy & 81.44\% & k-fold (Mod.) \\
 54 & \cite{ren_baseline_2026} & Correl. NMS-IMU & Correl. de Spearman & Spearman r & r = -0.171 (p=0.0071) & Não rep. (N/A) \\
 70 & \cite{varghese_machine_2024} & PD$\times$HC & Stacking (IMU+PDNMS) & Bal. Acc. & 91.16\% (4.92\%) & Anin.+k-fold (Baixo) \\
 76 & \cite{xing_asa-dsnet_2025} & 3 classes & ASA-DSNet & Accuracy & 80.85\% & Anin.+k-fold (Indet.) \\
@@ -32,13 +32,13 @@
 89 & \cite{ouabd_parkinsons_2026} & PD$\times$HC & Random Forest & Bal. Acc. & 93.24\% & HO+k-fold (Baixo) \\
 90 & \cite{vu_simple_2026} & PD$\times$HC & LR & Bal. Acc. & 79.26 $\pm$ 5.50\% & Anin.+k-fold (Baixo) \\
 92 & \cite{yu_improved_2024} & PD$\times$HC & CA\_LSTM\_FCN (acc + rot) & Accuracy & 92.15\% & k-fold (Alto) \\
-99 & \cite{win_checkpd_2026} & PD$\times$HC (tarefa Relaxed / Rest Tremor) & Conv1D-BiLSTM & ROC AUC & 0.8417 & HO+k-fold (Baixo) \\
+99 & \cite{win_checkpd_2026} & PD$\times$HC (Relaxed/Rest) & Conv1D-BiLSTM & ROC AUC & 0.8417 & HO+k-fold (Baixo) \\
 101 & \cite{wei_sgc-rml_2026} & 3 classes & PatchTST + Quality & AUC & 0.825 & HO+k-fold (Baixo) \\
 104 & \cite{haque_eco-xpd_2026} & PD$\times$HC & Eco-xPD (c/ xReDA) & F1-score & 93.60\%$\pm$1.03\% & HO (Mod.) \\
 105 & \cite{padilha_identificacao_2025} & DP vs CO & LightGBM & Accuracy & 84,05 $\pm$ 3,16\% & k-fold (Mod.) \\
 108 & \cite{padilha_parkinsons_2024} & PD$\times$HC & Random Forest & Bal. Acc. & 0.87 & k-fold (Mod.) \\
-109 & \cite{lobo_parkinsons_2025} & DD$\times$HC & Extra Trees & Bal. Acc. & 82.48\% & k-fold (Alto) \\
+109 & \cite{lobo_parkinsons_2025} & DD$\times$HC & Extra Trees & Bal. Acc. & 82.48\% & k-fold (Mod.) \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 }
 \end{table}

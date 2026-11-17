@@ -1,6 +1,6 @@
 # Pendências Consolidadas do Artigo
 
-Documento gerado automaticamente por varredura de marcadores `\pend{...}` em `main.tex` e `secoes/*.tex` (**18 ocorrências**), integrado aos apontamentos do `Roteiro_do_Artigo.md`, de `dados/relatorio_integridade.md` e de `dados/metadados_estudos.csv`.
+Documento gerado automaticamente por varredura de marcadores `\pend{...}` em `main.tex` e `secoes/*.tex` (**0 ocorrências restantes**: todas as 18 pendências originais do texto foram resolvidas), integrado aos apontamentos do `Roteiro_do_Artigo.md`, de `dados/relatorio_integridade.md` e de `dados/metadados_estudos.csv`.
 
 ---
 
@@ -12,33 +12,19 @@ Documento gerado automaticamente por varredura de marcadores `\pend{...}` em `ma
 
 ### Seção 1 — Introdução (`secoes/01-introducao.tex`)
 
-- **Linha 26**: `referência de GQM no Zotero`
+- *(Sem marcadores `\pend{...}` restantes: GQM vinculado ao protocolo de~\cite{fernandes_interoperability_2018}.)*
 
 ### Seção 3 — Método (`secoes/03-metodo.tex`)
 
-- **Linha 7**: `referências metodológicas no Zotero para mapeamento sistemático e PRISMA`
-- **Linha 18**: `confirmar adaptação da QP5 (``para a dissertação'') e inclusão de ``veículo'' na QP1 (pendência I3)`
-- **Linha 35**: `informar data de execução e corte da busca`
-- **Linha 43**: `confirmar interseção Scholar $\times$ Nature`
-- **Linha 46**: `confirmar mapeamento 7/1/3/6 por base`
-- **Linha 49**: `confirmar lista dos \nSementesSnowballing\ sementes e \nSnowballing\ de forward snowballing`
-- **Linha 53**: `data de lançamento do PADS`
-- **Linha 62**: `discriminar rejeições por etapa e por CE1--CE6`
-- **Linha 82**: `etapas e CE1--CE6`
-- **Linha 103**: `validar justificativa para preprints e verificar versões publicadas posteriores (CE4)`
-- **Linha 108**: `decidir manutenção de~\cite{padilha_parkinsons_2024} frente a CI3 e sensibilidade sobre~\cite{zannat_label-efficient_2026}`
-- **Linha 119**: `formalizar faixas de QA e tratamento N/A (pendência I4)`
-- **Linha 127**: `detalhar quem realizou a revisão humana e campos conferidos`
-- **Linha 129**: `conferir tabela de metadados de veículo`
-- **Linha 131**: `justificar regra de vazamento com literatura no Zotero (pendência I5)`
+- *(Sem marcadores `\pend{...}` restantes: pendências I2, I3, I4, I5, I6, B3, B4 e B5 resolvidas no texto e na Figura 1.)*
 
 ### Seção 4 — Resultados (`secoes/04-resultados.tex`)
 
-- **Linha 94**: `revisar critério em~\cite{abioye_improving_2025} e multi-base --- pendência I1`
+- *(Sem marcadores `\pend{...}` restantes: pendência I1 resolvida com 0/29 de validação externa e explicação contida sobre~\cite{abioye_improving_2025} e os estudos multibase.)*
 
 ### Seção 6 — Conclusão (`secoes/06-conclusao.tex`)
 
-- **Linha 10**: `decidir se a planilha de extração será anexada, disponibilizada ou apenas descrita`
+- *(Sem marcadores `\pend{...}` restantes: decisão O2 registrada — planilha de extração não será disponibilizada externamente.)*
 ---
 
 ## 2. Itens do Roteiro para Decisão com Orientadores
@@ -46,22 +32,22 @@ Documento gerado automaticamente por varredura de marcadores `\pend{...}` em `ma
 | Código | Status Atual | Decisão / Ação Necessária |
 | --- | --- | --- |
 | **B1** | **Resolvido** | `sbc-template.sty` e `sbc.bst` obtidos e mantidos inalterados; codificação unificada em UTF-8 no `main.tex`. |
-| **B6** | **Resolvido** | `Aceitos na Rapid Review.bib` exportado e convertido em `referencias.bib` clássico (34 chaves citadas = 34 no `.bib` = 34 no `.bbl`, incluindo `garritty_cochrane_2021` e `PhysioNet-parkinsons-disease-smartwatch-1.0.0`). |
-| **B3** | Parcial (com `\pend`) | Informar no Parsifal/texto: data de execução e corte da busca (**O6**), data oficial de lançamento do PADS (CI2), divisão das 62 rejeições por etapa e por CE1–CE6, confirmação da interseção Scholar×Nature (63 comum / 6 só Scholar / 14 só Nature), mapeamento 7/1/3/6 nas bases por string e lista dos 11 estudos-semente e 15 de snowballing. |
-| **B4** | Declarado na Seção 4.7 | Confirmar justificativa para inclusão dos 6 *preprints* (CI3/CE2), checar se algum já possui versão revisada por pares publicada (CE4), decidir manutenção de `row_id=108` (Padilha et al., 2024; 2 pág.) frente a CI3, do estudo-semente `row_id=70` (*Incerto*) e sobre o *preprint* `row_id=23` (*não confiável*). |
-| **B5** | Preenchido em CSV | Conferir manualmente `dados/metadados_estudos.csv` (especialmente classificação de veículos, DOIs e volume antecipado 2027 de `row_id=79`). |
-| **I1** | Destacado em 4.4 e 5.2 | Revisar critério de `Validação externa do Modelo` no `row_id=47` (Abioye et al., 2025; `Papel=Validação externa-generalização`, mas divisão interna no PADS) e nos 11 estudos multibase antes de afirmar `0/29`. |
-| **I2** | Declarado em 3.3 e 5.2 | Detalhar quem executou a conferência humana sobre os **138 pontos da aba `revisao`** e se haverá dupla extração em amostra (por exemplo, 5 artigos). |
-| **I3** | Adaptado nas QPs | Ratificar inclusão de **veículo** na QP1 e adaptação da QP5 (remoção da menção "para a dissertação"). |
-| **I4** | Provisório em 3.3 | Formalizar no protocolo as faixas de QA ($\ge 80\%$, $50\%$--$79\%$, $<50\%$) e a exclusão de itens `N/A` do denominador proporcional. |
-| **I5** | Definido em 3.3 | Inserir referências da literatura de engenharia de dados/ML para justificar a regra de classificação do relato de risco de vazamento. |
-| **I6** | Parcial (revisão rápida citada) | Referência Cochrane para revisão rápida incluída (`garritty_cochrane_2021`); inserir e citar referências metodológicas para mapeamento sistemático e PRISMA. |
+| **B6** | **Resolvido** | `Aceitos na Rapid Review.bib` exportado e convertido em `referencias.bib` clássico (`37` chaves citadas = `37` no `.bib` = `37` no `.bbl`, incluindo `garritty_cochrane_2021`, `fernandes_interoperability_2018`, `kapoor_leakage_2023`, `vandewiele_overly_2021` e `PhysioNet-parkinsons-disease-smartwatch-1.0.0`). |
+| **B3** | **Resolvido** | Datas confirmadas (PADS: 05/01/2024 artigo / 25/03/2024 PhysioNet; busca 12/11/2026, consolidação até 13/11/2026), mapeamento 7/1/3/6, Scholar×Nature (69/77; 63 comum; 83 união), 11 sementes / 15 snowballing e 62 rejeições (31 CE1, 21 CE3, 10 CE2; 4 metadados e 58 texto completo) aplicados em `03-metodo.tex` e Figura 1. |
+| **B4** | **Resolvido** | Justificativa declarada para manutenção dos 6 *preprints* (base recente de 2024, corpus revisado reduzido $n=23$, sem versões publicadas posteriores encontradas) com análise de sensibilidade na Seção 4.7; mantidos também `row_id=108` (Padilha et al., 2024; 2 pág. em anais revisados por pares) e `row_id=23` (Zannat, 2026; sinalizado como risco Alto). |
+| **B5** | **Resolvido** | Metadados de publicação e veículo dos 29 estudos (`dados/metadados_estudos.csv`) conferidos pelo autor contra Zotero e primeira página dos PDFs (`11` periódicos, `12` anais, `6` preprints). |
+| **I1** | **Resolvido** | Confirmado `0/29` de validação externa independente nos YAMLs e registrado em forma contida na Seção 4.4 (esclarecendo que `row_id=47` e os 11 multibase retreinaram/avaliaram internamente no PADS). |
+| **I2** | **Resolvido** | Registrado na Seção 3.3 e na Seção 5.2 que a extração e a segunda rodada de conferência integral foram conduzidas por um único pesquisador (o autor), sem extração independente em duplicata nem cálculo de $\kappa$ (alinhado ao recorte de *rapid review* em `garritty_cochrane_2021`), omitindo menção a IA no texto por opção do autor. |
+| **I3** | **Resolvido** | Ratificada QP1 com "veículo" (referente aos veículos de publicação dos 29 estudos analisados) e adaptada a QP5 para "lacunas e oportunidades de pesquisa na área". |
+| **I4** | **Resolvido** | Formalizadas as faixas de QA ($\ge 80\%$, $50\%$--$79\%$, $<50\%$) e a exclusão de itens `N/A` do denominador proporcional (`nota_qa_pct`). |
+| **I5** | **Resolvido** | Regra de classificação do risco de vazamento fundamentada na Seção 3.3 com `kapoor_leakage_2023`, `vandewiele_overly_2021` e `djemaa_quantifying_2026` (separação treino/teste, não independência de amostras por sujeito, pré-processamento e sobreamostragem pré-*split*). |
+| **I6** | **Resolvido** | Referência de revisão rápida (`garritty_cochrane_2021`) combinada à estrutura de protocolo de mapeamento sistemático (`fernandes_interoperability_2018`, com adaptação prospectiva no *snowballing*); menção a PRISMA removida do texto. |
 | **I7** | Mitigado em 5.2 | Avaliar necessidade de busca complementar apenas pelo termo PhysioNet/PADS ou manter o viés de cobertura declarado em Ameaças à Validade. |
 | **O1** | Aplicado (compacto) | Definido formato condensado das Tabelas 1 e 4 para respeitar o orçamento de 10–12 páginas. |
-| **O2** | Pendente na Conclusão | Decidir com orientadores se `dados/extracao.xlsx` será anexada como material suplementar, disponibilizada em repositório ou apenas descrita (scripts construtores permanecem privados por decisão prévia). |
+| **O2** | **Resolvido** | Planilha `dados/extracao.xlsx` não será disponibilizada externamente; seus dados permanecem apenas descritos e sintetizados no artigo (registrado na Conclusão). |
 | **O3** | Aplicado (3 revisões) | Selecionadas 3 revisões CE3 recentes na Seção 2.2 (`ouabd_overview_2026`, `pinto_neto_machine_2026`, `shokrpour_machine_2025`). |
 | **O4** | Aplicado em 2.1 e 5.1 | Estudo-base (`varghese_machine_2024`) isolado como referência metodológica na Seção 2.1 e confrontado com os sucessores na Seção 5.1. |
-| **O5** | Parcial (autoria preenchida) | Autor, afiliação (`Instituto de Informática -- UFG`) e e-mail preenchidos em `main.tex`; orientadores omitidos por enquanto (trabalho da disciplina); checar declaração de uso de IA e agradecimentos. |
+| **O5** | **Resolvido (escopo disciplina)** | Autor, afiliação (`Instituto de Informática -- UFG`) e e-mail preenchidos em `main.tex`; orientadores omitidos para entrega da disciplina e menção a assistência de IA omitida do manuscrito por decisão do autor. |
 
 ---
 
@@ -69,7 +55,7 @@ Documento gerado automaticamente por varredura de marcadores `\pend{...}` em `ma
 
 - **Divergências de contagem no PADS v1.0.0 (`276 PD; 79 HC; 114 DD`)**: `row_id=2` reporta `295/71/103`, `row_id=23` reporta `291/79/99` e `row_id=90` apresenta inversão `HC=114; DD=79`.
 - **Divergências de ano (Planilha vs. Zotero/PDF)**: `row_id=79` (2026 na planilha/DOI vs. 2027 no volume Zotero), `row_id=40` (2025 no Zotero/planilha vs. 2026 no PDF) e `row_id=49` (2025 no Zotero/planilha vs. 2024 no cabeçalho do PDF).
-- **Campos específicos e inconsistências**: `row_id=76` indica IMU com `Sensores` em branco; `row_id=101` declara "IMU de 6 canais" (`Outro`); `row_id=109` tem `Balanceamento = Só no treino` e `aux_preproc_apenas_treino = Não` (resultando em risco `Alto`); `row_id=49` e `row_id=54` são estatísticos (`risco_vazamento = N/A`).
+- **Campos específicos e inconsistências**: `row_id=76` indica IMU com `Sensores` em branco; `row_id=101` declara "IMU de 6 canais" (`Outro`); `row_id=109` (`Lobo et al., 2025`) teve `risco_vazamento` revisado para `Moderado` (e `QA3=0,5`) por separar participantes e restringir `SMOTE` ao treino, omitindo apenas o escopo do *z-score*; `row_id=49` e `row_id=54` são estatísticos (`risco_vazamento = N/A`).
 - **Auditoria e revisão humana**: aba `auditoria` está vazia (todos os 1.102 pares nos YAMLs de auditoria foram `CONCORDA`), porém os **138 itens da aba `revisao`** seguem marcados como não resolvidos (`0` resolvidos).
 - **Metadados de veículo (`dados/metadados_estudos.csv`)**: 29/29 classificados (`11` periódicos, `12` anais de conferência, `6` preprints, `0` indeterminado), todos com confiança `alta` a partir do Zotero e primeira página dos PDFs.
 
@@ -77,7 +63,8 @@ Documento gerado automaticamente por varredura de marcadores `\pend{...}` em `ma
 
 ## 4. Ajustes e Cortes por Orçamento de Páginas (Resultado: 12 Páginas)
 
-Para atender estritamente à faixa de **10 a 12 páginas** do modelo SBC sem suprimir achados nem omitir estudos:
-1. **Condensação das Tabelas 1 e 4 (Regra 11a / O1)**: Tabela 1 manteve os 29 estudos em ~1 linha por estudo; Tabela 4 reporta apenas o melhor resultado principal de cada estudo em ordem de `row_id`, com abreviação de validação (`HO`, `Anin.`).
-2. **Recorte da Seção 2.2 (Regra 11b / O3)**: incluídas 3 revisões relacionadas (`ouabd_overview_2026`, `pinto_neto_machine_2026`, `shokrpour_machine_2025`), excluindo uma quarta candidata para evitar transbordamento das referências para a página 13.
-3. **Ajustes visuais e textuais**: largura das Figuras 2 a 5 ajustada (`0.50`–`0.52\textwidth`), colunas da Tabela 1 balanceadas para evitar quebra dupla nas linhas 105 e 109, eliminação de duplicidade `Autor [Autor Ano]` em prosa, revisão narrativa das Seções 4 a 6 com síntese analítica nas tabelas e enxugamento de `Abstract` ($\le 10$ linhas) e `Resumo` (**9 linhas**) na página 1.
+Após fechar todas as pendências (`0` `\pend` restantes) e compilar `main.pdf` localmente via TinyTeX (`pdflatex` + `bibtex`, com `0` erros e `0` avisos), o manuscrito foi ajustado para fechar estritamente em **12 páginas** sem perda de dados nem corte de estudos:
+1. **Condensação das Tabelas 1, 4 e 5 (Regra 11a / O1)**: Tabela 1 mantida em `0.98\textwidth` (`tabular*`) em página compartimentada; Tabela 4 alargada para `0.98\textwidth` reduzindo quebras multilinhas; Tabela 5 com `2` citações representativas por tema (`e +N`) e rótulos concisos.
+2. **Recorte da Seção 2.2 (Regra 11b / O3)**: mantidas as 3 revisões relacionadas (`ouabd_overview_2026`, `pinto_neto_machine_2026`, `shokrpour_machine_2025`).
+3. **Figuras 2--5 e Tabela 6 padronizadas**: todas as figuras de dados (2 a 5) e a Tabela 6 padronizadas em `0.78\textwidth` (com proporções ajustadas em Matplotlib nas Figuras 2--5 e fluxo da Figura 1 corrigido para desviar do bloco de incluídos), mantendo alta legibilidade e equilíbrio visual.
+4. **Enxugamento textual sem perda factual**: condensação de redundâncias nas Seções 1, 2, 3, 4.3–4.7, 5 e 6, preservando todos os números por macro, a síntese de pré-processamento `QP3` e as `37` referências bibliográficas até a página 12.

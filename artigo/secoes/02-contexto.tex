@@ -11,26 +11,22 @@ consolidou 469 participantes após controle de qualidade e pareamento etário: 2
 PD, 79 HC e 114 DD (28 com tremor essencial, 15 parkinsonismo atípico, 11
 esclerose múltipla e 60 outros distúrbios) \cite{varghese_machine_2024}.
 
-O protocolo inclui 11 etapas neurológicas padronizadas (oito de 10~s e três de
-20~s, $\sim$15~min), gerando 14 janelas de 10~s e 168 canais na formulação
-original de ML, além de 30 respostas binárias do PDNMS e metadados clínicos (sem
-Hoehn \& Yahr ou MDS-UPDRS na base pública) \cite{varghese_machine_2024}. No
-estudo-base~\cite{varghese_machine_2024}, avaliaram-se PD$\times$HC ($n=355$) e
-PD$\times$DD ($n=390$) em validação cruzada aninhada 5$\times$5 por participante
-(atributos manuais, BOSS, \textit{XceptionTime} e \textit{CatBoost} via
-\textit{stacking}), alcançando acurácia balanceada de 91,16\% ($\pm$4,92\%) em
-PD$\times$HC e 72,42\% ($\pm$12,33\%) em PD$\times$DD (com verificação pareada por
-sexo, $n=234$). O conjunto público encontra-se depositado no repositório
+O protocolo envolve 11 etapas motoras (oito de 10~s e três de 20~s,
+$\sim$15~min), 14 janelas de 10~s (168 canais na formulação de ML), 30
+questões binárias do PDNMS e metadados (sem Hoehn \& Yahr ou MDS-UPDRS)
+\cite{varghese_machine_2024}. O estudo-base~\cite{varghese_machine_2024} avaliou
+PD$\times$HC ($n=355$) e PD$\times$DD ($n=390$) em CV aninhada 5$\times$5 por
+sujeito (atributos manuais, BOSS, \textit{XceptionTime} e \textit{CatBoost}),
+atingindo acurácia balanceada de 91,16\% ($\pm$4,92\%) e 72,42\%
+($\pm$12,33\%) (com recorte pareado por sexo, $n=234$). A base está no
 PhysioNet~\cite{PhysioNet-parkinsons-disease-smartwatch-1.0.0}.
 
 \subsection{Revisões Relacionadas}
 
-Revisões recentes sobre IA aplicada à PD (excluídas da síntese primária por CE3)
-apontam limitações recorrentes na literatura: um mapeamento de 133 estudos
-destacou a baixa padronização entre bases~\cite{shokrpour_machine_2025}; outra
-síntese ressaltou a variabilidade entre indivíduos em 11 trabalhos com sensores
-vestíveis~\cite{ouabd_overview_2026}; e uma revisão sistemática com 264 artigos
-encontrou alto risco de viés em 98,1\% deles e apenas 7,6\% com validação
-externa~\cite{pinto_neto_machine_2026}. Ao isolar os \nTotal\ trabalhos que
-empregam o PADS, conseguimos comparar recortes metodológicos e riscos de
-vazamento sobre exatamente os mesmos dados.
+Revisões recentes (excluídas por CE3) apontam lacunas na área: um mapeamento
+de 133 estudos destacou baixa padronização entre
+bases~\cite{shokrpour_machine_2025}; outra síntese ressaltou a variabilidade
+interindividual em 11 trabalhos vestíveis~\cite{ouabd_overview_2026}; e uma
+revisão de 264 artigos achou alto risco de viés em 98,1\% e só 7,6\% com
+validação externa~\cite{pinto_neto_machine_2026}. Ao isolar os \nTotal\ estudos
+do PADS, comparamos métodos e riscos sobre os mesmos dados.

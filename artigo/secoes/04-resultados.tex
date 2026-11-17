@@ -24,11 +24,10 @@ como validação externa em~\cite{abioye_improving_2025}; \nMultiBase\ combinam
 outras bases (\nOutroPublico\ públicas e \nPrivadoProprio\ privadas, com
 \nMultiBaseSobrep\ sobreposições).
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 \centering
-\includegraphics[width=0.50\textwidth]{figuras/fig2_ano_contribuicao.pdf}
-\caption{Distribuição dos \nTotal\ estudos por ano de publicação e tipo de
-contribuição.}
+\includegraphics[width=0.78\textwidth]{figuras/fig2_ano_contribuicao.pdf}
+\caption{Distribuição dos \nTotal\ estudos por ano e tipo de contribuição.}
 \label{fig:ano_contrib}
 \end{figure}
 
@@ -56,22 +55,38 @@ e DD$\times$HC (\nCenDDHC/\nTotal) aparecem menos.
 
 \subsection{Pré-processamento, Atributos e Modelos (QP3)}
 
-Na preparação, prevalecem séries brutas ou filtradas (\nRepBruta/\nTotal,
-\pctRepBruta), seguidas de atributos manuais (\nRepHandcrafted/\nTotal), com
-uso pontual de tempo-frequência e BOSS/\textit{embeddings} (\nRepTF/\nTotal\
-cada). Na modelagem (Figura~\ref{fig:cen_fam}), o \textit{deep learning} lidera
-(\nFamDL/\nTotal, \pctFamDL), à frente de ML clássico (\nFamML/\nTotal),
-híbridos/\textit{ensemble} (\nFamHybrid), generativos (\nFamGen) e
-auto-supervisionados (\nFamSSL), concentrando-se em PD$\times$HC. Para
-desbalanceamento, \nBalNenhum/\nTotal\ não aplicam correção; os demais usam
-perturbações/ponderação (\nBalOutro), SMOTE/\textit{oversampling} (\nBalSMOTE) e
-GANs (\nBalGAN), com \nBalNaoRep\ sem relato e \nBalNA\ N/A.
+Na entrada dos modelos, predominam séries temporais (\nRepBruta/\nTotal,
+\pctRepBruta) sobre atributos manuais (\nRepHandcrafted/\nTotal), além do uso
+pontual de tempo-frequência e BOSS/\textit{embeddings} (\nRepTF/\nTotal\ cada).
+Como a categoria ``Série bruta'' do formulário reuniu sinais puros e
+pré-processados, a análise dos \nModIMU\ estudos com IMU mostra preparos muito
+distintos: oito removem o transiente vibratório inicial --- em regra 0,5~s, como
+no artigo-base~\cite{varghese_machine_2024} (e 1~s em um caso). Na filtragem,
+cinco corrigem a gravidade por $\ell_1$-\textit{trend filtering} ou pelo
+\textit{script} oficial~\cite{padilha_identificacao_2025}, quatro aplicam
+filtros passa-faixa ou Butterworth até 20~Hz~\cite{win_checkpd_2026}, dois
+decompõem sub-bandas na própria rede e dois declaram não filtrar, havendo ainda
+casos pontuais de subtração da média e suavização. Só três reamostram a taxa de
+100~Hz (para 64, 40 ou 20~Hz). Quanto à segmentação, cinco dividem séries
+longas em blocos de 1.024 pontos e 13 trabalham com sub-janelas curtas
+(1--4~s ou 20--512 amostras), por vezes sobrepostas~\cite{gao_coverage-aware_2026}.
+Na escala, 12 relatam padronização \textit{z-score} ou por canal --- sete
+restrita ao treino ou ao sujeito~\cite{djemaa_quantifying_2026} e cinco sem
+explicitar o escopo ---, dois citam normalização genérica e os demais omitem a
+etapa.
 
-\begin{figure}[htbp]
+Na modelagem (Figura~\ref{fig:cen_fam}), o \textit{deep learning} lidera
+(\nFamDL/\nTotal, \pctFamDL), seguido de ML clássico (\nFamML/\nTotal),
+híbridos/\textit{ensemble} (\nFamHybrid), generativos (\nFamGen) e
+auto-supervisionados (\nFamSSL), com foco em PD$\times$HC. Para lidar com o
+desbalanceamento, \nBalNenhum/\nTotal\ não aplicam correção; o restante usa
+perturbações ou ponderação (\nBalOutro), SMOTE (\nBalSMOTE) e GANs (\nBalGAN),
+com \nBalNaoRep\ sem relato e \nBalNA\ N/A.
+
+\begin{figure}[htb]
 \centering
-\includegraphics[width=0.50\textwidth]{figuras/fig3_cenario_familia.pdf}
-\caption{Coocorrência entre cenários de classificação e famílias de algoritmos
-($N=\nTotal$).}
+\includegraphics[width=0.78\textwidth]{figuras/fig3_cenario_familia.pdf}
+\caption{Cenários de classificação vs.\ famílias de algoritmos ($N=\nTotal$).}
 \label{fig:cen_fam}
 \end{figure}
 
@@ -85,25 +100,23 @@ participante (seis de forma inferida e cinco sem relato), a Figura~\ref{fig:risc
 mostra outro quadro: só \nRiscoBaixo/\nAplicaveisVaz\ (\pctRiscoBaixoAplic)
 mantêm risco baixo de vazamento no relato. Outros \nRiscoModerado\ têm risco
 moderado por omissões no pré-processamento, e \nRiscoAlto\ incorrem em risco
-alto, incluindo quatro casos com balanceamento pré-\textit{split}~%
+alto por balanceamento ou janelamento pré-\textit{split}~%
 \cite{zannat_label-efficient_2026,abioye_improving_2025,wang_parkinsons_2025,yu_improved_2024}.
 
 \input{tabelas/tab3_validacao}
 
-Além disso, nenhum estudo reportou validação externa independente
-(\nValExtSim/\nTotal; \pend{revisar critério em~\cite{abioye_improving_2025} e
-multi-base --- pendência I1}). Nas métricas, F1 (\nMetFOne/\nTotal) e acurácia
-(\nMetAcc/\nTotal) superam medidas sensíveis ao desbalanceamento, como acurácia
-balanceada (\nMetBalAcc/\nTotal) e AUC (\nMetAUC/\nTotal). A
-Tabela~\ref{tab:desempenho} lista o melhor resultado de cada estudo em ordem de
-\texttt{row\_id}, sem caráter comparativo direto porque cenários e protocolos
-diferem.
+Além disso, nenhum estudo fez validação externa independente entre bases
+(\nValExtSim/\nTotal): embora \nMultiBase\ combinem múltiplas bases e~%
+\cite{abioye_improving_2025} cite o PADS para generalização, todos retreinaram e
+avaliaram internamente cada conjunto. Nas métricas, F1 (\nMetFOne/\nTotal) e
+acurácia (\nMetAcc/\nTotal) superam métricas balanceadas
+(\nMetBalAcc/\nTotal) e AUC (\nMetAUC/\nTotal). A Tabela~\ref{tab:desempenho}
+lista o melhor resultado por \texttt{row\_id}, sem caráter comparativo direto.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 \centering
-\includegraphics[width=0.50\textwidth]{figuras/fig4_risco_vazamento.pdf}
-\caption{Risco de vazamento reportado por unidade de particionamento (a) e
-separação (b).}
+\includegraphics[width=0.78\textwidth]{figuras/fig4_risco_vazamento.pdf}
+\caption{Risco de vazamento por unidade (a) e separação por sujeito (b).}
 \label{fig:risco_vaz}
 \end{figure}
 
@@ -111,50 +124,42 @@ separação (b).}
 
 \subsection{Qualidade e Reprodutibilidade (QP5)}
 
-Na avaliação de qualidade, a média ficou em \qaMediaPct\ (mediana \qaMedianaPct;
-de \qaMinPct\ a \qaMaxPct), concentrando os artigos na faixa Média
-(\nQAMedia/\nTotal), contra \nQAAlta\ na Alta e \nQABaixa\ na Baixa. Pela
-Figura~\ref{fig:qa}, quase todos os estudos definem bem tarefa e recorte (QA1 e
-QA2), mas falham nas métricas para desbalanceamento (QA4 parcial em
-\nQAQuatroPart/\nTotal) e, sobretudo, na replicabilidade (QA5): só
-\nCodDisponivel/\nTotal\ (\pctCodDisponivel) liberam código ou dados, sendo três
-com código~\cite{mohtavipour_deep_2026,xu_adaptive_2024,wei_sgc-rml_2026} e
-apenas o artigo-base com ambos~\cite{varghese_machine_2024}.
+A qualidade média foi \qaMediaPct\ (mediana \qaMedianaPct; \qaMinPct--\qaMaxPct),
+concentrada na Média (\nQAMedia/\nTotal), com \nQAAlta\ na Alta e \nQABaixa\
+na Baixa. Pela Figura~\ref{fig:qa}, QA1--QA2 são bem atendidos, mas falham QA4
+(parcial em \nQAQuatroPart/\nTotal) e QA5: só \nCodDisponivel/\nTotal\
+(\pctCodDisponivel) abrem código~\cite{mohtavipour_deep_2026,xu_adaptive_2024,wei_sgc-rml_2026}
+ou ambos~\cite{varghese_machine_2024}.
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
 \centering
-\includegraphics[width=0.52\textwidth]{figuras/fig5_qa.pdf}
-\caption{Distribuição das respostas de qualidade (QA1 a QA5) nos
-\nTotal\ estudos.}
+\includegraphics[width=0.78\textwidth]{figuras/fig5_qa.pdf}
+\caption{Distribuição das respostas de qualidade (QA1--QA5) nos \nTotal\ estudos.}
 \label{fig:qa}
 \end{figure}
 
 \subsection{Lacunas Identificadas e Oportunidades (QP5)}
 
-A Tabela~\ref{tab:lacunas} agrupa os cinco eixos de lacunas observados (com
-\nSemLimitacao\ artigos sem limitações declaradas e \nSemLacuna\ sem trabalhos
-futuros). Os principais pontos em aberto envolvem a falta de multimodalidade,
-explicabilidade (XAI) e calibração (\nLacunaMultimodalXAI/\nTotal), ausência de
-severidade clínica e coleta em vida livre (\nLacunaLongitSev/\nTotal), falta de
-coortes externas (\nLacunaValExt/\nTotal) e limitações no diagnóstico
-diferencial (\nLacunaPDDD/\nTotal), ao lado da baixa abertura de artefatos
-(\pctCodNenhum\ sem código/dados e \pctCodNaoRep\ sem menção).
+A Tabela~\ref{tab:lacunas} sintetiza os cinco eixos de lacunas (\nSemLimitacao\
+sem limitações declaradas e \nSemLacuna\ sem trabalhos futuros): falta de
+multimodalidade/XAI/calibração (\nLacunaMultimodalXAI/\nTotal), severidade e
+vida livre (\nLacunaLongitSev/\nTotal), coortes externas
+(\nLacunaValExt/\nTotal) e diagnóstico diferencial (\nLacunaPDDD/\nTotal),
+além de \pctCodNenhum\ sem código/dados e \pctCodNaoRep\ sem menção.
 
 \input{tabelas/tab5_lacunas}
 
 \subsection{Literatura Cinzenta: Preprints e Análise de Sensibilidade}
 \label{sec:preprints}
 
-Os \nPreprints\ \textit{preprints} (\pctPreprints) são de 2026 e usam DL. Frente
-aos \nRevisadosPares\ artigos revisados (Tabela~\ref{tab:preprints}), focam
-ainda mais em PD$\times$HC (só um avalia PD$\times$DD), mas tiveram QA média
-maior (\qaMediaPrePct\ vs.\ \qaMediaRevPct) e mais casos de risco baixo graças a
-estudos voltados a evitar vazamento em
-\textit{augmentation}~\cite{djemaa_quantifying_2026}, ainda que incluam um caso
-de alto risco por janelamento dependente de
-classe~\cite{zannat_label-efficient_2026}. Sem os \textit{preprints}
-($N=\nRevisadosPares$), 2026 recua para \nRevAnoDoisSeis\ estudos, o risco baixo
-cai para \pctRevRiscoBaixoAplic\ e o código aberto para \pctRevCodDisp, mantendo
-o predomínio de PD$\times$HC, DL e zero validação externa.
+Os \nPreprints\ \textit{preprints} (2026, em DL; Tabela~\ref{tab:preprints})
+focam mais PD$\times$HC (só um em PD$\times$DD), com QA média maior
+(\qaMediaPrePct\ vs.\ \qaMediaRevPct) e mais risco baixo por trabalhos voltados a
+evitar vazamento em \textit{augmentation}~\cite{djemaa_quantifying_2026}, embora
+incluam risco alto por janelamento por
+classe~\cite{zannat_label-efficient_2026}. Sem eles ($N=\nRevisadosPares$), 2026
+recua para \nRevAnoDoisSeis\ estudos, risco baixo para \pctRevRiscoBaixoAplic\ e
+código aberto para \pctRevCodDisp, mantendo PD$\times$HC, DL e zero validação
+externa.
 
 \input{tabelas/tab6_preprints}

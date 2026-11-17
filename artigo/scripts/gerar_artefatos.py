@@ -191,6 +191,9 @@ def parse_best_result(row: pd.Series) -> tuple[str, str, str, str]:
     else:
         cen, mod, met, val = "--", s, "--", "--"
     cen = (cen.replace("3 classes (Mult-Class)", "3 classes")
+              .replace("PD×HC (tarefa Relaxed / Rest Tremor)", "PD×HC (Relaxed/Rest)")
+              .replace("PD×DD (tarefa StretchHold)", "PD×DD (StretchHold)")
+              .replace("PD vs. non-PD (binário)", "PD vs. non-PD")
               .replace("PD×HC", r"PD$\times$HC")
               .replace("PD×DD", r"PD$\times$DD")
               .replace("DD×HC", r"DD$\times$HC")
@@ -210,10 +213,11 @@ def parse_best_result(row: pd.Series) -> tuple[str, str, str, str]:
         "Blockchain-Integrated CNN–Transformer": "CNN-Transformer",
         "V7 Ensemble (PatchTST + Quality)": "PatchTST + Quality",
         "Proposed (With xReDA)": "Eco-xPD (c/ xReDA)",
+        "BTE + SMOTE + Random Forest": "BTE+SMOTE+RF",
     }
     mod = mod_map.get(mod, mod)
     met = (met.replace("Balanced accuracy", "Bal. Acc.")
-              .replace("Accuracy / F1-score / AUC", "Acc / F1 / AUC")
+              .replace("Accuracy / F1-score / AUC", "Acc/F1/AUC")
               .replace("Spearman r (FDR-adjusted p)", "Spearman r")
               .replace("Acurácia", "Accuracy"))
     val = re.sub(r"\s*\([^)]{20,}\)", "", val).strip()
@@ -222,6 +226,7 @@ def parse_best_result(row: pd.Series) -> tuple[str, str, str, str]:
     if "para carga de sintomas" in val:
         val = "r = -0.171 (p=0.0071)"
     val = val.replace("0.972868 (97.29%, 95% CI ± 0.00701)", "97.29%").replace(" [.708,.942]", "")
+    val = val.replace("0.068 (LR χ²(75) = 1740.33, p < 0.001)", "0.068 (LR χ²=1740, p<0.001)")
     return (cen if "$" in cen else tex_esc(cen)), tex_esc(mod), tex_esc(met), tex_esc(val)
 
 
@@ -244,9 +249,9 @@ def compute_gap_themes(df: pd.DataFrame) -> list[tuple[str, list[int]]]:
     themes = [
         ("Ausência de validação externa / coortes multicêntricas", []),
         ("Dificuldade no diagnóstico diferencial (PD$\\times$DD)", []),
-        ("Falta de severidade clínica (MDS-UPDRS/H\\&Y) e vida livre/longitudinal", []),
-        ("Falta de multimodalidade, XAI, calibração e justiça demográfica", []),
-        ("Indisponibilidade de código/dados derivados (reprodutibilidade)", []),
+        ("Falta de severidade (UPDRS/H\\&Y) e vida livre", []),
+        ("Falta de multimodalidade, XAI, calibração e justiça", []),
+        ("Indisponibilidade de código/dados (reprodutibilidade)", []),
     ]
     p_ext = re.compile(r"valida[çc][ãa]o\s+(cl[íi]nica\s+)?externa|multic[êe]ntric|[úu]nico dataset|unico dataset|coortes? independentes?|datasets? independentes?|segundo dataset|centro [úu]nico|single site|entre( diferentes)? datasets|entre centros|domain shift|datasets maiores")
     p_dd = re.compile(r"diagn[óo]stico diferencial|\bpd\s+vs\.?\s*dd\b|\bdp\s+vs\.?\s*dd\b|\(dd\)|\bdd\b|tremor essencial|outros dist[úu]rbios")
@@ -341,6 +346,11 @@ def write_macros(df: pd.DataFrame, df_ev: pd.DataFrame, df_rev_pts: pd.DataFrame
         "nDuplicados": 24,
         "nTriados": 91,
         "nRejeitados": 62,
+        "nRejCEUm": 31,
+        "nRejCEDois": 10,
+        "nRejCETres": 21,
+        "nRejMetadados": 4,
+        "nRejTexto": 58,
         "nAceitos": 29,
         "nScholarDireto": 69,
         "nScholarBalde": 84,
@@ -584,7 +594,7 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
     n_tot = len(df)
     n_vaz_app = int((df["risco_vazamento"] != "Não se aplica").sum())
 
-    # Tabela 1: 29 estudos condensada (cada estudo ~1 linha, <= 15 cm total)
+    # Tabela 1: 29 estudos condensada (largura ~0.98\textwidth, quase alinhada ao texto)
     t1_rows = []
     for _, r in df.sort_values("ID do Registro (row_id)").iterrows():
         rid = int(r["ID do Registro (row_id)"])
@@ -598,20 +608,20 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
         qa = f"{int(round(r['nota_qa_pct']*100))}\\%({r['faixa_qa'][0]})"
         t1_rows.append(f"{rid} & \\cite{{{ck}}} & {ano} & {veic} & {contrib} & {papel} & {cen} & {risco} & {qa} \\\\")
 
-    tab1 = f"""\\begin{{table}}[htbp]
+    tab1 = f"""\\begin{{table}}[tbp]
 \\centering
 \\caption{{Síntese dos \\nTotal\\ estudos incluídos (ordem de \\texttt{{row\\_id}}). QA: A=Alta, M=Média, B=Baixa; *Val. ext. declarada sem teste externo independente.}}
 \\label{{tab:estudos}}
 {{\\tiny
 \\setlength{{\\tabcolsep}}{{2.0pt}}
-\\renewcommand{{\\arraystretch}}{{0.88}}
-\\begin{{tabular}}{{@{{}}r >{{\\raggedright\\arraybackslash}}p{{3.12cm}} c >{{\\raggedright\\arraybackslash}}p{{2.15cm}} l l >{{\\raggedright\\arraybackslash}}p{{2.63cm}} l r@{{}}}}
+\\renewcommand{{\\arraystretch}}{{0.84}}
+\\begin{{tabular*}}{{0.98\\textwidth}}{{@{{}}r@{{\\extracolsep{{\\fill}}}} >{{\\raggedright\\arraybackslash}}p{{3.45cm}} c >{{\\raggedright\\arraybackslash}}p{{2.35cm}} l l >{{\\raggedright\\arraybackslash}}p{{2.95cm}} l r@{{}}}}
 \\toprule
 \\textbf{{ID}} & \\textbf{{Estudo}} & \\textbf{{Ano}} & \\textbf{{Veículo/Tipo}} & \\textbf{{Contrib.}} & \\textbf{{Papel}} & \\textbf{{Cenários}} & \\textbf{{Vaz.}} & \\textbf{{QA}} \\\\
 \\midrule
 {chr(10).join(t1_rows)}
 \\bottomrule
-\\end{{tabular}}
+\\end{{tabular*}}
 }}
 \\end{{table}}
 """
@@ -699,18 +709,18 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
 
     tab4 = f"""\\begin{{table}}[htbp]
 \\centering
-\\caption{{Melhor resultado reportado no PADS por estudo (ordem de \\texttt{{row\\_id}}; sem ranqueamento --- cenários, métricas e protocolos não são comparáveis).}}
+\\caption{{Melhor resultado reportado por estudo (ordem de \\texttt{{row\\_id}}; sem ranqueamento --- protocolos não são comparáveis).}}
 \\label{{tab:desempenho}}
 {{\\tiny
-\\setlength{{\\tabcolsep}}{{1.8pt}}
-\\renewcommand{{\\arraystretch}}{{0.88}}
-\\begin{{tabular}}{{@{{}}r >{{\\raggedright\\arraybackslash}}p{{3.15cm}} >{{\\raggedright\\arraybackslash}}p{{1.65cm}} >{{\\raggedright\\arraybackslash}}p{{2.5cm}} >{{\\raggedright\\arraybackslash}}p{{1.35cm}} >{{\\raggedright\\arraybackslash}}p{{1.85cm}} l@{{}}}}
+\\setlength{{\\tabcolsep}}{{1.3pt}}
+\\renewcommand{{\\arraystretch}}{{0.80}}
+\\begin{{tabular*}}{{0.98\\textwidth}}{{@{{}}r@{{\\extracolsep{{\\fill}}}} >{{\\raggedright\\arraybackslash}}p{{3.08cm}} >{{\\raggedright\\arraybackslash}}p{{2.05cm}} >{{\\raggedright\\arraybackslash}}p{{2.45cm}} >{{\\raggedright\\arraybackslash}}p{{1.15cm}} >{{\\raggedright\\arraybackslash}}p{{2.05cm}} l@{{}}}}
 \\toprule
 \\textbf{{ID}} & \\textbf{{Estudo}} & \\textbf{{Cenário}} & \\textbf{{Modelo/Método}} & \\textbf{{Métrica}} & \\textbf{{Valor}} & \\textbf{{Validação (Vaz.)}} \\\\
 \\midrule
 {chr(10).join(t4_rows)}
 \\bottomrule
-\\end{{tabular}}
+\\end{{tabular*}}
 }}
 \\end{{table}}
 """
@@ -720,27 +730,28 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
     t5_rows = []
     notes_by_theme = [
         "Treino/teste restrito ao PADS; validação externa = 0/29.",
-        "Menor acurácia na fronteira PD vs.\\ DD/tremor essencial.",
+        "Menor acurácia em PD vs.\\ DD.",
         "Falta MDS-UPDRS/H\\&Y e coleta em vida livre.",
-        "Fusão, explicabilidade clínica, calibração e controle de vazamento.",
-        "Compartilhamento de código/dados em apenas \\nCodDisponivel/\\nTotal.",
+        "Fusão, XAI, calibração e controle de vazamento.",
+        "Só \\nCodDisponivel/\\nTotal\\ com código ou dados.",
     ]
     # Escolher citacoes representativas curtas para caber na largura
     short_order = [2, 23, 32, 40, 47, 49, 70, 76, 77, 80, 81, 83, 85, 87, 89, 90, 99, 101, 104, 105]
     for (tema, rids), nota in zip(themes, notes_by_theme):
-        picks = [i for i in short_order if i in rids][:3]
-        if len(picks) < 3:
-            picks = rids[:3]
+        picks = [i for i in short_order if i in rids][:2]
+        if len(picks) < 2:
+            picks = rids[:2]
         cites = ", ".join(f"\\cite{{{CITEKEY_BY_ROW[i]}}}" for i in picks)
-        t5_rows.append(f"{tema} & {len(rids)}/{n_tot} ({fmt_pct(len(rids), n_tot)}) & {cites} (e outros {max(0, len(rids)-len(picks))}) & {nota} \\\\")
+        t5_rows.append(f"{tema} & {len(rids)}/{n_tot} ({fmt_pct(len(rids), n_tot)}) & {cites} (e +{max(0, len(rids)-len(picks))}) & {nota} \\\\")
 
     tab5 = f"""\\begin{{table}}[htbp]
 \\centering
 \\caption{{Síntese temática das limitações reportadas, lacunas e reprodutibilidade nos \\nTotal\\ estudos (QP5).}}
 \\label{{tab:lacunas}}
 {{\\scriptsize
-\\setlength{{\\tabcolsep}}{{3pt}}
-\\begin{{tabular}}{{@{{}}>{{\\raggedright\\arraybackslash}}p{{3.8cm}} r >{{\\raggedright\\arraybackslash}}p{{4.0cm}} >{{\\raggedright\\arraybackslash}}p{{4.1cm}}@{{}}}}
+\\setlength{{\\tabcolsep}}{{2.6pt}}
+\\renewcommand{{\\arraystretch}}{{0.84}}
+\\begin{{tabular}}{{@{{}}>{{\\raggedright\\arraybackslash}}p{{4.40cm}} r >{{\\raggedright\\arraybackslash}}p{{3.55cm}} >{{\\raggedright\\arraybackslash}}p{{4.00cm}}@{{}}}}
 \\toprule
 \\textbf{{Tema / Lacuna}} & \\textbf{{$n/N$ (\\%)}} & \\textbf{{Exemplos no corpus}} & \\textbf{{Implicação para o PADS}} \\\\
 \\midrule
@@ -773,14 +784,14 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
 \\label{{tab:preprints}}
 {{\\scriptsize
 \\setlength{{\\tabcolsep}}{{3.5pt}}
-\\renewcommand{{\\arraystretch}}{{0.88}}
-\\begin{{tabular}}{{@{{}}l r r r@{{}}}}
+\\renewcommand{{\\arraystretch}}{{0.82}}
+\\begin{{tabular*}}{{0.78\\textwidth}}{{@{{}}l@{{\\extracolsep{{\\fill}}}} r r r@{{}}}}
 \\toprule
 \\textbf{{Indicador}} & \\textbf{{Revisados ($n=23$)}} & \\textbf{{Preprints ($n=6$)}} & \\textbf{{Total ($n=29$)}} \\\\
 \\midrule
 {t6_body}
 \\bottomrule
-\\end{{tabular}}
+\\end{{tabular*}}
 }}
 \\end{{table}}
 """
@@ -810,7 +821,7 @@ def write_figures(df: pd.DataFrame) -> None:
     hatches = ["", "///", "...", "xxx", "\\\\\\"]
     ct = pd.crosstab(df["Ano de Publicação"].astype(str), df["Tipo de Contribuição"]).reindex(index=years, columns=contribs, fill_value=0)
 
-    fig, ax = plt.subplots(figsize=(6.0, 1.95))
+    fig, ax = plt.subplots(figsize=(6.3, 1.82))
     bottom = np.zeros(len(years))
     x = np.arange(len(years))
     for col, col_c, hat in zip(contribs, colors, hatches):
@@ -818,20 +829,24 @@ def write_figures(df: pd.DataFrame) -> None:
         ax.bar(x, vals, width=0.46, bottom=bottom, label=col, color=col_c, edgecolor="black", hatch=hat, linewidth=0.8)
         for xi, v, b in zip(x, vals, bottom):
             if v >= 1:
-                if col_c in ("#222222", "#666666"):
-                    ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="white", fontsize=7.5, fontweight="bold")
+                if col_c == "#222222":
+                    ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="white", fontsize=8.5, fontweight="bold")
+                elif col_c == "#666666":
+                    ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="white", fontsize=8.5, fontweight="bold",
+                            bbox=dict(facecolor="#666666", edgecolor="none", pad=0.8, alpha=0.85))
                 else:
-                    ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="black", fontsize=7.2, fontweight="bold", bbox=halo)
+                    ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="black", fontsize=8.2, fontweight="bold", bbox=halo)
         bottom += vals
     for xi, tot in zip(x, bottom):
-        ax.text(xi, tot + 0.3, f"n={int(tot)}", ha="center", va="bottom", fontsize=8, fontweight="bold")
+        ax.text(xi, tot + 0.30, f"n={int(tot)}", ha="center", va="bottom", fontsize=9.0, fontweight="bold")
     ax.set_xticks(x)
-    ax.set_xticklabels(years)
-    ax.set_ylabel("Estudos")
-    ax.set_ylim(0, max(bottom) + 2.4)
+    ax.set_xticklabels(years, fontsize=9.0)
+    ax.set_ylabel("Estudos", fontsize=9.0)
+    ax.tick_params(axis="y", labelsize=8.8)
+    ax.set_ylim(0, max(bottom) + 2.2)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.legend(frameon=True, edgecolor="black", fontsize=7.2, loc="upper left")
+    ax.legend(frameon=True, edgecolor="black", fontsize=7.8, loc="upper left")
     fig.tight_layout()
     fig.savefig(FIG_DIR / "fig2_ano_contribuicao.pdf", bbox_inches="tight")
     plt.close(fig)
@@ -854,23 +869,24 @@ def write_figures(df: pd.DataFrame) -> None:
                     if f_val in fam_order:
                         mat[cen_order.index(c_val), fam_order.index(f_val)] += 1
 
-    fig, ax = plt.subplots(figsize=(6.2, 1.95))
+    fig, ax = plt.subplots(figsize=(6.4, 1.88))
     im = ax.imshow(mat, cmap="Greys", aspect="auto", vmin=0, vmax=max(mat.max(), 1) * 1.15)
     ax.set_xticks(np.arange(len(fam_labels)))
-    ax.set_xticklabels(fam_labels, fontsize=7.8)
+    ax.set_xticklabels(fam_labels, fontsize=8.5)
     ax.set_yticks(np.arange(len(cen_labels)))
-    ax.set_yticklabels(cen_labels, fontsize=8)
+    ax.set_yticklabels(cen_labels, fontsize=8.6)
     for i in range(mat.shape[0]):
         for j in range(mat.shape[1]):
             v = mat[i, j]
             txt_c = "white" if v >= mat.max() * 0.55 else "black"
-            ax.text(j, i, str(v), ha="center", va="center", color=txt_c, fontsize=8.5, fontweight="bold" if v > 0 else "normal")
+            ax.text(j, i, str(v), ha="center", va="center", color=txt_c, fontsize=9.2, fontweight="bold" if v > 0 else "normal")
     ax.set_xticks(np.arange(-0.5, len(fam_labels), 1), minor=True)
     ax.set_yticks(np.arange(-0.5, len(cen_labels), 1), minor=True)
     ax.grid(which="minor", color="black", linestyle="-", linewidth=0.5)
     ax.tick_params(which="minor", bottom=False, left=False)
-    cbar = fig.colorbar(im, ax=ax, fraction=0.025, pad=0.02)
-    cbar.set_label("Ocorrências", fontsize=7.8)
+    cbar = fig.colorbar(im, ax=ax, fraction=0.022, pad=0.02)
+    cbar.ax.tick_params(labelsize=8.2)
+    cbar.set_label("Ocorrências", fontsize=8.5)
     fig.tight_layout()
     fig.savefig(FIG_DIR / "fig3_cenario_familia.pdf", bbox_inches="tight")
     plt.close(fig)
@@ -880,7 +896,7 @@ def write_figures(df: pd.DataFrame) -> None:
     r_colors = ["#eeeeee", "#aaaaaa", "#444444", "#ffffff", "#dddddd"]
     r_hatches = ["", "///", "", "xxx", "..."]
 
-    fig, axes = plt.subplots(1, 2, figsize=(6.6, 2.0), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(6.8, 1.82), sharey=True)
     panels = [
         (axes[0], "Unidade de particionamento (partitioning unit)", ["Participante", "Não reportado", "Não se aplica"], ["Participante", "Não reportado", "Não se aplica"], "(a) Unidade de particionamento"),
         (axes[1], "Separação por participante (subject-level separation)", ["Sim – explícita", "Sim – inferida", "Pouco claro", "Não se aplica"], ["Sim expl.", "Sim inf.", "Pouco claro", "N/A"], "(b) Separação por participante"),
@@ -895,22 +911,23 @@ def write_figures(df: pd.DataFrame) -> None:
             for xi, v, b in zip(x, vals, bottom):
                 if v > 0:
                     if rc == "#444444":
-                        ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="white", fontsize=7.5, fontweight="bold")
+                        ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="white", fontsize=8.0, fontweight="bold")
                     elif rh:
-                        ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="black", fontsize=7.5, fontweight="bold", bbox=halo)
+                        ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="black", fontsize=8.0, fontweight="bold", bbox=halo)
                     else:
-                        ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="black", fontsize=7.5, fontweight="bold")
+                        ax.text(xi, b + v / 2, str(int(v)), ha="center", va="center", color="black", fontsize=8.0, fontweight="bold")
             bottom += vals
         ax.set_xticks(x)
-        ax.set_xticklabels(clabels, fontsize=7.8)
-        ax.set_title(title, fontsize=8.5, fontweight="bold")
+        ax.set_xticklabels(clabels, fontsize=8.2)
+        ax.set_title(title, fontsize=8.8, fontweight="bold")
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
-    axes[0].set_ylabel("Estudos")
+    axes[0].set_ylabel("Estudos", fontsize=8.6)
+    axes[0].tick_params(axis="y", labelsize=8.2)
     axes[0].set_ylim(0, 24.5)
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.07), ncol=5, frameon=True, edgecolor="black", fontsize=7.2)
-    fig.tight_layout(rect=[0, 0, 1, 0.93])
+    fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 1.07), ncol=5, frameon=True, edgecolor="black", fontsize=7.6)
+    fig.tight_layout(rect=[0, 0, 1, 0.92])
     fig.savefig(FIG_DIR / "fig4_risco_vazamento.pdf", bbox_inches="tight")
     plt.close(fig)
 
@@ -934,7 +951,7 @@ def write_figures(df: pd.DataFrame) -> None:
         mat_qa[i, 2] = int((s == 0.0).sum())
         mat_qa[i, 3] = int(s.isna().sum())
 
-    fig, ax = plt.subplots(figsize=(6.2, 1.9))
+    fig, ax = plt.subplots(figsize=(6.4, 1.78))
     y = np.arange(len(qa_cols))[::-1]
     left = np.zeros(len(qa_cols))
     for j, (clab, col_c, hat) in enumerate(zip(cats, q_colors, q_hatches)):
@@ -943,19 +960,20 @@ def write_figures(df: pd.DataFrame) -> None:
         for yi, v, lft in zip(y, vals, left):
             if v >= 2:
                 if col_c == "#333333":
-                    ax.text(lft + v / 2, yi, str(int(v)), ha="center", va="center", color="white", fontsize=7.5, fontweight="bold")
+                    ax.text(lft + v / 2, yi, str(int(v)), ha="center", va="center", color="white", fontsize=8.0, fontweight="bold")
                 elif hat:
-                    ax.text(lft + v / 2, yi, str(int(v)), ha="center", va="center", color="black", fontsize=7.5, fontweight="bold", bbox=halo)
+                    ax.text(lft + v / 2, yi, str(int(v)), ha="center", va="center", color="black", fontsize=8.0, fontweight="bold", bbox=halo)
                 else:
-                    ax.text(lft + v / 2, yi, str(int(v)), ha="center", va="center", color="black", fontsize=7.5, fontweight="bold")
+                    ax.text(lft + v / 2, yi, str(int(v)), ha="center", va="center", color="black", fontsize=8.0, fontweight="bold")
         left += vals
     ax.set_yticks(y)
-    ax.set_yticklabels(qa_labels, fontsize=8)
-    ax.set_xlabel("Estudos (total = 29)", fontsize=8)
+    ax.set_yticklabels(qa_labels, fontsize=8.4)
+    ax.set_xlabel("Estudos (total = 29)", fontsize=8.4)
+    ax.tick_params(axis="x", labelsize=8.2)
     ax.set_xlim(0, 29.5)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.legend(loc="upper center", bbox_to_anchor=(0.5, 1.20), ncol=4, frameon=True, edgecolor="black", fontsize=7.2)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, 1.22), ncol=4, frameon=True, edgecolor="black", fontsize=7.6)
     fig.tight_layout()
     fig.savefig(FIG_DIR / "fig5_qa.pdf", bbox_inches="tight")
     plt.close(fig)

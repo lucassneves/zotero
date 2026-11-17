@@ -2,31 +2,29 @@
 
 \subsection{Achados Principais, Estudo-Base e Recomendações}
 
-Nos estudos avaliados, há contraste claro entre modelos avançados e rigor:
-\nFamDL/\nTotal\ (\pctFamDL) usam \textit{deep learning}, mas só
-\nRiscoBaixo/\nAplicaveisVaz\ (\pctRiscoBaixoAplic) mantêm risco baixo de
-vazamento. O artigo-base~\cite{varghese_machine_2024} adotou CV aninhada,
-acurácia balanceada, código público e PD$\times$DD, mas poucos mantiveram esses
-critérios (\nValAninhada/\nTotal, \nMetBalAcc/\nTotal\ e
-\nCodDisponivel/\nTotal, nessa ordem). Protocolos sem controle ou com
-balanceamento pré-\textit{split}~%
-\cite{abioye_improving_2025,wang_parkinsons_2025,yu_improved_2024} chegam a
-92\%--100\%, incomparáveis à divisão por
+Há nítido contraste entre modelos e rigor: \nFamDL/\nTotal\ (\pctFamDL) usam
+\textit{deep learning}, mas só \nRiscoBaixo/\nAplicaveisVaz\
+(\pctRiscoBaixoAplic) têm risco baixo de vazamento. O
+artigo-base~\cite{varghese_machine_2024} usou CV aninhada, acurácia balanceada,
+código aberto e PD$\times$DD, critério seguido por poucos (\nValAninhada/\nTotal,
+\nMetBalAcc/\nTotal\ e \nCodDisponivel/\nTotal). Estudos sem controle ou com
+balanceamento pré-\textit{split}~\cite{abioye_improving_2025,wang_parkinsons_2025,yu_improved_2024}
+atingem 92\%--100\%, incomparáveis ao corte por
 sujeito~\cite{zeebaree_three-class_2027,vu_simple_2026}, conforme alertam
-revisões~\cite{pinto_neto_machine_2026,ouabd_overview_2026}.
-
-Para avançar a área, quatro cuidados são prioritários: separar por participante
-antes de janelar, normalizar ou gerar amostras; usar métricas balanceadas
-(Bal.\ Acc., F1-macro, MCC) e calibração; focar tarefas com DD; e abrir código,
-lendo \textit{preprints} (\nPreprints) com cautela.
+revisões~\cite{pinto_neto_machine_2026,ouabd_overview_2026}. São prioridades:
+separar por sujeito antes de janelar, escalar ou ampliar amostras; adotar
+métricas balanceadas (Bal.\ Acc., F1-macro, MCC) e calibração; focar DD; e
+abrir código, lendo \textit{preprints} (\nPreprints) com cautela.
 
 \subsection{Ameaças à Validade}
 
-Na busca (I7), focar citações ao artigo-base~\cite{varghese_machine_2024} pode
-omitir quem cita só o
-PhysioNet~\cite{PhysioNet-parkinsons-disease-smartwatch-1.0.0}, além de faltarem
-corte e rejeições. Na extração (I2), IA sem dupla revisão nem $\kappa$ deixa
-\nPontosRevisao\ pontos e metadados pendentes. Os \textit{preprints} (B4) foram
-tratados na Seção~\ref{sec:preprints}; QA e vazamento (I4, I5) avaliam relato, e
-a validação externa (I1) requer revisão em \nMultiBase/\nTotal\ multibase
-e~\cite{abioye_improving_2025}.
+Partir das citações ao artigo-base~\cite{varghese_machine_2024} pode omitir
+quem cita só o PhysioNet~\cite{PhysioNet-parkinsons-disease-smartwatch-1.0.0}.
+A extração por pesquisador único (sem dupla revisão nem $\kappa$) foi mitigada
+por conferência integral. O formulário de 38 campos não estruturou etapas de
+pré-processamento IMU (filtragem, descarte inicial, janela/\textit{overlap} e
+escopo de escala), agrupando séries puras e filtradas em ``Série bruta'' e
+limitando essa análise às notas e textos. Os \textit{preprints} estão na
+Seção~\ref{sec:preprints}, QA e risco refletem o relato dos autores, e o zero
+em validação externa (\nValExtSim/\nTotal) confirmou-se nos \nMultiBase/\nTotal\
+estudos multibase e em~\cite{abioye_improving_2025}.
