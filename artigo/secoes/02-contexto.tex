@@ -14,19 +14,22 @@ esclerose múltipla e 60 outros distúrbios) \cite{varghese_machine_2024}.
 O protocolo envolve 11 etapas motoras (oito de 10~s e três de 20~s,
 $\sim$15~min), 14 janelas de 10~s (168 canais na formulação de ML), 30
 questões binárias do PDNMS e metadados (sem Hoehn \& Yahr ou MDS-UPDRS)
-\cite{varghese_machine_2024}. O estudo-base~\cite{varghese_machine_2024} avaliou
-PD$\times$HC ($n=355$) e PD$\times$DD ($n=390$) em CV aninhada 5$\times$5 por
-sujeito (atributos manuais, BOSS, \textit{XceptionTime} e \textit{CatBoost}),
-atingindo acurácia balanceada de 91,16\% ($\pm$4,92\%) e 72,42\%
-($\pm$12,33\%) (com recorte pareado por sexo, $n=234$). A base está no
+\cite{varghese_machine_2024}. O estudo-base~\cite{varghese_machine_2024} avaliou PD contra HC (PD$\times$HC,
+$n=355$) e PD contra DD (PD$\times$DD, $n=390$) em validação cruzada
+(\textit{cross-validation} - CV) aninhada 5$\times$5 por sujeito (dobras
+internas e externas, atributos manuais,
+\textit{Bag-of-SFA-Symbols} - BOSS, \textit{XceptionTime} e \textit{CatBoost}),
+atingindo acurácia balanceada (Bal.\ Acc.) de 91,16\% ($\pm$4,92\%) e 72,42\%
+($\pm$12,33\%) (pareado por sexo, $n=234$), no
 PhysioNet~\cite{PhysioNet-parkinsons-disease-smartwatch-1.0.0}.
 
 \subsection{Revisões Relacionadas}
 
 Revisões recentes (excluídas por CE3) apontam lacunas na área: um mapeamento
 de 133 estudos destacou baixa padronização entre
-bases~\cite{shokrpour_machine_2025}; outra síntese ressaltou a variabilidade
-interindividual em 11 trabalhos vestíveis~\cite{ouabd_overview_2026}; e uma
+bases~\cite{shokrpour_machine_2025}, outra síntese ressaltou a variabilidade
+interindividual em 11 trabalhos vestíveis~\cite{ouabd_overview_2026} e uma
 revisão de 264 artigos achou alto risco de viés em 98,1\% e só 7,6\% com
-validação externa~\cite{pinto_neto_machine_2026}. Ao isolar os \nTotal\ estudos
+validação externa (avaliação em base independente da de
+treino)~\cite{pinto_neto_machine_2026}. Ao isolar os \nTotal\ estudos
 do PADS, comparamos métodos e riscos sobre os mesmos dados.

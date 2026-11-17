@@ -2,19 +2,20 @@
 
 \subsection{Diretrizes, PICOC e Questões de Pesquisa}
 
-Conduzimos um mapeamento sistemático rápido descritivo, combinando a estrutura de
-protocolo de~\cite{fernandes_interoperability_2018} (GQM, PICOC, critérios e
-\textit{snowballing}) às adaptações de revisão rápida de~\cite{garritty_cochrane_2021},
-com registro no Parsifal. Pelo PICOC: \textit{Population} (\textit{Parkinson,
-Parkinsonism}); \textit{Intervention} (\textit{PADS, smartwatch, wearable,
-inertial sensor, accelerometer, gyroscope, ML/DL}); \textit{Comparison} (N/A);
+Conduzimos um mapeamento rápido descritivo (\textit{rapid mapping study}),
+combinando o protocolo de~\cite{fernandes_interoperability_2018}
+(GQM, PICOC, critérios e \textit{snowballing}) às adaptações rápidas
+de~\cite{garritty_cochrane_2021}, com apoio da ferramenta Parsifal. Pelo PICOC,
+adotamos \textit{Population} (\textit{Parkinson, Parkinsonism}),
+\textit{Intervention} (\textit{PADS, smartwatch, wearable, inertial sensor,
+accelerometer, gyroscope, ML/DL}), \textit{Comparison} (não se aplica, N/A),
 \textit{Outcome} (\textit{classification, detection, diagnosis, differential
-diagnosis, accuracy, F1-score, AUC, sensitivity, specificity}); e
-\textit{Context} (\textit{movement tasks, digital biomarkers, open dataset}).
-Sob o GQM, respondemos: \textbf{QP1} (estudos, ano, veículo, contribuição);
-\textbf{QP2} (tarefas e recortes); \textbf{QP3} (pré-processamento, atributos,
-modelos); \textbf{QP4} (validação, métricas, desempenho); e \textbf{QP5}
-(lacunas e oportunidades).
+diagnosis, accuracy, F1-score}, AUC - área sob a curva ROC, \textit{sensitivity,
+specificity}) e \textit{Context} (\textit{movement tasks, digital biomarkers, open dataset}). Sob o GQM, respondemos a \textbf{QP1}
+(estudos, ano, veículo, contribuição), \textbf{QP2} (tarefas e recortes),
+\textbf{QP3} (pré-processamento, atributos, modelos), \textbf{QP4} (validação,
+métricas, desempenho, qualidade e reprodutibilidade) e \textbf{QP5} (lacunas e
+oportunidades).
 
 \subsection{Busca, Fontes e Fluxo de Seleção}
 
@@ -29,98 +30,107 @@ blocos de termos: \texttt{"PADS"}, \texttt{Parkinson*}, sensores
 \texttt{artificial intelligence}, \texttt{attention}, \texttt{framework},
 \texttt{learning}, \texttt{model}, \texttt{network}) e tarefa
 (\texttt{classification}, \texttt{detection}, \texttt{disease identification},
-\texttt{screening}), com ajustes à sintaxe de cada biblioteca (na
-ScienceDirect, restrita a título, resumo e palavras-chave), em busca executada
-em 12/11/2026 e consolidada até 13/11/2026.\par
+\texttt{screening}), ajustada a cada biblioteca (na ScienceDirect:
+título, resumo e palavras-chave), em busca de
+12/11/2026 consolidada até 13/11/2026.\par
 }
 
-Os \nImportados\ registros importados no Parsifal vieram de: (1)
-\textbf{citações}: \nScholarDireto\ no Google Scholar e \nNatureExcl\
-exclusivos da Nature Citations (\nNatureTotal\ no total; \nComumScholarNature\
-em comum, \nSoScholar\ só no Scholar e união \nUniaoScholarNature); (2)
-\textbf{\textit{strings}}: \nStringsTotal\ (IEEE \nStringsIEEE, PMC
-\nStringsPMC, SD \nStringsSD\ e Scopus \nStringsScopus); e (3)
-\textbf{\textit{forward snowballing}} exclusivo (sem etapa \textit{backward},
-pois o PADS data de 2024 e os usuários são posteriores ao artigo-base, em
-adaptação prospectiva de~\cite{fernandes_interoperability_2018}): \nSnowballing\
-registros únicos de \nSementesSnowballing\ sementes (no recorte de \nScholarBalde\
-do Scholar).
+Os \nImportados\ registros importados no Parsifal vieram de três rotas. Na (1)
+\textbf{busca por citações}, obtivemos \nScholarDireto\ registros diretos no
+Google Scholar e \nNatureExcl\ exclusivos da Nature Citations (\nNatureTotal\ no
+total dessa fonte, sendo \nComumScholarNature\ em comum com o Scholar,
+\nSoScholar\ exclusivos do Scholar e união de \nUniaoScholarNature). Nas (2)
+\textbf{consultas por \textit{string}}, recuperamos \nStringsTotal\ registros
+(IEEE \nStringsIEEE, PMC \nStringsPMC, SD \nStringsSD\ e Scopus \nStringsScopus).
+No (3) \textbf{\textit{forward snowballing}} exclusivo (sem etapa
+\textit{backward}, pois os usuários sucedem o PADS (2024), em adaptação
+prospectiva de~\cite{fernandes_interoperability_2018}),
+identificamos \nSnowballing\ registros únicos a partir de \nSementesSnowballing\
+sementes. No Parsifal, esses \nSnowballing\ registros do \textit{snowballing}
+somaram-se ao Google Scholar (\nScholarDireto\ + \nSnowballing\ =
+\nScholarBalde), totalizando \nScholarBalde\ + \nNatureExcl\ + \nStringsTotal\ =
+\nImportados\ importações.
 
-Adotamos quatro critérios de inclusão (\textbf{CI1}: uso do PADS; \textbf{CI2}:
-publicação entre o lançamento do PADS --- artigo em 05/01/2024 e PhysioNet em
-25/03/2024 --- e 12/11/2026; \textbf{CI3}: artigo completo revisado por pares;
+Adotamos quatro critérios de inclusão (\textbf{CI1}: uso do PADS, \textbf{CI2}:
+publicação entre o lançamento do PADS, em 05/01/2024 no artigo e 25/03/2024 no
+PhysioNet, e 12/11/2026, \textbf{CI3}: artigo completo revisado por pares e
 \textbf{CI4}: inglês ou português) e seis de exclusão (\textbf{CE1}: citação
-apenas relacionada; \textbf{CE2}: literatura cinza, \textit{preprints}, livros
-ou resumos; \textbf{CE3}: revisões/\textit{surveys}; \textbf{CE4}: duplicatas ou
-versões preliminares; \textbf{CE5}: sem texto completo; \textbf{CE6}: outro
+apenas relacionada, \textbf{CE2}: literatura cinzenta (sem revisão formal: \textit{preprints}, livros e resumos), \textbf{CE3}:
+revisões/\textit{surveys}, \textbf{CE4}: duplicatas ou versões preliminares, \textbf{CE5}: sem texto completo e \textbf{CE6}: outro
 idioma). Dos \nImportados\ registros, removemos \nDuplicados\ duplicados e
-triamos \nTriados, resultando em \nRejeitados\ rejeitados (\nRejCEUm\ CI1/CE1,
-\nRejCETres\ CE3 e \nRejCEDois\ CE2; \nRejMetadados\ por metadados e \nRejTexto\
-em texto completo, sem exclusões isoladas por CE5/CE6) e \nAceitos\ incluídos
-(Figura~\ref{fig:fluxo}).
+triamos \nTriados, resultando em \nRejeitados\ rejeitados (\nRejCEUm\ por
+CI1/CE1, \nRejCETres\ por CE3 e \nRejCEDois\ por CE2, sendo \nRejMetadados\ por
+metadados e \nRejTexto\ em texto completo, 0 isoladas por CE5 ou CE6) e
+\nAceitos\ incluídos (Figura~\ref{fig:fluxo}).
 
 \begin{figure}[htbp]
 \centering
 \begin{tikzpicture}[
-  node distance=0.25cm and 0.25cm,
-  box/.style={rectangle, draw=black, line width=0.65pt, align=center, font=\scriptsize, minimum height=0.52cm, inner sep=2.2pt},
-  widebox/.style={rectangle, draw=black, line width=0.65pt, align=center, font=\scriptsize, minimum height=0.48cm, text width=6.1cm, inner sep=2.2pt},
-  sidebox/.style={rectangle, draw=black, dashed, line width=0.55pt, align=left, font=\scriptsize, minimum height=0.48cm, text width=4.25cm, inner sep=2.2pt},
+  node distance=0.18cm and 0.20cm,
+  box/.style={rectangle, draw=black, line width=0.65pt, align=center, font=\scriptsize, minimum height=0.42cm, inner sep=1.8pt},
+  widebox/.style={rectangle, draw=black, line width=0.65pt, align=center, font=\scriptsize, minimum height=0.38cm, text width=7.0cm, inner sep=1.8pt},
+  sidebox/.style={rectangle, draw=black, dashed, line width=0.55pt, align=left, font=\scriptsize, minimum height=0.38cm, text width=4.1cm, inner sep=1.8pt},
   arr/.style={-{Stealth[length=2mm]}, line width=0.65pt}
 ]
-\node[box, text width=3.95cm] (r1) {\textbf{Rota 1: Citações base}\\Scholar: \nScholarDireto; Nature: \nNatureExcl\ excl. (\nNatureTotal)};
-\node[box, right=0.25cm of r1, text width=3.6cm] (r2) {\textbf{Rota 2: Strings (\nStringsTotal)}\\IEEE \nStringsIEEE; PMC \nStringsPMC; SD \nStringsSD; Scopus \nStringsScopus};
-\node[box, right=0.25cm of r2, text width=3.55cm] (r3) {\textbf{Rota 3: Forward Snowballing}\\ \nSnowballing\ reg. (\nSementesSnowballing\ sementes)};
+\node[box, text width=4.20cm] (r1) {\textbf{Rota 1: Citações base}\\Scholar: \nScholarDireto, Nature: \nNatureExcl\ excl.\ (\nNatureTotal)};
+\node[box, right=0.20cm of r1, text width=4.20cm] (r2) {\textbf{Rota 2: Strings (\nStringsTotal)}\\IEEE \nStringsIEEE, PMC \nStringsPMC, SD \nStringsSD, Scopus \nStringsScopus};
+\node[box, right=0.20cm of r2, text width=3.70cm] (r3) {\textbf{Rota 3: Forward Snowballing}\\ \nSnowballing\ reg.\ (\nSementesSnowballing\ sementes)};
 
-\node[widebox, below=0.35cm of r2] (imp) {\textbf{Importados no Parsifal ($n=\nImportados$)} (\nScholarDireto\ + \nNatureExcl\ + \nSnowballing\ + \nStringsTotal)};
-\node[widebox, below=0.25cm of imp] (tri) {\textbf{Registros únicos triados ($n=\nTriados$)}};
-\node[sidebox, right=0.45cm of tri] (dup) {\textbf{Duplicados removidos: \nDuplicados} (CE4)};
-\node[widebox, below=0.34cm of tri] (ace) {\textbf{Incluídos na síntese ($n=\nAceitos$)}: \nRevisadosPares\ revisados + \nPreprints\ \textit{preprints}};
-\node[sidebox, right=0.45cm of ace] (rej) {\textbf{Rejeitados: \nRejeitados}\\CE1/CI1: \nRejCEUm; CE3: \nRejCETres; CE2: \nRejCEDois\\(\nRejMetadados\ metadados; \nRejTexto\ texto compl.)};
+\node[widebox, below=0.22cm of r2] (imp) {\textbf{Importados no Parsifal ($n=\nImportados$)} (\nScholarDireto\ + \nNatureExcl\ + \nSnowballing\ + \nStringsTotal)};
+\node[widebox, below=0.16cm of imp] (tri) {\textbf{Registros únicos triados ($n=\nTriados$)}};
+\node[sidebox, right=0.35cm of tri] (dup) {\textbf{Duplicados removidos: \nDuplicados} (CE4)};
+\node[widebox, below=0.32cm of tri] (ace) {\textbf{Incluídos na síntese ($n=\nAceitos$)}: \nRevisadosPares\ revisados + \nPreprints\ \textit{preprints}};
+\node[sidebox, right=0.35cm of ace] (rej) {\textbf{Rejeitados: \nRejeitados}\\CE1/CI1: \nRejCEUm, CE3: \nRejCETres, CE2: \nRejCEDois\\(\nRejMetadados\ metadados, \nRejTexto\ texto compl.)};
 
-\draw[arr] (r1.south) |- ([yshift=0.17cm]imp.north) -- (imp.north);
+\draw[arr] (r1.south) |- ([yshift=0.11cm]imp.north) -- (imp.north);
 \draw[arr] (r2.south) -- (imp.north);
-\draw[arr] (r3.south) |- ([yshift=0.17cm]imp.north) -- (imp.north);
+\draw[arr] (r3.south) |- ([yshift=0.11cm]imp.north) -- (imp.north);
 \draw[arr] (imp.south) -- (tri.north);
 \draw[arr] (tri.east) -- (dup.west);
 \draw[arr] (tri.south) -- (ace.north);
-\draw[arr] ([yshift=-0.16cm]tri.south) -| ([xshift=-0.22cm]rej.west) -- (rej.west);
+\draw[arr] ([yshift=-0.16cm]tri.south) -| ([xshift=-0.17cm]rej.west) -- (rej.west);
 \end{tikzpicture}
 \caption{Fluxo de identificação, triagem e inclusão dos \nTotal\ estudos por rota.}
 \label{fig:fluxo}
 \end{figure}
 
-\subsection{Desvio do Protocolo, Qualidade e Extração}
+\subsection{Desvio do Protocolo, Qualidade e Extração}\label{sec:desvio_qa}
 
 \textbf{Desvio declarado e casos limítrofes:} apesar de CE2 e CI3 excluírem
-literatura cinza, mantivemos os \nPreprints\ \textit{preprints} localizados: com
-base recente (2024) e corpus revisado reduzido ($n=\nRevisadosPares$), eles
-capturam arquiteturas e debates sobre vazamento de
-2026~\cite{djemaa_quantifying_2026}, sem versões publicadas até o corte. Esses
-estudos --- incl.~\cite{zannat_label-efficient_2026}, de risco alto por
-janelamento dependente de classe --- recebem análise isolada e de sensibilidade
-na Seção~\ref{sec:preprints}. Mantivemos também o
-artigo-semente~\cite{varghese_machine_2024} e dois estudos restritos ao
-PDNMS~\cite{padilha_parkinsons_2024,ouabd_parkinsons_2026}
-(\cite{padilha_parkinsons_2024}, curto de 2~pág.\ revisado por pares, traz
-experimento e métricas completas).
+literatura cinzenta, mantivemos os \nPreprints\ \textit{preprints} localizados como
+desvio declarado do protocolo. Em uma base recente (2024) e com corpus revisado
+ainda reduzido ($n=\nRevisadosPares$), esses manuscritos de 2026 atendem a CI1 e
+CI4, alcançam qualidade metodológica mínima ($\ge 70\%$, faixa de 70\% a 90\%) e
+registram debates sobre vazamento em \textit{augmentation}~\cite{djemaa_quantifying_2026},
+sem versão publicada até o corte. Os outros dez registros rejeitados em CE2
+permaneceram excluídos (nove sem uso confirmado do PADS em CI1 e um resumo de
+pôster). Esses \nPreprints\ \textit{preprints},
+incluindo~\cite{zannat_label-efficient_2026} (risco alto de vazamento por
+janelamento, segmentação temporal das séries, dependente de classe), recebem
+análise isolada e de sensibilidade na Seção~\ref{sec:preprints}. Mantivemos
+também o artigo-semente~\cite{varghese_machine_2024} e dois estudos restritos ao
+PDNMS~\cite{padilha_parkinsons_2024,ouabd_parkinsons_2026}, pois~\cite{padilha_parkinsons_2024}
+é um resumo expandido revisado por pares de duas páginas com experimento e métricas
+completas.
 
-\textbf{Qualidade (QA1--QA5):} avaliamos definição da tarefa (QA1), recorte
-(QA2), prevenção de vazamento entre sujeitos (QA3), métricas ao
+\textbf{Qualidade metodológica (QA1--QA5):} avaliamos definição da tarefa (QA1),
+recorte (QA2), prevenção de vazamento entre sujeitos (QA3), métricas ao
 desbalanceamento (QA4) e replicabilidade/código (QA5) em \textit{Yes}=1,0,
-\textit{Partially}=0,5 e \textit{No}=0,0. Itens \textit{N/A}
-(\cite{abola_differentiating_2025,ren_baseline_2026}) saíram de
-\texttt{nota\_qa\_pct}, com faixas Alta ($\ge 80\%$), Média ($50\%$--$79\%$) e
-Baixa ($<50\%$).
+\textit{Partially}=0,5 e \textit{No}=0,0, como escore descritivo distinto do
+risco de vazamento. Itens \textit{N/A} (\cite{abola_differentiating_2025} em
+análise estatística e \cite{ren_baseline_2026} em linha de base sem modelo
+preditivo, avaliado apenas em QA2 e QA5 com 0/2) saíram do escore proporcional
+(\texttt{nota\_qa\_pct}), agrupado nas faixas Alta ($\ge 80\%$), Média
+($50\%$--$79\%$) e Baixa ($<50\%$).
 
 \textbf{Extração e risco de vazamento:} o autor extraiu os 38 campos no Parsifal
 e realizou segunda conferência integral, sem dupla extração nem cálculo de
 $\kappa$ (\cite{garritty_cochrane_2021}), validando tipo e veículo no Zotero e
 nos PDFs. Segundo a literatura de
 vazamento~\cite{kapoor_leakage_2023,vandewiele_overly_2021,djemaa_quantifying_2026},
-o risco reflete o relato: \textit{N/A} (sem modelo preditivo); \textit{Alto}
-(divisão por janela/gravação, mistura de sujeitos ou
-balanceamento/pré-processamento pré-\textit{split}); \textit{Baixo} (divisão
-por sujeito e balanceamento/pré-processamento ausentes ou só no treino);
-\textit{Moderado} (parcial ou sem detalhe do pré-processamento); e
-\textit{Indeterminado} (sem dados).
+o risco reflete o relato: \textit{N/A} (sem modelo preditivo), \textit{Alto}
+(divisão por janela/gravação, mistura de sujeitos ou balanceamento de classes e
+pré-processamento pré-\textit{split}, anteriores à divisão treino/teste),
+\textit{Baixo} (divisão por sujeito e balanceamento/pré-processamento ausentes ou
+restritos ao treino), \textit{Moderado} (parcial ou sem detalhe do
+pré-processamento) e \textit{Indeterminado} (sem dados).

@@ -2,29 +2,41 @@
 
 \subsection{Achados Principais, Estudo-Base e Recomendações}
 
-Há nítido contraste entre modelos e rigor: \nFamDL/\nTotal\ (\pctFamDL) usam
-\textit{deep learning}, mas só \nRiscoBaixo/\nAplicaveisVaz\
-(\pctRiscoBaixoAplic) têm risco baixo de vazamento. O
-artigo-base~\cite{varghese_machine_2024} usou CV aninhada, acurácia balanceada,
-código aberto e PD$\times$DD, critério seguido por poucos (\nValAninhada/\nTotal,
-\nMetBalAcc/\nTotal\ e \nCodDisponivel/\nTotal). Estudos sem controle ou com
-balanceamento pré-\textit{split}~\cite{abioye_improving_2025,wang_parkinsons_2025,yu_improved_2024}
-atingem 92\%--100\%, incomparáveis ao corte por
-sujeito~\cite{zeebaree_three-class_2027,vu_simple_2026}, conforme alertam
-revisões~\cite{pinto_neto_machine_2026,ouabd_overview_2026}. São prioridades:
-separar por sujeito antes de janelar, escalar ou ampliar amostras; adotar
-métricas balanceadas (Bal.\ Acc., F1-macro, MCC) e calibração; focar DD; e
-abrir código, lendo \textit{preprints} (\nPreprints) com cautela.
+Há contraste entre adoção e rigor: \nFamDL/\nTotal\ (\pctFamDL) estudos usam DL,
+mas apenas \nRiscoBaixo/\nAplicaveisVaz\ (\pctRiscoBaixoAplic) apresentam risco
+baixo de vazamento de dados (\textit{data leakage}) segundo o relato, isto é,
+divisão por participante e balanceamento/pré-processamento restritos ao treino.
+Apesar dos \nCenPDDD/\nTotal\ (\pctCenPDDD) em PD$\times$DD, o trio do
+estudo-base~\cite{varghese_machine_2024} seguiu raro: CV aninhada
+(\nValAninhada/\nTotal), Bal.\ Acc.\ (\nMetBalAcc/\nTotal) e código
+(\nCodDisponivel/\nTotal).
 
-\subsection{Ameaças à Validade}
+Risco alto de vazamento pré-\textit{split} eleva taxas:
+\cite{abioye_improving_2025} (100,00\%, 3 classes),
+\cite{zannat_label-efficient_2026} (AUROC 0,963), \cite{wang_parkinsons_2025}
+(92,39\%) e~\cite{yu_improved_2024} (92,15\%). Porém, risco baixo de vazamento
+também passa de 90\% em PD$\times$HC~\cite{sridhar_early_2026,ouabd_parkinsons_2026}
+(95,30\% \textit{10-fold}, 93,24\% PDNMS), ante taxas menores em 3
+classes~\cite{zeebaree_three-class_2027,wei_sgc-rml_2026} (72,28\%, AUC 0,825).
+Protocolos distintos não se comparam~\cite{pinto_neto_machine_2026,ouabd_overview_2026},
+pedindo corte por sujeito pré-janela, Bal.\ Acc./F1-macro/MCC, calibração, DD,
+código e cautela nos \textit{preprints} (\nPreprints).
 
-Partir das citações ao artigo-base~\cite{varghese_machine_2024} pode omitir
-quem cita só o PhysioNet~\cite{PhysioNet-parkinsons-disease-smartwatch-1.0.0}.
-A extração por pesquisador único (sem dupla revisão nem $\kappa$) foi mitigada
-por conferência integral. O formulário de 38 campos não estruturou etapas de
-pré-processamento IMU (filtragem, descarte inicial, janela/\textit{overlap} e
-escopo de escala), agrupando séries puras e filtradas em ``Série bruta'' e
-limitando essa análise às notas e textos. Os \textit{preprints} estão na
-Seção~\ref{sec:preprints}, QA e risco refletem o relato dos autores, e o zero
-em validação externa (\nValExtSim/\nTotal) confirmou-se nos \nMultiBase/\nTotal\
-estudos multibase e em~\cite{abioye_improving_2025}.
+\subsection{Ameaças à Validade e Limitações}
+
+Partir de~\cite{varghese_machine_2024} e exigir \texttt{"PADS"} pode omitir quem
+cita só o PhysioNet~\cite{PhysioNet-parkinsons-disease-smartwatch-1.0.0} ou sem a
+sigla. Triagem e extração únicas, sem dupla revisão nem $\kappa$, tiveram
+checagem integral. Os \nPreprints\ \textit{preprints} geram viés
+(Tabela~\ref{tab:preprints}) sem busca no \textit{arXiv}/\textit{medRxiv}, e os
+\nRejCEDois\ CE2 (9 sem PADS/CI1, 1 pôster 30\%) ficaram sem QA
+completa.
+
+Critérios de qualidade metodológica \textbf{QA1--QA5} são \textit{ad hoc}, sobrepondo
+\textbf{QA3} ao risco de vazamento, com cortes (80\%, 50\%) sem validação
+externa. Refletem só o relato, logo omissão não implica ausência. Os 38 campos
+agruparam séries sem detalhar pré-processamento IMU
+(filtro, corte, janela/\textit{overlap}, escala), limitando o tema a notas, e a
+validação externa nula (\nValExtSim/\nTotal) confirmou-se nos
+\nMultiBase/\nTotal\ multibase e~\cite{abioye_improving_2025}. O detalhamento
+metodológico desta análise será ampliado em versão posterior.

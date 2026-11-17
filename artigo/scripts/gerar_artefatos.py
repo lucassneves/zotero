@@ -183,6 +183,45 @@ def compact_risco(val: object) -> str:
     return mapa.get(str(val), tex_esc(val))
 
 
+def _format_best_val(raw_val: str, raw_met: str) -> str:
+    """Normaliza valores de Tabela 4 com vírgula decimal e precisão uniforme."""
+    explicit_map = {
+        "0.972868 (97.29%, 95% CI ± 0.00701)": "97,29%",
+        "1.00 (100%)": "100,00%",
+        "0.068 (LR χ²(75) = 1740.33, p < 0.001)": "0,068 (LR χ²=1740, p<0,001)",
+        "0.87": "87,00%",
+        "0.8417": "0,842",
+        "0.876±0.014": "87,60% ± 1,40%",
+        "95.3±1.1% (10-fold) / 92.7±1.7% (LOSO)": "95,30% ± 1,10% (10-fold)",
+        "81% / 0.81 / 0.81 (HC vs. PD: Accuracy 81%, F1-score 0.80, AUC 0.81; HC+PL vs. PD: Accuracy 81%, F1-score 0.77, AUC 0.81)": "81,00% / 0,81 / 0,81",
+        "84,05 ± 3,16% (Acurácia Balanceada: 68,33 ± 6,08%; F1-score: 71,14 ± 6,98%; Precisão: 81,60 ± 7,27%; Recall: 68,33 ± 6,08%)": "84,05% ± 3,16%",
+    }
+    if raw_val in explicit_map:
+        return explicit_map[raw_val]
+    if "para carga de sintomas" in raw_val:
+        return "r = -0,171 (p=0,0071)"
+    val = raw_val.replace(" [.708,.942]", "")
+    val = re.sub(r"\s*\([^)]{15,}\)", "", val).strip()
+    if " / " in val:
+        val = val.split(" / ")[0].strip()
+    # Normalizar padrões numéricos simples (a ± b% ou a% ou a (b%))
+    m_pm_pct = re.fullmatch(r"(\d+[.,]\d+)\s*%?\s*±\s*(\d+[.,]\d+)\s*%", val)
+    if m_pm_pct:
+        a = float(m_pm_pct.group(1).replace(",", "."))
+        b = float(m_pm_pct.group(2).replace(",", "."))
+        return f"{a:.2f}% ± {b:.2f}%".replace(".", ",")
+    m_paren_pct = re.fullmatch(r"(\d+[.,]\d+)%\s*\((\d+[.,]\d+)%\)", val)
+    if m_paren_pct:
+        a = float(m_paren_pct.group(1).replace(",", "."))
+        b = float(m_paren_pct.group(2).replace(",", "."))
+        return f"{a:.2f}% ({b:.2f}%)".replace(".", ",")
+    m_pct = re.fullmatch(r"(\d+(?:[.,]\d+)?)%", val)
+    if m_pct:
+        a = float(m_pct.group(1).replace(",", "."))
+        return f"{a:.2f}%".replace(".", ",")
+    return re.sub(r"\s*±\s*", " ± ", val).replace(".", ",")
+
+
 def parse_best_result(row: pd.Series) -> tuple[str, str, str, str]:
     s = str(row["Melhor resultado (Evaluation Values)"])
     parts = [p.strip() for p in s.split("; ")]
@@ -190,16 +229,22 @@ def parse_best_result(row: pd.Series) -> tuple[str, str, str, str]:
         cen, mod, met, val = parts[0], parts[1], parts[2], "; ".join(parts[3:])
     else:
         cen, mod, met, val = "--", s, "--", "--"
-    cen = (cen.replace("3 classes (Mult-Class)", "3 classes")
-              .replace("PD×HC (tarefa Relaxed / Rest Tremor)", "PD×HC (Relaxed/Rest)")
-              .replace("PD×DD (tarefa StretchHold)", "PD×DD (StretchHold)")
-              .replace("PD vs. non-PD (binário)", "PD vs. non-PD")
-              .replace("PD×HC", r"PD$\times$HC")
-              .replace("PD×DD", r"PD$\times$DD")
-              .replace("DD×HC", r"DD$\times$HC")
-              .replace("Associação sintomas não motores vs. amplitude de movimento (PADS)", "Correl. NMS-IMU")
-              .replace("Diferenciação diagnóstica (6 grupos)", "6 grupos"))
-    # Abreviar nomes longos de modelo mantendo fidelidade ao artigo
+    cen_map = {
+        "3 classes (Mult-Class)": "3 classes",
+        "PD×HC": r"PD$\times$HC",
+        "PD×DD": r"PD$\times$DD",
+        "DD×HC": r"DD$\times$HC",
+        "PD×HC (tarefa Relaxed / Rest Tremor)": r"PD$\times$HC (Relaxed/Rest)",
+        "PD×DD (tarefa StretchHold)": r"PD$\times$DD (StretchHold)",
+        "PD×DD (CrossArms)": r"PD$\times$DD (CrossArms)",
+        "DP vs CO": r"PD$\times$HC (DP vs. CO)",
+        "PD vs. non-PD (binário)": "Outro (PD vs. non-PD)",
+        "PD vs. No PD": "Outro (PD vs. No PD)",
+        "PL vs. PD": "Outro (PL vs. PD)",
+        "Diferenciação diagnóstica (6 grupos)": "Outro (6 grupos)",
+        "Associação sintomas não motores vs. amplitude de movimento (PADS)": "N/A (Correl.)",
+    }
+    cen = cen_map.get(cen, cen)
     mod_map = {
         "Multi-stream deep representation learning network": "Multi-stream CNN-Transf.",
         "Proposed CNN–BiLSTM + Attention": "CNN-BiLSTM + Attention",
@@ -220,13 +265,7 @@ def parse_best_result(row: pd.Series) -> tuple[str, str, str, str]:
               .replace("Accuracy / F1-score / AUC", "Acc/F1/AUC")
               .replace("Spearman r (FDR-adjusted p)", "Spearman r")
               .replace("Acurácia", "Accuracy"))
-    val = re.sub(r"\s*\([^)]{20,}\)", "", val).strip()
-    if " / " in val and len(val) > 22:
-        val = val.split(" / ")[0].strip()
-    if "para carga de sintomas" in val:
-        val = "r = -0.171 (p=0.0071)"
-    val = val.replace("0.972868 (97.29%, 95% CI ± 0.00701)", "97.29%").replace(" [.708,.942]", "")
-    val = val.replace("0.068 (LR χ²(75) = 1740.33, p < 0.001)", "0.068 (LR χ²=1740, p<0.001)")
+    val = _format_best_val(val, met)
     return (cen if "$" in cen else tex_esc(cen)), tex_esc(mod), tex_esc(met), tex_esc(val)
 
 
@@ -322,6 +361,10 @@ def write_macros(df: pd.DataFrame, df_ev: pd.DataFrame, df_rev_pts: pd.DataFrame
     n_multi_ds = int(df["Datasets"].astype(str).str.contains(";").sum())
     n_multi_sobrep = int((df["Datasets"].astype(str).str.contains("Outro público") & df["Datasets"].astype(str).str.contains("Privado-próprio")).sum())
     n_only_pdnms = int((df["Modalidade do PADS"] == "Questionário (PDNMS)").sum())
+    imu_df = df[df["Modalidade do PADS"].astype(str).str.contains("IMU", na=False)]
+    imu_tar_c = imu_df["Tarefas do PADS"].value_counts().to_dict()
+    imu_punho_c = imu_df["Punho(s) usado(s)"].value_counts().to_dict()
+    n_sens_imu_vazio = int(imu_df["Sensores"].isna().sum())
     n_part_rep = int(df["N° de participantes"].notna().sum())
     n_part_min = int(df["N° de participantes"].min())
     n_part_max = int(df["N° de participantes"].max())
@@ -414,13 +457,21 @@ def write_macros(df: pd.DataFrame, df_ev: pd.DataFrame, df_rev_pts: pd.DataFrame
         "nTarSubconj": tar_c.get("Subconjunto", 0),
         "nTarNaoRep": tar_c.get("Não reportado", 0),
         "nTarNA": tar_c.get("Não se aplica", 0),
+        "nTarIMUTodas": imu_tar_c.get("Todas", 0),
+        "pctTarIMUTodas": fmt_pct(imu_tar_c.get("Todas", 0), len(imu_df)),
+        "nTarIMUSubconj": imu_tar_c.get("Subconjunto", 0),
+        "nTarIMUNaoRep": imu_tar_c.get("Não reportado", 0),
         "nSensGiro": sens_c.get("Giroscópio", 0),
         "nSensAcel": sens_c.get("Acelerômetro", 0),
         "nSensOutro": sens_c.get("Outro", 0),
         "nSensVazio": int(df["Sensores"].isna().sum()),
+        "nSensIMUVazio": n_sens_imu_vazio,
         "nPunhoAmbos": punho_c.get("Ambos", 0),
         "pctPunhoAmbos": fmt_pct(punho_c.get("Ambos", 0), n_tot),
         "nPunhoNaoRep": punho_c.get("Não reportado", 0),
+        "nPunhoIMUAmbos": imu_punho_c.get("Ambos", 0),
+        "pctPunhoIMUAmbos": fmt_pct(imu_punho_c.get("Ambos", 0), len(imu_df)),
+        "nPunhoIMUNaoRep": imu_punho_c.get("Não reportado", 0),
         "nPunhoDir": punho_c.get("Direito", 0),
         "nPunhoEsq": punho_c.get("Esquerdo", 0),
         "nPunhoNA": punho_c.get("Não se aplica", 0),
@@ -553,6 +604,7 @@ def write_macros(df: pd.DataFrame, df_ev: pd.DataFrame, df_rev_pts: pd.DataFrame
         "nRevAnoDoisQuatro": rev_ano.get("2024", 0),
         "nRevAnoDoisCinco": rev_ano.get("2025", 0),
         "nRevAnoDoisSeis": rev_ano.get("2026", 0),
+        "pctRevAnoDoisSeis": fmt_pct(rev_ano.get("2026", 0), n_rev),
         "nRevRiscoBaixo": rev_risco.get("Baixo", 0),
         "pctRevRiscoBaixoAplic": fmt_pct(rev_risco.get("Baixo", 0), n_rev_vaz_app),
         "nRevRiscoMod": rev_risco.get("Moderado", 0),
@@ -610,7 +662,7 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
 
     tab1 = f"""\\begin{{table}}[tbp]
 \\centering
-\\caption{{Síntese dos \\nTotal\\ estudos incluídos (ordem de \\texttt{{row\\_id}}). QA: A=Alta, M=Média, B=Baixa; *Val. ext. declarada sem teste externo independente.}}
+\\caption{{Síntese dos \\nTotal\\ estudos (ordem de \\texttt{{row\\_id}}). Contrib.\\ = contribuição, Papel = uso do PADS (Princ./Supl.\\ = principal/suplementar, *Val.\\ ext.\\ = validação externa sem teste independente), 3-cl = 3 classes (PD/DD/HC), Vaz.\\ = risco de vazamento (Mod.\\ = moderado, Indet.\\ = indeterminado), N/A = não se aplica, QA = qualidade metodológica (A/M/B: Alta/Média/Baixa).}}
 \\label{{tab:estudos}}
 {{\\tiny
 \\setlength{{\\tabcolsep}}{{2.0pt}}
@@ -646,7 +698,7 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
     t2_body = "\n".join(f"{dim} & {cat} & {cnt} & $N={den}$ \\\\" for dim, cat, cnt, den in t2_lines)
     tab2 = f"""\\begin{{table}}[htbp]
 \\centering
-\\caption{{Recorte do dataset PADS nos \\nTotal\\ estudos (QP2). *Campos multirrótulo (somas acima de 100\\%); contagens na ordem das categorias.}}
+\\caption{{Recorte do dataset PADS nos \\nTotal\\ estudos (QP2). *Campos multirrótulo (somas acima de 100\\%) com contagens na ordem das categorias.}}
 \\label{{tab:recorte}}
 {{\\scriptsize
 \\setlength{{\\tabcolsep}}{{3.5pt}}
@@ -681,7 +733,7 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
     t3_body = "\n".join(f"{dim} & {cat} & {cnt} & {den} \\\\" for dim, cat, cnt, den in t3_lines)
     tab3 = f"""\\begin{{table}}[htbp]
 \\centering
-\\caption{{Protocolos de validação e risco de vazamento reportado (QP4). *Multirrótulo; $N=27$ exclui \\nNaoAplicaveisVaz\\ análises estatísticas (N/A).}}
+\\caption{{Protocolos de validação e risco de vazamento (QP4). *Multirrótulo, e $N=27$ exclui \\nNaoAplicaveisVaz\\ estudos sem modelo (N/A).}}
 \\label{{tab:validacao}}
 {{\\scriptsize
 \\setlength{{\\tabcolsep}}{{3.2pt}}
@@ -709,14 +761,14 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
 
     tab4 = f"""\\begin{{table}}[htbp]
 \\centering
-\\caption{{Melhor resultado reportado por estudo (ordem de \\texttt{{row\\_id}}; sem ranqueamento --- protocolos não são comparáveis).}}
+\\caption{{Melhor resultado (\\texttt{{row\\_id}}, sem ranqueamento). HO = \\textit{{hold-out}}, Anin.\\ = CV aninhada, LOTO = \\textit{{leave-one-task-out}}, Vaz.\\ = risco de vazamento.}}
 \\label{{tab:desempenho}}
 {{\\tiny
-\\setlength{{\\tabcolsep}}{{1.3pt}}
-\\renewcommand{{\\arraystretch}}{{0.80}}
-\\begin{{tabular*}}{{0.98\\textwidth}}{{@{{}}r@{{\\extracolsep{{\\fill}}}} >{{\\raggedright\\arraybackslash}}p{{3.08cm}} >{{\\raggedright\\arraybackslash}}p{{2.05cm}} >{{\\raggedright\\arraybackslash}}p{{2.45cm}} >{{\\raggedright\\arraybackslash}}p{{1.15cm}} >{{\\raggedright\\arraybackslash}}p{{2.05cm}} l@{{}}}}
+\\setlength{{\\tabcolsep}}{{1.4pt}}
+\\renewcommand{{\\arraystretch}}{{0.68}}
+\\begin{{tabular*}}{{0.99\\textwidth}}{{@{{}}r@{{\\extracolsep{{\\fill}}}} >{{\\raggedright\\arraybackslash}}p{{3.10cm}} >{{\\raggedright\\arraybackslash}}p{{2.12cm}} >{{\\raggedright\\arraybackslash}}p{{2.52cm}} >{{\\raggedright\\arraybackslash}}p{{1.12cm}} >{{\\raggedright\\arraybackslash}}p{{2.36cm}} l@{{}}}}
 \\toprule
-\\textbf{{ID}} & \\textbf{{Estudo}} & \\textbf{{Cenário}} & \\textbf{{Modelo/Método}} & \\textbf{{Métrica}} & \\textbf{{Valor}} & \\textbf{{Validação (Vaz.)}} \\\\
+\\textbf{{ID}} & \\textbf{{Estudo}} & \\textbf{{Cenário}} & \\textbf{{Modelo/Método}} & \\textbf{{Métrica}} & \\textbf{{Resultado}} & \\textbf{{Validação (Vaz.)}} \\\\
 \\midrule
 {chr(10).join(t4_rows)}
 \\bottomrule
@@ -729,8 +781,8 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
     # Tabela 5: Lacunas tematicas (QP5) - sem sobreposicao de colunas
     t5_rows = []
     notes_by_theme = [
-        "Treino/teste restrito ao PADS; validação externa = 0/29.",
-        "Menor acurácia em PD vs.\\ DD.",
+        "Validação externa observada = 0/29 (15/29 citam base única).",
+        "Dificuldade reportada na fronteira PD$\\times$DD.",
         "Falta MDS-UPDRS/H\\&Y e coleta em vida livre.",
         "Fusão, XAI, calibração e controle de vazamento.",
         "Só \\nCodDisponivel/\\nTotal\\ com código ou dados.",
@@ -746,11 +798,11 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
 
     tab5 = f"""\\begin{{table}}[htbp]
 \\centering
-\\caption{{Síntese temática das limitações reportadas, lacunas e reprodutibilidade nos \\nTotal\\ estudos (QP5).}}
+\\caption{{Síntese temática de limitações, lacunas e reprodutibilidade (QP5).}}
 \\label{{tab:lacunas}}
 {{\\scriptsize
 \\setlength{{\\tabcolsep}}{{2.6pt}}
-\\renewcommand{{\\arraystretch}}{{0.84}}
+\\renewcommand{{\\arraystretch}}{{0.72}}
 \\begin{{tabular}}{{@{{}}>{{\\raggedright\\arraybackslash}}p{{4.40cm}} r >{{\\raggedright\\arraybackslash}}p{{3.55cm}} >{{\\raggedright\\arraybackslash}}p{{4.00cm}}@{{}}}}
 \\toprule
 \\textbf{{Tema / Lacuna}} & \\textbf{{$n/N$ (\\%)}} & \\textbf{{Exemplos no corpus}} & \\textbf{{Implicação para o PADS}} \\\\
@@ -774,17 +826,18 @@ def write_tables(df: pd.DataFrame, themes: list[tuple[str, list[int]]]) -> None:
         ("Família: Deep Learning", f"{split_many(rev['Família do Algoritmo']).get('Deep Learning',0)}/23 ({fmt_pct(split_many(rev['Família do Algoritmo']).get('Deep Learning',0), 23)})", "6/6 (100,0\\%)", "22/29 (75,9\\%)"),
         ("Separação por participante (Sim)", f"{int(rev['Separação por participante (subject-level separation)'].isin(['Sim – explícita','Sim – inferida']).sum())}/{rev_app}", "6/6", f"{int(df['Separação por participante (subject-level separation)'].isin(['Sim – explícita','Sim – inferida']).sum())}/27"),
         ("Risco de vazamento Baixo", f"{int((rev['risco_vazamento']=='Baixo').sum())}/{rev_app} ({fmt_pct(int((rev['risco_vazamento']=='Baixo').sum()), rev_app)})", f"{int((pre['risco_vazamento']=='Baixo').sum())}/6 ({fmt_pct(int((pre['risco_vazamento']=='Baixo').sum()), 6)})", f"{int((df['risco_vazamento']=='Baixo').sum())}/27 ({fmt_pct(int((df['risco_vazamento']=='Baixo').sum()), 27)})"),
-        ("QA faixa Alta (Média QA)", f"{int((rev['faixa_qa']=='Alta').sum())}/23 ({fmt_num(rev['nota_qa_pct'].mean()*100, 1)}\\%)", f"{int((pre['faixa_qa']=='Alta').sum())}/6 ({fmt_num(pre['nota_qa_pct'].mean()*100, 1)}\\%)", f"{int((df['faixa_qa']=='Alta').sum())}/29 ({fmt_num(df['nota_qa_pct'].mean()*100, 1)}\\%)"),
+        ("Qualidade QA (faixa Alta)", f"{int((rev['faixa_qa']=='Alta').sum())}/23 ({fmt_pct(int((rev['faixa_qa']=='Alta').sum()), 23)})", f"{int((pre['faixa_qa']=='Alta').sum())}/6 ({fmt_pct(int((pre['faixa_qa']=='Alta').sum()), 6)})", f"{int((df['faixa_qa']=='Alta').sum())}/29 ({fmt_pct(int((df['faixa_qa']=='Alta').sum()), 29)})"),
+        ("Qualidade QA (média)", f"{fmt_num(rev['nota_qa_pct'].mean()*100, 1)}\\%", f"{fmt_num(pre['nota_qa_pct'].mean()*100, 1)}\\%", f"{fmt_num(df['nota_qa_pct'].mean()*100, 1)}\\%"),
         ("Código/dados disponíveis", f"{int(rev['Código/dados disponíveis'].isin(['Código','Ambos']).sum())}/23", f"{int(pre['Código/dados disponíveis'].isin(['Código','Ambos']).sum())}/6", f"{int(df['Código/dados disponíveis'].isin(['Código','Ambos']).sum())}/29"),
     ]
     t6_body = "\n".join(f"{a} & {b} & {c} & {d} \\\\" for a, b, c, d in t6_lines)
     tab6 = f"""\\begin{{table}}[htbp]
 \\centering
-\\caption{{Comparação descritiva entre revisados por pares ($n=23$) e \\textit{{preprints}} ($n=6$), e sensibilidade no total ($n=29$).}}
+\\caption{{Revisados ($n=23$) vs.\\ \\textit{{preprints}} ($n=6$) e sensibilidade total ($n=29$).}}
 \\label{{tab:preprints}}
 {{\\scriptsize
 \\setlength{{\\tabcolsep}}{{3.5pt}}
-\\renewcommand{{\\arraystretch}}{{0.82}}
+\\renewcommand{{\\arraystretch}}{{0.74}}
 \\begin{{tabular*}}{{0.78\\textwidth}}{{@{{}}l@{{\\extracolsep{{\\fill}}}} r r r@{{}}}}
 \\toprule
 \\textbf{{Indicador}} & \\textbf{{Revisados ($n=23$)}} & \\textbf{{Preprints ($n=6$)}} & \\textbf{{Total ($n=29$)}} \\\\

@@ -20,11 +20,11 @@ Documento gerado automaticamente por varredura de marcadores `\pend{...}` em `ma
 
 ### Seção 4 — Resultados (`secoes/04-resultados.tex`)
 
-- *(Sem marcadores `\pend{...}` restantes: pendência I1 resolvida com 0/29 de validação externa e explicação contida sobre~\cite{abioye_improving_2025} e os estudos multibase.)*
+- *(Sem marcadores `\pend{...}` restantes: pendência I1 resolvida com 0/29 de validação externa e explicação contida sobre~\cite{abioye_improving_2025} e os estudos multibase; denominação IMU `/27` corrigida em 4.2; 4.5 reclassificada para `QP4`; 4.7 detalhando desvios quantitativos sem preprints.)*
 
-### Seção 6 — Conclusão (`secoes/06-conclusao.tex`)
+### Seção 5 e 6 — Discussão e Conclusão (`05-discussao.tex`, `06-conclusao.tex`)
 
-- *(Sem marcadores `\pend{...}` restantes: decisão O2 registrada — planilha de extração não será disponibilizada externamente.)*
+- *(Sem marcadores `\pend{...}` restantes: incorporadas autocríticas metodológicas de busca/triagem/extração/QA ad hoc/vieses de cobertura e verificação dos 10 registros CE2 em 5.2, contraste risco alto vs. baixo em 5.1 e decisão O2 em 6.)*
 ---
 
 ## 2. Itens do Roteiro para Decisão com Orientadores
@@ -38,7 +38,7 @@ Documento gerado automaticamente por varredura de marcadores `\pend{...}` em `ma
 | **B5** | **Resolvido** | Metadados de publicação e veículo dos 29 estudos (`dados/metadados_estudos.csv`) conferidos pelo autor contra Zotero e primeira página dos PDFs (`11` periódicos, `12` anais, `6` preprints). |
 | **I1** | **Resolvido** | Confirmado `0/29` de validação externa independente nos YAMLs e registrado em forma contida na Seção 4.4 (esclarecendo que `row_id=47` e os 11 multibase retreinaram/avaliaram internamente no PADS). |
 | **I2** | **Resolvido** | Registrado na Seção 3.3 e na Seção 5.2 que a extração e a segunda rodada de conferência integral foram conduzidas por um único pesquisador (o autor), sem extração independente em duplicata nem cálculo de $\kappa$ (alinhado ao recorte de *rapid review* em `garritty_cochrane_2021`), omitindo menção a IA no texto por opção do autor. |
-| **I3** | **Resolvido** | Ratificada QP1 com "veículo" (referente aos veículos de publicação dos 29 estudos analisados) e adaptada a QP5 para "lacunas e oportunidades de pesquisa na área". |
+| **I3** | **Resolvido** | Ratificada QP1 com "veículo" (referente aos veículos de publicação dos 29 estudos analisados), incluída qualidade e reprodutibilidade em QP4 (4.5 reclassificada para QP4) e mantida QP5 para lacunas e oportunidades de pesquisa na área. |
 | **I4** | **Resolvido** | Formalizadas as faixas de QA ($\ge 80\%$, $50\%$--$79\%$, $<50\%$) e a exclusão de itens `N/A` do denominador proporcional (`nota_qa_pct`). |
 | **I5** | **Resolvido** | Regra de classificação do risco de vazamento fundamentada na Seção 3.3 com `kapoor_leakage_2023`, `vandewiele_overly_2021` e `djemaa_quantifying_2026` (separação treino/teste, não independência de amostras por sujeito, pré-processamento e sobreamostragem pré-*split*). |
 | **I6** | **Resolvido** | Referência de revisão rápida (`garritty_cochrane_2021`) combinada à estrutura de protocolo de mapeamento sistemático (`fernandes_interoperability_2018`, com adaptação prospectiva no *snowballing*); menção a PRISMA removida do texto. |
@@ -61,10 +61,11 @@ Documento gerado automaticamente por varredura de marcadores `\pend{...}` em `ma
 
 ---
 
-## 4. Ajustes e Cortes por Orçamento de Páginas (Resultado: 12 Páginas)
+## 4. Ajustes Finais, Consistência e Orçamento de Páginas (Resultado: 12 Páginas)
 
-Após fechar todas as pendências (`0` `\pend` restantes) e compilar `main.pdf` localmente via TinyTeX (`pdflatex` + `bibtex`, com `0` erros e `0` avisos), o manuscrito foi ajustado para fechar estritamente em **12 páginas** sem perda de dados nem corte de estudos:
-1. **Condensação das Tabelas 1, 4 e 5 (Regra 11a / O1)**: Tabela 1 mantida em `0.98\textwidth` (`tabular*`) em página compartimentada; Tabela 4 alargada para `0.98\textwidth` reduzindo quebras multilinhas; Tabela 5 com `2` citações representativas por tema (`e +N`) e rótulos concisos.
-2. **Recorte da Seção 2.2 (Regra 11b / O3)**: mantidas as 3 revisões relacionadas (`ouabd_overview_2026`, `pinto_neto_machine_2026`, `shokrpour_machine_2025`).
-3. **Figuras 2--5 e Tabela 6 padronizadas**: todas as figuras de dados (2 a 5) e a Tabela 6 padronizadas em `0.78\textwidth` (com proporções ajustadas em Matplotlib nas Figuras 2--5 e fluxo da Figura 1 corrigido para desviar do bloco de incluídos), mantendo alta legibilidade e equilíbrio visual.
-4. **Enxugamento textual sem perda factual**: condensação de redundâncias nas Seções 1, 2, 3, 4.3–4.7, 5 e 6, preservando todos os números por macro, a síntese de pré-processamento `QP3` e as `37` referências bibliográficas até a página 12.
+Após fechar todas as pendências (`0` `\pend` restantes), aplicar a revisão integral do manuscrito (terminologia *mapeamento rápido*, transparência dos 10 registros `CE2`, limitações metodológicas e de QA/vazamento em `5.2`, correções `D1–D10`, padronização da Tabela 4 com coluna `Resultado`, separação da média/faixa QA na Tabela 6 e eliminação de travessões `---` e `;` na prosa) e compilar `main.pdf` via TinyTeX (`pdflatex` + `bibtex`, com `0` erros e `0` avisos), o manuscrito fechou em **12 páginas**:
+1. **Tabelas 1 a 6**: Tabela 1 com legenda completa de siglas (`row_id`); Tabela 4 (`0.99\textwidth`) com coluna `Resultado`, cenários alinhados à Tabela 1 e vírgula decimal uniforme; Tabela 5 separando validação externa observada (`0/29`) de autocrítica (`15/29`); Tabela 6 (`0.78\textwidth`) com `QA faixa Alta` e `QA média` em linhas distintas.
+2. **Recorte da Seção 2.2 (O3)**: mantidas as 3 revisões relacionadas (`ouabd_overview_2026`, `pinto_neto_machine_2026`, `shokrpour_machine_2025`).
+3. **Figuras 1 a 5**: Figuras 2–5 padronizadas em `0.78\textwidth` e setas da Figura 1 desviando do bloco de incluídos.
+4. **Enxugamento textual sem perda factual**: ajustes nas Seções 4.5, 4.7, 5 e 6 preservando todos os números por macro, a síntese IMU `QP3` e as `37` referências até a página 12.
+5. **Coesão terminológica (Etapa G)**: revisão sistemática do glossário de termos e siglas (`resumo.tex`, `01`–`06` e `tabelas/tab1`–`tab6`), inserindo qualificadores (`risco de vazamento`, `qualidade metodológica (QA)`), definições curtas na primeira ocorrência, frase-modelo em `5.1` e registro completo (incluindo termos mantidos compactos pelo teto de 12 páginas) em `CHANGELOG.md`.
